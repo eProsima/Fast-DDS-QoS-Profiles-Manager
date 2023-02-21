@@ -61,7 +61,7 @@ jobs:
       - name: Check style
         run: |
           source install/local_setup.bash
-          cd src/rmw_fastrtps
+          cd src/Fast-DDS-QoS-Profiles-Manager
           ament_uncrustify \
             -c ../../uncrustify.cfg \
             --language CPP \
