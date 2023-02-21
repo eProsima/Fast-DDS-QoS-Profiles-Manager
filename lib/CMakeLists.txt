@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 3.10)
 
 project(graph_distribution VERSION "0.1.0" LANGUAGES CXX)
 
+# Configure template doxyfile
+configure_file(doxyfile.in ${PROJECT_BINARY_DIR}/doc/doxyfile @ONLY IMMEDIATE)
+
 find_package(fastrtps REQUIRED)
 
 file(GLOB_RECURSE ALL_HEADERS
