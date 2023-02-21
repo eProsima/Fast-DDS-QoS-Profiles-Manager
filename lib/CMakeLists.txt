@@ -1,8 +1,9 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(graph_distribution)
+project(fastdds_qos_profiles_manager VERSION "0.1.0" LANGUAGES CXX)
 
-find_package(fastrtps REQUIRED)
+# Configure template doxyfile
+configure_file(doxyfile.in ${PROJECT_BINARY_DIR}/doc/doxyfile @ONLY IMMEDIATE)
 
 file(GLOB_RECURSE ALL_HEADERS
     ${PROJECT_SOURCE_DIR}/include/*.hpp
@@ -22,10 +23,6 @@ target_include_directories(${PROJECT_NAME} PUBLIC
     ${PROJECT_SOURCE_DIR}/include
     PRIVATE
     ${PROJECT_SOURCE_DIR}/src)
-
-# Link library to external libraries.
-target_link_libraries(${PROJECT_NAME} ${PRIVACY} fastrtps
-)
 
 ###############################################################################
 # Packaging
