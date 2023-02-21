@@ -1,4 +1,4 @@
-# Fast DDS XML generator library {#index}
+# Fast DDS XML generator library
 
 This library exposes APIs to configure Fast DDS profiles and to save them in XML files.
 
