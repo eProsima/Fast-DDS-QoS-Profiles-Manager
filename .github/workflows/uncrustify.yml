@@ -1,0 +1,47 @@
+name: uncrustify
+
+on:
+  workflow_dispatch:
+  pull_request:
+    # Only run uncrustify action when a source or header file has been modified.
+    paths:
+      - '**.cpp'
+      - '**.hpp'
+      - '.h'
+      - '.cxx'
+
+jobs:
+  uncrustify:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          path: src/Fast-DDS-QoS-Profiles-Manager
+
+      - name: Fetch all branches and tags
+        run: |
+          cd src/Fast-DDS-QoS-Profiles-Manager
+          git fetch --prune --unshallow
+
+      - name: Install uncrustify
+        run: |
+          sudo apt update && sudo apt -y install \
+            uncrustify
+
+      - name: Fetch uncrustify config file
+        run: |
+          curl \
+            -l https://raw.githubusercontent.com/eProsima/cpp-style/master/uncrustify.cfg \
+            -o uncrustify.cfg
+
+      - name: Get difference
+        run: |
+          cd src/Fast-DDS-QoS-Profiles-Manager
+          echo "MODIFIED_FILES=$(git diff --name-only origin/${GITHUB_BASE_REF} origin/${GITHUB_HEAD_REF} | grep -e '\.h' -e '\.hpp' -e '\.cpp' | tr '\n' ' ')" >> $GITHUB_ENV
+
+      - name: Check style
+        run: |
+          cd src/Fast-DDS-QoS-Profiles-Manager
+          uncrustify \
+            -c ../../uncrustify.cfg \
+            ${MODIFIED_FILES}
