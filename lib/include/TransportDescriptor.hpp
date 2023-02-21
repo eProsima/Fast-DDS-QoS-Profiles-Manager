@@ -1489,7 +1489,7 @@ void set_max_message_size(
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
- * @param[in] max_message_size Transport descriptor maximum initial peers range.
+ * @param[in] max_initial_peers_range Transport descriptor maximum initial peers range.
  *
  * @throw element_invalid Exception if the provided maximum initial peers range is not valid.
  */
