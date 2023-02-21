@@ -27,8 +27,8 @@ namespace qosprof {
 namespace transport_descriptor {
 
 /************************************************************************
- * Print functions
- ************************************************************************/
+/* Print functions
+/************************************************************************/
 
 /**
  * @brief Parse XML file and print every transport descriptor profile.
@@ -741,8 +741,8 @@ std::string print_rtps_dump_file(
         const std::string& transport_descriptor_id);
 
 /************************************************************************
- * Query functions
- ************************************************************************/
+/* Query functions
+/************************************************************************/
 
 /**
  * @brief Number of transport descriptor profiles contained in the XML file.
@@ -850,8 +850,8 @@ uint32_t tls_verify_paths_size(
         const std::string& transport_descriptor_id);
 
 /************************************************************************
- * Clear functions
- ************************************************************************/
+/* Clear functions
+/************************************************************************/
 
 /**
  * @brief Delete XML file
@@ -1425,8 +1425,8 @@ void clear_rtps_dump_file(
         const std::string& transport_descriptor_id);
 
 /************************************************************************
- * Set functions
- ************************************************************************/
+/* Set functions
+/************************************************************************/
 
 /**
  * @brief Set the Transport Descriptor kind.
@@ -1868,8 +1868,8 @@ void set_rtps_dump_file(
         const std::string& rtps_dump_file);
 
 /************************************************************************
- * Collection functions
- ************************************************************************/
+/* Collection functions
+/************************************************************************/
 
 /**
  * @brief Append an IP address to the whitelisted network interfaces collection.
