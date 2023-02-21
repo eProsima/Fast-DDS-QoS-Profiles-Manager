@@ -14,19 +14,37 @@ jobs:
   uncrustify:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           path: src/Fast-DDS-QoS-Profiles-Manager
+
+      - uses: actions/checkout@v3
+        with:
+          repository: eProsima/eProsima-CI
+          path: src/eProsima-CI
 
       - name: Fetch all branches and tags
         run: |
           cd src/Fast-DDS-QoS-Profiles-Manager
           git fetch --prune --unshallow
 
+      - name: Install apt packages
+        uses: ./src/eProsima-CI/.github/actions/install-apt-packages
+
+      - name: Install Python packages
+        uses: ./src/eProsima-CI/.github/actions/install-python-packages
+
       - name: Install uncrustify
         run: |
           sudo apt update && sudo apt -y install \
             uncrustify
+
+      - name: Clone ament_lint
+        run: |
+          git clone https://github.com/ament/ament_lint.git src/ament_lint
+      - name: Build ament_uncrustify
+        run: |
+          colcon build --packages-up-to ament_uncrustify
 
       - name: Fetch uncrustify config file
         run: |
@@ -41,7 +59,17 @@ jobs:
 
       - name: Check style
         run: |
-          cd src/Fast-DDS-QoS-Profiles-Manager
-          uncrustify \
+          source install/local_setup.bash
+          cd src/rmw_fastrtps
+          ament_uncrustify \
             -c ../../uncrustify.cfg \
+            --language CPP \
+            --xunit-file ../../uncrustify_results.xml \
             ${MODIFIED_FILES}
+
+      - name: Upload uncrustify results
+        uses: actions/upload-artifact@v1
+        with:
+          name: uncrustify_results
+          path: uncrustify_results.xml
+        if: always()
