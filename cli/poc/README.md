@@ -1,6 +1,6 @@
 # Fast DDS XML generator CLI Proof Of Concept
 
-This PoC will be done using two different external libraries for argument parsing.
+This PoC is done using two different external libraries for argument parsing.
 The aim is to evaluate the convenience of using either cxxopts or docopt argument parsing external libraries in the CLI of this project.
 
 ## Build
@@ -18,7 +18,7 @@ After the installation, inside `./install/bin` an executable with name `poc_cxxo
 
 ## Test case used
 
-This PoC focuses in the parsing of the set command for the Locator properties, defined in the Fast DDS QoS Profiles Proposed Solution.
+This PoC focuses in the parsing of the set command for the Locator properties, defined in the Fast DDS QoS Profiles Manager Proposed Solution.
 The following commands are extracted from documentation:
 
 ```bash
@@ -54,4 +54,3 @@ As an example, with the `/install/bin` folder as current directory of a terminal
 ./poc_cxxopts file.xml set participant["participant_profile_name"].locators.default_unicast[].type tcpv4
 ./poc_cxxopts file.xml set participant["participant_profile_name"].locators.default_unicast[] tcpv6 ::1 8844
 ```
-
