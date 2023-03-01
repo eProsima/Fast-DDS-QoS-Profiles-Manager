@@ -139,7 +139,7 @@ int set_verb(
  * - A third parser level, the "dot" parser, takes the "where to add/edit" and returns a vector of strings, whose elements are the
  *   different dot-separated elements of this field. To do this, the definition CXXOPTS_VECTOR_DELIMITER is modified to '.' value.
  * - The parsing of the "[]" operators is not performed in this PoC, as the cxxopts library does not provide any mechanism to do so. Thus,
- *   this work would need to be done afterwards.
+ *   this work would need to be done afterwards, por instance, using regular expressions.
  * */
 
 int main(
