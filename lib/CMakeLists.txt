@@ -49,3 +49,9 @@ install(DIRECTORY include/
     PATTERN "*.h"
     PATTERN "*.hpp"
     )
+
+# Install config.h header
+install(FILES ${PROJECT_BINARY_DIR}/include/config.h
+    DESTINATION include/
+    COMPONENT headers
+)
