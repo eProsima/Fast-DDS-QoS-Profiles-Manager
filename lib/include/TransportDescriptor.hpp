@@ -78,13 +78,13 @@ std::string print_kind(
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @return uint32_t Transport descriptor send buffer size.
+ * @return std::string Transport descriptor send buffer size.
  *
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        send buffer size element has not been set in the profile.
  */
-uint32_t print_send_buffer_size(
+std::string print_send_buffer_size(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -94,13 +94,13 @@ uint32_t print_send_buffer_size(
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @return uint32_t Transport descriptor receive buffer size.
+ * @return std::string Transport descriptor receive buffer size.
  *
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        receive buffer size element has not been set in the profile.
  */
-uint32_t print_receive_buffer_size(
+std::string print_receive_buffer_size(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -110,13 +110,13 @@ uint32_t print_receive_buffer_size(
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @return uint32_t Transport descriptor maximum message size.
+ * @return std::string Transport descriptor maximum message size.
  *
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        maximum message size element has not been set in the profile.
  */
-uint32_t print_max_message_size(
+std::string print_max_message_size(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -126,13 +126,13 @@ uint32_t print_max_message_size(
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @return uint32_t Transport descriptor maximum initial peers range.
+ * @return std::string Transport descriptor maximum initial peers range.
  *
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        maximum initial peers range element has not been set in the profile.
  */
-uint32_t print_max_initial_peers_range(
+std::string print_max_initial_peers_range(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -176,13 +176,13 @@ std::string print_interface_whitelist(
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @return uint8_t Transport descriptor TTL in number of hops.
+ * @return std::string Transport descriptor TTL in number of hops.
  *
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TTL element has not been set in the profile.
  */
-uint8_t print_ttl(
+std::string print_ttl(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -192,13 +192,13 @@ uint8_t print_ttl(
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @return bool Transport descriptor non blocking send flag.
+ * @return std::string Transport descriptor non blocking send flag.
  *
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        non blocking send flag has not been set in the profile.
  */
-bool print_non_blocking_send(
+std::string print_non_blocking_send(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -208,13 +208,13 @@ bool print_non_blocking_send(
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @return uint16_t UDP Transport descriptor output port.
+ * @return std::string UDP Transport descriptor output port.
  *
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        ouput port has not been set in the profile.
  */
-uint16_t print_output_port(
+std::string print_output_port(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -240,13 +240,13 @@ std::string print_wan_addr(
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @return uint32_t Frequency of TCP keep alive requests (in milliseconds).
+ * @return std::string Frequency of TCP keep alive requests (in milliseconds).
  *
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        keep alive frequency has not been set in the profile.
  */
-uint32_t print_keep_alive_frequency_ms(
+std::string print_keep_alive_frequency_ms(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -257,13 +257,13 @@ uint32_t print_keep_alive_frequency_ms(
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @return uint32_t TCP keep alive timeout (in milliseconds).
+ * @return std::string TCP keep alive timeout (in milliseconds).
  *
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        keep alive timeout has not been set in the profile.
  */
-uint32_t print_keep_alive_timeout_ms(
+std::string print_keep_alive_timeout_ms(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -273,13 +273,13 @@ uint32_t print_keep_alive_timeout_ms(
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @return uint16_t Maximum number of logical ports to try during TCP negotiation.
+ * @return std::string Maximum number of logical ports to try during TCP negotiation.
  *
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        maximum number of logical ports has not been set in the profile.
  */
-uint16_t print_max_logical_port(
+std::string print_max_logical_port(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -290,13 +290,13 @@ uint16_t print_max_logical_port(
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @return uint16_t Maximum number of logical ports per request to try during TCP negotiation.
+ * @return std::string Maximum number of logical ports per request to try during TCP negotiation.
  *
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        maximum number of logical ports per request has not been set in the profile.
  */
-uint16_t print_logical_port_range(
+std::string print_logical_port_range(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -306,13 +306,13 @@ uint16_t print_logical_port_range(
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @return uint16_t Increment between logical ports to try during TCP negotiation.
+ * @return std::string Increment between logical ports to try during TCP negotiation.
  *
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        logical port increment has not been set in the profile.
  */
-uint16_t print_logical_port_increment(
+std::string print_logical_port_increment(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -339,13 +339,13 @@ std::string print_listening_ports(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] index Collection element to be printed.
  *
- * @return uint16_t TCP Transport descriptor specific listening port.
+ * @return std::string TCP Transport descriptor specific listening port.
  *
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        list does not contain any element in index position.
  */
-uint16_t print_listening_ports(
+std::string print_listening_ports(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         int32_t index);
@@ -570,13 +570,13 @@ std::string print_tls_verify_paths(
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @return int32_t Specific TCP Transport Descriptor maximum allowed depth for verifying intermediate certificates.
+ * @return std::string Specific TCP Transport Descriptor maximum allowed depth for verifying intermediate certificates.
  *
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TLS verify depth element has not been set in the profile.
  */
-int32_t print_tls_verify_depth(
+std::string print_tls_verify_depth(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -586,13 +586,13 @@ int32_t print_tls_verify_depth(
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @return bool Specific TCP Transport Descriptor verify default paths flag.
+ * @return std::string Specific TCP Transport Descriptor verify default paths flag.
  *
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TLS verify default paths flag has not been set in the profile.
  */
-bool print_tls_default_verify_path(
+std::string print_tls_default_verify_path(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -634,13 +634,13 @@ std::string print_tls_server_name(
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @return bool Specific TCP Transport Descriptor calculate CRC flag.
+ * @return std::string Specific TCP Transport Descriptor calculate CRC flag.
  *
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        calculate CRC flag has not been set in the profile.
  */
-bool print_calculate_crc(
+std::string print_calculate_crc(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -650,13 +650,13 @@ bool print_calculate_crc(
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @return bool Specific TCP Transport Descriptor check CRC flag.
+ * @return std::string Specific TCP Transport Descriptor check CRC flag.
  *
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        check CRC flag has not been set in the profile.
  */
-bool print_check_crc(
+std::string print_check_crc(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -666,13 +666,13 @@ bool print_check_crc(
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @return bool Specific TCP Transport Descriptor TCP_NODELAY socket option flag.
+ * @return std::string Specific TCP Transport Descriptor TCP_NODELAY socket option flag.
  *
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TCP_NODELAY socket option flag has not been set in the profile.
  */
-bool print_enable_tcp_nodelay(
+std::string print_enable_tcp_nodelay(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -682,13 +682,13 @@ bool print_enable_tcp_nodelay(
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @return uint32_t Specific SHM Transport Descriptor shared memory segment size.
+ * @return std::string Specific SHM Transport Descriptor shared memory segment size.
  *
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        shared memory segment size has not been set in the profile.
  */
-uint32_t print_segment_size(
+std::string print_segment_size(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -698,13 +698,13 @@ uint32_t print_segment_size(
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @return uint32_t Specific SHM Transport Descriptor listening port capacity in number of messages.
+ * @return std::string Specific SHM Transport Descriptor listening port capacity in number of messages.
  *
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        listening port capacity has not been set in the profile.
  */
-uint32_t print_port_queue_capacity(
+std::string print_port_queue_capacity(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -714,13 +714,13 @@ uint32_t print_port_queue_capacity(
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @return uint32_t Specific SHM Transport Descriptor listening port liveliness timeout (in milliseconds).
+ * @return std::string Specific SHM Transport Descriptor listening port liveliness timeout (in milliseconds).
  *
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        listening port liveliness timeout has not been set in the profile.
  */
-uint32_t print_healthy_check_timeout_ms(
+std::string print_healthy_check_timeout_ms(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -1454,7 +1454,7 @@ void set_kind(
 void set_send_buffer_size(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        uint32_t send_buffer_size);
+        const std::string& send_buffer_size);
 
 /**
  * @brief Set the Transport Descriptor receive buffer size.
@@ -1468,7 +1468,7 @@ void set_send_buffer_size(
 void set_receive_buffer_size(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        uint32_t receive_buffer_size);
+        const std::string& receive_buffer_size);
 
 /**
  * @brief Set the Transport Descriptor maximum message size.
@@ -1482,7 +1482,7 @@ void set_receive_buffer_size(
 void set_max_message_size(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        uint32_t max_message_size);
+        const std::string& max_message_size);
 
 /**
  * @brief Set the Transport Descriptor maximum initial peers range.
@@ -1496,7 +1496,7 @@ void set_max_message_size(
 void set_max_initial_peers_range(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        uint32_t max_initial_peers_range);
+        const std::string& max_initial_peers_range);
 
 /**
  * @brief Set the Transport Descriptor TTL (Time to live).
@@ -1510,7 +1510,7 @@ void set_max_initial_peers_range(
 void set_ttl(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        uint8_t ttl);
+        const std::string& ttl);
 
 /**
  * @brief Set the Transport Descriptor non blocking send flag (UDP Transport specific).
@@ -1524,7 +1524,7 @@ void set_ttl(
 void set_non_blocking_send(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        bool non_blocking_send);
+        const std::string& non_blocking_send);
 
 /**
  * @brief Set the Transport Descriptor output port (UDP Transport specific).
@@ -1538,7 +1538,7 @@ void set_non_blocking_send(
 void set_output_port(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        uint16_t output_port);
+        const std::string& output_port);
 
 /**
  * @brief Set the Transport Descriptor WAN address (TCPv4 Transport specific).
@@ -1566,7 +1566,7 @@ void set_wan_addr(
 void set_keep_alive_frequency_ms(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        uint32_t keep_alive_frequency_ms);
+        const std::string& keep_alive_frequency_ms);
 
 /**
  * @brief Set the TCP Transport Descriptor timeout to consider a connection broken if no keep alive request is received
@@ -1581,7 +1581,7 @@ void set_keep_alive_frequency_ms(
 void set_keep_alive_timeout_ms(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        uint32_t keep_alive_timeout_ms);
+        const std::string& keep_alive_timeout_ms);
 
 /**
  * @brief Set the TCP Transport Descriptor maximum number of logical ports to try during TCP negotiation (TCP Transport
@@ -1596,7 +1596,7 @@ void set_keep_alive_timeout_ms(
 void set_max_logical_port(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        uint16_t max_logical_port);
+        const std::string& max_logical_port);
 
 /**
  * @brief Set the TCP Transport Descriptor maximum number of logical ports per request to try during TCP negotiation
@@ -1611,7 +1611,7 @@ void set_max_logical_port(
 void set_logical_port_range(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        uint16_t logical_port_range);
+        const std::string& logical_port_range);
 
 /**
  * @brief Set the TCP Transport Descriptor increment between logical ports to try during TCP negotiation (TCP Transport
@@ -1626,7 +1626,7 @@ void set_logical_port_range(
 void set_logical_port_increment(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        uint16_t logical_port_increment);
+        const std::string& logical_port_increment);
 
 /**
  * @brief Set the TCP Transport Descriptor TLS password (TCP Transport specific).
@@ -1725,7 +1725,7 @@ void set_tls_verify_file(
 void set_tls_verify_depth(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        int32_t tls_verify_depth);
+        const std::string& tls_verify_depth);
 
 /**
  * @brief Set the TCP Transport Descriptor TLS verify default paths flag (TCP Transport specific).
@@ -1739,7 +1739,7 @@ void set_tls_verify_depth(
 void set_tls_default_verify_path(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        bool tls_default_verify_path);
+        const std::string& tls_default_verify_path);
 
 /**
  * @brief Set the TCP Transport Descriptor TLS handshake role (TCP Transport specific).
@@ -1781,7 +1781,7 @@ void set_tls_server_name(
 void set_calculate_crc(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        bool calculate_crc);
+        const std::string& calculate_crc);
 
 /**
  * @brief Set the TCP Transport Descriptor check CRC flag (TCP Transport specific).
@@ -1795,7 +1795,7 @@ void set_calculate_crc(
 void set_check_crc(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        bool check_crc);
+        const std::string& check_crc);
 
 /**
  * @brief Enable the TCP Transport Descriptor TCP_NODELAY socket option (TCP Transport specific).
@@ -1809,7 +1809,7 @@ void set_check_crc(
 void set_enable_tcp_nodelay(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        bool enable_tcp_nodelay);
+        const std::string& enable_tcp_nodelay);
 
 /**
  * @brief Set the SHM Transport Descriptor shared memory segment size (SHM Transport specific).
@@ -1823,7 +1823,7 @@ void set_enable_tcp_nodelay(
 void set_segment_size(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        uint32_t segment_size);
+        const std::string& segment_size);
 
 /**
  * @brief Set the SHM Transport Descriptor listening port capacity (SHM Transport specific).
@@ -1837,7 +1837,7 @@ void set_segment_size(
 void set_port_queue_capacity(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        uint32_t port_queue_capacity);
+        const std::string& port_queue_capacity);
 
 /**
  * @brief Set the SHM Transport Descriptor listening port liveliness timeout (SHM Transport specific).
@@ -1851,7 +1851,7 @@ void set_port_queue_capacity(
 void set_healthy_check_timeout_ms(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        uint32_t healthy_check_timeout_ms);
+        const std::string& healthy_check_timeout_ms);
 
 /**
  * @brief Set the SHM Transport Descriptor path to the debug file (SHM Transport specific).
@@ -1914,7 +1914,7 @@ void update_interface_whitelist(
 void push_listening_ports(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        uint16_t port);
+        const std::string& port);
 
 /**
  * @brief Update a listening port to the TCP Transport Descriptor collection (TCP Transport specific).
@@ -1930,7 +1930,7 @@ void push_listening_ports(
 void update_listening_ports(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        uint16_t port,
+        const std::string& port,
         int32_t index);
 
 /**
