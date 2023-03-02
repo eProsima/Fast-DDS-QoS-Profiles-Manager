@@ -854,7 +854,7 @@ uint32_t tls_verify_paths_size(
 /************************************************************************/
 
 /**
- * @brief Delete XML file
+ * @brief Delete any TransportDescriptor profile contained in the XML file.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  *
