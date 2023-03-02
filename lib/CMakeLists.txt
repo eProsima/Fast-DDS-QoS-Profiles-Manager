@@ -14,7 +14,7 @@ file(GLOB_RECURSE ALL_HEADERS
 set(${PROJECT_NAME}_source_files
     ${ALL_HEADERS}
 
-    src/main.cpp
+    src/cpp/main.cpp
 )
 
 add_library(${PROJECT_NAME} SHARED ${${PROJECT_NAME}_source_files})
