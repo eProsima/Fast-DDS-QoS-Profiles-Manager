@@ -44,7 +44,8 @@ int set_verb(
     // Parse the fields separated by dots
     std::vector<std::string> field_parts;
 
-    while (std::regex_search(field, match, dot_pattern)) {
+    while (std::regex_search(field, match, dot_pattern))
+    {
         field_parts.push_back(match[0]);
         field = match.suffix();
     }
@@ -56,7 +57,8 @@ int set_verb(
 
         std::regex brackets_pattern("\\[([^\\]]*)\\]");
 
-        if (std::regex_search(part, match, brackets_pattern)) {
+        if (std::regex_search(part, match, brackets_pattern))
+        {
             // Here, match[1] will store the content inside "[]", or an empty string if there is no content between the brackets
             std::cout << "Between-brackets match found: " << match[1] << std::endl;
         }
@@ -81,6 +83,8 @@ int set_verb(
  * - The second parser level is the verb related parser. In this case, the "set" parser, locates the "where to add/edit" and "what to add/edit"
  * The "dot" parser here is performed using regular expressions.
  * The parsing of the "[]" operators is performed using regular expressions.
+ * The help message can be printed automatically when typing help flags.
+ * To print the help message with "help" verbs instead of flags, the print should be done manually with an std::cout.
  * */
 
 static const char USAGE[] =
@@ -110,7 +114,7 @@ int main(
         USAGE,
         { argv + 1, argv + argc },
         true,                                                         // show help if requested
-        "poc_docopt 2.0",                                             // version string
+        "poc_docopt 1.0",                                             // version string
         true);                                                        // options_first
 
     for (auto const& arg : args)
@@ -126,10 +130,9 @@ int main(
     else
     {
         std::cout << args["<verb>"].asString() << " verb not supported!!!" << std::endl;
+        std::cout << USAGE << std::endl;
+        exit(1);
     }
-
-    // std::string participant_name = args["participant"]["participant_name"].as_string();
-    // std::verctor<std::string> unicast = args["participant"][participant_name]["locators"]["unicast"].asStringList();
 
     return 0;
 }

@@ -14,6 +14,14 @@ To build the PoC, in a terminal with current directory in the PoC root directory
     cmake --install . --prefix "../install"
 ```
 
+**Note:** Before the build of this PoC, the docopt.cpp library needs to be built and installed in system.
+To do that, from the `src/docopt/lib/docopt.cpp` folder, run the following bash lines (sudo command may be required):
+
+```bash
+    cmake .
+    make install
+```
+
 After the installation, inside `./install/bin` an executable with name `poc_cxxopts` is located.
 
 ## Test case used
@@ -53,4 +61,20 @@ As an example, with the `/install/bin` folder as current directory of a terminal
 ./poc_cxxopts file.xml set
 ./poc_cxxopts file.xml set participant["participant_profile_name"].locators.default_unicast[].type tcpv4
 ./poc_cxxopts file.xml set participant["participant_profile_name"].locators.default_unicast[] tcpv6 ::1 8844
+```
+
+## PoC using docopt
+
+### Execution
+
+The program prints some "debug" information about the parsing being made.
+This printed info can be contrasted with the code of the program to see how the external library works and how it can be configured and used.
+As an example, with the `/install/bin` folder as current directory of a terminal, the following commands can be executed (separately) in order to run the executable and to see the obtained printed output:
+
+```bash
+./poc_docopt help
+./poc_docopt file.xml help
+./poc_docopt file.xml set
+./poc_docopt file.xml set participant["participant_profile_name"].locators.default_unicast[].type tcpv4
+./poc_docopt file.xml set participant["participant_profile_name"].locators.default_unicast[] tcpv6 ::1 8844
 ```

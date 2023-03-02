@@ -44,8 +44,6 @@ int set_verb(
     {
         if (set_result.count("where"))
         {
-            std::string where = set_result["where"].as<std::string>();
-
             // Third level parser
             // CXXOPTS_VECTOR_DELIMITER definition has been modified in cxxopts library,
             // to identify the delimiter as '.' instead of ',' (default value).
@@ -153,7 +151,7 @@ int main(
 
     // Options
     global_parser.custom_help("<-h, help>");
-    global_parser.positional_help("<VERB> <sub_args>");
+    global_parser.positional_help("<FILE> <VERB> <sub_args>");
     global_parser.show_positional_help();
 
     // Fields expected in command
