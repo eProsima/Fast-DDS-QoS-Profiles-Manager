@@ -22,6 +22,8 @@
 #include <string>
 #include <vector>
 
+#include <fastdds_qos_profiles_manager_dll.h>
+
 namespace eprosima {
 namespace qosprof {
 namespace transport_descriptor {
@@ -39,7 +41,7 @@ namespace transport_descriptor {
  *
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  */
-std::string print(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
         const std::string& xml_file);
 
 /**
@@ -53,7 +55,7 @@ std::string print(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-std::string print(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -68,7 +70,7 @@ std::string print(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-std::string print_kind(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_kind(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -84,7 +86,7 @@ std::string print_kind(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        send buffer size element has not been set in the profile.
  */
-std::string print_send_buffer_size(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_send_buffer_size(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -100,7 +102,7 @@ std::string print_send_buffer_size(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        receive buffer size element has not been set in the profile.
  */
-std::string print_receive_buffer_size(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_receive_buffer_size(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -116,7 +118,7 @@ std::string print_receive_buffer_size(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        maximum message size element has not been set in the profile.
  */
-std::string print_max_message_size(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_max_message_size(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -132,7 +134,7 @@ std::string print_max_message_size(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        maximum initial peers range element has not been set in the profile.
  */
-std::string print_max_initial_peers_range(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_max_initial_peers_range(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -148,7 +150,7 @@ std::string print_max_initial_peers_range(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        interface whitelist element has not been set in the profile.
  */
-std::string print_interface_whitelist(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_interface_whitelist(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -165,7 +167,7 @@ std::string print_interface_whitelist(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        list does not contain any element in index position.
  */
-std::string print_interface_whitelist(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_interface_whitelist(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         int32_t index);
@@ -182,7 +184,7 @@ std::string print_interface_whitelist(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TTL element has not been set in the profile.
  */
-std::string print_ttl(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_ttl(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -198,7 +200,7 @@ std::string print_ttl(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        non blocking send flag has not been set in the profile.
  */
-std::string print_non_blocking_send(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_non_blocking_send(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -214,7 +216,7 @@ std::string print_non_blocking_send(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        ouput port has not been set in the profile.
  */
-std::string print_output_port(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_output_port(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -230,7 +232,7 @@ std::string print_output_port(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        WAN address has not been set in the profile.
  */
-std::string print_wan_addr(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_wan_addr(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -246,7 +248,7 @@ std::string print_wan_addr(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        keep alive frequency has not been set in the profile.
  */
-std::string print_keep_alive_frequency_ms(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_keep_alive_frequency_ms(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -263,7 +265,7 @@ std::string print_keep_alive_frequency_ms(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        keep alive timeout has not been set in the profile.
  */
-std::string print_keep_alive_timeout_ms(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_keep_alive_timeout_ms(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -279,7 +281,7 @@ std::string print_keep_alive_timeout_ms(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        maximum number of logical ports has not been set in the profile.
  */
-std::string print_max_logical_port(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_max_logical_port(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -296,7 +298,7 @@ std::string print_max_logical_port(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        maximum number of logical ports per request has not been set in the profile.
  */
-std::string print_logical_port_range(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_logical_port_range(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -312,7 +314,7 @@ std::string print_logical_port_range(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        logical port increment has not been set in the profile.
  */
-std::string print_logical_port_increment(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_logical_port_increment(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -328,7 +330,7 @@ std::string print_logical_port_increment(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        listening ports element has not been set in the profile.
  */
-std::string print_listening_ports(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_listening_ports(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -345,7 +347,7 @@ std::string print_listening_ports(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        list does not contain any element in index position.
  */
-std::string print_listening_ports(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_listening_ports(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         int32_t index);
@@ -362,7 +364,7 @@ std::string print_listening_ports(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TLS configuration element has not been set in the profile.
  */
-std::string print_tls(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -378,7 +380,7 @@ std::string print_tls(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TLS password element has not been set in the profile.
  */
-std::string print_tls_password(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_password(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -394,7 +396,7 @@ std::string print_tls_password(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TLS private key certificate path element has not been set in the profile.
  */
-std::string print_tls_private_key_file(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_private_key_file(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -410,7 +412,7 @@ std::string print_tls_private_key_file(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TLS private key RSA certificate path element has not been set in the profile.
  */
-std::string print_tls_rsa_private_key_file(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_rsa_private_key_file(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -426,7 +428,7 @@ std::string print_tls_rsa_private_key_file(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TLS public certificate chain file path element has not been set in the profile.
  */
-std::string print_tls_cert_chain_file(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_cert_chain_file(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -442,7 +444,7 @@ std::string print_tls_cert_chain_file(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TLS Diffie-Hellman parameters file path element has not been set in the profile.
  */
-std::string print_tls_tmp_dh_file(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_tmp_dh_file(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -458,7 +460,7 @@ std::string print_tls_tmp_dh_file(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TLS CA file path element has not been set in the profile.
  */
-std::string print_tls_verify_file(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_verify_file(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -474,7 +476,7 @@ std::string print_tls_verify_file(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TLS verify mode element has not been set in the profile.
  */
-std::string print_tls_verify_mode(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_verify_mode(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -491,7 +493,7 @@ std::string print_tls_verify_mode(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        list does not contain any element in index position.
  */
-std::string print_tls_verify_mode(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_verify_mode(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         int32_t index);
@@ -508,7 +510,7 @@ std::string print_tls_verify_mode(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TLS options element has not been set in the profile.
  */
-std::string print_tls_options(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_options(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -525,7 +527,7 @@ std::string print_tls_options(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        list does not contain any element in index position.
  */
-std::string print_tls_options(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_options(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         int32_t index);
@@ -542,7 +544,7 @@ std::string print_tls_options(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TLS verify paths element has not been set in the profile.
  */
-std::string print_tls_verify_paths(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_verify_paths(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -559,7 +561,7 @@ std::string print_tls_verify_paths(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        list does not contain any element in index position.
  */
-std::string print_tls_verify_paths(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_verify_paths(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         int32_t index);
@@ -576,7 +578,7 @@ std::string print_tls_verify_paths(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TLS verify depth element has not been set in the profile.
  */
-std::string print_tls_verify_depth(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_verify_depth(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -592,7 +594,7 @@ std::string print_tls_verify_depth(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TLS verify default paths flag has not been set in the profile.
  */
-std::string print_tls_default_verify_path(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_default_verify_path(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -608,7 +610,7 @@ std::string print_tls_default_verify_path(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TLS handshake role has not been set in the profile.
  */
-std::string print_tls_handshake_role(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_handshake_role(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -624,7 +626,7 @@ std::string print_tls_handshake_role(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TLS SNI server name has not been set in the profile.
  */
-std::string print_tls_server_name(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_server_name(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -640,7 +642,7 @@ std::string print_tls_server_name(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        calculate CRC flag has not been set in the profile.
  */
-std::string print_calculate_crc(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_calculate_crc(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -656,7 +658,7 @@ std::string print_calculate_crc(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        check CRC flag has not been set in the profile.
  */
-std::string print_check_crc(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_check_crc(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -672,7 +674,7 @@ std::string print_check_crc(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TCP_NODELAY socket option flag has not been set in the profile.
  */
-std::string print_enable_tcp_nodelay(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_enable_tcp_nodelay(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -688,7 +690,7 @@ std::string print_enable_tcp_nodelay(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        shared memory segment size has not been set in the profile.
  */
-std::string print_segment_size(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_segment_size(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -704,7 +706,7 @@ std::string print_segment_size(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        listening port capacity has not been set in the profile.
  */
-std::string print_port_queue_capacity(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_port_queue_capacity(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -720,7 +722,7 @@ std::string print_port_queue_capacity(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        listening port liveliness timeout has not been set in the profile.
  */
-std::string print_healthy_check_timeout_ms(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_healthy_check_timeout_ms(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -736,7 +738,7 @@ std::string print_healthy_check_timeout_ms(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        debugging file path has not been set in the profile.
  */
-std::string print_rtps_dump_file(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_rtps_dump_file(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -753,7 +755,7 @@ std::string print_rtps_dump_file(
  *
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  */
-uint32_t size(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t size(
         const std::string& xml_file);
 
 /**
@@ -766,7 +768,7 @@ uint32_t size(
  *
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  */
-std::vector<std::string> keys(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::vector<std::string> keys(
         const std::string& xml_file);
 
 /**
@@ -781,7 +783,7 @@ std::vector<std::string> keys(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        interface whitelist element has not been set in the profile.
  */
-uint32_t interface_whitelist_size(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t interface_whitelist_size(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -797,7 +799,7 @@ uint32_t interface_whitelist_size(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        listening ports element has not been set in the profile.
  */
-uint32_t listening_ports_size(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t listening_ports_size(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -813,7 +815,7 @@ uint32_t listening_ports_size(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TLS verify mode element has not been set in the profile.
  */
-uint32_t tls_verify_mode_size(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t tls_verify_mode_size(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -829,7 +831,7 @@ uint32_t tls_verify_mode_size(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TLS options element has not been set in the profile.
  */
-uint32_t tls_options_size(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t tls_options_size(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -845,7 +847,7 @@ uint32_t tls_options_size(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TLS verify paths element has not been set in the profile.
  */
-uint32_t tls_verify_paths_size(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t tls_verify_paths_size(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -860,7 +862,7 @@ uint32_t tls_verify_paths_size(
  *
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  */
-void clear(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
         const std::string& xml_file);
 
 /**
@@ -872,7 +874,7 @@ void clear(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -885,7 +887,7 @@ void clear(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_send_buffer_size(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_send_buffer_size(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -898,7 +900,7 @@ void clear_send_buffer_size(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_receive_buffer_size(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_receive_buffer_size(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -911,7 +913,7 @@ void clear_receive_buffer_size(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_max_message_size(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_max_message_size(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -924,7 +926,7 @@ void clear_max_message_size(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_max_initial_peers_range(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_max_initial_peers_range(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -937,7 +939,7 @@ void clear_max_initial_peers_range(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_interface_whitelist(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_interface_whitelist(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -952,7 +954,7 @@ void clear_interface_whitelist(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or if
  *        the element does not exist in the collection.
  */
-void clear_interface_whitelist(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_interface_whitelist(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         int32_t index);
@@ -966,7 +968,7 @@ void clear_interface_whitelist(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_ttl(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_ttl(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -979,7 +981,7 @@ void clear_ttl(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_non_blocking_send(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_non_blocking_send(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -992,7 +994,7 @@ void clear_non_blocking_send(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_output_port(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_output_port(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -1005,7 +1007,7 @@ void clear_output_port(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_wan_addr(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_wan_addr(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -1018,7 +1020,7 @@ void clear_wan_addr(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_keep_alive_frequency_ms(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_keep_alive_frequency_ms(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -1031,7 +1033,7 @@ void clear_keep_alive_frequency_ms(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_keep_alive_timeout_ms(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_keep_alive_timeout_ms(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -1044,7 +1046,7 @@ void clear_keep_alive_timeout_ms(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_max_logical_port(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_max_logical_port(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -1057,7 +1059,7 @@ void clear_max_logical_port(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_logical_port_range(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_logical_port_range(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -1070,7 +1072,7 @@ void clear_logical_port_range(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_logical_port_increment(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_logical_port_increment(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -1083,7 +1085,7 @@ void clear_logical_port_increment(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_listening_ports(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_listening_ports(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -1098,7 +1100,7 @@ void clear_listening_ports(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or if
  *        the element does not exist in the collection.
  */
-void clear_listening_ports(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_listening_ports(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         int32_t index);
@@ -1112,7 +1114,7 @@ void clear_listening_ports(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_tls(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -1125,7 +1127,7 @@ void clear_tls(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_tls_password(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_password(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -1138,7 +1140,7 @@ void clear_tls_password(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_tls_private_key_file(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_private_key_file(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -1151,7 +1153,7 @@ void clear_tls_private_key_file(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_tls_rsa_private_key_file(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_rsa_private_key_file(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -1164,7 +1166,7 @@ void clear_tls_rsa_private_key_file(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_tls_cert_chain_file(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_cert_chain_file(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -1177,7 +1179,7 @@ void clear_tls_cert_chain_file(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_tls_tmp_dh_file(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_tmp_dh_file(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -1190,7 +1192,7 @@ void clear_tls_tmp_dh_file(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_tls_verify_file(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_verify_file(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -1203,7 +1205,7 @@ void clear_tls_verify_file(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_tls_verify_mode(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_verify_mode(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -1218,7 +1220,7 @@ void clear_tls_verify_mode(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or if
  *        the element does not exist in the collection.
  */
-void clear_tls_verify_mode(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_verify_mode(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         int32_t index);
@@ -1232,7 +1234,7 @@ void clear_tls_verify_mode(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_tls_options(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_options(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -1247,7 +1249,7 @@ void clear_tls_options(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or if
  *        the element does not exist in the collection.
  */
-void clear_tls_options(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_options(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         int32_t index);
@@ -1261,7 +1263,7 @@ void clear_tls_options(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_tls_verify_paths(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_verify_paths(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -1276,7 +1278,7 @@ void clear_tls_verify_paths(
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file or if
  *        the element does not exist in the collection.
  */
-void clear_tls_verify_paths(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_verify_paths(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         int32_t index);
@@ -1290,7 +1292,7 @@ void clear_tls_verify_paths(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_tls_verify_depth(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_verify_depth(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -1303,7 +1305,7 @@ void clear_tls_verify_depth(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_tls_default_verify_path(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_default_verify_path(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -1316,7 +1318,7 @@ void clear_tls_default_verify_path(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_tls_handshake_role(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_handshake_role(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -1329,7 +1331,7 @@ void clear_tls_handshake_role(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_tls_server_name(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_server_name(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -1342,7 +1344,7 @@ void clear_tls_server_name(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_calculate_crc(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_calculate_crc(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -1355,7 +1357,7 @@ void clear_calculate_crc(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_check_crc(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_check_crc(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -1368,7 +1370,7 @@ void clear_check_crc(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_enable_tcp_nodelay(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_enable_tcp_nodelay(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -1381,7 +1383,7 @@ void clear_enable_tcp_nodelay(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_segment_size(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_segment_size(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -1394,7 +1396,7 @@ void clear_segment_size(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_port_queue_capacity(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_port_queue_capacity(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -1407,7 +1409,7 @@ void clear_port_queue_capacity(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_healthy_check_timeout_ms(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_healthy_check_timeout_ms(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -1420,7 +1422,7 @@ void clear_healthy_check_timeout_ms(
  * @throw file_not_found Exception if the provided XML file is not found/readable.
  * @throw element_not_found Exception if the specified transport descriptor profile is not found in the XML file.
  */
-void clear_rtps_dump_file(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_rtps_dump_file(
         const std::string& xml_file,
         const std::string& transport_descriptor_id);
 
@@ -1437,7 +1439,7 @@ void clear_rtps_dump_file(
  *
  * @throw element_invalid Exception if the provided kind is not valid.
  */
-void set_kind(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_kind(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& kind);
@@ -1451,7 +1453,7 @@ void set_kind(
  *
  * @throw element_invalid Exception if the provided send buffer size is not valid.
  */
-void set_send_buffer_size(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_send_buffer_size(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& send_buffer_size);
@@ -1465,7 +1467,7 @@ void set_send_buffer_size(
  *
  * @throw element_invalid Exception if the provided receive buffer size is not valid.
  */
-void set_receive_buffer_size(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_receive_buffer_size(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& receive_buffer_size);
@@ -1479,7 +1481,7 @@ void set_receive_buffer_size(
  *
  * @throw element_invalid Exception if the provided maximum message size is not valid.
  */
-void set_max_message_size(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_max_message_size(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& max_message_size);
@@ -1493,7 +1495,7 @@ void set_max_message_size(
  *
  * @throw element_invalid Exception if the provided maximum initial peers range is not valid.
  */
-void set_max_initial_peers_range(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_max_initial_peers_range(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& max_initial_peers_range);
@@ -1507,7 +1509,7 @@ void set_max_initial_peers_range(
  *
  * @throw element_invalid Exception if the provided TTL is not valid.
  */
-void set_ttl(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_ttl(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& ttl);
@@ -1521,7 +1523,7 @@ void set_ttl(
  *
  * @throw element_invalid Exception if the flag does not apply to the Transport Descriptor.
  */
-void set_non_blocking_send(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_non_blocking_send(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& non_blocking_send);
@@ -1535,7 +1537,7 @@ void set_non_blocking_send(
  *
  * @throw element_invalid Exception if the output port provided is not valid.
  */
-void set_output_port(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_output_port(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& output_port);
@@ -1549,7 +1551,7 @@ void set_output_port(
  *
  * @throw element_invalid Exception if the output port provided is not valid.
  */
-void set_wan_addr(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_wan_addr(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& wan_addr);
@@ -1563,7 +1565,7 @@ void set_wan_addr(
  *
  * @throw element_invalid Exception if the provided keep alive frequency is not valid.
  */
-void set_keep_alive_frequency_ms(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_keep_alive_frequency_ms(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& keep_alive_frequency_ms);
@@ -1578,7 +1580,7 @@ void set_keep_alive_frequency_ms(
  *
  * @throw element_invalid Exception if the provided keep alive timeout is not valid.
  */
-void set_keep_alive_timeout_ms(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_keep_alive_timeout_ms(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& keep_alive_timeout_ms);
@@ -1593,7 +1595,7 @@ void set_keep_alive_timeout_ms(
  *
  * @throw element_invalid Exception if the provided maximum number of logical ports is not valid.
  */
-void set_max_logical_port(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_max_logical_port(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& max_logical_port);
@@ -1608,7 +1610,7 @@ void set_max_logical_port(
  *
  * @throw element_invalid Exception if the provided maximum number of logical ports per request is not valid.
  */
-void set_logical_port_range(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_logical_port_range(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& logical_port_range);
@@ -1623,7 +1625,7 @@ void set_logical_port_range(
  *
  * @throw element_invalid Exception if the provided maximum number of logical ports per request is not valid.
  */
-void set_logical_port_increment(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_logical_port_increment(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& logical_port_increment);
@@ -1637,7 +1639,7 @@ void set_logical_port_increment(
  *
  * @throw element_invalid Exception if the provided TLS password is not valid.
  */
-void set_tls_password(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_password(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_password);
@@ -1651,7 +1653,7 @@ void set_tls_password(
  *
  * @throw element_invalid Exception if the provided path is not valid.
  */
-void set_tls_private_key_file(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_private_key_file(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_private_key_file);
@@ -1665,7 +1667,7 @@ void set_tls_private_key_file(
  *
  * @throw element_invalid Exception if the provided path is not valid.
  */
-void set_tls_rsa_private_key_file(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_rsa_private_key_file(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_rsa_private_key_file);
@@ -1679,7 +1681,7 @@ void set_tls_rsa_private_key_file(
  *
  * @throw element_invalid Exception if the provided path is not valid.
  */
-void set_tls_cert_chain_file(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_cert_chain_file(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_cert_chain_file);
@@ -1693,7 +1695,7 @@ void set_tls_cert_chain_file(
  *
  * @throw element_invalid Exception if the provided path is not valid.
  */
-void set_tls_tmp_dh_file(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_tmp_dh_file(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_tmp_dh_file);
@@ -1707,7 +1709,7 @@ void set_tls_tmp_dh_file(
  *
  * @throw element_invalid Exception if the provided path is not valid.
  */
-void set_tls_verify_file(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_verify_file(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_verify_file);
@@ -1722,7 +1724,7 @@ void set_tls_verify_file(
  *
  * @throw element_invalid Exception if the provided depth is not valid.
  */
-void set_tls_verify_depth(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_verify_depth(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_verify_depth);
@@ -1736,7 +1738,7 @@ void set_tls_verify_depth(
  *
  * @throw element_invalid Exception if the provided flag value is not valid.
  */
-void set_tls_default_verify_path(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_default_verify_path(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_default_verify_path);
@@ -1750,7 +1752,7 @@ void set_tls_default_verify_path(
  *
  * @throw element_invalid Exception if the provided handshake role is not valid.
  */
-void set_tls_handshake_role(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_handshake_role(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_handshake_role);
@@ -1764,7 +1766,7 @@ void set_tls_handshake_role(
  *
  * @throw element_invalid Exception if the provided SNI server name is not valid.
  */
-void set_tls_server_name(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_server_name(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_server_name);
@@ -1778,7 +1780,7 @@ void set_tls_server_name(
  *
  * @throw element_invalid Exception if the provided CRC calculation flag is not valid.
  */
-void set_calculate_crc(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_calculate_crc(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& calculate_crc);
@@ -1792,7 +1794,7 @@ void set_calculate_crc(
  *
  * @throw element_invalid Exception if the provided check CRC flag is not valid.
  */
-void set_check_crc(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_check_crc(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& check_crc);
@@ -1806,7 +1808,7 @@ void set_check_crc(
  *
  * @throw element_invalid Exception if the TCP_NODELAY flag is not valid.
  */
-void set_enable_tcp_nodelay(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_enable_tcp_nodelay(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& enable_tcp_nodelay);
@@ -1820,7 +1822,7 @@ void set_enable_tcp_nodelay(
  *
  * @throw element_invalid Exception if the provided segment size is not valid.
  */
-void set_segment_size(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_segment_size(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& segment_size);
@@ -1834,7 +1836,7 @@ void set_segment_size(
  *
  * @throw element_invalid Exception if the provided listening port capacity is not valid.
  */
-void set_port_queue_capacity(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_port_queue_capacity(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& port_queue_capacity);
@@ -1848,7 +1850,7 @@ void set_port_queue_capacity(
  *
  * @throw element_invalid Exception if the provided listening port liveliness timeout is not valid.
  */
-void set_healthy_check_timeout_ms(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_healthy_check_timeout_ms(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& healthy_check_timeout_ms);
@@ -1862,7 +1864,7 @@ void set_healthy_check_timeout_ms(
  *
  * @throw element_invalid Exception if the provided path is not valid.
  */
-void set_rtps_dump_file(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_rtps_dump_file(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& rtps_dump_file);
@@ -1880,7 +1882,7 @@ void set_rtps_dump_file(
  *
  * @throw element_invalid Exception if the provided IP address is not valid.
  */
-void push_interface_whitelist(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_interface_whitelist(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& ip_address);
@@ -1896,7 +1898,7 @@ void push_interface_whitelist(
  * @throw element_invalid Exception if the provided IP address is not valid.
  * @throw element_not_found Exception if the list does not contain any element in index position.
  */
-void update_interface_whitelist(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_interface_whitelist(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& ip_address,
@@ -1911,7 +1913,7 @@ void update_interface_whitelist(
  *
  * @throw element_invalid Exception if the provided port is not valid.
  */
-void push_listening_ports(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_listening_ports(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& port);
@@ -1927,7 +1929,7 @@ void push_listening_ports(
  * @throw element_invalid Exception if the provided port is not valid.
  * @throw element_not_found Exception if the list does not contain any element in index position.
  */
-void update_listening_ports(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_listening_ports(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& port,
@@ -1942,7 +1944,7 @@ void update_listening_ports(
  *
  * @throw element_invalid Exception if the provided TLS verification mode is not valid.
  */
-void push_tls_verify_mode(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_tls_verify_mode(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_verify_mode);
@@ -1958,7 +1960,7 @@ void push_tls_verify_mode(
  * @throw element_invalid Exception if the provided TLS verification mode is not valid.
  * @throw element_not_found Exception if the list does not contain any element in index position.
  */
-void update_tls_verify_mode(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_tls_verify_mode(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_verify_mode,
@@ -1973,7 +1975,7 @@ void update_tls_verify_mode(
  *
  * @throw element_invalid Exception if the provided TLS supported feature is not valid.
  */
-void push_tls_options(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_tls_options(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_options);
@@ -1989,7 +1991,7 @@ void push_tls_options(
  * @throw element_invalid Exception if the provided TLS supported feature is not valid.
  * @throw element_not_found Exception if the list does not contain any element in index position.
  */
-void update_tls_options(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_tls_options(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_options,
@@ -2004,7 +2006,7 @@ void update_tls_options(
  *
  * @throw element_invalid Exception if the provided path is not valid.
  */
-void push_tls_verify_path(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_tls_verify_path(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_verify_path);
@@ -2020,7 +2022,7 @@ void push_tls_verify_path(
  * @throw element_invalid Exception if the provided path is not valid.
  * @throw element_not_found Exception if the list does not contain any element in index position.
  */
-void update_tls_verify_path(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_tls_verify_path(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_verify_path,
