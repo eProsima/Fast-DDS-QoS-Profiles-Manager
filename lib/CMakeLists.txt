@@ -5,6 +5,10 @@ project(fastdds_qos_profiles_manager VERSION "0.1.0" LANGUAGES CXX)
 # Configure template doxyfile
 configure_file(doxyfile.in ${PROJECT_BINARY_DIR}/doc/doxyfile @ONLY IMMEDIATE)
 
+# Configure config file
+configure_file(${PROJECT_SOURCE_DIR}/include/config.h.in
+    ${PROJECT_BINARY_DIR}/include/config.h)
+
 file(GLOB_RECURSE ALL_HEADERS
     ${PROJECT_SOURCE_DIR}/include/*.hpp
     ${PROJECT_SOURCE_DIR}/src/*.hpp
@@ -14,7 +18,7 @@ file(GLOB_RECURSE ALL_HEADERS
 set(${PROJECT_NAME}_source_files
     ${ALL_HEADERS}
 
-    src/main.cpp
+    src/cpp/main.cpp
 )
 
 add_library(${PROJECT_NAME} SHARED ${${PROJECT_NAME}_source_files})
@@ -45,3 +49,9 @@ install(DIRECTORY include/
     PATTERN "*.h"
     PATTERN "*.hpp"
     )
+
+# Install config.h header
+install(FILES ${PROJECT_BINARY_DIR}/include/config.h
+    DESTINATION include/
+    COMPONENT headers
+)
