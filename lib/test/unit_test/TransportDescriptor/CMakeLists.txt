@@ -17,11 +17,18 @@ set(MODULE_NAME transport_descriptor_utest)
 ###############################################################################
 # Files
 ###############################################################################
-file(GLOB_RECURSE HEADERS
-    ${PROJECT_SOURCE_DIR}/include
+file(GLOB_RECURSE LIBRARY_HEADERS
+    ${PROJECT_SOURCE_DIR}/include/.*hpp
+    ${PROJECT_SOURCE_DIR}/include/.*h
+    ${PROJECT_SOURCE_DIR}/include/exception/.*hpp
 )
 
-file(GLOB_RECURSE SOURCES
+file(GLOB_RECURSE LIBRARY_SOURCES
+    ${PROJECT_SOURCE_DIR}/src/cpp/exception/Exception.cpp
+    ${PROJECT_SOURCE_DIR}/src/cpp/transport_descriptor/TransportDescriptor.cpp
+)
+
+file(GLOB_RECURSE TEST_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/TransportDescriptor.cpp
 )
 
@@ -29,14 +36,16 @@ file(GLOB_RECURSE SOURCES
 # Create executable
 ###############################################################################
 add_executable( ${MODULE_NAME}
-    ${HEADERS}
-    ${SOURCES}
+    ${LIBRARY_HEADERS}
+    ${LIBRARY_SOURCES}
+    ${TEST_SOURCES}
 )
 
 target_link_libraries(${MODULE_NAME} ${GTEST_LIBRARIES} ${GMOCK_LIBRARIES})
 
 target_include_directories(${MODULE_NAME} PRIVATE
         $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include/>
+        $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/include/>
         ${GTEST_INCLUDE_DIRS}>
         ${GMOCK_INCLUDE_DIRS}>
 )
