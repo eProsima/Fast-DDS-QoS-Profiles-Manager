@@ -18,13 +18,15 @@ file(GLOB_RECURSE ALL_HEADERS
 set(${PROJECT_NAME}_source_files
     ${ALL_HEADERS}
 
-    src/cpp/main.cpp
+    src/cpp/exception/Exception.cpp
+    src/cpp/transport_descriptor/TransportDescriptor.cpp
 )
 
 add_library(${PROJECT_NAME} SHARED ${${PROJECT_NAME}_source_files})
 
 target_include_directories(${PROJECT_NAME} PUBLIC
     ${PROJECT_SOURCE_DIR}/include
+    ${PROJECT_BINARY_DIR}/include
     PRIVATE
     ${PROJECT_SOURCE_DIR}/src)
 
