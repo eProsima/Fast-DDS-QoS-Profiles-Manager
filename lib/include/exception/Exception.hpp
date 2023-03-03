@@ -45,7 +45,7 @@ public:
     /**
      * @brief Construct a new qosprof::Exception object
      *
-     * @param message The message to be returned by what() 
+     * @param message The message to be returned by what()
      */
     FASTDDS_QOS_PROFILES_MANAGER_DllAPI Exception(
             const std::string& message);
@@ -79,7 +79,7 @@ protected:
     std::string message_;
 
 };
-    
+
 /**
  * @brief Exception to signal that the provided XML file does not exist
  */

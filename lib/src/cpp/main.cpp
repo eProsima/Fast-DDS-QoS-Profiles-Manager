@@ -1,8 +1,11 @@
 #include <iostream>
 
-int main(int argc, char** argv){
+int main(
+        int argc,
+        char** argv)
+{
 
-	std::cout << "TODO" << std::endl;
+    std::cout << "TODO" << std::endl;
 
-	return 0;
+    return 0;
 }
