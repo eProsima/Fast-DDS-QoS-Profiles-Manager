@@ -16,7 +16,7 @@
  * @file
  */
 
-#include <DomainParticipant.hpp>
+#include <domain_participant/DomainParticipant.hpp>
 
 #include <string>
 #include <vector>
