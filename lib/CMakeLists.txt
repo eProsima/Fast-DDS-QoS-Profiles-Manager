@@ -33,6 +33,7 @@ file(GLOB_RECURSE ALL_HEADERS
 set(${PROJECT_NAME}_source_files
     ${ALL_HEADERS}
 
+    src/cpp/domain_participant/DefaultExternalUnicastLocators.cpp
     src/cpp/domain_participant/DefaultMulticastLocators.cpp
     src/cpp/domain_participant/DefaultUnicastLocators.cpp
     src/cpp/domain_participant/DomainParticipant.cpp
