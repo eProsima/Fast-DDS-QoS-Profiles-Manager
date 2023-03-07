@@ -123,7 +123,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_physical_port(
 
 /**
  * @brief Parse XML file and print the specific Domain Participant specific default multicast locator IP address.
- *        TCP only.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
