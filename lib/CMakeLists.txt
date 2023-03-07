@@ -1,4 +1,4 @@
-# Copyright 2022 Proyectos y Sistemas de Mantenimiento SL (eProsima).
+# Copyright 2023 Proyectos y Sistemas de Mantenimiento SL (eProsima).
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,7 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.16.3)
+cmake_policy(VERSION 3.16.3...3.20.3)
 
 project(fastdds_qos_profiles_manager VERSION "0.1.0" LANGUAGES CXX)
 
