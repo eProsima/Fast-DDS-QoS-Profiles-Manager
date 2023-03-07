@@ -1891,7 +1891,8 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_interface_whitelist(
  * @param[in] index Collection element to be changed.
  *
  * @throw ElementInvalid Exception if the provided IP address is not valid.
- * @throw ElementNotFound Exception if the list does not contain any element in index position.
+ * @throw ElementNotFound Exception if the specified Transport Descriptor profile is not found in the XML file or if the
+ *        list does not contain any element in index position.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_interface_whitelist(
         const std::string& xml_file,
@@ -1922,7 +1923,8 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_listening_ports(
  * @param[in] index Collection element to be changed.
  *
  * @throw ElementInvalid Exception if the provided port is not valid.
- * @throw ElementNotFound Exception if the list does not contain any element in index position.
+ * @throw ElementNotFound Exception if the specified Transport Descriptor profile is not found in the XML file or if the
+ *        list does not contain any element in index position.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_listening_ports(
         const std::string& xml_file,
@@ -1953,7 +1955,8 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_tls_verify_mode(
  * @param[in] index Collection element to be changed.
  *
  * @throw ElementInvalid Exception if the provided TLS verification mode is not valid.
- * @throw ElementNotFound Exception if the list does not contain any element in index position.
+ * @throw ElementNotFound Exception if the specified Transport Descriptor profile is not found in the XML file or if the
+ *        list does not contain any element in index position.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_tls_verify_mode(
         const std::string& xml_file,
@@ -1984,7 +1987,8 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_tls_options(
  * @param[in] index Collection element to be changed.
  *
  * @throw ElementInvalid Exception if the provided TLS supported feature is not valid.
- * @throw ElementNotFound Exception if the list does not contain any element in index position.
+ * @throw ElementNotFound Exception if the specified Transport Descriptor profile is not found in the XML file or if the
+ *        list does not contain any element in index position.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_tls_options(
         const std::string& xml_file,
@@ -2015,7 +2019,8 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_tls_verify_path(
  * @param[in] index Collection element to be changed.
  *
  * @throw ElementInvalid Exception if the provided path is not valid.
- * @throw ElementNotFound Exception if the list does not contain any element in index position.
+ * @throw ElementNotFound Exception if the specified Transport Descriptor profile is not found in the XML file or if the
+ *        list does not contain any element in index position.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_tls_verify_path(
         const std::string& xml_file,
