@@ -7,8 +7,8 @@ on:
     paths:
       - '**.cpp'
       - '**.hpp'
-      - '*.h'
-      - '*.cxx'
+      - '**.h'
+      - '**.cxx'
 
 jobs:
   uncrustify:
