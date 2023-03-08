@@ -324,7 +324,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_wan_address(
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] kind Default unicast locator kind.
+ * @param[in] kind Metatraffic unicast locator kind.
  *
  * @throw ElementInvalid Exception if the provided locator kind is not valid.
  */
@@ -338,7 +338,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_kind(
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] kind Default unicast locator kind.
+ * @param[in] kind Metatraffic unicast locator kind.
  * @param[in] index Collection element to be changed.
  *
  * @throw ElementInvalid Exception if the provided locator kind is not valid.
@@ -356,7 +356,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_kind(
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] port Default unicast locator port.
+ * @param[in] port Metatraffic unicast locator port.
  *
  * @throw ElementInvalid Exception if the provided locator port is not valid.
  */
@@ -370,7 +370,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_port(
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] port Default unicast locator port.
+ * @param[in] port Metatraffic unicast locator port.
  * @param[in] index Collection element to be changed.
  *
  * @throw ElementInvalid Exception if the provided locator port is not valid.
@@ -388,7 +388,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_port(
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] physical_port Default unicast locator TCP physical port.
+ * @param[in] physical_port Metatraffic unicast locator TCP physical port.
  *
  * @throw ElementInvalid Exception if the provided locator physical port is not valid.
  */
@@ -402,7 +402,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_physical_port(
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] physical_port Default unicast locator TCP physical port.
+ * @param[in] physical_port Metatraffic unicast locator TCP physical port.
  * @param[in] index Collection element to be changed.
  *
  * @throw ElementInvalid Exception if the provided locator physical port is not valid.
@@ -420,7 +420,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_physical_port(
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] address Default unicast locator IP address.
+ * @param[in] address Metatraffic unicast locator IP address.
  *
  * @throw ElementInvalid Exception if the provided locator IP address is not valid.
  */
@@ -434,7 +434,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_address(
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] address Default unicast locator IP address.
+ * @param[in] address Metatraffic unicast locator IP address.
  * @param[in] index Collection element to be changed.
  *
  * @throw ElementInvalid Exception if the provided locator IP address is not valid.
@@ -452,7 +452,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_address(
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] unique_lan_id Default unicast TCPv4 locator unique LAN ID.
+ * @param[in] unique_lan_id Metatraffic unicast TCPv4 locator unique LAN ID.
  *
  * @throw ElementInvalid Exception if the provided identifier is not valid.
  */
@@ -466,7 +466,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_unique_lan_id(
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] unique_lan_id Default unicast TCPv4 locator unique LAN ID.
+ * @param[in] unique_lan_id Metatraffic unicast TCPv4 locator unique LAN ID.
  * @param[in] index Collection element to be changed.
  *
  * @throw ElementInvalid Exception if the provided locator identifier is not valid.
@@ -484,7 +484,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_unique_lan_id(
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] wan_address Default unicast TCPv4 locator WAN address.
+ * @param[in] wan_address Metatraffic unicast TCPv4 locator WAN address.
  *
  * @throw ElementInvalid Exception if the provided IP address is not valid.
  */
@@ -498,7 +498,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_wan_address(
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] wan_address Default unicast TCPv4 locator WAN address.
+ * @param[in] wan_address Metatraffic unicast TCPv4 locator WAN address.
  * @param[in] index Collection element to be changed.
  *
  * @throw ElementInvalid Exception if the provided locator IP address is not valid.
