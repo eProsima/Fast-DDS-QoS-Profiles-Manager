@@ -34,6 +34,7 @@ set(${PROJECT_NAME}_source_files
     ${ALL_HEADERS}
 
     src/cpp/domain_participant/builtin/Builtin.cpp
+    src/cpp/domain_participant/builtin/MetatrafficMulticastLocators.cpp
     src/cpp/domain_participant/builtin/MetatrafficUnicastLocators.cpp
     src/cpp/domain_participant/DefaultExternalUnicastLocators.cpp
     src/cpp/domain_participant/DefaultMulticastLocators.cpp
