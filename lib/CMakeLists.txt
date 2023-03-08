@@ -35,6 +35,7 @@ set(${PROJECT_NAME}_source_files
 
     src/cpp/domain_participant/builtin/Builtin.cpp
     src/cpp/domain_participant/builtin/InitialPeers.cpp
+    src/cpp/domain_participant/builtin/MetatrafficExternalUnicastLocators.cpp
     src/cpp/domain_participant/builtin/MetatrafficMulticastLocators.cpp
     src/cpp/domain_participant/builtin/MetatrafficUnicastLocators.cpp
     src/cpp/domain_participant/DefaultExternalUnicastLocators.cpp
