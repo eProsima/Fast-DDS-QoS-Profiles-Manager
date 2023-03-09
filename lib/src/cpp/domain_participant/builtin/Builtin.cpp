@@ -125,7 +125,6 @@ void clear_reader_payload_size(
     throw Unsupported("Unsupported");
 }
 
-
 void clear_witer_payload_size(
         const std::string& xml_file,
         const std::string& profile_id)
