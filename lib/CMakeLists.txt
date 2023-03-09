@@ -34,6 +34,7 @@ set(${PROJECT_NAME}_source_files
     ${ALL_HEADERS}
 
     src/cpp/domain_participant/builtin/Builtin.cpp
+    src/cpp/domain_participant/builtin/discovery_config/DiscoveryConfig.cpp
     src/cpp/domain_participant/builtin/InitialPeers.cpp
     src/cpp/domain_participant/builtin/MetatrafficExternalUnicastLocators.cpp
     src/cpp/domain_participant/builtin/MetatrafficMulticastLocators.cpp
