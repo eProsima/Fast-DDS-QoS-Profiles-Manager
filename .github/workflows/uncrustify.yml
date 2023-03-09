@@ -18,7 +18,7 @@ jobs:
         uses: eProsima/eProsima-CI/actions/uncrustify@main
 
       - name: Upload uncrustify results
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           name: uncrustify_results
           path: uncrustify_results.xml
