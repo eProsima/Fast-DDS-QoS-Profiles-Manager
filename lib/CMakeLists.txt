@@ -36,6 +36,7 @@ set(${PROJECT_NAME}_source_files
     src/cpp/domain_participant/builtin/Builtin.cpp
     src/cpp/domain_participant/builtin/discovery_config/DiscoveryConfig.cpp
     src/cpp/domain_participant/builtin/discovery_config/discovery_servers/DiscoveryServers.cpp
+    src/cpp/domain_participant/builtin/discovery_config/discovery_servers/MetatrafficUnicastLocators.cpp
     src/cpp/domain_participant/builtin/InitialPeers.cpp
     src/cpp/domain_participant/builtin/MetatrafficExternalUnicastLocators.cpp
     src/cpp/domain_participant/builtin/MetatrafficMulticastLocators.cpp
