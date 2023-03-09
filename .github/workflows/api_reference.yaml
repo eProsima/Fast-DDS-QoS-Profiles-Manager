@@ -1,0 +1,41 @@
+name: api_reference
+
+on:
+  workflow_dispatch:
+  push:
+  pull_request:
+    # Only run api_reference action when a header file has been modified.
+    paths:
+      - '**.hpp'
+
+jobs:
+  doxygen:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          path: src/Fast-DDS-QoS-Profiles-Manager
+
+      - name: Install doxygen and cmake
+        run: |
+          sudo apt install doxygen cmake
+
+      - name: Build library
+        run: |
+          cd src/Fast-DDS-QoS-Profiles-Manager/lib
+          mkdir build && cd build
+          cmake ..
+          make
+          cmake --install . --prefix "../install"
+
+      - name: Generate documentation
+        run: |
+          cd src/Fast-DDS-QoS-Profiles-Manager/lib/build/doc
+          doxygen doxyfile
+
+      - name: Upload api reference
+        uses: actions/upload-artifact@v1
+        with:
+          name: api_reference
+          path: src/Fast-DDS-QoS-Profiles-Manager/lib/build/doc
+        if: always()
