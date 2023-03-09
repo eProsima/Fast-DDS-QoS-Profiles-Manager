@@ -33,6 +33,7 @@ file(GLOB_RECURSE ALL_HEADERS
 set(${PROJECT_NAME}_source_files
     ${ALL_HEADERS}
 
+    src/cpp/domain_participant/Allocation.cpp
     src/cpp/domain_participant/builtin/Builtin.cpp
     src/cpp/domain_participant/builtin/discovery_config/DiscoveryConfig.cpp
     src/cpp/domain_participant/builtin/discovery_config/discovery_servers/DiscoveryServers.cpp
