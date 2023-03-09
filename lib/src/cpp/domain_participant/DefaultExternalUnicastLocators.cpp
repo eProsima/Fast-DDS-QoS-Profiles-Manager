@@ -128,6 +128,30 @@ void clear_address(
     throw Unsupported("Unsupported");
 }
 
+void clear_externality(
+        const std::string& xml_file,
+        const std::string& profile_id,
+        int32_t index)
+{
+    throw Unsupported("Unsupported");
+}
+
+void clear_cost(
+        const std::string& xml_file,
+        const std::string& profile_id,
+        int32_t index)
+{
+    throw Unsupported("Unsupported");
+}
+
+void clear_mask(
+        const std::string& xml_file,
+        const std::string& profile_id,
+        int32_t index)
+{
+    throw Unsupported("Unsupported");
+}
+
 void push_kind(
         const std::string& xml_file,
         const std::string& profile_id,

@@ -261,6 +261,54 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_address(
         const std::string& profile_id,
         int32_t index);
 
+/**
+ * @brief Remove specific Domain Participant metatraffic external unicast locator externality.
+ *
+ * @param[in] xml_file Absolute/relative path to the XML file.
+ * @param[in] profile_id Domain participant profile identifier.
+ * @param[in] index Collection element to be modified.
+ *
+ * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if
+ *        the element does not exist in the collection.
+ */
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_externality(
+        const std::string& xml_file,
+        const std::string& profile_id,
+        int32_t index);
+
+/**
+ * @brief Remove specific Domain Participant metatraffic external unicast locator cost.
+ *
+ * @param[in] xml_file Absolute/relative path to the XML file.
+ * @param[in] profile_id Domain participant profile identifier.
+ * @param[in] index Collection element to be modified.
+ *
+ * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if
+ *        the element does not exist in the collection.
+ */
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_cost(
+        const std::string& xml_file,
+        const std::string& profile_id,
+        int32_t index);
+
+/**
+ * @brief Remove specific Domain Participant metatraffic external unicast locator mask.
+ *
+ * @param[in] xml_file Absolute/relative path to the XML file.
+ * @param[in] profile_id Domain participant profile identifier.
+ * @param[in] index Collection element to be modified.
+ *
+ * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if
+ *        the element does not exist in the collection.
+ */
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_mask(
+        const std::string& xml_file,
+        const std::string& profile_id,
+        int32_t index);
+
 /************************************************************************/
 /* Collection functions                                                 */
 /************************************************************************/
