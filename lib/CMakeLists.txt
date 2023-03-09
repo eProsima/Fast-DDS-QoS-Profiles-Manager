@@ -46,6 +46,7 @@ set(${PROJECT_NAME}_source_files
     src/cpp/domain_participant/DefaultMulticastLocators.cpp
     src/cpp/domain_participant/DefaultUnicastLocators.cpp
     src/cpp/domain_participant/DomainParticipant.cpp
+    src/cpp/domain_participant/Port.cpp
     src/cpp/exception/Exception.cpp
     src/cpp/transport_descriptor/TransportDescriptor.cpp
 )
