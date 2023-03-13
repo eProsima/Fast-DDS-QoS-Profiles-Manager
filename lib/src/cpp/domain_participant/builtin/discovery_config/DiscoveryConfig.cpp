@@ -399,15 +399,6 @@ void set_simple_edp_pubreader_subwriter(
     throw Unsupported("Unsupported");
 }
 
-void set_lease_duration(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& duration_sec,
-        const std::string& duration_nanosec)
-{
-    throw Unsupported("Unsupported");
-}
-
 void set_lease_duration_sec(
         const std::string& xml_file,
         const std::string& profile_id,
@@ -420,15 +411,6 @@ void set_lease_duration_nanosec(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& duration_nanosec)
-{
-    throw Unsupported("Unsupported");
-}
-
-void set_lease_announcement(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& announcement_sec,
-        const std::string& announcement_nanosec)
 {
     throw Unsupported("Unsupported");
 }
@@ -457,15 +439,6 @@ void set_initial_announcements_count(
     throw Unsupported("Unsupported");
 }
 
-void set_initial_announcements_period(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& period_sec,
-        const std::string& period_nanosec)
-{
-    throw Unsupported("Unsupported");
-}
-
 void set_initial_announcements_period_sec(
         const std::string& xml_file,
         const std::string& profile_id,
@@ -477,15 +450,6 @@ void set_initial_announcements_period_sec(
 void set_initial_announcements_period_nanosec(
         const std::string& xml_file,
         const std::string& profile_id,
-        const std::string& period_nanosec)
-{
-    throw Unsupported("Unsupported");
-}
-
-void set_client_announcement_period(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& period_sec,
         const std::string& period_nanosec)
 {
     throw Unsupported("Unsupported");

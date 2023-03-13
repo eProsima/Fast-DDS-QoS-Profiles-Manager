@@ -809,22 +809,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_simple_edp_pubreader_subwriter(
         const std::string& simple_edp_pubreader_subwriter);
 
 /**
- * @brief Set the Domain Participant builtin discovery lease duration.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
- * @param[in] duration_sec Builtin discovery lease duration seconds.
- * @param[in] duration_nanosec Builtin discovery lease duration nanoseconds.
- *
- * @throw ElementInvalid Exception if the provided lease duration arguments are not valid.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_lease_duration(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& duration_sec,
-        const std::string& duration_nanosec);
-
-/**
  * @brief Set the Domain Participant builtin discovery lease duration (seconds).
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
@@ -851,22 +835,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_lease_duration_nanosec(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& duration_nanosec);
-
-/**
- * @brief Set the Domain Participant builtin discovery lease announcement.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
- * @param[in] announcement_sec Builtin discovery lease announcement seconds.
- * @param[in] announcement_nanosec Builtin discovery lease announcement nanoseconds.
- *
- * @throw ElementInvalid Exception if the provided lease announcement arguments are not valid.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_lease_announcement(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& announcement_sec,
-        const std::string& announcement_nanosec);
 
 /**
  * @brief Set the Domain Participant builtin discovery lease announcement (seconds).
@@ -911,22 +879,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_initial_announcements_count(
         const std::string& count);
 
 /**
- * @brief Set the Domain Participant builtin discovery initial announcements duration.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
- * @param[in] period_sec Builtin discovery initial announcements duration seconds.
- * @param[in] period_nanosec Builtin discovery initial announcements duration nanoseconds.
- *
- * @throw ElementInvalid Exception if the provided initial announcements duration arguments are not valid.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_initial_announcements_period(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& period_sec,
-        const std::string& period_nanosec);
-
-/**
  * @brief Set the Domain Participant builtin discovery initial announcements duration (seconds).
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
@@ -952,22 +904,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_initial_announcements_period_sec(
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_initial_announcements_period_nanosec(
         const std::string& xml_file,
         const std::string& profile_id,
-        const std::string& period_nanosec);
-
-/**
- * @brief Set the Domain Participant builtin discovery client announcement period.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
- * @param[in] period_sec Builtin discovery client announcement period seconds.
- * @param[in] period_nanosec Builtin discovery client announcement period nanoseconds.
- *
- * @throw ElementInvalid Exception if the provided client announcement period arguments are not valid.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_client_announcement_period(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& period_sec,
         const std::string& period_nanosec);
 
 /**
