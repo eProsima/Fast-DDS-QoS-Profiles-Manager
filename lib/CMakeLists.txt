@@ -33,6 +33,22 @@ file(GLOB_RECURSE ALL_HEADERS
 set(${PROJECT_NAME}_source_files
     ${ALL_HEADERS}
 
+    src/cpp/domain_participant/Allocation.cpp
+    src/cpp/domain_participant/builtin/Builtin.cpp
+    src/cpp/domain_participant/builtin/discovery_config/DiscoveryConfig.cpp
+    src/cpp/domain_participant/builtin/discovery_config/discovery_servers/DiscoveryServers.cpp
+    src/cpp/domain_participant/builtin/discovery_config/discovery_servers/MetatrafficMulticastLocators.cpp
+    src/cpp/domain_participant/builtin/discovery_config/discovery_servers/MetatrafficUnicastLocators.cpp
+    src/cpp/domain_participant/builtin/InitialPeers.cpp
+    src/cpp/domain_participant/builtin/MetatrafficExternalUnicastLocators.cpp
+    src/cpp/domain_participant/builtin/MetatrafficMulticastLocators.cpp
+    src/cpp/domain_participant/builtin/MetatrafficUnicastLocators.cpp
+    src/cpp/domain_participant/DefaultExternalUnicastLocators.cpp
+    src/cpp/domain_participant/DefaultMulticastLocators.cpp
+    src/cpp/domain_participant/DefaultUnicastLocators.cpp
+    src/cpp/domain_participant/DomainParticipant.cpp
+    src/cpp/domain_participant/Port.cpp
+    src/cpp/domain_participant/PropertiesPolicy.cpp
     src/cpp/exception/Exception.cpp
     src/cpp/transport_descriptor/TransportDescriptor.cpp
 )

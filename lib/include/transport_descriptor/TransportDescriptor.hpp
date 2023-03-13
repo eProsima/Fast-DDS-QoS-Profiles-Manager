@@ -16,8 +16,8 @@
  * @file
  */
 
-#ifndef _FAST_DDS_QOS_PROFILES_MANAGER_TRANSPORT_DESCRIPTOR_HPP_
-#define _FAST_DDS_QOS_PROFILES_MANAGER_TRANSPORT_DESCRIPTOR_HPP_
+#ifndef _FAST_DDS_QOS_PROFILES_MANAGER_TRANSPORT_DESCRIPTOR_TRANSPORT_DESCRIPTOR_HPP_
+#define _FAST_DDS_QOS_PROFILES_MANAGER_TRANSPORT_DESCRIPTOR_TRANSPORT_DESCRIPTOR_HPP_
 
 #include <string>
 #include <vector>
@@ -780,8 +780,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::vector<std::string> keys(
  * @return uint32_t Number of network interfaces whitelisted in the list.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
- * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
- *        interface whitelist element has not been set in the profile.
+ * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t interface_whitelist_size(
         const std::string& xml_file,
@@ -796,8 +795,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t interface_whitelist_size(
  * @return uint32_t Number of listening ports in the list.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
- * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
- *        listening ports element has not been set in the profile.
+ * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t listening_ports_size(
         const std::string& xml_file,
@@ -812,8 +810,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t listening_ports_size(
  * @return uint32_t Number of TLS verification modes enabled in the mask.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
- * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
- *        TLS verify mode element has not been set in the profile.
+ * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t tls_verify_mode_size(
         const std::string& xml_file,
@@ -828,8 +825,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t tls_verify_mode_size(
  * @return uint32_t Number of TLS supported features enabled in the mask.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
- * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
- *        TLS options element has not been set in the profile.
+ * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t tls_options_size(
         const std::string& xml_file,
@@ -844,8 +840,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t tls_options_size(
  * @return uint32_t Number of TLS paths to look for verification files.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
- * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
- *        TLS verify paths element has not been set in the profile.
+ * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t tls_verify_paths_size(
         const std::string& xml_file,
@@ -1896,7 +1891,8 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_interface_whitelist(
  * @param[in] index Collection element to be changed.
  *
  * @throw ElementInvalid Exception if the provided IP address is not valid.
- * @throw ElementNotFound Exception if the list does not contain any element in index position.
+ * @throw ElementNotFound Exception if the specified Transport Descriptor profile is not found in the XML file or if the
+ *        list does not contain any element in index position.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_interface_whitelist(
         const std::string& xml_file,
@@ -1927,7 +1923,8 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_listening_ports(
  * @param[in] index Collection element to be changed.
  *
  * @throw ElementInvalid Exception if the provided port is not valid.
- * @throw ElementNotFound Exception if the list does not contain any element in index position.
+ * @throw ElementNotFound Exception if the specified Transport Descriptor profile is not found in the XML file or if the
+ *        list does not contain any element in index position.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_listening_ports(
         const std::string& xml_file,
@@ -1958,7 +1955,8 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_tls_verify_mode(
  * @param[in] index Collection element to be changed.
  *
  * @throw ElementInvalid Exception if the provided TLS verification mode is not valid.
- * @throw ElementNotFound Exception if the list does not contain any element in index position.
+ * @throw ElementNotFound Exception if the specified Transport Descriptor profile is not found in the XML file or if the
+ *        list does not contain any element in index position.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_tls_verify_mode(
         const std::string& xml_file,
@@ -1989,7 +1987,8 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_tls_options(
  * @param[in] index Collection element to be changed.
  *
  * @throw ElementInvalid Exception if the provided TLS supported feature is not valid.
- * @throw ElementNotFound Exception if the list does not contain any element in index position.
+ * @throw ElementNotFound Exception if the specified Transport Descriptor profile is not found in the XML file or if the
+ *        list does not contain any element in index position.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_tls_options(
         const std::string& xml_file,
@@ -2020,7 +2019,8 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_tls_verify_path(
  * @param[in] index Collection element to be changed.
  *
  * @throw ElementInvalid Exception if the provided path is not valid.
- * @throw ElementNotFound Exception if the list does not contain any element in index position.
+ * @throw ElementNotFound Exception if the specified Transport Descriptor profile is not found in the XML file or if the
+ *        list does not contain any element in index position.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_tls_verify_path(
         const std::string& xml_file,
@@ -2032,4 +2032,4 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_tls_verify_path(
 } // qosprof
 } // eprosima
 
-#endif // _FAST_DDS_QOS_PROFILES_MANAGER_TRANSPORT_DESCRIPTOR_HPP_
+#endif // _FAST_DDS_QOS_PROFILES_MANAGER_TRANSPORT_DESCRIPTOR_TRANSPORT_DESCRIPTOR_HPP_
