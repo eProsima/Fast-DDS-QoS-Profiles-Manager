@@ -781,20 +781,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_edp(
         const std::string& edp);
 
 /**
- * @brief Set the Domain Participant builtin discovery EDP flag.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
- * @param[in] edp Builtin discovery EDP flag.
- *
- * @throw ElementInvalid Exception if the provided flag is not valid.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_edp(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& edp);
-
-/**
  * @brief Set the Domain Participant builtin discovery simple EDP configuration flag.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
