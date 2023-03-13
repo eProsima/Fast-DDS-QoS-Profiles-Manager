@@ -6,7 +6,7 @@ on:
   pull_request:
     # Only run api_reference action when a header file has been modified.
     paths:
-      - '**.hpp'
+      - '**/lib/include/**.hpp'
 
 jobs:
   doxygen:
@@ -16,26 +16,27 @@ jobs:
         with:
           path: src/Fast-DDS-QoS-Profiles-Manager
 
-      - name: Install doxygen and cmake
-        run: |
-          sudo apt install doxygen cmake
+      - name: Install apt packages
+        uses: eProsima/eProsima-CI/ubuntu/install_apt_packages@main
+        with:
+          packages: doxygen cmake
+
+      - name: Install colcon
+        uses: eProsima/eProsima-CI/ubuntu/install_colcon@main
 
       - name: Build library
         run: |
           cd src/Fast-DDS-QoS-Profiles-Manager/lib
-          mkdir build && cd build
-          cmake ..
-          make
-          cmake --install . --prefix "../install"
+          colcon build
 
       - name: Generate documentation
         run: |
-          cd src/Fast-DDS-QoS-Profiles-Manager/lib/build/doc
+          cd src/Fast-DDS-QoS-Profiles-Manager/lib/build/fastdds_qos_profiles_manager/doc
           doxygen doxyfile
 
       - name: Upload api reference
         uses: actions/upload-artifact@v1
         with:
           name: api_reference
-          path: src/Fast-DDS-QoS-Profiles-Manager/lib/build/doc
+          path: src/Fast-DDS-QoS-Profiles-Manager/lib/build/fastdds_qos_profiles_manager/doc
         if: always()
