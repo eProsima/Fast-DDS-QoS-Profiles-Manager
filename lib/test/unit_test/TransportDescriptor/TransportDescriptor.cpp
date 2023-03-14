@@ -14,7 +14,7 @@
 
 #include "gtest/gtest.h"
 
-#include <TransportDescriptor.hpp>
+#include <transport_descriptor/TransportDescriptor.hpp>
 
 int main(
         int argc,
