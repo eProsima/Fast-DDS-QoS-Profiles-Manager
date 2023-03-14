@@ -60,20 +60,17 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
         const std::string& profile_id);
 
 /**
- * @brief Parse XML file and print the Domain Participant is_default_profile attribute.
+ * @brief Parse XML file and print the name of the Domain Participant default profile.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
  *
- * @return std::string Domain Participant is_default_profile attribute.
+ * @return std::string Domain Participant default profile.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
- * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
- *        is_default_profile attribute has not been set in the profile.
+ * @throw ElementNotFound Exception if there is no default Domain Participant profile in the XML file.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_is_default_profile(
-        const std::string& xml_file,
-        const std::string& profile_id);
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_default_profile(
+        const std::string& xml_file);
 
 /**
  * @brief Parse XML file and print the Domain Participant Domain ID.
@@ -358,17 +355,14 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
         const std::string& profile_id);
 
 /**
- * @brief Remove is default profile flag from specific Domain Participant profile.
+ * @brief Remove the is_default_profile attribute from the default Domain Participant profile.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
- * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_is_default_profile(
-        const std::string& xml_file,
-        const std::string& profile_id);
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_default_profile(
+        const std::string& xml_file);
 
 /**
  * @brief Remove Domain ID from specific Domain Participant profile.
@@ -537,18 +531,19 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_prefix(
 /************************************************************************/
 
 /**
- * @brief Set the Domain Participant is default profile attribute.
+ * @brief Set the given Domain Participant profile as the default profile.
+ *        As only one default profile is allowed, if another default profile exists, it is overriden and the
+ *        is_default_profile attribute is removed.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] is_default_profile Flag to mark a specific Domain Participant profile as default.
  *
- * @throw ElementInvalid Exception if the provided flag value is not valid.
+ * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_is_default_profile(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_default_profile(
         const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& is_default_profile);
+        const std::string& profile_id);
 
 /**
  * @brief Set the Domain Participant domain ID.
