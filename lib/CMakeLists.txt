@@ -17,6 +17,9 @@ cmake_policy(VERSION 3.16.3...3.20.3)
 
 project(fastdds_qos_profiles_manager VERSION "0.1.0" LANGUAGES CXX)
 
+# Search for Xerces package
+find_package(XercesC)
+
 ###############################################################################
 # Installation paths
 ###############################################################################
@@ -56,6 +59,7 @@ if(BUILD_SHARED_LIBS)
     set(FASTDDS_QOS_PROFILES_MANAGER_DYNAMIC ON)
 endif()
 
+# Obtain all headers
 file(GLOB_RECURSE ALL_HEADERS
     ${PROJECT_SOURCE_DIR}/include/*.hpp
     ${PROJECT_SOURCE_DIR}/src/cpp/*.hpp
@@ -83,6 +87,10 @@ set(${PROJECT_NAME}_source_files
     src/cpp/domain_participant/PropertiesPolicy.cpp
     src/cpp/exception/Exception.cpp
     src/cpp/transport_descriptor/TransportDescriptor.cpp
+    src/cpp/common/Locator.cpp
+    src/cpp/utils/ParseXML.cpp
+    src/cpp/utils/ParseXMLString.cpp
+    src/cpp/utils/ParseXMLErrorHandler.cpp
 )
 
 add_library(${PROJECT_NAME} SHARED ${${PROJECT_NAME}_source_files})
@@ -91,7 +99,11 @@ target_include_directories(${PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
     $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/include>
     PRIVATE
-    $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src/cpp>)
+    ${PROJECT_SOURCE_DIR}/src/cpp
+    ${XercesC_INCLUDE_DIR})
+
+# Include XML library links
+target_link_libraries(${PROJECT_NAME} ${XercesC_LIBRARIES})
 
 ###############################################################################
 # Testing options

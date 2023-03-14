@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @file
+ * @file DomainParticipant.hpp
  */
 
 #ifndef _FAST_DDS_QOS_PROFILES_MANAGER_DOMAIN_PARTICIPANT_DOMAIN_PARTICIPANT_HPP_
