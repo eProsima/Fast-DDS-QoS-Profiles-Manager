@@ -963,6 +963,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_static_edp_xml_config(
  * @throw ElementInvalid Exception if the provided path is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if the
  *        list does not contain any element in index position.
+ * @throw FileNotFound Exception if the provided XML file is not found/readable.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_static_edp_xml_config(
         const std::string& xml_file,

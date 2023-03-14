@@ -686,6 +686,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_user_transports(
  * @throw ElementInvalid Exception if the provided Transport descriptor profile identifier is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if the
  *        list does not contain any element in index position.
+ * @throw FileNotFound Exception if the provided XML file is not found/readable.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_user_transports(
         const std::string& xml_file,
@@ -718,6 +719,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_user_data(
  * @throw ElementInvalid Exception if the provided user data is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if the
  *        list does not contain any element in index position.
+ * @throw FileNotFound Exception if the provided XML file is not found/readable.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_user_data(
         const std::string& xml_file,

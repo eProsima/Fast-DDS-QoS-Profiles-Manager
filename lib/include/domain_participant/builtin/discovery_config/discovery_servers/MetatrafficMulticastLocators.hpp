@@ -388,6 +388,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_kind(
  * @throw ElementInvalid Exception if the provided locator kind is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML file
  *        or if the list does not contain any element in index position.
+ * @throw FileNotFound Exception if the provided XML file is not found/readable.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_kind(
         const std::string& xml_file,
@@ -424,6 +425,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_port(
  * @throw ElementInvalid Exception if the provided locator port is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML file
  *        or if the list does not contain any element in index position.
+ * @throw FileNotFound Exception if the provided XML file is not found/readable.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_port(
         const std::string& xml_file,
@@ -460,6 +462,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_physical_port(
  * @throw ElementInvalid Exception if the provided locator physical port is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML file
  *        or if the list does not contain any element in index position.
+ * @throw FileNotFound Exception if the provided XML file is not found/readable.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_physical_port(
         const std::string& xml_file,
@@ -496,6 +499,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_address(
  * @throw ElementInvalid Exception if the provided locator IP address is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML file
  *        or if the list does not contain any element in index position.
+ * @throw FileNotFound Exception if the provided XML file is not found/readable.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_address(
         const std::string& xml_file,
@@ -532,6 +536,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_unique_lan_id(
  * @throw ElementInvalid Exception if the provided locator identifier is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML file
  *        or if the list does not contain any element in index position.
+ * @throw FileNotFound Exception if the provided XML file is not found/readable.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_unique_lan_id(
         const std::string& xml_file,
@@ -568,6 +573,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_wan_address(
  * @throw ElementInvalid Exception if the provided locator IP address is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML file
  *        or if the list does not contain any element in index position.
+ * @throw FileNotFound Exception if the provided XML file is not found/readable.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_wan_address(
         const std::string& xml_file,

@@ -337,6 +337,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_kind(
  * @throw ElementInvalid Exception if the provided locator kind is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if the
  *        list does not contain any element in index position.
+ * @throw FileNotFound Exception if the provided XML file is not found/readable.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_kind(
         const std::string& xml_file,
@@ -369,6 +370,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_port(
  * @throw ElementInvalid Exception if the provided locator port is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if the
  *        list does not contain any element in index position.
+ * @throw FileNotFound Exception if the provided XML file is not found/readable.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_port(
         const std::string& xml_file,
@@ -401,6 +403,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_address(
  * @throw ElementInvalid Exception if the provided locator IP address is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if the
  *        list does not contain any element in index position.
+ * @throw FileNotFound Exception if the provided XML file is not found/readable.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_address(
         const std::string& xml_file,
@@ -433,6 +436,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_externality(
  * @throw ElementInvalid Exception if the provided locator externality is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if the
  *        list does not contain any element in index position.
+ * @throw FileNotFound Exception if the provided XML file is not found/readable.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_externality(
         const std::string& xml_file,
@@ -465,6 +469,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_cost(
  * @throw ElementInvalid Exception if the provided locator cost is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if the
  *        list does not contain any element in index position.
+ * @throw FileNotFound Exception if the provided XML file is not found/readable.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_cost(
         const std::string& xml_file,
@@ -497,6 +502,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_mask(
  * @throw ElementInvalid Exception if the provided locator mask is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if the
  *        list does not contain any element in index position.
+ * @throw FileNotFound Exception if the provided XML file is not found/readable.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_mask(
         const std::string& xml_file,
