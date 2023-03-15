@@ -336,8 +336,8 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_kind(
  * @param[in] index Collection element to be changed.
  *
  * @throw ElementInvalid Exception if the provided locator kind is not valid.
- * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if the
- *        list does not contain any element in index position.
+ * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
+ *        element does not exist, or the list does not contain any element in index position.
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_kind(
@@ -369,8 +369,8 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_port(
  * @param[in] index Collection element to be changed.
  *
  * @throw ElementInvalid Exception if the provided locator port is not valid.
- * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if the
- *        list does not contain any element in index position.
+ * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
+ *        element does not exist, or the list does not contain any element in index position.
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_port(
@@ -402,8 +402,8 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_address(
  * @param[in] index Collection element to be changed.
  *
  * @throw ElementInvalid Exception if the provided locator IP address is not valid.
- * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if the
- *        list does not contain any element in index position.
+ * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
+ *        element does not exist, or the list does not contain any element in index position.
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_address(
@@ -435,8 +435,8 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_externality(
  * @param[in] index Collection element to be changed.
  *
  * @throw ElementInvalid Exception if the provided locator externality is not valid.
- * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if the
- *        list does not contain any element in index position.
+ * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
+ *        element does not exist, or the list does not contain any element in index position.
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_externality(
@@ -468,8 +468,8 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_cost(
  * @param[in] index Collection element to be changed.
  *
  * @throw ElementInvalid Exception if the provided locator cost is not valid.
- * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if the
- *        list does not contain any element in index position.
+ * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
+ *        element does not exist, or the list does not contain any element in index position.
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_cost(
@@ -501,8 +501,8 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_mask(
  * @param[in] index Collection element to be changed.
  *
  * @throw ElementInvalid Exception if the provided locator mask is not valid.
- * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if the
- *        list does not contain any element in index position.
+ * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
+ *        element does not exist, or the list does not contain any element in index position.
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_mask(
