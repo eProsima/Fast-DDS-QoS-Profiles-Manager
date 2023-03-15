@@ -68,7 +68,7 @@ protected:
         std::remove(xml_filename_.c_str());
     }
 
-    void print_push_update_test()
+    void print_push_update_clear_test()
     {
         // Functors must be initialized
         ASSERT_NE(print_functor_, nullptr);
@@ -81,6 +81,14 @@ protected:
         ASSERT_GE(valid_values_.size(), 2);
         ASSERT_FALSE(invalid_values_.empty());
 
+        bool several_invalid_types = false;
+        // In case that there are several invalid datas, the related error message must be set too
+        if (1 < invalid_values_.size())
+        {
+            several_invalid_types = true;
+            ASSERT_EQ(invalid_values_.size(), invalid_messages_.size());
+        }
+
         // Try printing from non-existing file
         EXPECT_THROW(print_functor_(xml_filename_, participant_profile_, 0), FileNotFound);
 
@@ -88,7 +96,22 @@ protected:
         EXPECT_THROW(update_functor_(xml_filename_, participant_profile_, valid_values_[0], 0), FileNotFound);
 
         // Push invalid value
-        EXPECT_THROW(push_functor_(xml_filename_, participant_profile_, invalid_values_[0]), ElementInvalid);
+        if (!several_invalid_types)
+        {
+            EXPECT_THROW(push_functor_(xml_filename_, participant_profile_, invalid_values_[0]), ElementInvalid);
+        }
+        else
+        {
+            for (int i = 0; i < invalid_values_.size(); i++)
+            {
+                EXPECT_THAT(
+                    [&]()
+                    {
+                        push_functor_(xml_filename_, participant_profile_, invalid_values_[i]);
+                    },
+                    testing::ThrowsMessage<ElementInvalid>(testing::HasSubstr(invalid_messages_[i])));
+            }
+        }
 
         // Push valid value (file is created)
         EXPECT_NO_THROW(push_functor_(xml_filename_, participant_profile_, valid_values_[0]));
@@ -160,17 +183,32 @@ protected:
         // Update element
         EXPECT_NO_THROW(update_functor_(xml_filename_, participant_profile_, valid_values_[0], 1));
 
-        // Print both locator kinds
+        // Print both elements
         EXPECT_EQ(print_functor_(xml_filename_, participant_profile_, -1), print_results_.empty() ? valid_values_[0] :
                 print_results_[0]);
         EXPECT_EQ(print_functor_(xml_filename_, participant_profile_, 0), print_results_.empty() ? valid_values_[0] :
                 print_results_[0]);
 
-        // Update invalid locator kind
-        EXPECT_THROW(update_functor_(xml_filename_, participant_profile_, invalid_values_[0], 0),
-                ElementInvalid);
+        // Update invalid value
+        if (!several_invalid_types)
+        {
+            EXPECT_THROW(update_functor_(xml_filename_, participant_profile_, invalid_values_[0], 0),
+                    ElementInvalid);
+        }
+        else
+        {
+            for (int i = 0; i < invalid_values_.size(); i++)
+            {
+                EXPECT_THAT(
+                    [&]()
+                    {
+                        update_functor_(xml_filename_, participant_profile_, invalid_values_[i], 0);
+                    },
+                    testing::ThrowsMessage<ElementInvalid>(testing::HasSubstr(invalid_messages_[i])));
+            }
+        }
 
-        // Print both locator kinds
+        // Print both elements
         EXPECT_EQ(print_functor_(xml_filename_, participant_profile_, 0), print_results_.empty() ? valid_values_[0] :
                 print_results_[0]);
         EXPECT_EQ(print_functor_(xml_filename_, participant_profile_, 1), print_results_.empty() ? valid_values_[0] :
@@ -260,11 +298,42 @@ TEST_F(DomainParticipantTests, default_external_unicast_locators_kind)
             };
 
     // Call test
-    print_push_update_test();
+    print_push_update_clear_test();
 }
 
 TEST_F(DomainParticipantTests, default_external_unicast_locators_port)
 {
+    // Test variables
+    valid_values_.push_back("11811");
+    valid_values_.push_back("11812");
+    invalid_values_.push_back("invalid");
+    invalid_values_.push_back("65536");
+    invalid_values_.push_back("-11811");
+    invalid_messages_.push_back("does not match regular expression facet");
+    invalid_messages_.push_back("must be less than or equal to maxInclusive facet value");
+    invalid_messages_.push_back("must be greater than or equal to minInclusive facet value");
+
+    // Initialize functors
+    print_functor_ = [](const std::string& xml_file, const std::string& profile_id, int32_t index) -> std::string
+            {
+                return default_external_unicast_locators::print_port(xml_file, profile_id, index);
+            };
+    push_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind) -> void
+            {
+                default_external_unicast_locators::push_port(xml_file, profile_id, kind);
+            };
+    update_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
+                    int32_t index) -> void
+            {
+                default_external_unicast_locators::update_port(xml_file, profile_id, kind, index);
+            };
+    clear_functor_ = [](const std::string& xml_file, const std::string& profile_id, int32_t index) -> void
+            {
+                default_external_unicast_locators::clear_port(xml_file, profile_id, index);
+            };
+
+    // Call test
+    print_push_update_clear_test();
 
 }
 
