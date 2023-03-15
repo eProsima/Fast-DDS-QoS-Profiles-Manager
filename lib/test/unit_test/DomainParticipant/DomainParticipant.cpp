@@ -16,13 +16,19 @@
 #include <string>
 
 #include "gtest/gtest.h"
+#include "gmock/gmock.h"
 
+#include <domain_participant/DefaultExternalUnicastLocators.hpp>
 #include <domain_participant/DomainParticipant.hpp>
 #include <exception/Exception.hpp>
 
 using namespace eprosima::qosprof;
 using namespace eprosima::qosprof::domain_participant;
 
+/**********************************************************************************************************************/
+/* DOMAIN PARTICIPANT TESTS                                                                                           */
+/* General functions (eprosima::qosprof::domain_participant namespace)                                                */
+/**********************************************************************************************************************/
 TEST(DomainParticipant, default_profile_test)
 {
     // Test variables
@@ -75,6 +81,121 @@ TEST(DomainParticipant, default_profile_test)
 
     // Clean test workspace
     std::remove(xml_filename.c_str());
+}
+
+/**********************************************************************************************************************/
+/* DOMAIN PARTICIPANT TESTS                                                                                           */
+/* DefaultExternalUnicastLocators                                                                                     */
+/**********************************************************************************************************************/
+TEST(DomainParticipant, default_external_unicast_locators_kind)
+{
+    std::string xml_filename = "test.xml";
+    std::string participant_profile = "test_profile";
+    std::string another_participant_profile = "second_test_profile";
+    std::string participant_name = "participant_test";
+    std::string invalid_kind = "tcp_v4";
+    std::string udp_v4_kind = "udp_v4";
+    std::string udp_v6_kind = "udp_v6";
+
+    // Try printing locator kind from a non-existent file
+    EXPECT_THROW(default_external_unicast_locators::print_kind(xml_filename, participant_profile, 0), FileNotFound);
+
+    // Push invalid locator kind
+    EXPECT_THROW(default_external_unicast_locators::push_kind(xml_filename, participant_profile, invalid_kind),
+            ElementInvalid);
+
+    // Try updating locator in a non-existent file
+    EXPECT_THROW(default_external_unicast_locators::update_kind(xml_filename, participant_profile, udp_v4_kind, 0),
+            FileNotFound);
+
+    // Push valid locator kind
+    EXPECT_NO_THROW(default_external_unicast_locators::push_kind(xml_filename, participant_profile, udp_v4_kind));
+
+    // Try printing locator kind from non-existent participant profile
+    EXPECT_THAT(
+        [&]()
+        {
+            default_external_unicast_locators::print_kind(xml_filename, another_participant_profile, 0);
+        },
+        testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr("non-existent participant profile"))
+        );
+
+    // Try updating locator kind from non-existent participant profile
+    EXPECT_THAT(
+        [&]()
+        {
+            default_external_unicast_locators::update_kind(xml_filename, another_participant_profile, udp_v4_kind, 0);
+        },
+        testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr("non-existent participant profile"))
+        );
+
+    // Create a second profile without a default external unicast locator list
+    EXPECT_NO_THROW(set_name(xml_filename, another_participant_profile, participant_name));
+
+    // Try printing locator kind from participant profile with no default external unicast locator list
+    EXPECT_THAT(
+        [&]()
+        {
+            default_external_unicast_locators::print_kind(xml_filename, another_participant_profile, 0);
+        },
+        testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr(
+            "participant profile does not have default external unicast locator list"))
+        );
+
+    // Try updating locator kind from participant profile with no default external unicast locator list
+    EXPECT_THAT(
+        [&]()
+        {
+            default_external_unicast_locators::update_kind(xml_filename, another_participant_profile, udp_v4_kind, 0);
+        },
+        testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr(
+            "participant profile does not have default external unicast locator list"))
+        );
+
+    // Try printing locator kind from a non-existent element in the list
+    EXPECT_THAT(
+        [&]()
+        {
+            default_external_unicast_locators::print_kind(xml_filename, participant_profile, 100);
+        },
+        testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr(
+            "default external unicast locator list does not have an element in position"))
+        );
+
+    // Try updating locator kind from a non-existent element in the list
+    EXPECT_THAT(
+        [&]()
+        {
+            default_external_unicast_locators::update_kind(xml_filename, participant_profile, udp_v4_kind, 100);
+        },
+        testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr(
+            "default external unicast locator list does not have an element in position"))
+        );
+
+    // Print valid locator kind
+    EXPECT_EQ(default_external_unicast_locators::print_kind(xml_filename, participant_profile, 0), "udpv4");
+
+    // Push another valid locator kind
+    EXPECT_NO_THROW(default_external_unicast_locators::push_kind(xml_filename, participant_profile, udp_v6_kind));
+
+    // Print both locator kinds
+    EXPECT_EQ(default_external_unicast_locators::print_kind(xml_filename, participant_profile, 1), "udpv6");
+    EXPECT_EQ(default_external_unicast_locators::print_kind(xml_filename, participant_profile, -2), "udpv4");
+
+    // Update locator kind
+    EXPECT_NO_THROW(default_external_unicast_locators::update_kind(xml_filename, participant_profile, udp_v4_kind, 1));
+
+    // Print both locator kinds
+    EXPECT_EQ(default_external_unicast_locators::print_kind(xml_filename, participant_profile, -1), "udpv4");
+    EXPECT_EQ(default_external_unicast_locators::print_kind(xml_filename, participant_profile, 0), "udpv4");
+
+    // Update invalid locator kind
+    EXPECT_THROW(default_external_unicast_locators::update_kind(xml_filename, participant_profile, invalid_kind, 0),
+            ElementInvalid);
+
+    // Print both locator kinds
+    EXPECT_EQ(default_external_unicast_locators::print_kind(xml_filename, participant_profile, 0), "udpv4");
+    EXPECT_EQ(default_external_unicast_locators::print_kind(xml_filename, participant_profile, 1), "udpv4");
 }
 
 int main(
