@@ -25,97 +25,110 @@
 using namespace eprosima::qosprof;
 using namespace eprosima::qosprof::domain_participant;
 
+class DomainParticipantTests : public ::testing::Test
+{
+protected:
+
+    std::string xml_filename_;
+    std::string participant_profile_;
+    std::string another_participant_profile_;
+    std::string participant_name_;
+
+    void SetUp() override
+    {
+        xml_filename_ = "test.xml";
+        participant_profile_ = "test_profile";
+        another_participant_profile_ = "second_test_profile";
+        participant_name_ = "participant_test";
+    }
+
+    void TearDown() override
+    {
+        // Clean test workspace
+        std::remove(xml_filename_.c_str());
+    }
+};
+
 /**********************************************************************************************************************/
 /* DOMAIN PARTICIPANT TESTS                                                                                           */
 /* General functions (eprosima::qosprof::domain_participant namespace)                                                */
 /**********************************************************************************************************************/
-TEST(DomainParticipant, default_profile_test)
+TEST_F(DomainParticipantTests, default_profile_test)
 {
     // Test variables
-    std::string xml_filename = "test.xml";
-    std::string non_existent_xml = "non_existent.xml";
-    std::string participant_profile = "test_profile";
-    std::string another_participant_profile = "second_test_profile";
-    std::string participant_name = "participant_test";
-    std::string another_participant_name = "second_participant_test";
+    std::string another_participant_name_ = "second_participant_test";
 
     // Try printing default profile for non-existing file
-    EXPECT_THROW(print_default_profile(xml_filename), FileNotFound);
-
-    // Set participant name in order to create file
-    EXPECT_NO_THROW(set_name(xml_filename, participant_profile, participant_name));
-
-    // Print non-existing default profile
-    EXPECT_THROW(print_default_profile(xml_filename), ElementNotFound);
+    EXPECT_THROW(print_default_profile(xml_filename_), FileNotFound);
 
     // Set default profile to non-existent XML file
-    EXPECT_THROW(set_default_profile(non_existent_xml, participant_profile), FileNotFound);
-
-    // Set default profile to non-existent participant profile
-    EXPECT_THROW(set_default_profile(xml_filename, another_participant_profile), ElementNotFound);
-
-    // Set default profile to existent profile
-    EXPECT_NO_THROW(set_default_profile(xml_filename, participant_profile));
-
-    // Print existent default profile
-    EXPECT_EQ(print_default_profile(xml_filename), participant_profile);
-
-    // Create a second profile and change default profile to this second profile
-    EXPECT_NO_THROW(set_name(xml_filename, another_participant_profile, another_participant_name));
-    EXPECT_NO_THROW(set_default_profile(xml_filename, another_participant_profile));
-
-    // Print existent default profile
-    EXPECT_EQ(print_default_profile(xml_filename), another_participant_profile);
-
-    // Clear default profile
-    EXPECT_NO_THROW(clear_default_profile(xml_filename));
-
-    // Print non-existent default profile
-    EXPECT_THROW(print_default_profile(xml_filename), ElementNotFound);
-
-    // Clear default profile from a file with no default profile
-    EXPECT_NO_THROW(clear_default_profile(xml_filename));
+    EXPECT_THROW(set_default_profile(xml_filename_, participant_profile_), FileNotFound);
 
     // Clear default profile from a non-existent XML file
-    EXPECT_THROW(clear_default_profile(non_existent_xml), FileNotFound);
+    EXPECT_THROW(clear_default_profile(xml_filename_), FileNotFound);
 
-    // Clean test workspace
-    std::remove(xml_filename.c_str());
+    // Set participant name in order to create file
+    EXPECT_NO_THROW(set_name(xml_filename_, participant_profile_, participant_name_));
+
+    // Print non-existing default profile
+    EXPECT_THROW(print_default_profile(xml_filename_), ElementNotFound);
+
+    // Set default profile to non-existent participant profile
+    EXPECT_THROW(set_default_profile(xml_filename_, another_participant_profile_), ElementNotFound);
+
+    // Set default profile to existent profile
+    EXPECT_NO_THROW(set_default_profile(xml_filename_, participant_profile_));
+
+    // Print existent default profile
+    EXPECT_EQ(print_default_profile(xml_filename_), participant_profile_);
+
+    // Create a second profile and change default profile to this second profile
+    EXPECT_NO_THROW(set_name(xml_filename_, another_participant_profile_, another_participant_name_));
+    EXPECT_NO_THROW(set_default_profile(xml_filename_, another_participant_profile_));
+
+    // Print existent default profile
+    EXPECT_EQ(print_default_profile(xml_filename_), another_participant_profile_);
+
+    // Clear default profile
+    EXPECT_NO_THROW(clear_default_profile(xml_filename_));
+
+    // Print non-existent default profile
+    EXPECT_THROW(print_default_profile(xml_filename_), ElementNotFound);
+
+    // Clear default profile from a file with no default profile
+    EXPECT_NO_THROW(clear_default_profile(xml_filename_));
 }
 
 /**********************************************************************************************************************/
 /* DOMAIN PARTICIPANT TESTS                                                                                           */
 /* DefaultExternalUnicastLocators                                                                                     */
 /**********************************************************************************************************************/
-TEST(DomainParticipant, default_external_unicast_locators_kind)
+TEST_F(DomainParticipantTests, default_external_unicast_locators_kind)
 {
-    std::string xml_filename = "test.xml";
-    std::string participant_profile = "test_profile";
-    std::string another_participant_profile = "second_test_profile";
-    std::string participant_name = "participant_test";
+    // Test variables
     std::string invalid_kind = "tcp_v4";
     std::string udp_v4_kind = "udp_v4";
     std::string udp_v6_kind = "udp_v6";
 
     // Try printing locator kind from a non-existent file
-    EXPECT_THROW(default_external_unicast_locators::print_kind(xml_filename, participant_profile, 0), FileNotFound);
+    EXPECT_THROW(default_external_unicast_locators::print_kind(xml_filename_, participant_profile_, 0), FileNotFound);
 
     // Push invalid locator kind
-    EXPECT_THROW(default_external_unicast_locators::push_kind(xml_filename, participant_profile, invalid_kind),
+    EXPECT_THROW(default_external_unicast_locators::push_kind(xml_filename_, participant_profile_, invalid_kind),
             ElementInvalid);
 
     // Try updating locator in a non-existent file
-    EXPECT_THROW(default_external_unicast_locators::update_kind(xml_filename, participant_profile, udp_v4_kind, 0),
+    EXPECT_THROW(default_external_unicast_locators::update_kind(xml_filename_, participant_profile_, udp_v4_kind, 0),
             FileNotFound);
 
     // Push valid locator kind
-    EXPECT_NO_THROW(default_external_unicast_locators::push_kind(xml_filename, participant_profile, udp_v4_kind));
+    EXPECT_NO_THROW(default_external_unicast_locators::push_kind(xml_filename_, participant_profile_, udp_v4_kind));
 
     // Try printing locator kind from non-existent participant profile
     EXPECT_THAT(
         [&]()
         {
-            default_external_unicast_locators::print_kind(xml_filename, another_participant_profile, 0);
+            default_external_unicast_locators::print_kind(xml_filename_, another_participant_profile_, 0);
         },
         testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr("non-existent participant profile"))
         );
@@ -124,19 +137,19 @@ TEST(DomainParticipant, default_external_unicast_locators_kind)
     EXPECT_THAT(
         [&]()
         {
-            default_external_unicast_locators::update_kind(xml_filename, another_participant_profile, udp_v4_kind, 0);
+            default_external_unicast_locators::update_kind(xml_filename_, another_participant_profile_, udp_v4_kind, 0);
         },
         testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr("non-existent participant profile"))
         );
 
     // Create a second profile without a default external unicast locator list
-    EXPECT_NO_THROW(set_name(xml_filename, another_participant_profile, participant_name));
+    EXPECT_NO_THROW(set_name(xml_filename_, another_participant_profile_, participant_name_));
 
     // Try printing locator kind from participant profile with no default external unicast locator list
     EXPECT_THAT(
         [&]()
         {
-            default_external_unicast_locators::print_kind(xml_filename, another_participant_profile, 0);
+            default_external_unicast_locators::print_kind(xml_filename_, another_participant_profile_, 0);
         },
         testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr(
             "participant profile does not have default external unicast locator list"))
@@ -146,7 +159,7 @@ TEST(DomainParticipant, default_external_unicast_locators_kind)
     EXPECT_THAT(
         [&]()
         {
-            default_external_unicast_locators::update_kind(xml_filename, another_participant_profile, udp_v4_kind, 0);
+            default_external_unicast_locators::update_kind(xml_filename_, another_participant_profile_, udp_v4_kind, 0);
         },
         testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr(
             "participant profile does not have default external unicast locator list"))
@@ -156,7 +169,7 @@ TEST(DomainParticipant, default_external_unicast_locators_kind)
     EXPECT_THAT(
         [&]()
         {
-            default_external_unicast_locators::print_kind(xml_filename, participant_profile, 100);
+            default_external_unicast_locators::print_kind(xml_filename_, participant_profile_, 100);
         },
         testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr(
             "default external unicast locator list does not have an element in position"))
@@ -166,36 +179,41 @@ TEST(DomainParticipant, default_external_unicast_locators_kind)
     EXPECT_THAT(
         [&]()
         {
-            default_external_unicast_locators::update_kind(xml_filename, participant_profile, udp_v4_kind, 100);
+            default_external_unicast_locators::update_kind(xml_filename_, participant_profile_, udp_v4_kind, 100);
         },
         testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr(
             "default external unicast locator list does not have an element in position"))
         );
 
     // Print valid locator kind
-    EXPECT_EQ(default_external_unicast_locators::print_kind(xml_filename, participant_profile, 0), "udpv4");
+    EXPECT_EQ(default_external_unicast_locators::print_kind(xml_filename_, participant_profile_, 0), "udpv4");
 
     // Push another valid locator kind
-    EXPECT_NO_THROW(default_external_unicast_locators::push_kind(xml_filename, participant_profile, udp_v6_kind));
+    EXPECT_NO_THROW(default_external_unicast_locators::push_kind(xml_filename_, participant_profile_, udp_v6_kind));
 
     // Print both locator kinds
-    EXPECT_EQ(default_external_unicast_locators::print_kind(xml_filename, participant_profile, 1), "udpv6");
-    EXPECT_EQ(default_external_unicast_locators::print_kind(xml_filename, participant_profile, -2), "udpv4");
+    EXPECT_EQ(default_external_unicast_locators::print_kind(xml_filename_, participant_profile_, 1), "udpv6");
+    EXPECT_EQ(default_external_unicast_locators::print_kind(xml_filename_, participant_profile_, -2), "udpv4");
 
     // Update locator kind
-    EXPECT_NO_THROW(default_external_unicast_locators::update_kind(xml_filename, participant_profile, udp_v4_kind, 1));
+    EXPECT_NO_THROW(default_external_unicast_locators::update_kind(xml_filename_, participant_profile_, udp_v4_kind, 1));
 
     // Print both locator kinds
-    EXPECT_EQ(default_external_unicast_locators::print_kind(xml_filename, participant_profile, -1), "udpv4");
-    EXPECT_EQ(default_external_unicast_locators::print_kind(xml_filename, participant_profile, 0), "udpv4");
+    EXPECT_EQ(default_external_unicast_locators::print_kind(xml_filename_, participant_profile_, -1), "udpv4");
+    EXPECT_EQ(default_external_unicast_locators::print_kind(xml_filename_, participant_profile_, 0), "udpv4");
 
     // Update invalid locator kind
-    EXPECT_THROW(default_external_unicast_locators::update_kind(xml_filename, participant_profile, invalid_kind, 0),
+    EXPECT_THROW(default_external_unicast_locators::update_kind(xml_filename_, participant_profile_, invalid_kind, 0),
             ElementInvalid);
 
     // Print both locator kinds
-    EXPECT_EQ(default_external_unicast_locators::print_kind(xml_filename, participant_profile, 0), "udpv4");
-    EXPECT_EQ(default_external_unicast_locators::print_kind(xml_filename, participant_profile, 1), "udpv4");
+    EXPECT_EQ(default_external_unicast_locators::print_kind(xml_filename_, participant_profile_, 0), "udpv4");
+    EXPECT_EQ(default_external_unicast_locators::print_kind(xml_filename_, participant_profile_, 1), "udpv4");
+}
+
+TEST_F(DomainParticipantTests, default_external_unicast_locators_port)
+{
+
 }
 
 int main(
