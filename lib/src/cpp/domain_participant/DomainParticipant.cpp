@@ -23,6 +23,8 @@
 
 #include <exception/Exception.hpp>
 
+std::string xsdFilePath = "";
+
 namespace eprosima {
 namespace qosprof {
 namespace domain_participant {
@@ -57,7 +59,49 @@ std::string print_name(
         const std::string& xml_file,
         const std::string& profile_id)
 {
-    throw Unsupported("Unsupported");
+    XercesDOMParser* xmlParser = NULL;
+    DOMNode* profilesNode = NULL;
+    DOMNode* participantNode = NULL;
+    DOMNode* rtpsNode = NULL;
+    DOMNode* nameNode = NULL;
+
+    // Open xml_file
+    try
+    {
+        xmlParser = openXML(xml_file);
+    }
+    catch (FileNotFound ex)
+    {
+        // Given file does not exist
+        throw FileNotFound(ex);
+        return;
+    }
+    catch (Unsupported ex)
+    {
+        // Could not initialize XML workspace
+        throw Unsupported(ex);
+        return;
+    }
+
+    // Obtain nodes
+    try
+    {
+        profilesNode = getNode(xmlParser, "profiles");
+        participantNode = getNode(profilesNode, "participant", "profile_name", profile_id);
+        rtpsNode = getNode(participantNode, "rtps");
+        nameNode = getNode(rtpsNode, "name");
+    }
+    catch (ElementNotFound ex)
+    {
+        // Throw exception if no nodes
+        throw ElementNotFound(ex);
+
+        closeXML();
+        return;
+    }
+
+    // Print name
+    return XMLString::transcode(nameNode.getNodeValue());
 }
 
 std::string print_ignore_non_matching_locators(
@@ -271,7 +315,149 @@ void set_name(
         const std::string& profile_id,
         const std::string& name)
 {
-    throw Unsupported("Unsupported");
+
+    XercesDOMParser* xmlParser = NULL;
+    DOMDocument* xmlDoc = NULL;
+    DOMNode* profilesNode = NULL;
+    DOMNode* participantNode = NULL;
+    DOMNode* rtpsNode = NULL;
+    DOMNode* nameNode = NULL;
+
+    // Open xml_file
+    try
+    {
+        xmlParser = openXML(xml_file);
+    }
+    catch (const FileNotFound& ex)
+    {
+        // Given file does not exist
+        throw FileNotFound(ex);
+        return;
+    }
+    catch (const Unsupported& ex)
+    {
+        // Could not initialize XML workspace
+        throw Unsupported(ex);
+        return;
+    }
+
+    // Obtain profilesNode
+    try
+    {
+        profilesNode = getNode(xmlParser, "profiles");
+    }
+    catch (const ElementNotFound& ex)
+    {
+        // Create if not exist
+        if (!profilesNode)
+        {
+            // Root does not exist, create element
+            DOMImplementation* xmlImplementation = DOMImplementationRegistry::getDOMImplementation (XMLString::transcode("Core"));
+            if (xmlImplementation == NULL)
+            {
+                // Could not initialize XML workspace
+                throw Unsupported("Could not initialize XML workspace");
+
+                closeXML();
+                return;
+            }
+
+            // Create root element as profiles plus xmls link
+            xmlDoc = xmlImplementation->createDocument(0, XMLString::transcode("dds"), 0);
+            DOMElement* rootElement = xmlDoc->getDocumentElement();
+            rootElement->setAttribute(XMLString::transcode("xmlns"), XMLString::transcode("http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles"));
+
+            // Add profiles
+            profilesNode = (DOMNode*) xmlDoc->createElement(XMLString::transcode("profiles"));
+            rootElement->appendChild(profilesNode);
+        }
+    }
+
+    // Obtain participantNode with the profile id
+    try
+    {
+        participantNode = getNode(profilesNode, "participant", "profile_name", profile_id);
+    }
+    catch (const ElementNotFound& ex)
+    {
+        // Create if not exist
+        if (!participantNode)
+        {
+            xmlDoc = xmlParser->getDocument();
+            participantNode = (DOMNode*) xmlDoc->createElement(XMLString::transcode("participant"));
+            profilesNode->appendChild(participantNode);
+            participantNode->setAttribute(XMLString::transcode("profile_name"), XMLString::transcode(profile_id));
+        }
+    }
+
+    // Obtain rtpsNode
+    try
+    {
+        rtpsNode = getNode(participantNode, "rtps");
+    }
+    catch (const ElementNotFound& ex)
+    {
+        // Create if not exist
+        if (!rtpsNode)
+        {
+            xmlDoc = xmlParser->getDocument();
+            rtpsNode = (DOMNode*) xmlDoc->createElement(XMLString::transcode("rtps"));
+            participantNode->appendChild(rtpsNode);
+        }
+    }
+
+    // Obtain name
+    try
+    {
+        nameNode = getNode(rtpsNode, "name");
+    }
+    catch (const ElementNotFound& ex)
+    {
+        // Create if not exist
+        if (!nameNode)
+        {
+            xmlDoc = xmlParser->getDocument();
+            nameNode = (DOMNode*) xmlDoc->createElement(XMLString::transcode("name"));
+            rtpsNode->appendChild(nameNode);
+        }
+    }
+
+    // Set name value
+    DOMText* nameValue = xmlDoc->createTextNode(XMLString::transcode(name.c_str()));
+    nameNode->appendChild(nameValue);
+
+    // Validate new element
+    try {
+        xmlDoc = xmlParser->getDocument();
+        saveXML("temp.xml", xmlDoc);
+        validateXML("temp.xml", xmlParser);
+    }
+    catch (const Unsupported& ex)
+    {
+        throw Unsupported(ex);
+        closeXML();
+        return;
+    }
+    catch (const ElementInvalid& ex)
+    {
+        throw ElementInvalid(ex);
+        closeXML();
+        return;
+    }
+
+    // Save if valid
+    try
+    {
+        xmlDoc = xmlParser->getDocument();
+        saveXML(xml_file, xmlDoc);
+    }
+    catch(const Unsupported& e)
+    {
+        throw Unsupported(ex);
+    }
+
+    closeXML();
+    return;
 }
 
 void set_ignore_non_matching_locators(

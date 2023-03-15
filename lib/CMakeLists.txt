@@ -51,6 +51,9 @@ set(${PROJECT_NAME}_source_files
     src/cpp/domain_participant/PropertiesPolicy.cpp
     src/cpp/exception/Exception.cpp
     src/cpp/transport_descriptor/TransportDescriptor.cpp
+    src/cpp/common/Locator.cpp
+    src/cpp/utils/ParseXML.cpp
+    src/cpp/utils/ParseXMLErrorHandler.cpp
 )
 
 add_library(${PROJECT_NAME} SHARED ${${PROJECT_NAME}_source_files})
