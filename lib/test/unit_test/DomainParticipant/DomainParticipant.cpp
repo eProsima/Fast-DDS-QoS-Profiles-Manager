@@ -14,6 +14,7 @@
 
 #include <cstdio>
 #include <string>
+#include <vector>
 
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
@@ -29,10 +30,21 @@ class DomainParticipantTests : public ::testing::Test
 {
 protected:
 
+    // Test fixture variables
     std::string xml_filename_;
     std::string participant_profile_;
     std::string another_participant_profile_;
     std::string participant_name_;
+    std::vector<std::string> valid_values_;
+    std::vector<std::string> invalid_values_;
+    std::vector<std::string> invalid_messages_;
+    std::vector<std::string> print_results_;
+
+    // Functors
+    std::function<std::string(const std::string&, const std::string&, int32_t)> print_functor_;
+    std::function<void(const std::string&, const std::string&, const std::string&)> push_functor_;
+    std::function<void(const std::string&, const std::string&, const std::string&, int32_t)> update_functor_;
+    std::function<void(const std::string&, const std::string&, int32_t)> clear_functor_;
 
     void SetUp() override
     {
@@ -40,6 +52,14 @@ protected:
         participant_profile_ = "test_profile";
         another_participant_profile_ = "second_test_profile";
         participant_name_ = "participant_test";
+        valid_values_.clear();
+        invalid_values_.clear();
+        invalid_messages_.clear();
+        print_results_.clear();
+        print_functor_ = nullptr;
+        push_functor_ = nullptr;
+        update_functor_ = nullptr;
+        clear_functor_ = nullptr;
     }
 
     void TearDown() override
@@ -47,6 +67,116 @@ protected:
         // Clean test workspace
         std::remove(xml_filename_.c_str());
     }
+
+    void print_push_update_test()
+    {
+        // Functors must be initialized
+        ASSERT_NE(print_functor_, nullptr);
+        ASSERT_NE(push_functor_, nullptr);
+        ASSERT_NE(update_functor_, nullptr);
+
+        // Valid data and invalid data vectors should have values
+        // Valid data should have at least two elements to check update
+        ASSERT_FALSE(valid_values_.empty());
+        ASSERT_GE(valid_values_.size(), 2);
+        ASSERT_FALSE(invalid_values_.empty());
+
+        // Try printing from non-existing file
+        EXPECT_THROW(print_functor_(xml_filename_, participant_profile_, 0), FileNotFound);
+
+        // Try updating in a non-existent file
+        EXPECT_THROW(update_functor_(xml_filename_, participant_profile_, valid_values_[0], 0), FileNotFound);
+
+        // Push invalid value
+        EXPECT_THROW(push_functor_(xml_filename_, participant_profile_, invalid_values_[0]), ElementInvalid);
+
+        // Push valid value (file is created)
+        EXPECT_NO_THROW(push_functor_(xml_filename_, participant_profile_, valid_values_[0]));
+
+        // Try printing from non-existent profile
+        EXPECT_THAT(
+            [&]()
+            {
+                print_functor_(xml_filename_, another_participant_profile_, 0);
+            },
+            testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr("non-existent profile")));
+
+        // Try updating from non-existent profile
+        EXPECT_THAT(
+            [&]()
+            {
+                update_functor_(xml_filename_, another_participant_profile_, valid_values_[0], 0);
+            },
+            testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr("non-existent profile")));
+
+        // Create a second profile without the list element
+        EXPECT_NO_THROW(set_name(xml_filename_, another_participant_profile_, participant_name_));
+
+        // Try printing from profile without the list element
+        EXPECT_THAT(
+            [&]()
+            {
+                print_functor_(xml_filename_, another_participant_profile_, 0);
+            },
+            testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr("profile does not have element list")));
+
+        // Try updating from profile without the list element
+        EXPECT_THAT(
+            [&]()
+            {
+                update_functor_(xml_filename_, another_participant_profile_, valid_values_[0], 0);
+            },
+            testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr("profile does not have element list")));
+
+        // Try printing from a non-existent element in the list
+        EXPECT_THAT(
+            [&]()
+            {
+                print_functor_(xml_filename_, participant_profile_, 100);
+            },
+            testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr("list does not have an element in position")));
+
+        // Try updating from a non-existent element in the list
+        EXPECT_THAT(
+            [&]()
+            {
+                update_functor_(xml_filename_, participant_profile_, valid_values_[0], 100);
+            },
+            testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr("list does not have an element in position")));
+
+        // Print valid value
+        EXPECT_EQ(print_functor_(xml_filename_, participant_profile_, 0), print_results_.empty() ? valid_values_[0] :
+                print_results_[0]);
+
+        // Push another valid value
+        EXPECT_NO_THROW(push_functor_(xml_filename_, participant_profile_, valid_values_[1]));
+
+        // Print both elements
+        EXPECT_EQ(print_functor_(xml_filename_, participant_profile_, 1), print_results_.empty() ? valid_values_[1] :
+                print_results_[1]);
+        EXPECT_EQ(print_functor_(xml_filename_, participant_profile_, -2), print_results_.empty() ? valid_values_[0] :
+                print_results_[0]);
+
+        // Update element
+        EXPECT_NO_THROW(update_functor_(xml_filename_, participant_profile_, valid_values_[0], 1));
+
+        // Print both locator kinds
+        EXPECT_EQ(print_functor_(xml_filename_, participant_profile_, -1), print_results_.empty() ? valid_values_[0] :
+                print_results_[0]);
+        EXPECT_EQ(print_functor_(xml_filename_, participant_profile_, 0), print_results_.empty() ? valid_values_[0] :
+                print_results_[0]);
+
+        // Update invalid locator kind
+        EXPECT_THROW(update_functor_(xml_filename_, participant_profile_, invalid_values_[0], 0),
+                ElementInvalid);
+
+        // Print both locator kinds
+        EXPECT_EQ(print_functor_(xml_filename_, participant_profile_, 0), print_results_.empty() ? valid_values_[0] :
+                print_results_[0]);
+        EXPECT_EQ(print_functor_(xml_filename_, participant_profile_, 1), print_results_.empty() ? valid_values_[0] :
+                print_results_[0]);
+    }
+
 };
 
 /**********************************************************************************************************************/
@@ -106,109 +236,31 @@ TEST_F(DomainParticipantTests, default_profile_test)
 TEST_F(DomainParticipantTests, default_external_unicast_locators_kind)
 {
     // Test variables
-    std::string invalid_kind = "tcp_v4";
-    std::string udp_v4_kind = "udp_v4";
-    std::string udp_v6_kind = "udp_v6";
+    valid_values_.push_back("udp_v4");
+    valid_values_.push_back("udp_v6");
+    invalid_values_.push_back("tcp_v4");
 
-    // Try printing locator kind from a non-existent file
-    EXPECT_THROW(default_external_unicast_locators::print_kind(xml_filename_, participant_profile_, 0), FileNotFound);
+    // Expected results
+    print_results_.push_back("udpv4");
+    print_results_.push_back("udpv6");
 
-    // Push invalid locator kind
-    EXPECT_THROW(default_external_unicast_locators::push_kind(xml_filename_, participant_profile_, invalid_kind),
-            ElementInvalid);
+    // Initialize functors
+    print_functor_ = [](const std::string& xml_file, const std::string& profile_id, int32_t index) -> std::string
+            {
+                return default_external_unicast_locators::print_kind(xml_file, profile_id, index);
+            };
+    push_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind) -> void
+            {
+                default_external_unicast_locators::push_kind(xml_file, profile_id, kind);
+            };
+    update_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
+                    int32_t index) -> void
+            {
+                default_external_unicast_locators::update_kind(xml_file, profile_id, kind, index);
+            };
 
-    // Try updating locator in a non-existent file
-    EXPECT_THROW(default_external_unicast_locators::update_kind(xml_filename_, participant_profile_, udp_v4_kind, 0),
-            FileNotFound);
-
-    // Push valid locator kind
-    EXPECT_NO_THROW(default_external_unicast_locators::push_kind(xml_filename_, participant_profile_, udp_v4_kind));
-
-    // Try printing locator kind from non-existent participant profile
-    EXPECT_THAT(
-        [&]()
-        {
-            default_external_unicast_locators::print_kind(xml_filename_, another_participant_profile_, 0);
-        },
-        testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr("non-existent participant profile"))
-        );
-
-    // Try updating locator kind from non-existent participant profile
-    EXPECT_THAT(
-        [&]()
-        {
-            default_external_unicast_locators::update_kind(xml_filename_, another_participant_profile_, udp_v4_kind, 0);
-        },
-        testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr("non-existent participant profile"))
-        );
-
-    // Create a second profile without a default external unicast locator list
-    EXPECT_NO_THROW(set_name(xml_filename_, another_participant_profile_, participant_name_));
-
-    // Try printing locator kind from participant profile with no default external unicast locator list
-    EXPECT_THAT(
-        [&]()
-        {
-            default_external_unicast_locators::print_kind(xml_filename_, another_participant_profile_, 0);
-        },
-        testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr(
-            "participant profile does not have default external unicast locator list"))
-        );
-
-    // Try updating locator kind from participant profile with no default external unicast locator list
-    EXPECT_THAT(
-        [&]()
-        {
-            default_external_unicast_locators::update_kind(xml_filename_, another_participant_profile_, udp_v4_kind, 0);
-        },
-        testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr(
-            "participant profile does not have default external unicast locator list"))
-        );
-
-    // Try printing locator kind from a non-existent element in the list
-    EXPECT_THAT(
-        [&]()
-        {
-            default_external_unicast_locators::print_kind(xml_filename_, participant_profile_, 100);
-        },
-        testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr(
-            "default external unicast locator list does not have an element in position"))
-        );
-
-    // Try updating locator kind from a non-existent element in the list
-    EXPECT_THAT(
-        [&]()
-        {
-            default_external_unicast_locators::update_kind(xml_filename_, participant_profile_, udp_v4_kind, 100);
-        },
-        testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr(
-            "default external unicast locator list does not have an element in position"))
-        );
-
-    // Print valid locator kind
-    EXPECT_EQ(default_external_unicast_locators::print_kind(xml_filename_, participant_profile_, 0), "udpv4");
-
-    // Push another valid locator kind
-    EXPECT_NO_THROW(default_external_unicast_locators::push_kind(xml_filename_, participant_profile_, udp_v6_kind));
-
-    // Print both locator kinds
-    EXPECT_EQ(default_external_unicast_locators::print_kind(xml_filename_, participant_profile_, 1), "udpv6");
-    EXPECT_EQ(default_external_unicast_locators::print_kind(xml_filename_, participant_profile_, -2), "udpv4");
-
-    // Update locator kind
-    EXPECT_NO_THROW(default_external_unicast_locators::update_kind(xml_filename_, participant_profile_, udp_v4_kind, 1));
-
-    // Print both locator kinds
-    EXPECT_EQ(default_external_unicast_locators::print_kind(xml_filename_, participant_profile_, -1), "udpv4");
-    EXPECT_EQ(default_external_unicast_locators::print_kind(xml_filename_, participant_profile_, 0), "udpv4");
-
-    // Update invalid locator kind
-    EXPECT_THROW(default_external_unicast_locators::update_kind(xml_filename_, participant_profile_, invalid_kind, 0),
-            ElementInvalid);
-
-    // Print both locator kinds
-    EXPECT_EQ(default_external_unicast_locators::print_kind(xml_filename_, participant_profile_, 0), "udpv4");
-    EXPECT_EQ(default_external_unicast_locators::print_kind(xml_filename_, participant_profile_, 1), "udpv4");
+    // Call test
+    print_push_update_test();
 }
 
 TEST_F(DomainParticipantTests, default_external_unicast_locators_port)
