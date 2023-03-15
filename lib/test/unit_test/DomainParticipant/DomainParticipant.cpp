@@ -95,6 +95,12 @@ protected:
         // Try updating in a non-existent file
         EXPECT_THROW(update_functor_(xml_filename_, participant_profile_, valid_values_[0], 0), FileNotFound);
 
+        // Try clearing in a non-existent file
+        if (nullptr != clear_functor_)
+        {
+            EXPECT_THROW(clear_functor_(xml_filename_, participant_profile_, 0), FileNotFound);
+        }
+
         // Push invalid value
         if (!several_invalid_types)
         {
@@ -132,6 +138,17 @@ protected:
             },
             testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr("non-existent profile")));
 
+        // Try clearing from non-existent profile
+        if (nullptr != clear_functor_)
+        {
+            EXPECT_THAT(
+                [&]()
+                {
+                    clear_functor_(xml_filename_, another_participant_profile_, 0);
+                },
+                testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr("non-existent profile")));
+        }
+
         // Create a second profile without the list element
         EXPECT_NO_THROW(set_name(xml_filename_, another_participant_profile_, participant_name_));
 
@@ -151,6 +168,17 @@ protected:
             },
             testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr("profile does not have element list")));
 
+        // Try clearing from profile without the list element
+        if (nullptr != clear_functor_)
+        {
+            EXPECT_THAT(
+                [&]()
+                {
+                    clear_functor_(xml_filename_, another_participant_profile_, 0);
+                },
+                testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr("profile does not have element list")));
+        }
+
         // Try printing from a non-existent element in the list
         EXPECT_THAT(
             [&]()
@@ -166,6 +194,17 @@ protected:
                 update_functor_(xml_filename_, participant_profile_, valid_values_[0], 100);
             },
             testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr("list does not have an element in position")));
+
+        // Try clearing from a non-existent element in the list
+        if (nullptr != clear_functor_)
+        {
+            EXPECT_THAT(
+                [&]()
+                {
+                    clear_functor_(xml_filename_, participant_profile_, 100);
+                },
+                testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr("list does not have an element in position")));
+        }
 
         // Print valid value
         EXPECT_EQ(print_functor_(xml_filename_, participant_profile_, 0), print_results_.empty() ? valid_values_[0] :
@@ -213,6 +252,22 @@ protected:
                 print_results_[0]);
         EXPECT_EQ(print_functor_(xml_filename_, participant_profile_, 1), print_results_.empty() ? valid_values_[0] :
                 print_results_[0]);
+
+        // Clear element
+        if (nullptr != clear_functor_)
+        {
+            EXPECT_NO_THROW(clear_functor_(xml_filename_, participant_profile_, 0));
+
+            EXPECT_THAT(
+                [&]()
+                {
+                    print_functor_(xml_filename_, participant_profile_, 0);
+                },
+                testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr("element does not have sought subelement")));
+
+            // Clear already cleared element does not throw
+            EXPECT_NO_THROW(clear_functor_(xml_filename_, participant_profile_, 0));
+        }
     }
 
 };
