@@ -904,7 +904,7 @@ TEST_F(DomainParticipantTests, builtin_initial_peers_wan_address)
     valid_values_.push_back("127.0.0.1");
     valid_values_.push_back("192.168.1.2");
     invalid_values_.push_back("localhost");
-    
+
     // Initialize functors
     print_functor_ = [](const std::string& xml_file, const std::string& profile_id, int32_t index) -> std::string
             {
