@@ -19,6 +19,7 @@
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
 
+#include <domain_participant/builtin/InitialPeers.hpp>
 #include <domain_participant/builtin/MetatrafficExternalUnicastLocators.hpp>
 #include <domain_participant/DefaultExternalUnicastLocators.hpp>
 #include <domain_participant/DomainParticipant.hpp>
@@ -727,6 +728,200 @@ TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_mas
     clear_functor_ = [](const std::string& xml_file, const std::string& profile_id, int32_t index) -> void
             {
                 builtin::metatraffic_external_unicast_locators::clear_mask(xml_file, profile_id, index);
+            };
+
+    // Call test
+    print_push_update_clear_test();
+}
+
+/**********************************************************************************************************************/
+/* DOMAIN PARTICIPANT TESTS                                                                                           */
+/* Builtin::InitialPeers                                                                                              */
+/**********************************************************************************************************************/
+TEST_F(DomainParticipantTests, builtin_initial_peers_kind)
+{
+    // Test variables
+    valid_values_.push_back("udp_v4");
+    valid_values_.push_back("udp_v6");
+    invalid_values_.push_back("tcp_v4");
+
+    // Expected results
+    print_results_.push_back("udpv4");
+    print_results_.push_back("udpv6");
+
+    // Initialize functors
+    print_functor_ = [](const std::string& xml_file, const std::string& profile_id, int32_t index) -> std::string
+            {
+                return builtin::initial_peers::print_kind(xml_file, profile_id, index);
+            };
+    push_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind) -> void
+            {
+                builtin::initial_peers::push_kind(xml_file, profile_id, kind);
+            };
+    update_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
+                    int32_t index) -> void
+            {
+                builtin::initial_peers::update_kind(xml_file, profile_id, kind, index);
+            };
+
+    // Call test
+    print_push_update_clear_test();
+}
+
+TEST_F(DomainParticipantTests, builtin_initial_peers_port)
+{
+    // Test variables
+    valid_values_.push_back("11811");
+    valid_values_.push_back("11812");
+    invalid_values_.push_back("invalid");
+    invalid_values_.push_back("65536");
+    invalid_values_.push_back("-11811");
+    invalid_messages_.push_back("does not match regular expression facet");
+    invalid_messages_.push_back("must be less than or equal to maxInclusive facet value");
+    invalid_messages_.push_back("must be greater than or equal to minInclusive facet value");
+
+    // Initialize functors
+    print_functor_ = [](const std::string& xml_file, const std::string& profile_id, int32_t index) -> std::string
+            {
+                return builtin::initial_peers::print_port(xml_file, profile_id, index);
+            };
+    push_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind) -> void
+            {
+                builtin::initial_peers::push_port(xml_file, profile_id, kind);
+            };
+    update_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
+                    int32_t index) -> void
+            {
+                builtin::initial_peers::update_port(xml_file, profile_id, kind, index);
+            };
+    clear_functor_ = [](const std::string& xml_file, const std::string& profile_id, int32_t index) -> void
+            {
+                builtin::initial_peers::clear_port(xml_file, profile_id, index);
+            };
+
+    // Call test
+    print_push_update_clear_test();
+}
+
+TEST_F(DomainParticipantTests, builtin_initial_peers_physical_port)
+{
+    // Test variables
+    valid_values_.push_back("11811");
+    valid_values_.push_back("11812");
+    invalid_values_.push_back("invalid");
+    invalid_values_.push_back("65536");
+    invalid_values_.push_back("-11811");
+    invalid_messages_.push_back("does not match regular expression facet");
+    invalid_messages_.push_back("must be less than or equal to maxInclusive facet value");
+    invalid_messages_.push_back("must be greater than or equal to minInclusive facet value");
+
+    // Initialize functors
+    print_functor_ = [](const std::string& xml_file, const std::string& profile_id, int32_t index) -> std::string
+            {
+                return builtin::initial_peers::print_physical_port(xml_file, profile_id, index);
+            };
+    push_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind) -> void
+            {
+                builtin::initial_peers::push_physical_port(xml_file, profile_id, kind);
+            };
+    update_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
+                    int32_t index) -> void
+            {
+                builtin::initial_peers::update_physical_port(xml_file, profile_id, kind, index);
+            };
+    clear_functor_ = [](const std::string& xml_file, const std::string& profile_id, int32_t index) -> void
+            {
+                builtin::initial_peers::clear_physical_port(xml_file, profile_id, index);
+            };
+
+    // Call test
+    print_push_update_clear_test();
+}
+
+TEST_F(DomainParticipantTests, builtin_initial_peers_address)
+{
+    // Test variables
+    valid_values_.push_back("localhost");
+    valid_values_.push_back("127.0.0.1");
+    invalid_values_.push_back("");
+
+    // Initialize functors
+    print_functor_ = [](const std::string& xml_file, const std::string& profile_id, int32_t index) -> std::string
+            {
+                return builtin::initial_peers::print_address(xml_file, profile_id, index);
+            };
+    push_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind) -> void
+            {
+                builtin::initial_peers::push_address(xml_file, profile_id, kind);
+            };
+    update_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
+                    int32_t index) -> void
+            {
+                builtin::initial_peers::update_address(xml_file, profile_id, kind, index);
+            };
+    clear_functor_ = [](const std::string& xml_file, const std::string& profile_id, int32_t index) -> void
+            {
+                builtin::initial_peers::clear_address(xml_file, profile_id, index);
+            };
+
+    // Call test
+    print_push_update_clear_test();
+}
+
+TEST_F(DomainParticipantTests, builtin_initial_peers_unique_lan_id)
+{
+    // Test variables
+    valid_values_.push_back("localhost");
+    valid_values_.push_back("127.0.0.1");
+    invalid_values_.push_back("");
+
+    // Initialize functors
+    print_functor_ = [](const std::string& xml_file, const std::string& profile_id, int32_t index) -> std::string
+            {
+                return builtin::initial_peers::print_unique_lan_id(xml_file, profile_id, index);
+            };
+    push_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind) -> void
+            {
+                builtin::initial_peers::push_unique_lan_id(xml_file, profile_id, kind);
+            };
+    update_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
+                    int32_t index) -> void
+            {
+                builtin::initial_peers::update_unique_lan_id(xml_file, profile_id, kind, index);
+            };
+    clear_functor_ = [](const std::string& xml_file, const std::string& profile_id, int32_t index) -> void
+            {
+                builtin::initial_peers::clear_unique_lan_id(xml_file, profile_id, index);
+            };
+
+    // Call test
+    print_push_update_clear_test();
+}
+
+TEST_F(DomainParticipantTests, builtin_initial_peers_wan_address)
+{
+    // Test variables
+    valid_values_.push_back("127.0.0.1");
+    valid_values_.push_back("192.168.1.2");
+    invalid_values_.push_back("localhost");
+    
+    // Initialize functors
+    print_functor_ = [](const std::string& xml_file, const std::string& profile_id, int32_t index) -> std::string
+            {
+                return builtin::initial_peers::print_wan_address(xml_file, profile_id, index);
+            };
+    push_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind) -> void
+            {
+                builtin::initial_peers::push_wan_address(xml_file, profile_id, kind);
+            };
+    update_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
+                    int32_t index) -> void
+            {
+                builtin::initial_peers::update_wan_address(xml_file, profile_id, kind, index);
+            };
+    clear_functor_ = [](const std::string& xml_file, const std::string& profile_id, int32_t index) -> void
+            {
+                builtin::initial_peers::clear_wan_address(xml_file, profile_id, index);
             };
 
     // Call test
