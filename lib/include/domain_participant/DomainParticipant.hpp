@@ -23,6 +23,8 @@
 #include <vector>
 
 #include <fastdds_qos_profiles_manager_dll.h>
+#include <utils/ParseXML.hpp>
+#include <utils/ParseXMLTags.hpp>
 
 namespace eprosima {
 namespace qosprof {

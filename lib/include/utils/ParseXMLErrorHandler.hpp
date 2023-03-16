@@ -23,11 +23,12 @@
 
 #include <fastdds_qos_profiles_manager_dll.h>
 
+#include <xercesc/sax/HandlerBase.hpp>
 #include <xercesc/sax/ErrorHandler.hpp>
 
 #include <exception/Exception.hpp>
 
-class ParseXMLErrorHandler : public ErrorHandler
+class ParseXMLErrorHandler : public xercesc::ErrorHandler
 {
 public:
 
@@ -43,14 +44,14 @@ public:
 
     ~ParseXMLErrorHandler();
 
-    void warning(const SAXParseException& ex);
-    void error(const SAXParseException& ex);
-    void fatalError(const SAXParseException& ex);
+    void warning(const xercesc::SAXParseException& ex);
+    void error(const xercesc::SAXParseException& ex);
+    void fatalError(const xercesc::SAXParseException& ex);
 
     void resetErrors();
 
 private:
     Kind kind;
-    void reportParseException(const SAXParseException& ex);
+    void reportParseException(const xercesc::SAXParseException& ex);
 };
 #endif // _FAST_DDS_QOS_PROFILES_MANAGER_UTILS_PARSE_XML_ERROR_HANDLER_HPP_

@@ -31,35 +31,35 @@ ParseXMLErrorHandler::ParseXMLErrorHandler(Kind k)
     kind = k;
 }
 
-void ParseXMLErrorHandler::warning(const SAXParseException& ex)
+void ParseXMLErrorHandler::warning(const xercesc::SAXParseException& ex)
 {
     reportParseException(ex);
 }
 
-void ParseXMLErrorHandler::error(const SAXParseException& ex)
+void ParseXMLErrorHandler::error(const xercesc::SAXParseException& ex)
 {
     reportParseException(ex);
 }
 
-void ParseXMLErrorHandler::fatalError(const SAXParseException& ex)
+void ParseXMLErrorHandler::fatalError(const xercesc::SAXParseException& ex)
 {
     reportParseException(ex);
 }
 
 void ParseXMLErrorHandler::resetErrors() { }
 
-void ParseXMLErrorHandler::reportParseException(const SAXParseException& ex)
+void ParseXMLErrorHandler::reportParseException(const xercesc::SAXParseException& ex)
 {
     switch (kind){
         case Kind::ElementInvalid:
-            throw ElementInvalid(ex.getMessage());
+            throw eprosima::qosprof::ElementInvalid(xercesc::XMLString::transcode(ex.getMessage()));
             break;
         case Kind::FileNotFound:
-            throw FileNotFound(ex.getMessage());
+            throw eprosima::qosprof::FileNotFound(xercesc::XMLString::transcode(ex.getMessage()));
             break;
         case Kind::Unsupported:
         default:
-            throw Unsupported(ex.getMessage());
+            throw eprosima::qosprof::Unsupported(xercesc::XMLString::transcode(ex.getMessage()));
             break;
     }
     return;

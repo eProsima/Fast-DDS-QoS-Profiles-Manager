@@ -58,11 +58,18 @@ set(${PROJECT_NAME}_source_files
 
 add_library(${PROJECT_NAME} SHARED ${${PROJECT_NAME}_source_files})
 
+find_package(XercesC)
+
 target_include_directories(${PROJECT_NAME} PUBLIC
     ${PROJECT_SOURCE_DIR}/include
     ${PROJECT_BINARY_DIR}/include
     PRIVATE
-    ${PROJECT_SOURCE_DIR}/src)
+    ${PROJECT_SOURCE_DIR}/src
+    ${XercesC_INCLUDE_DIR})
+
+# Include XML library links
+target_link_libraries(${PROJECT_NAME} ${XercesC_LIBRARIES})
+
 
 ###############################################################################
 # Testing options

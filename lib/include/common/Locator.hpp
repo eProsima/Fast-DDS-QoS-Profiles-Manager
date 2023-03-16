@@ -23,6 +23,8 @@
 
 #include <fastdds_qos_profiles_manager_dll.h>
 
+#include <utils/ParseXML.hpp>
+
 namespace eprosima {
 namespace qosprof {
 namespace common {
@@ -40,7 +42,7 @@ namespace locator {
  * @return std::string XML section containing the specific locator list.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
-        const DOMElement& xml_node);
+        const xercesc::DOMElement& xml_node);
 
 /**
  * @brief Parse XML file and print the specific locator.
@@ -51,7 +53,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
  * @return std::string XML section containing the locator.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
-        const DOMElement& xml_node,
+        const xercesc::DOMElement& xml_node,
         int32_t index);
 
 /**
@@ -63,7 +65,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
  * @return std::string locator kind.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_kind(
-        const DOMElement& xml_node,
+        const xercesc::DOMElement& xml_node,
         int32_t index);
 
 /**
@@ -75,7 +77,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_kind(
  * @return std::string locator port.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_port(
-        const DOMElement& xml_node,
+        const xercesc::DOMElement& xml_node,
         int32_t index);
 
 /**
@@ -88,7 +90,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_port(
  * @return std::string locator TCP physical port.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_physical_port(
-        const DOMElement& xml_node,
+        const xercesc::DOMElement& xml_node,
         int32_t index);
 
 /**
@@ -100,7 +102,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_physical_port(
  * @return std::string locator IP address.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_address(
-        const DOMElement& xml_node,
+        const xercesc::DOMElement& xml_node,
         int32_t index);
 
 /**
@@ -113,7 +115,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_address(
  * @return std::string locator TCPv4 unique LAN ID.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_unique_lan_id(
-        const DOMElement& xml_node,
+        const xercesc::DOMElement& xml_node,
         int32_t index);
 
 /**
@@ -126,7 +128,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_unique_lan_id(
  * @return std::string locator TCPv4 WAN IP address.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_wan_address(
-        const DOMElement& xml_node,
+        const xercesc::DOMElement& xml_node,
         int32_t index);
 
 /************************************************************************/
@@ -141,7 +143,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_wan_address(
  * @return uint32_t Number of locators in the list.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t size(
-        const DOMElement& xml_node);
+        const xercesc::DOMElement& xml_node);
 
 /************************************************************************/
 /* Clear functions                                                      */
@@ -153,7 +155,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t size(
  * @param[in] xml_node Node of the given XML file where the element is located
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
-        const DOMElement& xml_node);
+        const xercesc::DOMElement& xml_node);
 
 /**
  * @brief Remove specific locator.
@@ -164,7 +166,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
  * @throw ElementNotFound Exception if the element does not exist in the collection.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
-        const DOMElement& xml_node,
+        const xercesc::DOMElement& xml_node,
         int32_t index);
 
 /**
@@ -176,7 +178,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
  * @throw ElementNotFound Exception if the element does not exist in the collection.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_port(
-        const DOMElement& xml_node,
+        const xercesc::DOMElement& xml_node,
         int32_t index);
 
 /**
@@ -188,7 +190,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_port(
  * @throw ElementNotFound Exception if the element does not exist in the collection.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_physical_port(
-        const DOMElement& xml_node,
+        const xercesc::DOMElement& xml_node,
         int32_t index);
 
 /**
@@ -200,7 +202,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_physical_port(
  * @throw ElementNotFound Exception if the element does not exist in the collection.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_address(
-        const DOMElement& xml_node,
+        const xercesc::DOMElement& xml_node,
         int32_t index);
 
 /**
@@ -212,7 +214,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_address(
  * @throw ElementNotFound Exception if the element does not exist in the collection.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_unique_lan_id(
-        const DOMElement& xml_node,
+        const xercesc::DOMElement& xml_node,
         int32_t index);
 
 /**
@@ -224,7 +226,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_unique_lan_id(
  * @throw ElementNotFound Exception if the element does not exist in the collection.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_wan_address(
-        const DOMElement& xml_node,
+        const xercesc::DOMElement& xml_node,
         int32_t index);
 
 /************************************************************************/
@@ -240,7 +242,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_wan_address(
  * @throw ElementInvalid Exception if the provided locator kind is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_kind(
-        const DOMElement& xml_node,
+        const xercesc::DOMElement& xml_node,
         const std::string& kind);
 
 /**
@@ -254,7 +256,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_kind(
  * @throw ElementNotFound Exception if the list does not contain any element in index position.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_kind(
-        const DOMElement& xml_node,
+        const xercesc::DOMElement& xml_node,
         const std::string& kind,
         int32_t index);
 
@@ -267,7 +269,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_kind(
  * @throw ElementInvalid Exception if the provided locator port is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_port(
-        const DOMElement& xml_node,
+        const xercesc::DOMElement& xml_node,
         const std::string& port);
 
 /**
@@ -281,7 +283,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_port(
  * @throw ElementNotFound Exception if the list does not contain any element in index position.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_port(
-        const DOMElement& xml_node,
+        const xercesc::DOMElement& xml_node,
         const std::string& port,
         int32_t index);
 
@@ -294,7 +296,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_port(
  * @throw ElementInvalid Exception if the provided locator physical port is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_physical_port(
-        const DOMElement& xml_node,
+        const xercesc::DOMElement& xml_node,
         const std::string& physical_port);
 
 /**
@@ -308,7 +310,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_physical_port(
  * @throw ElementNotFound Exception if the list does not contain any element in index position.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_physical_port(
-        const DOMElement& xml_node,
+        const xercesc::DOMElement& xml_node,
         const std::string& physical_port,
         int32_t index);
 
@@ -321,7 +323,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_physical_port(
  * @throw ElementInvalid Exception if the provided locator IP address is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_address(
-        const DOMElement& xml_node,
+        const xercesc::DOMElement& xml_node,
         const std::string& address);
 
 /**
@@ -335,7 +337,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_address(
  * @throw ElementNotFound Exception if the list does not contain any element in index position.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_address(
-        const DOMElement& xml_node,
+        const xercesc::DOMElement& xml_node,
         const std::string& address,
         int32_t index);
 
@@ -348,7 +350,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_address(
  * @throw ElementInvalid Exception if the provided identifier is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_unique_lan_id(
-        const DOMElement& xml_node,
+        const xercesc::DOMElement& xml_node,
         const std::string& unique_lan_id);
 
 /**
@@ -362,7 +364,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_unique_lan_id(
  * @throw ElementNotFound Exception if the list does not contain any element in index position.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_unique_lan_id(
-        const DOMElement& xml_node,
+        const xercesc::DOMElement& xml_node,
         const std::string& unique_lan_id,
         int32_t index);
 
@@ -375,7 +377,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_unique_lan_id(
  * @throw ElementInvalid Exception if the provided IP address is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_wan_address(
-        const DOMElement& xml_node,
+        const xercesc::DOMElement& xml_node,
         const std::string& wan_address);
 
 /**
@@ -389,7 +391,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_wan_address(
  * @throw ElementNotFound Exception if the list does not contain any element in index position.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_wan_address(
-        const DOMElement& xml_node,
+        const xercesc::DOMElement& xml_node,
         const std::string& wan_address,
         int32_t index);
 

@@ -27,68 +27,73 @@
 #include <xercesc/util/XMLString.hpp>
 #include <xercesc/dom/DOM.hpp>
 #include <xercesc/parsers/XercesDOMParser.hpp>
+#include <xercesc/framework/LocalFileFormatTarget.hpp>
 
 #include <utils/ParseXMLErrorHandler.hpp>
 
-XercesDOMParser* openXML(
+xercesc::XercesDOMParser* openXML(
         const std::string& xml_file);
 
 void closeXML();
 
-DOMNode* getNode(
-        const DOMNodeList& tagNodeList,
+xercesc::DOMNode* getNode(
+        const xercesc::DOMNodeList& tagNodeList,
         const std::string& tagName,
         int32_t index,
         const std::string& attName,
         const std::string& attValue);
 
 void validateXML(
-        const std::string& xmlFile
-        const XercesDOMParser& xmlParser);
+        const std::string& xmlFile,
+        const xercesc::XercesDOMParser& xmlParser);
 
 void saveXML(
         const std::string& xmlFile,
-        const DOMDocument& xmlDoc);
+        const xercesc::DOMDocument& xmlDoc);
 
 
 
 
 
-DOMNode* getNode(
-        const XercesDOMParser& xmlParser,
+xercesc::DOMNode* getNode(
+        const xercesc::XercesDOMParser& xmlParser,
+        const std::string& tagName);
+
+xercesc::DOMNode* getNode(
+        const xercesc::XercesDOMParser& xmlParser,
         const std::string& tagName,
         int32_t index);
 
-DOMNode* getNode(
-        const XercesDOMParser& xmlParser,
+xercesc::DOMNode* getNode(
+        const xercesc::XercesDOMParser& xmlParser,
         const std::string& tagName,
         const std::string& attName,
         const std::string& attValue);
 
-DOMNode* getNode(
-        const XercesDOMParser& xmlParser,
+xercesc::DOMNode* getNode(
+        const xercesc::XercesDOMParser& xmlParser,
         const std::string& tagName,
         int32_t index,
         const std::string& attName,
         const std::string& attValue);
 
-DOMNode* getNode(
-        const DOMNode& parentNode,
+xercesc::DOMNode* getNode(
+        const xercesc::DOMNode& parentNode,
         const std::string& tagName);
 
-DOMNode* getNode(
-        const DOMNode& parentNode,
+xercesc::DOMNode* getNode(
+        const xercesc::DOMNode& parentNode,
         const std::string& tagName,
         int32_t index);
 
-DOMNode* getNode(
-        const DOMNode& parentNode,
+xercesc::DOMNode* getNode(
+        const xercesc::DOMNode& parentNode,
         const std::string& tagName,
         const std::string& attName,
         const std::string& attValue);
 
-DOMNode* getNode(
-        const DOMNode& parentNode,
+xercesc::DOMNode* getNode(
+        const xercesc::DOMNode& parentNode,
         const std::string& tagName,
         int32_t index,
         const std::string& attName,
