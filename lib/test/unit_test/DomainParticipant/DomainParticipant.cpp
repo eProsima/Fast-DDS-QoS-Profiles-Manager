@@ -19,6 +19,7 @@
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
 
+#include <domain_participant/builtin/MetatrafficExternalUnicastLocators.hpp>
 #include <domain_participant/DefaultExternalUnicastLocators.hpp>
 #include <domain_participant/DomainParticipant.hpp>
 #include <exception/Exception.hpp>
@@ -521,6 +522,211 @@ TEST_F(DomainParticipantTests, default_external_unicast_locators_mask)
     clear_functor_ = [](const std::string& xml_file, const std::string& profile_id, int32_t index) -> void
             {
                 default_external_unicast_locators::clear_mask(xml_file, profile_id, index);
+            };
+
+    // Call test
+    print_push_update_clear_test();
+}
+
+/**********************************************************************************************************************/
+/* DOMAIN PARTICIPANT TESTS                                                                                           */
+/* Builtin::MetatrafficExternalUnicastLocators                                                                        */
+/**********************************************************************************************************************/
+TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_kind)
+{
+    // Test variables
+    valid_values_.push_back("udp_v4");
+    valid_values_.push_back("udp_v6");
+    invalid_values_.push_back("tcp_v4");
+
+    // Expected results
+    print_results_.push_back("udpv4");
+    print_results_.push_back("udpv6");
+
+    // Initialize functors
+    print_functor_ = [](const std::string& xml_file, const std::string& profile_id, int32_t index) -> std::string
+            {
+                return builtin::metatraffic_external_unicast_locators::print_kind(xml_file, profile_id, index);
+            };
+    push_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind) -> void
+            {
+                builtin::metatraffic_external_unicast_locators::push_kind(xml_file, profile_id, kind);
+            };
+    update_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
+                    int32_t index) -> void
+            {
+                builtin::metatraffic_external_unicast_locators::update_kind(xml_file, profile_id, kind, index);
+            };
+
+    // Call test
+    print_push_update_clear_test();
+}
+
+TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_port)
+{
+    // Test variables
+    valid_values_.push_back("11811");
+    valid_values_.push_back("11812");
+    invalid_values_.push_back("invalid");
+    invalid_values_.push_back("65536");
+    invalid_values_.push_back("-11811");
+    invalid_messages_.push_back("does not match regular expression facet");
+    invalid_messages_.push_back("must be less than or equal to maxInclusive facet value");
+    invalid_messages_.push_back("must be greater than or equal to minInclusive facet value");
+
+    // Initialize functors
+    print_functor_ = [](const std::string& xml_file, const std::string& profile_id, int32_t index) -> std::string
+            {
+                return builtin::metatraffic_external_unicast_locators::print_port(xml_file, profile_id, index);
+            };
+    push_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind) -> void
+            {
+                builtin::metatraffic_external_unicast_locators::push_port(xml_file, profile_id, kind);
+            };
+    update_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
+                    int32_t index) -> void
+            {
+                builtin::metatraffic_external_unicast_locators::update_port(xml_file, profile_id, kind, index);
+            };
+    clear_functor_ = [](const std::string& xml_file, const std::string& profile_id, int32_t index) -> void
+            {
+                builtin::metatraffic_external_unicast_locators::clear_port(xml_file, profile_id, index);
+            };
+
+    // Call test
+    print_push_update_clear_test();
+}
+
+TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_address)
+{
+    // Test variables
+    valid_values_.push_back("localhost");
+    valid_values_.push_back("127.0.0.1");
+    invalid_values_.push_back("");
+
+    // Initialize functors
+    print_functor_ = [](const std::string& xml_file, const std::string& profile_id, int32_t index) -> std::string
+            {
+                return builtin::metatraffic_external_unicast_locators::print_address(xml_file, profile_id, index);
+            };
+    push_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind) -> void
+            {
+                builtin::metatraffic_external_unicast_locators::push_address(xml_file, profile_id, kind);
+            };
+    update_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
+                    int32_t index) -> void
+            {
+                builtin::metatraffic_external_unicast_locators::update_address(xml_file, profile_id, kind, index);
+            };
+    clear_functor_ = [](const std::string& xml_file, const std::string& profile_id, int32_t index) -> void
+            {
+                builtin::metatraffic_external_unicast_locators::clear_address(xml_file, profile_id, index);
+            };
+
+    // Call test
+    print_push_update_clear_test();
+}
+
+TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_externality)
+{
+    // Test variables
+    valid_values_.push_back("1");
+    valid_values_.push_back("126");
+    invalid_values_.push_back("invalid");
+    invalid_values_.push_back("256");
+    invalid_values_.push_back("0");
+    invalid_messages_.push_back("does not match regular expression facet");
+    invalid_messages_.push_back("must be less than or equal to maxInclusive facet value");
+    invalid_messages_.push_back("must be greater than or equal to minInclusive facet value");
+
+    // Initialize functors
+    print_functor_ = [](const std::string& xml_file, const std::string& profile_id, int32_t index) -> std::string
+            {
+                return builtin::metatraffic_external_unicast_locators::print_externality(xml_file, profile_id, index);
+            };
+    push_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind) -> void
+            {
+                builtin::metatraffic_external_unicast_locators::push_externality(xml_file, profile_id, kind);
+            };
+    update_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
+                    int32_t index) -> void
+            {
+                builtin::metatraffic_external_unicast_locators::update_externality(xml_file, profile_id, kind, index);
+            };
+    clear_functor_ = [](const std::string& xml_file, const std::string& profile_id, int32_t index) -> void
+            {
+                builtin::metatraffic_external_unicast_locators::clear_externality(xml_file, profile_id, index);
+            };
+
+    // Call test
+    print_push_update_clear_test();
+}
+
+TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_cost)
+{
+    // Test variables
+    valid_values_.push_back("0");
+    valid_values_.push_back("126");
+    invalid_values_.push_back("invalid");
+    invalid_values_.push_back("256");
+    invalid_values_.push_back("-1");
+    invalid_messages_.push_back("does not match regular expression facet");
+    invalid_messages_.push_back("must be less than or equal to maxInclusive facet value");
+    invalid_messages_.push_back("must be greater than or equal to minInclusive facet value");
+
+    // Initialize functors
+    print_functor_ = [](const std::string& xml_file, const std::string& profile_id, int32_t index) -> std::string
+            {
+                return builtin::metatraffic_external_unicast_locators::print_cost(xml_file, profile_id, index);
+            };
+    push_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind) -> void
+            {
+                builtin::metatraffic_external_unicast_locators::push_cost(xml_file, profile_id, kind);
+            };
+    update_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
+                    int32_t index) -> void
+            {
+                builtin::metatraffic_external_unicast_locators::update_cost(xml_file, profile_id, kind, index);
+            };
+    clear_functor_ = [](const std::string& xml_file, const std::string& profile_id, int32_t index) -> void
+            {
+                builtin::metatraffic_external_unicast_locators::clear_cost(xml_file, profile_id, index);
+            };
+
+    // Call test
+    print_push_update_clear_test();
+}
+
+TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_mask)
+{
+    // Test variables
+    // Default: UDP v4
+    valid_values_.push_back("1");
+    valid_values_.push_back("24");
+    invalid_values_.push_back("invalid");
+    invalid_values_.push_back("32");
+    invalid_values_.push_back("0");
+    invalid_messages_.push_back("does not match regular expression facet");
+    invalid_messages_.push_back("must be less than or equal to maxInclusive facet value");
+    invalid_messages_.push_back("must be greater than or equal to minInclusive facet value");
+
+    // Initialize functors
+    print_functor_ = [](const std::string& xml_file, const std::string& profile_id, int32_t index) -> std::string
+            {
+                return builtin::metatraffic_external_unicast_locators::print_mask(xml_file, profile_id, index);
+            };
+    push_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind) -> void
+            {
+                builtin::metatraffic_external_unicast_locators::push_mask(xml_file, profile_id, kind);
+            };
+    update_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
+                    int32_t index) -> void
+            {
+                builtin::metatraffic_external_unicast_locators::update_mask(xml_file, profile_id, kind, index);
+            };
+    clear_functor_ = [](const std::string& xml_file, const std::string& profile_id, int32_t index) -> void
+            {
+                builtin::metatraffic_external_unicast_locators::clear_mask(xml_file, profile_id, index);
             };
 
     // Call test
