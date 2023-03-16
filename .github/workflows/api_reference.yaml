@@ -3,6 +3,9 @@ name: api_reference
 on:
   workflow_dispatch:
   push:
+    # Only run api_reference action when pushing to main branch
+    branches:
+      - main
   pull_request:
     # Only run api_reference action when a header file has been modified.
     paths:
