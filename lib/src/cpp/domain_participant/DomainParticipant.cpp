@@ -40,9 +40,8 @@ std::string print(
     throw Unsupported("Unsupported");
 }
 
-std::string print_is_default_profile(
-        const std::string& xml_file,
-        const std::string& profile_id)
+std::string print_default_profile(
+        const std::string& xml_file)
 {
     throw Unsupported("Unsupported");
 }
@@ -160,9 +159,8 @@ void clear(
     throw Unsupported("Unsupported");
 }
 
-void clear_is_default_profile(
-        const std::string& xml_file,
-        const std::string& profile_id)
+void clear_default_profile(
+        const std::string& xml_file)
 {
     throw Unsupported("Unsupported");
 }
@@ -253,10 +251,9 @@ void clear_prefix(
     throw Unsupported("Unsupported");
 }
 
-void set_is_default_profile(
+void set_default_profile(
         const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& is_default_profile)
+        const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }

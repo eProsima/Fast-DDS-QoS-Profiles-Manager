@@ -17,4 +17,5 @@
 ###############################################################################
 find_package(GTest REQUIRED)
 
+add_subdirectory(DomainParticipant)
 add_subdirectory(TransportDescriptor)
