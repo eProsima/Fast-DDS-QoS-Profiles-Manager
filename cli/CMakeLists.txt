@@ -46,8 +46,8 @@ find_package(docopt COMPONENTS CXX REQUIRED)
 ###############################################################################
 file(GLOB_RECURSE ALL_HEADERS
     ${PROJECT_SOURCE_DIR}/include/*.hpp
-    ${PROJECT_SOURCE_DIR}/src/*.hpp
-    ${PROJECT_SOURCE_DIR}/src/*.h
+    ${PROJECT_SOURCE_DIR}/src/cpp/*.hpp
+    ${PROJECT_SOURCE_DIR}/src/cpp/*.h
     )
 
 set(${PROJECT_NAME}_source_files
@@ -60,7 +60,9 @@ add_executable(${EXECUTABLE_NAME} ${${PROJECT_NAME}_source_files})
 
 target_include_directories(${EXECUTABLE_NAME} PUBLIC
     ${PROJECT_SOURCE_DIR}/include
-    ${PROJECT_BINARY_DIR}/include)
+    ${PROJECT_BINARY_DIR}/include
+    PRIVATE
+    ${PROJECT_SOURCE_DIR}/src/cpp>)
 
 target_link_libraries(${EXECUTABLE_NAME}
     docopt
