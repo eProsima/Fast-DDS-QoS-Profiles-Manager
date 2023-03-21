@@ -17,6 +17,12 @@ cmake_policy(VERSION 3.16.3...3.20.3)
 
 project(fastdds_qos_profiles_manager_cli VERSION "0.1.0" LANGUAGES CXX)
 
+set(EXECUTABLE_NAME "fastddsqosprof")
+
+# Configure config file
+configure_file(${PROJECT_SOURCE_DIR}/include/config.h.in
+    ${PROJECT_BINARY_DIR}/include/config.h)
+
 ###############################################################################
 # Default shared libraries
 ###############################################################################
@@ -50,9 +56,13 @@ set(${PROJECT_NAME}_source_files
     src/cpp/fastdds_qos_profiles_manager_cli.cpp
 )
 
-add_executable(${PROJECT_NAME} ${${PROJECT_NAME}_source_files})
+add_executable(${EXECUTABLE_NAME} ${${PROJECT_NAME}_source_files})
 
-target_link_libraries(${PROJECT_NAME}
+target_include_directories(${EXECUTABLE_NAME} PUBLIC
+    ${PROJECT_SOURCE_DIR}/include
+    ${PROJECT_BINARY_DIR}/include)
+
+target_link_libraries(${EXECUTABLE_NAME}
     docopt
     fastdds_qos_profiles_manager
 )
@@ -60,8 +70,14 @@ target_link_libraries(${PROJECT_NAME}
 ###############################################################################
 # Packaging
 ###############################################################################
-install(TARGETS ${PROJECT_NAME}
+install(TARGETS ${EXECUTABLE_NAME}
     EXPORT ${PROJECT_NAME}-targets
     RUNTIME DESTINATION ${BIN_INSTALL_DIR}
     COMPONENT bin
     )
+
+# Install config.h header
+install(FILES ${PROJECT_BINARY_DIR}/include/config.h
+    DESTINATION include/
+    COMPONENT headers
+)
