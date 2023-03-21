@@ -12,10 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef _FASTDDS_QOS_PROFILES_MANAGER_CLI_CONSTANTS_HPP_
-#define _FASTDDS_QOS_PROFILES_MANAGER_CLI_CONSTANTS_HPP_
-
-#include <string_view>
+#ifndef _FASTDDS_QOS_PROFILES_MANAGER_CLI_PARSER_CONSTANTS_HPP_
+#define _FASTDDS_QOS_PROFILES_MANAGER_CLI_PARSER_CONSTANTS_HPP_
 
 namespace eprosima {
 namespace qosprof_cli {
@@ -36,4 +34,4 @@ constexpr const char* HELP_VERB = "help";
 } // eprosima
 } // qosprof_cli
 
-#endif // _FASTDDS_QOS_PROFILES_MANAGER_CLI_CONSTANTS_HPP_
+#endif // _FASTDDS_QOS_PROFILES_MANAGER_CLI_PARSER_CONSTANTS_HPP_

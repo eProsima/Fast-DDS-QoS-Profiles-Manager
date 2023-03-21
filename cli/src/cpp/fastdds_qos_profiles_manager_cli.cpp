@@ -19,7 +19,7 @@
 #include <docopt/docopt.h>
 
 #include "config.h"
-#include "fastdds_qos_profiles_manager_cli_constants.hpp"
+#include "parser_constants.hpp"
 #include "subparsers/set_subparser.hpp"
 
 using namespace eprosima::qosprof_cli;
