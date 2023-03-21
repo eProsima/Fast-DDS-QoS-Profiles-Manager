@@ -741,12 +741,12 @@ TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_mas
 TEST_F(DomainParticipantTests, builtin_initial_peers_kind)
 {
     // Test variables
-    valid_values_.push_back("udp_v4");
+    valid_values_.push_back("tcp_v4");
     valid_values_.push_back("udp_v6");
-    invalid_values_.push_back("tcp_v4");
+    invalid_values_.push_back("shm");
 
     // Expected results
-    print_results_.push_back("udpv4");
+    print_results_.push_back("tcpv4");
     print_results_.push_back("udpv6");
 
     // Initialize functors
