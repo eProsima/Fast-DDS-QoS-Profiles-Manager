@@ -1,0 +1,12 @@
+{
+    "names":
+    {
+        "fastdds_qos_profiles_manager":
+        {
+            "cmake-args":
+            [
+                "-DEPROSIMA_BUILD_TESTS=ON",
+            ]
+        },
+    }
+}

@@ -51,6 +51,10 @@ void saveXML(
         const std::string& xmlFile,
         const xercesc::DOMDocument& xmlDoc);
 
+void clearNode(
+        const std::string& xmlFile,
+        xercesc::DOMNode& parentNode,
+        xercesc::DOMNode& removeNode);
 
 
 

@@ -282,13 +282,13 @@ void clear_name(
     {
         // Given file does not exist
         throw eprosima::qosprof::FileNotFound(ex);
-        return NULL;
+        return;
     }
     catch (const eprosima::qosprof::Unsupported ex)
     {
         // Could not initialize XML workspace
         throw eprosima::qosprof::Unsupported(ex);
-        return NULL;
+        return;
     }
 
     // Obtain nodes
@@ -309,7 +309,7 @@ void clear_name(
         throw eprosima::qosprof::ElementNotFound(ex);
 
         closeXML();
-        return NULL;
+        return;
     }
 
     // remove name

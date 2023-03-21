@@ -229,9 +229,29 @@ void saveXML(
     delete xmlTargetName;
 }
 
+void clearNode(
+        const std::string& xmlFile,
+        xercesc::DOMNode& parentNode,
+        xercesc::DOMNode& removeNode)
 
-
-
+{
+    if (parentNode.hasChildNodes())
+    {
+        if (parentNode.getChildNodes()->getLength() == 1 &&
+            parentNode.getChildNodes()->item(0)->getNodeName() == removeNode.getNodeName())
+        {
+            // report exception
+            std::string message = "could not delete last element from ";
+            message.append(xercesc::XMLString::transcode(parentNode.getNodeValue()));
+            message.append(". Delete element by running the predecessor clear API.\n");
+            throw eprosima::qosprof::ElementInvalid(message);
+            return;
+        }
+    }
+    parentNode.removeChild(&removeNode);
+    removeNode.release();
+    delete &removeNode;
+}
 
 xercesc::DOMNode* getNode(
         const xercesc::XercesDOMParser& xmlParser,
