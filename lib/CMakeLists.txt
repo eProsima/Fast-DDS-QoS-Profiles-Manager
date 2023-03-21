@@ -24,6 +24,28 @@ configure_file(doxyfile.in ${PROJECT_BINARY_DIR}/doc/doxyfile @ONLY IMMEDIATE)
 configure_file(${PROJECT_SOURCE_DIR}/include/config.h.in
     ${PROJECT_BINARY_DIR}/include/config.h)
 
+###############################################################################
+# Installation paths
+###############################################################################
+set(BIN_INSTALL_DIR bin/ CACHE PATH "Installation directory for binaries")
+set(INCLUDE_INSTALL_DIR include/ CACHE PATH "Installation directory for C++ headers")
+set(LIB_INSTALL_DIR lib/ CACHE PATH "Installation directory for libraries")
+set(DATA_INSTALL_DIR share/ CACHE PATH "Installation directory for data")
+set(LICENSE_INSTALL_DIR ${DATA_INSTALL_DIR}/${PROJECT_NAME} CACHE PATH "Installation directory for licenses")
+set(INSTALL_DESTINATION_PATH ${DATA_INSTALL_DIR}/${CMAKE_PROJECT_NAME}/cmake)
+
+###############################################################################
+# Default shared libraries
+###############################################################################
+# Global flag to cause add_library() to create shared libraries if on.
+# If set to true, this will cause all libraries to be built shared
+# unless the library was explicitly added as a static library.
+option(BUILD_SHARED_LIBS "Create shared libraries by default" ON)
+
+if(BUILD_SHARED_LIBS)
+    set(FASTDDS_QOS_PROFILES_MANAGER_DYNAMIC ON)
+endif()
+
 file(GLOB_RECURSE ALL_HEADERS
     ${PROJECT_SOURCE_DIR}/include/*.hpp
     ${PROJECT_SOURCE_DIR}/src/*.hpp
@@ -56,10 +78,10 @@ set(${PROJECT_NAME}_source_files
 add_library(${PROJECT_NAME} SHARED ${${PROJECT_NAME}_source_files})
 
 target_include_directories(${PROJECT_NAME} PUBLIC
-    ${PROJECT_SOURCE_DIR}/include
-    ${PROJECT_BINARY_DIR}/include
+    $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+    $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/include>
     PRIVATE
-    ${PROJECT_SOURCE_DIR}/src)
+    $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src/cpp>)
 
 ###############################################################################
 # Testing options
@@ -77,18 +99,34 @@ endif()
 # Packaging
 ###############################################################################
 
-# install binaries
+# Install library
+
+# Generate different target names depending on linking
+get_target_property(TARGET_TYPE ${PROJECT_NAME} TYPE)
+if(TARGET_TYPE STREQUAL "SHARED_LIBRARY")
+    set(FASTDDS_QOS_PROFILES_MANAGER_LINKING dynamic)
+else()
+    set(FASTDDS_QOS_PROFILES_MANAGER_LINKING static)
+endif()
+
 install(TARGETS ${PROJECT_NAME}
-    COMPONENT bin
-    EXPORT ${PROJECT_NAME}_Targets
+    COMPONENT libraries
+    EXPORT ${PROJECT_NAME}-${FASTDDS_QOS_PROFILES_MANAGER_LINKING}-targets
     RUNTIME DESTINATION ${BIN_INSTALL_DIR}
     LIBRARY DESTINATION ${LIB_INSTALL_DIR}
     ARCHIVE DESTINATION ${LIB_INSTALL_DIR}
     )
 
+export(TARGETS ${PROJECT_NAME} FILE ${PROJECT_BINARY_DIR}/cmake/config/${PROJECT_NAME}-${FASTDDS_QOS_PROFILES_MANAGER_LINKING}-targets.cmake)
+
+install(EXPORT ${PROJECT_NAME}-${FASTDDS_QOS_PROFILES_MANAGER_LINKING}-targets
+    DESTINATION ${INSTALL_DESTINATION_PATH}
+    COMPONENT cmake
+    )
+
 # Install public headers
 install(DIRECTORY include/
-    DESTINATION include/
+    DESTINATION ${INCLUDE_INSTALL_DIR}
     COMPONENT headers
     FILES_MATCHING
     PATTERN "*.h"
@@ -97,6 +135,26 @@ install(DIRECTORY include/
 
 # Install config.h header
 install(FILES ${PROJECT_BINARY_DIR}/include/config.h
-    DESTINATION include/
+    DESTINATION ${INCLUDE_INSTALL_DIR}
     COMPONENT headers
 )
+
+###############################################################################
+# Create CMake package config file
+###############################################################################
+include(CMakePackageConfigHelpers)
+
+configure_package_config_file(${PROJECT_SOURCE_DIR}/cmake/packaging/Config.cmake.in
+    ${PROJECT_BINARY_DIR}/cmake/config/${PROJECT_NAME}-config.cmake
+    INSTALL_DESTINATION ${INSTALL_DESTINATION_PATH}
+    PATH_VARS BIN_INSTALL_DIR INCLUDE_INSTALL_DIR LIB_INSTALL_DIR
+    )
+write_basic_package_version_file(${PROJECT_BINARY_DIR}/cmake/config/${PROJECT_NAME}-config-version.cmake
+    VERSION ${PROJECT_VERSION}
+    COMPATIBILITY SameMajorVersion
+    )
+install(FILES ${PROJECT_BINARY_DIR}/cmake/config/${PROJECT_NAME}-config.cmake
+    ${PROJECT_BINARY_DIR}/cmake/config/${PROJECT_NAME}-config-version.cmake
+    DESTINATION ${INSTALL_DESTINATION_PATH}
+    COMPONENT cmake
+    )
