@@ -63,7 +63,15 @@ int main(
     }
     else if (verb == VALIDATE_VERB)
     {
-        // Validate subparser
+        // Validate verb is already parsed. Ensure that no follow-up argument has been included.
+        if (args[PARSER_ARGS].asStringList().empty())
+        {
+            // Call validate method from library and handle return to output information to CLI user.
+        }
+        else
+        {
+            std::cout << "ERROR: validate verb does not support any follow-up argument" << std::endl;
+        }
     }
     else if (verb == PRINT_VERB)
     {
