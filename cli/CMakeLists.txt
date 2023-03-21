@@ -54,6 +54,7 @@ set(${PROJECT_NAME}_source_files
     ${ALL_HEADERS}
 
     src/cpp/fastdds_qos_profiles_manager_cli.cpp
+    src/cpp/subparsers/set_subparser.cpp
 )
 
 add_executable(${EXECUTABLE_NAME} ${${PROJECT_NAME}_source_files})

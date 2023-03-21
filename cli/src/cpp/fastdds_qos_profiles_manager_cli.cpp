@@ -20,6 +20,7 @@
 
 #include "config.h"
 #include "fastdds_qos_profiles_manager_cli_constants.hpp"
+#include "subparsers/set_subparser.hpp"
 
 using namespace eprosima::qosprof_cli;
 
@@ -58,7 +59,7 @@ int main(
     std::string verb = args[PARSER_VERB].asString();
     if (verb == SET_VERB)
     {
-        // Set subparser
+        set_subparser(args[PARSER_FILE].asString(), argc - 2, argv + 2);
     }
     else if (verb == VALIDATE_VERB)
     {
