@@ -14,11 +14,14 @@
 
 #include <iostream>
 #include <map>
-#include <regex>
+#include <string>
 
 #include <docopt/docopt.h>
 
 #include "config.h"
+#include "fastdds_qos_profiles_manager_cli_constants.hpp"
+
+using namespace eprosima::qosprof_cli;
 
 static const char USAGE[] =
         R"(Fast DDS QoS Profiles Manager CLI
@@ -51,6 +54,42 @@ int main(
         true,                                                       // show help if requested
         FASTDDS_QOS_PROFILES_MANAGER_CLI_VERSION_STR,               // version string
         true);                                                      // options first
+
+    std::string verb = args[PARSER_VERB].asString();
+    if (verb == SET_VERB)
+    {
+        // Set subparser
+    }
+    else if (verb == VALIDATE_VERB)
+    {
+        // Validate subparser
+    }
+    else if (verb == PRINT_VERB)
+    {
+        // Print subparser
+    }
+    else if (verb == QUERY_VERB)
+    {
+        // Query subparser
+    }
+    else if (verb == CLEAR_VERB)
+    {
+        // Clear subparser
+    }
+    else if (verb == COMPARE_VERB)
+    {
+        // Compare subparser
+    }
+    else if (verb == HELP_VERB)
+    {
+        // Help subparser
+    }
+    else
+    {
+        std::cout << "ERROR: " << verb << " verb not supported" << std::endl;
+        std::cout << USAGE << std::endl;
+        exit(1);
+    }
 
     return 0;
 }
