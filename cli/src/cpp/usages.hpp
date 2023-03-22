@@ -18,6 +18,20 @@
 namespace eprosima {
 namespace qosprof_cli {
 
+static const char COMPARE_USAGE[] =
+        R"(Fast DDS QoS Profiles Manager CLI compare verb usage
+
+    Usage:
+      fastddsqosprof <file_1> compare <file_2>
+)";
+
+static const char SET_USAGE[] =
+        R"(Fast DDS QoS Profiles Manager CLI set verb usage
+
+    Usage:
+      fastddsqosprof <file> set <element> [<value>]
+)";
+
 static const char USAGE[] =
         R"(Fast DDS QoS Profiles Manager CLI
 
@@ -44,13 +58,6 @@ static const char VALIDATE_USAGE[] =
 
     Usage:
       fastddsqosprof <file> validate        
-)";
-
-static const char COMPARE_USAGE[] =
-        R"(Fast DDS QoS Profiles Manager CLI compare verb usage
-
-    Usage:
-      fastddsqosprof <file_1> compare <file_2>
 )";
 
 } // qosprof_cli

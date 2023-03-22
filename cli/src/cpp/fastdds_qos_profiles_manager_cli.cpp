@@ -43,7 +43,17 @@ int main(
     std::string verb = args[PARSER_VERB].asString();
     if (verb == SET_VERB)
     {
-        set_subparser(args[PARSER_FILE].asString(), argc - 2, argv + 2);
+        // Set verb requires at least two more follow-up arguments: element being set
+        if (0 < args[PARSER_ARGS].asStringList().size())
+        {
+            set_subparser(args[PARSER_FILE].asString(), argc - 2, argv + 2);
+        }
+        else
+        {
+            std::cout << "ERROR: set verb requires at least one follow-up argument" << std::endl;
+            std::cout << SET_USAGE << std::endl;
+            exit(1);
+        }
     }
     else if (verb == VALIDATE_VERB)
     {
