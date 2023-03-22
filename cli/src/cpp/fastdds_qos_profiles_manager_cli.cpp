@@ -89,7 +89,8 @@ int main(
         // Query command requires at least one more follow-up arguments: element being queried
         if (0 < args[PARSER_ARGS].asStringList().size())
         {
-            main_element_parser(CommonCommands::QUERY, args[PARSER_FILE].asString(), argc - 2, argv + 2);
+            // Specific parser is required to check if there is an option (size | keys) or if the default is being used
+            std::cout << "Query subparser not yet implemented" << std::endl;
         }
         else
         {
