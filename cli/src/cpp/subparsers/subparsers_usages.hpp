@@ -29,8 +29,8 @@ static const char SET_SUBPARSER_USAGE[] =
       -h --help                 CLI set subparser options.
 
     The allowed <element> types are:
-      datawriter                Configure DataWriter profile.
       datareader                Configure DataReader profile.
+      datawriter                Configure DataWriter profile.
       help                      Available configuration options for the set command.
       intraprocess              Configure intra-process delivery.
       log                       Configure log module.
