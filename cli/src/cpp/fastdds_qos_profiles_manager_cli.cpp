@@ -20,6 +20,8 @@
 
 #include "config.h"
 #include "parser_constants.hpp"
+#include "subparsers/clear_subparser.hpp"
+#include "subparsers/help_subparser.hpp"
 #include "subparsers/print_subparser.hpp"
 #include "subparsers/query_subparser.hpp"
 #include "subparsers/set_subparser.hpp"
@@ -67,7 +69,7 @@ int main(
     }
     else if (verb == CLEAR_VERB)
     {
-        // Clear subparser
+        clear_subparser(args[PARSER_FILE].asString(), argc - 2, argv + 2);
     }
     else if (verb == COMPARE_VERB)
     {
@@ -75,7 +77,7 @@ int main(
     }
     else if (verb == HELP_VERB)
     {
-        // Help subparser
+        help_subparser(args[PARSER_FILE].asString(), argc - 2, argv + 2);
     }
     else
     {

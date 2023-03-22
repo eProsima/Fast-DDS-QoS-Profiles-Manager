@@ -12,21 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "help_subparser.hpp"
+#ifndef _FASTDDS_QOS_PROFILES_MANAGER_CLI_SUBPARSERS_HELP_SUBPARSER_HPP_
+#define _FASTDDS_QOS_PROFILES_MANAGER_CLI_SUBPARSERS_HELP_SUBPARSER_HPP_
 
-#include <iostream>
 #include <string>
 
 namespace eprosima {
 namespace qosprof_cli {
 
 void help_subparser(
-        std::string /*filename*/,
-        int /*argc*/,
-        char** /*argv*/)
-{
-    std::cout << "Help subparser not yet implemented" << std::endl;
-}
+        std::string file,
+        int argc,
+        char** argv);
 
-} // qosprof_cli
 } // eprosima
+} // qosprof_cli
+
+#endif // _FASTDDS_QOS_PROFILES_MANAGER_CLI_SUBPARSERS_HELP_SUBPARSER_HPP_

@@ -42,6 +42,8 @@ set(${PROJECT_NAME}_source_files
     ${ALL_HEADERS}
 
     src/cpp/fastdds_qos_profiles_manager_cli.cpp
+    src/cpp/subparsers/clear_subparser.cpp
+    src/cpp/subparsers/help_subparser.cpp
     src/cpp/subparsers/print_subparser.cpp
     src/cpp/subparsers/query_subparser.cpp
     src/cpp/subparsers/set_subparser.cpp
