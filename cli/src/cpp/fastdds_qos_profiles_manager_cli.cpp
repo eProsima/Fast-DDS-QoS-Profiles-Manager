@@ -51,6 +51,7 @@ int main(
         if (args[PARSER_ARGS].asStringList().empty())
         {
             // Call validate method from library and handle return to output information to CLI user.
+            std::cout << "Validate feature not yet implemented" << std::endl;
         }
         else
         {
