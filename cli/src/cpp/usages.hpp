@@ -54,6 +54,27 @@ static const char QUERY_USAGE[] =
       fastddsqosprof <file> query [size | keys] <element>
 )";
 
+static const char SET_SUBPARSER_USAGE[] =
+        R"(Set subparser: fastddsqosprof <file> set
+
+    Usage:
+      set <element> [<values>...]
+      set (-h | --help)
+
+    Options:
+      -h --help                 CLI set subparser options.
+
+    The allowed <element> types are:
+      datareader                Configure DataReader profile.
+      datawriter                Configure DataWriter profile.
+      help                      Available configuration options for the set command.
+      intraprocess              Configure intra-process delivery.
+      log                       Configure log module.
+      participant               Configure DomainParticipant profile.
+      transport_descriptor      Configure transport descriptor profile.
+      types                     Configure dynamic types.
+)";
+
 static const char SET_USAGE[] =
         R"(Fast DDS QoS Profiles Manager CLI set command usage
 

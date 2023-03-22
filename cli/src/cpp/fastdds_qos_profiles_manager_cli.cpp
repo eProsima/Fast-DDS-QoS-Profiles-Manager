@@ -20,11 +20,7 @@
 
 #include <config.h>
 #include <parser_constants.hpp>
-#include <subparsers/clear_subparser.hpp>
-#include <subparsers/help_subparser.hpp>
-#include <subparsers/print_subparser.hpp>
-#include <subparsers/query_subparser.hpp>
-#include <subparsers/set_subparser.hpp>
+#include <utils/utils.hpp>
 #include <usages.hpp>
 
 using namespace eprosima::qosprof_cli;
@@ -46,7 +42,7 @@ int main(
         // Set command requires at least one more follow-up arguments: element being set
         if (0 < args[PARSER_ARGS].asStringList().size())
         {
-            set_subparser(args[PARSER_FILE].asString(), argc - 2, argv + 2);
+            main_element_parser(CommonCommands::SET, args[PARSER_FILE].asString(), argc - 2, argv + 2);
         }
         else
         {
@@ -79,7 +75,7 @@ int main(
         }
         else if (1 == args[PARSER_ARGS].asStringList().size())
         {
-            print_subparser(args[PARSER_FILE].asString(), argc - 2, argv + 2);
+            main_element_parser(CommonCommands::PRINT, args[PARSER_FILE].asString(), argc - 2, argv + 2);
         }
         else
         {
@@ -93,7 +89,7 @@ int main(
         // Query command requires at least one more follow-up arguments: element being queried
         if (0 < args[PARSER_ARGS].asStringList().size())
         {
-            query_subparser(args[PARSER_FILE].asString(), argc - 2, argv + 2);
+            main_element_parser(CommonCommands::QUERY, args[PARSER_FILE].asString(), argc - 2, argv + 2);
         }
         else
         {
@@ -107,7 +103,7 @@ int main(
         // Clear command requires only one follow-up argument: element to be cleared
         if (1 == args[PARSER_ARGS].asStringList().size())
         {
-            clear_subparser(args[PARSER_FILE].asString(), argc - 2, argv + 2);
+            main_element_parser(CommonCommands::CLEAR, args[PARSER_FILE].asString(), argc - 2, argv + 2);
         }
         else
         {

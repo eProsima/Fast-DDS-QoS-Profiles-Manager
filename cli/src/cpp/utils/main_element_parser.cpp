@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <subparsers/set_subparser.hpp>
-
 #include <iostream>
 #include <map>
 #include <regex>
@@ -22,18 +20,41 @@
 #include <docopt/docopt.h>
 
 #include <parser_constants.hpp>
-#include <subparsers/subparsers_usages.hpp>
+#include <usages.hpp>
+#include <utils/utils.hpp>
 
 namespace eprosima {
 namespace qosprof_cli {
 
-void set_subparser(
-        std::string /*filename*/,
+void main_element_parser(
+        CommonCommands command,
+        const std::string& /*filename*/,
         int argc,
         char** argv)
 {
+    std::string usage;
+    switch (command)
+    {
+        case CommonCommands::CLEAR:
+            // usage = CLEAR_SUBPARSER_USAGE;
+            std::cout << "Clear subparser not yet implemented" << std::endl;
+            break;
+        case CommonCommands::PRINT:
+            // usage = PRINT_SUBPARSER_USAGE;
+            std::cout << "Print subparser not yet implemented" << std::endl;
+            break;
+        case CommonCommands::QUERY:
+            // usage = QUERY_SUBPARSER_USAGE;
+            std::cout << "Query subparser not yet implemented" << std::endl;
+            break;
+        case CommonCommands::SET:
+            usage = SET_SUBPARSER_USAGE;
+            break;
+        // No default because this method is only called with these CommonCommands.
+    }
+
     std::map<std::string, docopt::value> args = docopt::docopt(
-        SET_SUBPARSER_USAGE,
+        usage,
         {argv +1, argv + argc },
         true,
         {},
@@ -68,7 +89,7 @@ void set_subparser(
     }
     else if (match[0] == PARTICIPANT_ELEMENT)
     {
-        std::cout << "Participant configuration not yet supported" << std::endl;
+        std::cout << "DomainParticipant configuration not yet supported" << std::endl;
     }
     else if (match[0] == TRANSPORT_ELEMENT)
     {

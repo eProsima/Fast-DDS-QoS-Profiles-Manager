@@ -12,20 +12,30 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef _FASTDDS_QOS_PROFILES_MANAGER_CLI_SUBPARSERS_HELP_SUBPARSER_HPP_
-#define _FASTDDS_QOS_PROFILES_MANAGER_CLI_SUBPARSERS_HELP_SUBPARSER_HPP_
+#ifndef _FASTDDS_QOS_PROFILES_MANAGER_CLI_UTILS_UTILS_HPP_
+#define _FASTDDS_QOS_PROFILES_MANAGER_CLI_UTILS_UTILS_HPP_
 
 #include <string>
 
 namespace eprosima {
 namespace qosprof_cli {
 
-void help_subparser(
-        std::string file,
+// Supported common commands
+enum class CommonCommands
+{
+    CLEAR,
+    PRINT,
+    QUERY,
+    SET
+};
+
+void main_element_parser(
+        CommonCommands command,
+        const std::string& filename,
         int argc,
         char** argv);
 
-} // eprosima
 } // qosprof_cli
+} // eprosima
 
-#endif // _FASTDDS_QOS_PROFILES_MANAGER_CLI_SUBPARSERS_HELP_SUBPARSER_HPP_
+#endif // _FASTDDS_QOS_PROFILES_MANAGER_CLI_UTILS_UTILS_HPP_
