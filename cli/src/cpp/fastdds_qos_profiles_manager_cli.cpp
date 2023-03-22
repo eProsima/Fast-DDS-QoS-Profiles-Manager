@@ -20,6 +20,7 @@
 
 #include "config.h"
 #include "parser_constants.hpp"
+#include "subparsers/print_subparser.hpp"
 #include "subparsers/set_subparser.hpp"
 #include "usages.hpp"
 
@@ -57,7 +58,7 @@ int main(
     }
     else if (verb == PRINT_VERB)
     {
-        // Print subparser
+        print_subparser(args[PARSER_FILE].asString(), argc - 2, argv + 2);
     }
     else if (verb == QUERY_VERB)
     {
