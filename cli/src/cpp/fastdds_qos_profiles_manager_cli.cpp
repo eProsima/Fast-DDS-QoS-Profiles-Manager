@@ -43,7 +43,7 @@ int main(
     std::string verb = args[PARSER_VERB].asString();
     if (verb == SET_VERB)
     {
-        // Set verb requires at least two more follow-up arguments: element being set
+        // Set verb requires at least one more follow-up arguments: element being set
         if (0 < args[PARSER_ARGS].asStringList().size())
         {
             set_subparser(args[PARSER_FILE].asString(), argc - 2, argv + 2);
@@ -72,15 +72,49 @@ int main(
     }
     else if (verb == PRINT_VERB)
     {
-        print_subparser(args[PARSER_FILE].asString(), argc - 2, argv + 2);
+        if (args[PARSER_ARGS].asStringList().empty())
+        {
+            // Call file print method from library
+            std::cout << "Print of file feature not yet implemented" << std::endl;
+        }
+        else if (1 == args[PARSER_ARGS].asStringList().size())
+        {
+            print_subparser(args[PARSER_FILE].asString(), argc - 2, argv + 2);
+        }
+        else
+        {
+            std::cout << "ERROR: print verb required none or only one follow-up argument" << std::endl;
+            std::cout << PRINT_USAGE << std::endl;
+            std::exit(1);
+        }
     }
     else if (verb == QUERY_VERB)
     {
-        query_subparser(args[PARSER_FILE].asString(), argc - 2, argv + 2);
+        // Query verb requires at least one more follow-up arguments: element being queried
+        if (0 < args[PARSER_ARGS].asStringList().size())
+        {
+            query_subparser(args[PARSER_FILE].asString(), argc - 2, argv + 2);
+        }
+        else
+        {
+            std::cout << "ERROR: query verb requires at least one follow-up argument" << std::endl;
+            std::cout << QUERY_USAGE << std::endl;
+            exit(1);
+        }
     }
     else if (verb == CLEAR_VERB)
     {
-        clear_subparser(args[PARSER_FILE].asString(), argc - 2, argv + 2);
+        // Clear verb requires only one follow-up argument: element to be cleared
+        if (1 == args[PARSER_ARGS].asStringList().size())
+        {
+            clear_subparser(args[PARSER_FILE].asString(), argc - 2, argv + 2);
+        }
+        else
+        {
+            std::cout << "ERROR: clear verb requires only one follow-up argument" << std::endl;
+            std::cout << CLEAR_USAGE << std::endl;
+            exit(1);
+        }
     }
     else if (verb == COMPARE_VERB)
     {
@@ -99,7 +133,20 @@ int main(
     }
     else if (verb == HELP_VERB)
     {
-        help_subparser(args[PARSER_FILE].asString(), argc - 2, argv + 2);
+        if (args[PARSER_ARGS].asStringList().empty())
+        {
+            std::cout << USAGE << std::endl;
+        }
+        else if (1 == args[PARSER_ARGS].asStringList().size())
+        {
+            help_subparser(args[PARSER_FILE].asString(), argc - 2, argv + 2);
+        }
+        else
+        {
+            std::cout << "ERROR: help verb requires none or only one follow-up element" << std::endl;
+            std::cout << HELP_USAGE << std::endl;
+            exit(1);
+        }
     }
     else
     {
