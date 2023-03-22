@@ -15,17 +15,27 @@
 #include "set_subparser.hpp"
 
 #include <iostream>
+#include <map>
 #include <string>
+
+#include <docopt/docopt.h>
+
+#include "subparsers_usages.hpp"
 
 namespace eprosima {
 namespace qosprof_cli {
 
 void set_subparser(
         std::string /*filename*/,
-        int /*argc*/,
-        char** /*argv*/)
+        int argc,
+        char** argv)
 {
-    std::cout << "Set subparser not yet implemented" << std::endl;
+    std::map<std::string, docopt::value> args = docopt::docopt(
+        SET_SUBPARSER_USAGE,
+        {argv +1, argv + argc },
+        true,
+        {},
+        true);
 }
 
 } // qosprof_cli
