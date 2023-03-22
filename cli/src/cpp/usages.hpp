@@ -72,13 +72,13 @@ static const char USAGE[] =
       -h --help         CLI general options.
 
     The allowed <verb> commands are:
-      set               Write XML configuration parameter to file.
-      validate          Validate XML configuration file against Fast DDS XSD schema.
-      print             Print XML configuration parameter.
-      query             Query about XML parameter list size or keys.
       clear             Erase XML configuration parameter from file.
       compare           Compare between two XML configuration files.
       help              CLI specific options for the corresponding configuration parameter.
+      print             Print XML configuration parameter.
+      query             Query about XML parameter list size or keys.
+      set               Write XML configuration parameter to file.
+      validate          Validate XML configuration file against Fast DDS XSD schema.
 )";
 
 static const char VALIDATE_USAGE[] =
