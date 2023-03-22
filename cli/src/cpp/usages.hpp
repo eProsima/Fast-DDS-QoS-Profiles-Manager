@@ -46,6 +46,13 @@ static const char VALIDATE_USAGE[] =
       fastddsqosprof <file> validate        
 )";
 
+static const char COMPARE_USAGE[] =
+        R"(Fast DDS QoS Profiles Manager CLI compare verb usage
+
+    Usage:
+      fastddsqosprof <file_1> compare <file_2>
+)";
+
 } // qosprof_cli
 } // eprosima
 

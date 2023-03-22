@@ -74,7 +74,18 @@ int main(
     }
     else if (verb == COMPARE_VERB)
     {
-        // Compare subparser
+        // Compare verb is already parsed. Ensure that only one follow-up argument has been included.
+        if (1 == args[PARSER_ARGS].asStringList().size())
+        {
+            // Call compare method from library and handle return to output information to CLI user.
+            std::cout << "Compare feature not yet implemented" << std::endl;
+        }
+        else
+        {
+            std::cout << "ERROR: compare verb requires only one follow-up argument" << std::endl;
+            std::cout << COMPARE_USAGE << std::endl;
+            exit(1);
+        }
     }
     else if (verb == HELP_VERB)
     {
