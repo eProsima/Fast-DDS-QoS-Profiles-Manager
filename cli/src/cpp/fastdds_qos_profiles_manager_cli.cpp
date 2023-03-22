@@ -21,29 +21,9 @@
 #include "config.h"
 #include "parser_constants.hpp"
 #include "subparsers/set_subparser.hpp"
+#include "usages.hpp"
 
 using namespace eprosima::qosprof_cli;
-
-static const char USAGE[] =
-        R"(Fast DDS QoS Profiles Manager CLI
-
-    Usage:
-      fastddsqosprof <file> <verb> [<args>...]
-      fastddsqosprof (-v | --version | -h | --help)
-
-    Options:
-      -v --version      CLI version.
-      -h --help         CLI general options.
-
-    The allowed <verb> commands are:
-      set               Write XML configuration parameter to file.
-      validate          Validate XML configuration file against Fast DDS XSD schema.
-      print             Print XML configuration parameter.
-      query             Query about XML parameter list size or keys.
-      clear             Erase XML configuration parameter from file.
-      compare           Compare between two XML configuration files.
-      help              CLI specific options for the corresponding configuration parameter.
-)";
 
 int main(
         int argc,
@@ -71,6 +51,8 @@ int main(
         else
         {
             std::cout << "ERROR: validate verb does not support any follow-up argument" << std::endl;
+            std::cout << VALIDATE_USAGE << std::endl;
+            exit(1);
         }
     }
     else if (verb == PRINT_VERB)
