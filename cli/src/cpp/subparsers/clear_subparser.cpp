@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "print_subparser.hpp"
+#include "clear_subparser.hpp"
 
 #include <iostream>
 #include <string>
@@ -20,12 +20,12 @@
 namespace eprosima {
 namespace qosprof_cli {
 
-void print_subparser(
+void clear_subparser(
         std::string /*filename*/,
         int /*argc*/,
         char** /*argv*/)
 {
-    std::cout << "Print subparser not yet implemented" << std::endl;
+    std::cout << "Clear subparser not yet implemented" << std::endl;
 }
 
 } // qosprof_cli
