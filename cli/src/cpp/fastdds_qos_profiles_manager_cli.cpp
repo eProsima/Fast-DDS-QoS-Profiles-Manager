@@ -40,24 +40,24 @@ int main(
         FASTDDS_QOS_PROFILES_MANAGER_CLI_VERSION_STR,               // version string
         true);                                                      // options first
 
-    std::string verb = args[PARSER_VERB].asString();
-    if (verb == SET_VERB)
+    std::string command = args[PARSER_COMMAND].asString();
+    if (command == SET_COMMAND)
     {
-        // Set verb requires at least one more follow-up arguments: element being set
+        // Set command requires at least one more follow-up arguments: element being set
         if (0 < args[PARSER_ARGS].asStringList().size())
         {
             set_subparser(args[PARSER_FILE].asString(), argc - 2, argv + 2);
         }
         else
         {
-            std::cout << "ERROR: set verb requires at least one follow-up argument" << std::endl;
+            std::cout << "ERROR: set command requires at least one follow-up argument" << std::endl;
             std::cout << SET_USAGE << std::endl;
             exit(1);
         }
     }
-    else if (verb == VALIDATE_VERB)
+    else if (command == VALIDATE_COMMAND)
     {
-        // Validate verb is already parsed. Ensure that no follow-up argument has been included.
+        // Validate command is already parsed. Ensure that no follow-up argument has been included.
         if (args[PARSER_ARGS].asStringList().empty())
         {
             // Call validate method from library and handle return to output information to CLI user.
@@ -65,12 +65,12 @@ int main(
         }
         else
         {
-            std::cout << "ERROR: validate verb does not support any follow-up argument" << std::endl;
+            std::cout << "ERROR: validate command does not support any follow-up argument" << std::endl;
             std::cout << VALIDATE_USAGE << std::endl;
             exit(1);
         }
     }
-    else if (verb == PRINT_VERB)
+    else if (command == PRINT_COMMAND)
     {
         if (args[PARSER_ARGS].asStringList().empty())
         {
@@ -83,42 +83,42 @@ int main(
         }
         else
         {
-            std::cout << "ERROR: print verb required none or only one follow-up argument" << std::endl;
+            std::cout << "ERROR: print command required none or only one follow-up argument" << std::endl;
             std::cout << PRINT_USAGE << std::endl;
             std::exit(1);
         }
     }
-    else if (verb == QUERY_VERB)
+    else if (command == QUERY_COMMAND)
     {
-        // Query verb requires at least one more follow-up arguments: element being queried
+        // Query command requires at least one more follow-up arguments: element being queried
         if (0 < args[PARSER_ARGS].asStringList().size())
         {
             query_subparser(args[PARSER_FILE].asString(), argc - 2, argv + 2);
         }
         else
         {
-            std::cout << "ERROR: query verb requires at least one follow-up argument" << std::endl;
+            std::cout << "ERROR: query command requires at least one follow-up argument" << std::endl;
             std::cout << QUERY_USAGE << std::endl;
             exit(1);
         }
     }
-    else if (verb == CLEAR_VERB)
+    else if (command == CLEAR_COMMAND)
     {
-        // Clear verb requires only one follow-up argument: element to be cleared
+        // Clear command requires only one follow-up argument: element to be cleared
         if (1 == args[PARSER_ARGS].asStringList().size())
         {
             clear_subparser(args[PARSER_FILE].asString(), argc - 2, argv + 2);
         }
         else
         {
-            std::cout << "ERROR: clear verb requires only one follow-up argument" << std::endl;
+            std::cout << "ERROR: clear command requires only one follow-up argument" << std::endl;
             std::cout << CLEAR_USAGE << std::endl;
             exit(1);
         }
     }
-    else if (verb == COMPARE_VERB)
+    else if (command == COMPARE_COMMAND)
     {
-        // Compare verb is already parsed. Ensure that only one follow-up argument has been included.
+        // Compare command is already parsed. Ensure that only one follow-up argument has been included.
         if (1 == args[PARSER_ARGS].asStringList().size())
         {
             // Call compare method from library and handle return to output information to CLI user.
@@ -126,31 +126,27 @@ int main(
         }
         else
         {
-            std::cout << "ERROR: compare verb requires only one follow-up argument" << std::endl;
+            std::cout << "ERROR: compare command requires only one follow-up argument" << std::endl;
             std::cout << COMPARE_USAGE << std::endl;
             exit(1);
         }
     }
-    else if (verb == HELP_VERB)
+    else if (command == HELP_COMMAND)
     {
         if (args[PARSER_ARGS].asStringList().empty())
         {
             std::cout << USAGE << std::endl;
         }
-        else if (1 == args[PARSER_ARGS].asStringList().size())
-        {
-            help_subparser(args[PARSER_FILE].asString(), argc - 2, argv + 2);
-        }
         else
         {
-            std::cout << "ERROR: help verb requires none or only one follow-up element" << std::endl;
+            std::cout << "ERROR: help command requires none follow-up element" << std::endl;
             std::cout << HELP_USAGE << std::endl;
             exit(1);
         }
     }
     else
     {
-        std::cout << "ERROR: " << verb << " verb not supported" << std::endl;
+        std::cout << "ERROR: " << command << " command not recognized" << std::endl;
         std::cout << USAGE << std::endl;
         exit(1);
     }

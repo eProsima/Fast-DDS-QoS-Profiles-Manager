@@ -22,16 +22,16 @@ constexpr const char* PARSER_ARGS = "<args>";
 constexpr const char* PARSER_ELEMENT = "<element>";
 constexpr const char* PARSER_FILE = "<file>";
 constexpr const char* PARSER_VALUES = "<values>";
-constexpr const char* PARSER_VERB = "<verb>";
+constexpr const char* PARSER_COMMAND = "<command>";
 
-// CLI supported verbs
-constexpr const char* CLEAR_VERB = "clear";
-constexpr const char* COMPARE_VERB = "compare";
-constexpr const char* HELP_VERB = "help";
-constexpr const char* PRINT_VERB = "print";
-constexpr const char* QUERY_VERB = "query";
-constexpr const char* SET_VERB = "set";
-constexpr const char* VALIDATE_VERB = "validate";
+// CLI supported commands
+constexpr const char* CLEAR_COMMAND = "clear";
+constexpr const char* COMPARE_COMMAND = "compare";
+constexpr const char* HELP_COMMAND = "help";
+constexpr const char* PRINT_COMMAND = "print";
+constexpr const char* QUERY_COMMAND = "query";
+constexpr const char* SET_COMMAND = "set";
+constexpr const char* VALIDATE_COMMAND = "validate";
 
 // CLI supported main elements
 constexpr const char* DATAREADER_ELEMENT = "datareader";

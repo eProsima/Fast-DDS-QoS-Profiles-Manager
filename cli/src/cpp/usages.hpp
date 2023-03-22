@@ -19,42 +19,43 @@ namespace eprosima {
 namespace qosprof_cli {
 
 static const char CLEAR_USAGE[] =
-        R"(Fast DDS QoS Profiles Manager CLI clear verb usage
+        R"(Fast DDS QoS Profiles Manager CLI clear command usage
 
     Usage:
       fastddsqosprof <file> clear <element>
 )";
 
 static const char COMPARE_USAGE[] =
-        R"(Fast DDS QoS Profiles Manager CLI compare verb usage
+        R"(Fast DDS QoS Profiles Manager CLI compare command usage
 
     Usage:
       fastddsqosprof <file_1> compare <file_2>
 )";
 
 static const char HELP_USAGE[] =
-        R"(Fast DDS QoS Profiles Manager CLI help verb usage
+        R"(Fast DDS QoS Profiles Manager CLI help command usage
 
     Usage:
-      fastddsqosprof <file> help [<element>]
+      fastddsqosprof <file> help
+      fastddsqosprof <file> <command> [<element>] help
 )";
 
 static const char PRINT_USAGE[] =
-        R"(Fast DDS QoS Profiles Manager CLI print verb usage
+        R"(Fast DDS QoS Profiles Manager CLI print command usage
 
     Usage:
       fastddsqosprof <file> print [<element>]
 )";
 
 static const char QUERY_USAGE[] =
-        R"(Fast DDS QoS Profiles Manager CLI query verb usage
+        R"(Fast DDS QoS Profiles Manager CLI query command usage
 
     Usage:
       fastddsqosprof <file> query [size | keys] <element>
 )";
 
 static const char SET_USAGE[] =
-        R"(Fast DDS QoS Profiles Manager CLI set verb usage
+        R"(Fast DDS QoS Profiles Manager CLI set command usage
 
     Usage:
       fastddsqosprof <file> set <element> [<value>]
@@ -64,14 +65,14 @@ static const char USAGE[] =
         R"(Fast DDS QoS Profiles Manager CLI
 
     Usage:
-      fastddsqosprof <file> <verb> [<args>...]
+      fastddsqosprof <file> <command> [<args>...]
       fastddsqosprof (-v | --version | -h | --help)
 
     Options:
       -v --version      CLI version.
       -h --help         CLI general options.
 
-    The allowed <verb> commands are:
+    The allowed <command> options are:
       clear             Erase XML configuration parameter from file.
       compare           Compare between two XML configuration files.
       help              CLI specific options for the corresponding configuration parameter.
@@ -82,7 +83,7 @@ static const char USAGE[] =
 )";
 
 static const char VALIDATE_USAGE[] =
-        R"(Fast DDS QoS Profiles Manager CLI validate verb usage
+        R"(Fast DDS QoS Profiles Manager CLI validate command usage
 
     Usage:
       fastddsqosprof <file> validate        
