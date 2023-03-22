@@ -24,18 +24,6 @@ configure_file(${PROJECT_SOURCE_DIR}/include/config.h.in
     ${PROJECT_BINARY_DIR}/include/config.h)
 
 ###############################################################################
-# Default shared libraries
-###############################################################################
-# Global flag to cause add_library() to create shared libraries if on.
-# If set to true, this will cause all libraries to be built shared
-# unless the library was explicitly added as a static library.
-option(BUILD_SHARED_LIBS "Create shared libraries by default" ON)
-
-if(BUILD_SHARED_LIBS)
-    set(FASTDDS_QOS_PROFILES_MANAGER_DYNAMIC ON)
-endif()
-
-###############################################################################
 # Load external dependencies
 ###############################################################################
 find_package(fastdds_qos_profiles_manager REQUIRED)
