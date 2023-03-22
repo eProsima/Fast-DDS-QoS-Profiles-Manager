@@ -55,7 +55,7 @@ target_include_directories(${EXECUTABLE_NAME} PUBLIC
     ${PROJECT_SOURCE_DIR}/include
     ${PROJECT_BINARY_DIR}/include
     PRIVATE
-    ${PROJECT_SOURCE_DIR}/src/cpp>)
+    ${PROJECT_SOURCE_DIR}/src/cpp)
 
 target_link_libraries(${EXECUTABLE_NAME}
     docopt

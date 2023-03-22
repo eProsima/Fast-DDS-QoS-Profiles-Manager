@@ -18,14 +18,14 @@
 
 #include <docopt/docopt.h>
 
-#include "config.h"
-#include "parser_constants.hpp"
-#include "subparsers/clear_subparser.hpp"
-#include "subparsers/help_subparser.hpp"
-#include "subparsers/print_subparser.hpp"
-#include "subparsers/query_subparser.hpp"
-#include "subparsers/set_subparser.hpp"
-#include "usages.hpp"
+#include <config.h>
+#include <parser_constants.hpp>
+#include <subparsers/clear_subparser.hpp>
+#include <subparsers/help_subparser.hpp>
+#include <subparsers/print_subparser.hpp>
+#include <subparsers/query_subparser.hpp>
+#include <subparsers/set_subparser.hpp>
+#include <usages.hpp>
 
 using namespace eprosima::qosprof_cli;
 

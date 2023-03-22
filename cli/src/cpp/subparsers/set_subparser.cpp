@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "set_subparser.hpp"
+#include <subparsers/set_subparser.hpp>
 
 #include <iostream>
 #include <map>
@@ -20,7 +20,8 @@
 
 #include <docopt/docopt.h>
 
-#include "subparsers_usages.hpp"
+#include <parser_constants.hpp>
+#include <subparsers/subparsers_usages.hpp>
 
 namespace eprosima {
 namespace qosprof_cli {
