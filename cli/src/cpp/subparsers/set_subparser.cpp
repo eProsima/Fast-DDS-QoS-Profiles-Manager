@@ -16,6 +16,7 @@
 
 #include <iostream>
 #include <map>
+#include <regex>
 #include <string>
 
 #include <docopt/docopt.h>
@@ -37,6 +38,52 @@ void set_subparser(
         true,
         {},
         true);
+
+    std::string element = args[PARSER_ELEMENT].asString();
+
+    // Parse element using regular expression
+    std::regex dot_pattern("[^\\.]+");
+    std::smatch match;
+    std::regex_search(element, match, dot_pattern);
+    // Main element
+    if (match[0] == DATAREADER_ELEMENT)
+    {
+        std::cout << "DataReader configuration not yet supported" << std::endl;
+    }
+    else if (match[0] == DATAWRITER_ELEMENT)
+    {
+        std::cout << "DataWriter configuration not yet supported" << std::endl;
+    }
+    else if (match[0] == HELP_COMMAND)
+    {
+        std::cout << SET_SUBPARSER_USAGE << std::endl;
+    }
+    else if (match[0] == INTRAPROCESS_ELEMENT)
+    {
+        std::cout << "Intra-process configuration not yet supported" << std::endl;
+    }
+    else if (match[0] == LOG_ELEMENT)
+    {
+        std::cout << "Log module configuration not yet supported" << std::endl;
+    }
+    else if (match[0] == PARTICIPANT_ELEMENT)
+    {
+        std::cout << "Participant configuration not yet supported" << std::endl;
+    }
+    else if (match[0] == TRANSPORT_ELEMENT)
+    {
+        std::cout << "Transport descriptor configuration not yet supported" << std::endl;
+    }
+    else if (match[0] == TYPES_ELEMENT)
+    {
+        std::cout << "Dynamic types configuration not yet supported" << std::endl;
+    }
+    else
+    {
+        std::cout << "ERROR: " << match[0] << " element not recognized" << std::endl;
+        std::cout << SET_SUBPARSER_USAGE << std::endl;
+        exit(1);
+    }
 }
 
 } // qosprof_cli
