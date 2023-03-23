@@ -16,12 +16,12 @@
  * @file
  */
 
-#include <domain_participant/DomainParticipant.hpp>
+#include <fastdds_qos_profiles_manager/domain_participant/DomainParticipant.hpp>
 
 #include <string>
 #include <vector>
 
-#include <exception/Exception.hpp>
+#include <fastdds_qos_profiles_manager/exception/Exception.hpp>
 
 namespace eprosima {
 namespace qosprof {

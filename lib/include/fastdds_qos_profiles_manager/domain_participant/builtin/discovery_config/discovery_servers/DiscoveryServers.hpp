@@ -22,7 +22,7 @@
 #include <string>
 #include <vector>
 
-#include <fastdds_qos_profiles_manager_dll.h>
+#include <fastdds_qos_profiles_manager/fastdds_qos_profiles_manager_dll.h>
 
 namespace eprosima {
 namespace qosprof {

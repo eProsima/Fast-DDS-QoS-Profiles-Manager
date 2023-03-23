@@ -19,7 +19,7 @@
 #ifndef _FAST_DDS_QOS_PROFILES_MANAGER_DLL_HPP_
 #define _FAST_DDS_QOS_PROFILES_MANAGER_DLL_HPP_
 
-#include "config.h"
+#include <fastdds_qos_profiles_manager/config.h>
 
 // normalize macros
 #if !defined(FASTDDS_QOS_PROFILES_MANAGER_DYN_LINK) && !defined(FASTDDS_QOS_PROFILES_MANAGER_STATIC_LINK) \

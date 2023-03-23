@@ -16,11 +16,11 @@
  * @file
  */
 
-#include <domain_participant/builtin/discovery_config/DiscoveryConfig.hpp>
+#include <fastdds_qos_profiles_manager/domain_participant/builtin/discovery_config/DiscoveryConfig.hpp>
 
 #include <string>
 
-#include <exception/Exception.hpp>
+#include <fastdds_qos_profiles_manager/exception/Exception.hpp>
 
 namespace eprosima {
 namespace qosprof {

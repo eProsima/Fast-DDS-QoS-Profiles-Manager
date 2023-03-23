@@ -14,7 +14,7 @@
 
 #include "gtest/gtest.h"
 
-#include <transport_descriptor/TransportDescriptor.hpp>
+#include <fastdds_qos_profiles_manager/transport_descriptor/TransportDescriptor.hpp>
 
 int main(
         int argc,

@@ -16,31 +16,30 @@
  * @file
  */
 
-#ifndef _FAST_DDS_QOS_PROFILES_MANAGER_DOMAIN_PARTICIPANT_BUILTIN_INITIAL_PEERS_HPP_
-#define _FAST_DDS_QOS_PROFILES_MANAGER_DOMAIN_PARTICIPANT_BUILTIN_INITIAL_PEERS_HPP_
+#ifndef _FAST_DDS_QOS_PROFILES_MANAGER_DOMAIN_PARTICIPANT_DEFAULT_MULTICAST_LOCATORS_HPP_
+#define _FAST_DDS_QOS_PROFILES_MANAGER_DOMAIN_PARTICIPANT_DEFAULT_MULTICAST_LOCATORS_HPP_
 
 #include <string>
 
-#include <fastdds_qos_profiles_manager_dll.h>
+#include <fastdds_qos_profiles_manager/fastdds_qos_profiles_manager_dll.h>
 
 namespace eprosima {
 namespace qosprof {
 namespace domain_participant {
-namespace builtin {
-namespace initial_peers {
+namespace default_multicast_locators {
 
 /************************************************************************/
 /* Print functions                                                      */
 /************************************************************************/
 
 /**
- * @brief Parse XML file and print the specific Domain Participant specific builtin initial peers.
+ * @brief Parse XML file and print the specific Domain Participant specific default multicast locator.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be printed. If empty, the complete list is printed.
  *
- * @return std::string XML section containing the Domain Participant specific builtin initial peers.
+ * @return std::string XML section containing the Domain Participant specific default multicast locator.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
@@ -53,13 +52,13 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
         const std::string& index);
 
 /**
- * @brief Parse XML file and print the specific Domain Participant specific builtin initial peers kind.
+ * @brief Parse XML file and print the specific Domain Participant specific default multicast locator kind.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be printed.
  *
- * @return std::string Domain Participant specific builtin initial peers kind.
+ * @return std::string Domain Participant specific default multicast locator kind.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
@@ -72,13 +71,13 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_kind(
         const std::string& index);
 
 /**
- * @brief Parse XML file and print the specific Domain Participant specific builtin initial peers port.
+ * @brief Parse XML file and print the specific Domain Participant specific default multicast locator port.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be printed.
  *
- * @return std::string Domain Participant specific builtin initial peers port.
+ * @return std::string Domain Participant specific default multicast locator port.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
@@ -91,15 +90,14 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_port(
         const std::string& index);
 
 /**
- * @brief Parse XML file and print the specific Domain Participant specific builtin initial peers physical
- *        port.
+ * @brief Parse XML file and print the specific Domain Participant specific default multicast locator physical port.
  *        TCP only.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be printed.
  *
- * @return std::string Domain Participant specific builtin initial peers TCP physical port.
+ * @return std::string Domain Participant specific default multicast locator TCP physical port.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
@@ -112,14 +110,13 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_physical_port(
         const std::string& index);
 
 /**
- * @brief Parse XML file and print the specific Domain Participant specific builtin initial peers IP
- *        address.
+ * @brief Parse XML file and print the specific Domain Participant specific default multicast locator IP address.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be printed.
  *
- * @return std::string Domain Participant specific builtin initial peers IP address.
+ * @return std::string Domain Participant specific default multicast locator IP address.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
@@ -132,15 +129,14 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_address(
         const std::string& index);
 
 /**
- * @brief Parse XML file and print the specific Domain Participant specific builtin initial peers unique
- *        LAN ID.
+ * @brief Parse XML file and print the specific Domain Participant specific default multicast locator unique LAN ID.
  *        TCPv4 only.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be printed.
  *
- * @return std::string Domain Participant specific builtin initial peers TCPv4 unique LAN ID.
+ * @return std::string Domain Participant specific default multicast locator TCPv4 unique LAN ID.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
@@ -153,15 +149,14 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_unique_lan_id(
         const std::string& index);
 
 /**
- * @brief Parse XML file and print the specific Domain Participant specific builtin initial peers WAN IPv4
- *        address.
+ * @brief Parse XML file and print the specific Domain Participant specific default multicast locator WAN IPv4 address.
  *        TCPv4 only.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be printed.
  *
- * @return std::string Domain Participant specific builtin initial peers TCPv4 WAN IP address.
+ * @return std::string Domain Participant specific default multicast locator TCPv4 WAN IP address.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
@@ -178,12 +173,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_wan_address(
 /************************************************************************/
 
 /**
- * @brief Number of builtin initial peerss in the Domain Participant.
+ * @brief Number of default multicast locators in the Domain Participant.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @return uint32_t Number of builtin initial peerss in the list.
+ * @return uint32_t Number of default multicast locators in the list.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the list
@@ -198,7 +193,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t size(
 /************************************************************************/
 
 /**
- * @brief Remove specific Domain Participant builtin initial peers.
+ * @brief Remove specific Domain Participant default multicast locator.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
@@ -215,7 +210,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
         const std::string& index);
 
 /**
- * @brief Remove specific Domain Participant builtin initial peers port.
+ * @brief Remove specific Domain Participant default multicast locator port.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
@@ -232,7 +227,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_port(
         const std::string& index);
 
 /**
- * @brief Remove specific Domain Participant builtin initial peers physical port.
+ * @brief Remove specific Domain Participant default multicast locator physical port.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
@@ -249,7 +244,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_physical_port(
         const std::string& index);
 
 /**
- * @brief Remove specific Domain Participant builtin initial peers IP address.
+ * @brief Remove specific Domain Participant default multicast locator IP address.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
@@ -266,7 +261,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_address(
         const std::string& index);
 
 /**
- * @brief Remove specific Domain Participant builtin initial peers unique LAN ID.
+ * @brief Remove specific Domain Participant default multicast locator unique LAN ID.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
@@ -283,7 +278,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_unique_lan_id(
         const std::string& index);
 
 /**
- * @brief Remove specific Domain Participant builtin initial peers WAN IP address.
+ * @brief Remove specific Domain Participant default multicast locator WAN IP address.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
@@ -304,11 +299,11 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_wan_address(
 /************************************************************************/
 
 /**
- * @brief Append a builtin initial peers with specified kind or update the builtin initial peers kind.
+ * @brief Append a default multicast locator with specified kind or update the existing locator kind.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] kind Initial peers kind.
+ * @param[in] kind Default multicast locator kind.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided locator kind is not valid.
@@ -324,11 +319,11 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_kind(
         const std::string& index);
 
 /**
- * @brief Append a builtin initial peers with specified port or update the builtin initial peers port.
+ * @brief Append a default multicast locator with specified port or update the existing locator port.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] port Initial peers port.
+ * @param[in] port Default multicast locator port.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided locator port is not valid.
@@ -344,12 +339,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_port(
         const std::string& index);
 
 /**
- * @brief Append a builtin initial peers with specified physical port or update the builtin initial peers physical port
+ * @brief Append a default multicast locator with specified physical port or update the existing locator physical port
  *        (TCP only).
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] physical_port Initial peers TCP physical port.
+ * @param[in] physical_port Default multicast locator TCP physical port.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided locator physical port is not valid.
@@ -365,11 +360,11 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_physical_port(
         const std::string& index);
 
 /**
- * @brief Append a builtin initial peers with specified IP address or update the builtin initial peers IP address.
+ * @brief Append a default multicast locator with specified IP address or update the existing locator IP address.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] address Initial peers IP address.
+ * @param[in] address Default multicast locator IP address.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided locator IP address is not valid.
@@ -385,12 +380,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_address(
         const std::string& index);
 
 /**
- * @brief Append a builtin initial peers TCPv4 locator with specified unique LAN ID or update the builtin initial peers
- *        TCPv4 locator unique LAN ID.
+ * @brief Append a default multicast TCPv4 locator with specified unique LAN ID or update the existing locator unique
+ *        LAN ID.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] unique_lan_id Initial peers TCPv4 locator unique LAN ID.
+ * @param[in] unique_lan_id Default multicast TCPv4 locator unique LAN ID.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided locator identifier is not valid.
@@ -406,12 +401,11 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_unique_lan_id(
         const std::string& index);
 
 /**
- * @brief Append a builtin initial peers TCPv4 locator with specified WAN address or update the builtin initial peers
- *        TCPv4 locator WAN address.
+ * @brief Append a default multicast TCPv4 locator with specified WAN address or update the existing locator WAN address.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] wan_address Initial peers TCPv4 locator WAN address.
+ * @param[in] wan_address Default multicast TCPv4 locator WAN address.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided locator IP address is not valid.
@@ -426,10 +420,9 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_wan_address(
         const std::string& wan_address,
         const std::string& index);
 
-} // initial_peers
-} // builtin
+} // default_multicast_locators
 } // domain_participant
 } // qosprof
 } // eprosima
 
-#endif // _FAST_DDS_QOS_PROFILES_MANAGER_DOMAIN_PARTICIPANT_BUILTIN_INITIAL_PEERS_HPP_
+#endif // _FAST_DDS_QOS_PROFILES_MANAGER_DOMAIN_PARTICIPANT_DEFAULT_MULTICAST_LOCATORS_HPP_

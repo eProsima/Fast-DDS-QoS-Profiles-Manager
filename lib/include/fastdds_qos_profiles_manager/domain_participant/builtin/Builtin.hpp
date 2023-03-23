@@ -16,147 +16,148 @@
  * @file
  */
 
-#ifndef _FAST_DDS_QOS_PROFILES_MANAGER_DOMAIN_PARTICIPANT_PORT_HPP_
-#define _FAST_DDS_QOS_PROFILES_MANAGER_DOMAIN_PARTICIPANT_PORT_HPP_
+#ifndef _FAST_DDS_QOS_PROFILES_MANAGER_DOMAIN_PARTICIPANT_BUILTIN_BUILTIN_HPP_
+#define _FAST_DDS_QOS_PROFILES_MANAGER_DOMAIN_PARTICIPANT_BUILTIN_BUILTIN_HPP_
 
 #include <string>
 
-#include <fastdds_qos_profiles_manager_dll.h>
+#include <fastdds_qos_profiles_manager/fastdds_qos_profiles_manager_dll.h>
 
 namespace eprosima {
 namespace qosprof {
 namespace domain_participant {
-namespace port {
+namespace builtin {
 
 /************************************************************************/
 /* Print functions                                                      */
 /************************************************************************/
 
 /**
- * @brief Parse XML file and print specific Domain Participant port parameters configuration.
+ * @brief Parse XML file and print specific Domain Participant builtin configuration.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @return std::string XML section containing the port parameters configuration.
+ * @return std::string XML section containing the specific Domain Participant builtin configuration.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
- *        port parameters configuration element does not exist.
+ *        builtin element does not exist.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
         const std::string& xml_file,
         const std::string& profile_id);
 
 /**
- * @brief Parse XML file and print specific Domain Participant base port parameter.
+ * @brief Parse XML file and print specific Domain Participant builtin avoid_builtin_multicast flag.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @return std::string Base port parameter.
+ * @return std::string Domain Participant specific avoid_builtin_multicast flag.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
- *        base port parameter has not been set.
+ *        corresponding builtin flag does not exist.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_base(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_avoid_builtin_multicast(
         const std::string& xml_file,
         const std::string& profile_id);
 
 /**
- * @brief Parse XML file and print specific Domain Participant domain ID gain port parameter.
+ * @brief Parse XML file and print specific Domain Participant builtin use writer liveliness protocol flag.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @return std::string Domain ID gain port parameter.
+ * @return std::string Domain Participant specific use writer liveliness protocol flag.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
- *        domain ID gain port parameter has not been set.
+ *        corresponding builtin flag does not exist.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_domain_id_gain(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_use_writer_liveliness_protocol(
         const std::string& xml_file,
         const std::string& profile_id);
 
 /**
- * @brief Parse XML file and print specific Domain Participant participant ID gain port parameter.
+ * @brief Parse XML file and print specific Domain Participant builtin DataReaders History Memory Policy.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @return std::string Participant ID gain port parameter.
+ * @return std::string Domain Participant builtin DataReaders History Memory Policy.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
- *        participant ID gain port parameter has not been set.
+ *        corresponding builtin History Memory Policy does not exist.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_participant_id_gain(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_reader_history_memory_policy(
         const std::string& xml_file,
         const std::string& profile_id);
 
 /**
- * @brief Parse XML file and print specific Domain Participant multicast metadata offset port parameter.
+ * @brief Parse XML file and print specific Domain Participant builtin DataWriters History Memory Policy.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @return std::string Multicast metadata offset port parameter.
+ * @return std::string Domain Participant builtin DataWriters History Memory Policy.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
- *        multicast metadata offset port parameter has not been set.
+ *        corresponding builtin History Memory Policy does not exist.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_offset_d0(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_writer_history_memory_policy(
         const std::string& xml_file,
         const std::string& profile_id);
 
 /**
- * @brief Parse XML file and print specific Domain Participant unicast metadata offset port parameter.
+ * @brief Parse XML file and print specific Domain Participant builtin DataReaders payload size.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @return std::string Unicast metadata offset port parameter.
+ * @return std::string Domain Participant builtin DataReaders payload size.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
- *        unicast metadata offset port parameter has not been set.
+ *        corresponding builtin payload size element does not exist.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_offset_d1(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_reader_payload_size(
         const std::string& xml_file,
         const std::string& profile_id);
 
 /**
- * @brief Parse XML file and print specific Domain Participant multicast user data offset port parameter.
+ * @brief Parse XML file and print specific Domain Participant builtin DataWriters payload size.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @return std::string Multicast user data offset port parameter.
+ * @return std::string Domain Participant builtin DataWriters payload size.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
- *        multicast user data offset port parameter has not been set.
+ *        corresponding builtin payload size element does not exist.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_offset_d2(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_writer_payload_size(
         const std::string& xml_file,
         const std::string& profile_id);
 
 /**
- * @brief Parse XML file and print specific Domain Participant unicast user data offset port parameter.
+ * @brief Parse XML file and print specific Domain Participant builtin number of physical ports to try if configured
+ *        port is already in use (mutation tries).
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @return std::string Unicast user data offset port parameter.
+ * @return std::string Domain Participant builtin mutation tries.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
- *        user data metadata offset port parameter has not been set.
+ *        builtin mutation tries element does not exist.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_offset_d3(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_mutation_tries(
         const std::string& xml_file,
         const std::string& profile_id);
 
@@ -165,7 +166,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_offset_d3(
 /************************************************************************/
 
 /**
- * @brief Remove specific Domain Participant port parameters configuration.
+ * @brief Remove specific Domain Participant builtin configuration.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
@@ -178,7 +179,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
         const std::string& profile_id);
 
 /**
- * @brief Remove specific Domain Participant base port parameter.
+ * @brief Remove specific Domain Participant builtin avoid_builtin_multicast flag.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
@@ -186,12 +187,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_base(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_avoid_builtin_multicast(
         const std::string& xml_file,
         const std::string& profile_id);
 
 /**
- * @brief Remove specific Domain Participant domain ID gain port parameter.
+ * @brief Remove specific Domain Participant builtin use writer liveliness protocol flag.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
@@ -199,12 +200,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_base(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_domain_id_gain(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_use_writer_liveliness_protocol(
         const std::string& xml_file,
         const std::string& profile_id);
 
 /**
- * @brief Remove specific Domain Participant participant ID gain port parameter.
+ * @brief Remove specific Domain Participant builtin DataReaders History Memory Policy.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
@@ -212,12 +213,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_domain_id_gain(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_participant_id_gain(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_reader_history_memory_policy(
         const std::string& xml_file,
         const std::string& profile_id);
 
 /**
- * @brief Remove specific Domain Participant multicast metadata offset port parameter.
+ * @brief Remove specific Domain Participant builtin DataWriters History Memory Policy.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
@@ -225,12 +226,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_participant_id_gain(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_offset_d0(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_writer_history_memory_policy(
         const std::string& xml_file,
         const std::string& profile_id);
 
 /**
- * @brief Remove specific Domain Participant unicast metadata offset port parameter.
+ * @brief Remove specific Domain Participant builtin DataReaders payload size.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
@@ -238,12 +239,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_offset_d0(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_offset_d1(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_reader_payload_size(
         const std::string& xml_file,
         const std::string& profile_id);
 
 /**
- * @brief Remove specific Domain Participant multicast user data offset port parameter.
+ * @brief Remove specific Domain Participant builtin DataWriters payload size.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
@@ -251,12 +252,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_offset_d1(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_offset_d2(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_witer_payload_size(
         const std::string& xml_file,
         const std::string& profile_id);
 
 /**
- * @brief Remove specific Domain Participant unicast user data offset port parameter.
+ * @brief Remove specific Domain Participant builtin DataWriters mutation tries.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
@@ -264,7 +265,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_offset_d2(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_offset_d3(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_mutation_tries(
         const std::string& xml_file,
         const std::string& profile_id);
 
@@ -273,106 +274,106 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_offset_d3(
 /************************************************************************/
 
 /**
- * @brief Set the Domain Participant base port parameter.
+ * @brief Set the Domain Participant builtin avoid_builtin_multicast flag.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] port_base Base port parameter.
+ * @param[in] avoid_builtin_multicast Builtin avoid_builtin_multicast flag.
  *
- * @throw ElementInvalid Exception if the provided parameter value is not valid.
+ * @throw ElementInvalid Exception if the provided flag value is not valid.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_base(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_avoid_builtin_multicast(
         const std::string& xml_file,
         const std::string& profile_id,
-        const std::string& port_base);
+        const std::string& avoid_builtin_multicast);
 
 /**
- * @brief Set the Domain Participant domain ID gain port parameter.
+ * @brief Set the Domain Participant builtin use writer liveliness protocol flag.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] domain_id_gain Domain ID gain port parameter.
+ * @param[in] use_writer_liveliness_protocol Builtin use writer liveliness protocol flag.
  *
- * @throw ElementInvalid Exception if the provided parameter value is not valid.
+ * @throw ElementInvalid Exception if the provided flag value is not valid.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_domain_id_gain(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_use_writer_liveliness_protocol(
         const std::string& xml_file,
         const std::string& profile_id,
-        const std::string& domain_id_gain);
+        const std::string& use_writer_liveliness_protocol);
 
 /**
- * @brief Set the Domain Participant participant ID gain port parameter.
+ * @brief Set the Domain Participant builtin DataReaders History Memory Policy.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] participant_id_gain Participant ID gain port parameter.
+ * @param[in] reader_history_memory_policy Builtin DataReaders History Memory Policy.
  *
- * @throw ElementInvalid Exception if the provided parameter value is not valid.
+ * @throw ElementInvalid Exception if the provided Memory Policy value is not valid.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_participant_id_gain(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_reader_history_memory_policy(
         const std::string& xml_file,
         const std::string& profile_id,
-        const std::string& participant_id_gain);
+        const std::string& reader_history_memory_policy);
 
 /**
- * @brief Set the Domain Participant multicast metadata offset port parameter.
+ * @brief Set the Domain Participant builtin DataWriters History Memory Policy.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] offset_d0 Multicast metadata offset port parameter.
+ * @param[in] writer_history_memory_policy Builtin DataWriters History Memory Policy.
  *
- * @throw ElementInvalid Exception if the provided parameter value is not valid.
+ * @throw ElementInvalid Exception if the provided Memory Policy value is not valid.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_offset_d0(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_writer_history_memory_policy(
         const std::string& xml_file,
         const std::string& profile_id,
-        const std::string& offset_d0);
+        const std::string& writer_history_memory_policy);
 
 /**
- * @brief Set the Domain Participant unicast metadata offset port parameter.
+ * @brief Set the Domain Participant builtin DataReaders payload size.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] offset_d1 Unicast metadata offset port parameter.
+ * @param[in] reader_payload_size Builtin DataReaders payload size.
  *
- * @throw ElementInvalid Exception if the provided parameter value is not valid.
+ * @throw ElementInvalid Exception if the provided payload size value is not valid.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_offset_d1(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_reader_payload_size(
         const std::string& xml_file,
         const std::string& profile_id,
-        const std::string& offset_d1);
+        const std::string& reader_payload_size);
 
 /**
- * @brief Set the Domain Participant multicast user data offset port parameter.
+ * @brief Set the Domain Participant builtin DataWriters payload size.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] offset_d2 Multicast user data offset port parameter.
+ * @param[in] writer_payload_size Builtin DataWriters payload size.
  *
- * @throw ElementInvalid Exception if the provided parameter value is not valid.
+ * @throw ElementInvalid Exception if the provided payload size value is not valid.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_offset_d2(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_writer_payload_size(
         const std::string& xml_file,
         const std::string& profile_id,
-        const std::string& offset_d2);
+        const std::string& writer_payload_size);
 
 /**
- * @brief Set the Domain Participant unicast user data offset port parameter.
+ * @brief Set the Domain Participant builtin mutation tries.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] offset_d3 Unicast user data offset port parameter.
+ * @param[in] mutation_tries Builtin mutation tries.
  *
- * @throw ElementInvalid Exception if the provided parameter value is not valid.
+ * @throw ElementInvalid Exception if the provided mutation tries value is not valid.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_offset_d3(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_mutation_tries(
         const std::string& xml_file,
         const std::string& profile_id,
-        const std::string& offset_d3);
+        const std::string& mutation_tries);
 
-} // port
+} // builtin
 } // domain_participant
 } // qosprof
 } // eprosima
 
-#endif // _FAST_DDS_QOS_PROFILES_MANAGER_DOMAIN_PARTICIPANT_PORT_HPP_
+#endif // _FAST_DDS_QOS_PROFILES_MANAGER_DOMAIN_PARTICIPANT_BUILTIN_BUILTIN_HPP_

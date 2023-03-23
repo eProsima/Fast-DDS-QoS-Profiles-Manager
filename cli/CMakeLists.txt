@@ -29,6 +29,8 @@ configure_file(${PROJECT_SOURCE_DIR}/include/config.h.in
 find_package(fastdds_qos_profiles_manager REQUIRED)
 find_package(docopt COMPONENTS CXX REQUIRED)
 
+message(STATUS "*****************************************")
+message(STATUS ${fastdds_qos_profiles_manager_INCLUDE_DIR})
 ###############################################################################
 # Compilation
 ###############################################################################
@@ -52,7 +54,8 @@ target_include_directories(${EXECUTABLE_NAME} PUBLIC
     ${PROJECT_SOURCE_DIR}/include
     ${PROJECT_BINARY_DIR}/include
     PRIVATE
-    ${PROJECT_SOURCE_DIR}/src/cpp)
+    ${PROJECT_SOURCE_DIR}/src/cpp
+    ${fastdds_qos_profiles_manager_INCLUDE_DIR})
 
 target_link_libraries(${EXECUTABLE_NAME}
     docopt

@@ -54,6 +54,21 @@ static const char QUERY_USAGE[] =
       fastddsqosprof <file> query [size | keys] <element>
 )";
 
+static const char PARTICIPANT_DEFAULT_PROFILE_USAGE [] =
+        R"(Participant default profile usage:
+
+    Usage:
+      fastddsqosprof <file> <command> participant["profile_name"].default_profile [(help | -h | --help)]
+
+    Options:
+      help -h --help                CLI participant default profile usage
+
+    The allowed <command> options are:
+      clear                         Erase participant configuration parameter from XML file.
+      print                         Print participant XML configuration parameter.
+      set                           Write participant configuration parameter to XML file.
+)";
+
 static const char PARTICIPANT_USAGE[] =
         R"(Participant parser:
 
@@ -62,7 +77,7 @@ static const char PARTICIPANT_USAGE[] =
       fastddsqosprof <file> <command> participant["profile_name"].<subelement> (help | -h | --help)
 
     Options:
-      help -h --help                CLI set participant options
+      help -h --help                CLI participant options
 
     The allowed <command> options are:
       clear                         Erase participant configuration parameter from XML file.

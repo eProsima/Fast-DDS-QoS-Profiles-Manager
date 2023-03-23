@@ -21,15 +21,15 @@ project(fastdds_qos_profiles_manager VERSION "0.1.0" LANGUAGES CXX)
 configure_file(doxyfile.in ${PROJECT_BINARY_DIR}/doc/doxyfile @ONLY IMMEDIATE)
 
 # Configure config file
-configure_file(${PROJECT_SOURCE_DIR}/include/config.h.in
-    ${PROJECT_BINARY_DIR}/include/config.h)
+configure_file(${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}/config.h.in
+    ${PROJECT_BINARY_DIR}/include/${PROJECT_NAME}/config.h)
 
 ###############################################################################
 # Installation paths
 ###############################################################################
 set(BIN_INSTALL_DIR bin/ CACHE PATH "Installation directory for binaries")
 set(INCLUDE_INSTALL_DIR include/ CACHE PATH "Installation directory for C++ headers")
-set(LIB_INSTALL_DIR lib/ CACHE PATH "Installation directory for libraries")
+set(LIB_INSTALL_DIR lib${LIB_SUFFIX}/ CACHE PATH "Installation directory for libraries")
 set(DATA_INSTALL_DIR share/ CACHE PATH "Installation directory for data")
 set(LICENSE_INSTALL_DIR ${DATA_INSTALL_DIR}/${PROJECT_NAME} CACHE PATH "Installation directory for licenses")
 set(INSTALL_DESTINATION_PATH ${DATA_INSTALL_DIR}/${CMAKE_PROJECT_NAME}/cmake)
@@ -100,7 +100,6 @@ endif()
 ###############################################################################
 
 # Install library
-
 install(TARGETS ${PROJECT_NAME}
     COMPONENT libraries
     EXPORT ${PROJECT_NAME}-targets
@@ -124,7 +123,7 @@ install(EXPORT ${PROJECT_NAME}-targets
     )
 
 # Install public headers
-install(DIRECTORY include/
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}
     DESTINATION ${INCLUDE_INSTALL_DIR}
     COMPONENT headers
     FILES_MATCHING
@@ -133,8 +132,8 @@ install(DIRECTORY include/
     )
 
 # Install config.h header
-install(FILES ${PROJECT_BINARY_DIR}/include/config.h
-    DESTINATION ${INCLUDE_INSTALL_DIR}
+install(FILES ${PROJECT_BINARY_DIR}/include/${PROJECT_NAME}/config.h
+    DESTINATION ${INCLUDE_INSTALL_DIR}/${PROJECT_NAME}
     COMPONENT headers
 )
 

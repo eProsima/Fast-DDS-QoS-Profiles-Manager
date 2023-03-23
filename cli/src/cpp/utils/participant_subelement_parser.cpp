@@ -16,6 +16,8 @@
 #include <string>
 #include <vector>
 
+#include <fastdds_qos_profiles_manager/domain_participant/DomainParticipant.hpp>
+
 #include <parser_constants.hpp>
 #include <utils/utils.hpp>
 #include <usages.hpp>
@@ -25,10 +27,10 @@ namespace qosprof_cli {
 
 void participant_subelement_parser(
         CommonCommands command,
-        const std::string& /*filename*/,
-        const std::string& /*profile_name*/,
+        const std::string& filename,
+        const std::string& profile_name,
         std::string& element,
-        const std::vector<std::string>& /*values*/)
+        const std::vector<std::string>& values)
 {
     std::smatch match;
     std::regex_search(element, match, dot_pattern);
@@ -42,6 +44,7 @@ void participant_subelement_parser(
         key = match[1];
     }
 
+    bool print_usage = false;
     if (element == ALLOCATIONS_SUBELEMENT)
     {
         std::cout << "Participant allocations configuration not yet supported" << std::endl;
@@ -56,7 +59,48 @@ void participant_subelement_parser(
     }
     else if (element == DEFAULT_PROFILE_SUBELEMENT)
     {
-        std::cout << "Participant default profile configuration not yet supported" << std::endl;
+        print_usage = false;
+        // No values with exception to help
+        if (!values.empty())
+        {
+            print_usage = true;
+            if (values.back() != HELP_COMMAND &&
+                values.back() != HELP_SHORTHAND_FLAG &&
+                values.back() != HELP_FLAG)
+            {
+                std::cout << "ERROR: Participant default attribute configuration does not require any value"
+                        << std::endl;
+            }
+        }
+        // Final element
+        else if (!subelement.empty())
+        {
+            std::cout << "ERROR: Participant default profile attribute is FINAL element" << std::endl;
+            print_usage = true;
+        }
+        else
+        {
+            // Call library
+            switch (command)
+            {
+                case CommonCommands::CLEAR:
+                    // TODO: think if the CLI command should change with the new behavior -> participant.default_profile
+                    qosprof::domain_participant::clear_default_profile(filename);
+                    break;
+                case CommonCommands::PRINT:
+                    // TODO: think if the CLI command should change with the new behavior.
+                    qosprof::domain_participant::print_default_profile(filename);
+                    break;
+                case CommonCommands::SET:
+                    qosprof::domain_participant::set_default_profile(filename, profile_name);
+                    break;
+            }
+        }
+
+        if (print_usage)
+        {
+            std::cout << PARTICIPANT_DEFAULT_PROFILE_USAGE << std::endl;
+        }
     }
     else if (element == EXTERNAL_LOCATORS_SUBELEMENT)
     {

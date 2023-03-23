@@ -76,6 +76,7 @@ void main_element_parser(
         profile_name = match[1];
     }
 
+    bool print_usage = false;
     if (element == DATAREADER_ELEMENT)
     {
         std::cout << "DataReader configuration not yet supported" << std::endl;
@@ -98,7 +99,7 @@ void main_element_parser(
     }
     else if (element == PARTICIPANT_ELEMENT)
     {
-        bool print_usage = false;
+        print_usage = false;
         // If there is no subelement and the last value is (help | -h | --help), print usage
         if (subelement.empty() && !values.empty() &&
                 (values.back() == HELP_COMMAND ||
