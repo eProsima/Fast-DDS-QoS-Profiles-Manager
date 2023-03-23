@@ -14,6 +14,7 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 #include <utils/utils.hpp>
 
@@ -23,8 +24,10 @@ namespace qosprof_cli {
 void participant_subelement_parser(
         CommonCommands /*command*/,
         const std::string& /*filename*/,
+        const std::string& /*profile_name*/,
         std::string& subelement,
-        const std::regex& pattern)
+        const std::regex& pattern,
+        const std::vector<std::string>& /*values*/)
 {
     std::smatch match;
     std::regex_search(subelement, match, pattern);

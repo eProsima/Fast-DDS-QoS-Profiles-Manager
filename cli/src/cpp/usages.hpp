@@ -54,6 +54,39 @@ static const char QUERY_USAGE[] =
       fastddsqosprof <file> query [size | keys] <element>
 )";
 
+static const char PARTICIPANT_USAGE[] =
+        R"(Participant parser:
+
+    Usage:
+      fastddsqosprof <file> <command> participant["profile_name"].<subelement> [<values>...]
+      fastddsqosprof <file> <command> participant["profile_name"].<subelement> (help | -h | --help)
+
+    Options:
+      help -h --help                CLI set participant options
+
+    The allowed <command> options are:
+      clear                         Erase participant configuration parameter from XML file.
+      print                         Print participant XML configuration parameter.
+      set                           Write participant configuration parameter to XML file.
+
+    The allowed <subelement> types are:
+      allocations                   Participant allocations configuration.
+      builtin                       Participant builtin configuration.
+      external_locators             Participant external locators.
+      guid_prefix                   Participant GUID prefix (unique identifier).
+      id                            Participant ID.
+      ignore_non_matching_locators  Participant ignore non matching locators flag.
+      is_default_profile            Default profile attribute.
+      listen_socket_buffer_size     Participant listen socket buffer size.
+      locators                      Participant locators.
+      name                          Participant name.
+      port                          Participant port parameters configuration.
+      property                      Participant Property QoS Policy.
+      send_socket_buffer_size       Participant send socket buffer size.
+      use_builtin_transports        Participant use builtin transports flag.
+      user_transports               Participant custom user-defined transports.
+)";
+
 static const char SET_SUBPARSER_USAGE[] =
         R"(Set subparser: fastddsqosprof <file> set
 
@@ -94,12 +127,12 @@ static const char USAGE[] =
       -h --help         CLI general options.
 
     The allowed <command> options are:
-      clear             Erase XML configuration parameter from file.
+      clear             Erase configuration parameter from XML file.
       compare           Compare between two XML configuration files.
       help              CLI specific options for the corresponding configuration parameter.
       print             Print XML configuration parameter.
       query             Query about XML parameter list size or keys.
-      set               Write XML configuration parameter to file.
+      set               Write configuration parameter to XML file.
       validate          Validate XML configuration file against Fast DDS XSD schema.
 )";
 

@@ -34,6 +34,10 @@ constexpr const char* QUERY_COMMAND = "query";
 constexpr const char* SET_COMMAND = "set";
 constexpr const char* VALIDATE_COMMAND = "validate";
 
+// CLI supported help flags
+constexpr const char* HELP_SHORTHAND_FLAG = "-h";
+constexpr const char* HELP_FLAG = "--help";
+
 // CLI supported main elements
 constexpr const char* DATAREADER_ELEMENT = "datareader";
 constexpr const char* DATAWRITER_ELEMENT = "datawriter";

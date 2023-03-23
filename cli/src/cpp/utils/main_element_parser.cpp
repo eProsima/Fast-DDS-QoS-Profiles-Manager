@@ -61,48 +61,86 @@ void main_element_parser(
         true);
 
     std::string element = args[PARSER_ELEMENT].asString();
+    std::string subelement;
+    std::vector<std::string> values = args[PARSER_VALUES].asStringList();
 
     // Parse element using regular expression
     std::regex dot_pattern("[^\\.]+");
     std::smatch match;
     std::regex_search(element, match, dot_pattern);
-    // Main element
-    if (match[0] == DATAREADER_ELEMENT)
+    element = match[0];
+    subelement = match.suffix();
+    // Main element might require a profile name
+    std::regex bracket_pattern("\\[([^\\]]*)\\]");
+    std::string profile_name;
+    if (std::regex_search(element, match, bracket_pattern))
+    {
+        element = match.prefix();
+        profile_name = match[1];
+    }
+
+    if (element == DATAREADER_ELEMENT)
     {
         std::cout << "DataReader configuration not yet supported" << std::endl;
     }
-    else if (match[0] == DATAWRITER_ELEMENT)
+    else if (element == DATAWRITER_ELEMENT)
     {
         std::cout << "DataWriter configuration not yet supported" << std::endl;
     }
-    else if (match[0] == HELP_COMMAND)
+    else if (element == HELP_COMMAND)
     {
-        std::cout << SET_SUBPARSER_USAGE << std::endl;
+        std::cout << usage << std::endl;
     }
-    else if (match[0] == INTRAPROCESS_ELEMENT)
+    else if (element == INTRAPROCESS_ELEMENT)
     {
         std::cout << "Intra-process configuration not yet supported" << std::endl;
     }
-    else if (match[0] == LOG_ELEMENT)
+    else if (element == LOG_ELEMENT)
     {
         std::cout << "Log module configuration not yet supported" << std::endl;
     }
-    else if (match[0] == PARTICIPANT_ELEMENT)
+    else if (element == PARTICIPANT_ELEMENT)
     {
-        element = match.suffix();
-        participant_subelement_parser(command, filename, element, dot_pattern);
+        // If there is no subelement and the last value is (help | -h | --help), print usage
+        if (subelement.empty() &&
+                (values.back() == HELP_COMMAND ||
+                values.back() == HELP_SHORTHAND_FLAG ||
+                values.back() == HELP_FLAG))
+        {
+            std::cout << PARTICIPANT_USAGE << std::endl;
+            exit(0);
+        }
+        // Participant element requires a profile name
+        else if (profile_name.empty() && command != CommonCommands::QUERY)
+        {
+            std::cout << "ERROR: profile name is required to configure the participant" << std::endl;
+            if (CommonCommands::QUERY != command)
+            {
+                std::cout << PARTICIPANT_USAGE << std::endl;
+            }
+            else
+            {
+                // TODO
+                // std::cout << PARTICIPANT_QUERY_USAGE << std::endl;
+            }
+            exit(1);
+        }
+        else
+        {
+            participant_subelement_parser(command, filename, profile_name, subelement, dot_pattern, values);
+        }
     }
-    else if (match[0] == TRANSPORT_ELEMENT)
+    else if (element == TRANSPORT_ELEMENT)
     {
         std::cout << "Transport descriptor configuration not yet supported" << std::endl;
     }
-    else if (match[0] == TYPES_ELEMENT)
+    else if (element == TYPES_ELEMENT)
     {
         std::cout << "Dynamic types configuration not yet supported" << std::endl;
     }
     else
     {
-        std::cout << "ERROR: " << match[0] << " element not recognized" << std::endl;
+        std::cout << "ERROR: " << element << " element not recognized" << std::endl;
         std::cout << SET_SUBPARSER_USAGE << std::endl;
         exit(1);
     }
