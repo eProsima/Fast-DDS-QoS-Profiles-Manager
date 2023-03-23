@@ -58,9 +58,9 @@ static const char PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE[] =
         R"(Participant default external unicast locators usage:
 
     Usage:
-      fastddsqosprof <file> <command> participant["profile_name"].external_locators.default_unicast[] <kind_value> <externality_value> <cost_value> <address_value> <mask_value> <port_value> [(help | -h | --help)]
-      fastddsqosprof <file> <command> participant["profile_name"].external_locators.default_unicast[].<subelement> <value> [(help | -h | --help)]
-      fastddsqosprof <file> <command> participant["profile_name"].external_locators.default_unicast[].<subelement> (help | -h | --help)
+      fastddsqosprof <file> <command> participant["profile_name"].external_locators.default_unicast[] [<kind_value> <externality_value> <cost_value> <address_value> <mask_value> <port_value> (help | -h | --help)]
+      fastddsqosprof <file> <command> participant["profile_name"].external_locators.default_unicast[].<subelement> [<value> (help | -h | --help)]
+      fastddsqosprof <file> <command> participant["profile_name"].external_locators.default_unicast[].<subelement> [(help | -h | --help)]
       fastddsqosprof <file> <command> participant["profile_name"].external_locators.default_unicast[] [(help | -h | --help)]
 
     Options:
@@ -72,12 +72,12 @@ static const char PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE[] =
       set               Write participant default external unicast locator configuration parameter to XML file.
 
     The allowed <subelement> options are:
-      address           Default external unicast locator address. Valid values: IP format or DNS.
-      cost              Default external unicast locator cost. Valid values: [0, 255]
-      externality       Default external unicast locator externality index. Valid values: [1, 255]
-      kind              Default external unicast locator kind. Valid values: udp_v4 | udp_v6 (Default: udp_v4)
-      mask              Default external unicast locator mask. Valid values: udp_v4 [1, 31] | udp_v6 [1, 127]
-      port              Default external unicast locator port. Valid values: [0, 65535]
+      address           Default external unicast locator address. Valid set values: IP format or DNS.
+      cost              Default external unicast locator cost. Valid set values: [0, 255]
+      externality       Default external unicast locator externality index. Valid set values: [1, 255]
+      kind              Default external unicast locator kind. Valid set values: udp_v4 | udp_v6 (Default: udp_v4)
+      mask              Default external unicast locator mask. Valid set values: udp_v4 [1, 31] | udp_v6 [1, 127]
+      port              Default external unicast locator port. Valid set values: [0, 65535]
 )";
 
 static const char PARTICIPANT_DEFAULT_PROFILE_USAGE[] =

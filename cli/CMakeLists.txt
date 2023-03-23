@@ -29,8 +29,6 @@ configure_file(${PROJECT_SOURCE_DIR}/include/config.h.in
 find_package(fastdds_qos_profiles_manager REQUIRED)
 find_package(docopt COMPONENTS CXX REQUIRED)
 
-message(STATUS "*****************************************")
-message(STATUS ${fastdds_qos_profiles_manager_INCLUDE_DIR})
 ###############################################################################
 # Compilation
 ###############################################################################

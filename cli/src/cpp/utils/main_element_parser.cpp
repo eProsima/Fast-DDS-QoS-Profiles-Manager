@@ -110,13 +110,13 @@ void main_element_parser(
         // Participant element requires a profile name
         else if (profile_name.empty())
         {
-            std::cout << "ERROR: profile name is required to configure the participant" << std::endl;
+            std::cout << "ERROR: profile name is required for participant elements" << std::endl;
             print_usage = true;
         }
         // Participant element requires a subelement
         else if (subelement.empty())
         {
-            std::cout << "ERROR: subelement is required to configure the participant" << std::endl;
+            std::cout << "ERROR: subelement is required for participant elements" << std::endl;
             print_usage = true;
         }
         else

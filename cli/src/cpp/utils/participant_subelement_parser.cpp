@@ -104,11 +104,28 @@ void participant_subelement_parser(
     else if (element == EXTERNAL_LOCATORS_SUBELEMENT)
     {
         // Check help value
-        if (!values.empty() && (values.back() == HELP_COMMAND || values.back() == HELP_SHORTHAND_FLAG) ||
-                values.back() == HELP_FLAG)
+        if (!values.empty() && (values.back() == HELP_COMMAND || values.back() == HELP_SHORTHAND_FLAG ||
+                values.back() == HELP_FLAG))
         {
             print_usage = true;
         }
+        // Default external unicast locators require a subelement
+        else if (subelement.empty())
+        {
+            print_usage = true;
+            std::cout << "ERROR: subelement is required for external locators element" << std::endl;
+        }
+        // At least one value is required for SET command
+        else if (values.empty() && CommonCommands::SET == command)
+        {
+            print_usage = true;
+            std::cout << "ERROR: at least one value has to be passed to configure external locators" << std::endl;
+        }
+        else
+        {
+            // TODO
+        }
+
         if (print_usage)
         {
             if (CommonCommands::QUERY == command)
