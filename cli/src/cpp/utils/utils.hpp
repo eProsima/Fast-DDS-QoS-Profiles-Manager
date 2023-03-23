@@ -15,6 +15,7 @@
 #ifndef _FASTDDS_QOS_PROFILES_MANAGER_CLI_UTILS_UTILS_HPP_
 #define _FASTDDS_QOS_PROFILES_MANAGER_CLI_UTILS_UTILS_HPP_
 
+#include <regex>
 #include <string>
 
 namespace eprosima {
@@ -33,7 +34,7 @@ enum class CommonCommands
  * @brief Parser for the main element to be configured.
  *
  * @param command Command kind.
- * @param filename File to modified.
+ * @param filename File to be modified.
  * @param argc Number of arguments passed to the parser.
  * @param argv Arguments to be parsed.
  */
@@ -42,6 +43,20 @@ void main_element_parser(
         const std::string& filename,
         int argc,
         char** argv);
+
+/**
+ * @brief Parser for the participant main subelements.
+ *
+ * @param command Command kind.
+ * @param filename File to be modified.
+ * @param subelement String with the dot-separated subelements.
+ * @param pattern Regex pattern used to parse the provided string.
+ */
+void participant_subelement_parser(
+        CommonCommands command,
+        const std::string& filename,
+        std::string& subelement,
+        const std::regex& pattern);
 
 } // qosprof_cli
 } // eprosima

@@ -43,6 +43,7 @@ set(${PROJECT_NAME}_source_files
 
     src/cpp/fastdds_qos_profiles_manager_cli.cpp
     src/cpp/utils/main_element_parser.cpp
+    src/cpp/utils/participant_subelement_parser.cpp
 )
 
 add_executable(${EXECUTABLE_NAME} ${${PROJECT_NAME}_source_files})
