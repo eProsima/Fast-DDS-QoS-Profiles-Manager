@@ -73,11 +73,11 @@ static const char PARTICIPANT_USAGE[] =
       allocations                   Participant allocations configuration.
       binary_property               Participant binary properties according to Property QoS Policy.
       builtin                       Participant builtin configuration.
+      default_profile               Default profile attribute.
       external_locators             Participant external locators.
       guid_prefix                   Participant GUID prefix (unique identifier).
       id                            Participant ID.
       ignore_non_matching_locators  Participant ignore non matching locators flag.
-      default_profile               Default profile attribute.
       listen_socket_buffer_size     Participant listen socket buffer size.
       locators                      Participant locators.
       name                          Participant name.

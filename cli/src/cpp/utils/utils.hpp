@@ -55,14 +55,14 @@ void main_element_parser(
  * @param command Command kind.
  * @param filename File to be modified.
  * @param profile_name Participant profile name.
- * @param subelement String with the dot-separated subelements.
+ * @param element String with the dot-separated subelements.
  * @param values Vector of strings with the values passed to CLI.
  */
 void participant_subelement_parser(
         CommonCommands command,
         const std::string& filename,
         const std::string& profile_name,
-        std::string& subelement,
+        std::string& element,
         const std::vector<std::string>& values);
 
 } // qosprof_cli

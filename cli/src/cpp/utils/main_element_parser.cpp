@@ -61,14 +61,13 @@ void main_element_parser(
         true);
 
     std::string element = args[PARSER_ELEMENT].asString();
-    std::string subelement;
     std::vector<std::string> values = args[PARSER_VALUES].asStringList();
 
     // Parse element using regular expression
     std::smatch match;
     std::regex_search(element, match, dot_pattern);
     element = match[0];
-    subelement = match.suffix();
+    std::string subelement = match.suffix();
     // Main element might require a profile name (key)
     std::string profile_name;
     if (std::regex_search(element, match, bracket_pattern))
