@@ -59,7 +59,6 @@ void participant_subelement_parser(
     }
     else if (element == DEFAULT_PROFILE_SUBELEMENT)
     {
-        print_usage = false;
         // No values with exception to help
         if (!values.empty())
         {
@@ -104,7 +103,24 @@ void participant_subelement_parser(
     }
     else if (element == EXTERNAL_LOCATORS_SUBELEMENT)
     {
-        std::cout << "Participant external locators configuration not yet supported" << std::endl;
+        // Check help value
+        if (!values.empty() && (values.back() == HELP_COMMAND || values.back() == HELP_SHORTHAND_FLAG) ||
+                values.back() == HELP_FLAG)
+        {
+            print_usage = true;
+        }
+        if (print_usage)
+        {
+            if (CommonCommands::QUERY == command)
+            {
+                // TODO
+                // std::cout << PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_QUERY_USAGE << std::endl;
+            }
+            else
+            {
+                std::cout << PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE << std::endl;
+            }
+        }
     }
     else if (element == GUID_PREFIX_SUBELEMENT)
     {

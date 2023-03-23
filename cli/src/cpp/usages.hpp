@@ -54,7 +54,33 @@ static const char QUERY_USAGE[] =
       fastddsqosprof <file> query [size | keys] <element>
 )";
 
-static const char PARTICIPANT_DEFAULT_PROFILE_USAGE [] =
+static const char PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE[] =
+        R"(Participant default external unicast locators usage:
+
+    Usage:
+      fastddsqosprof <file> <command> participant["profile_name"].external_locators.default_unicast[] <kind_value> <externality_value> <cost_value> <address_value> <mask_value> <port_value> [(help | -h | --help)]
+      fastddsqosprof <file> <command> participant["profile_name"].external_locators.default_unicast[].<subelement> <value> [(help | -h | --help)]
+      fastddsqosprof <file> <command> participant["profile_name"].external_locators.default_unicast[].<subelement> (help | -h | --help)
+      fastddsqosprof <file> <command> participant["profile_name"].external_locators.default_unicast[] [(help | -h | --help)]
+
+    Options:
+      help -h --help    CLI participant default external unicast locators usage
+
+    The allowed <command> options are:
+      clear             Erase participant default external unicast locator configuration parameter from XML file.
+      print             Print participant default external unicast locator XML configuration parameter.
+      set               Write participant default external unicast locator configuration parameter to XML file.
+
+    The allowed <subelement> options are:
+      address           Default external unicast locator address. Valid values: IP format or DNS.
+      cost              Default external unicast locator cost. Valid values: [0, 255]
+      externality       Default external unicast locator externality index. Valid values: [1, 255]
+      kind              Default external unicast locator kind. Valid values: udp_v4 | udp_v6 (Default: udp_v4)
+      mask              Default external unicast locator mask. Valid values: udp_v4 [1, 31] | udp_v6 [1, 127]
+      port              Default external unicast locator port. Valid values: [0, 65535]
+)";
+
+static const char PARTICIPANT_DEFAULT_PROFILE_USAGE[] =
         R"(Participant default profile usage:
 
     Usage:
@@ -64,9 +90,9 @@ static const char PARTICIPANT_DEFAULT_PROFILE_USAGE [] =
       help -h --help                CLI participant default profile usage
 
     The allowed <command> options are:
-      clear                         Erase participant configuration parameter from XML file.
-      print                         Print participant XML configuration parameter.
-      set                           Write participant configuration parameter to XML file.
+      clear                         Erase participant default profile from XML file.
+      print                         Print participant default profile.
+      set                           Set participant profile as default in the XML file.
 )";
 
 static const char PARTICIPANT_USAGE[] =

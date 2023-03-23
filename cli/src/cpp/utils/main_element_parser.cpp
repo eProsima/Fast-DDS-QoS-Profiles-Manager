@@ -99,7 +99,6 @@ void main_element_parser(
     }
     else if (element == PARTICIPANT_ELEMENT)
     {
-        print_usage = false;
         // If there is no subelement and the last value is (help | -h | --help), print usage
         if (subelement.empty() && !values.empty() &&
                 (values.back() == HELP_COMMAND ||
