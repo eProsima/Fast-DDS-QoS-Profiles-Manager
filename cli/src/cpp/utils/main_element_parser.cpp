@@ -16,6 +16,7 @@
 #include <map>
 #include <regex>
 #include <string>
+#include <vector>
 
 #include <docopt/docopt.h>
 

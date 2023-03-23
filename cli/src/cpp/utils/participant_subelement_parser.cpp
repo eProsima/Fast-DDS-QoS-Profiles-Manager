@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include <iostream>
+#include <regex>
 #include <string>
 #include <vector>
 
@@ -123,7 +124,8 @@ void participant_subelement_parser(
         }
         else
         {
-            // TODO
+            external_locators_parser(ExternalLocatorsList::PARTICIPANT_DEFAULT_UNICAST, command, filename, profile_name,
+                    subelement, values);
         }
 
         if (print_usage)

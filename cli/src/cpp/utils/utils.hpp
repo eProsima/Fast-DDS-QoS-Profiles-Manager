@@ -31,9 +31,36 @@ enum class CommonCommands
     SET
 };
 
+// External locator lists
+enum class ExternalLocatorsList
+{
+    PARTICIPANT_DEFAULT_UNICAST,
+    PARTICIPANT_METATRAFFIC_UNICAST,
+    DATAWRITER_UNICAST,
+    DATAREADER_UNICAST
+};
+
 // Regex patterns
 const std::regex dot_pattern("[^\\.]+");
 const std::regex bracket_pattern("\\[([^\\]]*)\\]");
+
+/**
+ * @brief Common parser for external locators lists
+ *
+ * @param list Identify the specific list which is being modified.
+ * @param command Command kind.
+ * @param filename File to be modified.
+ * @param profile_name DDS entity profile name.
+ * @param element String with the dot-separated subelements.
+ * @param values Vector of strings with the values passed to CLI.
+ */
+void external_locators_parser(
+        ExternalLocatorsList list,
+        CommonCommands command,
+        const std::string& filename,
+        const std::string& profile_name,
+        std::string& element,
+        const std::vector<std::string>& values);
 
 /**
  * @brief Parser for the main element to be configured.
