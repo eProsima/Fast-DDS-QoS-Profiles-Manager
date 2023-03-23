@@ -48,7 +48,6 @@ int main(
         {
             std::cout << "ERROR: set command requires at least one follow-up argument" << std::endl;
             std::cout << SET_USAGE << std::endl;
-            exit(1);
         }
     }
     else if (command == VALIDATE_COMMAND)
@@ -63,7 +62,6 @@ int main(
         {
             std::cout << "ERROR: validate command does not support any follow-up argument" << std::endl;
             std::cout << VALIDATE_USAGE << std::endl;
-            exit(1);
         }
     }
     else if (command == PRINT_COMMAND)
@@ -81,7 +79,6 @@ int main(
         {
             std::cout << "ERROR: print command required none or only one follow-up argument" << std::endl;
             std::cout << PRINT_USAGE << std::endl;
-            std::exit(1);
         }
     }
     else if (command == QUERY_COMMAND)
@@ -96,7 +93,6 @@ int main(
         {
             std::cout << "ERROR: query command requires at least one follow-up argument" << std::endl;
             std::cout << QUERY_USAGE << std::endl;
-            exit(1);
         }
     }
     else if (command == CLEAR_COMMAND)
@@ -110,7 +106,6 @@ int main(
         {
             std::cout << "ERROR: clear command requires only one follow-up argument" << std::endl;
             std::cout << CLEAR_USAGE << std::endl;
-            exit(1);
         }
     }
     else if (command == COMPARE_COMMAND)
@@ -125,7 +120,6 @@ int main(
         {
             std::cout << "ERROR: compare command requires only one follow-up argument" << std::endl;
             std::cout << COMPARE_USAGE << std::endl;
-            exit(1);
         }
     }
     else if (command == HELP_COMMAND)
@@ -138,14 +132,12 @@ int main(
         {
             std::cout << "ERROR: help command requires none follow-up element" << std::endl;
             std::cout << HELP_USAGE << std::endl;
-            exit(1);
         }
     }
     else
     {
         std::cout << "ERROR: " << command << " command not recognized" << std::endl;
         std::cout << USAGE << std::endl;
-        exit(1);
     }
 
     return 0;

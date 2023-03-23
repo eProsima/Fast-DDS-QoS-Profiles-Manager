@@ -101,19 +101,34 @@ void main_element_parser(
     }
     else if (element == PARTICIPANT_ELEMENT)
     {
+        bool print_usage = false;
         // If there is no subelement and the last value is (help | -h | --help), print usage
-        if (subelement.empty() &&
+        if (subelement.empty() && !values.empty() &&
                 (values.back() == HELP_COMMAND ||
                 values.back() == HELP_SHORTHAND_FLAG ||
                 values.back() == HELP_FLAG))
         {
-            std::cout << PARTICIPANT_USAGE << std::endl;
-            exit(0);
+            print_usage = true;
         }
         // Participant element requires a profile name
-        else if (profile_name.empty() && command != CommonCommands::QUERY)
+        else if (profile_name.empty())
         {
             std::cout << "ERROR: profile name is required to configure the participant" << std::endl;
+            print_usage = true;
+        }
+        // Participant element requires a subelement
+        else if (subelement.empty())
+        {
+            std::cout << "ERROR: subelement is required to configure the participant" << std::endl;
+            print_usage = true;
+        }
+        else
+        {
+            participant_subelement_parser(command, filename, profile_name, subelement, dot_pattern, values);
+        }
+
+        if (print_usage)
+        {
             if (CommonCommands::QUERY != command)
             {
                 std::cout << PARTICIPANT_USAGE << std::endl;
@@ -123,11 +138,6 @@ void main_element_parser(
                 // TODO
                 // std::cout << PARTICIPANT_QUERY_USAGE << std::endl;
             }
-            exit(1);
-        }
-        else
-        {
-            participant_subelement_parser(command, filename, profile_name, subelement, dot_pattern, values);
         }
     }
     else if (element == TRANSPORT_ELEMENT)
@@ -141,8 +151,7 @@ void main_element_parser(
     else
     {
         std::cout << "ERROR: " << element << " element not recognized" << std::endl;
-        std::cout << SET_SUBPARSER_USAGE << std::endl;
-        exit(1);
+        std::cout << usage << std::endl;
     }
 }
 
