@@ -65,13 +65,11 @@ void main_element_parser(
     std::vector<std::string> values = args[PARSER_VALUES].asStringList();
 
     // Parse element using regular expression
-    std::regex dot_pattern("[^\\.]+");
     std::smatch match;
     std::regex_search(element, match, dot_pattern);
     element = match[0];
     subelement = match.suffix();
-    // Main element might require a profile name
-    std::regex bracket_pattern("\\[([^\\]]*)\\]");
+    // Main element might require a profile name (key)
     std::string profile_name;
     if (std::regex_search(element, match, bracket_pattern))
     {
@@ -124,7 +122,7 @@ void main_element_parser(
         }
         else
         {
-            participant_subelement_parser(command, filename, profile_name, subelement, dot_pattern, values);
+            participant_subelement_parser(command, filename, profile_name, subelement, values);
         }
 
         if (print_usage)

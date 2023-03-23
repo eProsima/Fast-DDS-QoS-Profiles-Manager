@@ -26,11 +26,12 @@ void participant_subelement_parser(
         const std::string& /*filename*/,
         const std::string& /*profile_name*/,
         std::string& subelement,
-        const std::regex& pattern,
         const std::vector<std::string>& /*values*/)
 {
     std::smatch match;
-    std::regex_search(subelement, match, pattern);
+    std::regex_search(subelement, match, dot_pattern);
+
+    // Some subelement (property and binary_property) require a key
 }
 
 } // qosprof_cli

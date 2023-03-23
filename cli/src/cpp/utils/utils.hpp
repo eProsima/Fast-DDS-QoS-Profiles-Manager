@@ -31,6 +31,10 @@ enum class CommonCommands
     SET
 };
 
+// Regex patterns
+const std::regex dot_pattern("[^\\.]+");
+const std::regex bracket_pattern("\\[([^\\]]*)\\]");
+
 /**
  * @brief Parser for the main element to be configured.
  *
@@ -52,7 +56,6 @@ void main_element_parser(
  * @param filename File to be modified.
  * @param profile_name Participant profile name.
  * @param subelement String with the dot-separated subelements.
- * @param pattern Regex pattern used to parse the provided string.
  * @param values Vector of strings with the values passed to CLI.
  */
 void participant_subelement_parser(
@@ -60,7 +63,6 @@ void participant_subelement_parser(
         const std::string& filename,
         const std::string& profile_name,
         std::string& subelement,
-        const std::regex& pattern,
         const std::vector<std::string>& values);
 
 } // qosprof_cli
