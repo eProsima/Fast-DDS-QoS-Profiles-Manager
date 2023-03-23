@@ -16,6 +16,7 @@
 # Required Packages.
 ###############################################################################
 find_package(GTest REQUIRED)
+find_package(XercesC REQUIRED)
 
 add_subdirectory(DomainParticipant)
 add_subdirectory(TransportDescriptor)
