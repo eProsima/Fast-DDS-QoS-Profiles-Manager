@@ -18,6 +18,7 @@
 namespace eprosima {
 namespace qosprof_cli {
 
+// Parser tags
 constexpr const char* PARSER_ARGS = "<args>";
 constexpr const char* PARSER_ELEMENT = "<element>";
 constexpr const char* PARSER_FILE = "<file>";

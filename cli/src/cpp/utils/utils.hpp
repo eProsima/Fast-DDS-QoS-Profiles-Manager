@@ -29,6 +29,14 @@ enum class CommonCommands
     SET
 };
 
+/**
+ * @brief Parser for the main element to be configured.
+ *
+ * @param command Command kind.
+ * @param filename File to modified.
+ * @param argc Number of arguments passed to the parser.
+ * @param argv Arguments to be parsed.
+ */
 void main_element_parser(
         CommonCommands command,
         const std::string& filename,
