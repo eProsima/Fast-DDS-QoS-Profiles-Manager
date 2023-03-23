@@ -28,7 +28,7 @@ namespace qosprof_cli {
 
 void main_element_parser(
         CommonCommands command,
-        const std::string& /*filename*/,
+        const std::string& filename,
         int argc,
         char** argv)
 {
@@ -89,7 +89,8 @@ void main_element_parser(
     }
     else if (match[0] == PARTICIPANT_ELEMENT)
     {
-        std::cout << "DomainParticipant configuration not yet supported" << std::endl;
+        element = match.suffix();
+        participant_subelement_parser(command, filename, element, dot_pattern);
     }
     else if (match[0] == TRANSPORT_ELEMENT)
     {
