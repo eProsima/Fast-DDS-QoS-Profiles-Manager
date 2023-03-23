@@ -71,17 +71,18 @@ static const char PARTICIPANT_USAGE[] =
 
     The allowed <subelement> types are:
       allocations                   Participant allocations configuration.
+      binary_property               Participant binary properties according to Property QoS Policy.
       builtin                       Participant builtin configuration.
       external_locators             Participant external locators.
       guid_prefix                   Participant GUID prefix (unique identifier).
       id                            Participant ID.
       ignore_non_matching_locators  Participant ignore non matching locators flag.
-      is_default_profile            Default profile attribute.
+      default_profile               Default profile attribute.
       listen_socket_buffer_size     Participant listen socket buffer size.
       locators                      Participant locators.
       name                          Participant name.
       port                          Participant port parameters configuration.
-      property                      Participant Property QoS Policy.
+      property                      Participant properties according to Property QoS Policy.
       send_socket_buffer_size       Participant send socket buffer size.
       use_builtin_transports        Participant use builtin transports flag.
       user_transports               Participant custom user-defined transports.
