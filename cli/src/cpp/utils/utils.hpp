@@ -47,12 +47,12 @@ const std::regex bracket_pattern("\\[([^\\]]*)\\]");
 /**
  * @brief Common parser for external locators lists
  *
- * @param list Identify the specific list which is being modified.
- * @param command Command kind.
- * @param filename File to be modified.
- * @param profile_name DDS entity profile name.
- * @param element String with the dot-separated subelements.
- * @param values Vector of strings with the values passed to CLI.
+ * @param[in] list Identify the specific list which is being modified.
+ * @param[in] command Command kind.
+ * @param[in] filename File to be modified.
+ * @param[in] profile_name DDS entity profile name.
+ * @param[in] element String with the dot-separated subelements.
+ * @param[in] values Vector of strings with the values passed to CLI.
  */
 void external_locators_parser(
         ExternalLocatorsList list,
@@ -63,12 +63,39 @@ void external_locators_parser(
         const std::vector<std::string>& values);
 
 /**
+ * @brief Auxiliary function to extract the element, subelement and key for the next level.
+ *
+ * @param[in out] element String to be parsed. Return only the main element (until next dot)
+ * @param[out] subelement String after main element.
+ * @param[out] key Index or key if the element is keyed
+ *
+ * @return true if a key was found. False otherwise.
+ */
+inline bool extract_element_subelement_key(
+        std::string& element,
+        std::string& subelement,
+        std::string& key)
+{
+    std::smatch match;
+    std::regex_search(element, match, dot_pattern);
+    element = match[0];
+    subelement = match.suffix();
+    if (std::regex_search(element, match, bracket_pattern))
+    {
+        element = match.prefix();
+        key = match[1];
+        return true;
+    }
+    return false;
+}
+
+/**
  * @brief Parser for the main element to be configured.
  *
- * @param command Command kind.
- * @param filename File to be modified.
- * @param argc Number of arguments passed to the parser.
- * @param argv Arguments to be parsed.
+ * @param[in] command Command kind.
+ * @param[in] filename File to be modified.
+ * @param[in] argc Number of arguments passed to the parser.
+ * @param[in] argv Arguments to be parsed.
  */
 void main_element_parser(
         CommonCommands command,
@@ -79,11 +106,11 @@ void main_element_parser(
 /**
  * @brief Parser for the participant main subelements.
  *
- * @param command Command kind.
- * @param filename File to be modified.
- * @param profile_name Participant profile name.
- * @param element String with the dot-separated subelements.
- * @param values Vector of strings with the values passed to CLI.
+ * @param[in] command Command kind.
+ * @param[in] filename File to be modified.
+ * @param[in] profile_name Participant profile name.
+ * @param[in] element String with the dot-separated subelements.
+ * @param[in] values Vector of strings with the values passed to CLI.
  */
 void participant_subelement_parser(
         CommonCommands command,

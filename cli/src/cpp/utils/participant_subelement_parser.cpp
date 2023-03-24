@@ -13,7 +13,6 @@
 // limitations under the License.
 
 #include <iostream>
-#include <regex>
 #include <string>
 #include <vector>
 
@@ -33,17 +32,9 @@ void participant_subelement_parser(
         std::string& element,
         const std::vector<std::string>& values)
 {
-    std::smatch match;
-    std::regex_search(element, match, dot_pattern);
-    element = match[0];
-    std::string subelement = match.suffix();
-    // Some subelement (property and binary_property) require a key
+    std::string subelement;
     std::string key;
-    if (std::regex_search(element, match, bracket_pattern))
-    {
-        element = match.prefix();
-        key = match[1];
-    }
+    extract_element_subelement_key(element, subelement, key);
 
     bool print_usage = false;
     if (element == ALLOCATIONS_SUBELEMENT)

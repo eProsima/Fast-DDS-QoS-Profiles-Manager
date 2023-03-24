@@ -12,9 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <iostream>
 #include <string>
 #include <vector>
 
+#include <usages.hpp>
 #include <utils/utils.hpp>
 
 namespace eprosima {
@@ -28,6 +30,33 @@ void external_locators_parser(
         std::string& element,
         const std::vector<std::string>& values)
 {
+    // Select usage depending on the element being parsed
+    std::string usage;
+    switch (list)
+    {
+        case ExternalLocatorsList::DATAREADER_UNICAST:
+            // usage = DATAREADER_EXTERNAL_UNICAST_LOCATORS_USAGE;
+            break;
+        case ExternalLocatorsList::DATAWRITER_UNICAST:
+            // usage = DATAWRITER_EXTERNAL_UNICAST_LOCATORS_USAGE;
+            break;
+        case ExternalLocatorsList::PARTICIPANT_DEFAULT_UNICAST:
+            usage = PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE;
+            break;
+        case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
+            // usage = PARTICIPANT_BUILTIN_METATRAFFIC_EXTERNAL_UNICAST_LOCATORS_USAGE;
+            break;
+    }
+
+    std::string subelement;
+    std::string key;
+
+    // External locator list must be keyed
+    if (!extract_element_subelement_key(element, subelement, key))
+    {
+        std::cout << "ERROR: external locator <" << element << "> list must be keyed []" << std::endl;
+        std::cout << usage << std::endl;
+    }
 }
 
 } // qosprof_cli

@@ -14,7 +14,6 @@
 
 #include <iostream>
 #include <map>
-#include <regex>
 #include <string>
 #include <vector>
 
@@ -64,18 +63,9 @@ void main_element_parser(
     std::string element = args[PARSER_ELEMENT].asString();
     std::vector<std::string> values = args[PARSER_VALUES].asStringList();
 
-    // Parse element using regular expression
-    std::smatch match;
-    std::regex_search(element, match, dot_pattern);
-    element = match[0];
-    std::string subelement = match.suffix();
-    // Main element might require a profile name (key)
+    std::string subelement;
     std::string profile_name;
-    if (std::regex_search(element, match, bracket_pattern))
-    {
-        element = match.prefix();
-        profile_name = match[1];
-    }
+    extract_element_subelement_key(element, subelement, profile_name);
 
     bool print_usage = false;
     if (element == DATAREADER_ELEMENT)
