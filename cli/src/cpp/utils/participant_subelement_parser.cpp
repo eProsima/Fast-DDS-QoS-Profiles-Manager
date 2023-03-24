@@ -34,7 +34,7 @@ void participant_subelement_parser(
 {
     std::string subelement;
     std::string key;
-    extract_element_subelement_key(element, subelement, key);
+    bool keyed = extract_element_subelement_key(element, subelement, key);
 
     bool print_usage = false;
     if (element == ALLOCATIONS_SUBELEMENT)
@@ -62,6 +62,12 @@ void participant_subelement_parser(
                 std::cout << "ERROR: Participant default attribute configuration does not require any value"
                         << std::endl;
             }
+        }
+        // Not keyed element
+        else if (keyed)
+        {
+            std::cout << "ERROR: Participant default profile attribute is not keyed []" << std::endl;
+            print_usage = true;
         }
         // Final element
         else if (!subelement.empty())
@@ -99,6 +105,12 @@ void participant_subelement_parser(
         if (!values.empty() && (values.back() == HELP_COMMAND || values.back() == HELP_SHORTHAND_FLAG ||
                 values.back() == HELP_FLAG))
         {
+            print_usage = true;
+        }
+        // Not keyed element
+        else if (keyed)
+        {
+            std::cout << "ERROR: Participant external locators element is not keyed []" << std::endl;
             print_usage = true;
         }
         // Default external unicast locators require a subelement
