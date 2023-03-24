@@ -58,10 +58,10 @@ static const char PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE[] =
         R"(Participant default external unicast locators usage:
 
     Usage:
-      fastddsqosprof <file> <command> participant["profile_name"].external_locators.default_unicast[(<index>)] [<kind_value> <externality_value> <cost_value> <address_value> <mask_value> <port_value> (help | -h | --help)]
-      fastddsqosprof <file> <command> participant["profile_name"].external_locators.default_unicast[(<index>)].<subelement> [<value> (help | -h | --help)]
-      fastddsqosprof <file> <command> participant["profile_name"].external_locators.default_unicast[(<index>)].<subelement> [(help | -h | --help)]
-      fastddsqosprof <file> <command> participant["profile_name"].external_locators.default_unicast[(<index>)] [(help | -h | --help)]
+      fastddsqosprof <file> <command> participant[<profile_name>].external_locators.default_unicast[(<index>)] [<kind_value> <externality_value> <cost_value> <address_value> <mask_value> <port_value> (help | -h | --help)]
+      fastddsqosprof <file> <command> participant[<profile_name>].external_locators.default_unicast[(<index>)].<subelement> [<value> (help | -h | --help)]
+      fastddsqosprof <file> <command> participant[<profile_name>].external_locators.default_unicast[(<index>)].<subelement> [(help | -h | --help)]
+      fastddsqosprof <file> <command> participant[<profile_name>].external_locators.default_unicast[(<index>)] [(help | -h | --help)]
 
     Options:
       help -h --help    CLI participant default external unicast locators usage
@@ -71,6 +71,13 @@ static const char PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE[] =
       print             Print participant default external unicast locator XML configuration parameter.
       set               Write participant default external unicast locator configuration parameter to XML file.
 
+    The <profile_name> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
+
+    The <index> element is OPTIONAL:
+      No <index> pushes a new element into the list.
+      Positive <index> accesses the element in that position starting from the first element in the list.
+      Negative <index> accesses the element in that position starting from the last element in the list.
+
     The allowed <subelement> options are:
       address           Default external unicast locator address. Valid set values: IP format or DNS.
       cost              Default external unicast locator cost. Valid set values: [0, 255]
@@ -78,18 +85,13 @@ static const char PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE[] =
       kind              Default external unicast locator kind. Valid set values: udp_v4 | udp_v6 (Default: udp_v4)
       mask              Default external unicast locator mask. Valid set values: udp_v4 [1, 31] | udp_v6 [1, 127]
       port              Default external unicast locator port. Valid set values: [0, 65535]
-
-    The <index> element is OPTIONAL:
-      No <index> pushes a new element into the list.
-      Positive <index> accesses the element in that position starting from the first element in the list.
-      Negative <index> accesses the element in that position starting from the last element in the list.
 )";
 
 static const char PARTICIPANT_DEFAULT_PROFILE_USAGE[] =
         R"(Participant default profile usage:
 
     Usage:
-      fastddsqosprof <file> <command> participant["profile_name"].default_profile [(help | -h | --help)]
+      fastddsqosprof <file> <command> participant[<profile_name>].default_profile [(help | -h | --help)]
 
     Options:
       help -h --help                CLI participant default profile usage
@@ -98,14 +100,16 @@ static const char PARTICIPANT_DEFAULT_PROFILE_USAGE[] =
       clear                         Erase participant default profile from XML file.
       print                         Print participant default profile.
       set                           Set participant profile as default in the XML file.
+
+    The <profile_name> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
 )";
 
 static const char PARTICIPANT_USAGE[] =
         R"(Participant parser:
 
     Usage:
-      fastddsqosprof <file> <command> participant["profile_name"].<subelement> [<values>...]
-      fastddsqosprof <file> <command> participant["profile_name"].<subelement> (help | -h | --help)
+      fastddsqosprof <file> <command> participant[<profile_name>].<subelement> [<values>...]
+      fastddsqosprof <file> <command> participant[<profile_name>].<subelement> (help | -h | --help)
 
     Options:
       help -h --help                CLI participant options
@@ -114,6 +118,8 @@ static const char PARTICIPANT_USAGE[] =
       clear                         Erase participant configuration parameter from XML file.
       print                         Print participant XML configuration parameter.
       set                           Write participant configuration parameter to XML file.
+
+    The <profile_name> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
 
     The allowed <subelement> types are:
       allocations                   Participant allocations configuration.
