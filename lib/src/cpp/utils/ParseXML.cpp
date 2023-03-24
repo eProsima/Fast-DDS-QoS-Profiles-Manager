@@ -17,6 +17,7 @@
  */
 
 #include <utils/ParseXML.hpp>
+#include <utils/ParseXMLTags.hpp>
 
 xercesc::XercesDOMParser* open_xml(
         const std::string& xml_file)
@@ -29,7 +30,7 @@ xercesc::XercesDOMParser* open_xml(
     catch (const xercesc::XMLException& toCatch)
     {
         // Unable to initialize XML workspace
-        throw eprosima::qosprof::Unsupported(xercesc::XMLString::transcode(toCatch.getMessage()));
+        throw eprosima::qosprof::FileNotFound(xercesc::XMLString::transcode(toCatch.getMessage()));
         return NULL;
     }
 
@@ -62,7 +63,51 @@ xercesc::XercesDOMParser* open_xml(
     return parser;
 }
 
-void closeXML()
+xercesc::DOMDocument*  create_xml(
+        const std::string& xml_file)
+{
+    // Open XML workspace
+    xercesc::XMLPlatformUtils::Initialize();
+
+    // Create file
+    xercesc::DOMImplementation* implementation =
+        xercesc::DOMImplementationRegistry::getDOMImplementation (xercesc::XMLString::transcode("Core"));
+    if (implementation == NULL)
+    {
+        // Close XML workspace
+        xercesc::XMLPlatformUtils::Terminate();
+
+        // Could not initialize XML workspace
+        throw eprosima::qosprof::FileNotFound("Could not initialize XML workspace");
+
+        return NULL;
+    }
+
+    // Create root element as profiles plus xmls link
+    xercesc::DOMDocument* doc = implementation->createDocument(0, xercesc::XMLString::transcode(
+        eprosima::qosprof::tag::ROOT), 0);
+    xercesc::DOMElement* root_element = doc->getDocumentElement();
+    root_element->setAttribute(
+        xercesc::XMLString::transcode("xmlns"),
+        xercesc::XMLString::transcode("http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles"));
+
+    // Save the created elements in the given file
+    xercesc::DOMLSOutput* output = implementation->createLSOutput();
+    xercesc::DOMLSSerializer* writer = ((xercesc::DOMImplementationLS*)implementation)->createLSSerializer();;
+    xercesc::XMLFormatTarget* target_name = new xercesc::LocalFileFormatTarget(
+        xercesc::XMLString::transcode(xml_file.c_str()));
+    output->setByteStream(target_name);
+    output->setEncoding(xercesc::XMLString::transcode("UTF-8"));
+    writer->setNewLine(xercesc::XMLString::transcode("\n"));
+    xercesc::DOMConfiguration* config = writer->getDomConfig();
+    config->setParameter(xercesc::XMLUni::fgDOMWRTFormatPrettyPrint, true);
+    config->setParameter(xercesc::XMLUni::fgDOMXMLDeclaration, true);
+    writer->write(doc, output);
+
+    return doc;
+}
+
+void close_xml()
 {
     // Close XML workspace
     xercesc::XMLPlatformUtils::Terminate();
@@ -83,8 +128,9 @@ xercesc::DOMNode* get_node(
 
         return NULL;
     }
+    return NULL;
     // Complex element Node
-    else if (node_tag_list.getLength() == 1)
+     if (node_tag_list.getLength() == 1)
     {
         // Return Node
         return node_tag_list.item(0);
@@ -197,11 +243,11 @@ void save_xml(
         const xercesc::DOMDocument& doc)
 {
     // Create file
-    xercesc::DOMImplementation* xmlImplementation =
+    xercesc::DOMImplementation* implementation =
         xercesc::DOMImplementationRegistry::getDOMImplementation (xercesc::XMLString::transcode("Core"));
-    if (xmlImplementation == NULL)
+    if (implementation == NULL)
     {
-        closeXML();
+        close_xml();
 
         // Could not initialize XML workspace
         throw eprosima::qosprof::Unsupported("Could not initialize XML workspace");
@@ -209,24 +255,21 @@ void save_xml(
         return;
     }
     // Save the created elements in the given file
-    xercesc::DOMLSOutput* xmlOutput = xmlImplementation->createLSOutput();
-    xercesc::DOMLSSerializer* xmlWriter = ((xercesc::DOMImplementationLS*)xmlImplementation)->createLSSerializer();;
-    xercesc::XMLFormatTarget* xmlTargetName = new xercesc::LocalFileFormatTarget(
+    xercesc::DOMLSOutput* output = implementation->createLSOutput();
+    xercesc::DOMLSSerializer* writer = ((xercesc::DOMImplementationLS*)implementation)->createLSSerializer();;
+    xercesc::XMLFormatTarget* target_name = new xercesc::LocalFileFormatTarget(
         xercesc::XMLString::transcode(xml_file.c_str()));
-    xmlOutput->setByteStream(xmlTargetName);
-    xmlOutput->setEncoding(xercesc::XMLString::transcode("UTF-8"));
-    xmlWriter->setNewLine(xercesc::XMLString::transcode("\n"));
-    xercesc::DOMConfiguration* xmlConfiguration = xmlWriter->getDomConfig();
-    xmlConfiguration->setParameter(xercesc::XMLUni::fgDOMWRTFormatPrettyPrint, true);
-    xmlConfiguration->setParameter(xercesc::XMLUni::fgDOMXMLDeclaration, true);
-    xercesc::DOMNode* rootNode = (xercesc::DOMNode*)doc.getDocumentElement();
-    xmlWriter->write(rootNode, xmlOutput);
+    output->setByteStream(target_name);
+    output->setEncoding(xercesc::XMLString::transcode("UTF-8"));
+    writer->setNewLine(xercesc::XMLString::transcode("\n"));
+    xercesc::DOMConfiguration* config = writer->getDomConfig();
+    config->setParameter(xercesc::XMLUni::fgDOMWRTFormatPrettyPrint, true);
+    config->setParameter(xercesc::XMLUni::fgDOMXMLDeclaration, true);
+    xercesc::DOMNode* root_node = (xercesc::DOMNode*)doc.getDocumentElement();
+    writer->write(root_node, output);
 
-    // Ended working with the document, release resources
-    delete xmlConfiguration;
-    delete xmlWriter;
-    delete xmlOutput;
-    delete xmlTargetName;
+    delete output;
+    delete target_name;
 }
 
 void clear_node(
@@ -254,12 +297,12 @@ void clear_node(
 }
 
 xercesc::DOMNode* get_node(
-        xercesc::XercesDOMParser& parser,
+        xercesc::DOMDocument* doc,
         const std::string& tag_name)
 {
     try
     {
-        return get_node(parser, tag_name, 0, NULL, NULL);
+        return get_node(doc, tag_name, 0, "", "");
     }
     catch (const eprosima::qosprof::ElementNotFound& ex)
     {
@@ -270,13 +313,13 @@ xercesc::DOMNode* get_node(
 }
 
 xercesc::DOMNode* get_node(
-        xercesc::XercesDOMParser& parser,
+        xercesc::DOMDocument* doc,
         const std::string& tag_name,
         int32_t index)
 {
     try
     {
-        return get_node(parser, tag_name, index, NULL, NULL);
+        return get_node(doc, tag_name, index, "", "");
     }
     catch (const eprosima::qosprof::ElementNotFound& ex)
     {
@@ -287,14 +330,14 @@ xercesc::DOMNode* get_node(
 }
 
 xercesc::DOMNode* get_node(
-        xercesc::XercesDOMParser& parser,
+        xercesc::DOMDocument* doc,
         const std::string& tag_name,
         const std::string& att_name,
         const std::string& att_value)
 {
     try
     {
-        return get_node(parser, tag_name, 0, att_name, att_value);
+        return get_node(doc, tag_name, 0, att_name, att_value);
     }
     catch (const eprosima::qosprof::ElementNotFound& ex)
     {
@@ -305,34 +348,41 @@ xercesc::DOMNode* get_node(
 }
 
 xercesc::DOMNode* get_node(
-        xercesc::XercesDOMParser& parser,
+        xercesc::DOMDocument* doc,
         const std::string& tag_name,
         int32_t index,
         const std::string& att_name,
         const std::string& att_value)
 {
-    // Open document
-    xercesc::DOMDocument* doc = parser.getDocument();
+    // if no document assigned, return NULL
+    if (doc == NULL)
+    {
+        throw eprosima::qosprof::ElementNotFound("empty file");
+        return NULL;
+    }
 
     // Obtain root element
-    xercesc::DOMElement* xmlRoot = doc->getDocumentElement();
+    xercesc::DOMElement* root_node = doc->getDocumentElement();
 
     xercesc::DOMNode* node = NULL;
-
     // Obtain node from root
     try
     {
-        node = get_node(*xmlRoot->getElementsByTagName(xercesc::XMLString::transcode(tag_name.c_str())), tag_name, index, att_name, att_value);
+        xercesc::DOMNodeList* node_list = root_node->getElementsByTagName(xercesc::XMLString::transcode(tag_name.c_str()));
+        if (node_list == NULL)
+        {
+            // Throw eprosima::qosprof::ElementNotFound exception
+            throw eprosima::qosprof::ElementNotFound("non-existent " + tag_name + " profile\n");
+
+            return NULL;
+        }
+        node = get_node(*node_list, tag_name, index, att_name, att_value);
     }
     catch (const eprosima::qosprof::ElementNotFound& ex)
     {
         // Throw exception if no nodes
         throw eprosima::qosprof::ElementNotFound(ex);
-
     }
-    // Delete resources
-    delete xmlRoot;
-    delete doc;
 
     return node;
 }
@@ -343,7 +393,7 @@ xercesc::DOMNode* get_node(
 {
     try
     {
-        return get_node(parent_node, tag_name, 0, NULL, NULL);
+        return get_node(parent_node, tag_name, 0, "", "");
     }
     catch (const eprosima::qosprof::ElementNotFound& ex)
     {
@@ -360,7 +410,7 @@ xercesc::DOMNode* get_node(
 {
     try
     {
-        return get_node(parent_node, tag_name, index, NULL, NULL);
+        return get_node(parent_node, tag_name, index, "", "");
     }
     catch (const eprosima::qosprof::ElementNotFound& ex)
     {
@@ -398,7 +448,15 @@ xercesc::DOMNode* get_node(
     // Obtain node from parent node
     try
     {
-        return get_node(*parent_node.getChildNodes(), tag_name, index, att_name, att_value);
+        xercesc::DOMNodeList* node_list = parent_node.getChildNodes();
+        if (node_list == NULL)
+        {
+            // Throw eprosima::qosprof::ElementNotFound exception
+            throw eprosima::qosprof::ElementNotFound("non-existent " + tag_name + " profile\n");
+
+            return NULL;
+        }
+        return get_node(*node_list, tag_name, index, att_name, att_value);
     }
     catch (const eprosima::qosprof::ElementNotFound& ex)
     {

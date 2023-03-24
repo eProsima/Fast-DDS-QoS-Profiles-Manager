@@ -34,7 +34,10 @@
 xercesc::XercesDOMParser* open_xml(
         const std::string& xml_file);
 
-void closeXML();
+xercesc::DOMDocument*  create_xml(
+        const std::string& xml_file);
+
+void close_xml();
 
 xercesc::DOMNode* get_node(
         const xercesc::DOMNodeList& node_tag_list,
@@ -57,22 +60,22 @@ void clear_node(
         xercesc::DOMNode& node_to_be_deleted);
 
 xercesc::DOMNode* get_node(
-        xercesc::XercesDOMParser& parser,
+        xercesc::DOMDocument* doc,
         const std::string& tag_name);
 
 xercesc::DOMNode* get_node(
-        xercesc::XercesDOMParser& parser,
+        xercesc::DOMDocument* doc,
         const std::string& tag_name,
         int32_t index);
 
 xercesc::DOMNode* get_node(
-        xercesc::XercesDOMParser& parser,
+        xercesc::DOMDocument* doc,
         const std::string& tag_name,
         const std::string& att_name,
         const std::string& att_value);
 
 xercesc::DOMNode* get_node(
-        xercesc::XercesDOMParser& parser,
+        xercesc::DOMDocument* doc,
         const std::string& tag_name,
         int32_t index,
         const std::string& att_name,
