@@ -71,23 +71,10 @@ void external_locators_parser(
  *
  * @return true if a key was found. False otherwise.
  */
-inline bool extract_element_subelement_key(
+bool extract_element_subelement_key(
         std::string& element,
         std::string& subelement,
-        std::string& key)
-{
-    std::smatch match;
-    std::regex_search(element, match, dot_pattern);
-    element = match[0];
-    subelement = match.suffix();
-    if (std::regex_search(element, match, bracket_pattern))
-    {
-        element = match.prefix();
-        key = match[1];
-        return true;
-    }
-    return false;
-}
+        std::string& key);
 
 /**
  * @brief Parser for the main element to be configured.
