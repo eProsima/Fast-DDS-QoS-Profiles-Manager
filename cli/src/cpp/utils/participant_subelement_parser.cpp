@@ -17,6 +17,7 @@
 #include <vector>
 
 #include <fastdds_qos_profiles_manager/domain_participant/DomainParticipant.hpp>
+#include <fastdds_qos_profiles_manager/exception/Exception.hpp>
 
 #include <parser_constants.hpp>
 #include <utils/utils.hpp>
@@ -77,20 +78,27 @@ void participant_subelement_parser(
         }
         else
         {
-            // Call library
-            switch (command)
+            try
             {
-                case CommonCommands::CLEAR:
-                    // TODO: think if the CLI command should change with the new behavior -> participant.default_profile
-                    qosprof::domain_participant::clear_default_profile(filename);
-                    break;
-                case CommonCommands::PRINT:
-                    // TODO: think if the CLI command should change with the new behavior.
-                    qosprof::domain_participant::print_default_profile(filename);
-                    break;
-                case CommonCommands::SET:
-                    qosprof::domain_participant::set_default_profile(filename, profile_name);
-                    break;
+                // Call library
+                switch (command)
+                {
+                    case CommonCommands::CLEAR:
+                        // TODO: think if the CLI command should change with the new behavior -> participant.default_profile
+                        qosprof::domain_participant::clear_default_profile(filename);
+                        break;
+                    case CommonCommands::PRINT:
+                        // TODO: think if the CLI command should change with the new behavior.
+                        qosprof::domain_participant::print_default_profile(filename);
+                        break;
+                    case CommonCommands::SET:
+                        qosprof::domain_participant::set_default_profile(filename, profile_name);
+                        break;
+                }
+            }
+            catch(const qosprof::Exception e)
+            {
+                std::cout << "Fast DDS QoS Profiles Manager exception caught: " << e.what() << std::endl;
             }
         }
 
