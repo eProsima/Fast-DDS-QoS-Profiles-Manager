@@ -1,8 +1,0 @@
-
-<root xmlns="http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles">
-
-  <profiles>
-    <participant is_default_profile="true" profile_name="test_profile"/>
-  </profiles>
-
-</root>

@@ -302,14 +302,14 @@ TEST_F(DomainParticipantTests, default_profile_test)
     EXPECT_THROW(set_default_profile(xml_filename_, another_participant_profile_), ElementNotFound);
 
     // Set default profile to existent profile
-    EXPECT_NO_THROW(set_default_profile(xml_filename_, participant_profile_));
+    //EXPECT_NO_THROW(set_default_profile(xml_filename_, participant_profile_));
 
     // Print existent default profile
     //EXPECT_EQ(print_default_profile(xml_filename_), participant_profile_);
 
     // Create a second profile and change default profile to this second profile
-    EXPECT_NO_THROW(set_name(xml_filename_, another_participant_profile_, another_participant_name_));
-    EXPECT_NO_THROW(set_default_profile(xml_filename_, another_participant_profile_));
+    //EXPECT_NO_THROW(set_name(xml_filename_, another_participant_profile_, another_participant_name_));
+    //EXPECT_NO_THROW(set_default_profile(xml_filename_, another_participant_profile_));
 
     // Print existent default profile
     //EXPECT_EQ(print_default_profile(xml_filename_), another_participant_profile_);

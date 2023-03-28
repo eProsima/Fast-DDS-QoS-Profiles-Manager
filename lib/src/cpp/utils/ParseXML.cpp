@@ -128,9 +128,9 @@ xercesc::DOMNode* get_node(
 
         return NULL;
     }
-    return NULL;
+
     // Complex element Node
-     if (node_tag_list.getLength() == 1)
+    else if (node_tag_list.getLength() == 1)
     {
         // Return Node
         return node_tag_list.item(0);
@@ -140,26 +140,50 @@ xercesc::DOMNode* get_node(
     {
         // Obtain node based on MAP
         if (att_name.c_str() != NULL){
-            xercesc::DOMNode* tagNode = NULL;
+            xercesc::DOMNode* tag_node = NULL;
 
             // Iterate throw the nodes
             // TODO try with node->getNextSibling();
             for (int i=0, j=0, size=node_tag_list.getLength(); i<size && j==0; i++)
             {
-                tagNode = node_tag_list.item(i);
-                if (tagNode->getAttributes()->getNamedItem(xercesc::XMLString::transcode(att_name.c_str()))->getNodeValue()
-                    == xercesc::XMLString::transcode(att_value.c_str()))
+                tag_node = node_tag_list.item(i);
+                if (tag_node != NULL)
                 {
-                    j++;
+                    std::string name = xercesc::XMLString::transcode(tag_node->getNodeValue());
+                    xercesc::DOMNamedNodeMap* atts = tag_node->getAttributes();
+                    if (atts != NULL)
+                    {
+                        xercesc::DOMNode* item = atts->getNamedItem(xercesc::XMLString::transcode(att_name.c_str()));
+                        if (item != NULL)
+                        {
+                            std::string val = xercesc::XMLString::transcode(item->getNodeValue());
+                            if (val == att_value)
+                            {
+                                j++;
+                            }
+                            else
+                            {
+                                tag_node = NULL;
+                            }
+                        }
+                        else
+                        {
+                            tag_node = NULL;
+                        }
+                    }
+                    else
+                    {
+                        tag_node = NULL;
+                    }
                 }
                 else
                 {
-                    tagNode = NULL;
+                    tag_node = NULL;
                 }
             }
 
             // Throw exception if node not found
-            if (tagNode == NULL)
+            if (tag_node == NULL)
             {
                 // Given file does not exist
                 throw eprosima::qosprof::ElementNotFound(
@@ -170,7 +194,7 @@ xercesc::DOMNode* get_node(
             else
             {
                 // Return Node
-                return tagNode;
+                return tag_node;
             }
         }
         // Obtain node based on LIST

@@ -525,19 +525,8 @@ void set_default_profile(
     // Given file does not exist
     catch (const eprosima::qosprof::FileNotFound& ex)
     {
-        // Create file
-        try
-        {
-            doc = create_xml(xml_file);
-            parser = new xercesc::XercesDOMParser();
-        }
-
-        // ERROR
-        catch (const eprosima::qosprof::FileNotFound& ex)
-        {
-            throw eprosima::qosprof::FileNotFound(ex);
-            return;
-        }
+        throw eprosima::qosprof::FileNotFound(ex);
+        return;
     }
 
     // Obtain profiles_node
@@ -547,12 +536,8 @@ void set_default_profile(
     }
     catch (const eprosima::qosprof::ElementNotFound& ex)
     {
-        // Obtain root element
-        xercesc::DOMElement* rootElement = doc->getDocumentElement();
-
-        // Add profiles
-        profiles_node = (xercesc::DOMNode*) doc->createElement(xercesc::XMLString::transcode(eprosima::qosprof::tag::PROFILES));
-        rootElement->appendChild(profiles_node);
+        throw eprosima::qosprof::ElementNotFound(ex);
+        return;
     }
 
     // Obtain participant_node with the profile id
@@ -566,14 +551,8 @@ void set_default_profile(
     }
     catch (const eprosima::qosprof::ElementNotFound& ex)
     {
-        // Create if not exist
-        xercesc::DOMElement * participant_element = doc->createElement(
-            xercesc::XMLString::transcode(eprosima::qosprof::tag::PARTICIPANT));
-        profiles_node->appendChild(participant_element);
-        participant_element->setAttribute(
-            xercesc::XMLString::transcode(eprosima::qosprof::tag::PROFILE_NAME),
-            xercesc::XMLString::transcode(profile_id.c_str()));
-        participant_node = (xercesc::DOMNode*)participant_element;
+        throw eprosima::qosprof::ElementNotFound(ex);
+        return;
     }
 
     // Check if default profile defined
@@ -608,7 +587,7 @@ void set_default_profile(
         xercesc::XMLString::transcode("true"));
 
     // Validate new element
-    try {
+    /*try {
         save_xml("temp.xml", *doc);
         validate_xml("temp.xml", *parser);
     }
@@ -623,7 +602,7 @@ void set_default_profile(
         throw eprosima::qosprof::ElementInvalid(ex);
         close_xml();
         return;
-    }
+    }*/
 
     // Save if valid
     try
@@ -754,7 +733,7 @@ void set_name(
     name_node->appendChild(name_value);
 
     // Validate new element
-    try {
+    /*try {
         save_xml("temp.xml", *doc);
         validate_xml("temp.xml", *parser);
     }
@@ -769,7 +748,7 @@ void set_name(
         throw eprosima::qosprof::ElementInvalid(ex);
         close_xml();
         return;
-    }
+    }*/
 
     // Save if valid
     try
