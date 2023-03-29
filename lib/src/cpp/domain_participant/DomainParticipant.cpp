@@ -28,12 +28,6 @@ namespace qosprof {
 namespace domain_participant {
 
 std::string print(
-        const std::string& xml_file)
-{
-    throw Unsupported("Unsupported");
-}
-
-std::string print(
         const std::string& xml_file,
         const std::string& profile_id)
 {

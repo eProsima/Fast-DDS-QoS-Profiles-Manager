@@ -28,12 +28,6 @@ namespace qosprof {
 namespace transport_descriptor {
 
 std::string print(
-        const std::string& xml_file)
-{
-    throw Unsupported("Unsupported");
-}
-
-std::string print(
         const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {

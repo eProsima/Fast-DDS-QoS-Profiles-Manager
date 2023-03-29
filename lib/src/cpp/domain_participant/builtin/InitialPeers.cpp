@@ -30,13 +30,6 @@ namespace initial_peers {
 
 std::string print(
         const std::string& xml_file,
-        const std::string& profile_id)
-{
-    throw Unsupported("Unsupported");
-}
-
-std::string print(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {

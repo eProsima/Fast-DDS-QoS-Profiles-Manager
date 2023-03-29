@@ -36,29 +36,12 @@ namespace discovery_servers {
 /************************************************************************/
 
 /**
- * @brief Parse XML file and print specific Domain Participant builtin remote discovery servers list (Discovery Server
- *        specific).
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
- *
- * @return std::string XML section containing the specific Domain Participant builtin remote discovery servers list.
- *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
- * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
- *        builtin remote discovery servers list does not exist.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
-        const std::string& xml_file,
-        const std::string& profile_id);
-
-/**
  * @brief Parse XML file and print specific Domain Participant builtin remote discovery server (Discovery Server
  *        specific).
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] prefix GUID prefix of the remote server to be printed.
+ * @param[in] prefix GUID prefix of the remote server to be printed. If empty, the complete list is printed.
  *
  * @return std::string Specific Domain Participant builtin remote discovery server.
  *

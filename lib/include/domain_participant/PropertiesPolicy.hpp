@@ -34,27 +34,11 @@ namespace properties_policy {
 /************************************************************************/
 
 /**
- * @brief Parse XML file and print specific Domain Participant every property in the policy list.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
- *
- * @return std::string XML section containing the properties policy.
- *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
- * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
- *        properties policy element does not exist.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
-        const std::string& xml_file,
-        const std::string& profile_id);
-
-/**
  * @brief Parse XML file and print specific Domain Participant property in the policy list.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] property_id Property name to be printed.
+ * @param[in] property_id Property name to be printed. If empty, print the complete property policy list.
  *
  * @return std::string XML section containing the specific property.
  *

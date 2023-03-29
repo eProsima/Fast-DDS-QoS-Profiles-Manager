@@ -33,33 +33,18 @@ namespace default_unicast_locators {
 /************************************************************************/
 
 /**
- * @brief Parse XML file and print specific Domain Participant default unicast locator list.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
- *
- * @return std::string XML section containing the specific Domain Participant default unicast locator list.
- *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
- * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
- *        default unicast locator list element does not exist.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
-        const std::string& xml_file,
-        const std::string& profile_id);
-
-/**
  * @brief Parse XML file and print the specific Domain Participant specific default unicast locator.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] index Collection element to be printed.
+ * @param[in] index Collection element to be printed. If empty, the complete list is printed.
  *
  * @return std::string XML section containing the Domain Participant specific default unicast locator.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
         const std::string& xml_file,

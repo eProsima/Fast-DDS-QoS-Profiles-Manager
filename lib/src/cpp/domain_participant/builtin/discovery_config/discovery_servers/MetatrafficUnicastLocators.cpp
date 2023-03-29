@@ -33,14 +33,6 @@ namespace metatraffic_unicast_locators {
 std::string print(
         const std::string& xml_file,
         const std::string& profile_id,
-        const std::string& prefix)
-{
-    throw Unsupported("Unsupported");
-}
-
-std::string print(
-        const std::string& xml_file,
-        const std::string& profile_id,
         const std::string& prefix,
         const std::string& index)
 {

@@ -33,22 +33,11 @@ namespace transport_descriptor {
 /************************************************************************/
 
 /**
- * @brief Parse XML file and print every transport descriptor profile.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- *
- * @return std::string XML section containing the transport descriptor profiles.
- *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
-        const std::string& xml_file);
-
-/**
  * @brief Parse XML file and print specific transport descriptor profile.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] transport_descriptor_id Transport descriptor profile identifier.
+ * @param[in] transport_descriptor_id Transport descriptor profile identifier. If empty, every transport descriptor
+ *                                    profile is printed.
  *
  * @return std::string XML section containing the specific transport descriptor profile.
  *
