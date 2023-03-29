@@ -83,6 +83,7 @@ static const char PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE[] =
       cost              Default external unicast locator cost. Valid set values: [0, 255]
       externality       Default external unicast locator externality index. Valid set values: [1, 255]
       kind              Default external unicast locator kind. Valid set values: udp_v4 | udp_v6 (Default: udp_v4)
+                        kind is a mandatory parameter. Consequently, this parameter cannot be cleared. Erase the entire locator or update the kind.
       mask              Default external unicast locator mask. Valid set values: udp_v4 [1, 31] | udp_v6 [1, 127]
       port              Default external unicast locator port. Valid set values: [0, 65535]
 )";
