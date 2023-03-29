@@ -43,10 +43,10 @@ protected:
     std::vector<std::string> print_results_;
 
     // Functors
-    std::function<std::string(const std::string&, const std::string&, int32_t)> print_functor_;
+    std::function<std::string(const std::string&, const std::string&, const std::string&)> print_functor_;
     std::function<void(const std::string&, const std::string&, const std::string&)> push_functor_;
-    std::function<void(const std::string&, const std::string&, const std::string&, int32_t)> update_functor_;
-    std::function<void(const std::string&, const std::string&, int32_t)> clear_functor_;
+    std::function<void(const std::string&, const std::string&, const std::string&, const std::string&)> update_functor_;
+    std::function<void(const std::string&, const std::string&, const std::string&)> clear_functor_;
 
     void SetUp() override
     {
@@ -92,15 +92,15 @@ protected:
         }
 
         // Try printing from non-existing file
-        EXPECT_THROW(print_functor_(xml_filename_, participant_profile_, 0), FileNotFound);
+        EXPECT_THROW(print_functor_(xml_filename_, participant_profile_, std::string("0")), FileNotFound);
 
         // Try updating in a non-existent file
-        EXPECT_THROW(update_functor_(xml_filename_, participant_profile_, valid_values_[0], 0), FileNotFound);
+        EXPECT_THROW(update_functor_(xml_filename_, participant_profile_, valid_values_[0], std::string("0")), FileNotFound);
 
         // Try clearing in a non-existent file
         if (nullptr != clear_functor_)
         {
-            EXPECT_THROW(clear_functor_(xml_filename_, participant_profile_, 0), FileNotFound);
+            EXPECT_THROW(clear_functor_(xml_filename_, participant_profile_, std::string("0")), FileNotFound);
         }
 
         // Push invalid value
@@ -128,7 +128,7 @@ protected:
         EXPECT_THAT(
             [&]()
             {
-                print_functor_(xml_filename_, another_participant_profile_, 0);
+                print_functor_(xml_filename_, another_participant_profile_, std::string("0"));
             },
             testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr("non-existent profile")));
 
@@ -136,7 +136,7 @@ protected:
         EXPECT_THAT(
             [&]()
             {
-                update_functor_(xml_filename_, another_participant_profile_, valid_values_[0], 0);
+                update_functor_(xml_filename_, another_participant_profile_, valid_values_[0], std::string("0"));
             },
             testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr("non-existent profile")));
 
@@ -146,7 +146,7 @@ protected:
             EXPECT_THAT(
                 [&]()
                 {
-                    clear_functor_(xml_filename_, another_participant_profile_, 0);
+                    clear_functor_(xml_filename_, another_participant_profile_, std::string("0"));
                 },
                 testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr("non-existent profile")));
         }
@@ -158,7 +158,7 @@ protected:
         EXPECT_THAT(
             [&]()
             {
-                print_functor_(xml_filename_, another_participant_profile_, 0);
+                print_functor_(xml_filename_, another_participant_profile_, std::string("0"));
             },
             testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr("profile does not have element list")));
 
@@ -166,7 +166,7 @@ protected:
         EXPECT_THAT(
             [&]()
             {
-                update_functor_(xml_filename_, another_participant_profile_, valid_values_[0], 0);
+                update_functor_(xml_filename_, another_participant_profile_, valid_values_[0], std::string("0"));
             },
             testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr("profile does not have element list")));
 
@@ -176,7 +176,7 @@ protected:
             EXPECT_THAT(
                 [&]()
                 {
-                    clear_functor_(xml_filename_, another_participant_profile_, 0);
+                    clear_functor_(xml_filename_, another_participant_profile_, std::string("0"));
                 },
                 testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr("profile does not have element list")));
         }
@@ -185,7 +185,7 @@ protected:
         EXPECT_THAT(
             [&]()
             {
-                print_functor_(xml_filename_, participant_profile_, 100);
+                print_functor_(xml_filename_, participant_profile_, std::string("100"));
             },
             testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr("list does not have an element in position")));
 
@@ -193,7 +193,7 @@ protected:
         EXPECT_THAT(
             [&]()
             {
-                update_functor_(xml_filename_, participant_profile_, valid_values_[0], 100);
+                update_functor_(xml_filename_, participant_profile_, valid_values_[0], std::string("100"));
             },
             testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr("list does not have an element in position")));
 
@@ -203,37 +203,37 @@ protected:
             EXPECT_THAT(
                 [&]()
                 {
-                    clear_functor_(xml_filename_, participant_profile_, 100);
+                    clear_functor_(xml_filename_, participant_profile_, std::string("100"));
                 },
                 testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr("list does not have an element in position")));
         }
 
         // Print valid value
-        EXPECT_EQ(print_functor_(xml_filename_, participant_profile_, 0), print_results_.empty() ? valid_values_[0] :
+        EXPECT_EQ(print_functor_(xml_filename_, participant_profile_, std::string("0")), print_results_.empty() ? valid_values_[0] :
                 print_results_[0]);
 
         // Push another valid value
         EXPECT_NO_THROW(push_functor_(xml_filename_, participant_profile_, valid_values_[1]));
 
         // Print both elements
-        EXPECT_EQ(print_functor_(xml_filename_, participant_profile_, 1), print_results_.empty() ? valid_values_[1] :
+        EXPECT_EQ(print_functor_(xml_filename_, participant_profile_, std::string("1")), print_results_.empty() ? valid_values_[1] :
                 print_results_[1]);
-        EXPECT_EQ(print_functor_(xml_filename_, participant_profile_, -2), print_results_.empty() ? valid_values_[0] :
+        EXPECT_EQ(print_functor_(xml_filename_, participant_profile_, std::string("-2")), print_results_.empty() ? valid_values_[0] :
                 print_results_[0]);
 
         // Update element
-        EXPECT_NO_THROW(update_functor_(xml_filename_, participant_profile_, valid_values_[0], 1));
+        EXPECT_NO_THROW(update_functor_(xml_filename_, participant_profile_, valid_values_[0],std::string("1")));
 
         // Print both elements
-        EXPECT_EQ(print_functor_(xml_filename_, participant_profile_, -1), print_results_.empty() ? valid_values_[0] :
+        EXPECT_EQ(print_functor_(xml_filename_, participant_profile_, std::string("-1")), print_results_.empty() ? valid_values_[0] :
                 print_results_[0]);
-        EXPECT_EQ(print_functor_(xml_filename_, participant_profile_, 0), print_results_.empty() ? valid_values_[0] :
+        EXPECT_EQ(print_functor_(xml_filename_, participant_profile_, std::string("0")), print_results_.empty() ? valid_values_[0] :
                 print_results_[0]);
 
         // Update invalid value
         if (!several_invalid_types)
         {
-            EXPECT_THROW(update_functor_(xml_filename_, participant_profile_, invalid_values_[0], 0),
+            EXPECT_THROW(update_functor_(xml_filename_, participant_profile_, invalid_values_[0], std::string("0")),
                     ElementInvalid);
         }
         else
@@ -243,32 +243,32 @@ protected:
                 EXPECT_THAT(
                     [&]()
                     {
-                        update_functor_(xml_filename_, participant_profile_, invalid_values_[i], 0);
+                        update_functor_(xml_filename_, participant_profile_, invalid_values_[i], std::string("0"));
                     },
                     testing::ThrowsMessage<ElementInvalid>(testing::HasSubstr(invalid_messages_[i])));
             }
         }
 
         // Print both elements
-        EXPECT_EQ(print_functor_(xml_filename_, participant_profile_, 0), print_results_.empty() ? valid_values_[0] :
+        EXPECT_EQ(print_functor_(xml_filename_, participant_profile_, std::string("0")), print_results_.empty() ? valid_values_[0] :
                 print_results_[0]);
-        EXPECT_EQ(print_functor_(xml_filename_, participant_profile_, 1), print_results_.empty() ? valid_values_[0] :
+        EXPECT_EQ(print_functor_(xml_filename_, participant_profile_, std::string("1")), print_results_.empty() ? valid_values_[0] :
                 print_results_[0]);
 
         // Clear element
         if (nullptr != clear_functor_)
         {
-            EXPECT_NO_THROW(clear_functor_(xml_filename_, participant_profile_, 0));
+            EXPECT_NO_THROW(clear_functor_(xml_filename_, participant_profile_, std::string("0")));
 
             EXPECT_THAT(
                 [&]()
                 {
-                    print_functor_(xml_filename_, participant_profile_, 0);
+                    print_functor_(xml_filename_, participant_profile_, std::string("0"));
                 },
                 testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr("element does not have sought subelement")));
 
             // Clear already cleared element does not throw
-            EXPECT_NO_THROW(clear_functor_(xml_filename_, participant_profile_, 0));
+            EXPECT_NO_THROW(clear_functor_(xml_filename_, participant_profile_, std::string("0")));
         }
     }
 
