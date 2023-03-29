@@ -155,16 +155,7 @@ void clear_wan_address(
     throw Unsupported("Unsupported");
 }
 
-void push_kind(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& prefix,
-        const std::string& kind)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_kind(
+void set_kind(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
@@ -174,16 +165,7 @@ void update_kind(
     throw Unsupported("Unsupported");
 }
 
-void push_port(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& prefix,
-        const std::string& port)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_port(
+void set_port(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
@@ -193,16 +175,7 @@ void update_port(
     throw Unsupported("Unsupported");
 }
 
-void push_physical_port(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& prefix,
-        const std::string& physical_port)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_physical_port(
+void set_physical_port(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
@@ -212,16 +185,7 @@ void update_physical_port(
     throw Unsupported("Unsupported");
 }
 
-void push_address(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& prefix,
-        const std::string& address)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_address(
+void set_address(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
@@ -231,16 +195,7 @@ void update_address(
     throw Unsupported("Unsupported");
 }
 
-void push_unique_lan_id(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& prefix,
-        const std::string& unique_lan_id)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_unique_lan_id(
+void set_unique_lan_id(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
@@ -250,16 +205,7 @@ void update_unique_lan_id(
     throw Unsupported("Unsupported");
 }
 
-void push_wan_address(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& prefix,
-        const std::string& wan_address)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_wan_address(
+void set_wan_address(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,

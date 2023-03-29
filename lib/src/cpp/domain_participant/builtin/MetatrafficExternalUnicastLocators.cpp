@@ -139,15 +139,7 @@ void clear_mask(
     throw Unsupported("Unsupported");
 }
 
-void push_kind(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& kind)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_kind(
+void set_kind(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& kind,
@@ -156,15 +148,7 @@ void update_kind(
     throw Unsupported("Unsupported");
 }
 
-void push_port(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& port)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_port(
+void set_port(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& port,
@@ -173,15 +157,7 @@ void update_port(
     throw Unsupported("Unsupported");
 }
 
-void push_address(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& address)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_address(
+void set_address(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& address,
@@ -190,15 +166,7 @@ void update_address(
     throw Unsupported("Unsupported");
 }
 
-void push_externality(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& externality)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_externality(
+void set_externality(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& externality,
@@ -207,15 +175,7 @@ void update_externality(
     throw Unsupported("Unsupported");
 }
 
-void push_cost(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& cost)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_cost(
+void set_cost(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& cost,
@@ -224,15 +184,7 @@ void update_cost(
     throw Unsupported("Unsupported");
 }
 
-void push_mask(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& mask)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_mask(
+void set_mask(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& mask,

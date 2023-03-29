@@ -927,15 +927,7 @@ void set_rtps_dump_file(
     throw Unsupported("Unsupported");
 }
 
-void push_interface_whitelist(
-        const std::string& xml_file,
-        const std::string& transport_descriptor_id,
-        const std::string& ip_address)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_interface_whitelist(
+void set_interface_whitelist(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& ip_address,
@@ -944,15 +936,7 @@ void update_interface_whitelist(
     throw Unsupported("Unsupported");
 }
 
-void push_listening_ports(
-        const std::string& xml_file,
-        const std::string& transport_descriptor_id,
-        const std::string& port)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_listening_ports(
+void set_listening_ports(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& port,
@@ -961,15 +945,7 @@ void update_listening_ports(
     throw Unsupported("Unsupported");
 }
 
-void push_tls_verify_mode(
-        const std::string& xml_file,
-        const std::string& transport_descriptor_id,
-        const std::string& tls_verify_mode)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_tls_verify_mode(
+void set_tls_verify_mode(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_verify_mode,
@@ -978,15 +954,7 @@ void update_tls_verify_mode(
     throw Unsupported("Unsupported");
 }
 
-void push_tls_options(
-        const std::string& xml_file,
-        const std::string& transport_descriptor_id,
-        const std::string& tls_options)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_tls_options(
+void set_tls_options(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_options,
@@ -995,15 +963,7 @@ void update_tls_options(
     throw Unsupported("Unsupported");
 }
 
-void push_tls_verify_path(
-        const std::string& xml_file,
-        const std::string& transport_descriptor_id,
-        const std::string& tls_verify_path)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_tls_verify_path(
+void set_tls_verify_path(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_verify_path,

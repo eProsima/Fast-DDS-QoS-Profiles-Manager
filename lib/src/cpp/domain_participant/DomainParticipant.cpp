@@ -310,15 +310,7 @@ void set_prefix(
     throw Unsupported("Unsupported");
 }
 
-void push_user_transports(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& transport_id)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_user_transports(
+void set_user_transports(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& transport_id,
@@ -327,15 +319,7 @@ void update_user_transports(
     throw Unsupported("Unsupported");
 }
 
-void push_user_data(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& user_data)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_user_data(
+void set_user_data(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& user_data,

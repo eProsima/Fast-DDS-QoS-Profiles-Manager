@@ -287,198 +287,126 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_mask(
 /************************************************************************/
 
 /**
- * @brief Append a metatraffic external unicast locator with specified kind.
+ * @brief Append a metatraffic external unicast locator with specified kind or update the metatraffic external unicast
+ *        locator kind.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] kind Metatraffic unicast locator kind.
- *
- * @throw ElementInvalid Exception if the provided locator kind is not valid.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_kind(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& kind);
-
-/**
- * @brief Update the metatraffic external unicast locator kind.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
- * @param[in] kind Metatraffic unicast locator kind.
- * @param[in] index Collection element to be changed.
+ * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided locator kind is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw BadParameter Exception if the index is not an integer.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_kind(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_kind(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& kind,
         const std::string& index);
 
 /**
- * @brief Append a metatraffic external unicast locator with specified port.
+ * @brief Append a metatraffic external unicast locator with specified port or update the metatraffic external unicast
+ *        locator port.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] port Metatraffic unicast locator port.
- *
- * @throw ElementInvalid Exception if the provided locator port is not valid.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_port(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& port);
-
-/**
- * @brief Update the metatraffic external unicast locator port.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
- * @param[in] port Metatraffic unicast locator port.
- * @param[in] index Collection element to be changed.
+ * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided locator port is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw BadParameter Exception if the index is not an integer.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_port(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_port(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& port,
         const std::string& index);
 
 /**
- * @brief Append a metatraffic external unicast locator with specified IP address.
+ * @brief Append a metatraffic external unicast locator with specified IP address or update the metatraffic external
+ *        unicast locator IP address.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] address Metatraffic unicast locator IP address.
- *
- * @throw ElementInvalid Exception if the provided locator IP address is not valid.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_address(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& address);
-
-/**
- * @brief Update the metatraffic external unicast locator IP address.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
- * @param[in] address Metatraffic unicast locator IP address.
- * @param[in] index Collection element to be changed.
+ * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided locator IP address is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw BadParameter Exception if the index is not an integer.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_address(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_address(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& address,
         const std::string& index);
 
 /**
- * @brief Append a metatraffic external unicast locator with specified externality.
+ * @brief Append a metatraffic external unicast locator with specified externality or update the metatraffic external
+ *        unicast locator externality.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] externality Metatraffic unicast locator externality.
- *
- * @throw ElementInvalid Exception if the provided locator externality is not valid.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_externality(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& externality);
-
-/**
- * @brief Update the metatraffic external unicast locator externality.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
- * @param[in] externality Metatraffic unicast locator externality.
- * @param[in] index Collection element to be changed.
+ * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided locator externality is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw BadParameter Exception if the index is not an integer.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_externality(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_externality(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& externality,
         const std::string& index);
 
 /**
- * @brief Append a metatraffic external unicast locator with specified cost.
+ * @brief Append a metatraffic external unicast locator with specified cost or update the metatraffic external unicast
+ *        locator cost.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] cost Metatraffic unicast locator cost.
- *
- * @throw ElementInvalid Exception if the provided locator cost is not valid.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_cost(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& cost);
-
-/**
- * @brief Update the metatraffic external unicast locator cost.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
- * @param[in] cost Metatraffic unicast locator cost.
- * @param[in] index Collection element to be changed.
+ * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided locator cost is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw BadParameter Exception if the index is not an integer.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_cost(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_cost(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& cost,
         const std::string& index);
 
 /**
- * @brief Append a metatraffic external unicast locator with specified mask.
+ * @brief Append a metatraffic external unicast locator with specified mask or update the metatraffic external unicast
+ *        locator mask.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] mask Metatraffic unicast locator mask.
- *
- * @throw ElementInvalid Exception if the provided locator mask is not valid.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_mask(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& mask);
-
-/**
- * @brief Update the metatraffic external unicast locator mask.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
- * @param[in] mask Metatraffic unicast locator mask.
- * @param[in] index Collection element to be changed.
+ * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided locator mask is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw BadParameter Exception if the index is not an integer.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_mask(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_mask(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& mask,

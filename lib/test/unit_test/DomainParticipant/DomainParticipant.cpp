@@ -44,8 +44,7 @@ protected:
 
     // Functors
     std::function<std::string(const std::string&, const std::string&, const std::string&)> print_functor_;
-    std::function<void(const std::string&, const std::string&, const std::string&)> push_functor_;
-    std::function<void(const std::string&, const std::string&, const std::string&, const std::string&)> update_functor_;
+    std::function<void(const std::string&, const std::string&, const std::string&, const std::string&)> set_functor_;
     std::function<void(const std::string&, const std::string&, const std::string&)> clear_functor_;
 
     void SetUp() override
@@ -59,8 +58,7 @@ protected:
         invalid_messages_.clear();
         print_results_.clear();
         print_functor_ = nullptr;
-        push_functor_ = nullptr;
-        update_functor_ = nullptr;
+        set_functor_ = nullptr;
         clear_functor_ = nullptr;
     }
 
@@ -70,12 +68,11 @@ protected:
         std::remove(xml_filename_.c_str());
     }
 
-    void print_push_update_clear_test()
+    void print_set_clear_test()
     {
         // Functors must be initialized
         ASSERT_NE(print_functor_, nullptr);
-        ASSERT_NE(push_functor_, nullptr);
-        ASSERT_NE(update_functor_, nullptr);
+        ASSERT_NE(set_functor_, nullptr);
 
         // Valid data and invalid data vectors should have values
         // Valid data should have at least two elements to check update
@@ -95,7 +92,7 @@ protected:
         EXPECT_THROW(print_functor_(xml_filename_, participant_profile_, std::string("0")), FileNotFound);
 
         // Try updating in a non-existent file
-        EXPECT_THROW(update_functor_(xml_filename_, participant_profile_, valid_values_[0], std::string("0")), FileNotFound);
+        EXPECT_THROW(set_functor_(xml_filename_, participant_profile_, valid_values_[0], std::string("0")), FileNotFound);
 
         // Try clearing in a non-existent file
         if (nullptr != clear_functor_)
@@ -106,7 +103,7 @@ protected:
         // Push invalid value
         if (!several_invalid_types)
         {
-            EXPECT_THROW(push_functor_(xml_filename_, participant_profile_, invalid_values_[0]), ElementInvalid);
+            EXPECT_THROW(set_functor_(xml_filename_, participant_profile_, invalid_values_[0], std::string()), ElementInvalid);
         }
         else
         {
@@ -115,14 +112,14 @@ protected:
                 EXPECT_THAT(
                     [&]()
                     {
-                        push_functor_(xml_filename_, participant_profile_, invalid_values_[i]);
+                        set_functor_(xml_filename_, participant_profile_, invalid_values_[i], std::string());
                     },
                     testing::ThrowsMessage<ElementInvalid>(testing::HasSubstr(invalid_messages_[i])));
             }
         }
 
         // Push valid value (file is created)
-        EXPECT_NO_THROW(push_functor_(xml_filename_, participant_profile_, valid_values_[0]));
+        EXPECT_NO_THROW(set_functor_(xml_filename_, participant_profile_, valid_values_[0], std::string()));
 
         // Try printing from non-existent profile
         EXPECT_THAT(
@@ -136,7 +133,7 @@ protected:
         EXPECT_THAT(
             [&]()
             {
-                update_functor_(xml_filename_, another_participant_profile_, valid_values_[0], std::string("0"));
+                set_functor_(xml_filename_, another_participant_profile_, valid_values_[0], std::string("0"));
             },
             testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr("non-existent profile")));
 
@@ -166,7 +163,7 @@ protected:
         EXPECT_THAT(
             [&]()
             {
-                update_functor_(xml_filename_, another_participant_profile_, valid_values_[0], std::string("0"));
+                set_functor_(xml_filename_, another_participant_profile_, valid_values_[0], std::string("0"));
             },
             testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr("profile does not have element list")));
 
@@ -193,7 +190,7 @@ protected:
         EXPECT_THAT(
             [&]()
             {
-                update_functor_(xml_filename_, participant_profile_, valid_values_[0], std::string("100"));
+                set_functor_(xml_filename_, participant_profile_, valid_values_[0], std::string("100"));
             },
             testing::ThrowsMessage<ElementNotFound>(testing::HasSubstr("list does not have an element in position")));
 
@@ -213,7 +210,7 @@ protected:
                 print_results_[0]);
 
         // Push another valid value
-        EXPECT_NO_THROW(push_functor_(xml_filename_, participant_profile_, valid_values_[1]));
+        EXPECT_NO_THROW(set_functor_(xml_filename_, participant_profile_, valid_values_[1], std::string()));
 
         // Print both elements
         EXPECT_EQ(print_functor_(xml_filename_, participant_profile_, std::string("1")), print_results_.empty() ? valid_values_[1] :
@@ -222,7 +219,7 @@ protected:
                 print_results_[0]);
 
         // Update element
-        EXPECT_NO_THROW(update_functor_(xml_filename_, participant_profile_, valid_values_[0],std::string("1")));
+        EXPECT_NO_THROW(set_functor_(xml_filename_, participant_profile_, valid_values_[0],std::string("1")));
 
         // Print both elements
         EXPECT_EQ(print_functor_(xml_filename_, participant_profile_, std::string("-1")), print_results_.empty() ? valid_values_[0] :
@@ -233,7 +230,7 @@ protected:
         // Update invalid value
         if (!several_invalid_types)
         {
-            EXPECT_THROW(update_functor_(xml_filename_, participant_profile_, invalid_values_[0], std::string("0")),
+            EXPECT_THROW(set_functor_(xml_filename_, participant_profile_, invalid_values_[0], std::string("0")),
                     ElementInvalid);
         }
         else
@@ -243,7 +240,7 @@ protected:
                 EXPECT_THAT(
                     [&]()
                     {
-                        update_functor_(xml_filename_, participant_profile_, invalid_values_[i], std::string("0"));
+                        set_functor_(xml_filename_, participant_profile_, invalid_values_[i], std::string("0"));
                     },
                     testing::ThrowsMessage<ElementInvalid>(testing::HasSubstr(invalid_messages_[i])));
             }
@@ -344,18 +341,14 @@ TEST_F(DomainParticipantTests, default_external_unicast_locators_kind)
             {
                 return default_external_unicast_locators::print_kind(xml_file, profile_id, index);
             };
-    push_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind) -> void
-            {
-                default_external_unicast_locators::push_kind(xml_file, profile_id, kind);
-            };
-    update_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
+    set_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
                     const std::string& index) -> void
             {
-                default_external_unicast_locators::update_kind(xml_file, profile_id, kind, index);
+                default_external_unicast_locators::set_kind(xml_file, profile_id, kind, index);
             };
 
     // Call test
-    print_push_update_clear_test();
+    print_set_clear_test();
 }
 
 TEST_F(DomainParticipantTests, default_external_unicast_locators_port)
@@ -375,14 +368,10 @@ TEST_F(DomainParticipantTests, default_external_unicast_locators_port)
             {
                 return default_external_unicast_locators::print_port(xml_file, profile_id, index);
             };
-    push_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind) -> void
-            {
-                default_external_unicast_locators::push_port(xml_file, profile_id, kind);
-            };
-    update_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
+    set_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
                     const std::string& index) -> void
             {
-                default_external_unicast_locators::update_port(xml_file, profile_id, kind, index);
+                default_external_unicast_locators::set_port(xml_file, profile_id, kind, index);
             };
     clear_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& index) -> void
             {
@@ -390,7 +379,7 @@ TEST_F(DomainParticipantTests, default_external_unicast_locators_port)
             };
 
     // Call test
-    print_push_update_clear_test();
+    print_set_clear_test();
 }
 
 TEST_F(DomainParticipantTests, default_external_unicast_locators_address)
@@ -405,14 +394,10 @@ TEST_F(DomainParticipantTests, default_external_unicast_locators_address)
             {
                 return default_external_unicast_locators::print_address(xml_file, profile_id, index);
             };
-    push_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind) -> void
-            {
-                default_external_unicast_locators::push_address(xml_file, profile_id, kind);
-            };
-    update_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
+    set_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
                     const std::string& index) -> void
             {
-                default_external_unicast_locators::update_address(xml_file, profile_id, kind, index);
+                default_external_unicast_locators::set_address(xml_file, profile_id, kind, index);
             };
     clear_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& index) -> void
             {
@@ -420,7 +405,7 @@ TEST_F(DomainParticipantTests, default_external_unicast_locators_address)
             };
 
     // Call test
-    print_push_update_clear_test();
+    print_set_clear_test();
 }
 
 TEST_F(DomainParticipantTests, default_external_unicast_locators_externality)
@@ -440,14 +425,10 @@ TEST_F(DomainParticipantTests, default_external_unicast_locators_externality)
             {
                 return default_external_unicast_locators::print_externality(xml_file, profile_id, index);
             };
-    push_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind) -> void
-            {
-                default_external_unicast_locators::push_externality(xml_file, profile_id, kind);
-            };
-    update_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
+    set_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
                     const std::string& index) -> void
             {
-                default_external_unicast_locators::update_externality(xml_file, profile_id, kind, index);
+                default_external_unicast_locators::set_externality(xml_file, profile_id, kind, index);
             };
     clear_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& index) -> void
             {
@@ -455,7 +436,7 @@ TEST_F(DomainParticipantTests, default_external_unicast_locators_externality)
             };
 
     // Call test
-    print_push_update_clear_test();
+    print_set_clear_test();
 }
 
 TEST_F(DomainParticipantTests, default_external_unicast_locators_cost)
@@ -475,14 +456,10 @@ TEST_F(DomainParticipantTests, default_external_unicast_locators_cost)
             {
                 return default_external_unicast_locators::print_cost(xml_file, profile_id, index);
             };
-    push_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind) -> void
-            {
-                default_external_unicast_locators::push_cost(xml_file, profile_id, kind);
-            };
-    update_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
+    set_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
                     const std::string& index) -> void
             {
-                default_external_unicast_locators::update_cost(xml_file, profile_id, kind, index);
+                default_external_unicast_locators::set_cost(xml_file, profile_id, kind, index);
             };
     clear_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& index) -> void
             {
@@ -490,7 +467,7 @@ TEST_F(DomainParticipantTests, default_external_unicast_locators_cost)
             };
 
     // Call test
-    print_push_update_clear_test();
+    print_set_clear_test();
 }
 
 TEST_F(DomainParticipantTests, default_external_unicast_locators_mask)
@@ -511,14 +488,10 @@ TEST_F(DomainParticipantTests, default_external_unicast_locators_mask)
             {
                 return default_external_unicast_locators::print_mask(xml_file, profile_id, index);
             };
-    push_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind) -> void
-            {
-                default_external_unicast_locators::push_mask(xml_file, profile_id, kind);
-            };
-    update_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
+    set_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
                     const std::string& index) -> void
             {
-                default_external_unicast_locators::update_mask(xml_file, profile_id, kind, index);
+                default_external_unicast_locators::set_mask(xml_file, profile_id, kind, index);
             };
     clear_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& index) -> void
             {
@@ -526,7 +499,7 @@ TEST_F(DomainParticipantTests, default_external_unicast_locators_mask)
             };
 
     // Call test
-    print_push_update_clear_test();
+    print_set_clear_test();
 }
 
 /**********************************************************************************************************************/
@@ -549,18 +522,14 @@ TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_kin
             {
                 return builtin::metatraffic_external_unicast_locators::print_kind(xml_file, profile_id, index);
             };
-    push_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind) -> void
-            {
-                builtin::metatraffic_external_unicast_locators::push_kind(xml_file, profile_id, kind);
-            };
-    update_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
+    set_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
                     const std::string& index) -> void
             {
-                builtin::metatraffic_external_unicast_locators::update_kind(xml_file, profile_id, kind, index);
+                builtin::metatraffic_external_unicast_locators::set_kind(xml_file, profile_id, kind, index);
             };
 
     // Call test
-    print_push_update_clear_test();
+    print_set_clear_test();
 }
 
 TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_port)
@@ -580,14 +549,10 @@ TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_por
             {
                 return builtin::metatraffic_external_unicast_locators::print_port(xml_file, profile_id, index);
             };
-    push_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind) -> void
-            {
-                builtin::metatraffic_external_unicast_locators::push_port(xml_file, profile_id, kind);
-            };
-    update_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
+    set_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
                     const std::string& index) -> void
             {
-                builtin::metatraffic_external_unicast_locators::update_port(xml_file, profile_id, kind, index);
+                builtin::metatraffic_external_unicast_locators::set_port(xml_file, profile_id, kind, index);
             };
     clear_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& index) -> void
             {
@@ -595,7 +560,7 @@ TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_por
             };
 
     // Call test
-    print_push_update_clear_test();
+    print_set_clear_test();
 }
 
 TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_address)
@@ -610,14 +575,10 @@ TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_add
             {
                 return builtin::metatraffic_external_unicast_locators::print_address(xml_file, profile_id, index);
             };
-    push_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind) -> void
-            {
-                builtin::metatraffic_external_unicast_locators::push_address(xml_file, profile_id, kind);
-            };
-    update_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
+    set_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
                     const std::string& index) -> void
             {
-                builtin::metatraffic_external_unicast_locators::update_address(xml_file, profile_id, kind, index);
+                builtin::metatraffic_external_unicast_locators::set_address(xml_file, profile_id, kind, index);
             };
     clear_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& index) -> void
             {
@@ -625,7 +586,7 @@ TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_add
             };
 
     // Call test
-    print_push_update_clear_test();
+    print_set_clear_test();
 }
 
 TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_externality)
@@ -645,14 +606,10 @@ TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_ext
             {
                 return builtin::metatraffic_external_unicast_locators::print_externality(xml_file, profile_id, index);
             };
-    push_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind) -> void
-            {
-                builtin::metatraffic_external_unicast_locators::push_externality(xml_file, profile_id, kind);
-            };
-    update_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
+    set_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
                     const std::string& index) -> void
             {
-                builtin::metatraffic_external_unicast_locators::update_externality(xml_file, profile_id, kind, index);
+                builtin::metatraffic_external_unicast_locators::set_externality(xml_file, profile_id, kind, index);
             };
     clear_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& index) -> void
             {
@@ -660,7 +617,7 @@ TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_ext
             };
 
     // Call test
-    print_push_update_clear_test();
+    print_set_clear_test();
 }
 
 TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_cost)
@@ -680,14 +637,10 @@ TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_cos
             {
                 return builtin::metatraffic_external_unicast_locators::print_cost(xml_file, profile_id, index);
             };
-    push_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind) -> void
-            {
-                builtin::metatraffic_external_unicast_locators::push_cost(xml_file, profile_id, kind);
-            };
-    update_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
+    set_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
                     const std::string& index) -> void
             {
-                builtin::metatraffic_external_unicast_locators::update_cost(xml_file, profile_id, kind, index);
+                builtin::metatraffic_external_unicast_locators::set_cost(xml_file, profile_id, kind, index);
             };
     clear_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& index) -> void
             {
@@ -695,7 +648,7 @@ TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_cos
             };
 
     // Call test
-    print_push_update_clear_test();
+    print_set_clear_test();
 }
 
 TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_mask)
@@ -716,14 +669,10 @@ TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_mas
             {
                 return builtin::metatraffic_external_unicast_locators::print_mask(xml_file, profile_id, index);
             };
-    push_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind) -> void
-            {
-                builtin::metatraffic_external_unicast_locators::push_mask(xml_file, profile_id, kind);
-            };
-    update_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
+    set_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
                     const std::string& index) -> void
             {
-                builtin::metatraffic_external_unicast_locators::update_mask(xml_file, profile_id, kind, index);
+                builtin::metatraffic_external_unicast_locators::set_mask(xml_file, profile_id, kind, index);
             };
     clear_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& index) -> void
             {
@@ -731,7 +680,7 @@ TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_mas
             };
 
     // Call test
-    print_push_update_clear_test();
+    print_set_clear_test();
 }
 
 /**********************************************************************************************************************/
@@ -754,18 +703,14 @@ TEST_F(DomainParticipantTests, builtin_initial_peers_kind)
             {
                 return builtin::initial_peers::print_kind(xml_file, profile_id, index);
             };
-    push_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind) -> void
-            {
-                builtin::initial_peers::push_kind(xml_file, profile_id, kind);
-            };
-    update_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
+    set_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
                     const std::string& index) -> void
             {
-                builtin::initial_peers::update_kind(xml_file, profile_id, kind, index);
+                builtin::initial_peers::set_kind(xml_file, profile_id, kind, index);
             };
 
     // Call test
-    print_push_update_clear_test();
+    print_set_clear_test();
 }
 
 TEST_F(DomainParticipantTests, builtin_initial_peers_port)
@@ -785,14 +730,10 @@ TEST_F(DomainParticipantTests, builtin_initial_peers_port)
             {
                 return builtin::initial_peers::print_port(xml_file, profile_id, index);
             };
-    push_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind) -> void
-            {
-                builtin::initial_peers::push_port(xml_file, profile_id, kind);
-            };
-    update_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
+    set_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
                     const std::string& index) -> void
             {
-                builtin::initial_peers::update_port(xml_file, profile_id, kind, index);
+                builtin::initial_peers::set_port(xml_file, profile_id, kind, index);
             };
     clear_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& index) -> void
             {
@@ -800,7 +741,7 @@ TEST_F(DomainParticipantTests, builtin_initial_peers_port)
             };
 
     // Call test
-    print_push_update_clear_test();
+    print_set_clear_test();
 }
 
 TEST_F(DomainParticipantTests, builtin_initial_peers_physical_port)
@@ -820,14 +761,10 @@ TEST_F(DomainParticipantTests, builtin_initial_peers_physical_port)
             {
                 return builtin::initial_peers::print_physical_port(xml_file, profile_id, index);
             };
-    push_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind) -> void
-            {
-                builtin::initial_peers::push_physical_port(xml_file, profile_id, kind);
-            };
-    update_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
+    set_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
                     const std::string& index) -> void
             {
-                builtin::initial_peers::update_physical_port(xml_file, profile_id, kind, index);
+                builtin::initial_peers::set_physical_port(xml_file, profile_id, kind, index);
             };
     clear_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& index) -> void
             {
@@ -835,7 +772,7 @@ TEST_F(DomainParticipantTests, builtin_initial_peers_physical_port)
             };
 
     // Call test
-    print_push_update_clear_test();
+    print_set_clear_test();
 }
 
 TEST_F(DomainParticipantTests, builtin_initial_peers_address)
@@ -850,14 +787,10 @@ TEST_F(DomainParticipantTests, builtin_initial_peers_address)
             {
                 return builtin::initial_peers::print_address(xml_file, profile_id, index);
             };
-    push_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind) -> void
-            {
-                builtin::initial_peers::push_address(xml_file, profile_id, kind);
-            };
-    update_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
+    set_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
                     const std::string& index) -> void
             {
-                builtin::initial_peers::update_address(xml_file, profile_id, kind, index);
+                builtin::initial_peers::set_address(xml_file, profile_id, kind, index);
             };
     clear_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& index) -> void
             {
@@ -865,7 +798,7 @@ TEST_F(DomainParticipantTests, builtin_initial_peers_address)
             };
 
     // Call test
-    print_push_update_clear_test();
+    print_set_clear_test();
 }
 
 TEST_F(DomainParticipantTests, builtin_initial_peers_unique_lan_id)
@@ -880,14 +813,10 @@ TEST_F(DomainParticipantTests, builtin_initial_peers_unique_lan_id)
             {
                 return builtin::initial_peers::print_unique_lan_id(xml_file, profile_id, index);
             };
-    push_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind) -> void
-            {
-                builtin::initial_peers::push_unique_lan_id(xml_file, profile_id, kind);
-            };
-    update_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
+    set_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
                     const std::string& index) -> void
             {
-                builtin::initial_peers::update_unique_lan_id(xml_file, profile_id, kind, index);
+                builtin::initial_peers::set_unique_lan_id(xml_file, profile_id, kind, index);
             };
     clear_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& index) -> void
             {
@@ -895,7 +824,7 @@ TEST_F(DomainParticipantTests, builtin_initial_peers_unique_lan_id)
             };
 
     // Call test
-    print_push_update_clear_test();
+    print_set_clear_test();
 }
 
 TEST_F(DomainParticipantTests, builtin_initial_peers_wan_address)
@@ -910,14 +839,10 @@ TEST_F(DomainParticipantTests, builtin_initial_peers_wan_address)
             {
                 return builtin::initial_peers::print_wan_address(xml_file, profile_id, index);
             };
-    push_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind) -> void
-            {
-                builtin::initial_peers::push_wan_address(xml_file, profile_id, kind);
-            };
-    update_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
+    set_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& kind,
                     const std::string& index) -> void
             {
-                builtin::initial_peers::update_wan_address(xml_file, profile_id, kind, index);
+                builtin::initial_peers::set_wan_address(xml_file, profile_id, kind, index);
             };
     clear_functor_ = [](const std::string& xml_file, const std::string& profile_id, const std::string& index) -> void
             {
@@ -925,7 +850,7 @@ TEST_F(DomainParticipantTests, builtin_initial_peers_wan_address)
             };
 
     // Call test
-    print_push_update_clear_test();
+    print_set_clear_test();
 }
 
 int main(

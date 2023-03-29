@@ -939,33 +939,21 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_client_announcement_period_nanosec(
 /************************************************************************/
 
 /**
- * @brief Append a builtin discovery Static EDP XML configuration file.
+ * @brief Append a builtin discovery Static EDP XML configuration file or update a builtin discovery Static EDP XML
+ *        configuration file.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] static_edp_xml_config Builtin discovery Static EDP XML configuration file.
- *
- * @throw ElementInvalid Exception if the provided path is not valid.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_static_edp_xml_config(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& static_edp_xml_config);
-
-/**
- * @brief Update a builtin discovery Static EDP XML configuration file.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
- * @param[in] static_edp_xml_config Builtin discovery Static EDP XML configuration file.
- * @param[in] index Collection element to be changed.
+ * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided path is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw BadParameter Exception if the index is not an integer.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_static_edp_xml_config(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_static_edp_xml_config(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& static_edp_xml_config,
