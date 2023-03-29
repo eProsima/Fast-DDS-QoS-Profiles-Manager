@@ -332,20 +332,10 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t user_data_size(
 /************************************************************************/
 
 /**
- * @brief Delete any Domain Participant profile contained in the XML file.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
-        const std::string& xml_file);
-
-/**
  * @brief Remove specific Domain Participant profile.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
+ * @param[in] profile_id Domain participant profile identifier. If empty, every Domain Participant profile is deleted.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.

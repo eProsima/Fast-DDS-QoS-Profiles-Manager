@@ -147,12 +147,6 @@ uint32_t user_data_size(
 }
 
 void clear(
-        const std::string& xml_file)
-{
-    throw Unsupported("Unsupported");
-}
-
-void clear(
         const std::string& xml_file,
         const std::string& profile_id)
 {

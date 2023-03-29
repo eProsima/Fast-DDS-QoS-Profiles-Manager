@@ -75,13 +75,6 @@ std::vector<std::string> keys(
 
 void clear(
         const std::string& xml_file,
-        const std::string& profile_id)
-{
-    throw Unsupported("Unsupported");
-}
-
-void clear(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& property_id)
 {

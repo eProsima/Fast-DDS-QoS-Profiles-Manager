@@ -851,20 +851,11 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t tls_verify_paths_size(
 /************************************************************************/
 
 /**
- * @brief Delete any TransportDescriptor profile contained in the XML file.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
-        const std::string& xml_file);
-
-/**
  * @brief Remove specific transport descriptor profile.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] transport_descriptor_id Transport descriptor profile identifier.
+ * @param[in] transport_descriptor_id Transport descriptor profile identifier. If empty, every transport descriptor
+ *                                    profile is deleted.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.

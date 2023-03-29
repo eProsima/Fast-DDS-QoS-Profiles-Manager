@@ -112,14 +112,6 @@ uint32_t size(
 void clear(
         const std::string& xml_file,
         const std::string& profile_id,
-        const std::string& prefix)
-{
-    throw Unsupported("Unsupported");
-}
-
-void clear(
-        const std::string& xml_file,
-        const std::string& profile_id,
         const std::string& prefix,
         const std::string& index)
 {

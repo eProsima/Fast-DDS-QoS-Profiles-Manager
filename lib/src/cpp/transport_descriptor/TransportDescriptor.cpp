@@ -387,12 +387,6 @@ uint32_t tls_verify_paths_size(
 }
 
 void clear(
-        const std::string& xml_file)
-{
-    throw Unsupported("Unsupported");
-}
-
-void clear(
         const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {

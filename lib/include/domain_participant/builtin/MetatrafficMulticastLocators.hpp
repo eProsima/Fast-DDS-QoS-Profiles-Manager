@@ -207,28 +207,16 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t size(
 /************************************************************************/
 
 /**
- * @brief Remove specific Domain Participant builtin metatraffic multicast locator list.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
- *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
- * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
-        const std::string& xml_file,
-        const std::string& profile_id);
-
-/**
  * @brief Remove specific Domain Participant builtin metatraffic multicast locator.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] index Collection element to be removed.
+ * @param[in] index Collection element to be removed. If empty, the complete list is removed.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if
  *        the element does not exist in the collection.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
         const std::string& xml_file,

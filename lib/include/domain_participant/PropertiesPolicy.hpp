@@ -143,24 +143,11 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::vector<std::string> keys(
 /************************************************************************/
 
 /**
- * @brief Remove every property in the Domain Participant profile.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
- *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
- * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
-        const std::string& xml_file,
-        const std::string& profile_id);
-
-/**
  * @brief Remove specific property in the Domain Participant profile.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] property_id Property name to be removed.
+ * @param[in] property_id Property name to be removed. If empty, every property is removed from the profile.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/Property is not found in the XML file.
