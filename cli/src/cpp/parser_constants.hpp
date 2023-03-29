@@ -50,10 +50,12 @@ constexpr const char* TYPES_ELEMENT = "types";
 // CLI common main subelements
 constexpr const char* ALLOCATIONS_SUBELEMENT = "allocations";
 constexpr const char* BINARY_PROPERTY_SUBELEMENT = "binary_property";
-constexpr const char* EXTERNAL_LOCATORS_SUBELEMENT = "external_locators";
 constexpr const char* DEFAULT_PROFILE_SUBELEMENT = "default_profile";
+constexpr const char* EXTERNAL_LOCATORS_SUBELEMENT = "external_locators";
 constexpr const char* IGNORE_NON_MATCHING_LOCATORS_SUBELEMENT = "ignore_non_matching_locators";
+constexpr const char* KIND_SUBELEMENT = "kind";
 constexpr const char* LOCATORS_SUBELEMENT = "locators";
+constexpr const char* PORT_SUBELEMENT = "port";
 constexpr const char* PROPERTY_SUBELEMENT = "property";
 
 // CLI participant main subelements
@@ -62,10 +64,17 @@ constexpr const char* GUID_PREFIX_SUBELEMENT = "guid_prefix";
 constexpr const char* ID_SUBELEMENT = "id";
 constexpr const char* LISTEN_SOCKET_BUFFER_SIZE_SUBELEMENT = "listen_socket_buffer_size";
 constexpr const char* NAME_SUBELEMENT = "name";
-constexpr const char* PORT_SUBELEMENT = "port";
 constexpr const char* SEND_SOCKET_BUFFER_SIZE_SUBELEMENT = "send_socket_buffer_size";
 constexpr const char* USE_BUILTIN_TRANSPORTS_SUBELEMENT = "use_builtin_transports";
 constexpr const char* USER_TRANSPORTS_SUBELEMENT = "user_transports";
+
+// CLI locators common subelements
+constexpr const char* ADDRESS_SUBELEMENT = "address";
+
+// CLI external locators specific subelements
+constexpr const char* COST_SUBELEMENT = "cost";
+constexpr const char* EXTERNALITY_SUBELEMENT = "externality";
+constexpr const char* MASK_SUBELEMENT = "mask";
 
 } // eprosima
 } // qosprof_cli
