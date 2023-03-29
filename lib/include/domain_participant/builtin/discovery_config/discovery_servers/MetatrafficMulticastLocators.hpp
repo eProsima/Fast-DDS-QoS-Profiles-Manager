@@ -75,7 +75,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific Domain Participant specific remote server metatraffic multicast locator
@@ -96,7 +96,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_kind(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific Domain Participant specific remote server metatraffic multicast locator
@@ -117,7 +117,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_port(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific Domain Participant specific remote server metatraffic multicast locator
@@ -139,7 +139,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_physical_port(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific Domain Participant specific remote server metatraffic multicast locator
@@ -160,7 +160,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_address(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific Domain Participant specific remote server metatraffic multicast locator
@@ -182,7 +182,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_unique_lan_id(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific Domain Participant specific remote server metatraffic multicast locator
@@ -204,7 +204,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_wan_address(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
-        int32_t index);
+        const std::string& index);
 
 /************************************************************************/
 /* Query functions                                                      */
@@ -264,7 +264,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Remove specific Domain Participant remote server metatraffic multicast locator port.
@@ -282,7 +282,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_port(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Remove specific Domain Participant remote server metatraffic multicast locator physical port.
@@ -300,7 +300,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_physical_port(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Remove specific Domain Participant remote server metatraffic multicast locator IP address.
@@ -318,7 +318,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_address(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Remove specific Domain Participant remote server metatraffic multicast locator unique LAN ID.
@@ -336,7 +336,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_unique_lan_id(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Remove specific Domain Participant remote server metatraffic multicast locator WAN IP address.
@@ -354,7 +354,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_wan_address(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
-        int32_t index);
+        const std::string& index);
 
 /************************************************************************/
 /* Collection functions                                                 */
@@ -395,7 +395,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_kind(
         const std::string& profile_id,
         const std::string& prefix,
         const std::string& kind,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Append a remote server metatraffic multicast locator with specified port.
@@ -432,7 +432,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_port(
         const std::string& profile_id,
         const std::string& prefix,
         const std::string& port,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Append a remote server metatraffic multicast locator with specified physical port (TCP only).
@@ -469,7 +469,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_physical_port(
         const std::string& profile_id,
         const std::string& prefix,
         const std::string& physical_port,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Append a remote server metatraffic multicast locator with specified IP address.
@@ -506,7 +506,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_address(
         const std::string& profile_id,
         const std::string& prefix,
         const std::string& address,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Append a remote server metatraffic multicast TCPv4 locator with specified unique LAN ID.
@@ -543,7 +543,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_unique_lan_id(
         const std::string& profile_id,
         const std::string& prefix,
         const std::string& unique_lan_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Append a remote server metatraffic multicast TCPv4 locator with specified WAN address.
@@ -580,7 +580,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_wan_address(
         const std::string& profile_id,
         const std::string& prefix,
         const std::string& wan_address,
-        int32_t index);
+        const std::string& index);
 
 } // metatraffic_multicast_locators
 } // discovery_servers

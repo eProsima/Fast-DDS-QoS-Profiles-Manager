@@ -40,7 +40,7 @@ std::string print(
 std::string print(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }

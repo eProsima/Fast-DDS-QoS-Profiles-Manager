@@ -407,7 +407,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_static_edp_xml_config(
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_static_edp_xml_config(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index);
+        const std::string& index);
 
 /************************************************************************/
 /* Query functions                                                      */
@@ -732,7 +732,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_static_edp_xml_config(
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_static_edp_xml_config(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index);
+        const std::string& index);
 
 /************************************************************************/
 /* Set functions                                                        */
@@ -969,7 +969,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_static_edp_xml_config(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& static_edp_xml_config,
-        int32_t index);
+        const std::string& index);
 
 } // discovery_config
 } // builtin

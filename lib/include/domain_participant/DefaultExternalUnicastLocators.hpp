@@ -64,7 +64,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific Domain Participant specific default external unicast locator kind.
@@ -82,7 +82,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_kind(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific Domain Participant specific default external unicast locator port.
@@ -100,7 +100,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_kind(
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_port(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific Domain Participant specific default external unicast locator IP address.
@@ -118,7 +118,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_port(
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_address(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific Domain Participant specific default external unicast locator
@@ -137,7 +137,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_address(
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_externality(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific Domain Participant specific default external unicast locator cost.
@@ -155,7 +155,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_externality(
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_cost(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific Domain Participant specific default external unicast locator mask.
@@ -173,7 +173,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_cost(
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_mask(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index);
+        const std::string& index);
 
 /************************************************************************/
 /* Query functions                                                      */
@@ -226,7 +226,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Remove specific Domain Participant default external unicast locator port.
@@ -242,7 +242,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_port(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Remove specific Domain Participant default external unicast locator IP address.
@@ -258,7 +258,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_port(
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_address(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Remove specific Domain Participant default external unicast locator externality.
@@ -274,7 +274,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_address(
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_externality(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Remove specific Domain Participant default external unicast locator cost.
@@ -290,7 +290,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_externality(
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_cost(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Remove specific Domain Participant default external unicast locator mask.
@@ -306,7 +306,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_cost(
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_mask(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index);
+        const std::string& index);
 
 /************************************************************************/
 /* Collection functions                                                 */
@@ -343,7 +343,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_kind(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& kind,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Append a default external unicast locator with specified port.
@@ -376,7 +376,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_port(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& port,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Append a default external unicast locator with specified IP address.
@@ -409,7 +409,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_address(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& address,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Append a default external unicast locator with specified externality.
@@ -442,7 +442,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_externality(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& externality,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Append a default external unicast locator with specified cost.
@@ -475,7 +475,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_cost(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& cost,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Append a default external unicast locator with specified mask.
@@ -508,7 +508,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_mask(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& mask,
-        int32_t index);
+        const std::string& index);
 
 } // default_external_unicast_locators
 } // domain_participant

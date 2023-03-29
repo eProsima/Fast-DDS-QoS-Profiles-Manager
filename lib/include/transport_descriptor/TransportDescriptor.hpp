@@ -170,7 +170,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_interface_whitelist(
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_interface_whitelist(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific Transport Descriptor TTL (Time to live).
@@ -350,7 +350,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_listening_ports(
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_listening_ports(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific TCP Transport Descriptor TLS configuration.
@@ -496,7 +496,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_verify_mode(
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_verify_mode(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific TCP Transport Descriptor TLS supported features mask.
@@ -530,7 +530,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_options(
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_options(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific TCP Transport Descriptor TLS paths to verification files.
@@ -564,7 +564,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_verify_paths(
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_verify_paths(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific TCP Transport Descriptor TLS maximum verification depth.
@@ -952,7 +952,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_interface_whitelist(
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_interface_whitelist(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Remove TTL (Time to live) element from specific Transport Descriptor profile.
@@ -1098,7 +1098,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_listening_ports(
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_listening_ports(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Remove TLS configuration from TCP Transport Descriptor profile.
@@ -1218,7 +1218,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_verify_mode(
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_verify_mode(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Remove every TLS supported features from specific TCP Transport Descriptor profile mask.
@@ -1247,7 +1247,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_options(
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_options(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Remove every TLS verification paths from specific TCP Transport Descriptor profile.
@@ -1276,7 +1276,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_verify_paths(
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_verify_paths(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Remove TLS maximum verification depth from TCP Transport Descriptor profile.
@@ -1899,7 +1899,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_interface_whitelist(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& ip_address,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Append a listening port to the TCP Transport Descriptor collection (TCP Transport specific).
@@ -1932,7 +1932,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_listening_ports(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& port,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Append a TLS verification mode to the TCP Transport Descriptor mask (TCP Transport specific).
@@ -1965,7 +1965,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_tls_verify_mode(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_verify_mode,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Append TLS supported features to the TCP Transport Descriptor mask (TCP Transport specific).
@@ -1998,7 +1998,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_tls_options(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_options,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Append TLS verification path to the TCP Transport Descriptor (TCP Transport specific).
@@ -2031,7 +2031,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_tls_verify_path(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_verify_path,
-        int32_t index);
+        const std::string& index);
 
 } // transport_descriptor
 } // qosprof
