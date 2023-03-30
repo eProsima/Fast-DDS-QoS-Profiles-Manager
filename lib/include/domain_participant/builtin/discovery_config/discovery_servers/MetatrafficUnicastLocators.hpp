@@ -407,7 +407,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_physical_port(
         const std::string& index);
 
 /**
- * @brief Append a remote server metatraffic unicast locator with specified IP address or update the remote server 
+ * @brief Append a remote server metatraffic unicast locator with specified IP address or update the remote server
  *        metatraffic unicast locator IP address.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
