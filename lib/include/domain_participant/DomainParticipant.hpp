@@ -184,6 +184,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_user_transport(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        list does not contain any element in index position.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_user_transport(
         const std::string& xml_file,
@@ -234,6 +235,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_user_data(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        list does not contain any element in index position.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_user_data(
         const std::string& xml_file,
@@ -443,6 +445,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_user_transports(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if
  *        the element does not exist in the collection.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_user_transports(
         const std::string& xml_file,
@@ -485,6 +488,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_user_data(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if
  *        the element does not exist in the collection.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_user_data(
         const std::string& xml_file,

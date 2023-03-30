@@ -155,6 +155,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_interface_whitelist(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        list does not contain any element in index position.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_interface_whitelist(
         const std::string& xml_file,
@@ -335,6 +336,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_listening_ports(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        list does not contain any element in index position.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_listening_ports(
         const std::string& xml_file,
@@ -481,6 +483,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_verify_mode(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        list does not contain any element in index position.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_verify_mode(
         const std::string& xml_file,
@@ -515,6 +518,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_options(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        list does not contain any element in index position.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_options(
         const std::string& xml_file,
@@ -549,6 +553,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_verify_paths(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        list does not contain any element in index position.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_verify_paths(
         const std::string& xml_file,
@@ -928,6 +933,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_interface_whitelist(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or if
  *        the element does not exist in the collection.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_interface_whitelist(
         const std::string& xml_file,
@@ -1074,6 +1080,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_listening_ports(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or if
  *        the element does not exist in the collection.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_listening_ports(
         const std::string& xml_file,
@@ -1194,6 +1201,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_verify_mode(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or if
  *        the element does not exist in the collection.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_verify_mode(
         const std::string& xml_file,
@@ -1223,6 +1231,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_options(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or if
  *        the element does not exist in the collection.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_options(
         const std::string& xml_file,
@@ -1252,6 +1261,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_verify_paths(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or if
  *        the element does not exist in the collection.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_verify_paths(
         const std::string& xml_file,

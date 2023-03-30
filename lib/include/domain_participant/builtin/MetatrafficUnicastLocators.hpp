@@ -64,6 +64,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_kind(
         const std::string& xml_file,
@@ -82,6 +83,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_kind(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_port(
         const std::string& xml_file,
@@ -102,6 +104,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_port(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_physical_port(
         const std::string& xml_file,
@@ -121,6 +124,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_physical_port(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_address(
         const std::string& xml_file,
@@ -141,6 +145,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_address(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_unique_lan_id(
         const std::string& xml_file,
@@ -161,6 +166,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_unique_lan_id(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_wan_address(
         const std::string& xml_file,
@@ -218,6 +224,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if
  *        the element does not exist in the collection.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_port(
         const std::string& xml_file,
@@ -234,6 +241,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_port(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if
  *        the element does not exist in the collection.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_physical_port(
         const std::string& xml_file,
@@ -250,6 +258,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_physical_port(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if
  *        the element does not exist in the collection.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_address(
         const std::string& xml_file,
@@ -266,6 +275,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_address(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if
  *        the element does not exist in the collection.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_unique_lan_id(
         const std::string& xml_file,
@@ -282,6 +292,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_unique_lan_id(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if
  *        the element does not exist in the collection.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_wan_address(
         const std::string& xml_file,

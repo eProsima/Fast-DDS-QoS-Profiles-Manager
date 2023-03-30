@@ -403,6 +403,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_static_edp_xml_config(
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        Static EDP XML configuration files element is not defined, or the list does not contain any element in index
  *        position.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_static_edp_xml_config(
         const std::string& xml_file,
@@ -728,6 +729,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_static_edp_xml_config(
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_static_edp_xml_config(
         const std::string& xml_file,
