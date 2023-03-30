@@ -27,8 +27,8 @@ bool extract_element_subelement_key(
 {
     std::smatch match;
     std::regex_search(element, match, dot_pattern);
-    element = match[0];
     subelement = match.suffix();
+    element = match[0];
     if (std::regex_search(element, match, bracket_pattern))
     {
         element = match.prefix();

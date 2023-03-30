@@ -131,6 +131,4 @@ Currently, this test plan is not concerned about the validity of the arguments p
 
 ## Known issues
 
-* Profile names should have at least 3 characters.
-  Otherwise, the bracket regex parsing seems to be failing.
 * `fastddsqosprof file.xml set participant[profile].external_locators.other argument` does not have the expected behavior.
