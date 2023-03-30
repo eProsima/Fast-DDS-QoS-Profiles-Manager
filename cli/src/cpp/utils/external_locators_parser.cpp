@@ -48,13 +48,13 @@ void external_locators_parser(
     // HELP command has been handled in the upper level so usage should be printed in case of wrong arguments.
     bool set_every_element = false;
     // Not SET commands require no values at all.
-    if (values.size() != 0 && command != CommonCommands::SET)
+    if (values.size() != 0 && command != CommonCommands::SET && !print_usage)
     {
         std::cout << "ERROR: the given command does not require any value" << std::endl;
         print_usage = true;
     }
     // No subelement.
-    else if (subelement.empty())
+    else if (subelement.empty() && !print_usage)
     {
         // Invalid arguments check
         // SET command requires 6 values: kind, externality, cost, address, mask and port.

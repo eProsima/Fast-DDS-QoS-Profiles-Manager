@@ -37,7 +37,7 @@ static const char HELP_USAGE[] =
 
     Usage:
       fastddsqosprof <file> help
-      fastddsqosprof <file> <command> [<element>] help
+      fastddsqosprof <file> <command> [<element>] [<values>] (help | -h | --help)
 )";
 
 static const char PRINT_USAGE[] =

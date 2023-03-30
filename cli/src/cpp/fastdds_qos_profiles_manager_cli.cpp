@@ -130,7 +130,7 @@ int main(
         }
         else
         {
-            std::cout << "ERROR: help command requires none follow-up element" << std::endl;
+            std::cout << "ERROR: help command requires no follow-up element" << std::endl;
             std::cout << HELP_USAGE << std::endl;
         }
     }
