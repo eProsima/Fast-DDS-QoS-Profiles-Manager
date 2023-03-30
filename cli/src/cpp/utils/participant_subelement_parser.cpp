@@ -114,8 +114,7 @@ void participant_subelement_parser(
     else if (element == EXTERNAL_LOCATORS_SUBELEMENT)
     {
         // Check help value
-        if (!values.empty() && (values.back() == HELP_COMMAND || values.back() == HELP_SHORTHAND_FLAG ||
-                values.back() == HELP_FLAG))
+        if (check_help(values))
         {
             print_usage = true;
         }
@@ -206,7 +205,11 @@ void participant_subelement_parser(
     }
     else
     {
-        std::cout << "ERROR: " << element << " element not recognized" << std::endl;
+        // Check if the user has asked for help. Otherwise show error
+        if (!check_help(values))
+        {
+            std::cout << "ERROR: " << element << " element not recognized" << std::endl;
+        }
         if (CommonCommands::QUERY != command)
         {
             std::cout << PARTICIPANT_USAGE << std::endl;

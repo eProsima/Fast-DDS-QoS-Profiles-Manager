@@ -19,6 +19,8 @@
 #include <string>
 #include <vector>
 
+#include <parser_constants.hpp>
+
 namespace eprosima {
 namespace qosprof_cli {
 
@@ -44,6 +46,10 @@ enum class ExternalLocatorsList
 const std::regex dot_pattern("[^\\.]+");
 const std::regex bracket_pattern("\\[([^\\]]*)\\]");
 
+/**********************************************************************************************************************/
+/* PARSERS                                                                                                            */
+/**********************************************************************************************************************/
+
 /**
  * @brief Common parser for external locators lists
  *
@@ -61,20 +67,6 @@ void external_locators_parser(
         const std::string& profile_name,
         std::string& element,
         const std::vector<std::string>& values);
-
-/**
- * @brief Auxiliary function to extract the element, subelement and key for the next level.
- *
- * @param[in out] element String to be parsed. Return only the main element (until next dot)
- * @param[out] subelement String after main element.
- * @param[out] key Index or key if the element is keyed
- *
- * @return true if a key was found. False otherwise.
- */
-bool extract_element_subelement_key(
-        std::string& element,
-        std::string& subelement,
-        std::string& key);
 
 /**
  * @brief Parser for the main element to be configured.
@@ -105,6 +97,37 @@ void participant_subelement_parser(
         const std::string& profile_name,
         std::string& element,
         const std::vector<std::string>& values);
+
+/**********************************************************************************************************************/
+/* AUXILIARY FUNCTIONS                                                                                                */
+/**********************************************************************************************************************/
+
+/**
+ * @brief Check if the last argument is help
+ *
+ * @param[in] values String vector with the arguments
+ * @return true if help (or its variants) is the last argument
+ */
+inline bool check_help(
+        const std::vector<std::string>& values)
+{
+    return !values.empty() && (values.back() == HELP_COMMAND || values.back() == HELP_SHORTHAND_FLAG ||
+                values.back() == HELP_FLAG);
+}
+
+/**
+ * @brief Auxiliary function to extract the element, subelement and key for the next level.
+ *
+ * @param[in out] element String to be parsed. Return only the main element (until next dot)
+ * @param[out] subelement String after main element.
+ * @param[out] key Index or key if the element is keyed
+ *
+ * @return true if a key was found. False otherwise.
+ */
+bool extract_element_subelement_key(
+        std::string& element,
+        std::string& subelement,
+        std::string& key);
 
 } // qosprof_cli
 } // eprosima
