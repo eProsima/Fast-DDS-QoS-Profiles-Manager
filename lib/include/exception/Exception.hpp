@@ -81,9 +81,9 @@ protected:
 };
 
 /**
- * @brief Exception to signal that the provided XML file does not exist
+ * @brief Exception to signal that the provided parameter is not correct
  */
-class FileNotFound : public Exception
+class BadParameter : public Exception
 {
 
 public:
@@ -92,21 +92,52 @@ public:
     using Exception::Exception;
 
     /**
-     * @brief Copies the qosprof::FileNotFound exception into a new one
+     * @brief Copies the qosprof::BadParameter exception into a new one
      *
      * @param other The original exception object to copy
      */
-    FASTDDS_QOS_PROFILES_MANAGER_DllAPI FileNotFound(
-            const FileNotFound& other) = default;
+    FASTDDS_QOS_PROFILES_MANAGER_DllAPI BadParameter(
+            const BadParameter& other) = default;
 
     /**
-     * @brief Copies the qosprof::FileNotFound exception into the current one
+     * @brief Copies the qosprof::BadParameter exception into the current one
      *
-     * @param other The original qosprof::FileNotFound exception to copy
-     * @return the current qosprof::FileNotFound exception after the copy
+     * @param other The original qosprof::BadParameter exception to copy
+     * @return the current qosprof::BadParameter exception after the copy
      */
-    FASTDDS_QOS_PROFILES_MANAGER_DllAPI FileNotFound& operator =(
-            const FileNotFound& other) = default;
+    FASTDDS_QOS_PROFILES_MANAGER_DllAPI BadParameter& operator =(
+            const BadParameter& other) = default;
+};
+
+/**
+ * @brief Exception to signal that the provided XML element is not valid according to the XSD Schema
+ *
+ * Query the `what` in order to have more information about the validation failure
+ */
+class ElementInvalid : public Exception
+{
+
+public:
+
+    // Use parent constructors.
+    using Exception::Exception;
+
+    /**
+     * @brief Copies the qosprof::ElementInvalid exception into a new one
+     *
+     * @param other The original exception object to copy
+     */
+    FASTDDS_QOS_PROFILES_MANAGER_DllAPI ElementInvalid(
+            const ElementInvalid& other) = default;
+
+    /**
+     * @brief Copies the qosprof::ElementInvalid exception into the current one
+     *
+     * @param other The original qosprof::ElementInvalid exception to copy
+     * @return the current qosprof::ElementInvalid exception after the copy
+     */
+    FASTDDS_QOS_PROFILES_MANAGER_DllAPI ElementInvalid& operator =(
+            const ElementInvalid& other) = default;
 };
 
 /**
@@ -139,11 +170,9 @@ public:
 };
 
 /**
- * @brief Exception to signal that the provided XML element is not valid according to the XSD Schema
- *
- * Query the `what` in order to have more information about the validation failure
+ * @brief Exception to signal that the provided XML file does not exist
  */
-class ElementInvalid : public Exception
+class FileNotFound : public Exception
 {
 
 public:
@@ -152,21 +181,21 @@ public:
     using Exception::Exception;
 
     /**
-     * @brief Copies the qosprof::ElementInvalid exception into a new one
+     * @brief Copies the qosprof::FileNotFound exception into a new one
      *
      * @param other The original exception object to copy
      */
-    FASTDDS_QOS_PROFILES_MANAGER_DllAPI ElementInvalid(
-            const ElementInvalid& other) = default;
+    FASTDDS_QOS_PROFILES_MANAGER_DllAPI FileNotFound(
+            const FileNotFound& other) = default;
 
     /**
-     * @brief Copies the qosprof::ElementInvalid exception into the current one
+     * @brief Copies the qosprof::FileNotFound exception into the current one
      *
-     * @param other The original qosprof::ElementInvalid exception to copy
-     * @return the current qosprof::ElementInvalid exception after the copy
+     * @param other The original qosprof::FileNotFound exception to copy
+     * @return the current qosprof::FileNotFound exception after the copy
      */
-    FASTDDS_QOS_PROFILES_MANAGER_DllAPI ElementInvalid& operator =(
-            const ElementInvalid& other) = default;
+    FASTDDS_QOS_PROFILES_MANAGER_DllAPI FileNotFound& operator =(
+            const FileNotFound& other) = default;
 };
 
 /**

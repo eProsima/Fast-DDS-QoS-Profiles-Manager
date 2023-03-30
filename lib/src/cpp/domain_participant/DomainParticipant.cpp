@@ -28,12 +28,6 @@ namespace qosprof {
 namespace domain_participant {
 
 std::string print(
-        const std::string& xml_file)
-{
-    throw Unsupported("Unsupported");
-}
-
-std::string print(
         const std::string& xml_file,
         const std::string& profile_id)
 {
@@ -98,7 +92,7 @@ std::string print_user_transport(
 std::string print_user_transport(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
@@ -120,7 +114,7 @@ std::string print_user_data(
 std::string print_user_data(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
@@ -142,12 +136,6 @@ uint32_t user_transport_size(
 uint32_t user_data_size(
         const std::string& xml_file,
         const std::string& profile_id)
-{
-    throw Unsupported("Unsupported");
-}
-
-void clear(
-        const std::string& xml_file)
 {
     throw Unsupported("Unsupported");
 }
@@ -217,7 +205,7 @@ void clear_user_transports(
 void clear_user_transports(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
@@ -239,7 +227,7 @@ void clear_user_data(
 void clear_user_data(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
@@ -322,36 +310,20 @@ void set_prefix(
     throw Unsupported("Unsupported");
 }
 
-void push_user_transports(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& transport_id)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_user_transports(
+void set_user_transports(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& transport_id,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
 
-void push_user_data(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& user_data)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_user_data(
+void set_user_data(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& user_data,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }

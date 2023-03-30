@@ -28,12 +28,6 @@ namespace qosprof {
 namespace transport_descriptor {
 
 std::string print(
-        const std::string& xml_file)
-{
-    throw Unsupported("Unsupported");
-}
-
-std::string print(
         const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
@@ -85,7 +79,7 @@ std::string print_interface_whitelist(
 std::string print_interface_whitelist(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
@@ -163,7 +157,7 @@ std::string print_listening_ports(
 std::string print_listening_ports(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
@@ -227,7 +221,7 @@ std::string print_tls_verify_mode(
 std::string print_tls_verify_mode(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
@@ -242,7 +236,7 @@ std::string print_tls_options(
 std::string print_tls_options(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
@@ -257,7 +251,7 @@ std::string print_tls_verify_paths(
 std::string print_tls_verify_paths(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
@@ -387,12 +381,6 @@ uint32_t tls_verify_paths_size(
 }
 
 void clear(
-        const std::string& xml_file)
-{
-    throw Unsupported("Unsupported");
-}
-
-void clear(
         const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
@@ -437,7 +425,7 @@ void clear_interface_whitelist(
 void clear_interface_whitelist(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
@@ -515,7 +503,7 @@ void clear_listening_ports(
 void clear_listening_ports(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
@@ -579,7 +567,7 @@ void clear_tls_verify_mode(
 void clear_tls_verify_mode(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
@@ -594,7 +582,7 @@ void clear_tls_options(
 void clear_tls_options(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
@@ -609,7 +597,7 @@ void clear_tls_verify_paths(
 void clear_tls_verify_paths(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
@@ -939,87 +927,47 @@ void set_rtps_dump_file(
     throw Unsupported("Unsupported");
 }
 
-void push_interface_whitelist(
-        const std::string& xml_file,
-        const std::string& transport_descriptor_id,
-        const std::string& ip_address)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_interface_whitelist(
+void set_interface_whitelist(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& ip_address,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
 
-void push_listening_ports(
-        const std::string& xml_file,
-        const std::string& transport_descriptor_id,
-        const std::string& port)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_listening_ports(
+void set_listening_ports(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& port,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
 
-void push_tls_verify_mode(
-        const std::string& xml_file,
-        const std::string& transport_descriptor_id,
-        const std::string& tls_verify_mode)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_tls_verify_mode(
+void set_tls_verify_mode(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_verify_mode,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
 
-void push_tls_options(
-        const std::string& xml_file,
-        const std::string& transport_descriptor_id,
-        const std::string& tls_options)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_tls_options(
+void set_tls_options(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_options,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
 
-void push_tls_verify_path(
-        const std::string& xml_file,
-        const std::string& transport_descriptor_id,
-        const std::string& tls_verify_path)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_tls_verify_path(
+void set_tls_verify_path(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_verify_path,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }

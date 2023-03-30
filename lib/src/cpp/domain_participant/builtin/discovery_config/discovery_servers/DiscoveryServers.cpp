@@ -32,15 +32,8 @@ namespace discovery_servers {
 
 std::string print(
         const std::string& xml_file,
-        const std::string& profile_id)
-{
-    throw Unsupported("Unsupported");
-}
-
-std::string print(
-        const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
@@ -53,13 +46,6 @@ uint32_t size(
 }
 
 std::vector<std::string> keys(
-        const std::string& xml_file,
-        const std::string& profile_id)
-{
-    throw Unsupported("Unsupported");
-}
-
-void clear(
         const std::string& xml_file,
         const std::string& profile_id)
 {

@@ -185,7 +185,7 @@ std::string print_static_edp_xml_config(
 std::string print_static_edp_xml_config(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
@@ -354,7 +354,7 @@ void clear_static_edp_xml_config(
 void clear_static_edp_xml_config(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
@@ -471,19 +471,11 @@ void set_client_announcement_period_nanosec(
     throw Unsupported("Unsupported");
 }
 
-void push_static_edp_xml_config(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& static_edp_xml_config)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_static_edp_xml_config(
+void set_static_edp_xml_config(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& static_edp_xml_config,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }

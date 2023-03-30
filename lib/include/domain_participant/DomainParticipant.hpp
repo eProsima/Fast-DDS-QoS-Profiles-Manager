@@ -33,22 +33,10 @@ namespace domain_participant {
 /************************************************************************/
 
 /**
- * @brief Parse XML file and print every Domain Participant profile.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- *
- * @return std::string XML section containing the Domain Participant profiles.
- *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
-        const std::string& xml_file);
-
-/**
  * @brief Parse XML file and print specific Domain Participant profile.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
+ * @param[in] profile_id Domain participant profile identifier. If empty every Domain Participant profile is printed.
  *
  * @return std::string XML section containing the specific Domain Participant profile.
  *
@@ -196,11 +184,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_user_transport(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        list does not contain any element in index position.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_user_transport(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Parse XML file and print the Domain Participant use builtin trasports flag.
@@ -246,11 +235,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_user_data(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        list does not contain any element in index position.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_user_data(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Parse XML file and print the Domain Participant GUID prefix.
@@ -332,20 +322,10 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t user_data_size(
 /************************************************************************/
 
 /**
- * @brief Delete any Domain Participant profile contained in the XML file.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
-        const std::string& xml_file);
-
-/**
  * @brief Remove specific Domain Participant profile.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
+ * @param[in] profile_id Domain participant profile identifier. If empty, every Domain Participant profile is deleted.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
@@ -465,11 +445,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_user_transports(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if
  *        the element does not exist in the collection.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_user_transports(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Remove use builtin transports flag from specific Domain Participant profile.
@@ -507,11 +488,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_user_data(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if
  *        the element does not exist in the collection.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_user_data(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Remove GUID prefix from specific Domain Participant profile.
@@ -662,70 +644,44 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_prefix(
 /************************************************************************/
 
 /**
- * @brief Append a user transport to the collection.
+ * @brief Append a user transport to the collection or update user transport element in the collection.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] transport_id Transport descriptor profile identifier.
- *
- * @throw ElementInvalid Exception if the provided Transport descriptor profile identifier is not valid.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_user_transports(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& transport_id);
-
-/**
- * @brief Update user transport element in the collection.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
- * @param[in] transport_id Transport descriptor profile identifier.
- * @param[in] index Collection element to be changed.
+ * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided Transport descriptor profile identifier is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw BadParameter Exception if the index is not an integer.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_user_transports(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_user_transports(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& transport_id,
-        int32_t index);
+        const std::string& index);
 
 /**
- * @brief Append user data.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
- * @param[in] user_data User data to be appended.
- *
- * @throw ElementInvalid Exception if the provided user data is not valid.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_user_data(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& user_data);
-
-/**
- * @brief Update specific user data.
+ * @brief Append user data or update specific user data.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] user_data User data to be updated.
- * @param[in] index Collection element to be changed.
+ * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided user data is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw BadParameter Exception if the index is not an integer.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_user_data(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_user_data(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& user_data,
-        int32_t index);
+        const std::string& index);
 
 } // domain_participant
 } // qosprof

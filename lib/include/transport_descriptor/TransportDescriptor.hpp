@@ -33,22 +33,11 @@ namespace transport_descriptor {
 /************************************************************************/
 
 /**
- * @brief Parse XML file and print every transport descriptor profile.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- *
- * @return std::string XML section containing the transport descriptor profiles.
- *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
-        const std::string& xml_file);
-
-/**
  * @brief Parse XML file and print specific transport descriptor profile.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] transport_descriptor_id Transport descriptor profile identifier.
+ * @param[in] transport_descriptor_id Transport descriptor profile identifier. If empty, every transport descriptor
+ *                                    profile is printed.
  *
  * @return std::string XML section containing the specific transport descriptor profile.
  *
@@ -166,11 +155,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_interface_whitelist(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        list does not contain any element in index position.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_interface_whitelist(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific Transport Descriptor TTL (Time to live).
@@ -346,11 +336,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_listening_ports(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        list does not contain any element in index position.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_listening_ports(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific TCP Transport Descriptor TLS configuration.
@@ -492,11 +483,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_verify_mode(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        list does not contain any element in index position.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_verify_mode(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific TCP Transport Descriptor TLS supported features mask.
@@ -526,11 +518,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_options(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        list does not contain any element in index position.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_options(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific TCP Transport Descriptor TLS paths to verification files.
@@ -560,11 +553,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_verify_paths(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        list does not contain any element in index position.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_verify_paths(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific TCP Transport Descriptor TLS maximum verification depth.
@@ -851,20 +845,11 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t tls_verify_paths_size(
 /************************************************************************/
 
 /**
- * @brief Delete any TransportDescriptor profile contained in the XML file.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
-        const std::string& xml_file);
-
-/**
  * @brief Remove specific transport descriptor profile.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] transport_descriptor_id Transport descriptor profile identifier.
+ * @param[in] transport_descriptor_id Transport descriptor profile identifier. If empty, every transport descriptor
+ *                                    profile is deleted.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
@@ -948,11 +933,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_interface_whitelist(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or if
  *        the element does not exist in the collection.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_interface_whitelist(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Remove TTL (Time to live) element from specific Transport Descriptor profile.
@@ -1094,11 +1080,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_listening_ports(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or if
  *        the element does not exist in the collection.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_listening_ports(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Remove TLS configuration from TCP Transport Descriptor profile.
@@ -1214,11 +1201,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_verify_mode(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or if
  *        the element does not exist in the collection.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_verify_mode(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Remove every TLS supported features from specific TCP Transport Descriptor profile mask.
@@ -1243,11 +1231,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_options(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or if
  *        the element does not exist in the collection.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_options(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Remove every TLS verification paths from specific TCP Transport Descriptor profile.
@@ -1272,11 +1261,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_verify_paths(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or if
  *        the element does not exist in the collection.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_verify_paths(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Remove TLS maximum verification depth from TCP Transport Descriptor profile.
@@ -1869,169 +1859,109 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_rtps_dump_file(
 /************************************************************************/
 
 /**
- * @brief Append an IP address to the whitelisted network interfaces collection.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] transport_descriptor_id Transport descriptor profile identifier.
- * @param[in] ip_address IP address to be included in the whitelist collection.
- *
- * @throw ElementInvalid Exception if the provided IP address is not valid.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_interface_whitelist(
-        const std::string& xml_file,
-        const std::string& transport_descriptor_id,
-        const std::string& ip_address);
-
-/**
- * @brief Update IP address in the whitelisted network interfaces collection.
+ * @brief Append an IP address to the whitelisted network interfaces collection or update IP address in the whitelisted
+ *        network interfaces collection.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] ip_address IP address to be updated in the whitelist collection.
- * @param[in] index Collection element to be changed.
+ * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided IP address is not valid.
  * @throw ElementNotFound Exception if the specified Transport descriptor profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw BadParameter Exception if the index is not an integer.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_interface_whitelist(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_interface_whitelist(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& ip_address,
-        int32_t index);
+        const std::string& index);
 
 /**
- * @brief Append a listening port to the TCP Transport Descriptor collection (TCP Transport specific).
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] transport_descriptor_id Transport descriptor profile identifier.
- * @param[in] port Port to listen as server.
- *
- * @throw ElementInvalid Exception if the provided port is not valid.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_listening_ports(
-        const std::string& xml_file,
-        const std::string& transport_descriptor_id,
-        const std::string& port);
-
-/**
- * @brief Update a listening port to the TCP Transport Descriptor collection (TCP Transport specific).
+ * @brief Append a listening port to the TCP Transport Descriptor collection or update a listening port to the TCP
+ *        Transport Descriptor collection (TCP Transport specific).
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] port Updated port to listen as server.
- * @param[in] index Collection element to be changed.
+ * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided port is not valid.
  * @throw ElementNotFound Exception if the specified Transport descriptor profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw BadParameter Exception if the index is not an integer.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_listening_ports(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_listening_ports(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& port,
-        int32_t index);
+        const std::string& index);
 
 /**
- * @brief Append a TLS verification mode to the TCP Transport Descriptor mask (TCP Transport specific).
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] transport_descriptor_id Transport descriptor profile identifier.
- * @param[in] tls_verify_mode TLS verification mode to add into the mask.
- *
- * @throw ElementInvalid Exception if the provided TLS verification mode is not valid.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_tls_verify_mode(
-        const std::string& xml_file,
-        const std::string& transport_descriptor_id,
-        const std::string& tls_verify_mode);
-
-/**
- * @brief Update a TLS verification mode to the TCP Transport Descriptor mask (TCP Transport specific).
+ * @brief Append a TLS verification mode to the TCP Transport Descriptor mask or update a TLS verification mode to the
+ *        TCP Transport Descriptor mask (TCP Transport specific).
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] tls_verify_mode TLS verification mode to update in the mask.
- * @param[in] index Collection element to be changed.
+ * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided TLS verification mode is not valid.
  * @throw ElementNotFound Exception if the specified Transport descriptor profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw BadParameter Exception if the index is not an integer.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_tls_verify_mode(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_verify_mode(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_verify_mode,
-        int32_t index);
+        const std::string& index);
 
 /**
- * @brief Append TLS supported features to the TCP Transport Descriptor mask (TCP Transport specific).
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] transport_descriptor_id Transport descriptor profile identifier.
- * @param[in] tls_options TLS supported feature to add into the mask.
- *
- * @throw ElementInvalid Exception if the provided TLS supported feature is not valid.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_tls_options(
-        const std::string& xml_file,
-        const std::string& transport_descriptor_id,
-        const std::string& tls_options);
-
-/**
- * @brief Update a TLS supported feature to the TCP Transport Descriptor mask (TCP Transport specific).
+ * @brief Append TLS supported features to the TCP Transport Descriptor mask or update a TLS supported feature to the
+ *        TCP Transport Descriptor mask (TCP Transport specific).
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] tls_options TLS supported feature to update in the mask.
- * @param[in] index Collection element to be changed.
+ * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided TLS supported feature is not valid.
  * @throw ElementNotFound Exception if the specified Transport descriptor profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw BadParameter Exception if the index is not an integer.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_tls_options(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_options(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_options,
-        int32_t index);
+        const std::string& index);
 
 /**
- * @brief Append TLS verification path to the TCP Transport Descriptor (TCP Transport specific).
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] transport_descriptor_id Transport descriptor profile identifier.
- * @param[in] tls_verify_path TLS path to look for verification files.
- *
- * @throw ElementInvalid Exception if the provided path is not valid.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_tls_verify_path(
-        const std::string& xml_file,
-        const std::string& transport_descriptor_id,
-        const std::string& tls_verify_path);
-
-/**
- * @brief Update a TLS verification path to the TCP Transport Descriptor (TCP Transport specific).
+ * @brief Append TLS verification path to the TCP Transport Descriptor or update a TLS verification path to the TCP
+ *        Transport Descriptor (TCP Transport specific).
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] tls_verify_path TLS verification path to be updated in the list.
- * @param[in] index Collection element to be changed.
+ * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided path is not valid.
  * @throw ElementNotFound Exception if the specified Transport descriptor profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw BadParameter Exception if the index is not an integer.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_tls_verify_path(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_verify_path(
         const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_verify_path,
-        int32_t index);
+        const std::string& index);
 
 } // transport_descriptor
 } // qosprof

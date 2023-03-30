@@ -29,15 +29,8 @@ namespace default_external_unicast_locators {
 
 std::string print(
         const std::string& xml_file,
-        const std::string& profile_id)
-{
-    throw Unsupported("Unsupported");
-}
-
-std::string print(
-        const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
@@ -45,7 +38,7 @@ std::string print(
 std::string print_kind(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
@@ -53,7 +46,7 @@ std::string print_kind(
 std::string print_port(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
@@ -61,7 +54,7 @@ std::string print_port(
 std::string print_address(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
@@ -69,7 +62,7 @@ std::string print_address(
 std::string print_externality(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
@@ -77,7 +70,7 @@ std::string print_externality(
 std::string print_cost(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
@@ -85,7 +78,7 @@ std::string print_cost(
 std::string print_mask(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
@@ -99,15 +92,8 @@ uint32_t size(
 
 void clear(
         const std::string& xml_file,
-        const std::string& profile_id)
-{
-    throw Unsupported("Unsupported");
-}
-
-void clear(
-        const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
@@ -115,7 +101,7 @@ void clear(
 void clear_port(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
@@ -123,7 +109,7 @@ void clear_port(
 void clear_address(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
@@ -131,7 +117,7 @@ void clear_address(
 void clear_externality(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
@@ -139,7 +125,7 @@ void clear_externality(
 void clear_cost(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
@@ -147,109 +133,61 @@ void clear_cost(
 void clear_mask(
         const std::string& xml_file,
         const std::string& profile_id,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
 
-void push_kind(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& kind)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_kind(
+void set_kind(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& kind,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
 
-void push_port(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& port)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_port(
+void set_port(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& port,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
 
-void push_address(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& address)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_address(
+void set_address(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& address,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
 
-void push_externality(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& externality)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_externality(
+void set_externality(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& externality,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
 
-void push_cost(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& cost)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_cost(
+void set_cost(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& cost,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }
 
-void push_mask(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& mask)
-{
-    throw Unsupported("Unsupported");
-}
-
-void update_mask(
+void set_mask(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& mask,
-        int32_t index)
+        const std::string& index)
 {
     throw Unsupported("Unsupported");
 }

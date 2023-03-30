@@ -38,43 +38,25 @@ namespace metatraffic_unicast_locators {
 /************************************************************************/
 
 /**
- * @brief Parse XML file and print specific Domain Participant remote server metatraffic unicast locator list.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
- * @param[in] prefix Remote server GUID prefix.
- *
- * @return std::string XML section containing the specific Domain Participant remote server metatraffic unicast locator
- *         list.
- *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
- * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML
- *        file, or the metatraffic unicast locator list is not found.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& prefix);
-
-/**
  * @brief Parse XML file and print the specific Domain Participant specific remote server metatraffic unicast locator.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] prefix Remote server GUID prefix.
- * @param[in] index Collection element to be printed.
+ * @param[in] index Collection element to be printed. If empty, the complete list is printed.
  *
  * @return std::string XML section containing the Domain Participant specific remote server metatraffic unicast locator.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML
  *        file, the list element does not exist, or the list does not contain any element in index position.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific Domain Participant specific remote server metatraffic unicast locator
@@ -90,12 +72,13 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML
  *        file, the list element does not exist, or the list does not contain any element in index position.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_kind(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific Domain Participant specific remote server metatraffic unicast locator
@@ -111,12 +94,13 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_kind(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML
  *        file, the list element does not exist, or the list does not contain any element in index position.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_port(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific Domain Participant specific remote server metatraffic unicast locator
@@ -133,12 +117,13 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_port(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML
  *        file, the list element does not exist, or the list does not contain any element in index position.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_physical_port(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific Domain Participant specific remote server metatraffic unicast locator IP
@@ -154,12 +139,13 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_physical_port(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML
  *        file, the list element does not exist, or the list does not contain any element in index position.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_address(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific Domain Participant specific remote server metatraffic unicast locator
@@ -176,12 +162,13 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_address(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML
  *        file, the list element does not exist, or the list does not contain any element in index position.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_unique_lan_id(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific Domain Participant specific remote server metatraffic unicast locator
@@ -198,12 +185,13 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_unique_lan_id(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML
  *        file, the list element does not exist, or the list does not contain any element in index position.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_wan_address(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
-        int32_t index);
+        const std::string& index);
 
 /************************************************************************/
 /* Query functions                                                      */
@@ -232,38 +220,23 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t size(
 /************************************************************************/
 
 /**
- * @brief Remove specific Domain Participant remote server metatraffic unicast locator list.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
- * @param[in] prefix Remote server GUID prefix.
- *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
- * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML
- *        file.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& prefix);
-
-/**
  * @brief Remove specific Domain Participant remote server metatraffic unicast locator.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] prefix Remote server GUID prefix.
- * @param[in] index Collection element to be removed.
+ * @param[in] index Collection element to be removed. If empty, the complete list is removed.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML file
  *        or if the element does not exist in the collection.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Remove specific Domain Participant remote server metatraffic unicast locator port.
@@ -276,12 +249,13 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML file
  *        or if the element does not exist in the collection.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_port(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Remove specific Domain Participant remote server metatraffic unicast locator physical port.
@@ -294,12 +268,13 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_port(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML file
  *        or if the element does not exist in the collection.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_physical_port(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Remove specific Domain Participant remote server metatraffic unicast locator IP address.
@@ -312,12 +287,13 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_physical_port(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML file
  *        or if the element does not exist in the collection.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_address(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Remove specific Domain Participant remote server metatraffic unicast locator unique LAN ID.
@@ -330,12 +306,13 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_address(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML file
  *        or if the element does not exist in the collection.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_unique_lan_id(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
-        int32_t index);
+        const std::string& index);
 
 /**
  * @brief Remove specific Domain Participant remote server metatraffic unicast locator WAN IP address.
@@ -348,238 +325,155 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_unique_lan_id(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML file
  *        or if the element does not exist in the collection.
+ * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_wan_address(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
-        int32_t index);
+        const std::string& index);
 
 /************************************************************************/
 /* Collection functions                                                 */
 /************************************************************************/
 
 /**
- * @brief Append a remote server metatraffic unicast locator with specified kind.
+ * @brief Append a remote server metatraffic unicast locator with specified kind or update the remote server metatraffic
+ *        unicast locator kind.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] prefix Remote server GUID prefix.
  * @param[in] kind Metatraffic unicast locator kind.
- *
- * @throw ElementInvalid Exception if the provided locator kind is not valid.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_kind(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& prefix,
-        const std::string& kind);
-
-/**
- * @brief Update the remote server metatraffic unicast locator kind.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
- * @param[in] prefix Remote server GUID prefix.
- * @param[in] kind Metatraffic unicast locator kind.
- * @param[in] index Collection element to be changed.
+ * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided locator kind is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML
  *        file, the list element does not exist, or the list does not contain any element in index position.
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw BadParameter Exception if the index is not an integer.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_kind(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_kind(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
         const std::string& kind,
-        int32_t index);
+        const std::string& index);
 
 /**
- * @brief Append a remote server metatraffic unicast locator with specified port.
+ * @brief Append a remote server metatraffic unicast locator with specified port or update the remote server metatraffic
+ *        unicast locator port.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] prefix Remote server GUID prefix.
  * @param[in] port Metatraffic unicast locator port.
- *
- * @throw ElementInvalid Exception if the provided locator port is not valid.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_port(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& prefix,
-        const std::string& port);
-
-/**
- * @brief Update the remote server metatraffic unicast locator port.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
- * @param[in] prefix Remote server GUID prefix.
- * @param[in] port Metatraffic unicast locator port.
- * @param[in] index Collection element to be changed.
+ * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided locator port is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML
  *        file, the list element does not exist, or the list does not contain any element in index position.
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw BadParameter Exception if the index is not an integer.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_port(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_port(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
         const std::string& port,
-        int32_t index);
+        const std::string& index);
 
 /**
- * @brief Append a remote server metatraffic unicast locator with specified physical port (TCP only).
+ * @brief Append a remote server metatraffic unicast locator with specified physical port or update the remote server
+ *        metatraffic unicast locator physical port (TCP only).
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] prefix Remote server GUID prefix.
  * @param[in] physical_port Metatraffic unicast locator TCP physical port.
- *
- * @throw ElementInvalid Exception if the provided locator physical port is not valid.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_physical_port(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& prefix,
-        const std::string& physical_port);
-
-/**
- * @brief Update the remote server metatraffic unicast locator physical port (TCP only).
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
- * @param[in] prefix Remote server GUID prefix.
- * @param[in] physical_port Metatraffic unicast locator TCP physical port.
- * @param[in] index Collection element to be changed.
+ * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided locator physical port is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML
  *        file, the list element does not exist, or the list does not contain any element in index position.
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw BadParameter Exception if the index is not an integer.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_physical_port(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_physical_port(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
         const std::string& physical_port,
-        int32_t index);
+        const std::string& index);
 
 /**
- * @brief Append a remote server metatraffic unicast locator with specified IP address.
+ * @brief Append a remote server metatraffic unicast locator with specified IP address or update the remote server
+ *        metatraffic unicast locator IP address.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] prefix Remote server GUID prefix.
  * @param[in] address Metatraffic unicast locator IP address.
- *
- * @throw ElementInvalid Exception if the provided locator IP address is not valid.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_address(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& prefix,
-        const std::string& address);
-
-/**
- * @brief Update the remote server metatraffic unicast locator IP address.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
- * @param[in] prefix Remote server GUID prefix.
- * @param[in] address Metatraffic unicast locator IP address.
- * @param[in] index Collection element to be changed.
+ * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided locator IP address is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML
  *        file, the list element does not exist, or the list does not contain any element in index position.
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw BadParameter Exception if the index is not an integer.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_address(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_address(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
         const std::string& address,
-        int32_t index);
+        const std::string& index);
 
 /**
- * @brief Append a remote server metatraffic unicast TCPv4 locator with specified unique LAN ID.
+ * @brief Append a remote server metatraffic unicast TCPv4 locator with specified unique LAN ID or update the remote
+ *        server metatraffic unicast TCPv4 locator unique LAN ID.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] prefix Remote server GUID prefix.
  * @param[in] unique_lan_id Metatraffic unicast TCPv4 locator unique LAN ID.
- *
- * @throw ElementInvalid Exception if the provided identifier is not valid.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_unique_lan_id(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& prefix,
-        const std::string& unique_lan_id);
-
-/**
- * @brief Update the remote server metatraffic unicast TCPv4 locator unique LAN ID.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
- * @param[in] prefix Remote server GUID prefix.
- * @param[in] unique_lan_id Metatraffic unicast TCPv4 locator unique LAN ID.
- * @param[in] index Collection element to be changed.
+ * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided locator identifier is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML
  *        file, the list element does not exist, or the list does not contain any element in index position.
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw BadParameter Exception if the index is not an integer.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_unique_lan_id(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_unique_lan_id(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
         const std::string& unique_lan_id,
-        int32_t index);
+        const std::string& index);
 
 /**
- * @brief Append a remote server metatraffic unicast TCPv4 locator with specified WAN address.
+ * @brief Append a remote server metatraffic unicast TCPv4 locator with specified WAN address or update the remote
+ *        server metatraffic unicast TCPv4 locator WAN address.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] prefix Remote server GUID prefix.
  * @param[in] wan_address Metatraffic unicast TCPv4 locator WAN address.
- *
- * @throw ElementInvalid Exception if the provided IP address is not valid.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push_wan_address(
-        const std::string& xml_file,
-        const std::string& profile_id,
-        const std::string& prefix,
-        const std::string& wan_address);
-
-/**
- * @brief Update the remote server metatraffic unicast TCPv4 locator WAN address.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
- * @param[in] prefix Remote server GUID prefix.
- * @param[in] wan_address Metatraffic unicast TCPv4 locator WAN address.
- * @param[in] index Collection element to be changed.
+ * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided locator IP address is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML
  *        file, the list element does not exist, or the list does not contain any element in index position.
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw BadParameter Exception if the index is not an integer.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_wan_address(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_wan_address(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
         const std::string& wan_address,
-        int32_t index);
+        const std::string& index);
 
 } // metatraffic_unicast_locators
 } // discovery_servers

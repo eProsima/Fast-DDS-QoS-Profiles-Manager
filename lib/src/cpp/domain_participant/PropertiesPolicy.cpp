@@ -30,13 +30,6 @@ namespace properties_policy {
 
 std::string print(
         const std::string& xml_file,
-        const std::string& profile_id)
-{
-    throw Unsupported("Unsupported");
-}
-
-std::string print(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& property_id)
 {
@@ -67,13 +60,6 @@ uint32_t size(
 }
 
 std::vector<std::string> keys(
-        const std::string& xml_file,
-        const std::string& profile_id)
-{
-    throw Unsupported("Unsupported");
-}
-
-void clear(
         const std::string& xml_file,
         const std::string& profile_id)
 {
