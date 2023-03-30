@@ -68,7 +68,7 @@ protected:
         std::remove(xml_filename_.c_str());
     }
 
-    void print_set_clear_test()
+    void print_set_clear_with_index_test()
     {
         // Functors must be initialized
         ASSERT_NE(print_functor_, nullptr);
@@ -86,6 +86,15 @@ protected:
         {
             several_invalid_types = true;
             ASSERT_EQ(invalid_values_.size(), invalid_messages_.size());
+        }
+
+        // Passing an invalid index string must return BadParameter
+        EXPECT_THROW(print_functor_(xml_filename_, participant_profile_, std::string("invalid")), BadParameter);
+        EXPECT_THROW(set_functor_(xml_filename_, participant_profile_, valid_values_[0], std::string("invalid")),
+                BadParameter);
+        if (nullptr != clear_functor_)
+        {
+            EXPECT_THROW(clear_functor_(xml_filename_, participant_profile_, std::string("invalid")), BadParameter);
         }
 
         // Try printing from non-existing file
@@ -348,7 +357,7 @@ TEST_F(DomainParticipantTests, default_external_unicast_locators_kind)
             };
 
     // Call test
-    print_set_clear_test();
+    print_set_clear_with_index_test();
 }
 
 TEST_F(DomainParticipantTests, default_external_unicast_locators_port)
@@ -379,7 +388,7 @@ TEST_F(DomainParticipantTests, default_external_unicast_locators_port)
             };
 
     // Call test
-    print_set_clear_test();
+    print_set_clear_with_index_test();
 }
 
 TEST_F(DomainParticipantTests, default_external_unicast_locators_address)
@@ -405,7 +414,7 @@ TEST_F(DomainParticipantTests, default_external_unicast_locators_address)
             };
 
     // Call test
-    print_set_clear_test();
+    print_set_clear_with_index_test();
 }
 
 TEST_F(DomainParticipantTests, default_external_unicast_locators_externality)
@@ -436,7 +445,7 @@ TEST_F(DomainParticipantTests, default_external_unicast_locators_externality)
             };
 
     // Call test
-    print_set_clear_test();
+    print_set_clear_with_index_test();
 }
 
 TEST_F(DomainParticipantTests, default_external_unicast_locators_cost)
@@ -467,7 +476,7 @@ TEST_F(DomainParticipantTests, default_external_unicast_locators_cost)
             };
 
     // Call test
-    print_set_clear_test();
+    print_set_clear_with_index_test();
 }
 
 TEST_F(DomainParticipantTests, default_external_unicast_locators_mask)
@@ -499,7 +508,7 @@ TEST_F(DomainParticipantTests, default_external_unicast_locators_mask)
             };
 
     // Call test
-    print_set_clear_test();
+    print_set_clear_with_index_test();
 }
 
 /**********************************************************************************************************************/
@@ -529,7 +538,7 @@ TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_kin
             };
 
     // Call test
-    print_set_clear_test();
+    print_set_clear_with_index_test();
 }
 
 TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_port)
@@ -560,7 +569,7 @@ TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_por
             };
 
     // Call test
-    print_set_clear_test();
+    print_set_clear_with_index_test();
 }
 
 TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_address)
@@ -586,7 +595,7 @@ TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_add
             };
 
     // Call test
-    print_set_clear_test();
+    print_set_clear_with_index_test();
 }
 
 TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_externality)
@@ -617,7 +626,7 @@ TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_ext
             };
 
     // Call test
-    print_set_clear_test();
+    print_set_clear_with_index_test();
 }
 
 TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_cost)
@@ -648,7 +657,7 @@ TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_cos
             };
 
     // Call test
-    print_set_clear_test();
+    print_set_clear_with_index_test();
 }
 
 TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_mask)
@@ -680,7 +689,7 @@ TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_mas
             };
 
     // Call test
-    print_set_clear_test();
+    print_set_clear_with_index_test();
 }
 
 /**********************************************************************************************************************/
@@ -710,7 +719,7 @@ TEST_F(DomainParticipantTests, builtin_initial_peers_kind)
             };
 
     // Call test
-    print_set_clear_test();
+    print_set_clear_with_index_test();
 }
 
 TEST_F(DomainParticipantTests, builtin_initial_peers_port)
@@ -741,7 +750,7 @@ TEST_F(DomainParticipantTests, builtin_initial_peers_port)
             };
 
     // Call test
-    print_set_clear_test();
+    print_set_clear_with_index_test();
 }
 
 TEST_F(DomainParticipantTests, builtin_initial_peers_physical_port)
@@ -772,7 +781,7 @@ TEST_F(DomainParticipantTests, builtin_initial_peers_physical_port)
             };
 
     // Call test
-    print_set_clear_test();
+    print_set_clear_with_index_test();
 }
 
 TEST_F(DomainParticipantTests, builtin_initial_peers_address)
@@ -798,7 +807,7 @@ TEST_F(DomainParticipantTests, builtin_initial_peers_address)
             };
 
     // Call test
-    print_set_clear_test();
+    print_set_clear_with_index_test();
 }
 
 TEST_F(DomainParticipantTests, builtin_initial_peers_unique_lan_id)
@@ -824,7 +833,7 @@ TEST_F(DomainParticipantTests, builtin_initial_peers_unique_lan_id)
             };
 
     // Call test
-    print_set_clear_test();
+    print_set_clear_with_index_test();
 }
 
 TEST_F(DomainParticipantTests, builtin_initial_peers_wan_address)
@@ -850,7 +859,7 @@ TEST_F(DomainParticipantTests, builtin_initial_peers_wan_address)
             };
 
     // Call test
-    print_set_clear_test();
+    print_set_clear_with_index_test();
 }
 
 int main(
