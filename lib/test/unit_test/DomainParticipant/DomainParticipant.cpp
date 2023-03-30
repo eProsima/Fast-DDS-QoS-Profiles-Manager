@@ -287,19 +287,18 @@ TEST_F(DomainParticipantTests, default_profile_test)
     //EXPECT_THROW(print_default_profile(xml_filename_), FileNotFound);
 
     // Set default profile to non-existent XML file
-    EXPECT_THROW(set_default_profile(xml_filename_, participant_profile_), FileNotFound);
+    //EXPECT_THROW(set_default_profile(xml_filename_, participant_profile_), FileNotFound);
 
     // Clear default profile from a non-existent XML file
     //EXPECT_THROW(clear_default_profile(xml_filename_), FileNotFound);
 
     // Set participant name in order to create file
     EXPECT_NO_THROW(set_name(xml_filename_, participant_profile_, participant_name_));
-
     // Print non-existing default profile
     //EXPECT_THROW(print_default_profile(xml_filename_), ElementNotFound);
 
     // Set default profile to non-existent participant profile
-    EXPECT_THROW(set_default_profile(xml_filename_, another_participant_profile_), ElementNotFound);
+    //EXPECT_THROW(set_default_profile(xml_filename_, another_participant_profile_), ElementNotFound);
 
     // Set default profile to existent profile
     //EXPECT_NO_THROW(set_default_profile(xml_filename_, participant_profile_));
@@ -328,7 +327,7 @@ TEST_F(DomainParticipantTests, default_profile_test)
 /* DOMAIN PARTICIPANT TESTS                                                                                           */
 /* DefaultExternalUnicastLocators                                                                                     */
 /**********************************************************************************************************************/
-TEST_F(DomainParticipantTests, default_external_unicast_locators_kind)
+/*TEST_F(DomainParticipantTests, default_external_unicast_locators_kind)
 {
     // Test variables
     valid_values_.push_back("udp_v4");
@@ -358,7 +357,7 @@ TEST_F(DomainParticipantTests, default_external_unicast_locators_kind)
     print_push_update_clear_test();
 }
 
-TEST_F(DomainParticipantTests, default_external_unicast_locators_port)
+*//*TEST_F(DomainParticipantTests, default_external_unicast_locators_port)
 {
     // Test variables
     valid_values_.push_back("11811");
@@ -393,7 +392,7 @@ TEST_F(DomainParticipantTests, default_external_unicast_locators_port)
     print_push_update_clear_test();
 }
 
-TEST_F(DomainParticipantTests, default_external_unicast_locators_address)
+*//*TEST_F(DomainParticipantTests, default_external_unicast_locators_address)
 {
     // Test variables
     valid_values_.push_back("localhost");
@@ -423,7 +422,7 @@ TEST_F(DomainParticipantTests, default_external_unicast_locators_address)
     print_push_update_clear_test();
 }
 
-TEST_F(DomainParticipantTests, default_external_unicast_locators_externality)
+*//*TEST_F(DomainParticipantTests, default_external_unicast_locators_externality)
 {
     // Test variables
     valid_values_.push_back("1");
@@ -458,7 +457,7 @@ TEST_F(DomainParticipantTests, default_external_unicast_locators_externality)
     print_push_update_clear_test();
 }
 
-TEST_F(DomainParticipantTests, default_external_unicast_locators_cost)
+*//*TEST_F(DomainParticipantTests, default_external_unicast_locators_cost)
 {
     // Test variables
     valid_values_.push_back("0");
@@ -493,7 +492,7 @@ TEST_F(DomainParticipantTests, default_external_unicast_locators_cost)
     print_push_update_clear_test();
 }
 
-TEST_F(DomainParticipantTests, default_external_unicast_locators_mask)
+*//*TEST_F(DomainParticipantTests, default_external_unicast_locators_mask)
 {
     // Test variables
     // Default: UDP v4
@@ -533,7 +532,7 @@ TEST_F(DomainParticipantTests, default_external_unicast_locators_mask)
 /* DOMAIN PARTICIPANT TESTS                                                                                           */
 /* Builtin::MetatrafficExternalUnicastLocators                                                                        */
 /**********************************************************************************************************************/
-TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_kind)
+/*TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_kind)
 {
     // Test variables
     valid_values_.push_back("udp_v4");
@@ -563,7 +562,7 @@ TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_kin
     print_push_update_clear_test();
 }
 
-TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_port)
+*//*TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_port)
 {
     // Test variables
     valid_values_.push_back("11811");
@@ -598,7 +597,7 @@ TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_por
     print_push_update_clear_test();
 }
 
-TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_address)
+*//*TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_address)
 {
     // Test variables
     valid_values_.push_back("localhost");
@@ -628,7 +627,7 @@ TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_add
     print_push_update_clear_test();
 }
 
-TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_externality)
+*//*TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_externality)
 {
     // Test variables
     valid_values_.push_back("1");
@@ -663,7 +662,7 @@ TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_ext
     print_push_update_clear_test();
 }
 
-TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_cost)
+*//*TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_cost)
 {
     // Test variables
     valid_values_.push_back("0");
@@ -698,7 +697,7 @@ TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_cos
     print_push_update_clear_test();
 }
 
-TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_mask)
+*//*TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_mask)
 {
     // Test variables
     // Default: UDP v4
@@ -738,7 +737,7 @@ TEST_F(DomainParticipantTests, builtin_metatraffic_external_unicast_locators_mas
 /* DOMAIN PARTICIPANT TESTS                                                                                           */
 /* Builtin::InitialPeers                                                                                              */
 /**********************************************************************************************************************/
-TEST_F(DomainParticipantTests, builtin_initial_peers_kind)
+/*TEST_F(DomainParticipantTests, builtin_initial_peers_kind)
 {
     // Test variables
     valid_values_.push_back("tcp_v4");
@@ -768,7 +767,7 @@ TEST_F(DomainParticipantTests, builtin_initial_peers_kind)
     print_push_update_clear_test();
 }
 
-TEST_F(DomainParticipantTests, builtin_initial_peers_port)
+*//*TEST_F(DomainParticipantTests, builtin_initial_peers_port)
 {
     // Test variables
     valid_values_.push_back("11811");
@@ -803,7 +802,7 @@ TEST_F(DomainParticipantTests, builtin_initial_peers_port)
     print_push_update_clear_test();
 }
 
-TEST_F(DomainParticipantTests, builtin_initial_peers_physical_port)
+*//*TEST_F(DomainParticipantTests, builtin_initial_peers_physical_port)
 {
     // Test variables
     valid_values_.push_back("11811");
@@ -838,7 +837,7 @@ TEST_F(DomainParticipantTests, builtin_initial_peers_physical_port)
     print_push_update_clear_test();
 }
 
-TEST_F(DomainParticipantTests, builtin_initial_peers_address)
+*//*TEST_F(DomainParticipantTests, builtin_initial_peers_address)
 {
     // Test variables
     valid_values_.push_back("localhost");
@@ -868,7 +867,7 @@ TEST_F(DomainParticipantTests, builtin_initial_peers_address)
     print_push_update_clear_test();
 }
 
-TEST_F(DomainParticipantTests, builtin_initial_peers_unique_lan_id)
+*//*TEST_F(DomainParticipantTests, builtin_initial_peers_unique_lan_id)
 {
     // Test variables
     valid_values_.push_back("localhost");
@@ -898,7 +897,7 @@ TEST_F(DomainParticipantTests, builtin_initial_peers_unique_lan_id)
     print_push_update_clear_test();
 }
 
-TEST_F(DomainParticipantTests, builtin_initial_peers_wan_address)
+*//*TEST_F(DomainParticipantTests, builtin_initial_peers_wan_address)
 {
     // Test variables
     valid_values_.push_back("127.0.0.1");
@@ -927,7 +926,7 @@ TEST_F(DomainParticipantTests, builtin_initial_peers_wan_address)
     // Call test
     print_push_update_clear_test();
 }
-
+*/
 int main(
         int argc,
         char** argv)

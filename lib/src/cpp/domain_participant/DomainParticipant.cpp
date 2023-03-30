@@ -20,10 +20,15 @@
 
 #include <string>
 #include <vector>
+#include <filesystem>
+#include <iostream>
 
 #include <exception/Exception.hpp>
+
 #include <utils/ParseXML.hpp>
 #include <utils/ParseXMLTags.hpp>
+#include <utils/ParseXMLString.hpp>
+#include <utils/ParseXMLErrorHandler.hpp>
 
 namespace eprosima {
 namespace qosprof {
@@ -44,8 +49,8 @@ std::string print(
 
 std::string print_default_profile(
         const std::string& xml_file)
-{
-    xercesc::XercesDOMParser* parser = NULL;
+{return NULL;
+    /*xercesc::XercesDOMParser* parser = NULL;
     xercesc::DOMDocument* doc = NULL;
     xercesc::DOMNode* profiles_node = NULL;
     xercesc::DOMNode* participant_node = NULL;
@@ -53,7 +58,7 @@ std::string print_default_profile(
     // Open xml_file
     try
     {
-        parser = open_xml(xml_file);
+        //parser = open_xml(xml_file);
         doc = parser->getDocument();
     }
     catch (const eprosima::qosprof::FileNotFound ex)
@@ -80,7 +85,7 @@ std::string print_default_profile(
         // Throw exception if no nodes
         throw eprosima::qosprof::ElementNotFound(ex);
 
-        close_xml();
+        //close_xml();
         return NULL;
     }
 
@@ -89,7 +94,7 @@ std::string print_default_profile(
         xercesc::XMLString::transcode(eprosima::qosprof::tag::PARTICIPANT));
 
     // Iterate throw the participants to check which one is default
-    // TODO try with node->getNextSibling();
+    // TODO maybe trying with node->getNextSibling() iterator this function is more efficient
     xercesc::DOMNode* participant = NULL;
     for (int i=0, j=0, size=participant_list->getLength(); i<size && j==0; i++)
     {
@@ -119,20 +124,20 @@ std::string print_default_profile(
         // Given file does not exist
         throw eprosima::qosprof::ElementNotFound(
             "There is no default participant in " + xml_file + "\n");
-        close_xml();
+        //close_xml();
         return NULL;
     }
 
     // Return participant id as std::string
     return xercesc::XMLString::transcode(participant->getAttributes()->getNamedItem(
-        xercesc::XMLString::transcode(eprosima::qosprof::tag::PROFILE_NAME))->getNodeValue());
+        xercesc::XMLString::transcode(eprosima::qosprof::tag::PROFILE_NAME))->getNodeValue());*/
 }
 
 std::string print_domain_id(
         const std::string& xml_file,
         const std::string& profile_id)
-{
-    xercesc::XercesDOMParser* parser = NULL;
+{return NULL;
+    /*xercesc::XercesDOMParser* parser = NULL;
     xercesc::DOMDocument* doc = NULL;
     xercesc::DOMNode* profiles_node = NULL;
     xercesc::DOMNode* participant_node = NULL;
@@ -141,7 +146,7 @@ std::string print_domain_id(
     // Open xml_file
     try
     {
-        parser = open_xml(xml_file);
+        //parser = open_xml(xml_file);
         doc = parser->getDocument();
     }
     catch (const eprosima::qosprof::FileNotFound ex)
@@ -173,19 +178,19 @@ std::string print_domain_id(
         // Throw exception if no nodes
         throw eprosima::qosprof::ElementNotFound(ex);
 
-        close_xml();
+        //close_xml();
         return NULL;
     }
 
     // Print domainId
-    return xercesc::XMLString::transcode(domainIdNode->getNodeValue());
+    return xercesc::XMLString::transcode(domainIdNode->getNodeValue());*/
 }
 
 std::string print_name(
         const std::string& xml_file,
         const std::string& profile_id)
-{
-    xercesc::XercesDOMParser* parser = NULL;
+{return NULL;
+    /*xercesc::XercesDOMParser* parser = NULL;
     xercesc::DOMDocument* doc = NULL;
     xercesc::DOMNode* profiles_node = NULL;
     xercesc::DOMNode* participant_node = NULL;
@@ -195,7 +200,7 @@ std::string print_name(
     // Open xml_file
     try
     {
-        parser = open_xml(xml_file);
+        //parser = open_xml(xml_file);
         doc = parser->getDocument();
     }
     catch (const eprosima::qosprof::FileNotFound ex)
@@ -228,12 +233,12 @@ std::string print_name(
         // Throw exception if no nodes
         throw eprosima::qosprof::ElementNotFound(ex);
 
-        close_xml();
+        //close_xml();
         return NULL;
     }
 
     // Print name
-    return xercesc::XMLString::transcode(name_node->getNodeValue());
+    return xercesc::XMLString::transcode(name_node->getNodeValue());*/
 }
 
 std::string print_ignore_non_matching_locators(
@@ -352,7 +357,7 @@ void clear_name(
         const std::string& xml_file,
         const std::string& profile_id)
 {
-    xercesc::XercesDOMParser* parser = NULL;
+    /*xercesc::XercesDOMParser* parser = NULL;
     xercesc::DOMDocument* doc = NULL;
     xercesc::DOMNode* profiles_node = NULL;
     xercesc::DOMNode* participant_node = NULL;
@@ -362,7 +367,7 @@ void clear_name(
     // Open xml_file
     try
     {
-        parser = open_xml(xml_file);
+        //parser = open_xml(xml_file);
         doc = parser->getDocument();
     }
     catch (const eprosima::qosprof::FileNotFound ex)
@@ -395,7 +400,7 @@ void clear_name(
         // Throw exception if no nodes
         throw eprosima::qosprof::ElementNotFound(ex);
 
-        close_xml();
+        //close_xml();
         return;
     }
 
@@ -404,33 +409,33 @@ void clear_name(
 
     // Validate new element
     try {
-        save_xml("temp.xml", *doc);
+        //save_xml("temp.xml", doc);
         validate_xml("temp.xml", *parser);
     }
     catch (const eprosima::qosprof::Unsupported& ex)
     {
         throw eprosima::qosprof::Unsupported(ex);
-        close_xml();
+        //close_xml();
         return;
     }
     catch (const eprosima::qosprof::ElementInvalid& ex)
     {
         throw eprosima::qosprof::ElementInvalid(ex);
-        close_xml();
+        //close_xml();
         return;
     }
 
     // Save if valid
     try
     {
-        save_xml(xml_file, *doc);
+        //save_xml(xml_file, doc);
     }
     catch(const eprosima::qosprof::Unsupported& ex)
     {
         throw eprosima::qosprof::Unsupported(ex);
-    }
+    }*/
 
-    close_xml();
+    //close_xml();
     return;
 }
 
@@ -510,7 +515,7 @@ void set_default_profile(
         const std::string& xml_file,
         const std::string& profile_id)
 {
-    xercesc::XercesDOMParser* parser = NULL;
+    /*xercesc::XercesDOMParser* parser = NULL;
     xercesc::DOMDocument* doc = NULL;
     xercesc::DOMNode* profiles_node = NULL;
     xercesc::DOMNode* participant_node = NULL;
@@ -519,7 +524,7 @@ void set_default_profile(
     // Open xml_file
     try
     {
-        parser = open_xml(xml_file);
+        //parser = open_xml(xml_file);
         doc = parser->getDocument();
     }
     // Given file does not exist
@@ -533,16 +538,6 @@ void set_default_profile(
     try
     {
         profiles_node = get_node(doc, eprosima::qosprof::tag::PROFILES);
-    }
-    catch (const eprosima::qosprof::ElementNotFound& ex)
-    {
-        throw eprosima::qosprof::ElementNotFound(ex);
-        return;
-    }
-
-    // Obtain participant_node with the profile id
-    try
-    {
         participant_node = get_node(
             *profiles_node,
             eprosima::qosprof::tag::PARTICIPANT,
@@ -563,7 +558,7 @@ void set_default_profile(
         if (default_profile_node->getNodeValue() == xercesc::XMLString::transcode("true"))
         {
             // This profile is already the default profile
-            close_xml();
+            //close_xml();
             return;
         }
     }
@@ -573,7 +568,7 @@ void set_default_profile(
         xercesc::XMLString::transcode(eprosima::qosprof::tag::PARTICIPANT));
 
     // Iterate throw the participants to set them as NOT default
-    // TODO try with node->getNextSibling();
+    // TODO maybe trying with node->getNextSibling() iterator this function is more efficient
     for (int i=0, size=participant_list->getLength(); i<size; i++)
     {
         ((xercesc::DOMElement*)participant_list->item(i))->setAttribute(
@@ -587,8 +582,8 @@ void set_default_profile(
         xercesc::XMLString::transcode("true"));
 
     // Validate new element
-    /*try {
-        save_xml("temp.xml", *doc);
+    try {
+        save_xml("temp.xml", doc);
         validate_xml("temp.xml", *parser);
     }
     catch (const eprosima::qosprof::Unsupported& ex)
@@ -602,19 +597,19 @@ void set_default_profile(
         throw eprosima::qosprof::ElementInvalid(ex);
         close_xml();
         return;
-    }*/
+    }
 
     // Save if valid
     try
     {
-        save_xml(xml_file, *doc);
+        //save_xml(xml_file, doc);
     }
-    catch(const eprosima::qosprof::Unsupported& ex)
+    catch(const eprosima::qosprof::ElementInvalid& ex)
     {
-        throw eprosima::qosprof::Unsupported(ex);
+        throw eprosima::qosprof::ElementInvalid(ex);
     }
-
-    close_xml();
+*/
+    //close_xml();
     return;
 }
 
@@ -631,40 +626,47 @@ void set_name(
         const std::string& profile_id,
         const std::string& name)
 {
-
-    xercesc::XercesDOMParser* parser = NULL;
+    // Xerces objects to manage XML elements
+    xercesc::DOMConfiguration* config = NULL;
     xercesc::DOMDocument* doc = NULL;
+    ParseXMLErrorHandler* error_handler = NULL;
+    xercesc::DOMImplementation* implementation = NULL;
+    xercesc::DOMLSOutput* output = NULL;
+    xercesc::XercesDOMParser* parser = NULL;
+    xercesc::DOMLSSerializer* serializer = NULL;
+    xercesc::XMLFormatTarget* target = NULL;
+
+    // XML nodes and values
     xercesc::DOMNode* profiles_node = NULL;
     xercesc::DOMNode* participant_node = NULL;
     xercesc::DOMNode* rtps_node = NULL;
     xercesc::DOMNode* name_node = NULL;
     xercesc::DOMText* name_value = NULL;
 
-    // Open xml_file
+    // Obtain absolute path of the given file
+    std::string absolute_xml_file = "/home/jesus/Desktop/test.xml"; // TODO update
+
+    // Try to initialize XML workspace
     try
     {
-        parser = open_xml(xml_file);
-        doc = parser->getDocument();
+        xercesc::XMLPlatformUtils::Initialize();
     }
-    // Given file does not exist
-    catch (const eprosima::qosprof::FileNotFound& ex)
+    catch (const xercesc::XMLException& toCatch)
     {
-        // Create file
-        try
-        {
-            doc = create_xml(xml_file);
-            parser = new xercesc::XercesDOMParser();
-        }
-
-        // ERROR
-        catch (const eprosima::qosprof::FileNotFound& ex)
-        {
-            throw eprosima::qosprof::FileNotFound(ex);
-            return;
-        }
+        // Unable to initialize XML workspace
+        throw eprosima::qosprof::FileNotFound(xercesc::XMLString::transcode(toCatch.getMessage()));
+        return;
     }
 
-    // Obtain profiles_node
+    // Try to set up Xerces tools
+    if (!initialize_tools(config, doc, error_handler, implementation, output, parser, serializer, target, absolute_xml_file))
+    {
+        // Close XML workspace
+        xercesc::XMLPlatformUtils::Terminate();
+        return;
+    }
+
+    // Obtain profiles node
     try
     {
         profiles_node = get_node(doc, eprosima::qosprof::tag::PROFILES);
@@ -672,18 +674,18 @@ void set_name(
     catch (const eprosima::qosprof::ElementNotFound& ex)
     {
         // Obtain root element
-        xercesc::DOMElement* rootElement = doc->getDocumentElement();
+        xercesc::DOMElement* root_element = doc->getDocumentElement();
 
         // Add profiles
         profiles_node = (xercesc::DOMNode*) doc->createElement(xercesc::XMLString::transcode(eprosima::qosprof::tag::PROFILES));
-        rootElement->appendChild(profiles_node);
+        root_element->appendChild(profiles_node);
     }
 
-    // Obtain participant_node with the profile id
+    // Obtain participant node with the profile id
    try
     {
         participant_node = get_node(
-            *profiles_node,
+            profiles_node,
             eprosima::qosprof::tag::PARTICIPANT,
             eprosima::qosprof::tag::PROFILE_NAME,
             profile_id);
@@ -701,10 +703,10 @@ void set_name(
 
     }
 
-    // Obtain rtps_node
+    // Obtain rtps node
     try
     {
-        rtps_node = get_node(*participant_node, eprosima::qosprof::tag::RTPS);
+        rtps_node = get_node(participant_node, eprosima::qosprof::tag::RTPS);
     }
     catch (const eprosima::qosprof::ElementNotFound& ex)
     {
@@ -718,7 +720,7 @@ void set_name(
     // Obtain name
     try
     {
-        name_node = get_node(*rtps_node, eprosima::qosprof::tag::NAME);
+        name_node = get_node(rtps_node, eprosima::qosprof::tag::NAME);
     }
     catch (const eprosima::qosprof::ElementNotFound& ex)
     {
@@ -732,35 +734,11 @@ void set_name(
     name_value = doc->createTextNode(xercesc::XMLString::transcode(name.c_str()));
     name_node->appendChild(name_value);
 
-    // Validate new element
-    /*try {
-        save_xml("temp.xml", *doc);
-        validate_xml("temp.xml", *parser);
-    }
-    catch (const eprosima::qosprof::Unsupported& ex)
-    {
-        throw eprosima::qosprof::Unsupported(ex);
-        close_xml();
-        return;
-    }
-    catch (const eprosima::qosprof::ElementInvalid& ex)
-    {
-        throw eprosima::qosprof::ElementInvalid(ex);
-        close_xml();
-        return;
-    }*/
+    // Validate new XML element and save it
+    validate_and_save_xml_document(doc, error_handler, output, parser, serializer, target);
 
-    // Save if valid
-    try
-    {
-        save_xml(xml_file, *doc);
-    }
-    catch(const eprosima::qosprof::Unsupported& ex)
-    {
-        throw eprosima::qosprof::Unsupported(ex);
-    }
-
-    close_xml();
+    // Close XML workspace
+    xercesc::XMLPlatformUtils::Terminate();
     return;
 }
 

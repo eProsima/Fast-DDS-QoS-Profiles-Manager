@@ -28,76 +28,117 @@
 #include <xercesc/dom/DOM.hpp>
 #include <xercesc/parsers/XercesDOMParser.hpp>
 #include <xercesc/framework/LocalFileFormatTarget.hpp>
+#include <xercesc/framework/MemBufInputSource.hpp>
 
 #include <utils/ParseXMLErrorHandler.hpp>
 
-xercesc::XercesDOMParser* open_xml(
-        const std::string& xml_file);
+/*
+ * Initialize Xerces required tools, and reads given xml_file document
+ */
+bool initialize_tools (
+    xercesc::DOMConfiguration*& config,
+    xercesc::DOMDocument*& doc,
+    ParseXMLErrorHandler*& error_handler,
+    xercesc::DOMImplementation*& implementation,
+    xercesc::DOMLSOutput*& output,
+    xercesc::XercesDOMParser*& parser,
+    xercesc::DOMLSSerializer*& serializer,
+    xercesc::XMLFormatTarget*& target,
+    const std::string& xml_file
+);
 
-xercesc::DOMDocument*  create_xml(
-        const std::string& xml_file);
+/*
+ * Validate the document, and save to disk if valid
+ */
+void validate_and_save_xml_document(
+    xercesc::DOMDocument*& doc,
+    ParseXMLErrorHandler*& error_handler,
+    xercesc::DOMLSOutput*& output,
+    xercesc::XercesDOMParser*& parser,
+    xercesc::DOMLSSerializer*& serializer,
+    xercesc::XMLFormatTarget*& target);
 
-void close_xml();
+/*
+ * Save the document as string and validate
+ */
+bool validate_xml(
+    xercesc::DOMDocument*& doc,
+    ParseXMLErrorHandler*& error_handler,
+    xercesc::DOMLSOutput*& output,
+    xercesc::XercesDOMParser*& parser,
+    xercesc::DOMLSSerializer*& serializer);
 
+/*
+ * Save the document in the target file path
+ */
+bool save_xml(
+    xercesc::DOMDocument*& doc,
+    xercesc::DOMLSOutput*& output,
+    xercesc::DOMLSSerializer*& serializer,
+    xercesc::XMLFormatTarget*& target);
+
+/*
+ * MAIN get_node function
+ *   Obtain the node in the list that matches tag name and
+ *   the given index or the given name-value attribute pair
+ */
 xercesc::DOMNode* get_node(
-        const xercesc::DOMNodeList& node_tag_list,
+        xercesc::DOMNodeList*& node_tag_list,
         const std::string& tag_name,
         int32_t index,
         const std::string& att_name,
         const std::string& att_value);
 
-void validate_xml(
-        const std::string& xml_file,
-        xercesc::XercesDOMParser& parser);
-
-void save_xml(
-        const std::string& xml_file,
-        const xercesc::DOMDocument& doc);
-
+/*
+ * Remote the given node from the parent node
+ */
 void clear_node(
         const std::string& xml_file,
-        xercesc::DOMNode& parent_node,
-        xercesc::DOMNode& node_to_be_deleted);
+        xercesc::DOMNode*& parent_node,
+        xercesc::DOMNode*& node_to_be_deleted);
 
+/*
+ * AUX get_node functions based on the implementation needs
+ */
 xercesc::DOMNode* get_node(
-        xercesc::DOMDocument* doc,
+        xercesc::DOMDocument*& doc,
         const std::string& tag_name);
 
 xercesc::DOMNode* get_node(
-        xercesc::DOMDocument* doc,
+        xercesc::DOMDocument*& doc,
         const std::string& tag_name,
         int32_t index);
 
 xercesc::DOMNode* get_node(
-        xercesc::DOMDocument* doc,
+        xercesc::DOMDocument*& doc,
         const std::string& tag_name,
         const std::string& att_name,
         const std::string& att_value);
 
 xercesc::DOMNode* get_node(
-        xercesc::DOMDocument* doc,
+        xercesc::DOMDocument*& doc,
         const std::string& tag_name,
         int32_t index,
         const std::string& att_name,
         const std::string& att_value);
 
 xercesc::DOMNode* get_node(
-        const xercesc::DOMNode& parent_node,
+        xercesc::DOMNode*& parent_node,
         const std::string& tag_name);
 
 xercesc::DOMNode* get_node(
-        const xercesc::DOMNode& parent_node,
+        xercesc::DOMNode*& parent_node,
         const std::string& tag_name,
         int32_t index);
 
 xercesc::DOMNode* get_node(
-        const xercesc::DOMNode& parent_node,
+        xercesc::DOMNode*& parent_node,
         const std::string& tag_name,
         const std::string& att_name,
         const std::string& att_value);
 
 xercesc::DOMNode* get_node(
-        const xercesc::DOMNode& parent_node,
+        xercesc::DOMNode*& parent_node,
         const std::string& tag_name,
         int32_t index,
         const std::string& att_name,

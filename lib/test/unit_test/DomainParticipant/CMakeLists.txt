@@ -43,6 +43,7 @@ file(GLOB_RECURSE LIBRARY_SOURCES
     ${PROJECT_SOURCE_DIR}/src/cpp/domain_participant/PropertiesPolicy.cpp
     ${PROJECT_SOURCE_DIR}/src/cpp/exception/Exception.cpp
     ${PROJECT_SOURCE_DIR}/src/cpp/utils/ParseXML.cpp
+    ${PROJECT_SOURCE_DIR}/src/cpp/utils/ParseXMLString.cpp
     ${PROJECT_SOURCE_DIR}/src/cpp/utils/ParseXMLErrorHandler.cpp
 )
 

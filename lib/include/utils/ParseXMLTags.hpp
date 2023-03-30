@@ -25,6 +25,10 @@ namespace eprosima {
 namespace qosprof {
 namespace tag {
 
+// HEADER TAGS
+constexpr const char* XMLNS = "xmlns";
+constexpr const char* EPROSIMA_URL = "http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles";
+
 // MAIN ROOT TAGS
 constexpr const char* ROOT = "dds";
 constexpr const char* PROFILES = "profiles";

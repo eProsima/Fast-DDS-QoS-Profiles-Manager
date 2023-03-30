@@ -53,6 +53,7 @@ set(${PROJECT_NAME}_source_files
     src/cpp/transport_descriptor/TransportDescriptor.cpp
     src/cpp/common/Locator.cpp
     src/cpp/utils/ParseXML.cpp
+    src/cpp/utils/ParseXMLString.cpp
     src/cpp/utils/ParseXMLErrorHandler.cpp
 )
 

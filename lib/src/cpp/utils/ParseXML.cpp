@@ -18,110 +18,152 @@
 
 #include <utils/ParseXML.hpp>
 #include <utils/ParseXMLTags.hpp>
+#include <utils/ParseXMLString.hpp>
 
-xercesc::XercesDOMParser* open_xml(
-        const std::string& xml_file)
+bool initialize_tools (
+    xercesc::DOMConfiguration*& config,
+    xercesc::DOMDocument*& doc,
+    ParseXMLErrorHandler*& error_handler,
+    xercesc::DOMImplementation*& implementation,
+    xercesc::DOMLSOutput*& output,
+    xercesc::XercesDOMParser*& parser,
+    xercesc::DOMLSSerializer*& serializer,
+    xercesc::XMLFormatTarget*& target,
+    const std::string& xml_file
+)
 {
-    // Try to initialize XML workspace
-    try
-    {
-        xercesc::XMLPlatformUtils::Initialize();
-    }
-    catch (const xercesc::XMLException& toCatch)
-    {
-        // Unable to initialize XML workspace
-        throw eprosima::qosprof::FileNotFound(xercesc::XMLString::transcode(toCatch.getMessage()));
-        return NULL;
-    }
-
-    // Create parser
-    xercesc::XercesDOMParser* parser = new xercesc::XercesDOMParser();
-
-    // Declare error handler
-    ParseXMLErrorHandler* xmlErrorHandler = new ParseXMLErrorHandler(ParseXMLErrorHandler::Kind::FileNotFound);
-    parser->setErrorHandler(xmlErrorHandler);
-
-    // Try to open the given file
-    try
-    {
-        parser->parse(xercesc::XMLString::transcode(xml_file.c_str()));
-    }
-    catch (const eprosima::qosprof::FileNotFound& ex)
-    {
-        // Delete resources
-        delete parser;
-        delete xmlErrorHandler;
-
-        // Close XML workspace
-        xercesc::XMLPlatformUtils::Terminate();
-
-        // Given file does not exist
-        throw eprosima::qosprof::FileNotFound(ex);
-        return NULL;
-    }
-
-    return parser;
-}
-
-xercesc::DOMDocument*  create_xml(
-        const std::string& xml_file)
-{
-    // Open XML workspace
-    xercesc::XMLPlatformUtils::Initialize();
-
-    // Create file
-    xercesc::DOMImplementation* implementation =
-        xercesc::DOMImplementationRegistry::getDOMImplementation (xercesc::XMLString::transcode("Core"));
+    // Create Xerces implementation
+    implementation = xercesc::DOMImplementationRegistry::getDOMImplementation (xercesc::XMLString::transcode("Core"));
     if (implementation == NULL)
     {
-        // Close XML workspace
-        xercesc::XMLPlatformUtils::Terminate();
-
         // Could not initialize XML workspace
-        throw eprosima::qosprof::FileNotFound("Could not initialize XML workspace");
+        throw eprosima::qosprof::FileNotFound("Could not set XML workspace");
 
-        return NULL;
+        // Initialization process failed
+        return false;
     }
 
-    // Create root element as profiles plus xmls link
-    xercesc::DOMDocument* doc = implementation->createDocument(0, xercesc::XMLString::transcode(
-        eprosima::qosprof::tag::ROOT), 0);
-    xercesc::DOMElement* root_element = doc->getDocumentElement();
-    root_element->setAttribute(
-        xercesc::XMLString::transcode("xmlns"),
-        xercesc::XMLString::transcode("http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles"));
-
-    // Save the created elements in the given file
-    xercesc::DOMLSOutput* output = implementation->createLSOutput();
-    xercesc::DOMLSSerializer* writer = ((xercesc::DOMImplementationLS*)implementation)->createLSSerializer();;
-    xercesc::XMLFormatTarget* target_name = new xercesc::LocalFileFormatTarget(
-        xercesc::XMLString::transcode(xml_file.c_str()));
-    output->setByteStream(target_name);
+    // Create Xerces Required elements based on the implementation
+    //   Serializer and output would export the Document's nodes into a legible string / file
+    serializer = ((xercesc::DOMImplementationLS*)implementation)->createLSSerializer();
+    output = implementation->createLSOutput();
     output->setEncoding(xercesc::XMLString::transcode("UTF-8"));
-    writer->setNewLine(xercesc::XMLString::transcode("\n"));
-    xercesc::DOMConfiguration* config = writer->getDomConfig();
+    serializer->setNewLine(xercesc::XMLString::transcode("\n"));
+    //   Config would configure serialized XML data
+    config = serializer->getDomConfig();
     config->setParameter(xercesc::XMLUni::fgDOMWRTFormatPrettyPrint, true);
     config->setParameter(xercesc::XMLUni::fgDOMXMLDeclaration, true);
-    writer->write(doc, output);
+    target = new xercesc::LocalFileFormatTarget(xercesc::XMLString::transcode(xml_file.c_str()));
+    //   Parser would validate the serialized XML against the defined XSD, with some configured parameters
+    parser = new xercesc::XercesDOMParser();
+    std::string xsd_file_path = "/home/jesus/Desktop/xsdSchema.xsd"; // TODO update this
+    std::string namespace_schema_location = eprosima::qosprof::tag::EPROSIMA_URL;
+    namespace_schema_location += " " + xsd_file_path;
+    parser->loadGrammar(xsd_file_path.c_str(), xercesc::Grammar::SchemaGrammarType, true);
+    parser->setExternalSchemaLocation(namespace_schema_location.c_str());
+    parser->setValidationScheme(xercesc::XercesDOMParser::Val_Always);
+    parser->setDoNamespaces(true);
+    parser->setDoSchema(true);
+    parser->setValidationConstraintFatal(true);
+    //   Error handler would receive the exception from the parser, and report it as a FileNotFound expected exception
+    error_handler = new ParseXMLErrorHandler(ParseXMLErrorHandler::Kind::FileNotFound);
+    parser->setErrorHandler(error_handler);
 
-    return doc;
+    // Read XML file and obtain the doc object
+    try
+    {
+        // Parsing initially would load the elements in the parser's doc object
+        parser->parse(xercesc::XMLString::transcode(xml_file.c_str()));
+        // Doc would be needed in some other process, so it would be useful to take it apart of the parser
+        doc = parser->getDocument();
+    }
+    // Given file does not exist, so new doc with root element needs to be created
+    catch (const eprosima::qosprof::FileNotFound& ex)
+    {
+        // Implementation would create an empty document
+        doc = implementation->createDocument(0, xercesc::XMLString::transcode(
+            eprosima::qosprof::tag::ROOT), 0);
+        // The root element would be <dds>, with the 'xmlns' att.
+        doc->getDocumentElement()->setAttribute(
+            xercesc::XMLString::transcode(eprosima::qosprof::tag::XMLNS),
+            xercesc::XMLString::transcode(eprosima::qosprof::tag::EPROSIMA_URL));
+    }
+
+    // Initialization process successful
+    return true;
 }
 
-void close_xml()
+void validate_and_save_xml_document(
+    xercesc::DOMDocument*& doc,
+    ParseXMLErrorHandler*& error_handler,
+    xercesc::DOMLSOutput*& output,
+    xercesc::XercesDOMParser*& parser,
+    xercesc::DOMLSSerializer*& serializer,
+    xercesc::XMLFormatTarget*& target)
 {
-    // Close XML workspace
-    xercesc::XMLPlatformUtils::Terminate();
+    if (validate_xml(doc, error_handler, output, parser, serializer))
+    {
+        save_xml(doc, output, serializer, target);
+    }
+}
+
+bool validate_xml(
+    xercesc::DOMDocument*& doc,
+    ParseXMLErrorHandler*& error_handler,
+    xercesc::DOMLSOutput*& output,
+    xercesc::XercesDOMParser*& parser,
+    xercesc::DOMLSSerializer*& serializer)
+{
+    // Set ElementInvalid error handler
+    error_handler = new ParseXMLErrorHandler(ParseXMLErrorHandler::Kind::ElementInvalid);
+    parser->setErrorHandler(error_handler);
+
+    // Validate new element
+    try {
+        // String buffer for validation
+        ParseXMLString* xml_string = new ParseXMLString();
+
+        // Save XML document as string
+        output->setByteStream(xml_string);
+        serializer->write(doc, output);
+
+        // Validate XML string
+        xercesc::MemBufInputSource src((const XMLByte*)xml_string->buffer(), xml_string->length(), "", false);
+        parser->parse(src);
+    }
+    // Validation error, report to parent and return failure
+    catch (const eprosima::qosprof::ElementInvalid& ex)
+    {
+        throw eprosima::qosprof::ElementInvalid(ex);
+
+        // Validation failed
+        return false;
+    }
+
+    // Validation successful
+    return true;
+}
+
+bool save_xml(
+    xercesc::DOMDocument*& doc,
+    xercesc::DOMLSOutput*& output,
+    xercesc::DOMLSSerializer*& serializer,
+    xercesc::XMLFormatTarget*& target)
+{
+    // Save XML document in target file path
+    output->setByteStream(target);
+    return serializer->write(doc, output);
 }
 
 xercesc::DOMNode* get_node(
-        const xercesc::DOMNodeList& node_tag_list,
+        xercesc::DOMNodeList*& node_tag_list,
         const std::string& tag_name,
         int32_t index,
         const std::string& att_name,
         const std::string& att_value)
 {
     // Throw exception if no nodes
-    if (node_tag_list.getLength() == 0)
+    if (node_tag_list->getLength() == 0)
     {
         // Throw eprosima::qosprof::ElementNotFound exception
         throw eprosima::qosprof::ElementNotFound("non-existent " + tag_name + " profile\n");
@@ -130,10 +172,10 @@ xercesc::DOMNode* get_node(
     }
 
     // Complex element Node
-    else if (node_tag_list.getLength() == 1)
+    else if (node_tag_list->getLength() == 1)
     {
         // Return Node
-        return node_tag_list.item(0);
+        return node_tag_list->item(0);
     }
     // MAP or LIST element node
     else
@@ -143,13 +185,13 @@ xercesc::DOMNode* get_node(
             xercesc::DOMNode* tag_node = NULL;
 
             // Iterate throw the nodes
-            // TODO try with node->getNextSibling();
-            for (int i=0, j=0, size=node_tag_list.getLength(); i<size && j==0; i++)
+            // TODO maybe trying with node->getNextSibling() iterator this function is more efficient
+            for (int i=0, j=0, size=node_tag_list->getLength(); i<size && j==0; i++)
             {
-                tag_node = node_tag_list.item(i);
+                tag_node = node_tag_list->item(i);
                 if (tag_node != NULL)
                 {
-                    std::string name = xercesc::XMLString::transcode(tag_node->getNodeValue());
+                    std::string name = xercesc::XMLString::transcode(tag_node->getNodeName());
                     xercesc::DOMNamedNodeMap* atts = tag_node->getAttributes();
                     if (atts != NULL)
                     {
@@ -205,11 +247,11 @@ xercesc::DOMNode* get_node(
             // Transform index to real index
             if (index < 0)
             {
-                realIndex = node_tag_list.getLength() + index;
+                realIndex = node_tag_list->getLength() + index;
             }
 
             // Check bounds
-            if (realIndex < 0 || realIndex >= node_tag_list.getLength())
+            if (realIndex < 0 || realIndex >= node_tag_list->getLength())
             {
                 // Throw eprosima::qosprof::ElementNotFound exception
                 throw eprosima::qosprof::ElementNotFound(
@@ -218,274 +260,137 @@ xercesc::DOMNode* get_node(
                 return NULL;
             }
             // Return Node
-            return node_tag_list.item(realIndex);
+            return node_tag_list->item(realIndex);
         }
     }
-}
-
-void validate_xml(
-        const std::string& xml_file,
-        xercesc::XercesDOMParser& parser)
-{
-    // TODO make this static
-    std::string xsdFile = "/home/jesus/Fast-DDS/src/fastrtps/resources/xsd/fastRTPS_profiles.xsd";
-
-    // Create parser for validation
-    std::string namespaceSchemaLocation = "http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles " + xsdFile;
-
-    // Load XSD schema
-    parser.loadGrammar(xsdFile.c_str(),xercesc::Grammar::SchemaGrammarType, true);
-    parser.setExternalSchemaLocation(namespaceSchemaLocation.c_str());
-
-    // Declare error handler
-    ParseXMLErrorHandler* xmlErrorHandler = new ParseXMLErrorHandler(ParseXMLErrorHandler::Kind::ElementInvalid);
-    parser.setErrorHandler(xmlErrorHandler);
-
-    // Validation configuration
-    parser.setValidationScheme(xercesc::XercesDOMParser::Val_Auto);
-    parser.setDoNamespaces(true);
-    parser.setDoSchema(true);
-    parser.setValidationConstraintFatal(true);
-
-    // Parse file
-    try
-    {
-        parser.parse(xml_file.c_str());
-    }
-    catch (const eprosima::qosprof::ElementInvalid& ex)
-    {
-        throw eprosima::qosprof::ElementInvalid(ex);
-    }
-
-    delete xmlErrorHandler;
-
-    return;
-}
-
-void save_xml(
-        const std::string& xml_file,
-        const xercesc::DOMDocument& doc)
-{
-    // Create file
-    xercesc::DOMImplementation* implementation =
-        xercesc::DOMImplementationRegistry::getDOMImplementation (xercesc::XMLString::transcode("Core"));
-    if (implementation == NULL)
-    {
-        close_xml();
-
-        // Could not initialize XML workspace
-        throw eprosima::qosprof::Unsupported("Could not initialize XML workspace");
-
-        return;
-    }
-    // Save the created elements in the given file
-    xercesc::DOMLSOutput* output = implementation->createLSOutput();
-    xercesc::DOMLSSerializer* writer = ((xercesc::DOMImplementationLS*)implementation)->createLSSerializer();;
-    xercesc::XMLFormatTarget* target_name = new xercesc::LocalFileFormatTarget(
-        xercesc::XMLString::transcode(xml_file.c_str()));
-    output->setByteStream(target_name);
-    output->setEncoding(xercesc::XMLString::transcode("UTF-8"));
-    writer->setNewLine(xercesc::XMLString::transcode("\n"));
-    xercesc::DOMConfiguration* config = writer->getDomConfig();
-    config->setParameter(xercesc::XMLUni::fgDOMWRTFormatPrettyPrint, true);
-    config->setParameter(xercesc::XMLUni::fgDOMXMLDeclaration, true);
-    xercesc::DOMNode* root_node = (xercesc::DOMNode*)doc.getDocumentElement();
-    writer->write(root_node, output);
-
-    delete output;
-    delete target_name;
 }
 
 void clear_node(
         const std::string& xml_file,
-        xercesc::DOMNode& parent_node,
-        xercesc::DOMNode& node_to_be_deleted)
+        xercesc::DOMNode*& parent_node,
+        xercesc::DOMNode*& node_to_be_deleted)
 
 {
-    if (parent_node.hasChildNodes())
+    // Check if parent node has child nodes
+    if (parent_node->hasChildNodes())
     {
-        if (parent_node.getChildNodes()->getLength() == 1 &&
-            parent_node.getChildNodes()->item(0)->getNodeName() == node_to_be_deleted.getNodeName())
+        // Check if the node to be deleted is the last child node of the parent
+        if (parent_node->getChildNodes()->getLength() == 1 &&
+            parent_node->getChildNodes()->item(0)->getNodeName() == node_to_be_deleted->getNodeName())
         {
-            // report exception
+            // Invalid request: report exception
             std::string message = "could not delete last element from ";
-            message.append(xercesc::XMLString::transcode(parent_node.getNodeValue()));
+            message.append(xercesc::XMLString::transcode(parent_node->getNodeValue()));
             message.append(". Delete element by running the predecessor clear API.\n");
+
+            // Throw ElementInvalid exception with custom message
             throw eprosima::qosprof::ElementInvalid(message);
             return;
         }
     }
-    parent_node.removeChild(&node_to_be_deleted);
-    node_to_be_deleted.release();
-    delete &node_to_be_deleted;
+    // Remove node from parent
+    parent_node->removeChild(node_to_be_deleted);
+
+    // Free node resources (optional?)
+    node_to_be_deleted->release();
+    delete node_to_be_deleted;
 }
 
 xercesc::DOMNode* get_node(
-        xercesc::DOMDocument* doc,
+        xercesc::DOMDocument*& doc,
         const std::string& tag_name)
 {
-    try
-    {
-        return get_node(doc, tag_name, 0, "", "");
-    }
-    catch (const eprosima::qosprof::ElementNotFound& ex)
-    {
-        // Throw exception if no nodes
-        throw eprosima::qosprof::ElementNotFound(ex);
-    }
-    return NULL;
+    // Try call main get_node function with remain empty values
+    return get_node(doc, tag_name, 0, "", "");;
 }
 
 xercesc::DOMNode* get_node(
-        xercesc::DOMDocument* doc,
+        xercesc::DOMDocument*& doc,
         const std::string& tag_name,
         int32_t index)
 {
-    try
-    {
-        return get_node(doc, tag_name, index, "", "");
-    }
-    catch (const eprosima::qosprof::ElementNotFound& ex)
-    {
-        // Throw exception if no nodes
-        throw eprosima::qosprof::ElementNotFound(ex);
-    }
-    return NULL;
+    // Try call main get_node function with remain empty values
+    return get_node(doc, tag_name, index, "", "");
 }
 
 xercesc::DOMNode* get_node(
-        xercesc::DOMDocument* doc,
+        xercesc::DOMDocument*& doc,
         const std::string& tag_name,
         const std::string& att_name,
         const std::string& att_value)
 {
-    try
-    {
-        return get_node(doc, tag_name, 0, att_name, att_value);
-    }
-    catch (const eprosima::qosprof::ElementNotFound& ex)
-    {
-        // Throw exception if no nodes
-        throw eprosima::qosprof::ElementNotFound(ex);
-    }
-    return NULL;
+    // Try call main get_node function with remain empty values
+    return get_node(doc, tag_name, 0, att_name, att_value);
 }
 
 xercesc::DOMNode* get_node(
-        xercesc::DOMDocument* doc,
+        xercesc::DOMDocument*& doc,
         const std::string& tag_name,
         int32_t index,
         const std::string& att_name,
         const std::string& att_value)
 {
-    // if no document assigned, return NULL
-    if (doc == NULL)
+    // Obtain main list of nodes
+    xercesc::DOMNodeList* node_list = doc->getDocumentElement()->getElementsByTagName(xercesc::XMLString::transcode(tag_name.c_str()));
+
+    // Check there was any node with given tag name
+    if (node_list == NULL)
     {
-        throw eprosima::qosprof::ElementNotFound("empty file");
+        // Throw ElementNotFound exception
+        throw eprosima::qosprof::ElementNotFound("non-existent " + tag_name + " profile\n");
+
         return NULL;
     }
 
-    // Obtain root element
-    xercesc::DOMElement* root_node = doc->getDocumentElement();
-
-    xercesc::DOMNode* node = NULL;
-    // Obtain node from root
-    try
-    {
-        xercesc::DOMNodeList* node_list = root_node->getElementsByTagName(xercesc::XMLString::transcode(tag_name.c_str()));
-        if (node_list == NULL)
-        {
-            // Throw eprosima::qosprof::ElementNotFound exception
-            throw eprosima::qosprof::ElementNotFound("non-existent " + tag_name + " profile\n");
-
-            return NULL;
-        }
-        node = get_node(*node_list, tag_name, index, att_name, att_value);
-    }
-    catch (const eprosima::qosprof::ElementNotFound& ex)
-    {
-        // Throw exception if no nodes
-        throw eprosima::qosprof::ElementNotFound(ex);
-    }
-
-    return node;
+    // Obtain node from main get_node function
+    return get_node(node_list, tag_name, index, att_name, att_value);;
 }
 
 xercesc::DOMNode* get_node(
-        const xercesc::DOMNode& parent_node,
+        xercesc::DOMNode*& parent_node,
         const std::string& tag_name)
 {
-    try
-    {
-        return get_node(parent_node, tag_name, 0, "", "");
-    }
-    catch (const eprosima::qosprof::ElementNotFound& ex)
-    {
-        // Throw exception if no nodes
-        throw eprosima::qosprof::ElementNotFound(ex);
-    }
-    return NULL;
+    // Try call main get_node function with remain empty values
+    return get_node(parent_node, tag_name, 0, "", "");
 }
 
 xercesc::DOMNode* get_node(
-        const xercesc::DOMNode& parent_node,
+        xercesc::DOMNode*& parent_node,
         const std::string& tag_name,
         int32_t index)
 {
-    try
-    {
-        return get_node(parent_node, tag_name, index, "", "");
-    }
-    catch (const eprosima::qosprof::ElementNotFound& ex)
-    {
-        // Throw exception if no nodes
-        throw eprosima::qosprof::ElementNotFound(ex);
-    }
-    return NULL;
+    // Try call main get_node function with remain empty values
+    return get_node(parent_node, tag_name, index, "", "");
 }
 
 xercesc::DOMNode* get_node(
-        const xercesc::DOMNode& parent_node,
+        xercesc::DOMNode*& parent_node,
         const std::string& tag_name,
         const std::string& att_name,
         const std::string& att_value)
 {
-    try
-    {
-        return get_node(parent_node, tag_name, 0, att_name, att_value);
-    }
-    catch (const eprosima::qosprof::ElementNotFound& ex)
-    {
-        // Throw exception if no nodes
-        throw eprosima::qosprof::ElementNotFound(ex);
-    }
-    return NULL;
+    // Try call main get_node function with remain empty values
+    return get_node(parent_node, tag_name, 0, att_name, att_value);
 }
 
 xercesc::DOMNode* get_node(
-        const xercesc::DOMNode& parent_node,
+        xercesc::DOMNode*& parent_node,
         const std::string& tag_name,
         int32_t index,
         const std::string& att_name,
         const std::string& att_value)
 {
-    // Obtain node from parent node
-    try
-    {
-        xercesc::DOMNodeList* node_list = parent_node.getChildNodes();
-        if (node_list == NULL)
-        {
-            // Throw eprosima::qosprof::ElementNotFound exception
-            throw eprosima::qosprof::ElementNotFound("non-existent " + tag_name + " profile\n");
 
-            return NULL;
-        }
-        return get_node(*node_list, tag_name, index, att_name, att_value);
-    }
-    catch (const eprosima::qosprof::ElementNotFound& ex)
+    // Obtain main list of nodes
+    xercesc::DOMNodeList* node_list = parent_node->getChildNodes();
+    if (node_list == NULL)
     {
-        // Throw exception if no nodes
-        throw eprosima::qosprof::ElementNotFound(ex);
+        // Throw ElementNotFound exception
+        throw eprosima::qosprof::ElementNotFound("non-existent " + tag_name + " profile\n");
+
+        return NULL;
     }
-    return NULL;
+
+    // Obtain node from main get_node function
+    return get_node(node_list, tag_name, index, att_name, att_value);
 }
