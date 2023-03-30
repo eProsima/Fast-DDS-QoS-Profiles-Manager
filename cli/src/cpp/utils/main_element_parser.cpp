@@ -50,12 +50,12 @@ void main_element_parser(
         case CommonCommands::SET:
             usage = SET_SUBPARSER_USAGE;
             break;
-        // No default because this method is only called with these CommonCommands.
+            // No default because this method is only called with these CommonCommands.
     }
 
     std::map<std::string, docopt::value> args = docopt::docopt(
         usage,
-        {argv +1, argv + argc },
+        {argv + 1, argv + argc },
         true,
         {},
         true);

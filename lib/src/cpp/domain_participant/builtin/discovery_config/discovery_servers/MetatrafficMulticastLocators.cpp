@@ -16,7 +16,8 @@
  * @file
  */
 
-#include <fastdds_qos_profiles_manager/domain_participant/builtin/discovery_config/discovery_servers/MetatrafficMulticastLocators.hpp>
+#include \
+    <fastdds_qos_profiles_manager/domain_participant/builtin/discovery_config/discovery_servers/MetatrafficMulticastLocators.hpp>
 
 #include <string>
 

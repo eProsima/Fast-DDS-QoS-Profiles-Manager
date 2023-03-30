@@ -16,7 +16,8 @@
  * @file
  */
 
-#include <fastdds_qos_profiles_manager/domain_participant/builtin/discovery_config/discovery_servers/DiscoveryServers.hpp>
+#include \
+    <fastdds_qos_profiles_manager/domain_participant/builtin/discovery_config/discovery_servers/DiscoveryServers.hpp>
 
 #include <string>
 #include <vector>

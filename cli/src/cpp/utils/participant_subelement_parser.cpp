@@ -57,11 +57,11 @@ void participant_subelement_parser(
         {
             print_usage = true;
             if (values.back() != HELP_COMMAND &&
-                values.back() != HELP_SHORTHAND_FLAG &&
-                values.back() != HELP_FLAG)
+                    values.back() != HELP_SHORTHAND_FLAG &&
+                    values.back() != HELP_FLAG)
             {
                 std::cout << "ERROR: Participant default attribute configuration does not require any value"
-                        << std::endl;
+                          << std::endl;
             }
         }
         // Not keyed element
@@ -96,7 +96,7 @@ void participant_subelement_parser(
                         break;
                 }
             }
-            catch(const qosprof::Exception& e)
+            catch (const qosprof::Exception& e)
             {
                 std::cout << "Fast DDS QoS Profiles Manager exception caught: " << e.what() << std::endl;
             }
