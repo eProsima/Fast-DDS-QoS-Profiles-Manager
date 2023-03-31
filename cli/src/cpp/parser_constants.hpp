@@ -44,6 +44,7 @@ constexpr const char* DATAWRITER_ELEMENT = "datawriter";
 constexpr const char* INTRAPROCESS_ELEMENT = "intraprocess";
 constexpr const char* LOG_ELEMENT = "log";
 constexpr const char* PARTICIPANT_ELEMENT = "participant";
+constexpr const char* TOPIC_ELEMENT = "topic";
 constexpr const char* TRANSPORT_ELEMENT = "transport_descriptor";
 constexpr const char* TYPES_ELEMENT = "types";
 
@@ -60,12 +61,14 @@ constexpr const char* PROPERTY_SUBELEMENT = "property";
 
 // CLI participant main subelements
 constexpr const char* BUILTIN_SUBELEMENT = "builtin";
+constexpr const char* DOMAIN_ID_SUBELEMENT = "domain_id";
 constexpr const char* GUID_PREFIX_SUBELEMENT = "guid_prefix";
 constexpr const char* ID_SUBELEMENT = "id";
 constexpr const char* LISTEN_SOCKET_BUFFER_SIZE_SUBELEMENT = "listen_socket_buffer_size";
 constexpr const char* NAME_SUBELEMENT = "name";
 constexpr const char* SEND_SOCKET_BUFFER_SIZE_SUBELEMENT = "send_socket_buffer_size";
 constexpr const char* USE_BUILTIN_TRANSPORTS_SUBELEMENT = "use_builtin_transports";
+constexpr const char* USER_DATA_SUBELEMENT = "user_data";
 constexpr const char* USER_TRANSPORTS_SUBELEMENT = "user_transports";
 
 // CLI locators common subelements

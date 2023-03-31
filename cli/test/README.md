@@ -32,6 +32,7 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set intraprocess`|**PENDING** (currently `Intra-process configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set log`|**PENDING** (currently `Log module configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant`|`ERROR: profile name is required for participant elements` [^1]|`PARTICIPANT_USAGE`|
+|`fastddsqosprof file.xml set topic`|**PENDING** (currently `Topic configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set transport_descriptor`|**PENDING** (currently `Transport descriptor configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set types`|**PENDING** (currently `Dynamic types configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set other`|`ERROR: other element not recognized`|`SET_SUBPARSER_USAGE`|
@@ -47,6 +48,7 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].binary_property`|**PENDING** (currently `Participant binary properties configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin`|**PENDING** (currently `Participant builtin configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].default_profile`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
+|`fastddsqosprof file.xml set participant[profile].domain_id`|**PENDING** (currently `Participant domain ID configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].external_locators`|`ERROR: subelement is required for external locators element`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].guid_prefix`|**PENDING** (currently `Participant GUID prefix configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].id`|**PENDING** (currently `Participant ID configuration not yet supported`)|N/A|
@@ -58,6 +60,7 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].property`|**PENDING** (currently `Participant properties configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].send_socket_buffer_size`|**PENDING** (currently `Participant send socket buffer size configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].use_builtin_transports`|**PENDING** (currently `Participant use builtin transports flag configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set participant[profile].user_data`|**PENDING** (currently `Participant user data QoS configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].user_transports`|**PENDING** (currently `Participant user transports configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].other`|`ERROR: other element not recognized`|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].other -h`|**BUG** (currently `ERROR: other element not recognized` when no error is expected)|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|

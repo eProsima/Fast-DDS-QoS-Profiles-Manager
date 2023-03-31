@@ -110,6 +110,7 @@ static const char PARTICIPANT_USAGE[] =
 
     Usage:
       fastddsqosprof <file> <command> participant[<profile_name>].<subelement> [<values>...]
+      fastddsqosprof <file> <command> participant[<profile_name>] (help | -h | --help)
       fastddsqosprof <file> <command> participant[<profile_name>].<subelement> (help | -h | --help)
 
     Options:
@@ -127,6 +128,7 @@ static const char PARTICIPANT_USAGE[] =
       binary_property               Participant binary properties according to Property QoS Policy.
       builtin                       Participant builtin configuration.
       default_profile               Default profile attribute.
+      domain_id                     Participant DDS Domain ID.
       external_locators             Participant external locators.
       guid_prefix                   Participant GUID prefix (unique identifier).
       id                            Participant ID.
@@ -138,6 +140,7 @@ static const char PARTICIPANT_USAGE[] =
       property                      Participant properties according to Property QoS Policy.
       send_socket_buffer_size       Participant send socket buffer size.
       use_builtin_transports        Participant use builtin transports flag.
+      user_data                     Participant User Data QoS configuration.
       user_transports               Participant custom user-defined transports.
 )";
 
@@ -158,6 +161,7 @@ static const char SET_SUBPARSER_USAGE[] =
       intraprocess              Configure intra-process delivery.
       log                       Configure log module.
       participant               Configure DomainParticipant profile.
+      topic                     Configure Topic profile.
       transport_descriptor      Configure transport descriptor profile.
       types                     Configure dynamic types.
 )";

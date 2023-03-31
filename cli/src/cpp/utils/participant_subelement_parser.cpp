@@ -107,6 +107,10 @@ void participant_subelement_parser(
             std::cout << PARTICIPANT_DEFAULT_PROFILE_USAGE << std::endl;
         }
     }
+    else if (element == DOMAIN_ID_SUBELEMENT)
+    {
+        std::cout << "Participant domain ID configuration not yet supported" << std::endl;
+    }
     else if (element == EXTERNAL_LOCATORS_SUBELEMENT)
     {
         // Check help value
@@ -191,6 +195,10 @@ void participant_subelement_parser(
     else if (element == USE_BUILTIN_TRANSPORTS_SUBELEMENT)
     {
         std::cout << "Participant use builtin transports flag configuration not yet supported" << std::endl;
+    }
+    else if (element == USER_DATA_SUBELEMENT)
+    {
+        std::cout << "Participant user data QoS configuration not yet supported" << std::endl;
     }
     else if (element == USER_TRANSPORTS_SUBELEMENT)
     {

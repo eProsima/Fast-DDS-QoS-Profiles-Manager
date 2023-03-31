@@ -99,6 +99,8 @@ void main_element_parser(
             print_usage = true;
         }
         // Participant element requires a profile name
+        // TODO: this would need to be refactored and check in the lower level because if the subelement is
+        // default_profile, then the profile name is only mandatory in the SET command.
         else if (profile_name.empty())
         {
             std::cout << "ERROR: profile name is required for participant elements" << std::endl;
@@ -127,6 +129,10 @@ void main_element_parser(
                 // std::cout << PARTICIPANT_QUERY_USAGE << std::endl;
             }
         }
+    }
+    else if (element == TOPIC_ELEMENT)
+    {
+        std::cout << "Topic configuration not yet supported" << std::endl;
     }
     else if (element == TRANSPORT_ELEMENT)
     {
