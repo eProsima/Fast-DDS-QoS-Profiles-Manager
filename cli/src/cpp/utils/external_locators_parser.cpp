@@ -38,8 +38,21 @@ void external_locators_parser(
     bool print_usage = false;
     std::string subelement;
     std::string key;
+
+    bool keyed = extract_element_subelement_key(element, subelement, key);
+
+    // Check that the element is the expected one
+    if (((list == ExternalLocatorsList::DATAREADER_UNICAST || list == ExternalLocatorsList::DATAWRITER_UNICAST) &&
+            element != UNICAST_ELEMENT) ||
+            (list == ExternalLocatorsList::PARTICIPANT_DEFAULT_UNICAST && element != DEFAULT_UNICAST_ELEMENT) ||
+            (list == ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST && element != METATRAFFIC_UNICAST_ELEMENT))
+    {
+        std::cout << "ERROR: " << element << " subelement not recognized" << std::endl;
+        print_usage = true;
+    }
+
     // External locator list must be keyed
-    if (!extract_element_subelement_key(element, subelement, key))
+    if (!keyed && !print_usage)
     {
         std::cout << "ERROR: external locator <" << element << "> list must be keyed []" << std::endl;
         print_usage = true;

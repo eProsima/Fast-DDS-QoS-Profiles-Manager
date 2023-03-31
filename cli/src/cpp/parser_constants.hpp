@@ -71,6 +71,11 @@ constexpr const char* USE_BUILTIN_TRANSPORTS_SUBELEMENT = "use_builtin_transport
 constexpr const char* USER_DATA_SUBELEMENT = "user_data";
 constexpr const char* USER_TRANSPORTS_SUBELEMENT = "user_transports";
 
+// CLI locators common elements
+constexpr const char* DEFAULT_UNICAST_ELEMENT = "default_unicast";
+constexpr const char* METATRAFFIC_UNICAST_ELEMENT = "metatraffic_unicast";
+constexpr const char* UNICAST_ELEMENT = "unicast";
+
 // CLI locators common subelements
 constexpr const char* ADDRESS_SUBELEMENT = "address";
 

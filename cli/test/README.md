@@ -63,7 +63,7 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].user_data`|**PENDING** (currently `Participant user data QoS configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].user_transports`|**PENDING** (currently `Participant user transports configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].other`|`ERROR: other element not recognized`|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].other -h`|**BUG** (currently `ERROR: other element not recognized` when no error is expected)|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].other -h`|N/A|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].default_profile -h`|N/A|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].default_profile --help`|N/A|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].default_profile help`|N/A|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
@@ -77,7 +77,7 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].external_locators argument1 argument2 help`|N/A|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast`|`ERROR: at least one value has to be passed to configure external locators`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast argument`|`ERROR: external locator <default_unicast> list must be keyed []`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].external_locators.other argument`|**BUG** (currently `ERROR: external locator <other> list must be keyed []` when expected error should be `ERROR: other element not recognized`)|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].external_locators.other argument`|`ERROR: other subelement not recognized`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast -h`|N/A|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[] -h`|N/A|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[] argument`|`ERROR: external locator <default_unicast> list requires 6 configuration paramenters if no <subelement> is configured`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
@@ -128,7 +128,3 @@ This document includes CLI commands and the expected CLI output in order to help
 
 This current test plan is focused only on the CLI usage and errors.
 Currently, this test plan is not concerned about the validity of the arguments passed to Fast DDS QoS Profiles Manager Library, nor about the handling of the returned information.
-
-## Known issues
-
-* `fastddsqosprof file.xml set participant[profile].external_locators.other argument` does not have the expected behavior.
