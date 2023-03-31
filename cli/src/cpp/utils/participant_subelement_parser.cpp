@@ -52,17 +52,16 @@ void participant_subelement_parser(
     }
     else if (element == DEFAULT_PROFILE_SUBELEMENT)
     {
-        // No values with exception to help
-        if (!values.empty())
+        if (check_help(values))
         {
             print_usage = true;
-            if (values.back() != HELP_COMMAND &&
-                    values.back() != HELP_SHORTHAND_FLAG &&
-                    values.back() != HELP_FLAG)
-            {
-                std::cout << "ERROR: Participant default attribute configuration does not require any value"
-                          << std::endl;
-            }
+        }
+        // No values are allowed (only if help is the last)
+        else if (!values.empty())
+        {
+            print_usage = true;
+            std::cout << "ERROR: Participant default attribute configuration does not require any value"
+                      << std::endl;
         }
         // Not keyed element
         else if (keyed)
