@@ -16,11 +16,12 @@
  * @file
  */
 
-#include <domain_participant/builtin/discovery_config/discovery_servers/MetatrafficUnicastLocators.hpp>
+#include \
+    <fastdds_qos_profiles_manager/domain_participant/builtin/discovery_config/discovery_servers/MetatrafficUnicastLocators.hpp>
 
 #include <string>
 
-#include <exception/Exception.hpp>
+#include <fastdds_qos_profiles_manager/exception/Exception.hpp>
 
 namespace eprosima {
 namespace qosprof {

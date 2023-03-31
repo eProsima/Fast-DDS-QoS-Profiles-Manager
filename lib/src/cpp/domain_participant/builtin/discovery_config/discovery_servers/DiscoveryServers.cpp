@@ -16,12 +16,13 @@
  * @file
  */
 
-#include <domain_participant/builtin/discovery_config/discovery_servers/DiscoveryServers.hpp>
+#include \
+    <fastdds_qos_profiles_manager/domain_participant/builtin/discovery_config/discovery_servers/DiscoveryServers.hpp>
 
 #include <string>
 #include <vector>
 
-#include <exception/Exception.hpp>
+#include <fastdds_qos_profiles_manager/exception/Exception.hpp>
 
 namespace eprosima {
 namespace qosprof {

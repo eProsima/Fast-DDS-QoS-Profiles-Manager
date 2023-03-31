@@ -19,11 +19,11 @@
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
 
-#include <domain_participant/builtin/InitialPeers.hpp>
-#include <domain_participant/builtin/MetatrafficExternalUnicastLocators.hpp>
-#include <domain_participant/DefaultExternalUnicastLocators.hpp>
-#include <domain_participant/DomainParticipant.hpp>
-#include <exception/Exception.hpp>
+#include <fastdds_qos_profiles_manager/domain_participant/builtin/InitialPeers.hpp>
+#include <fastdds_qos_profiles_manager/domain_participant/builtin/MetatrafficExternalUnicastLocators.hpp>
+#include <fastdds_qos_profiles_manager/domain_participant/DefaultExternalUnicastLocators.hpp>
+#include <fastdds_qos_profiles_manager/domain_participant/DomainParticipant.hpp>
+#include <fastdds_qos_profiles_manager/exception/Exception.hpp>
 
 using namespace eprosima::qosprof;
 using namespace eprosima::qosprof::domain_participant;

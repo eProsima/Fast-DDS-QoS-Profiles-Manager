@@ -12,31 +12,31 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/**
- * @file Exception.cpp
- */
+#include <utils/utils.hpp>
 
-#include <fastdds_qos_profiles_manager/exception/Exception.hpp>
+#include <regex>
+#include <string>
 
 namespace eprosima {
-namespace qosprof {
+namespace qosprof_cli {
 
-Exception::Exception(
-        const char* message) noexcept
-    : message_(message)
+bool extract_element_subelement_key(
+        std::string& element,
+        std::string& subelement,
+        std::string& key)
 {
+    std::smatch match;
+    std::regex_search(element, match, dot_pattern);
+    element = match[0];
+    subelement = match.suffix();
+    if (std::regex_search(element, match, bracket_pattern))
+    {
+        element = match.prefix();
+        key = match[1];
+        return true;
+    }
+    return false;
 }
 
-Exception::Exception(
-        const std::string& message)
-    : message_(message)
-{
-}
-
-const char* Exception::what() const noexcept
-{
-    return message_.c_str();
-}
-
-} // namespace qosprof
-} // namespace eprosima
+} // qosprof_cli
+} // eprosima

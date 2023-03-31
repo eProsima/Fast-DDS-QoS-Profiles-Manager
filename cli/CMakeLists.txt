@@ -42,11 +42,10 @@ set(${PROJECT_NAME}_source_files
     ${ALL_HEADERS}
 
     src/cpp/fastdds_qos_profiles_manager_cli.cpp
-    src/cpp/subparsers/clear_subparser.cpp
-    src/cpp/subparsers/help_subparser.cpp
-    src/cpp/subparsers/print_subparser.cpp
-    src/cpp/subparsers/query_subparser.cpp
-    src/cpp/subparsers/set_subparser.cpp
+    src/cpp/utils/external_locators_parser.cpp
+    src/cpp/utils/main_element_parser.cpp
+    src/cpp/utils/participant_subelement_parser.cpp
+    src/cpp/utils/utils.cpp
 )
 
 add_executable(${EXECUTABLE_NAME} ${${PROJECT_NAME}_source_files})
@@ -55,7 +54,8 @@ target_include_directories(${EXECUTABLE_NAME} PUBLIC
     ${PROJECT_SOURCE_DIR}/include
     ${PROJECT_BINARY_DIR}/include
     PRIVATE
-    ${PROJECT_SOURCE_DIR}/src/cpp>)
+    ${PROJECT_SOURCE_DIR}/src/cpp
+    ${fastdds_qos_profiles_manager_INCLUDE_DIR})
 
 target_link_libraries(${EXECUTABLE_NAME}
     docopt
