@@ -60,14 +60,16 @@ void external_locators_parser(
     }
     print_usage = print_usage || !check_keyed(true, keyed, message.str());
     print_usage = print_usage ||
-            (command != CommonCommands::SET && !check_arguments(0, values.size(), "the given command", true));
+            (command != CommonCommands::SET && !check_command_arguments(command, 0, values.size(), "the given command",
+            true));
 
     // No subelement.
     if (subelement.empty())
     {
         // SET command requires 6 values: kind, externality, cost, address, mask and port.
         print_usage = print_usage ||
-                (command == CommonCommands::SET && !check_arguments(6, values.size(), message.str(), true));
+                (command == CommonCommands::SET && !check_command_arguments(command, 6, values.size(), message.str(),
+                true));
         // Call library if every validity check has passed
         if (!print_usage)
         {
@@ -126,7 +128,7 @@ void external_locators_parser(
         }
     }
 
-    if ((!subelement.empty() || set_every_element))
+    if (!subelement.empty() || set_every_element)
     {
         if (!subelement.empty())
         {
@@ -139,7 +141,8 @@ void external_locators_parser(
             // Should be final
             print_usage = print_usage || !check_final_element(true, dummy_subelement, message.str());
             // SET command requires only one argument
-            print_usage = print_usage || !check_arguments(1, values.size(), message.str(), true);
+            print_usage = print_usage || (!check_command_arguments(command, 1, values.size(), message.str(), true) &&
+                    CommonCommands::SET == command);
         }
 
         // Call library

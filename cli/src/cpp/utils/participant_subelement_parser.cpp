@@ -59,7 +59,7 @@ void participant_subelement_parser(
     {
         print_usage = check_help(values);
         // No values are allowed (only if help is the last which has already been checked)
-        print_usage = print_usage || !check_arguments(0, values.size(), message.str(), true);
+        print_usage = print_usage || !check_command_arguments(command, 0, values.size(), message.str(), true);
         // Not keyed element
         print_usage = print_usage || !check_keyed(false, keyed, message.str());
         // Final element
@@ -108,8 +108,8 @@ void participant_subelement_parser(
         // Default external unicast locators require a subelement
         print_usage = print_usage || !check_final_element(false, subelement, message.str());
         // At least one value is required for SET command
-        print_usage = print_usage || (CommonCommands::SET == command && !check_arguments(1, values.size(),
-                message.str(), false));
+        print_usage = print_usage || (CommonCommands::SET == command && !check_command_arguments(command, 1,
+                values.size(), message.str(), false));
 
         if (!print_usage)
         {

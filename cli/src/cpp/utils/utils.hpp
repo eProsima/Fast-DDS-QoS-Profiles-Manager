@@ -42,6 +42,13 @@ enum class ExternalLocatorsList
     DATAREADER_UNICAST
 };
 
+constexpr const char* common_command_str[] = {
+        "clear",
+        "print",
+        "query",
+        "set"
+};
+
 // Regex patterns
 const std::regex dot_pattern("[^\\.]+");
 const std::regex bracket_pattern("\\[([^\\]]*)\\]");
@@ -111,7 +118,8 @@ void participant_subelement_parser(
  * @param exact Flag set if the expected arguments are enforced.
  * @return true if the check holds. False otherwise.
  */
-bool check_arguments(
+bool check_command_arguments(
+        const CommonCommands comand,
         uint32_t expected_arguments,
         uint32_t actual_argument_number,
         const std::string& element,

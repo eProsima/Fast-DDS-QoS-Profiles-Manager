@@ -22,7 +22,8 @@
 namespace eprosima {
 namespace qosprof_cli {
 
-bool check_arguments(
+bool check_command_arguments(
+        const CommonCommands command,
         uint32_t expected_arguments,
         uint32_t actual_argument_number,
         const std::string& element,
@@ -30,8 +31,9 @@ bool check_arguments(
 {
     if (actual_argument_number != expected_arguments)
     {
-        std::cout << "ERROR: " << element << " expects " << (exact ? "" : "at least ") << expected_arguments
-                  << " arguments and received " << actual_argument_number << std::endl;
+        std::cout << "ERROR: " << common_command_str[static_cast<int>(command)] << " command for " << element
+                  << " expects " << (exact ? "" : "at least ") << expected_arguments << " arguments and received "
+                  << actual_argument_number << std::endl;
         return false;
     }
     return true;
