@@ -54,6 +54,40 @@ static const char QUERY_USAGE[] =
       fastddsqosprof <file> query [size | keys] <element>
 )";
 
+static const char PARTICIPANT_BUILTIN_METATRAFFIC_EXTERNAL_UNICAST_LOCATORS_USAGE[] =
+        R"(Participant builtin metatraffic external unicast locators usage:
+
+    Usage:
+      fastddsqosprof <file> <command> participant[<profile_name>].builtin.external_locators.metatraffic_unicast[(<index>)] [<kind_value> <externality_value> <cost_value> <address_value> <mask_value> <port_value> (help | -h | --help)]
+      fastddsqosprof <file> <command> participant[<profile_name>].builtin.external_locators.metatraffic_unicast[(<index>)].<subelement> [<value> (help | -h | --help)]
+      fastddsqosprof <file> <command> participant[<profile_name>].builtin.external_locators.metatraffic_unicast[(<index>)].<subelement> [(help | -h | --help)]
+      fastddsqosprof <file> <command> participant[<profile_name>].builtin.external_locators.metatraffic_unicast[(<index>)] [(help | -h | --help)]
+
+    Options:
+      help -h --help    CLI participant builtin metatraffic external unicast locators usage
+
+    The allowed <command> options are:
+      clear             Erase participant builtin metatraffic external unicast locator configuration parameter from XML file.
+      print             Print participant builtin metatraffic external unicast locator XML configuration parameter.
+      set               Write participant builtin metatraffic external unicast locator configuration parameter to XML file.
+
+    The <profile_name> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
+
+    The <index> element is OPTIONAL:
+      No <index> pushes a new element into the list.
+      Positive <index> accesses the element in that position starting from the first element in the list.
+      Negative <index> accesses the element in that position starting from the last element in the list.
+
+    The allowed <subelement> options are:
+      address           Builtin metatraffic external unicast locator address. Valid set values: IP format or DNS.
+      cost              Builtin metatraffic external unicast locator cost. Valid set values: [0, 255]
+      externality       Builtin metatraffic external unicast locator externality index. Valid set values: [1, 255]
+      kind              Builtin metatraffic external unicast locator kind. Valid set values: udp_v4 | udp_v6 (Default: udp_v4)
+                        kind is a mandatory parameter. Consequently, this parameter cannot be cleared. Erase the entire locator or update the kind.
+      mask              Builtin metatraffic external unicast locator mask. Valid set values: udp_v4 [1, 31] | udp_v6 [1, 127]
+      port              Builtin metatraffic external unicast locator port. Valid set values: [0, 65535]
+)";
+
 static const char PARTICIPANT_BUILTIN_USAGE[] =
         R"(Participant builtin configuration usage:
 
