@@ -38,7 +38,7 @@ void builtin_parser(
 
     // Initialize message in case of error
     std::ostringstream message;
-    message << "Participant builtin <" << subelement << ">";
+    message << "Participant builtin <" << element << ">";
 
     if (element == AVOID_BUILTIN_MULTICAST_SUBELEMENT)
     {

@@ -29,7 +29,7 @@ bool check_command_arguments(
         const std::string& element,
         bool exact)
 {
-    if (actual_argument_number != expected_arguments)
+    if (exact ? (actual_argument_number != expected_arguments) : (actual_argument_number < expected_arguments))
     {
         std::cout << "ERROR: " << common_command_str[static_cast<int>(command)] << " command for " << element
                   << " expects " << (exact ? "" : "at least ") << expected_arguments << " arguments and received "
