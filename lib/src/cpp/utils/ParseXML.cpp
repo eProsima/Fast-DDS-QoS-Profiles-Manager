@@ -21,7 +21,8 @@
 #include <unistd.h>
 
 std::string get_absolute_path(
-        const std::string& xml_file)
+        const std::string& xml_file,
+        bool& file_exists)
 {
     std::string absolute_xml_file;
 
@@ -43,11 +44,17 @@ std::string get_absolute_path(
         {
             absolute_xml_file = xml_file;
         }
+
+        // Save status in the given reference
+        file_exists = false;
     }
     //   File exists: load file name directly
     else
     {
         absolute_xml_file = absolute_xml_path;
+
+        // Save status in the given reference
+        file_exists = true;
     }
     return absolute_xml_file;
 }

@@ -26,10 +26,12 @@
 /**
  * @brief Get the absolute path of the given file name
  *
- * @param xml_file string with the given file name
+ * @param[in]  xml_file string with the given file name
+ * @param[out] file_exists bool reference to save file existence status
  * @return std::string with the absolute path
  */
 std::string get_absolute_path(
-        const std::string& xml_file);
+        const std::string& xml_file,
+        bool& file_exists);
 
 #endif // _FAST_DDS_QOS_PROFILES_MANAGER_UTILS_PARSE_XML_HPP_
