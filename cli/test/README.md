@@ -42,8 +42,8 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant argument1 argument2 help`|N/A|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant.name`|`ERROR: profile name is required for participant elements`|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant[]`|`ERROR: profile name is required for participant elements`|`PARTICIPANT_USAGE`|
-|`fastddsqosprof file.xml set participant[profile]`|`ERROR: subelement is required for participant elements`|`PARTICIPANT_USAGE`|
-|`fastddsqosprof file.xml set participant["a profile"]`|`ERROR: subelement is required for participant elements`|`PARTICIPANT_USAGE`|
+|`fastddsqosprof file.xml set participant[profile]`|`ERROR: participant must not be FINAL element`|`PARTICIPANT_USAGE`|
+|`fastddsqosprof file.xml set participant["a profile"]`|`ERROR: participant must not be FINAL element`|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].allocations`|**PENDING** (currently `Participant allocations configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].binary_property`|**PENDING** (currently `Participant binary properties configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin`|**PENDING** (currently `Participant builtin configuration not yet supported`)|N/A|

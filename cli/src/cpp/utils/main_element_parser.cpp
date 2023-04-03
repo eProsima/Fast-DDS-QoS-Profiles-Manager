@@ -91,30 +91,26 @@ void main_element_parser(
     else if (element == PARTICIPANT_ELEMENT)
     {
         // If there is no subelement and the last value is (help | -h | --help), print usage
-        if (subelement.empty() && check_help(values))
-        {
-            print_usage = true;
-        }
-        // Participant element requires a profile name
-        // TODO: this would need to be refactored and check in the lower level because if the subelement is
-        // default_profile, then the profile name is only mandatory in the SET command.
-        else if (profile_name.empty())
-        {
-            std::cout << "ERROR: profile name is required for participant elements" << std::endl;
-            print_usage = true;
-        }
+        print_usage = subelement.empty() && check_help(values);
         // Participant element requires a subelement
-        else if (subelement.empty())
+        print_usage = print_usage || !check_final_element(false, subelement, element);
+
+        if (!print_usage)
         {
-            std::cout << "ERROR: subelement is required for participant elements" << std::endl;
-            print_usage = true;
+            // Participant element requires a profile name
+            // TODO: this would need to be refactored and check in the lower level because if the subelement is
+            // default_profile, then the profile name is only mandatory in the SET command.
+            if (profile_name.empty())
+            {
+                std::cout << "ERROR: profile name is required for participant elements" << std::endl;
+                print_usage = true;
+            }
+            else
+            {
+                participant_subelement_parser(command, filename, profile_name, subelement, values);
+            }
         }
         else
-        {
-            participant_subelement_parser(command, filename, profile_name, subelement, values);
-        }
-
-        if (print_usage)
         {
             if (CommonCommands::QUERY != command)
             {
