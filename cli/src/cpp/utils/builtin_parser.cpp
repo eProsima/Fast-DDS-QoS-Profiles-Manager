@@ -50,7 +50,33 @@ void builtin_parser(
     }
     else if (element == EXTERNAL_LOCATORS_SUBELEMENT)
     {
-        std::cout << "Participant builtin external locators configuration not yet supported" << std::endl;
+        // Check help value
+        print_usage = check_help(values);
+        // Not keyed element
+        print_usage = print_usage || !check_keyed(false, keyed, message.str());
+        // Default external unicast locators require a subelement
+        print_usage = print_usage || !check_final_element(false, subelement, message.str());
+        // At least one value is required for SET command
+        print_usage = print_usage || (CommonCommands::SET == command && !check_command_arguments(command, 1,
+                values.size(), message.str(), false));
+
+        if (!print_usage)
+        {
+            external_locators_parser(ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST, command, filename,
+                    profile_name, subelement, values);
+        }
+        else
+        {
+            if (CommonCommands::QUERY == command)
+            {
+                // TODO
+                // std::cout << PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_QUERY_USAGE << std::endl;
+            }
+            else
+            {
+                std::cout << PARTICIPANT_BUILTIN_METATRAFFIC_EXTERNAL_UNICAST_LOCATORS_USAGE << std::endl;
+            }
+        }
     }
     else if (element == MUTATION_TRIES_SUBELEMENT)
     {
