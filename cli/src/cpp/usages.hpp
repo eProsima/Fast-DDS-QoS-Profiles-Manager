@@ -76,10 +76,10 @@ static const char PARTICIPANT_BUILTIN_USAGE[] =
       avoid_builtin_multicast         Participant builtin avoid_builtin_multicast flag configuration. Valid set values: [true | false]
       discovery_config                Participant builtin discovery mechanism configuration.
       external_locators               Participant builtin external locators configuration.
-      mutation_tries                  Participant builtin mutation tries configuration.
+      mutation_tries                  Participant builtin mutation tries configuration. Valid set values: [0, 65535]
       locators                        Participant builtin locators configuration.
       reader                          Participant builtin readers configuration.
-      use_writer_liveliness_protocol  Participant builtin use_writer_liveliness_protocol flag configuration.
+      use_writer_liveliness_protocol  Participant builtin use_writer_liveliness_protocol flag configuration. Valid set values: [true | false]
       writer                          Participant builtin writers configuration.
 )";
 

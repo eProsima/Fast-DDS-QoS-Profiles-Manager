@@ -35,7 +35,6 @@ void external_locators_parser(
         std::string& element,
         const std::vector<std::string>& values)
 {
-
     bool print_usage = false;
     std::string subelement;
     std::string key;
