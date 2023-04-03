@@ -141,8 +141,8 @@ void external_locators_parser(
             // Should be final
             print_usage = print_usage || !check_final_element(true, dummy_subelement, message.str());
             // SET command requires only one argument
-            print_usage = print_usage || (!check_command_arguments(command, 1, values.size(), message.str(), true) &&
-                    CommonCommands::SET == command);
+            print_usage = print_usage || (CommonCommands::SET == command &&
+                    !check_command_arguments(command, 1, values.size(), message.str(), true));
         }
 
         // Call library
