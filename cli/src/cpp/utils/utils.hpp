@@ -43,10 +43,10 @@ enum class ExternalLocatorsList
 };
 
 constexpr const char* common_command_str[] = {
-        "clear",
-        "print",
-        "query",
-        "set"
+    "clear",
+    "print",
+    "query",
+    "set"
 };
 
 // Regex patterns
@@ -112,6 +112,7 @@ void participant_subelement_parser(
 /**
  * @brief Check number of arguments.
  *
+ * @param command Command kind in order to be shown in the log.
  * @param expected_arguments Number of expected arguments.
  * @param actual_argument_number Number of actual arguments parsed in CLI.
  * @param element specific element that expects the arguments.
