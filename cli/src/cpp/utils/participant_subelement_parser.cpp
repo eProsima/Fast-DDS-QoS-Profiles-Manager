@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -37,6 +38,10 @@ void participant_subelement_parser(
     std::string key;
     bool keyed = extract_element_subelement_key(element, subelement, key);
 
+    // Initialize message in case of error
+    std::ostringstream message;
+    message << "Participant <" << element << ">";
+
     bool print_usage = false;
     if (element == ALLOCATIONS_SUBELEMENT)
     {
@@ -52,31 +57,15 @@ void participant_subelement_parser(
     }
     else if (element == DEFAULT_PROFILE_SUBELEMENT)
     {
-        // No values with exception to help
-        if (!values.empty())
-        {
-            print_usage = true;
-            if (values.back() != HELP_COMMAND &&
-                    values.back() != HELP_SHORTHAND_FLAG &&
-                    values.back() != HELP_FLAG)
-            {
-                std::cout << "ERROR: Participant default attribute configuration does not require any value"
-                          << std::endl;
-            }
-        }
+        print_usage = check_help(values);
+        // No values are allowed (only if help is the last which has already been checked)
+        print_usage = print_usage || !check_command_arguments(command, 0, values.size(), message.str(), true);
         // Not keyed element
-        else if (keyed)
-        {
-            std::cout << "ERROR: Participant default profile attribute is not keyed []" << std::endl;
-            print_usage = true;
-        }
+        print_usage = print_usage || !check_keyed(false, keyed, message.str());
         // Final element
-        else if (!subelement.empty())
-        {
-            std::cout << "ERROR: Participant default profile attribute is FINAL element" << std::endl;
-            print_usage = true;
-        }
-        else
+        print_usage = print_usage || !check_final_element(true, subelement, message.str());
+
+        if (!print_usage)
         {
             try
             {
@@ -101,8 +90,7 @@ void participant_subelement_parser(
                 std::cout << "Fast DDS QoS Profiles Manager exception caught: " << e.what() << std::endl;
             }
         }
-
-        if (print_usage)
+        else
         {
             std::cout << PARTICIPANT_DEFAULT_PROFILE_USAGE << std::endl;
         }
@@ -114,36 +102,21 @@ void participant_subelement_parser(
     else if (element == EXTERNAL_LOCATORS_SUBELEMENT)
     {
         // Check help value
-        if (!values.empty() && (values.back() == HELP_COMMAND || values.back() == HELP_SHORTHAND_FLAG ||
-                values.back() == HELP_FLAG))
-        {
-            print_usage = true;
-        }
+        print_usage = check_help(values);
         // Not keyed element
-        else if (keyed)
-        {
-            std::cout << "ERROR: Participant external locators element is not keyed []" << std::endl;
-            print_usage = true;
-        }
+        print_usage = print_usage || !check_keyed(false, keyed, message.str());
         // Default external unicast locators require a subelement
-        else if (subelement.empty())
-        {
-            print_usage = true;
-            std::cout << "ERROR: subelement is required for external locators element" << std::endl;
-        }
+        print_usage = print_usage || !check_final_element(false, subelement, message.str());
         // At least one value is required for SET command
-        else if (values.empty() && CommonCommands::SET == command)
-        {
-            print_usage = true;
-            std::cout << "ERROR: at least one value has to be passed to configure external locators" << std::endl;
-        }
-        else
+        print_usage = print_usage || (CommonCommands::SET == command && !check_command_arguments(command, 1,
+                values.size(), message.str(), false));
+
+        if (!print_usage)
         {
             external_locators_parser(ExternalLocatorsList::PARTICIPANT_DEFAULT_UNICAST, command, filename, profile_name,
                     subelement, values);
         }
-
-        if (print_usage)
+        else
         {
             if (CommonCommands::QUERY == command)
             {
@@ -206,7 +179,12 @@ void participant_subelement_parser(
     }
     else
     {
-        std::cout << "ERROR: " << element << " element not recognized" << std::endl;
+        // Check if the user has asked for help. Otherwise show error
+        if (!check_help(values))
+        {
+            std::cout << "ERROR: " << element << " element not recognized" << std::endl;
+        }
+
         if (CommonCommands::QUERY != command)
         {
             std::cout << PARTICIPANT_USAGE << std::endl;

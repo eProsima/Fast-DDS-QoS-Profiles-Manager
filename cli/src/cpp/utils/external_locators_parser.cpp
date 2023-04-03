@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -38,34 +39,39 @@ void external_locators_parser(
     bool print_usage = false;
     std::string subelement;
     std::string key;
-    // External locator list must be keyed
-    if (!extract_element_subelement_key(element, subelement, key))
-    {
-        std::cout << "ERROR: external locator <" << element << "> list must be keyed []" << std::endl;
-        print_usage = true;
-    }
+
+    bool keyed = extract_element_subelement_key(element, subelement, key);
+    bool set_every_element = false;
+
+    // Initialize message in case of error
+    std::ostringstream message;
+    message << "external locator <" << element << "> list";
 
     // HELP command has been handled in the upper level so usage should be printed in case of wrong arguments.
-    bool set_every_element = false;
-    // Not SET commands require no values at all.
-    if (values.size() != 0 && command != CommonCommands::SET && !print_usage)
+    // Validity checks
+    // Check that the element is the expected one
+    if (((list == ExternalLocatorsList::DATAREADER_UNICAST || list == ExternalLocatorsList::DATAWRITER_UNICAST) &&
+            element != UNICAST_ELEMENT) ||
+            (list == ExternalLocatorsList::PARTICIPANT_DEFAULT_UNICAST && element != DEFAULT_UNICAST_ELEMENT) ||
+            (list == ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST && element != METATRAFFIC_UNICAST_ELEMENT))
     {
-        std::cout << "ERROR: the given command does not require any value" << std::endl;
+        std::cout << "ERROR: " << element << " subelement not recognized" << std::endl;
         print_usage = true;
     }
+    print_usage = print_usage || !check_keyed(true, keyed, message.str());
+    print_usage = print_usage ||
+            (command != CommonCommands::SET && !check_command_arguments(command, 0, values.size(), "the given command",
+            true));
+
     // No subelement.
-    else if (subelement.empty() && !print_usage)
+    if (subelement.empty())
     {
-        // Invalid arguments check
         // SET command requires 6 values: kind, externality, cost, address, mask and port.
-        if (values.size() != 6 && command == CommonCommands::SET)
-        {
-            std::cout << "ERROR: external locator <" << element
-                      << "> list requires 6 configuration paramenters if no <subelement> is configured" << std::endl;
-            print_usage = true;
-        }
-        // Call library
-        else
+        print_usage = print_usage ||
+                (command == CommonCommands::SET && !check_command_arguments(command, 6, values.size(), message.str(),
+                true));
+        // Call library if every validity check has passed
+        if (!print_usage)
         {
             try
             {
@@ -122,31 +128,21 @@ void external_locators_parser(
         }
     }
 
-    if (!print_usage && (!subelement.empty() || set_every_element))
+    if (!subelement.empty() || set_every_element)
     {
         if (!subelement.empty())
         {
             std::string dummy_subelement;
             std::string dummy_key;
-            // Subelement should not be keyed
-            if (extract_element_subelement_key(subelement, dummy_subelement, dummy_key))
-            {
-                std::cout << "ERROR: external locator <" << subelement << "> attribute is not keyed" << std::endl;
-                print_usage = true;
-            }
-            // Subelement should be final
-            else if (!dummy_subelement.empty())
-            {
-                std::cout << "ERROR: external locator <" << subelement << "> attribute is FINAL element" << std::endl;
-                print_usage = true;
-            }
+            keyed = extract_element_subelement_key(subelement, dummy_subelement, dummy_key);
+            message << " <" << subelement << "> attribute";
+            // Should not be keyed
+            print_usage = print_usage || !check_keyed(false, keyed, message.str());
+            // Should be final
+            print_usage = print_usage || !check_final_element(true, dummy_subelement, message.str());
             // SET command requires only one argument
-            else if (values.size() != 1 && command == CommonCommands::SET)
-            {
-                std::cout << "ERROR: external locator <" << element << "[]." << subelement <<
-                    "> requires only 1 configuration parameter" << std::endl;
-                print_usage = true;
-            }
+            print_usage = print_usage || (CommonCommands::SET == command &&
+                    !check_command_arguments(command, 1, values.size(), message.str(), true));
         }
 
         // Call library

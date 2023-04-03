@@ -122,7 +122,7 @@ int main(
             std::cout << COMPARE_USAGE << std::endl;
         }
     }
-    else if (command == HELP_COMMAND)
+    else if (command == HELP_COMMAND || command == HELP_SHORTHAND_FLAG || command == HELP_FLAG)
     {
         if (args[PARSER_ARGS].asStringList().empty())
         {

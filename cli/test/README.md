@@ -42,14 +42,14 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant argument1 argument2 help`|N/A|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant.name`|`ERROR: profile name is required for participant elements`|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant[]`|`ERROR: profile name is required for participant elements`|`PARTICIPANT_USAGE`|
-|`fastddsqosprof file.xml set participant[profile]`|`ERROR: subelement is required for participant elements`|`PARTICIPANT_USAGE`|
-|`fastddsqosprof file.xml set participant["a profile"]`|`ERROR: subelement is required for participant elements`|`PARTICIPANT_USAGE`|
+|`fastddsqosprof file.xml set participant[profile]`|`ERROR: participant must not be FINAL element`|`PARTICIPANT_USAGE`|
+|`fastddsqosprof file.xml set participant["a profile"]`|`ERROR: participant must not be FINAL element`|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].allocations`|**PENDING** (currently `Participant allocations configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].binary_property`|**PENDING** (currently `Participant binary properties configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin`|**PENDING** (currently `Participant builtin configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].default_profile`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].domain_id`|**PENDING** (currently `Participant domain ID configuration not yet supported`)|N/A|
-|`fastddsqosprof file.xml set participant[profile].external_locators`|`ERROR: subelement is required for external locators element`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].external_locators`|`ERROR: Participant <external_locators> must not be FINAL element`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].guid_prefix`|**PENDING** (currently `Participant GUID prefix configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].id`|**PENDING** (currently `Participant ID configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].ignore_non_matching_locators`|**PENDING** (currently `Participant ignore non matching locators configuration flag not yet supported`)|N/A|
@@ -63,62 +63,63 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].user_data`|**PENDING** (currently `Participant user data QoS configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].user_transports`|**PENDING** (currently `Participant user transports configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].other`|`ERROR: other element not recognized`|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].other -h`|**BUG** (currently `ERROR: other element not recognized` when no error is expected)|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].other -h`|N/A|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].default_profile -h`|N/A|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].default_profile --help`|N/A|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].default_profile help`|N/A|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].default_profile argument1 argument2 help`|N/A|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].default_profile[]`|`ERROR: Participant default profile attribute is not keyed []`|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].default_profile.element`|`ERROR: Participant default profile attribute is FINAL element`|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].default_profile argument`|`ERROR: Participant default attribute configuration does not require any value`|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].default_profile[]`|`ERROR: Participant <default_profile> must not be keyed []`|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].default_profile.element`|`ERROR: Participant <default_profile> must be FINAL element`|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].default_profile argument`|`ERROR: set command for Participant <default_profile> expects 0 arguments and received 1`|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators -h`|N/A|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators --help`|N/A|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators help`|N/A|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators argument1 argument2 help`|N/A|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast`|`ERROR: at least one value has to be passed to configure external locators`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].external_locators[].default_unicast`|`ERROR: Participant <external_locators> must not be keyed []`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast`|`ERROR: set command for Participant <external_locators> expects at least 1 arguments and received 0`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast argument`|`ERROR: external locator <default_unicast> list must be keyed []`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].external_locators.other argument`|**BUG** (currently `ERROR: external locator <other> list must be keyed []` when expected error should be `ERROR: other element not recognized`)|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].external_locators.other argument`|`ERROR: other subelement not recognized`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast -h`|N/A|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[] -h`|N/A|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[] argument`|`ERROR: external locator <default_unicast> list requires 6 configuration paramenters if no <subelement> is configured`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[] argument`|`ERROR: set command for external locator <default_unicast> list expects 6 arguments and received 1`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[] arg1 arg2 arg3 arg4 arg5 arg6`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
-|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].address`|`ERROR: at least one value has to be passed to configure external locators`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].address`|`ERROR: set command for Participant <external_locators> expects at least 1 arguments and received 0`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].address -h`|N/A|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].address argument`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[11811].address argument`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
-|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].address[] argument`|`ERROR: external locator <address> attribute is not keyed`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].address.element argument`|`ERROR: external locator <address> attribute is FINAL element`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].cost`|`ERROR: at least one value has to be passed to configure external locators`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].address[] argument`|`ERROR: external locator <default_unicast> list <address> attribute must not be keyed []`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].address.element argument`|`ERROR: external locator <default_unicast> list <address> attribute must be FINAL element`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].cost`|`ERROR: set command for Participant <external_locators> expects at least 1 arguments and received 0`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].cost -h`|N/A|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].cost argument`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[11811].cost argument`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
-|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].cost[] argument`|`ERROR: external locator <cost> attribute is not keyed`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].cost.element argument`|`ERROR: external locator <cost> attribute is FINAL element`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].externality`|`ERROR: at least one value has to be passed to configure external locators`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].cost[] argument`|`ERROR: external locator <default_unicast> list <cost> attribute must not be keyed []`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].cost.element argument`|`ERROR: external locator <default_unicast> list <cost> attribute must be FINAL element`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].externality`|`ERROR: set command for Participant <external_locators> expects at least 1 arguments and received 0`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].externality -h`|N/A|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].externality argument`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[11811].externality argument`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
-|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].externality[] argument`|`ERROR: external locator <externality> attribute is not keyed`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].externality.element argument`|`ERROR: external locator <externality> attribute is FINAL element`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].kind`|`ERROR: at least one value has to be passed to configure external locators`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].externality[] argument`|`ERROR: external locator <default_unicast> list <externality> attribute must not be keyed []`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].externality.element argument`|`ERROR: external locator <default_unicast> list <externality> attribute must be FINAL element`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].kind`|`ERROR: set command for Participant <external_locators> expects at least 1 arguments and received 0`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].kind -h`|N/A|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].kind argument`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[11811].kind argument`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
-|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].kind[] argument`|`ERROR: external locator <kind> attribute is not keyed`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].kind.element argument`|`ERROR: external locator <kind> attribute is FINAL element`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].mask`|`ERROR: at least one value has to be passed to configure external locators`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].kind[] argument`|`ERROR: external locator <default_unicast> list <kind> attribute must not be keyed []`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].kind.element argument`|`ERROR: external locator <default_unicast> list <kind> attribute must be FINAL element`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].mask`|`ERROR: set command for Participant <external_locators> expects at least 1 arguments and received 0`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].mask -h`|N/A|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].mask argument`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[11811].mask argument`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
-|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].mask[] argument`|`ERROR: external locator <mask> attribute is not keyed`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].mask.element argument`|`ERROR: external locator <mask> attribute is FINAL element`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].port`|`ERROR: at least one value has to be passed to configure external locators`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].mask[] argument`|`ERROR: external locator <default_unicast> list <mask> attribute must not be keyed []`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].mask.element argument`|`ERROR: external locator <default_unicast> list <mask> attribute must be FINAL element`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].port`|`ERROR: set command for Participant <external_locators> expects at least 1 arguments and received 0`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].port -h`|N/A|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].port argument`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[11811].port argument`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
-|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].port[] argument`|`ERROR: external locator <port> attribute is not keyed`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].port.element argument`|`ERROR: external locator <port> attribute is FINAL element`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].other`|`ERROR: at least one value has to be passed to configure external locators`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].port[] argument`|`ERROR: external locator <default_unicast> list <port> attribute must not be keyed []`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].port.element argument`|`ERROR: external locator <default_unicast> list <port> attribute must be FINAL element`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].other`|`ERROR: set command for Participant <external_locators> expects at least 1 arguments and received 0`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].other -h`|N/A|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].other argument`|`ERROR: other subelement not recognized`|N/A|
 
@@ -128,10 +129,3 @@ This document includes CLI commands and the expected CLI output in order to help
 
 This current test plan is focused only on the CLI usage and errors.
 Currently, this test plan is not concerned about the validity of the arguments passed to Fast DDS QoS Profiles Manager Library, nor about the handling of the returned information.
-
-## Known issues
-
-* Profile names should have at least 3 characters.
-  Otherwise, the bracket regex parsing seems to be failing.
-* `fastddsqosprof file.xml set participant[profile].other -h` does not have the expected behavior.
-* `fastddsqosprof file.xml set participant[profile].external_locators.other argument` does not have the expected behavior.
