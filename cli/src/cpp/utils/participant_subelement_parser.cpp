@@ -65,7 +65,7 @@ void participant_subelement_parser(
 
         if (!print_usage)
         {
-            // TODO
+            builtin_parser(command, filename, profile_name, subelement, values);
         }
         else
         {

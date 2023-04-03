@@ -58,6 +58,22 @@ const std::regex bracket_pattern("\\[([^\\]]*)\\]");
 /**********************************************************************************************************************/
 
 /**
+ * @brief Participant builtin parser.
+ *
+ * @param[in] command Command kind.
+ * @param[in] filename File to be modified.
+ * @param[in] profile_name Domain Participant profile name.
+ * @param[in] element String with the dot-separated subelements.
+ * @param[in] values Vector of strings with the values passed to CLI.
+ */
+void builtin_parser(
+        CommonCommands command,
+        const std::string& filename,
+        const std::string& profile_name,
+        std::string& element,
+        const std::vector<std::string>& values);
+
+/**
  * @brief Common parser for external locators lists
  *
  * @param[in] list Identify the specific list which is being modified.
