@@ -71,6 +71,14 @@ constexpr const char* USE_BUILTIN_TRANSPORTS_SUBELEMENT = "use_builtin_transport
 constexpr const char* USER_DATA_SUBELEMENT = "user_data";
 constexpr const char* USER_TRANSPORTS_SUBELEMENT = "user_transports";
 
+// CLI participant builtin subelements
+constexpr const char* AVOID_BUILTIN_MULTICAST_SUBELEMENT = "avoid_builtin_multicast";
+constexpr const char* DISCOVERY_CONFIG_SUBELEMENT = "discovery_config";
+constexpr const char* MUTATION_TRIES_SUBELEMENT = "mutation_tries";
+constexpr const char* READER_SUBELEMENT = "reader";
+constexpr const char* USE_WRITER_LIVELINESS_PROTOCOL_SUBELEMENT = "use_writer_liveliness_protocol";
+constexpr const char* WRITER_SUBELEMENT = "writer";
+
 // CLI locators common elements
 constexpr const char* DEFAULT_UNICAST_ELEMENT = "default_unicast";
 constexpr const char* METATRAFFIC_UNICAST_ELEMENT = "metatraffic_unicast";

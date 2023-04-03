@@ -42,6 +42,7 @@ set(${PROJECT_NAME}_source_files
     ${ALL_HEADERS}
 
     src/cpp/fastdds_qos_profiles_manager_cli.cpp
+    src/cpp/utils/builtin_parser.cpp
     src/cpp/utils/external_locators_parser.cpp
     src/cpp/utils/main_element_parser.cpp
     src/cpp/utils/participant_subelement_parser.cpp
