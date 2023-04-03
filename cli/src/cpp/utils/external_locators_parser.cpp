@@ -92,7 +92,7 @@ void external_locators_parser(
                                 break;
                             case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
                                 qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::clear(
-                                        filename, profile_name, key);
+                                    filename, profile_name, key);
                                 break;
                         }
                         break;
@@ -111,7 +111,7 @@ void external_locators_parser(
                                 break;
                             case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
                                 qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::print(
-                                        filename, profile_name, key);
+                                    filename, profile_name, key);
                                 break;
                         }
                         break;
@@ -172,8 +172,8 @@ void external_locators_parser(
                                         filename, profile_name, key);
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::clear_address(
-                                            filename, profile_name, key);
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            clear_address(filename, profile_name, key);
                                     break;
                             }
                             break;
@@ -191,8 +191,8 @@ void external_locators_parser(
                                         filename, profile_name, key);
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::print_address(
-                                            filename, profile_name, key);
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            print_address(filename, profile_name, key);
                                     break;
                             }
                             break;
@@ -214,8 +214,8 @@ void external_locators_parser(
                                         filename, profile_name, address, key);
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::set_address(
-                                            filename, profile_name, address, key);
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            set_address(filename, profile_name, address, key);
                                     break;
                             }
                             break;
@@ -240,8 +240,8 @@ void external_locators_parser(
                                         filename, profile_name, key);
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::clear_cost(
-                                            filename, profile_name, key);
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            clear_cost(filename, profile_name, key);
                                     break;
                             }
                             break;
@@ -259,8 +259,8 @@ void external_locators_parser(
                                         filename, profile_name, key);
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::print_cost(
-                                            filename, profile_name, key);
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            print_cost(filename, profile_name, key);
                                     break;
                             }
                             break;
@@ -282,8 +282,8 @@ void external_locators_parser(
                                         filename, profile_name, cost, key);
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::set_cost(
-                                            filename, profile_name, cost, key);
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            set_cost(filename, profile_name, cost, key);
                                     break;
                             }
                             break;
@@ -308,8 +308,8 @@ void external_locators_parser(
                                         filename, profile_name, key);
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::clear_externality(
-                                            filename, profile_name, key);
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            clear_externality(filename, profile_name, key);
                                     break;
                             }
                             break;
@@ -327,8 +327,8 @@ void external_locators_parser(
                                         filename, profile_name, key);
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::print_externality(
-                                            filename, profile_name, key);
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            print_externality(filename, profile_name, key);
                                     break;
                             }
                             break;
@@ -350,8 +350,8 @@ void external_locators_parser(
                                         filename, profile_name, externality, key);
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::set_externality(
-                                            filename, profile_name, externality, key);
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            set_externality(filename, profile_name, externality, key);
                                     break;
                             }
                             break;
@@ -381,8 +381,8 @@ void external_locators_parser(
                                         filename, profile_name, key);
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::print_kind(
-                                            filename, profile_name, key);
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            print_kind(filename, profile_name, key);
                                     break;
                             }
                             break;
@@ -403,8 +403,8 @@ void external_locators_parser(
                                         filename, profile_name, values[0], key);
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::set_kind(
-                                            filename, profile_name, values[0], key);
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            set_kind(filename, profile_name, values[0], key);
                                     break;
                             }
                             break;
@@ -429,8 +429,8 @@ void external_locators_parser(
                                         filename, profile_name, key);
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::clear_mask(
-                                            filename, profile_name, key);
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            clear_mask(filename, profile_name, key);
                                     break;
                             }
                             break;
@@ -448,8 +448,8 @@ void external_locators_parser(
                                         filename, profile_name, key);
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::print_mask(
-                                            filename, profile_name, key);
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            print_mask(filename, profile_name, key);
                                     break;
                             }
                             break;
@@ -471,8 +471,8 @@ void external_locators_parser(
                                         filename, profile_name, mask, key);
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::set_mask(
-                                            filename, profile_name, mask, key);
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            set_mask(filename, profile_name, mask, key);
                                     break;
                             }
                             break;
@@ -497,8 +497,8 @@ void external_locators_parser(
                                         filename, profile_name, key);
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::clear_port(
-                                            filename, profile_name, key);
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            clear_port(filename, profile_name, key);
                                     break;
                             }
                             break;
@@ -516,8 +516,8 @@ void external_locators_parser(
                                         filename, profile_name, key);
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::print_port(
-                                            filename, profile_name, key);
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            print_port(filename, profile_name, key);
                                     break;
                             }
                             break;
@@ -539,8 +539,8 @@ void external_locators_parser(
                                         filename, profile_name, port, key);
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::set_port(
-                                            filename, profile_name, port, key);
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            set_port(filename, profile_name, port, key);
                                     break;
                             }
                             break;
