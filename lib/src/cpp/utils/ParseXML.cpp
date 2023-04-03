@@ -21,12 +21,12 @@
 #include <unistd.h>
 
 std::string get_absolute_path(
-    const std::string& xml_file)
+        const std::string& xml_file)
 {
     std::string absolute_xml_file;
 
     //   Check if file already exists
-    char * absolute_xml_path = realpath(xml_file.c_str(), NULL);
+    char* absolute_xml_path = realpath(xml_file.c_str(), NULL);
     //   File does not exist
     if (absolute_xml_path == NULL)
     {

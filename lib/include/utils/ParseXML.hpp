@@ -30,6 +30,6 @@
  * @return std::string with the absolute path
  */
 std::string get_absolute_path(
-    const std::string& xml_file);
+        const std::string& xml_file);
 
 #endif // _FAST_DDS_QOS_PROFILES_MANAGER_UTILS_PARSE_XML_HPP_
