@@ -109,7 +109,7 @@ void participant_subelement_parser(
         print_usage = print_usage || !check_final_element(false, subelement, message.str());
         // At least one value is required for SET command
         print_usage = print_usage || (CommonCommands::SET == command && !check_arguments(1, values.size(),
-            message.str(), false));
+                message.str(), false));
 
         if (!print_usage)
         {

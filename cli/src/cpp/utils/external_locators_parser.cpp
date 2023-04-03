@@ -60,14 +60,14 @@ void external_locators_parser(
     }
     print_usage = print_usage || !check_keyed(true, keyed, message.str());
     print_usage = print_usage ||
-        (command != CommonCommands::SET && !check_arguments(0, values.size(), "the given command", true));
+            (command != CommonCommands::SET && !check_arguments(0, values.size(), "the given command", true));
 
     // No subelement.
     if (subelement.empty())
     {
         // SET command requires 6 values: kind, externality, cost, address, mask and port.
         print_usage = print_usage ||
-            (command == CommonCommands::SET && !check_arguments(6, values.size(), message.str(), true));
+                (command == CommonCommands::SET && !check_arguments(6, values.size(), message.str(), true));
         // Call library if every validity check has passed
         if (!print_usage)
         {

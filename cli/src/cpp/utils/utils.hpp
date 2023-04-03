@@ -140,7 +140,7 @@ inline bool check_help(
         const std::vector<std::string>& values)
 {
     return !values.empty() && (values.back() == HELP_COMMAND || values.back() == HELP_SHORTHAND_FLAG ||
-                values.back() == HELP_FLAG);
+           values.back() == HELP_FLAG);
 }
 
 /**
