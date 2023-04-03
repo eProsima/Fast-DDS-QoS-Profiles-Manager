@@ -54,6 +54,35 @@ static const char QUERY_USAGE[] =
       fastddsqosprof <file> query [size | keys] <element>
 )";
 
+static const char PARTICIPANT_BUILTIN_USAGE[] =
+        R"(Participant builtin configuration usage:
+
+    Usage:
+      fastddsqosprof <file> <command> participant[<profile_name>].builtin.<subelement> [<values>... (help | -h | --help)]
+      fastddsqosprof <file> <command> participant[<profile_name>].builtin.<subelement> [(help | -h | --help)]
+      fastddsqosprof <file> <command> participant[<profile_name>].builtin [(help | -h | --help)]
+
+    Options:
+      help -h --help    CLI participant builtin configuration usage
+
+    The allowed <command> options are:
+      clear                           Erase participant builtin configuration parameter from XML file.
+      print                           Print participant builtin XML configuration parameter.
+      set                             Write participant builtin configuration parameter to XML file.
+
+    The <profile_name> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
+
+    The allowed <subelement> options are:
+      avoid_builtin_multicast         Participant builtin avoid_builtin_multicast flag configuration. Valid set values: [true | false]
+      discovery_config                Participant builtin discovery mechanism configuration.
+      external_locators               Participant builtin external locators configuration.
+      mutation_tries                  Participant builtin mutation tries configuration.
+      locators                        Participant builtin locators configuration.
+      reader                          Participant builtin readers configuration.
+      use_writer_liveliness_protocol  Participant builtin use_writer_liveliness_protocol flag configuration.
+      writer                          Participant builtin writers configuration.
+)";
+
 static const char PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE[] =
         R"(Participant default external unicast locators usage:
 
