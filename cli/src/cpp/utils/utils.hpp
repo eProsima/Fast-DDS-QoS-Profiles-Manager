@@ -108,12 +108,14 @@ void participant_subelement_parser(
  * @param expected_arguments Number of expected arguments.
  * @param actual_argument_number Number of actual arguments parsed in CLI.
  * @param element specific element that expects the arguments.
+ * @param exact Flag set if the expected arguments are enforced.
  * @return true if the check holds. False otherwise.
  */
 bool check_arguments(
         uint32_t expected_arguments,
         uint32_t actual_argument_number,
-        const std::string& element);
+        const std::string& element,
+        bool exact);
 
 /**
  * @brief Check if it is the last element.

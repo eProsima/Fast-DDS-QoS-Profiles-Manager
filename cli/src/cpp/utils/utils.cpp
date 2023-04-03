@@ -25,12 +25,13 @@ namespace qosprof_cli {
 bool check_arguments(
         uint32_t expected_arguments,
         uint32_t actual_argument_number,
-        const std::string& element)
+        const std::string& element,
+        bool exact)
 {
     if (actual_argument_number != expected_arguments)
     {
-        std::cout << "ERROR: " << element << " expects " << expected_arguments << " arguments and received "
-                  << actual_argument_number << std::endl;
+        std::cout << "ERROR: " << element << " expects " << (exact ? "" : "at least ") << expected_arguments
+                  << " arguments and received " << actual_argument_number << std::endl;
         return false;
     }
     return true;
