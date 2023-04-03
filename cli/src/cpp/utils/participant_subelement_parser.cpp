@@ -53,7 +53,32 @@ void participant_subelement_parser(
     }
     else if (element == BUILTIN_SUBELEMENT)
     {
-        std::cout << "Participant builtin configuration not yet supported" << std::endl;
+        // If there is no subelement and the last value is (help | -h | --help), print usage
+        print_usage = subelement.empty() && check_help(values);
+        // Not keyed element
+        print_usage = print_usage || !check_keyed(false, keyed, message.str());
+        // Builtin element require a subelement
+        print_usage = print_usage || !check_final_element(false, subelement, message.str());
+        // At least one value is required for SET command
+        print_usage = print_usage || (CommonCommands::SET == command && !check_arguments(1, values.size(),
+                message.str(), false));
+
+        if (!print_usage)
+        {
+            // TODO
+        }
+        else
+        {
+            if (CommonCommands::QUERY == command)
+            {
+                // TODO
+                // std::cout << PARTICIPANT_BUILTIN_QUERY_USAGE << std::endl;
+            }
+            else
+            {
+                std::cout << PARTICIPANT_BUILTIN_USAGE << std::endl;
+            }
+        }
     }
     else if (element == DEFAULT_PROFILE_SUBELEMENT)
     {

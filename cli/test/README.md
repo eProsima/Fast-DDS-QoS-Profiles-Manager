@@ -46,7 +46,7 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant["a profile"]`|`ERROR: participant must not be FINAL element`|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].allocations`|**PENDING** (currently `Participant allocations configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].binary_property`|**PENDING** (currently `Participant binary properties configuration not yet supported`)|N/A|
-|`fastddsqosprof file.xml set participant[profile].builtin`|**PENDING** (currently `Participant builtin configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin`|`ERROR: Participant <builtin> must not be FINAL element`|`PARTICIPANT_BUILTIN_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].default_profile`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].domain_id`|**PENDING** (currently `Participant domain ID configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].external_locators`|`ERROR: Participant <external_locators> must not be FINAL element`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
@@ -64,6 +64,13 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].user_transports`|**PENDING** (currently `Participant user transports configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].other`|`ERROR: other element not recognized`|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].other -h`|N/A|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].builtin -h`|N/A|`PARTICIPANT_BUILTIN_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].builtin --help`|N/A|`PARTICIPANT_BUILTIN_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].builtin help`|N/A|`PARTICIPANT_BUILTIN_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].builtin argument1 argument2 help`|N/A|`PARTICIPANT_BUILTIN_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].builtin[]`|`ERROR: Participant <builtin> must not be keyed []`|`PARTICIPANT_BUILTIN_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].builtin.subelement`|**PENDING** (currently `ERROR: Participant <builtin> expects at least 1 arguments and received 0`)|`PARTICIPANT_BUILTIN_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].builtin.subelement arg`|**PENDING**|N/A|
 |`fastddsqosprof file.xml set participant[profile].default_profile -h`|N/A|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].default_profile --help`|N/A|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].default_profile help`|N/A|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
