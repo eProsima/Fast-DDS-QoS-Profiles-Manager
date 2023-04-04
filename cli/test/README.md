@@ -31,7 +31,7 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set datawriter`|**PENDING** (currently `DataWriter configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set intraprocess`|**PENDING** (currently `Intra-process configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set log`|**PENDING** (currently `Log module configuration not yet supported`)|N/A|
-|`fastddsqosprof file.xml set participant`|`ERROR: profile name is required for participant elements` [^1]|`PARTICIPANT_USAGE`|
+|`fastddsqosprof file.xml set participant`|`ERROR: participant requires a profile name` [^1]|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set topic`|**PENDING** (currently `Topic configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set transport_descriptor`|**PENDING** (currently `Transport descriptor configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set types`|**PENDING** (currently `Dynamic types configuration not yet supported`)|N/A|
@@ -40,8 +40,8 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant --help`|N/A|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant help`|N/A|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant argument1 argument2 help`|N/A|`PARTICIPANT_USAGE`|
-|`fastddsqosprof file.xml set participant.name`|`ERROR: profile name is required for participant elements`|`PARTICIPANT_USAGE`|
-|`fastddsqosprof file.xml set participant[]`|`ERROR: profile name is required for participant elements`|`PARTICIPANT_USAGE`|
+|`fastddsqosprof file.xml set participant.name`|`ERROR: participant requires a profile name`|`PARTICIPANT_USAGE`|
+|`fastddsqosprof file.xml set participant[]`|`ERROR: participant requires a profile name`|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant[profile]`|`ERROR: participant must not be FINAL element`|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant["a profile"]`|`ERROR: participant must not be FINAL element`|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].allocations`|**PENDING** (currently `Participant allocations configuration not yet supported`)|N/A|
