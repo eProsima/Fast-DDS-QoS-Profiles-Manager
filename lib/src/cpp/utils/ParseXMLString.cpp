@@ -59,7 +59,7 @@ void ParseXMLString::writeChars(
         m_nTotal += count;
         m_pBuffer = pTmp;
 
-        if(m_pBuffer)
+        if (m_pBuffer)
         {
             m_pBuffer[m_nTotal] = 0;
         }

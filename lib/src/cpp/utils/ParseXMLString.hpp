@@ -66,6 +66,7 @@ public:
             xercesc::XMLFormatter* const formatter);
 
 protected:
+
     char* m_pBuffer;
     unsigned long int m_nTotal;
 };

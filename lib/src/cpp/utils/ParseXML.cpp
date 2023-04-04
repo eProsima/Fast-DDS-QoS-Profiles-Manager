@@ -143,7 +143,7 @@ ParseXML::~ParseXML()
 }
 
 void ParseXML::validate_and_save_xml_document(
-    xercesc::DOMDocument*& doc)
+        xercesc::DOMDocument*& doc)
 {
     if (validate_xml(doc))
     {
@@ -234,7 +234,8 @@ xercesc::DOMNode* ParseXML::get_node(
                         if (atts != nullptr)
                         {
                             // Obtain the attribute that matches the name
-                            xercesc::DOMNode* item = atts->getNamedItem(xercesc::XMLString::transcode(att_name.c_str()));
+                            xercesc::DOMNode* item =
+                                    atts->getNamedItem(xercesc::XMLString::transcode(att_name.c_str()));
                             if (item != nullptr)
                             {
                                 // If the value of the attribute match
@@ -248,14 +249,14 @@ xercesc::DOMNode* ParseXML::get_node(
                             {
                                 // Throw eprosima::qosprof::ElementNotFound exception
                                 throw ElementNotFound(
-                                            tag_name + " does not have the attribute " + att_name + "\n");
+                                          tag_name + " does not have the attribute " + att_name + "\n");
                             }
                         }
                         else
                         {
                             // Throw eprosima::qosprof::ElementNotFound exception
                             throw ElementNotFound(
-                                        tag_name + " does not have the attribute " + att_name + "\n");
+                                      tag_name + " does not have the attribute " + att_name + "\n");
                         }
                     }
                     // LIST element TODO refactor
@@ -272,7 +273,8 @@ xercesc::DOMNode* ParseXML::get_node(
                         {
                             // Throw eprosima::qosprof::ElementNotFound exception
                             throw ElementNotFound(
-                                tag_name + " does not have an element in position " + std::to_string(realIndex) + "\n");
+                                      tag_name + " does not have an element in position " + std::to_string(
+                                          realIndex) + "\n");
                         }
                         // Return Node
                         return node_tag_list->item(realIndex);
@@ -290,7 +292,7 @@ xercesc::DOMNode* ParseXML::get_node(
         {
             // Given element does not exist
             throw ElementNotFound(
-                tag_name + " does not have an element with key " + att_value + "\n");
+                      tag_name + " does not have an element with key " + att_value + "\n");
         }
         else
         {
@@ -309,7 +311,7 @@ void ParseXML::clear_node(
     {
         // Check if the node to be deleted is the last child node of the parent
         if (parent_node->getChildNodes()->getLength() == 1 &&
-            parent_node->getChildNodes()->item(0)->getNodeName() == node_to_be_deleted->getNodeName())
+                parent_node->getChildNodes()->item(0)->getNodeName() == node_to_be_deleted->getNodeName())
         {
             // Invalid request: report exception
             std::string message = "Could not delete last element from ";
@@ -432,7 +434,7 @@ xercesc::DOMNode* ParseXML::get_node(
 {
     // Obtain main list of nodes
     xercesc::DOMNodeList* node_list = doc->getDocumentElement()->getElementsByTagName(
-                        xercesc::XMLString::transcode(tag_name.c_str()));
+        xercesc::XMLString::transcode(tag_name.c_str()));
 
     // Check there was any node with given tag name
     if (node_list == nullptr)

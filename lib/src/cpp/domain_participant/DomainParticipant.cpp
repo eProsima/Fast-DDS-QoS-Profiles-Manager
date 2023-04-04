@@ -323,7 +323,7 @@ void set_name(
     {
         // create if not existent
         rtps_node = (xercesc::DOMNode*) doc->createElement(
-                            xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::RTPS));
+            xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::RTPS));
         participant_node->appendChild(rtps_node);
 
     }
@@ -337,7 +337,7 @@ void set_name(
     {
         // create if not existent
         name_node = (xercesc::DOMNode*) doc->createElement(
-                            xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::NAME));
+            xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::NAME));
         rtps_node->appendChild(name_node);
     }
 

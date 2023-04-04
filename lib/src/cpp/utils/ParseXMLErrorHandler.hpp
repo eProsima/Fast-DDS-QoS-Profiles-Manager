@@ -54,7 +54,7 @@ public:
      * @param Kind kind of exception to be thrown
      */
     ParseXMLErrorHandler(
-        Kind kind = Kind::FileNotFound);
+            Kind kind = Kind::FileNotFound);
 
     /**
      * @brief Destroy the Parse XML Error Handler object
@@ -68,7 +68,7 @@ public:
      * @param ex exception caught
      */
     void warning(
-        const xercesc::SAXParseException& ex) override;
+            const xercesc::SAXParseException& ex) override;
 
     /**
      * @brief Catch Xerces error exceptions
@@ -76,7 +76,7 @@ public:
      * @param ex exception caught
      */
     void error(
-        const xercesc::SAXParseException& ex) override;
+            const xercesc::SAXParseException& ex) override;
 
     /**
      * @brief Catch Xerces fatal error exceptions
@@ -84,7 +84,7 @@ public:
      * @param ex exception caught
      */
     void fatalError(
-        const xercesc::SAXParseException& ex) override;
+            const xercesc::SAXParseException& ex) override;
 
     /**
      * @brief Reset error caught (empty impl)
@@ -93,6 +93,7 @@ public:
     void resetErrors() override;
 
 private:
+
     /**
      * @brief Selected kind of exception to be thrown
      *
@@ -105,7 +106,7 @@ private:
      * @param ex exception caught
      */
     void report_parse_exception(
-        const xercesc::SAXParseException& ex);
+            const xercesc::SAXParseException& ex);
 
 };
 

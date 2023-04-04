@@ -27,25 +27,25 @@ namespace qosprof {
 namespace utils {
 
 ParseXMLErrorHandler::ParseXMLErrorHandler(
-    Kind k)
+        Kind k)
 {
     kind = k;
 }
 
 void ParseXMLErrorHandler::warning(
-    const xercesc::SAXParseException& ex)
+        const xercesc::SAXParseException& ex)
 {
     report_parse_exception(ex);
 }
 
 void ParseXMLErrorHandler::error(
-    const xercesc::SAXParseException& ex)
+        const xercesc::SAXParseException& ex)
 {
     report_parse_exception(ex);
 }
 
 void ParseXMLErrorHandler::fatalError(
-    const xercesc::SAXParseException& ex)
+        const xercesc::SAXParseException& ex)
 {
     report_parse_exception(ex);
 }
@@ -56,7 +56,7 @@ void ParseXMLErrorHandler::resetErrors()
 }
 
 void ParseXMLErrorHandler::report_parse_exception(
-    const xercesc::SAXParseException& ex)
+        const xercesc::SAXParseException& ex)
 {
     // Throw custom Exceptions based on the selected kind
     switch (kind){
