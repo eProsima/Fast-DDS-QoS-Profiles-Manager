@@ -26,22 +26,26 @@ namespace eprosima {
 namespace qosprof {
 namespace utils {
 
-ParseXMLErrorHandler::ParseXMLErrorHandler(Kind k)
+ParseXMLErrorHandler::ParseXMLErrorHandler(
+    Kind k)
 {
     kind = k;
 }
 
-void ParseXMLErrorHandler::warning(const xercesc::SAXParseException& ex)
+void ParseXMLErrorHandler::warning(
+    const xercesc::SAXParseException& ex)
 {
     report_parse_exception(ex);
 }
 
-void ParseXMLErrorHandler::error(const xercesc::SAXParseException& ex)
+void ParseXMLErrorHandler::error(
+    const xercesc::SAXParseException& ex)
 {
     report_parse_exception(ex);
 }
 
-void ParseXMLErrorHandler::fatalError(const xercesc::SAXParseException& ex)
+void ParseXMLErrorHandler::fatalError(
+    const xercesc::SAXParseException& ex)
 {
     report_parse_exception(ex);
 }
@@ -51,7 +55,8 @@ void ParseXMLErrorHandler::resetErrors()
 
 }
 
-void ParseXMLErrorHandler::report_parse_exception(const xercesc::SAXParseException& ex)
+void ParseXMLErrorHandler::report_parse_exception(
+    const xercesc::SAXParseException& ex)
 {
     // Throw custom Exceptions based on the selected kind
     switch (kind){

@@ -30,10 +30,9 @@ namespace qosprof {
 namespace utils {
 
 ParseXML::ParseXML (
-    xercesc::DOMDocument*& doc,
-    const std::string& file_name,
-    bool create_file
-)
+        xercesc::DOMDocument*& doc,
+        const std::string& file_name,
+        bool create_file)
 {
     // File exists flag
     bool file_exists = false;
@@ -114,7 +113,7 @@ ParseXML::ParseXML (
         {
             // Implementation would create an empty document
             doc = implementation->createDocument(0, xercesc::XMLString::transcode(
-                eprosima::qosprof::utils::tag::ROOT), 0);
+                                eprosima::qosprof::utils::tag::ROOT), 0);
             // The root element would be <dds>, with the 'xmlns' att.
             doc->getDocumentElement()->setAttribute(
                 xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::XMLNS),
@@ -153,7 +152,7 @@ void ParseXML::validate_and_save_xml_document(
 }
 
 bool ParseXML::validate_xml(
-    xercesc::DOMDocument*& doc)
+        xercesc::DOMDocument*& doc)
 {
     // Set ElementInvalid error handler
     error_handler = new eprosima::qosprof::utils::ParseXMLErrorHandler(
@@ -176,7 +175,7 @@ bool ParseXML::validate_xml(
 }
 
 bool ParseXML::save_xml(
-    xercesc::DOMDocument*& doc)
+        xercesc::DOMDocument*& doc)
 {
     // Save XML document in target file path
     target = new xercesc::LocalFileFormatTarget(xercesc::XMLString::transcode(xml_file.c_str()));
@@ -212,7 +211,7 @@ xercesc::DOMNode* ParseXML::get_node(
 
         // Iterate through the nodes
         // TODO maybe trying with node->getNextSibling() iterator this function is more efficient
-        for (int i=0, size=node_tag_list->getLength(); i<size && !found; i++)
+        for (int i = 0, size = node_tag_list->getLength(); i < size && !found; i++)
         {
             // Obtain index element
             tag_node = node_tag_list->item(i);
@@ -249,14 +248,14 @@ xercesc::DOMNode* ParseXML::get_node(
                             {
                                 // Throw eprosima::qosprof::ElementNotFound exception
                                 throw ElementNotFound(
-                                    tag_name + " does not have the attribute " + att_name + "\n");
+                                            tag_name + " does not have the attribute " + att_name + "\n");
                             }
                         }
                         else
                         {
                             // Throw eprosima::qosprof::ElementNotFound exception
                             throw ElementNotFound(
-                                tag_name + " does not have the attribute " + att_name + "\n");
+                                        tag_name + " does not have the attribute " + att_name + "\n");
                         }
                     }
                     // LIST element TODO refactor
@@ -402,7 +401,7 @@ xercesc::DOMNode* ParseXML::get_node(
         const std::string& tag_name)
 {
     // Try call main get_node function with remain empty values
-    return get_node(doc, tag_name, 0, "", "");;
+    return get_node(doc, tag_name, 0, "", "");
 }
 
 xercesc::DOMNode* ParseXML::get_node(
@@ -432,7 +431,8 @@ xercesc::DOMNode* ParseXML::get_node(
         const std::string& att_value)
 {
     // Obtain main list of nodes
-    xercesc::DOMNodeList* node_list = doc->getDocumentElement()->getElementsByTagName(xercesc::XMLString::transcode(tag_name.c_str()));
+    xercesc::DOMNodeList* node_list = doc->getDocumentElement()->getElementsByTagName(
+                        xercesc::XMLString::transcode(tag_name.c_str()));
 
     // Check there was any node with given tag name
     if (node_list == nullptr)
@@ -442,7 +442,7 @@ xercesc::DOMNode* ParseXML::get_node(
     }
 
     // Obtain node from main get_node function
-    return get_node(node_list, tag_name, index, att_name, att_value);;
+    return get_node(node_list, tag_name, index, att_name, att_value);
 }
 
 xercesc::DOMNode* ParseXML::get_node(

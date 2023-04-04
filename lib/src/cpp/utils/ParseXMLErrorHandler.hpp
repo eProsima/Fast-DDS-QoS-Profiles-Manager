@@ -36,11 +36,13 @@ namespace utils {
 class ParseXMLErrorHandler : public xercesc::ErrorHandler
 {
 public:
+
     /**
      * @brief Kind of Exception to be thrown
      *
      */
-    enum class Kind {
+    enum class Kind
+    {
         FileNotFound,
         ElementInvalid,
         ElementNotFound,
@@ -51,7 +53,8 @@ public:
      *
      * @param Kind kind of exception to be thrown
      */
-    ParseXMLErrorHandler(Kind kind = Kind::FileNotFound);
+    ParseXMLErrorHandler(
+        Kind kind = Kind::FileNotFound);
 
     /**
      * @brief Destroy the Parse XML Error Handler object
@@ -64,21 +67,24 @@ public:
      *
      * @param ex exception caught
      */
-    void warning(const xercesc::SAXParseException& ex) override;
+    void warning(
+        const xercesc::SAXParseException& ex) override;
 
     /**
      * @brief Catch Xerces error exceptions
      *
      * @param ex exception caught
      */
-    void error(const xercesc::SAXParseException& ex) override;
+    void error(
+        const xercesc::SAXParseException& ex) override;
 
     /**
      * @brief Catch Xerces fatal error exceptions
      *
      * @param ex exception caught
      */
-    void fatalError(const xercesc::SAXParseException& ex) override;
+    void fatalError(
+        const xercesc::SAXParseException& ex) override;
 
     /**
      * @brief Reset error caught (empty impl)
@@ -98,7 +104,8 @@ private:
      *
      * @param ex exception caught
      */
-    void report_parse_exception(const xercesc::SAXParseException& ex);
+    void report_parse_exception(
+        const xercesc::SAXParseException& ex);
 
 };
 

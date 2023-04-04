@@ -43,6 +43,7 @@ namespace utils {
 class ParseXML
 {
 public:
+
     /**
      * @brief Construct a new Parse XML object, which initializes Xerces required tools,
      *  and reads given xml_file document
@@ -129,8 +130,8 @@ public:
             const std::string& value);
 
     /*
-    * AUX get_node functions based on the implementation needs
-    */
+     * AUX get_node functions based on the implementation needs
+     */
     xercesc::DOMNode* get_node(
             xercesc::DOMDocument*& doc,
             const std::string& tag_name);
@@ -176,6 +177,7 @@ public:
             const std::string& att_value);
 
 private:
+
     /**
      * @brief Save the document as string and validate
      *

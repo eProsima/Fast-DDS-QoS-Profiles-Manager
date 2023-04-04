@@ -35,6 +35,7 @@ namespace utils {
 class ParseXMLString : public xercesc::XMLFormatTarget
 {
 public:
+
     ParseXMLString();
 
     /**
@@ -60,13 +61,13 @@ public:
      * @param formatter XML unicode format manager
      */
     virtual void writeChars(
-        const XMLByte* const toWrite,
-        const XMLSize_t count,
-        xercesc::XMLFormatter* const formatter);
+            const XMLByte* const toWrite,
+            const XMLSize_t count,
+            xercesc::XMLFormatter* const formatter);
 
 protected:
     char* m_pBuffer;
-    unsigned long int  m_nTotal;
+    unsigned long int m_nTotal;
 };
 
 } /* utils */

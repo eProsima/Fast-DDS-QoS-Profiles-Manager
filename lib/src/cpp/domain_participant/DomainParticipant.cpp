@@ -265,13 +265,13 @@ void set_name(
         const std::string& name)
 {
     // Xerces document manage XML elements
-    xercesc::DOMDocument* doc = nullptr ;
+    xercesc::DOMDocument* doc = nullptr;
 
     // XML nodes and values
-    xercesc::DOMNode* profiles_node = nullptr ;
-    xercesc::DOMNode* participant_node = nullptr ;
-    xercesc::DOMNode* rtps_node = nullptr ;
-    xercesc::DOMNode* name_node = nullptr ;
+    xercesc::DOMNode* profiles_node = nullptr;
+    xercesc::DOMNode* participant_node = nullptr;
+    xercesc::DOMNode* rtps_node = nullptr;
+    xercesc::DOMNode* name_node = nullptr;
 
     // Create XML manager and initialize the document
     eprosima::qosprof::utils::ParseXML* manager = new eprosima::qosprof::utils::ParseXML(doc, xml_file, true);
@@ -287,12 +287,13 @@ void set_name(
         xercesc::DOMElement* root_element = doc->getDocumentElement();
 
         // Add profiles
-        profiles_node = (xercesc::DOMNode*) doc->createElement(xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::PROFILES));
+        profiles_node = (xercesc::DOMNode*) doc->createElement(
+            xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::PROFILES));
         root_element->appendChild(profiles_node);
     }
 
     // Obtain participant node with the profile id
-   try
+    try
     {
         participant_node = manager->get_node(
             profiles_node,
@@ -303,7 +304,7 @@ void set_name(
     catch (const eprosima::qosprof::ElementNotFound& ex)
     {
         // create if not existent
-        xercesc::DOMElement * participant_element = doc->createElement(
+        xercesc::DOMElement* participant_element = doc->createElement(
             xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::PARTICIPANT));
         profiles_node->appendChild(participant_element);
         participant_element->setAttribute(
@@ -321,8 +322,8 @@ void set_name(
     catch (const eprosima::qosprof::ElementNotFound& ex)
     {
         // create if not existent
-        rtps_node = (xercesc::DOMNode*) doc->createElement(xercesc::XMLString::transcode(
-            eprosima::qosprof::utils::tag::RTPS));
+        rtps_node = (xercesc::DOMNode*) doc->createElement(
+                            xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::RTPS));
         participant_node->appendChild(rtps_node);
 
     }
@@ -335,8 +336,8 @@ void set_name(
     catch (const eprosima::qosprof::ElementNotFound& ex)
     {
         // create if not existent
-        name_node = (xercesc::DOMNode*) doc->createElement(xercesc::XMLString::transcode(
-            eprosima::qosprof::utils::tag::NAME));
+        name_node = (xercesc::DOMNode*) doc->createElement(
+                            xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::NAME));
         rtps_node->appendChild(name_node);
     }
 

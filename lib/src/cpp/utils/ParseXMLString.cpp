@@ -40,15 +40,15 @@ unsigned long int ParseXMLString::length()
 }
 
 void ParseXMLString::writeChars(
-    const XMLByte* const toWrite,
-    const XMLSize_t count,
-    xercesc::XMLFormatter* const formatter)
+        const XMLByte* const toWrite,
+        const XMLSize_t count,
+        xercesc::XMLFormatter* const formatter)
 {
-    if(toWrite)
+    if (toWrite)
     {
         char* pTmp = new char[m_nTotal + count + 1];
 
-        if(m_pBuffer)
+        if (m_pBuffer)
         {
             memcpy(pTmp, m_pBuffer, m_nTotal);
             delete m_pBuffer;
