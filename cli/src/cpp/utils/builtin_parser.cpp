@@ -84,7 +84,29 @@ void builtin_parser(
     }
     else if (element == LOCATORS_SUBELEMENT)
     {
-        std::cout << "Participant builtin locators configuration not yet supported" << std::endl;
+        // Show help if there is no subelement
+        print_usage = subelement.empty() && check_help(values);
+        // Not keyed element
+        print_usage = print_usage || !check_keyed(false, keyed, message.str());
+        // Locator element require a subelement
+        print_usage = print_usage || !check_final_element(false, subelement, message.str());
+
+        if (!print_usage)
+        {
+            // TODO
+        }
+        else
+        {
+            if (CommonCommands::QUERY == command)
+            {
+                // TODO
+                // std::cout << PARTICIPANT_BUILTIN_LOCATORS_QUERY_USAGE << std::endl;
+            }
+            else
+            {
+                std::cout << PARTICIPANT_BUILTIN_LOCATORS_USAGE << std::endl;
+            }
+        }
     }
     else if (element == READER_SUBELEMENT)
     {

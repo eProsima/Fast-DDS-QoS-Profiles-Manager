@@ -133,9 +133,10 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].builtin.mutation_tries`|**PENDING** (currently `Participant builtin mutation tries configuration not yet supported`)|`PARTICIPANT_BUILTIN_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.mutation_tries arg`|**PENDING** (currently `Participant builtin mutation tries configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.mutation_tries help`|**PENDING** (currently `Participant builtin mutation tries configuration not yet supported`)|N/A|
-|`fastddsqosprof file.xml set participant[profile].builtin.locators`|**PENDING** (currently `Participant builtin locators configuration not yet supported`)|`PARTICIPANT_BUILTIN_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].builtin.locators arg`|**PENDING** (currently `Participant builtin locators configuration not yet supported`)|N/A|
-|`fastddsqosprof file.xml set participant[profile].builtin.locators help`|**PENDING** (currently `Participant builtin locators configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.locators`|`ERROR: Participant builtin <locators> must not be FINAL element`|`PARTICIPANT_BUILTIN_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].builtin.locators[]`|`ERROR: Participant builtin <locators> must not be keyed []`|`PARTICIPANT_BUILTIN_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].builtin.locators help`|N/A|`PARTICIPANT_BUILTIN_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].builtin.locators.other`|**PENDING**|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.reader`|**PENDING** (currently `Participant builtin readers configuration not yet supported`)|`PARTICIPANT_BUILTIN_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.reader arg`|**PENDING** (currently `Participant builtin readers configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.reader help`|**PENDING** (currently `Participant builtin readers configuration not yet supported`)|N/A|
