@@ -18,7 +18,7 @@ jobs:
       - name: Install apt packages
         uses: eProsima/eProsima-CI/ubuntu/install_apt_packages@main
         with:
-          packages: doxygen cmake
+          packages: doxygen cmake libxerces-c-dev
 
       - name: Install colcon
         uses: eProsima/eProsima-CI/ubuntu/install_colcon@main
