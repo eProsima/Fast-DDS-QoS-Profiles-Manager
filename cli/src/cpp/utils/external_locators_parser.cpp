@@ -200,7 +200,8 @@ void external_locators_parser(
                             // TODO: query kind should be passed in order to select the corresponding library function
                             break;
                         case CommonCommands::SET:
-                            std::string address = set_every_element ? values[3] : values[0];
+                            std::string address = set_every_element ?
+                                    values[ExternalLocatorArgumentPosition::ADDRESS] : values[DEFAULT_POSITION];
                             switch (list)
                             {
                                 case ExternalLocatorsList::DATAREADER_UNICAST:
@@ -268,7 +269,8 @@ void external_locators_parser(
                             // TODO: query kind should be passed in order to select the corresponding library function
                             break;
                         case CommonCommands::SET:
-                            std::string cost = set_every_element ? values[2] : values[0];
+                            std::string cost = set_every_element ?
+                                    values[ExternalLocatorArgumentPosition::COST] : values[DEFAULT_POSITION];
                             switch (list)
                             {
                                 case ExternalLocatorsList::DATAREADER_UNICAST:
@@ -336,7 +338,8 @@ void external_locators_parser(
                             // TODO: query kind should be passed in order to select the corresponding library function
                             break;
                         case CommonCommands::SET:
-                            std::string externality = set_every_element ? values[1] : values[0];
+                            std::string externality = set_every_element ?
+                                    values[ExternalLocatorArgumentPosition::EXTERNALITY] : values[DEFAULT_POSITION];
                             switch (list)
                             {
                                 case ExternalLocatorsList::DATAREADER_UNICAST:
@@ -390,6 +393,8 @@ void external_locators_parser(
                             // TODO: query kind should be passed in order to select the corresponding library function
                             break;
                         case CommonCommands::SET:
+                            std::string kind = set_every_element ?
+                                    values[ExternalLocatorArgumentPosition::KIND] : values[DEFAULT_POSITION];
                             switch (list)
                             {
                                 case ExternalLocatorsList::DATAREADER_UNICAST:
@@ -400,11 +405,11 @@ void external_locators_parser(
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_DEFAULT_UNICAST:
                                     qosprof::domain_participant::default_external_unicast_locators::set_kind(
-                                        filename, profile_name, values[0], key);
+                                        filename, profile_name, kind, key);
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
                                     qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
-                                            set_kind(filename, profile_name, values[0], key);
+                                            set_kind(filename, profile_name, kind, key);
                                     break;
                             }
                             break;
@@ -457,7 +462,8 @@ void external_locators_parser(
                             // TODO: query kind should be passed in order to select the corresponding library function
                             break;
                         case CommonCommands::SET:
-                            std::string mask = set_every_element ? values[4] : values[0];
+                            std::string mask = set_every_element ?
+                                    values[ExternalLocatorArgumentPosition::MASK] : values[DEFAULT_POSITION];
                             switch (list)
                             {
                                 case ExternalLocatorsList::DATAREADER_UNICAST:
@@ -525,7 +531,8 @@ void external_locators_parser(
                             // TODO: query kind should be passed in order to select the corresponding library function
                             break;
                         case CommonCommands::SET:
-                            std::string port = set_every_element ? values[5] : values[0];
+                            std::string port = set_every_element ?
+                                    values[ExternalLocatorArgumentPosition::PORT] : values[DEFAULT_POSITION];
                             switch (list)
                             {
                                 case ExternalLocatorsList::DATAREADER_UNICAST:

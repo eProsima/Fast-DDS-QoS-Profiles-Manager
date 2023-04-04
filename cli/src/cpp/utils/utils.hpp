@@ -42,6 +42,18 @@ enum class ExternalLocatorsList
     DATAREADER_UNICAST
 };
 
+enum ExternalLocatorArgumentPosition
+{
+    KIND,
+    EXTERNALITY,
+    ADDRESS,
+    COST,
+    MASK,
+    PORT
+};
+
+constexpr const int8_t DEFAULT_POSITION = 0;
+
 constexpr const char* common_command_str[] = {
     "clear",
     "print",
