@@ -139,7 +139,7 @@ public:
     xercesc::DOMNode* get_node(
             xercesc::DOMDocument*& doc,
             const std::string& tag_name,
-            int32_t index);
+            const std::string& index);
 
     xercesc::DOMNode* get_node(
             xercesc::DOMDocument*& doc,
@@ -150,7 +150,7 @@ public:
     xercesc::DOMNode* get_node(
             xercesc::DOMDocument*& doc,
             const std::string& tag_name,
-            int32_t index,
+            const std::string& index,
             const std::string& att_name,
             const std::string& att_value);
 
@@ -161,7 +161,7 @@ public:
     xercesc::DOMNode* get_node(
             xercesc::DOMNode*& parent_node,
             const std::string& tag_name,
-            int32_t index);
+            const std::string& index);
 
     xercesc::DOMNode* get_node(
             xercesc::DOMNode*& parent_node,
@@ -172,7 +172,7 @@ public:
     xercesc::DOMNode* get_node(
             xercesc::DOMNode*& parent_node,
             const std::string& tag_name,
-            int32_t index,
+            const std::string& index,
             const std::string& att_name,
             const std::string& att_value);
 
