@@ -21,7 +21,7 @@
 
 namespace eprosima {
 namespace qosprof {
-namespace parse {
+namespace utils {
 
 ParseXMLString::ParseXMLString()
 {
@@ -66,6 +66,6 @@ void ParseXMLString::writeChars(
     }
 }
 
-} /* parse */
+} /* utils */
 } /* qosprof */
 } /* eprosima */

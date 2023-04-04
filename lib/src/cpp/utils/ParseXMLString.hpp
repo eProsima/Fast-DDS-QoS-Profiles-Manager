@@ -25,7 +25,7 @@
 
 namespace eprosima {
 namespace qosprof {
-namespace parse {
+namespace utils {
 
 /**
  * @brief ParseXMLString is a Memory buffer to save the XML document
@@ -69,7 +69,7 @@ protected:
     unsigned long int  m_nTotal;
 };
 
-} /* parse */
+} /* utils */
 } /* qosprof */
 } /* eprosima */
 

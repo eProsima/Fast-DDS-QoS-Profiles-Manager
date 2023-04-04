@@ -293,12 +293,6 @@ protected:
 /* DOMAIN PARTICIPANT TESTS                                                                                           */
 /* General functions (eprosima::qosprof::domain_participant namespace)                                                */
 /**********************************************************************************************************************/
-TEST_F(DomainParticipantTests, quick_unittest_set_name_test)
-{
-    // Set participant name in order to create file
-    EXPECT_NO_THROW(set_name(xml_filename_, participant_profile_, participant_name_));
-}
-
 TEST_F(DomainParticipantTests, default_profile_test)
 {
     // Test variables

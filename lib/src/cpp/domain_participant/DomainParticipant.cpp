@@ -36,62 +36,62 @@ std::string print(
         const std::string& xml_file,
         const std::string& profile_id)
 {
-    throw eprosima::qosprof::Unsupported("Unsupported");
+    throw Unsupported("Unsupported");
 }
 
 std::string print_default_profile(
         const std::string& xml_file)
 {
-    throw eprosima::qosprof::Unsupported("Unsupported");
+    throw Unsupported("Unsupported");
 }
 
 std::string print_domain_id(
         const std::string& xml_file,
         const std::string& profile_id)
 {
-    throw eprosima::qosprof::Unsupported("Unsupported");
+    throw Unsupported("Unsupported");
 }
 
 std::string print_name(
         const std::string& xml_file,
         const std::string& profile_id)
 {
-    throw eprosima::qosprof::Unsupported("Unsupported");
+    throw Unsupported("Unsupported");
 }
 
 std::string print_ignore_non_matching_locators(
         const std::string& xml_file,
         const std::string& profile_id)
 {
-    throw eprosima::qosprof::Unsupported("Unsupported");
+    throw Unsupported("Unsupported");
 }
 
 std::string print_send_socket_buffer_size(
         const std::string& xml_file,
         const std::string& profile_id)
 {
-    throw eprosima::qosprof::Unsupported("Unsupported");
+    throw Unsupported("Unsupported");
 }
 
 std::string print_listen_socket_buffer_size(
         const std::string& xml_file,
         const std::string& profile_id)
 {
-    throw eprosima::qosprof::Unsupported("Unsupported");
+    throw Unsupported("Unsupported");
 }
 
 std::string print_participant_id(
         const std::string& xml_file,
         const std::string& profile_id)
 {
-    throw eprosima::qosprof::Unsupported("Unsupported");
+    throw Unsupported("Unsupported");
 }
 
 std::string print_user_transport(
         const std::string& xml_file,
         const std::string& profile_id)
 {
-    throw eprosima::qosprof::Unsupported("Unsupported");
+    throw Unsupported("Unsupported");
 }
 
 std::string print_user_transport(
@@ -99,21 +99,21 @@ std::string print_user_transport(
         const std::string& profile_id,
         const std::string& index)
 {
-    throw eprosima::qosprof::Unsupported("Unsupported");
+    throw Unsupported("Unsupported");
 }
 
 std::string print_use_builtin_transports(
         const std::string& xml_file,
         const std::string& profile_id)
 {
-    throw eprosima::qosprof::Unsupported("Unsupported");
+    throw Unsupported("Unsupported");
 }
 
 std::string print_user_data(
         const std::string& xml_file,
         const std::string& profile_id)
 {
-    throw eprosima::qosprof::Unsupported("Unsupported");
+    throw Unsupported("Unsupported");
 }
 
 std::string print_user_data(
@@ -121,48 +121,48 @@ std::string print_user_data(
         const std::string& profile_id,
         const std::string& index)
 {
-    throw eprosima::qosprof::Unsupported("Unsupported");
+    throw Unsupported("Unsupported");
 }
 
 std::string print_prefix(
         const std::string& xml_file,
         const std::string& profile_id)
 {
-    throw eprosima::qosprof::Unsupported("Unsupported");
+    throw Unsupported("Unsupported");
 }
 
 uint32_t user_transport_size(
         const std::string& xml_file,
         const std::string& profile_id)
 {
-    throw eprosima::qosprof::Unsupported("Unsupported");
+    throw Unsupported("Unsupported");
 }
 
 uint32_t user_data_size(
         const std::string& xml_file,
         const std::string& profile_id)
 {
-    throw eprosima::qosprof::Unsupported("Unsupported");
+    throw Unsupported("Unsupported");
 }
 
 void clear(
         const std::string& xml_file,
         const std::string& profile_id)
 {
-    throw eprosima::qosprof::Unsupported("Unsupported");
+    throw Unsupported("Unsupported");
 }
 
 void clear_default_profile(
         const std::string& xml_file)
 {
-    throw eprosima::qosprof::Unsupported("Unsupported");
+    throw Unsupported("Unsupported");
 }
 
 void clear_domain_id(
         const std::string& xml_file,
         const std::string& profile_id)
 {
-    throw eprosima::qosprof::Unsupported("Unsupported");
+    throw Unsupported("Unsupported");
 }
 
 void clear_name(
@@ -264,47 +264,22 @@ void set_name(
         const std::string& profile_id,
         const std::string& name)
 {
-    // Xerces objects to manage XML elements
-    xercesc::DOMConfiguration* config = NULL;
-    xercesc::DOMDocument* doc = NULL;
-    eprosima::qosprof::parse::ParseXMLErrorHandler* error_handler = NULL;
-    xercesc::DOMImplementation* implementation = NULL;
-    xercesc::DOMLSOutput* output = NULL;
-    xercesc::XercesDOMParser* parser = NULL;
-    xercesc::DOMLSSerializer* serializer = NULL;
-    xercesc::XMLFormatTarget* target = NULL;
+    // Xerces document manage XML elements
+    xercesc::DOMDocument* doc = nullptr ;
 
     // XML nodes and values
-    xercesc::DOMNode* profiles_node = NULL;
-    xercesc::DOMNode* participant_node = NULL;
-    xercesc::DOMNode* rtps_node = NULL;
-    xercesc::DOMNode* name_node = NULL;
-    xercesc::DOMText* name_value = NULL;
+    xercesc::DOMNode* profiles_node = nullptr ;
+    xercesc::DOMNode* participant_node = nullptr ;
+    xercesc::DOMNode* rtps_node = nullptr ;
+    xercesc::DOMNode* name_node = nullptr ;
 
-    // Try to initialize XML workspace
-    try
-    {
-        xercesc::XMLPlatformUtils::Initialize();
-    }
-    catch (const xercesc::XMLException& toCatch)
-    {
-        // Unable to initialize XML workspace
-        throw eprosima::qosprof::FileNotFound(xercesc::XMLString::transcode(toCatch.getMessage()));
-        return;
-    }
-
-    // Try to set up Xerces tools
-    if (!initialize_tools(config, doc, error_handler, implementation, output, parser, serializer, target, xml_file))
-    {
-        // Close XML workspace
-        xercesc::XMLPlatformUtils::Terminate();
-        return;
-    }
+    // Create XML manager and initialize the document
+    eprosima::qosprof::utils::ParseXML* manager = new eprosima::qosprof::utils::ParseXML(doc, xml_file, true);
 
     // Obtain profiles node
     try
     {
-        profiles_node = get_node(doc, eprosima::qosprof::tag::PROFILES);
+        profiles_node = manager->get_node(doc, eprosima::qosprof::utils::tag::PROFILES);
     }
     catch (const eprosima::qosprof::ElementNotFound& ex)
     {
@@ -312,27 +287,27 @@ void set_name(
         xercesc::DOMElement* root_element = doc->getDocumentElement();
 
         // Add profiles
-        profiles_node = (xercesc::DOMNode*) doc->createElement(xercesc::XMLString::transcode(eprosima::qosprof::tag::PROFILES));
+        profiles_node = (xercesc::DOMNode*) doc->createElement(xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::PROFILES));
         root_element->appendChild(profiles_node);
     }
 
     // Obtain participant node with the profile id
    try
     {
-        participant_node = get_node(
+        participant_node = manager->get_node(
             profiles_node,
-            eprosima::qosprof::tag::PARTICIPANT,
-            eprosima::qosprof::tag::PROFILE_NAME,
+            eprosima::qosprof::utils::tag::PARTICIPANT,
+            eprosima::qosprof::utils::tag::PROFILE_NAME,
             profile_id);
     }
     catch (const eprosima::qosprof::ElementNotFound& ex)
     {
-        // Create if not exist
+        // create if not existent
         xercesc::DOMElement * participant_element = doc->createElement(
-            xercesc::XMLString::transcode(eprosima::qosprof::tag::PARTICIPANT));
+            xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::PARTICIPANT));
         profiles_node->appendChild(participant_element);
         participant_element->setAttribute(
-            xercesc::XMLString::transcode(eprosima::qosprof::tag::PROFILE_NAME),
+            xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::PROFILE_NAME),
             xercesc::XMLString::transcode(profile_id.c_str()));
         participant_node = (xercesc::DOMNode*)participant_element;
 
@@ -341,13 +316,13 @@ void set_name(
     // Obtain rtps node
     try
     {
-        rtps_node = get_node(participant_node, eprosima::qosprof::tag::RTPS);
+        rtps_node = manager->get_node(participant_node, eprosima::qosprof::utils::tag::RTPS);
     }
     catch (const eprosima::qosprof::ElementNotFound& ex)
     {
-        // Create if not exist
+        // create if not existent
         rtps_node = (xercesc::DOMNode*) doc->createElement(xercesc::XMLString::transcode(
-            eprosima::qosprof::tag::RTPS));
+            eprosima::qosprof::utils::tag::RTPS));
         participant_node->appendChild(rtps_node);
 
     }
@@ -355,25 +330,21 @@ void set_name(
     // Obtain name
     try
     {
-        name_node = get_node(rtps_node, eprosima::qosprof::tag::NAME);
+        name_node = manager->get_node(rtps_node, eprosima::qosprof::utils::tag::NAME);
     }
     catch (const eprosima::qosprof::ElementNotFound& ex)
     {
-        // Create if not exist
+        // create if not existent
         name_node = (xercesc::DOMNode*) doc->createElement(xercesc::XMLString::transcode(
-            eprosima::qosprof::tag::NAME));
+            eprosima::qosprof::utils::tag::NAME));
         rtps_node->appendChild(name_node);
     }
 
-    // Remove all childs
-    reset_node(name_node);
-
-    // Set name value
-    name_value = doc->createTextNode(xercesc::XMLString::transcode(name.c_str()));
-    name_node->appendChild(name_value);
+    // Set the name node value
+    manager->set_value_to_node(doc, name_node, name);
 
     // Validate new XML element and save it
-    validate_and_save_xml_document(doc, error_handler, output, parser, serializer, target);
+    manager->validate_and_save_xml_document(doc);
 
     // Close XML workspace
     xercesc::XMLPlatformUtils::Terminate();
@@ -385,7 +356,7 @@ void set_ignore_non_matching_locators(
         const std::string& profile_id,
         const std::string& ignore_non_matching_locators)
 {
-    throw eprosima::qosprof::Unsupported("Unsupported");
+    throw Unsupported("Unsupported");
 }
 
 void set_send_socket_buffer_size(
@@ -393,7 +364,7 @@ void set_send_socket_buffer_size(
         const std::string& profile_id,
         const std::string& send_socket_buffer_size)
 {
-    throw eprosima::qosprof::Unsupported("Unsupported");
+    throw Unsupported("Unsupported");
 }
 
 void set_listen_socket_buffer_size(
@@ -401,7 +372,7 @@ void set_listen_socket_buffer_size(
         const std::string& profile_id,
         const std::string& listen_socket_buffer_size)
 {
-    throw eprosima::qosprof::Unsupported("Unsupported");
+    throw Unsupported("Unsupported");
 }
 
 void set_participant_id(
@@ -409,7 +380,7 @@ void set_participant_id(
         const std::string& profile_id,
         const std::string& participant_id)
 {
-    throw eprosima::qosprof::Unsupported("Unsupported");
+    throw Unsupported("Unsupported");
 }
 
 void set_use_builtin_transports(
@@ -417,7 +388,7 @@ void set_use_builtin_transports(
         const std::string& profile_id,
         const std::string& use_builtin_transports)
 {
-    throw eprosima::qosprof::Unsupported("Unsupported");
+    throw Unsupported("Unsupported");
 }
 
 void set_prefix(
@@ -425,7 +396,7 @@ void set_prefix(
         const std::string& profile_id,
         const std::string& prefix)
 {
-    throw eprosima::qosprof::Unsupported("Unsupported");
+    throw Unsupported("Unsupported");
 }
 
 void set_user_transports(
@@ -434,7 +405,7 @@ void set_user_transports(
         const std::string& transport_id,
         const std::string& index)
 {
-    throw eprosima::qosprof::Unsupported("Unsupported");
+    throw Unsupported("Unsupported");
 }
 
 void set_user_data(
@@ -443,7 +414,7 @@ void set_user_data(
         const std::string& user_data,
         const std::string& index)
 {
-    throw eprosima::qosprof::Unsupported("Unsupported");
+    throw Unsupported("Unsupported");
 }
 
 } // domain_participant

@@ -24,7 +24,7 @@
 
 namespace eprosima {
 namespace qosprof {
-namespace parse {
+namespace utils {
 
 ParseXMLErrorHandler::ParseXMLErrorHandler(Kind k)
 {
@@ -46,25 +46,28 @@ void ParseXMLErrorHandler::fatalError(const xercesc::SAXParseException& ex)
     report_parse_exception(ex);
 }
 
-void ParseXMLErrorHandler::resetErrors() { }
+void ParseXMLErrorHandler::resetErrors()
+{
+
+}
 
 void ParseXMLErrorHandler::report_parse_exception(const xercesc::SAXParseException& ex)
 {
     // Throw custom Exceptions based on the selected kind
     switch (kind){
         case Kind::ElementInvalid:
-            throw eprosima::qosprof::ElementInvalid(xercesc::XMLString::transcode(ex.getMessage()));
+            throw ElementInvalid(xercesc::XMLString::transcode(ex.getMessage()));
             break;
         case Kind::ElementNotFound:
-            throw eprosima::qosprof::ElementNotFound(xercesc::XMLString::transcode(ex.getMessage()));
+            throw ElementNotFound(xercesc::XMLString::transcode(ex.getMessage()));
             break;
         case Kind::FileNotFound:
         default:
-            throw eprosima::qosprof::FileNotFound(xercesc::XMLString::transcode(ex.getMessage()));
+            throw FileNotFound(xercesc::XMLString::transcode(ex.getMessage()));
             break;
     }
 }
 
-} /* parse */
+} /* utils */
 } /* qosprof */
 } /* eprosima */

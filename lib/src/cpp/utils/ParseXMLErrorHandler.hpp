@@ -25,7 +25,7 @@
 
 namespace eprosima {
 namespace qosprof {
-namespace parse {
+namespace utils {
 
 /**
  * @brief ParseXMLErrorHandler is an error handler that would
@@ -102,7 +102,7 @@ private:
 
 };
 
-} /* parse */
+} /* utils */
 } /* qosprof */
 } /* eprosima */
 

@@ -21,6 +21,19 @@ project(fastdds_qos_profiles_manager VERSION "0.1.0" LANGUAGES CXX)
 find_package(XercesC)
 
 ###############################################################################
+# Download and install external files
+###############################################################################
+set(DATA_INSTALL_DIR share/ CACHE PATH "Installation directory for data")
+# Download XML schema
+file(DOWNLOAD "https://raw.githubusercontent.com/eProsima/Fast-DDS/master/resources/xsd/fastRTPS_profiles.xsd"
+    ${PROJECT_BINARY_DIR}/${DATA_INSTALL_DIR}/fastRTPS_profiles.xsd)
+# Install XML schema
+install(FILES ${PROJECT_BINARY_DIR}/${DATA_INSTALL_DIR}/fastRTPS_profiles.xsd
+    DESTINATION ${DATA_INSTALL_DIR})
+# Set XML absolute path
+file(REAL_PATH install/${PROJECT_NAME}/${DATA_INSTALL_DIR}/fastRTPS_profiles.xsd XML_SCHEMA_PATH)
+
+###############################################################################
 # Installation paths
 ###############################################################################
 set(BIN_INSTALL_DIR bin/ CACHE PATH "Installation directory for binaries")
@@ -29,7 +42,6 @@ set(LIB_INSTALL_DIR lib${LIB_SUFFIX}/ CACHE PATH "Installation directory for lib
 set(DATA_INSTALL_DIR share/ CACHE PATH "Installation directory for data")
 set(LICENSE_INSTALL_DIR ${DATA_INSTALL_DIR}/${PROJECT_NAME} CACHE PATH "Installation directory for licenses")
 set(INSTALL_DESTINATION_PATH ${DATA_INSTALL_DIR}/${CMAKE_PROJECT_NAME}/cmake)
-set(XML_SCHEMA_PATH ${DATA_INSTALL_DIR}/fastRTPS_profiles.xsd)
 
 ###############################################################################
 # Configuration steps
@@ -40,12 +52,6 @@ configure_file(doxyfile.in ${PROJECT_BINARY_DIR}/doc/doxyfile @ONLY IMMEDIATE)
 # Configure config file
 configure_file(${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}/config.h.in
     ${PROJECT_BINARY_DIR}/include/${PROJECT_NAME}/config.h)
-
-###############################################################################
-# Download external files
-###############################################################################
-file(DOWNLOAD "https://raw.githubusercontent.com/eProsima/Fast-DDS/master/resources/xsd/fastRTPS_profiles.xsd"
-    ${PROJECT_BINARY_DIR}/${DATA_INSTALL_DIR}/fastRTPS_profiles.xsd)
 
 ###############################################################################
 # Default shared libraries
@@ -87,7 +93,6 @@ set(${PROJECT_NAME}_source_files
     src/cpp/domain_participant/PropertiesPolicy.cpp
     src/cpp/exception/Exception.cpp
     src/cpp/transport_descriptor/TransportDescriptor.cpp
-    src/cpp/common/Locator.cpp
     src/cpp/utils/ParseXML.cpp
     src/cpp/utils/ParseXMLString.cpp
     src/cpp/utils/ParseXMLErrorHandler.cpp
@@ -152,11 +157,6 @@ install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}
     PATTERN "*.h"
     PATTERN "*.hpp"
     )
-
-# Install XML schema
-install(FILES ${PROJECT_BINARY_DIR}/${DATA_INSTALL_DIR}/fastRTPS_profiles.xsd
-    DESTINATION ${DATA_INSTALL_DIR}
-)
 
 # Install config.h header
 install(FILES ${PROJECT_BINARY_DIR}/include/${PROJECT_NAME}/config.h
