@@ -104,15 +104,33 @@ void builtin_parser(
 /**
  * @brief Common parser for external locators lists
  *
- * @param[in] list Identify the specific list which is being modified.
+ * @param[in] list Identify the specific list which is being accessed.
  * @param[in] command Command kind.
- * @param[in] filename File to be modified.
+ * @param[in] filename File to be accessed.
  * @param[in] profile_name DDS entity profile name.
  * @param[in] element String with the dot-separated subelements.
  * @param[in] values Vector of strings with the values passed to CLI.
  */
 void external_locators_parser(
         ExternalLocatorsList list,
+        CommonCommands command,
+        const std::string& filename,
+        const std::string& profile_name,
+        std::string& element,
+        const std::vector<std::string>& values);
+
+/**
+ * @brief Common parser for locator lists
+ *
+ * @param[in] list Identify the specific list which is being accessed.
+ * @param[in] command Command kind.
+ * @param[in] filename File to be accessed.
+ * @param[in] profile_name DDS entity profile name.
+ * @param[in] element String with the dot-separated subelements.
+ * @param[in] values Vector of strings with the values passed to CLI.
+ */
+void locators_parser(
+        LocatorsList list,
         CommonCommands command,
         const std::string& filename,
         const std::string& profile_name,
