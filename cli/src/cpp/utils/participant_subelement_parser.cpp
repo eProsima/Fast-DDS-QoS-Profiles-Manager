@@ -182,14 +182,6 @@ void participant_subelement_parser(
         print_usage = print_usage || !check_keyed(false, keyed, message.str());
         // Final element
         print_usage = print_usage || !check_final_element(true, subelement, message.str());
-        // SET command requires one argument
-        print_usage = print_usage || (CommonCommands::SET == command && !check_command_arguments(command, 1,
-                values.size(), message.str(), true));
-        // PRINT and CLEAR require no argument
-        print_usage = print_usage || ((CommonCommands::CLEAR == command || CommonCommands::PRINT == command) &&
-                check_command_arguments(command, 0, values.size(), message.str(), true));
-        // Query command is not allowed: not collection element.
-        print_usage = print_usage || (CommonCommands::QUERY == command && query_not_allowed(message.str()));
 
         if (!print_usage)
         {
@@ -198,13 +190,28 @@ void participant_subelement_parser(
                 switch (command)
                 {
                     case CommonCommands::CLEAR:
-                        qosprof::domain_participant::clear_name(filename, profile_name);
+                        print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
+                        if (!print_usage)
+                        {
+                            qosprof::domain_participant::clear_name(filename, profile_name);
+                        }
                         break;
                     case CommonCommands::PRINT:
-                        qosprof::domain_participant::print_name(filename, profile_name);
+                        print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
+                        if (!print_usage)
+                        {
+                            qosprof::domain_participant::print_name(filename, profile_name);
+                        }
+                        break;
+                    case CommonCommands::QUERY:
+                        print_usage = query_not_allowed(message.str());
                         break;
                     case CommonCommands::SET:
-                        qosprof::domain_participant::set_name(filename, profile_name, values[0]);
+                        print_usage = !check_command_arguments(command, 1, values.size(), message.str(), true);
+                        if (!print_usage)
+                        {
+                            qosprof::domain_participant::set_name(filename, profile_name, values[0]);
+                        }
                         break;
                 }
             }
@@ -213,7 +220,8 @@ void participant_subelement_parser(
                 std::cout << "Fast DDS QoS Profiles Manager exception caught: " << e.what() << std::endl;
             }
         }
-        else
+
+        if (print_usage)
         {
             std::cout << PARTICIPANT_NAME_USAGE << std::endl;
         }
