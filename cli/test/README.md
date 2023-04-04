@@ -31,7 +31,7 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set datawriter`|**PENDING** (currently `DataWriter configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set intraprocess`|**PENDING** (currently `Intra-process configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set log`|**PENDING** (currently `Log module configuration not yet supported`)|N/A|
-|`fastddsqosprof file.xml set participant`|`ERROR: profile name is required for participant elements` [^1]|`PARTICIPANT_USAGE`|
+|`fastddsqosprof file.xml set participant`|`ERROR: participant requires a profile name` [^1]|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set topic`|**PENDING** (currently `Topic configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set transport_descriptor`|**PENDING** (currently `Transport descriptor configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set types`|**PENDING** (currently `Dynamic types configuration not yet supported`)|N/A|
@@ -40,8 +40,8 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant --help`|N/A|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant help`|N/A|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant argument1 argument2 help`|N/A|`PARTICIPANT_USAGE`|
-|`fastddsqosprof file.xml set participant.name`|`ERROR: profile name is required for participant elements`|`PARTICIPANT_USAGE`|
-|`fastddsqosprof file.xml set participant[]`|`ERROR: profile name is required for participant elements`|`PARTICIPANT_USAGE`|
+|`fastddsqosprof file.xml set participant.name`|`ERROR: participant requires a profile name`|`PARTICIPANT_USAGE`|
+|`fastddsqosprof file.xml set participant[]`|`ERROR: participant requires a profile name`|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant[profile]`|`ERROR: participant must not be FINAL element`|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant["a profile"]`|`ERROR: participant must not be FINAL element`|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].allocations`|**PENDING** (currently `Participant allocations configuration not yet supported`)|N/A|
@@ -55,7 +55,7 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].ignore_non_matching_locators`|**PENDING** (currently `Participant ignore non matching locators configuration flag not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].listen_socket_buffer_size`|**PENDING** (currently `Participant listen socket buffer size configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].locators`|**PENDING** (currently `Participant locators configuration not yet supported`)|N/A|
-|`fastddsqosprof file.xml set participant[profile].name`|**PENDING** (currently `Participant name configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set participant[profile].name`|`ERROR: set command for Participant <name> expects 1 arguments and received 0`|`PARTICIPANT_NAME_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].port`|**PENDING** (currently `Participant port parameters configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].property`|**PENDING** (currently `Participant properties configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].send_socket_buffer_size`|**PENDING** (currently `Participant send socket buffer size configuration not yet supported`)|N/A|
@@ -203,6 +203,14 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].other`|`ERROR: set command for Participant <external_locators> expects at least 1 arguments and received 0`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].other -h`|N/A|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].other argument`|`ERROR: other subelement not recognized`|N/A|
+|`fastddsqosprof file.xml set participant[profile].name[]`|`ERROR: Participant <name> must not be keyed []`|`PARTICIPANT_NAME_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].name.subelement`|`ERROR: Participant <name> must be FINAL element`|`PARTICIPANT_NAME_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].name -h`|N/A|`PARTICIPANT_NAME_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].name --help`|N/A|`PARTICIPANT_NAME_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].name help`|N/A|`PARTICIPANT_NAME_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].name arg1 arg2 -h`|N/A|`PARTICIPANT_NAME_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].name arg1 arg2`|`ERROR: set command for Participant <name> expects 1 arguments and received 2`|`PARTICIPANT_NAME_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].name arg1`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
 
 [^1]: **PENDING**: Print and clear default profile command will not require a profile name.
 

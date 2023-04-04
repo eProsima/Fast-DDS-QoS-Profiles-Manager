@@ -15,6 +15,7 @@
 #ifndef _FASTDDS_QOS_PROFILES_MANAGER_CLI_UTILS_UTILS_HPP_
 #define _FASTDDS_QOS_PROFILES_MANAGER_CLI_UTILS_UTILS_HPP_
 
+#include <iostream>
 #include <regex>
 #include <string>
 #include <vector>
@@ -140,11 +141,11 @@ void participant_subelement_parser(
 /**
  * @brief Check number of arguments.
  *
- * @param command Command kind in order to be shown in the log.
- * @param expected_arguments Number of expected arguments.
- * @param actual_argument_number Number of actual arguments parsed in CLI.
- * @param element specific element that expects the arguments.
- * @param exact Flag set if the expected arguments are enforced.
+ * @param[in] command Command kind in order to be shown in the log.
+ * @param[in] expected_arguments Number of expected arguments.
+ * @param[in] actual_argument_number Number of actual arguments parsed in CLI.
+ * @param[in] element specific element that expects the arguments.
+ * @param[in] exact Flag set if the expected arguments are enforced.
  * @return true if the check holds. False otherwise.
  */
 bool check_command_arguments(
@@ -157,9 +158,9 @@ bool check_command_arguments(
 /**
  * @brief Check if it is the last element.
  *
- * @param expected_final Flag to mark final expectations.
- * @param subelement Subelement to check if it is FINAL.
- * @param element Element being checked in order to be shown in the log.
+ * @param[in] expected_final Flag to mark final expectations.
+ * @param[in] subelement Subelement to check if it is FINAL.
+ * @param[in] element Element being checked in order to be shown in the log.
  * @return true if check is successful. False otherwise.
  */
 bool check_final_element(
@@ -183,9 +184,9 @@ inline bool check_help(
 /**
  * @brief Check if subelement should be keyed [].
  *
- * @param expected_keyed Flag to set keyed expectations.
- * @param keyed Actual keyed value.
- * @param element Element being checked in order to be shown in the log.
+ * @param[in] expected_keyed Flag to set keyed expectations.
+ * @param[in] keyed Actual keyed value.
+ * @param[in] element Element being checked in order to be shown in the log.
  * @return true if check is successful.False otherwise .
  */
 bool check_keyed(
@@ -206,6 +207,30 @@ bool extract_element_subelement_key(
         std::string& element,
         std::string& subelement,
         std::string& key);
+
+/**
+ * @brief Auxiliary method to enforce a profile name.
+ *
+ * @param[in] profile_name
+ * @param[in] element Element being checked in order to be shown in the log.
+ * @return true always.
+ */
+bool check_profile(
+        const std::string& profile_name,
+        const std::string& element);
+
+/**
+ * @brief Auxiliary method to output error when query command is not allowed.
+ *
+ * @param[in] element Element being checked in order to be shown in the log.
+ * @return true always.
+ */
+inline bool query_not_allowed(
+        const std::string& element)
+{
+    std::cout << "ERROR: query command not allowed. " << element << " is not a collection" << std::endl;
+    return true;
+}
 
 } // qosprof_cli
 } // eprosima

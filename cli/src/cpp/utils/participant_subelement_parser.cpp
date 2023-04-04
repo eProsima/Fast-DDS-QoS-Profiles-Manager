@@ -173,7 +173,55 @@ void participant_subelement_parser(
     }
     else if (element == NAME_SUBELEMENT)
     {
-        std::cout << "Participant name configuration not yet supported" << std::endl;
+        // Check help value
+        print_usage = check_help(values);
+        // Not keyed element
+        print_usage = print_usage || !check_keyed(false, keyed, message.str());
+        // Final element
+        print_usage = print_usage || !check_final_element(true, subelement, message.str());
+
+        if (!print_usage)
+        {
+            try
+            {
+                switch (command)
+                {
+                    case CommonCommands::CLEAR:
+                        print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
+                        if (!print_usage)
+                        {
+                            qosprof::domain_participant::clear_name(filename, profile_name);
+                        }
+                        break;
+                    case CommonCommands::PRINT:
+                        print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
+                        if (!print_usage)
+                        {
+                            qosprof::domain_participant::print_name(filename, profile_name);
+                        }
+                        break;
+                    case CommonCommands::QUERY:
+                        print_usage = query_not_allowed(message.str());
+                        break;
+                    case CommonCommands::SET:
+                        print_usage = !check_command_arguments(command, 1, values.size(), message.str(), true);
+                        if (!print_usage)
+                        {
+                            qosprof::domain_participant::set_name(filename, profile_name, values[0]);
+                        }
+                        break;
+                }
+            }
+            catch (const qosprof::Exception& e)
+            {
+                std::cout << "Fast DDS QoS Profiles Manager exception caught: " << e.what() << std::endl;
+            }
+        }
+
+        if (print_usage)
+        {
+            std::cout << PARTICIPANT_NAME_USAGE << std::endl;
+        }
     }
     else if (element == PORT_SUBELEMENT)
     {

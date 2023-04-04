@@ -69,6 +69,18 @@ bool check_keyed(
     return true;
 }
 
+bool check_profile(
+        const std::string& profile_name,
+        const std::string& element)
+{
+    if (profile_name.empty())
+    {
+        std::cout << "ERROR: " << element << " requires a profile name" << std::endl;
+        return false;
+    }
+    return true;
+}
+
 bool extract_element_subelement_key(
         std::string& element,
         std::string& subelement,
