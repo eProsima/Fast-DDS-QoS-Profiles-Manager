@@ -17,6 +17,7 @@
 #include <string>
 #include <vector>
 
+#include <fastdds_qos_profiles_manager/domain_participant/builtin/MetatrafficExternalUnicastLocators.hpp>
 #include <fastdds_qos_profiles_manager/domain_participant/DefaultExternalUnicastLocators.hpp>
 #include <fastdds_qos_profiles_manager/exception/Exception.hpp>
 
@@ -90,7 +91,8 @@ void external_locators_parser(
                                         profile_name, key);
                                 break;
                             case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                // TODO
+                                qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::clear(
+                                    filename, profile_name, key);
                                 break;
                         }
                         break;
@@ -108,7 +110,8 @@ void external_locators_parser(
                                         profile_name, key);
                                 break;
                             case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                // TODO
+                                qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::print(
+                                    filename, profile_name, key);
                                 break;
                         }
                         break;
@@ -169,7 +172,8 @@ void external_locators_parser(
                                         filename, profile_name, key);
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    // TODO
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            clear_address(filename, profile_name, key);
                                     break;
                             }
                             break;
@@ -187,7 +191,8 @@ void external_locators_parser(
                                         filename, profile_name, key);
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    // TODO
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            print_address(filename, profile_name, key);
                                     break;
                             }
                             break;
@@ -195,6 +200,8 @@ void external_locators_parser(
                             // TODO: query kind should be passed in order to select the corresponding library function
                             break;
                         case CommonCommands::SET:
+                            std::string address = set_every_element ?
+                                    values[ExternalLocatorArgumentPosition::ADDRESS] : values[DEFAULT_POSITION];
                             switch (list)
                             {
                                 case ExternalLocatorsList::DATAREADER_UNICAST:
@@ -204,14 +211,12 @@ void external_locators_parser(
                                     // TODO
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_DEFAULT_UNICAST:
-                                {
-                                    std::string address = set_every_element ? values[3] : values[0];
                                     qosprof::domain_participant::default_external_unicast_locators::set_address(
                                         filename, profile_name, address, key);
-                                }
-                                break;
+                                    break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    // TODO
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            set_address(filename, profile_name, address, key);
                                     break;
                             }
                             break;
@@ -236,7 +241,8 @@ void external_locators_parser(
                                         filename, profile_name, key);
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    // TODO
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            clear_cost(filename, profile_name, key);
                                     break;
                             }
                             break;
@@ -254,7 +260,8 @@ void external_locators_parser(
                                         filename, profile_name, key);
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    // TODO
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            print_cost(filename, profile_name, key);
                                     break;
                             }
                             break;
@@ -262,6 +269,8 @@ void external_locators_parser(
                             // TODO: query kind should be passed in order to select the corresponding library function
                             break;
                         case CommonCommands::SET:
+                            std::string cost = set_every_element ?
+                                    values[ExternalLocatorArgumentPosition::COST] : values[DEFAULT_POSITION];
                             switch (list)
                             {
                                 case ExternalLocatorsList::DATAREADER_UNICAST:
@@ -271,14 +280,12 @@ void external_locators_parser(
                                     // TODO
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_DEFAULT_UNICAST:
-                                {
-                                    std::string cost = set_every_element ? values[2] : values[0];
                                     qosprof::domain_participant::default_external_unicast_locators::set_cost(
                                         filename, profile_name, cost, key);
-                                }
-                                break;
+                                    break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    // TODO
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            set_cost(filename, profile_name, cost, key);
                                     break;
                             }
                             break;
@@ -303,7 +310,8 @@ void external_locators_parser(
                                         filename, profile_name, key);
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    // TODO
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            clear_externality(filename, profile_name, key);
                                     break;
                             }
                             break;
@@ -321,7 +329,8 @@ void external_locators_parser(
                                         filename, profile_name, key);
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    // TODO
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            print_externality(filename, profile_name, key);
                                     break;
                             }
                             break;
@@ -329,6 +338,8 @@ void external_locators_parser(
                             // TODO: query kind should be passed in order to select the corresponding library function
                             break;
                         case CommonCommands::SET:
+                            std::string externality = set_every_element ?
+                                    values[ExternalLocatorArgumentPosition::EXTERNALITY] : values[DEFAULT_POSITION];
                             switch (list)
                             {
                                 case ExternalLocatorsList::DATAREADER_UNICAST:
@@ -338,14 +349,12 @@ void external_locators_parser(
                                     // TODO
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_DEFAULT_UNICAST:
-                                {
-                                    std::string externality = set_every_element ? values[1] : values[0];
                                     qosprof::domain_participant::default_external_unicast_locators::set_externality(
                                         filename, profile_name, externality, key);
-                                }
-                                break;
+                                    break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    // TODO
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            set_externality(filename, profile_name, externality, key);
                                     break;
                             }
                             break;
@@ -375,7 +384,8 @@ void external_locators_parser(
                                         filename, profile_name, key);
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    // TODO
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            print_kind(filename, profile_name, key);
                                     break;
                             }
                             break;
@@ -383,6 +393,8 @@ void external_locators_parser(
                             // TODO: query kind should be passed in order to select the corresponding library function
                             break;
                         case CommonCommands::SET:
+                            std::string kind = set_every_element ?
+                                    values[ExternalLocatorArgumentPosition::KIND] : values[DEFAULT_POSITION];
                             switch (list)
                             {
                                 case ExternalLocatorsList::DATAREADER_UNICAST:
@@ -392,13 +404,12 @@ void external_locators_parser(
                                     // TODO
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_DEFAULT_UNICAST:
-                                {
                                     qosprof::domain_participant::default_external_unicast_locators::set_kind(
-                                        filename, profile_name, values[0], key);
-                                }
-                                break;
+                                        filename, profile_name, kind, key);
+                                    break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    // TODO
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            set_kind(filename, profile_name, kind, key);
                                     break;
                             }
                             break;
@@ -423,7 +434,8 @@ void external_locators_parser(
                                         filename, profile_name, key);
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    // TODO
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            clear_mask(filename, profile_name, key);
                                     break;
                             }
                             break;
@@ -441,7 +453,8 @@ void external_locators_parser(
                                         filename, profile_name, key);
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    // TODO
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            print_mask(filename, profile_name, key);
                                     break;
                             }
                             break;
@@ -449,6 +462,8 @@ void external_locators_parser(
                             // TODO: query kind should be passed in order to select the corresponding library function
                             break;
                         case CommonCommands::SET:
+                            std::string mask = set_every_element ?
+                                    values[ExternalLocatorArgumentPosition::MASK] : values[DEFAULT_POSITION];
                             switch (list)
                             {
                                 case ExternalLocatorsList::DATAREADER_UNICAST:
@@ -458,14 +473,12 @@ void external_locators_parser(
                                     // TODO
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_DEFAULT_UNICAST:
-                                {
-                                    std::string mask = set_every_element ? values[4] : values[0];
                                     qosprof::domain_participant::default_external_unicast_locators::set_mask(
                                         filename, profile_name, mask, key);
-                                }
-                                break;
+                                    break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    // TODO
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            set_mask(filename, profile_name, mask, key);
                                     break;
                             }
                             break;
@@ -490,7 +503,8 @@ void external_locators_parser(
                                         filename, profile_name, key);
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    // TODO
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            clear_port(filename, profile_name, key);
                                     break;
                             }
                             break;
@@ -508,7 +522,8 @@ void external_locators_parser(
                                         filename, profile_name, key);
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    // TODO
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            print_port(filename, profile_name, key);
                                     break;
                             }
                             break;
@@ -516,6 +531,8 @@ void external_locators_parser(
                             // TODO: query kind should be passed in order to select the corresponding library function
                             break;
                         case CommonCommands::SET:
+                            std::string port = set_every_element ?
+                                    values[ExternalLocatorArgumentPosition::PORT] : values[DEFAULT_POSITION];
                             switch (list)
                             {
                                 case ExternalLocatorsList::DATAREADER_UNICAST:
@@ -525,14 +542,12 @@ void external_locators_parser(
                                     // TODO
                                     break;
                                 case ExternalLocatorsList::PARTICIPANT_DEFAULT_UNICAST:
-                                {
-                                    std::string port = set_every_element ? values[5] : values[0];
                                     qosprof::domain_participant::default_external_unicast_locators::set_port(
                                         filename, profile_name, port, key);
-                                }
-                                break;
+                                    break;
                                 case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                    // TODO
+                                    qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::
+                                            set_port(filename, profile_name, port, key);
                                     break;
                             }
                             break;
@@ -569,7 +584,7 @@ void external_locators_parser(
                 usage = PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE;
                 break;
             case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                // usage = PARTICIPANT_BUILTIN_METATRAFFIC_EXTERNAL_UNICAST_LOCATORS_USAGE;
+                usage = PARTICIPANT_BUILTIN_METATRAFFIC_EXTERNAL_UNICAST_LOCATORS_USAGE;
                 break;
         }
         std::cout << usage << std::endl;
