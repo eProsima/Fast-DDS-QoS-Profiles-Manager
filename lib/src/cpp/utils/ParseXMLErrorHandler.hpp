@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @file ParseXMLErrorHandler.hpp
+ * @file
  */
 
 #ifndef _FAST_DDS_QOS_PROFILES_MANAGER_UTILS_PARSE_XML_ERROR_HANDLER_HPP_
@@ -64,27 +64,27 @@ public:
      *
      * @param ex exception caught
      */
-    void warning(const xercesc::SAXParseException& ex);
+    void warning(const xercesc::SAXParseException& ex) override;
 
     /**
      * @brief Catch Xerces error exceptions
      *
      * @param ex exception caught
      */
-    void error(const xercesc::SAXParseException& ex);
+    void error(const xercesc::SAXParseException& ex) override;
 
     /**
      * @brief Catch Xerces fatal error exceptions
      *
      * @param ex exception caught
      */
-    void fatalError(const xercesc::SAXParseException& ex);
+    void fatalError(const xercesc::SAXParseException& ex) override;
 
     /**
      * @brief Reset error caught (empty impl)
      *
      */
-    void resetErrors();
+    void resetErrors() override;
 
 private:
     /**

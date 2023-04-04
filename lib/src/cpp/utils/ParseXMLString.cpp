@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @file ParseXMLString.cpp
+ * @file
  */
 #include <utils/ParseXMLString.hpp>
 

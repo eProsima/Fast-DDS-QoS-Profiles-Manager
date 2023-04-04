@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @file Exception.cpp
+ * @file
  */
 
 #include <fastdds_qos_profiles_manager/exception/Exception.hpp>

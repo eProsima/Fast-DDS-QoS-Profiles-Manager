@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @file ParseXMLErrorHandler.cpp
+ * @file
  */
 
 #include <utils/ParseXMLErrorHandler.hpp>

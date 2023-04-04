@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @file ParseXMLTags.hpp
+ * @file
  */
 
 #ifndef _FAST_DDS_QOS_PROFILES_MANAGER_UTILS_PARSE_XML_TAGS_HPP_

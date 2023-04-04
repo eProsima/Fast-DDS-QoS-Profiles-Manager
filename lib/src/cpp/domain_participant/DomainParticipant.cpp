@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @file DomainParticipant.cpp
+ * @file
  */
 
 #include <fastdds_qos_profiles_manager/domain_participant/DomainParticipant.hpp>

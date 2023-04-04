@@ -21,7 +21,6 @@ file(GLOB_RECURSE LIBRARY_HEADERS
     ${PROJECT_SOURCE_DIR}/include/.*hpp
     ${PROJECT_SOURCE_DIR}/include/.*h
     ${PROJECT_SOURCE_DIR}/include/exception/.*hpp
-    ${PROJECT_SOURCE_DIR}/include/utils/.*hpp
 )
 
 file(GLOB_RECURSE LIBRARY_SOURCES

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @file DefaultExternalUnicastLocators.cpp
+ * @file
  */
 
 #include <fastdds_qos_profiles_manager/domain_participant/DefaultExternalUnicastLocators.hpp>

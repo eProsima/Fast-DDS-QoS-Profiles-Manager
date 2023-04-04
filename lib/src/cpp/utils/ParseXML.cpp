@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @file ParseXML.cpp
+ * @file
  */
 
 #include <utils/ParseXML.hpp>
@@ -365,15 +365,15 @@ std::string ParseXML::get_absolute_path(
     std::string absolute_xml_file;
 
     //   Check if file already exists
-    char* absolute_xml_path = realpath(xml_file.c_str(), NULL);
+    char* absolute_xml_path = realpath(xml_file.c_str(), nullptr);
     //   File does not exist
-    if (absolute_xml_path == NULL)
+    if (absolute_xml_path == nullptr)
     {
         // Check if it not already an absolute path
         if (xml_file.find("/") == std::string::npos)
         {
             // Get current path and concat xml file name
-            absolute_xml_path = realpath(".", NULL);
+            absolute_xml_path = realpath(".", nullptr);
             absolute_xml_file = absolute_xml_path;
             absolute_xml_file += "/" + xml_file;
         }

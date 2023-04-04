@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * @file ParseXML.hpp
+ * @file
  */
 
 #ifndef _FAST_DDS_QOS_PROFILES_MANAGER_UTILS_PARSE_XML_HPP_
@@ -44,8 +44,8 @@ class ParseXML
 {
 public:
     /**
-     * @brief Construct a new Parse XML object, which initialize Xerces required tools,
-     *  and read given xml_file document
+     * @brief Construct a new Parse XML object, which initializes Xerces required tools,
+     *  and reads given xml_file document
      *
      * @param[in out] doc DOMDocument* to be created
      * @param[in] xml_file string with the file path
@@ -86,7 +86,6 @@ public:
      * @param att_value string key (attribute) value of the node element in MAP cases
      *
      * @return xercesc::DOMNode* with the node found
-     * @return nullptr if node not found
      *
      * @throw ElementNotFound exception if expected node was not found
      */
@@ -103,7 +102,7 @@ public:
      * @param parent_node DOMNode parent node which should contain the node to be deleted
      * @param node_to_be_deleted DOMNode node to be deleted
      *
-     * @throw ElementInvalid exception if node was last element node (could not be deleted)
+     * @throw ElementInvalid exception if node is the last node element (could not be deleted)
      */
     void clear_node(
             xercesc::DOMNode*& parent_node,
@@ -122,7 +121,7 @@ public:
      *
      * @param[in out] doc DOMDocument* document to use
      * @param node DOMNode node to be set
-     * @param value value to be set in the node
+     * @param value to be set in the node
      */
     void set_value_to_node(
             xercesc::DOMDocument*& doc,
@@ -187,7 +186,6 @@ private:
      *
      * @throw ElementInvalid exception if document does not pass parser validation
      */
-
     bool validate_xml(
             xercesc::DOMDocument*& doc);
 
@@ -203,7 +201,7 @@ private:
             xercesc::DOMDocument*& doc);
 
     /**
-     * @brief Get the absolute path of the given file name
+     * @brief Get the absolute path of the given file name [POSIX only]
      *
      * @param[in]  xml_file string with the given file name
      * @param[out] file_exists bool reference to save file existence status
@@ -214,9 +212,9 @@ private:
             bool& file_exists);
 
     // CONSTANT CHAR USED BY XERCES
-    const char* CORE = "Core";
-    const char* UTF8 = "UTF-8";
-    const char* LINE_BREAK = "\n";
+    constexpr static const char* CORE = "Core";
+    constexpr static const char* UTF8 = "UTF-8";
+    constexpr static const char* LINE_BREAK = "\n";
 
     // Xerces tools required for node management
     xercesc::DOMConfiguration* config = nullptr;

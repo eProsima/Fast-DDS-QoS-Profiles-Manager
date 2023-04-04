@@ -26,12 +26,12 @@ find_package(XercesC)
 set(DATA_INSTALL_DIR share/ CACHE PATH "Installation directory for data")
 # Download XML schema
 file(DOWNLOAD "https://raw.githubusercontent.com/eProsima/Fast-DDS/master/resources/xsd/fastRTPS_profiles.xsd"
-    ${PROJECT_BINARY_DIR}/${DATA_INSTALL_DIR}/fastRTPS_profiles.xsd)
+    ${PROJECT_BINARY_DIR}/${DATA_INSTALL_DIR}/fastdds_profiles.xsd)
 # Install XML schema
-install(FILES ${PROJECT_BINARY_DIR}/${DATA_INSTALL_DIR}/fastRTPS_profiles.xsd
+install(FILES ${PROJECT_BINARY_DIR}/${DATA_INSTALL_DIR}/fastdds_profiles.xsd
     DESTINATION ${DATA_INSTALL_DIR})
 # Set XML absolute path
-file(REAL_PATH ${CMAKE_INSTALL_PREFIX}/${DATA_INSTALL_DIR}/fastRTPS_profiles.xsd XML_SCHEMA_PATH)
+file(REAL_PATH ${CMAKE_INSTALL_PREFIX}/${DATA_INSTALL_DIR}/fastdds_profiles.xsd XML_SCHEMA_PATH)
 
 ###############################################################################
 # Installation paths
