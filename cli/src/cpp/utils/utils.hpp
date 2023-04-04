@@ -15,6 +15,7 @@
 #ifndef _FASTDDS_QOS_PROFILES_MANAGER_CLI_UTILS_UTILS_HPP_
 #define _FASTDDS_QOS_PROFILES_MANAGER_CLI_UTILS_UTILS_HPP_
 
+#include <iostream>
 #include <regex>
 #include <string>
 #include <vector>
@@ -194,6 +195,13 @@ bool extract_element_subelement_key(
         std::string& element,
         std::string& subelement,
         std::string& key);
+
+inline bool query_not_allowed(
+        const std::string& element)
+{
+    std::cout << "ERROR: query command not allowed. " << element << " is not a collection" << std::endl;
+    return true;
+}
 
 } // qosprof_cli
 } // eprosima
