@@ -134,6 +134,26 @@ static const char PARTICIPANT_DEFAULT_PROFILE_USAGE[] =
     The <profile_name> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
 )";
 
+static const char PARTICIPANT_NAME_USAGE[] =
+        R"(Participant name parser:
+
+    Usage:
+      fastddsqosprof <file> <command> participant[<profile_name>].name <participant_name> (help | -h | --help)
+      fastddsqosprof <file> <command> participant[<profile_name>].name (help | -h | --help)
+
+    Options:
+      help -h --help              CLI Participant name usage
+
+    The allowed <command> options are:
+      clear                       Erase participant name from XML file.
+      print                       Print participant name.
+      set                         Set participant name in the XML file.
+
+    The <profile_name> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
+
+    The <participant_name> value is MANDATORY and it can be any string (whitespaces are supported if quoted).
+)";
+
 static const char PARTICIPANT_USAGE[] =
         R"(Participant parser:
 
