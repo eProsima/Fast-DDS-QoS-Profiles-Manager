@@ -23,6 +23,13 @@
 namespace eprosima {
 namespace qosprof_cli {
 
+bool builtin_locator_parser(
+        LocatorsList& /*locator_list*/,
+        std::string& /*element*/)
+{
+    return false;
+}
+
 void builtin_parser(
         CommonCommands command,
         const std::string& filename,

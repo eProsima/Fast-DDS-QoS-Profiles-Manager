@@ -102,6 +102,18 @@ void builtin_parser(
         const std::vector<std::string>& values);
 
 /**
+ * @brief Auxiliary participant builtin parser to parse the specific locator list.
+ *
+ * @param[out] locator_list Specific participant builtin locator list being accessed.
+ * @param[in, out] element String with the dot-separated subelements.
+ *                         Next subelement to be parsed is returned.
+ * @return true if valid locator list. False otherwise.
+ */
+bool builtin_locator_parser(
+        LocatorsList& locator_list,
+        std::string& element);
+
+/**
  * @brief Common parser for external locators lists
  *
  * @param[in] list Identify the specific list which is being accessed.
