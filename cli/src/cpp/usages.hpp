@@ -54,6 +54,29 @@ static const char QUERY_USAGE[] =
       fastddsqosprof <file> query [size | keys] <element>
 )";
 
+static const char PARTICIPANT_BUILTIN_LOCATORS_USAGE[] =
+        R"(Participant builtin locators usage:
+
+    Usage:
+      fastddsqosprof <file> <command> participant[<profile_name>].builtin.locators.<subelement> [<value> (help | -h | --help)]
+      fastddsqosprof <file> <command> participant[<profile_name>].builtin.locators.<subelement> (help | -h | --help)
+
+    Options:
+      help -h --help    CLI participant builtin metatraffic external unicast locators usage
+
+    The allowed <command> options are:
+      clear                     Erase participant builtin locator <subelement> list from XML file.
+      print                     Print participant builtin locator <subelement> list.
+      set                       Write participant builtin locator <subelement> list configuration parameter to XML file.
+
+    The <profile_name> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
+
+    The allowed <subelement> options are:
+      metatraffic_unicast       Configure builtin metatraffic unicast locator list.
+      metatraffic_multicast     Configure builtin metatraffic multicast locator list.
+      initial_peers             Configure builtin initial peers locator list.
+)";
+
 static const char PARTICIPANT_BUILTIN_METATRAFFIC_EXTERNAL_UNICAST_LOCATORS_USAGE[] =
         R"(Participant builtin metatraffic external unicast locators usage:
 
