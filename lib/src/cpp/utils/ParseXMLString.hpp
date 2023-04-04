@@ -41,9 +41,9 @@ public:
     /**
      * @brief Obtain the buffer pointer for validation
      *
-     * @return char* of the memory buffer
+     * @return unsigned char* of the memory buffer
      */
-    char* buffer();
+    unsigned char* buffer();
 
     /**
      * @brief Obtain the buffer size for validation
@@ -67,7 +67,7 @@ public:
 
 protected:
 
-    char* m_pBuffer;
+    unsigned char* m_pBuffer;
     unsigned long int m_nTotal;
 };
 

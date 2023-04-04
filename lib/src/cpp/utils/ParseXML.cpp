@@ -165,7 +165,7 @@ bool ParseXML::validate_xml(
     // Save XML document in the XML string buffer
     output->setByteStream(xml_string);
     serializer->write(doc, output);
-    xercesc::MemBufInputSource src(reinterpret_cast<XMLByte*>(xml_string->buffer()), xml_string->length(), "", false);
+    xercesc::MemBufInputSource src(static_cast<XMLByte*>(xml_string->buffer()), xml_string->length(), "", false);
 
     // Validate the XML string buffer against the schema
     parser->parse(src);

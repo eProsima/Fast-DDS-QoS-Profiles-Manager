@@ -29,7 +29,7 @@ ParseXMLString::ParseXMLString()
     m_nTotal = 0;
 }
 
-char* ParseXMLString::buffer()
+unsigned char* ParseXMLString::buffer()
 {
     return m_pBuffer;
 }
@@ -57,7 +57,7 @@ void ParseXMLString::writeChars(
         memcpy(&pTmp[m_nTotal], toWrite, count);
 
         m_nTotal += count;
-        m_pBuffer = pTmp;
+        m_pBuffer = reinterpret_cast<unsigned char*>(pTmp);
 
         if (m_pBuffer)
         {
