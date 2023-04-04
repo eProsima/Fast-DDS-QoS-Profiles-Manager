@@ -58,11 +58,13 @@ static const char PARTICIPANT_BUILTIN_LOCATORS_USAGE[] =
         R"(Participant builtin locators usage:
 
     Usage:
-      fastddsqosprof <file> <command> participant[<profile_name>].builtin.locators.<subelement> [<value> (help | -h | --help)]
-      fastddsqosprof <file> <command> participant[<profile_name>].builtin.locators.<subelement> (help | -h | --help)
+      fastddsqosprof <file> <command> participant[<profile_name>].builtin.locators.<locator_list>[(<index>)] [<kind_value> <address_value> <port_value> (help | -h | --help)]
+      fastddsqosprof <file> <command> participant[<profile_name>].builtin.locators.<locator_list>[(<index>)].<subelement> [<value> (help | -h | --help)]
+      fastddsqosprof <file> <command> participant[<profile_name>].builtin.locators.<locator_list>[(<index>)].<subelement> [(help | -h | --help)]
+      fastddsqosprof <file> <command> participant[<profile_name>].builtin.locators.<locator_list>[(<index>)] [(help | -h | --help)]
 
     Options:
-      help -h --help    CLI participant builtin metatraffic external unicast locators usage
+      help -h --help    CLI participant builtin locators usage
 
     The allowed <command> options are:
       clear                     Erase participant builtin locator <subelement> list from XML file.
@@ -71,10 +73,24 @@ static const char PARTICIPANT_BUILTIN_LOCATORS_USAGE[] =
 
     The <profile_name> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
 
-    The allowed <subelement> options are:
+    The allowed <locator_list> options are:
       metatraffic_unicast       Configure builtin metatraffic unicast locator list.
       metatraffic_multicast     Configure builtin metatraffic multicast locator list.
       initial_peers             Configure builtin initial peers locator list.
+
+    The <index> element is OPTIONAL:
+      No <index> pushes a new element into the list.
+      Positive <index> accesses the element in that position starting from the first element in the list.
+      Negative <index> accesses the element in that position starting from the last element in the list.
+
+    The allowed <subelement> options are:
+      address           Locator address. Valid set values: IP format or DNS.
+      kind              Locator kind. Valid set values: udp_v4 | udp_v6 | tcp_v4 | tcp_v6 (Default: udp_v4)
+                        kind is a mandatory parameter. Consequently, this parameter cannot be cleared. Erase the entire locator or update the kind.
+      physical_port     Locator physical port (TCP). Valid set values: [0, 65535]
+      port              Locator port. Valid set values: [0, 65535]
+      unique_lan_id     Locator unique LAN ID (TCP v4). Valid set values: 8 dot-separated bytes.
+      wan_address       Locator WAN address (TCP v4). Valid set values: IP v4 format.
 )";
 
 static const char PARTICIPANT_BUILTIN_METATRAFFIC_EXTERNAL_UNICAST_LOCATORS_USAGE[] =

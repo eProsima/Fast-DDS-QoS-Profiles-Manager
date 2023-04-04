@@ -24,10 +24,48 @@ namespace eprosima {
 namespace qosprof_cli {
 
 bool builtin_locator_parser(
-        LocatorsList& /*locator_list*/,
-        std::string& /*element*/)
+        LocatorsList& locator_list,
+        std::string& element,
+        std::string& key,
+        const std::vector<std::string>& values)
 {
-    return false;
+    std::string subelement;
+    bool keyed = extract_element_subelement_key(element, subelement, key);
+
+    // Initialize message in case of error
+    std::ostringstream message;
+    message << "Participant builtin <" << element << "> locator list";
+
+    bool print_usage = false;
+
+    // If there is no subelement and the last value is (help | -h | --help), print usage
+    print_usage = subelement.empty() && check_help(values);
+
+    if (!print_usage)
+    {
+        // Validity element check
+        if (element == INITIAL_PEERS_ELEMENT)
+        {
+            locator_list = LocatorsList::PARTICIPANT_INITIAL_PEERS;
+        }
+        else if (element == METATRAFFIC_MULTICAST_ELEMENT)
+        {
+            locator_list = LocatorsList::PARTICIPANT_METATRAFFIC_MULTICAST;
+        }
+        else if (element == METATRAFFIC_UNICAST_ELEMENT)
+        {
+            locator_list = LocatorsList::PARTICIPANT_METATRAFFIC_UNICAST;
+        }
+        else
+        {
+            std::cout << "ERROR: " << message.str() << " not recognized" << std::endl;
+            print_usage = true;
+        }
+        // Valid locator list must be keyed
+        print_usage = print_usage || !check_keyed(true, keyed, message.str());
+    }
+
+    return !print_usage;
 }
 
 void builtin_parser(
@@ -97,6 +135,9 @@ void builtin_parser(
         print_usage = print_usage || !check_keyed(false, keyed, message.str());
         // Locator element require a subelement
         print_usage = print_usage || !check_final_element(false, subelement, message.str());
+        // Select locator list
+        LocatorsList locator_list;
+        print_usage = print_usage || !builtin_locator_parser(locator_list, subelement, key, values);
 
         if (!print_usage)
         {

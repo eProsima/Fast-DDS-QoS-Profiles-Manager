@@ -93,7 +93,7 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].builtin.external_locators.metatraffic_unicast[] arg1 arg2 arg3 arg4 arg5 arg6`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.external_locators.metatraffic_unicast[].address`|`ERROR: set command for Participant builtin <external_locators> expects at least 1 arguments and received 0`|`PARTICIPANT_BUILTIN_METATRAFFIC_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.external_locators.metatraffic_unicast[].address -h`|N/A|`PARTICIPANT_BUILTIN_METATRAFFIC_EXTERNAL_UNICAST_LOCATORS_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].builtin.external_locators.metatraffic_unicast[].address argument`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.external_locators.metatraffic_unicast[].address argument` [^2]|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.external_locators.metatraffic_unicast[11811].address argument`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.external_locators.metatraffic_unicast[].address[] argument`|`ERROR: external locator <metatraffic_unicast> list <address> attribute must not be keyed []`|`PARTICIPANT_BUILTIN_METATRAFFIC_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.external_locators.metatraffic_unicast[].address.element argument`|`ERROR: external locator <metatraffic_unicast> list <address> attribute must be FINAL element`|`PARTICIPANT_BUILTIN_METATRAFFIC_EXTERNAL_UNICAST_LOCATORS_USAGE`|
@@ -136,7 +136,17 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].builtin.locators`|`ERROR: Participant builtin <locators> must not be FINAL element`|`PARTICIPANT_BUILTIN_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.locators[]`|`ERROR: Participant builtin <locators> must not be keyed []`|`PARTICIPANT_BUILTIN_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.locators help`|N/A|`PARTICIPANT_BUILTIN_LOCATORS_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].builtin.locators.other`|**PENDING**|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.locators.other`|`ERROR: Participant builtin <other> locator list not recognized`|`PARTICIPANT_BUILTIN_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].builtin.locators.other -h`|N/A|`PARTICIPANT_BUILTIN_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].builtin.locators.metatraffic_unicast`|`ERROR: Participant builtin <metatraffic_unicast> locator list must be keyed []`|`PARTICIPANT_BUILTIN_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].builtin.locators.metatraffic_unicast[]`|**PENDING**|**PENDING**|
+|`fastddsqosprof file.xml set participant[profile].builtin.locators.metatraffic_unicast[] arg1 -h`|N/A|`PARTICIPANT_BUILTIN_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].builtin.locators.metatraffic_multicast`|`ERROR: Participant builtin <metatraffic_multicast> locator list must be keyed []`|`PARTICIPANT_BUILTIN_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].builtin.locators.metatraffic_multicast[]`|**PENDING**|**PENDING**|
+|`fastddsqosprof file.xml set participant[profile].builtin.locators.metatraffic_multicast[] arg1 arg2 --help`|N/A|`PARTICIPANT_BUILTIN_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].builtin.locators.initial_peers`|`ERROR: Participant builtin <initial_peers> locator list must be keyed []`|`PARTICIPANT_BUILTIN_LOCATORS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].builtin.locators.initial_peers[]`|**PENDING**|**PENDING**|
+|`fastddsqosprof file.xml set participant[profile].builtin.locators.initial_peers[] help`|N/A|`PARTICIPANT_BUILTIN_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.reader`|**PENDING** (currently `Participant builtin readers configuration not yet supported`)|`PARTICIPANT_BUILTIN_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.reader arg`|**PENDING** (currently `Participant builtin readers configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.reader help`|**PENDING** (currently `Participant builtin readers configuration not yet supported`)|N/A|
@@ -214,6 +224,7 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].name arg1`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
 
 [^1]: **PENDING**: Print and clear default profile command will not require a profile name.
+[^2]: **PENDING**: Print, clear and query commands should not allow an empty index with a subelement.
 
 ## Caveats
 
