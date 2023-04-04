@@ -189,21 +189,28 @@ void participant_subelement_parser(
         print_usage = print_usage || ((CommonCommands::CLEAR == command || CommonCommands::PRINT == command) &&
                 check_command_arguments(command, 0, values.size(), message.str(), true));
         // Query command is not allowed: not collection element.
-        print_usage = print_usage || query_not_allowed(message.str());
+        print_usage = print_usage || (CommonCommands::QUERY == command && query_not_allowed(message.str()));
 
         if (!print_usage)
         {
-            switch (command)
+            try
             {
-                case CommonCommands::CLEAR:
-                    qosprof::domain_participant::clear_name(filename, profile_name);
-                    break;
-                case CommonCommands::PRINT:
-                    qosprof::domain_participant::print_name(filename, profile_name);
-                    break;
-                case CommonCommands::SET:
-                    qosprof::domain_participant::set_name(filename, profile_name, values[0]);
-                    break;
+                switch (command)
+                {
+                    case CommonCommands::CLEAR:
+                        qosprof::domain_participant::clear_name(filename, profile_name);
+                        break;
+                    case CommonCommands::PRINT:
+                        qosprof::domain_participant::print_name(filename, profile_name);
+                        break;
+                    case CommonCommands::SET:
+                        qosprof::domain_participant::set_name(filename, profile_name, values[0]);
+                        break;
+                }
+            }
+            catch (const qosprof::Exception& e)
+            {
+                std::cout << "Fast DDS QoS Profiles Manager exception caught: " << e.what() << std::endl;
             }
         }
         else
