@@ -25,7 +25,7 @@ namespace eprosima {
 namespace qosprof_cli {
 
 // Supported common commands
-enum class CommonCommands
+enum CommonCommands
 {
     CLEAR,
     PRINT,

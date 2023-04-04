@@ -31,7 +31,7 @@ bool check_command_arguments(
 {
     if (exact ? (actual_argument_number != expected_arguments) : (actual_argument_number < expected_arguments))
     {
-        std::cout << "ERROR: " << common_command_str[static_cast<int>(command)] << " command for " << element
+        std::cout << "ERROR: " << common_command_str[command] << " command for " << element
                   << " expects " << (exact ? "" : "at least ") << expected_arguments << " arguments and received "
                   << actual_argument_number << std::endl;
         return false;
