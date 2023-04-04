@@ -72,7 +72,6 @@ ParseXML::ParseXML (
     config = serializer->getDomConfig();
     config->setParameter(xercesc::XMLUni::fgDOMWRTFormatPrettyPrint, true);
     config->setParameter(xercesc::XMLUni::fgDOMXMLDeclaration, true);
-    target = new xercesc::LocalFileFormatTarget(xercesc::XMLString::transcode(xml_file.c_str()));
 
     // Parser would validate the serialized XML against the defined XSD, with some configured parameters
     parser = new xercesc::XercesDOMParser();
@@ -103,7 +102,7 @@ ParseXML::ParseXML (
     try
     {
         // Parsing initially would load the elements in the parser's doc object
-        parser->parse(xercesc::XMLString::transcode(xml_file.c_str()));
+        parser->parse(xml_file.c_str());
         // Doc would be needed in some other process, so it would be useful to take it apart of the parser
         doc = parser->getDocument();
     }
@@ -180,6 +179,7 @@ bool ParseXML::save_xml(
     xercesc::DOMDocument*& doc)
 {
     // Save XML document in target file path
+    target = new xercesc::LocalFileFormatTarget(xercesc::XMLString::transcode(xml_file.c_str()));
     output->setByteStream(target);
     return serializer->write(doc, output);
 }
@@ -206,73 +206,97 @@ xercesc::DOMNode* ParseXML::get_node(
     // MAP or LIST element node
     else
     {
-        // Obtain node based on MAP
-        if (att_name.c_str() != nullptr){
-            xercesc::DOMNode* tag_node = nullptr;
-            bool found = false;
+        // Obtain node
+        xercesc::DOMNode* tag_node = nullptr;
+        bool found = false;
 
-            // Iterate through the nodes
-            // TODO maybe trying with node->getNextSibling() iterator this function is more efficient
-            for (int i=0, size=node_tag_list->getLength(); i<size && !found; i++)
+        // Iterate through the nodes
+        // TODO maybe trying with node->getNextSibling() iterator this function is more efficient
+        for (int i=0, size=node_tag_list->getLength(); i<size && !found; i++)
+        {
+            // Obtain index element
+            tag_node = node_tag_list->item(i);
+            if (tag_node != nullptr)
             {
-                // Obtain index element
-                tag_node = node_tag_list->item(i);
-                if (tag_node != nullptr)
+                // Node is not a Element, go next
+                if (tag_node->getNodeType() != xercesc::DOMNode::NodeType::ELEMENT_NODE)
                 {
-                    // Get node name and attributes
-                    std::string name = xercesc::XMLString::transcode(tag_node->getNodeValue());
-                    xercesc::DOMNamedNodeMap* atts = tag_node->getAttributes();
-                    // If there are attributes
-                    if (atts != nullptr)
+                    continue;
+                }
+                // Node is a Complex Element
+                if (tag_name == xercesc::XMLString::transcode(tag_node->getNodeName()))
+                {
+                    // MAP element
+                    if (att_name.length() != 0)
                     {
-                        // Obtain the attribute that matches the name
-                        xercesc::DOMNode* item = atts->getNamedItem(xercesc::XMLString::transcode(att_name.c_str()));
-                        if (item != nullptr)
+                        // Get node name and attributes
+                        xercesc::DOMNamedNodeMap* atts = tag_node->getAttributes();
+                        // If there are attributes
+                        if (atts != nullptr)
                         {
-                            // If the value of the attribute match
-                            std::string val = xercesc::XMLString::transcode(item->getNodeValue());
-                            if (val == att_value)
+                            // Obtain the attribute that matches the name
+                            xercesc::DOMNode* item = atts->getNamedItem(xercesc::XMLString::transcode(att_name.c_str()));
+                            if (item != nullptr)
                             {
-                                found = true;
+                                // If the value of the attribute match
+                                std::string val = xercesc::XMLString::transcode(item->getNodeValue());
+                                if (val == att_value)
+                                {
+                                    found = true;
+                                }
+                            }
+                            else
+                            {
+                                // Throw eprosima::qosprof::ElementNotFound exception
+                                throw ElementNotFound(
+                                    tag_name + " does not have the attribute " + att_name + "\n");
                             }
                         }
+                        else
+                        {
+                            // Throw eprosima::qosprof::ElementNotFound exception
+                            throw ElementNotFound(
+                                tag_name + " does not have the attribute " + att_name + "\n");
+                        }
+                    }
+                    // LIST element TODO refactor
+                    else if (&index == nullptr)
+                    {
+                        int32_t realIndex = index;
+                        // Transform index to real index
+                        if (index < 0)
+                        {
+                            realIndex = node_tag_list->getLength() + index;
+                        }
+                        // Check bounds
+                        if (realIndex < 0 || realIndex >= node_tag_list->getLength())
+                        {
+                            // Throw eprosima::qosprof::ElementNotFound exception
+                            throw ElementNotFound(
+                                tag_name + " does not have an element in position " + std::to_string(realIndex) + "\n");
+                        }
+                        // Return Node
+                        return node_tag_list->item(realIndex);
+                    }
+                    // Complex Element
+                    else
+                    {
+                        found = true;
                     }
                 }
             }
-
-            // Throw exception if node not found
-            if (!found)
-            {
-                // Given element does not exist
-                throw ElementNotFound(
-                    tag_name + " does not have an element with key " + att_value + "\n");
-            }
-            else
-            {
-                // Return Node
-                return tag_node;
-            }
         }
-        // Obtain node based on LIST
+        // Throw exception if node not found
+        if (!found)
+        {
+            // Given element does not exist
+            throw ElementNotFound(
+                tag_name + " does not have an element with key " + att_value + "\n");
+        }
         else
         {
-            int32_t realIndex = index;
-
-            // Transform index to real index
-            if (index < 0)
-            {
-                realIndex = node_tag_list->getLength() + index;
-            }
-
-            // Check bounds
-            if (realIndex < 0 || realIndex >= node_tag_list->getLength())
-            {
-                // Throw eprosima::qosprof::ElementNotFound exception
-                throw ElementNotFound(
-                    tag_name + " does not have an element in position " + std::to_string(realIndex) + "\n");
-            }
             // Return Node
-            return node_tag_list->item(realIndex);
+            return tag_node;
         }
     }
 }
@@ -280,7 +304,6 @@ xercesc::DOMNode* ParseXML::get_node(
 void ParseXML::clear_node(
         xercesc::DOMNode*& parent_node,
         xercesc::DOMNode*& node_to_be_deleted)
-
 {
     // Check if parent node has child nodes
     if (parent_node->hasChildNodes())
@@ -303,12 +326,10 @@ void ParseXML::clear_node(
 
     // Free node resources
     node_to_be_deleted->release();
-    delete node_to_be_deleted;
 }
 
 void ParseXML::reset_node(
         xercesc::DOMNode*& node)
-
 {
     // Loop for childs
     while (node->hasChildNodes())
@@ -321,7 +342,6 @@ void ParseXML::reset_node(
 
         // Free node resources
         node_to_be_deleted->release();
-        delete node_to_be_deleted;
     }
 }
 

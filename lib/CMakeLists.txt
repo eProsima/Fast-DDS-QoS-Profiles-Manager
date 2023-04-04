@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-cmake_minimum_required(VERSION 3.16.3)
+cmake_minimum_required(VERSION 3.19)
 cmake_policy(VERSION 3.16.3...3.20.3)
 
 project(fastdds_qos_profiles_manager VERSION "0.1.0" LANGUAGES CXX)
@@ -31,7 +31,7 @@ file(DOWNLOAD "https://raw.githubusercontent.com/eProsima/Fast-DDS/master/resour
 install(FILES ${PROJECT_BINARY_DIR}/${DATA_INSTALL_DIR}/fastRTPS_profiles.xsd
     DESTINATION ${DATA_INSTALL_DIR})
 # Set XML absolute path
-file(REAL_PATH install/${PROJECT_NAME}/${DATA_INSTALL_DIR}/fastRTPS_profiles.xsd XML_SCHEMA_PATH)
+file(REAL_PATH ${CMAKE_INSTALL_PREFIX}/${DATA_INSTALL_DIR}/fastRTPS_profiles.xsd XML_SCHEMA_PATH)
 
 ###############################################################################
 # Installation paths
