@@ -291,7 +291,7 @@ void set_name(
             xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::PROFILES));
         root_element->appendChild(profiles_node);
     }
-
+    
     // Obtain participant node with the profile id
     try
     {

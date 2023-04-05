@@ -46,7 +46,7 @@ void ParseXMLString::writeChars(
 {
     if (toWrite)
     {
-        char* pTmp = new char[m_nTotal + count + 1];
+        unsigned char* pTmp = new unsigned char[m_nTotal + count + 1];
 
         if (m_pBuffer)
         {
@@ -57,7 +57,7 @@ void ParseXMLString::writeChars(
         memcpy(&pTmp[m_nTotal], toWrite, count);
 
         m_nTotal += count;
-        m_pBuffer = reinterpret_cast<unsigned char*>(pTmp);
+        m_pBuffer = pTmp;
 
         if (m_pBuffer)
         {
