@@ -257,31 +257,43 @@ void set_externality(
     // Obtain meta-traffic external unicast locator list node
     try
     {
-        locator_list_node = manager->get_node(rtps_node, eprosima::qosprof::utils::tag::META_EXT_UNI_LOC_LIST);
+        locator_list_node = manager->get_node(builtin_node, eprosima::qosprof::utils::tag::META_EXT_UNI_LOC_LIST);
     }
     catch (const eprosima::qosprof::ElementNotFound& ex)
     {
         // create if not existent
         locator_list_node = (xercesc::DOMNode*) doc->createElement(xercesc::XMLString::transcode(
             eprosima::qosprof::utils::tag::META_EXT_UNI_LOC_LIST));
-        rtps_node->appendChild(locator_list_node);
+        builtin_node->appendChild(locator_list_node);
     }
 
-    // Obtain locator node
-    try
-    {
-        locator_node = manager->get_node(locator_list_node, eprosima::qosprof::utils::tag::UDPv4_LOCATOR, index);
-    }
-    catch (const eprosima::qosprof::ElementNotFound& ex)
-    {
-        // create if not existent
-        locator_node = (xercesc::DOMNode*) doc->createElement(xercesc::XMLString::transcode(
-            eprosima::qosprof::utils::tag::UDPv4_LOCATOR));
-        locator_list_node->appendChild(locator_node);
-    }
 
-    // Set the name node value
-    manager->set_value_to_node(doc, locator_node, externality);
+    // Check if locator should be updated or created
+    if (index == "")
+    {
+        locator_node = static_cast<xercesc::DOMNode*>(doc->createElement(xercesc::XMLString::transcode(
+                eprosima::qosprof::utils::tag::UDPv4_LOCATOR)));
+            locator_list_node->appendChild(locator_node);
+    }
+    // Update locator
+    else
+    {
+        try
+        {
+            locator_node = manager->get_node(locator_list_node, eprosima::qosprof::utils::tag::UDPv4_LOCATOR, &index);
+        }
+        catch (const eprosima::qosprof::ElementNotFound& ex)
+        {
+            // create if not existent
+            locator_node = static_cast<xercesc::DOMNode*>(doc->createElement(xercesc::XMLString::transcode(
+                eprosima::qosprof::utils::tag::UDPv4_LOCATOR)));
+            locator_list_node->appendChild(locator_node);
+        }
+    }
+    // Set the externality value
+    static_cast<xercesc::DOMElement*>(locator_node)->setAttribute(
+            xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::EXTERNALITY),
+            xercesc::XMLString::transcode(externality.c_str()));
 
     // Validate new XML element and save it
     manager->validate_and_save_xml_document(doc);

@@ -185,23 +185,31 @@ bool ParseXML::save_xml(
 }
 
 xercesc::DOMNode* ParseXML::get_node(
-        xercesc::DOMNodeList*& node_tag_list,
+        xercesc::DOMNode*& parent_node,
         const std::string& tag_name,
-        int32_t index,
+        const std::string* index,
         const std::string& att_name,
         const std::string& att_value)
 {
+    // Obtain main list of nodes
+    xercesc::DOMNodeList* node_list = parent_node->getChildNodes();
+    if (node_list == nullptr)
+    {
+        // Throw ElementNotFound exception
+        throw ElementNotFound("non-existent " + tag_name + " profile\n");
+    }
+
     // Throw exception if no nodes
-    if (node_tag_list->getLength() == 0)
+    if (node_list->getLength() == 0)
     {
         // Throw eprosima::qosprof::ElementNotFound exception
         throw ElementNotFound("non-existent " + tag_name + " profile\n");
     }
     // Complex element Node
-    else if (node_tag_list->getLength() == 1)
+    else if (node_list->getLength() == 1)
     {
         // Return Node
-        return node_tag_list->item(0);
+        return node_list->item(0);
     }
     // MAP or LIST element node
     else
@@ -212,10 +220,10 @@ xercesc::DOMNode* ParseXML::get_node(
 
         // Iterate through the nodes
         // TODO maybe trying with node->getNextSibling() iterator this function is more efficient
-        for (int i = 0, size = node_tag_list->getLength(); i < size && !found; i++)
+        for (int i = 0, size = node_list->getLength(); i < size && !found; i++)
         {
             // Obtain index element
-            tag_node = node_tag_list->item(i);
+            tag_node = node_list->item(i);
             if (tag_node != nullptr)
             {
                 // Node is not a Element, go next
@@ -260,25 +268,52 @@ xercesc::DOMNode* ParseXML::get_node(
                                       tag_name + " does not have the attribute " + att_name + "\n");
                         }
                     }
-                    // LIST element TODO refactor
-                    else if (&index == nullptr)
+                    // LIST element
+                    else if (index != nullptr)
                     {
-                        int32_t realIndex = index;
-                        // Transform index to real index
-                        if (index < 0)
+                        // Check value of index
+                        std::string in = *index;
+
+                        // Empty index
+                        if (in == "")
                         {
-                            realIndex = node_tag_list->getLength() + index;
+                            // return parent
+                            return tag_node;
                         }
-                        // Check bounds
-                        if (realIndex < 0 || realIndex >= node_tag_list->getLength())
+                        // Index has a value
+                        else
                         {
-                            // Throw eprosima::qosprof::ElementNotFound exception
-                            throw ElementNotFound(
-                                      tag_name + " does not have an element in position " + std::to_string(
-                                          realIndex) + "\n");
+                            // Parse index value and obtain node
+                            int32_t int_index = 0;
+                            int32_t real_index = 0;
+
+                            try
+                            {
+                                // Parse index from string to int
+                                int_index = std::stoi(in);
+                                real_index = int_index;
+                            }
+                            catch(...)
+                            {
+                                throw BadParameter(in + " could not be used as integer index");
+                            }
+
+                            // Transform index to real index
+                            if (int_index < 0)
+                            {
+                                real_index = node_list->getLength() + int_index;
+                            }
+
+                            // Check bounds
+                            if (real_index < 0 || real_index >= node_list->getLength())
+                            {
+                                // Throw eprosima::qosprof::ElementNotFound exception
+                                throw ElementNotFound(
+                                    tag_name + " does not have an element in position " + std::to_string(real_index) + "\n");
+                            }
+                            // Return Node
+                            return node_list->item(real_index);
                         }
-                        // Return Node
-                        return node_tag_list->item(realIndex);
                     }
                     // Complex Element
                     else
@@ -404,13 +439,13 @@ xercesc::DOMNode* ParseXML::get_node(
         const std::string& tag_name)
 {
     // Try call main get_node function with remain empty values
-    return get_node(doc, tag_name, "", "", "");;
+    return get_node(doc, tag_name, nullptr, "", "");;
 }
 
 xercesc::DOMNode* ParseXML::get_node(
         xercesc::DOMDocument*& doc,
         const std::string& tag_name,
-        const std::string& index)
+        const std::string* index)
 {
     // Try call main get_node function with remain empty values
     return get_node(doc, tag_name, index, "", "");
@@ -423,13 +458,13 @@ xercesc::DOMNode* ParseXML::get_node(
         const std::string& att_value)
 {
     // Try call main get_node function with remain empty values
-    return get_node(doc, tag_name, "", att_name, att_value);
+    return get_node(doc, tag_name, nullptr, att_name, att_value);
 }
 
 xercesc::DOMNode* ParseXML::get_node(
         xercesc::DOMDocument*& doc,
         const std::string& tag_name,
-        const std::string& index,
+        const std::string* index,
         const std::string& att_name,
         const std::string& att_value)
 {
@@ -445,13 +480,13 @@ xercesc::DOMNode* ParseXML::get_node(
         const std::string& tag_name)
 {
     // Try call main get_node function with remain empty values
-    return get_node(parent_node, tag_name, "", "", "");
+    return get_node(parent_node, tag_name, nullptr, "", "");
 }
 
 xercesc::DOMNode* ParseXML::get_node(
         xercesc::DOMNode*& parent_node,
         const std::string& tag_name,
-        const std::string& index)
+        const std::string* index)
 {
     // Try call main get_node function with remain empty values
     return get_node(parent_node, tag_name, index, "", "");
@@ -464,126 +499,7 @@ xercesc::DOMNode* ParseXML::get_node(
         const std::string& att_value)
 {
     // Try call main get_node function with remain empty values
-    return get_node(parent_node, tag_name, "", att_name, att_value);
-}
-
-xercesc::DOMNode* ParseXML::get_node(
-        xercesc::DOMNode*& parent_node,
-        const std::string& tag_name,
-        const std::string& index,
-        const std::string& att_name,
-        const std::string& att_value)
-{
-    // Obtain main list of nodes
-    xercesc::DOMNodeList* node_list = parent_node->getChildNodes();
-    if (node_list == nullptr)
-    {
-        // Throw ElementNotFound exception
-        throw ElementNotFound("non-existent " + tag_name + " profile\n");
-    }
-
-    // Throw exception if no nodes
-    if (node_list->getLength() == 0)
-    {
-        // Throw eprosima::qosprof::ElementNotFound exception
-        throw ElementNotFound("non-existent " + tag_name + " profile\n");
-    }
-    // Complex element Node
-    else if (node_list->getLength() == 1)
-    {
-        // Return Node
-        return node_list->item(0);
-    }
-    // MAP or LIST element node
-    else
-    {
-        // empty index, return parent node
-        if (index == "")
-        {
-            return parent_node;
-        }
-        // Obtain node based on MAP
-        else if (att_name.c_str() != nullptr){
-            xercesc::DOMNode* tag_node = nullptr;
-            bool found = false;
-
-            // Iterate through the nodes
-            // TODO maybe trying with node->getNextSibling() iterator this function is more efficient
-            for (int i=0, size=node_list->getLength(); i<size && !found; i++)
-            {
-                // Obtain index element
-                tag_node = node_list->item(i);
-                if (tag_node != nullptr)
-                {
-                    // Get node name and attributes
-                    std::string name = xercesc::XMLString::transcode(tag_node->getNodeValue());
-                    xercesc::DOMNamedNodeMap* atts = tag_node->getAttributes();
-                    // If there are attributes
-                    if (atts != nullptr)
-                    {
-                        // Obtain the attribute that matches the name
-                        xercesc::DOMNode* item = atts->getNamedItem(xercesc::XMLString::transcode(att_name.c_str()));
-                        if (item != nullptr)
-                        {
-                            // If the value of the attribute match
-                            std::string val = xercesc::XMLString::transcode(item->getNodeValue());
-                            if (val == att_value)
-                            {
-                                found = true;
-                            }
-                        }
-                    }
-                }
-            }
-
-            // Throw exception if node not found
-            if (!found)
-            {
-                // Given element does not exist
-                throw ElementNotFound(
-                    tag_name + " does not have an element with key " + att_value + "\n");
-            }
-            else
-            {
-                // Return Node
-                return tag_node;
-            }
-        }
-        // Obtain node based on LIST (when index != "")
-        else
-        {
-            // Check value of index
-            int32_t int_index = 0;
-            int32_t real_index = 0;
-
-            try
-            {
-                // Parse index from string to int
-                int_index = std::stoi(index);
-                real_index = int_index;
-            }
-            catch(...)
-            {
-                throw BadParameter(index + " could not be used as integer index");
-            }
-
-            // Transform index to real index
-            if (int_index < 0)
-            {
-                real_index = node_list->getLength() + int_index;
-            }
-
-            // Check bounds
-            if (real_index < 0 || real_index >= node_list->getLength())
-            {
-                // Throw eprosima::qosprof::ElementNotFound exception
-                throw ElementNotFound(
-                    tag_name + " does not have an element in position " + std::to_string(real_index) + "\n");
-            }
-            // Return Node
-            return node_list->item(real_index);
-        }
-    }
+    return get_node(parent_node, tag_name, nullptr, att_name, att_value);
 }
 
 } /* utils */

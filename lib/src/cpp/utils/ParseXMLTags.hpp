@@ -50,6 +50,7 @@ constexpr const char* META_EXT_UNI_LOC_LIST = "metatraffic_external_unicast_loca
 /// LOCATOR
 constexpr const char* UDPv4_LOCATOR = "udpv4";
 constexpr const char* UDPv6_LOCATOR = "udpv6";
+constexpr const char* EXTERNALITY = "externality";
 
 } /* tag */
 } /* utils */

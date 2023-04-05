@@ -76,28 +76,6 @@ public:
             xercesc::DOMDocument*& doc);
 
     /**
-     * @brief  MAIN get_node function.
-     *   Obtain the node in the list that matches tag name and
-     *   the given index or the given name-value attribute pair
-     *
-     * @param node_tag_list DOMNodeList list of nodes where tag_name should be part of
-     * @param tag_name string with the node (<tag>) name
-     * @param index int32 index of the node element in LIST cases
-     * @param att_name string key (attribute) name of the node element in MAP cases
-     * @param att_value string key (attribute) value of the node element in MAP cases
-     *
-     * @return xercesc::DOMNode* with the node found
-     *
-     * @throw ElementNotFound exception if expected node was not found
-     */
-    xercesc::DOMNode* get_node(
-            xercesc::DOMNodeList*& node_tag_list,
-            const std::string& tag_name,
-            int32_t index,
-            const std::string& att_name,
-            const std::string& att_value);
-
-    /**
      * @brief Remove the given node from the parent node
      *
      * @param parent_node DOMNode parent node which should contain the node to be deleted
@@ -139,7 +117,7 @@ public:
     xercesc::DOMNode* get_node(
             xercesc::DOMDocument*& doc,
             const std::string& tag_name,
-            const std::string& index);
+            const std::string* index);
 
     xercesc::DOMNode* get_node(
             xercesc::DOMDocument*& doc,
@@ -150,7 +128,7 @@ public:
     xercesc::DOMNode* get_node(
             xercesc::DOMDocument*& doc,
             const std::string& tag_name,
-            const std::string& index,
+            const std::string* index,
             const std::string& att_name,
             const std::string& att_value);
 
@@ -161,7 +139,7 @@ public:
     xercesc::DOMNode* get_node(
             xercesc::DOMNode*& parent_node,
             const std::string& tag_name,
-            const std::string& index);
+            const std::string* index);
 
     xercesc::DOMNode* get_node(
             xercesc::DOMNode*& parent_node,
@@ -169,10 +147,25 @@ public:
             const std::string& att_name,
             const std::string& att_value);
 
+    /**
+     * @brief  MAIN get_node function.
+     *   Obtain the node in the list that matches tag name and
+     *   the given index or the given name-value attribute pair
+     *
+     * @param parent_node DOMNode with the parent node
+     * @param tag_name string with the node (<tag>) name
+     * @param index string index of the node element in LIST cases
+     * @param att_name string key (attribute) name of the node element in MAP cases
+     * @param att_value string key (attribute) value of the node element in MAP cases
+     *
+     * @return xercesc::DOMNode* with the node found
+     *
+     * @throw ElementNotFound exception if expected node was not found
+     */
     xercesc::DOMNode* get_node(
             xercesc::DOMNode*& parent_node,
             const std::string& tag_name,
-            const std::string& index,
+            const std::string* index,
             const std::string& att_name,
             const std::string& att_value);
 
