@@ -58,6 +58,16 @@ enum class ExternalLocatorsList
     PARTICIPANT_METATRAFFIC_UNICAST
 };
 
+namespace locators {
+enum LocatorArgumentPosition
+{
+    KIND,
+    ADDRESS,
+    PORT
+};
+} // locators
+
+namespace external_locators {
 enum ExternalLocatorArgumentPosition
 {
     KIND,
@@ -67,6 +77,7 @@ enum ExternalLocatorArgumentPosition
     MASK,
     PORT
 };
+} // external_locators
 
 constexpr const int8_t DEFAULT_POSITION = 0;
 
@@ -108,12 +119,14 @@ void builtin_parser(
  * @param[in, out] element String with the dot-separated subelements.
  *                         Next subelement to be parsed is returned.
  * @param[out] key Index of the locator being modified.
+ * @param[in] message Error message in case of validity check failure.
  * @return true if valid locator list. False otherwise.
  */
 bool builtin_locator_parser(
         LocatorsList& locator_list,
         std::string& element,
-        std::string& key);
+        std::string& key,
+        const std::string& message);
 
 /**
  * @brief Common parser for external locators lists
@@ -141,7 +154,9 @@ void external_locators_parser(
  * @param[in] filename File to be accessed.
  * @param[in] profile_name DDS entity profile name.
  * @param[in] element String with the dot-separated subelements.
+ * @param[in] key Index of the locator to be accessed in the list.
  * @param[in] values Vector of strings with the values passed to CLI.
+ * @param[in] message Error message in case of validity check failure.
  */
 void locators_parser(
         LocatorsList list,
@@ -149,7 +164,9 @@ void locators_parser(
         const std::string& filename,
         const std::string& profile_name,
         std::string& element,
-        const std::vector<std::string>& values);
+        const std::string& key,
+        const std::vector<std::string>& values,
+        std::ostringstream& message);
 
 /**
  * @brief Parser for the main element to be configured.

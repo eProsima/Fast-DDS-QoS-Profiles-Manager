@@ -113,7 +113,7 @@ void external_locators_parser(
                     // TODO: query kind should be passed in order to select the corresponding library function
                     break;
                 case CommonCommands::SET:
-                    // SET command requires 6 values: kind, externality, cost, address, mask and port.
+                    // SET command requires 6 values: kind, externality, cost, address, mask, and port.
                     print_usage = !check_command_arguments(command, 6, values.size(), message.str(), true);
                     set_every_element = print_usage ? false : true;
                     break;
@@ -195,8 +195,9 @@ void external_locators_parser(
                             // TODO: query kind should be passed in order to select the corresponding library function
                             break;
                         case CommonCommands::SET:
-                            std::string address = set_every_element ?
-                                    values[ExternalLocatorArgumentPosition::ADDRESS] : values[DEFAULT_POSITION];
+                            std::string address = set_every_element ? 
+                                    values[external_locators::ExternalLocatorArgumentPosition::ADDRESS] :
+                                    values[DEFAULT_POSITION];
                             switch (list)
                             {
                                 case ExternalLocatorsList::DATAREADER_UNICAST:
@@ -265,7 +266,8 @@ void external_locators_parser(
                             break;
                         case CommonCommands::SET:
                             std::string cost = set_every_element ?
-                                    values[ExternalLocatorArgumentPosition::COST] : values[DEFAULT_POSITION];
+                                    values[external_locators::ExternalLocatorArgumentPosition::COST] :
+                                    values[DEFAULT_POSITION];
                             switch (list)
                             {
                                 case ExternalLocatorsList::DATAREADER_UNICAST:
@@ -334,7 +336,8 @@ void external_locators_parser(
                             break;
                         case CommonCommands::SET:
                             std::string externality = set_every_element ?
-                                    values[ExternalLocatorArgumentPosition::EXTERNALITY] : values[DEFAULT_POSITION];
+                                    values[external_locators::ExternalLocatorArgumentPosition::EXTERNALITY] :
+                                    values[DEFAULT_POSITION];
                             switch (list)
                             {
                                 case ExternalLocatorsList::DATAREADER_UNICAST:
@@ -389,7 +392,8 @@ void external_locators_parser(
                             break;
                         case CommonCommands::SET:
                             std::string kind = set_every_element ?
-                                    values[ExternalLocatorArgumentPosition::KIND] : values[DEFAULT_POSITION];
+                                    values[external_locators::ExternalLocatorArgumentPosition::KIND] :
+                                    values[DEFAULT_POSITION];
                             switch (list)
                             {
                                 case ExternalLocatorsList::DATAREADER_UNICAST:
@@ -458,7 +462,8 @@ void external_locators_parser(
                             break;
                         case CommonCommands::SET:
                             std::string mask = set_every_element ?
-                                    values[ExternalLocatorArgumentPosition::MASK] : values[DEFAULT_POSITION];
+                                    values[external_locators::ExternalLocatorArgumentPosition::MASK] :
+                                    values[DEFAULT_POSITION];
                             switch (list)
                             {
                                 case ExternalLocatorsList::DATAREADER_UNICAST:
@@ -527,7 +532,8 @@ void external_locators_parser(
                             break;
                         case CommonCommands::SET:
                             std::string port = set_every_element ?
-                                    values[ExternalLocatorArgumentPosition::PORT] : values[DEFAULT_POSITION];
+                                    values[external_locators::ExternalLocatorArgumentPosition::PORT] :
+                                    values[DEFAULT_POSITION];
                             switch (list)
                             {
                                 case ExternalLocatorsList::DATAREADER_UNICAST:

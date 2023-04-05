@@ -27,14 +27,11 @@ bool builtin_locator_parser(
         LocatorsList& locator_list,
         std::string& element,
         std::string& key,
-        const std::vector<std::string>& values)
+        const std::vector<std::string>& values,
+        const std::string& message)
 {
     std::string subelement;
     bool keyed = extract_element_subelement_key(element, subelement, key);
-
-    // Initialize message in case of error
-    std::ostringstream message;
-    message << "Participant builtin <" << element << "> locator list";
 
     bool print_usage = false;
 
@@ -58,11 +55,11 @@ bool builtin_locator_parser(
         }
         else
         {
-            std::cout << "ERROR: " << message.str() << " not recognized" << std::endl;
+            std::cout << "ERROR: " << message << " not recognized" << std::endl;
             print_usage = true;
         }
         // Valid locator list must be keyed
-        print_usage = print_usage || !check_keyed(true, keyed, message.str());
+        print_usage = print_usage || !check_keyed(true, keyed, message);
     }
 
     return !print_usage;
@@ -136,12 +133,16 @@ void builtin_parser(
         // Locator element require a subelement
         print_usage = print_usage || !check_final_element(false, subelement, message.str());
         // Select locator list
+        // Reinitialize message in case of error
+        message.str("");
+        message << "Participant builtin <" << subelement << "> locator list";
+
         LocatorsList locator_list;
-        print_usage = print_usage || !builtin_locator_parser(locator_list, subelement, key, values);
+        print_usage = print_usage || !builtin_locator_parser(locator_list, subelement, key, values, message.str());
 
         if (!print_usage)
         {
-            // TODO
+            locators_parser(locator_list, command, filename, profile_name, subelement, key, values, message);
         }
         else
         {
