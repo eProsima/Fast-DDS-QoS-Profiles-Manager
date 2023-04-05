@@ -60,73 +60,68 @@ void external_locators_parser(
     }
     print_usage = print_usage || !check_keyed(true, keyed, message.str());
     print_usage = print_usage ||
-            (command != CommonCommands::SET && !check_command_arguments(command, 0, values.size(), "the given command",
+            (command != CommonCommands::SET && !check_command_arguments(command, 0, values.size(), message.str(),
             true));
 
     // No subelement.
-    if (subelement.empty())
+    if (!print_usage && subelement.empty())
     {
-        // SET command requires 6 values: kind, externality, cost, address, mask and port.
-        print_usage = print_usage ||
-                (command == CommonCommands::SET && !check_command_arguments(command, 6, values.size(), message.str(),
-                true));
         // Call library if every validity check has passed
-        if (!print_usage)
+        try
         {
-            try
+            switch (command)
             {
-                switch (command)
-                {
-                    case CommonCommands::CLEAR:
-                        switch (list)
-                        {
-                            case ExternalLocatorsList::DATAREADER_UNICAST:
-                                // TODO
-                                break;
-                            case ExternalLocatorsList::DATAWRITER_UNICAST:
-                                // TODO
-                                break;
-                            case ExternalLocatorsList::PARTICIPANT_DEFAULT_UNICAST:
-                                qosprof::domain_participant::default_external_unicast_locators::clear(filename,
-                                        profile_name, key);
-                                break;
-                            case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::clear(
-                                    filename, profile_name, key);
-                                break;
-                        }
-                        break;
-                    case CommonCommands::PRINT:
-                        switch (list)
-                        {
-                            case ExternalLocatorsList::DATAREADER_UNICAST:
-                                // TODO
-                                break;
-                            case ExternalLocatorsList::DATAWRITER_UNICAST:
-                                // TODO
-                                break;
-                            case ExternalLocatorsList::PARTICIPANT_DEFAULT_UNICAST:
-                                qosprof::domain_participant::default_external_unicast_locators::print(filename,
-                                        profile_name, key);
-                                break;
-                            case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
-                                qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::print(
-                                    filename, profile_name, key);
-                                break;
-                        }
-                        break;
-                    case CommonCommands::QUERY:
-                        // TODO: query kind should be passed in order to select the corresponding library function
-                        break;
-                    case CommonCommands::SET:
-                        set_every_element = true;
-                        break;
-                }
+                case CommonCommands::CLEAR:
+                    switch (list)
+                    {
+                        case ExternalLocatorsList::DATAREADER_UNICAST:
+                            // TODO
+                            break;
+                        case ExternalLocatorsList::DATAWRITER_UNICAST:
+                            // TODO
+                            break;
+                        case ExternalLocatorsList::PARTICIPANT_DEFAULT_UNICAST:
+                            qosprof::domain_participant::default_external_unicast_locators::clear(filename,
+                                    profile_name, key);
+                            break;
+                        case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
+                            qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::clear(
+                                filename, profile_name, key);
+                            break;
+                    }
+                    break;
+                case CommonCommands::PRINT:
+                    switch (list)
+                    {
+                        case ExternalLocatorsList::DATAREADER_UNICAST:
+                            // TODO
+                            break;
+                        case ExternalLocatorsList::DATAWRITER_UNICAST:
+                            // TODO
+                            break;
+                        case ExternalLocatorsList::PARTICIPANT_DEFAULT_UNICAST:
+                            qosprof::domain_participant::default_external_unicast_locators::print(filename,
+                                    profile_name, key);
+                            break;
+                        case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
+                            qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::print(
+                                filename, profile_name, key);
+                            break;
+                    }
+                    break;
+                case CommonCommands::QUERY:
+                    // TODO: query kind should be passed in order to select the corresponding library function
+                    break;
+                case CommonCommands::SET:
+                    // SET command requires 6 values: kind, externality, cost, address, mask and port.
+                    print_usage = !check_command_arguments(command, 6, values.size(), message.str(), true);
+                    set_every_element = print_usage ? false : true;
+                    break;
             }
-            catch (const qosprof::Exception& e)
-            {
-                std::cout << "Fast DDS QoS Profiles Manager exception caught: " << e.what() << std::endl;
-            }
+        }
+        catch (const qosprof::Exception& e)
+        {
+            std::cout << "Fast DDS QoS Profiles Manager exception caught: " << e.what() << std::endl;
         }
     }
 
