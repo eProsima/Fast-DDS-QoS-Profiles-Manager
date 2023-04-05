@@ -23,6 +23,11 @@
 
 #include <fastdds_qos_profiles_manager/exception/Exception.hpp>
 
+#include <utils/ParseXML.hpp>
+#include <utils/ParseXMLErrorHandler.hpp>
+#include <utils/ParseXMLString.hpp>
+#include <utils/ParseXMLTags.hpp>
+
 namespace eprosima {
 namespace qosprof {
 namespace domain_participant {
@@ -259,7 +264,91 @@ void set_name(
         const std::string& profile_id,
         const std::string& name)
 {
-    throw Unsupported("Unsupported");
+    // Xerces document manage XML elements
+    xercesc::DOMDocument* doc = nullptr;
+
+    // XML nodes and values
+    xercesc::DOMNode* profiles_node = nullptr;
+    xercesc::DOMNode* participant_node = nullptr;
+    xercesc::DOMNode* rtps_node = nullptr;
+    xercesc::DOMNode* name_node = nullptr;
+
+    // Create XML manager and initialize the document
+    eprosima::qosprof::utils::ParseXML* manager = new eprosima::qosprof::utils::ParseXML(doc, xml_file, true);
+
+    // Obtain profiles node
+    try
+    {
+        profiles_node = manager->get_node(doc, eprosima::qosprof::utils::tag::PROFILES);
+    }
+    catch (const eprosima::qosprof::ElementNotFound& ex)
+    {
+        // Obtain root element
+        xercesc::DOMElement* root_element = doc->getDocumentElement();
+
+        // Add profiles
+        profiles_node = (xercesc::DOMNode*) doc->createElement(
+            xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::PROFILES));
+        root_element->appendChild(profiles_node);
+    }
+    // Obtain participant node with the profile id
+    try
+    {
+        participant_node = manager->get_node(
+            profiles_node,
+            eprosima::qosprof::utils::tag::PARTICIPANT,
+            eprosima::qosprof::utils::tag::PROFILE_NAME,
+            profile_id);
+    }
+    catch (const eprosima::qosprof::ElementNotFound& ex)
+    {
+        // create if not existent
+        xercesc::DOMElement* participant_element = doc->createElement(
+            xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::PARTICIPANT));
+        profiles_node->appendChild(participant_element);
+        participant_element->setAttribute(
+            xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::PROFILE_NAME),
+            xercesc::XMLString::transcode(profile_id.c_str()));
+        participant_node = (xercesc::DOMNode*)participant_element;
+
+    }
+
+    // Obtain rtps node
+    try
+    {
+        rtps_node = manager->get_node(participant_node, eprosima::qosprof::utils::tag::RTPS);
+    }
+    catch (const eprosima::qosprof::ElementNotFound& ex)
+    {
+        // create if not existent
+        rtps_node = (xercesc::DOMNode*) doc->createElement(
+            xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::RTPS));
+        participant_node->appendChild(rtps_node);
+
+    }
+
+    // Obtain name
+    try
+    {
+        name_node = manager->get_node(rtps_node, eprosima::qosprof::utils::tag::NAME);
+    }
+    catch (const eprosima::qosprof::ElementNotFound& ex)
+    {
+        // create if not existent
+        name_node = (xercesc::DOMNode*) doc->createElement(
+            xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::NAME));
+        rtps_node->appendChild(name_node);
+    }
+
+    // Set the name node value
+    manager->set_value_to_node(doc, name_node, name);
+
+    // Validate new XML element and save it
+    manager->validate_and_save_xml_document(doc);
+
+    // Close XML workspace
+    xercesc::XMLPlatformUtils::Terminate();
+    return;
 }
 
 void set_ignore_non_matching_locators(
