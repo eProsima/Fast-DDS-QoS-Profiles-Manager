@@ -67,11 +67,6 @@ ParseXML::ParseXML (
     output->setEncoding(xercesc::XMLString::transcode(UTF8));
     serializer->setNewLine(xercesc::XMLString::transcode(LINE_BREAK));
 
-    // Config would configure serialized XML data
-    config = serializer->getDomConfig();
-    config->setParameter(xercesc::XMLUni::fgDOMWRTFormatPrettyPrint, true);
-    config->setParameter(xercesc::XMLUni::fgDOMXMLDeclaration, true);
-
     // Parser would validate the serialized XML against the defined XSD, with some configured parameters
     parser = new xercesc::XercesDOMParser();
 
@@ -178,6 +173,11 @@ bool ParseXML::validate_xml(
 bool ParseXML::save_xml(
         xercesc::DOMDocument*& doc)
 {
+    // Config would configure serialized XML data
+    config = serializer->getDomConfig();
+    config->setParameter(xercesc::XMLUni::fgDOMWRTFormatPrettyPrint, true);
+    config->setParameter(xercesc::XMLUni::fgDOMXMLDeclaration, true);
+
     // Save XML document in target file path
     target = new xercesc::LocalFileFormatTarget(xercesc::XMLString::transcode(xml_file.c_str()));
     output->setByteStream(target);
@@ -218,19 +218,15 @@ xercesc::DOMNode* ParseXML::get_node(
         xercesc::DOMNode* tag_node = nullptr;
         bool found = false;
 
-        // Iterate through the nodes
+        // Iterate through the REAL nodes
+        std::vector<uint>* index_list = get_real_index(node_list);
         // TODO maybe trying with node->getNextSibling() iterator this function is more efficient
-        for (int i = 0, size = node_list->getLength(); i < size && !found; i++)
+        for (int i = 0; i < index_list->size() && !found; i++)
         {
-            // Obtain index element
-            tag_node = node_list->item(i);
+            // Obtain element from real position
+            tag_node = node_list->item(index_list->at(i));
             if (tag_node != nullptr)
             {
-                // Node is not a Element, go next
-                if (tag_node->getNodeType() != xercesc::DOMNode::NodeType::ELEMENT_NODE)
-                {
-                    continue;
-                }
                 // Node is a Complex Element
                 if (tag_name == xercesc::XMLString::transcode(tag_node->getNodeName()))
                 {
@@ -301,18 +297,18 @@ xercesc::DOMNode* ParseXML::get_node(
                             // Transform index to real index
                             if (int_index < 0)
                             {
-                                real_index = node_list->getLength() + int_index;
+                                real_index = index_list->size() + int_index;
                             }
 
                             // Check bounds
-                            if (real_index < 0 || real_index >= node_list->getLength())
+                            if (real_index < 0 || real_index >= index_list->size())
                             {
                                 // Throw eprosima::qosprof::ElementNotFound exception
                                 throw ElementNotFound(
                                     tag_name + " does not have an element in position " + std::to_string(real_index) + "\n");
                             }
                             // Return Node
-                            return node_list->item(real_index);
+                            return node_list->item(index_list->at(real_index));
                         }
                     }
                     // Complex Element
@@ -432,6 +428,25 @@ std::string ParseXML::get_absolute_path(
         file_exists = true;
     }
     return absolute_xml_file;
+}
+
+std::vector<uint>* ParseXML::get_real_index(
+        xercesc::DOMNodeList*& node_list)
+{
+    // Create new list
+    std::vector<uint>* index_list = new std::vector<uint>();
+
+    // Iterate through the list
+    for (uint i = 0, size = node_list->getLength(); i < size; i++)
+    {
+        if (node_list->item(i)->getNodeType() == xercesc::DOMNode::NodeType::ELEMENT_NODE)
+        {
+            index_list->push_back(i);
+        }
+    }
+
+    // return list
+    return index_list;
 }
 
 xercesc::DOMNode* ParseXML::get_node(

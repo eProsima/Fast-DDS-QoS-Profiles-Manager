@@ -20,6 +20,7 @@
 #define _FAST_DDS_QOS_PROFILES_MANAGER_UTILS_PARSE_XML_HPP_
 
 #include <string>
+#include <vector>
 
 #include <xercesc/dom/DOM.hpp>
 #include <xercesc/framework/LocalFileFormatTarget.hpp>
@@ -205,6 +206,15 @@ private:
     std::string get_absolute_path(
             const std::string& xml_file,
             bool& file_exists);
+
+    /**
+     * @brief Get the real index of the listed nodes (avoid empty nodes)
+     *
+     * @param[in]  node_list with the nodes to be filtered
+     * @return std::vector<uint>* with the indexes of the non-empty nodes
+     */
+    std::vector<uint>* get_real_index(
+            xercesc::DOMNodeList*& node_list);
 
     // CONSTANT CHAR USED BY XERCES
     constexpr static const char* CORE = "Core";

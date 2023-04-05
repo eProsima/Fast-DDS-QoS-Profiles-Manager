@@ -268,27 +268,17 @@ void set_externality(
     }
 
 
-    // Check if locator should be updated or created
+    // Check if locator should be created
     if (index == "")
     {
         locator_node = static_cast<xercesc::DOMNode*>(doc->createElement(xercesc::XMLString::transcode(
                 eprosima::qosprof::utils::tag::UDPv4_LOCATOR)));
             locator_list_node->appendChild(locator_node);
     }
-    // Update locator
+    // Update the locator of the given index
     else
     {
-        try
-        {
-            locator_node = manager->get_node(locator_list_node, eprosima::qosprof::utils::tag::UDPv4_LOCATOR, &index);
-        }
-        catch (const eprosima::qosprof::ElementNotFound& ex)
-        {
-            // create if not existent
-            locator_node = static_cast<xercesc::DOMNode*>(doc->createElement(xercesc::XMLString::transcode(
-                eprosima::qosprof::utils::tag::UDPv4_LOCATOR)));
-            locator_list_node->appendChild(locator_node);
-        }
+        locator_node = manager->get_node(locator_list_node, eprosima::qosprof::utils::tag::UDPv4_LOCATOR, &index);
     }
     // Set the externality value
     static_cast<xercesc::DOMElement*>(locator_node)->setAttribute(
