@@ -289,7 +289,7 @@ xercesc::DOMNode* ParseXML::get_node(
                                 int_index = std::stoi(in);
                                 real_index = int_index;
                             }
-                            catch(...)
+                            catch (...)
                             {
                                 throw BadParameter(in + " could not be used as integer index");
                             }
@@ -305,7 +305,8 @@ xercesc::DOMNode* ParseXML::get_node(
                             {
                                 // Throw eprosima::qosprof::ElementNotFound exception
                                 throw ElementNotFound(
-                                    tag_name + " does not have an element in position " + std::to_string(real_index) + "\n");
+                                          tag_name + " does not have an element in position " +
+                                          std::to_string(real_index) + "\n");
                             }
                             // Return Node
                             return node_list->item(index_list->at(real_index));
@@ -454,7 +455,7 @@ xercesc::DOMNode* ParseXML::get_node(
         const std::string& tag_name)
 {
     // Try call main get_node function with remain empty values
-    return get_node(doc, tag_name, nullptr, "", "");;
+    return get_node(doc, tag_name, nullptr, "", "");
 }
 
 xercesc::DOMNode* ParseXML::get_node(
@@ -487,7 +488,7 @@ xercesc::DOMNode* ParseXML::get_node(
     xercesc::DOMNode* parent_node = doc->getDocumentElement();
 
     // Obtain node from main get_node function
-    return get_node(parent_node, tag_name, index, att_name, att_value);;
+    return get_node(parent_node, tag_name, index, att_name, att_value);
 }
 
 xercesc::DOMNode* ParseXML::get_node(
