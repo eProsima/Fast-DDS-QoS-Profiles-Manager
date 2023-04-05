@@ -26,17 +26,20 @@ namespace qosprof_cli {
 bool builtin_locator_parser(
         LocatorsList& locator_list,
         std::string& element,
+        std::string& subelement,
         std::string& key,
         const std::vector<std::string>& values,
-        const std::string& message)
+        std::ostringstream& message)
 {
-    std::string subelement;
     bool keyed = extract_element_subelement_key(element, subelement, key);
 
     bool print_usage = false;
 
-    // If there is no subelement and the last value is (help | -h | --help), print usage
-    print_usage = subelement.empty() && check_help(values);
+    // Reinitialize message in case of error
+    message.str("");
+    message << "Participant builtin <" << element << "> locator list";
+
+    print_usage = check_help(values);
 
     if (!print_usage)
     {
@@ -55,11 +58,11 @@ bool builtin_locator_parser(
         }
         else
         {
-            std::cout << "ERROR: " << message << " not recognized" << std::endl;
+            std::cout << "ERROR: " << message.str() << " not recognized" << std::endl;
             print_usage = true;
         }
         // Valid locator list must be keyed
-        print_usage = print_usage || !check_keyed(true, keyed, message);
+        print_usage = print_usage || !check_keyed(true, keyed, message.str());
     }
 
     return !print_usage;
@@ -133,16 +136,15 @@ void builtin_parser(
         // Locator element require a subelement
         print_usage = print_usage || !check_final_element(false, subelement, message.str());
         // Select locator list
-        // Reinitialize message in case of error
-        message.str("");
-        message << "Participant builtin <" << subelement << "> locator list";
 
         LocatorsList locator_list;
-        print_usage = print_usage || !builtin_locator_parser(locator_list, subelement, key, values, message.str());
+        std::string subsubelement;
+        print_usage = print_usage || !builtin_locator_parser(locator_list, subelement, subsubelement, key, values,
+                message);
 
         if (!print_usage)
         {
-            locators_parser(locator_list, command, filename, profile_name, subelement, key, values, message);
+            locators_parser(locator_list, command, filename, profile_name, subsubelement, key, values, message);
         }
         else
         {

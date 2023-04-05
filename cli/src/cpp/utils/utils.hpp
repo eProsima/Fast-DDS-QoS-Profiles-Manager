@@ -118,15 +118,17 @@ void builtin_parser(
  * @param[out] locator_list Specific participant builtin locator list being accessed.
  * @param[in, out] element String with the dot-separated subelements.
  *                         Next subelement to be parsed is returned.
+ * @param[out] subelement Next element to be parsed.
  * @param[out] key Index of the locator being modified.
- * @param[in] message Error message in case of validity check failure.
+ * @param[out] message Error message in case of validity check failure.
  * @return true if valid locator list. False otherwise.
  */
 bool builtin_locator_parser(
         LocatorsList& locator_list,
         std::string& element,
+        std::string& subelement,
         std::string& key,
-        const std::string& message);
+        std::ostringstream& message);
 
 /**
  * @brief Common parser for external locators lists
