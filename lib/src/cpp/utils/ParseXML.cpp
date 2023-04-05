@@ -74,23 +74,6 @@ ParseXML::ParseXML (
 
     // Parser would validate the serialized XML against the defined XSD, with some configured parameters
     parser = new xercesc::XercesDOMParser();
-    // Obtain XML schema path
-    std::string xsd_file_path = FASTDDS_QOS_PROFILES_MANAGER_XML_SCHEMA;
-    // Set as namespace location both URL and the path to the XML schema
-    std::string namespace_schema_location = eprosima::qosprof::utils::tag::EPROSIMA_URL;
-    namespace_schema_location += " " + xsd_file_path;
-    // Load the schema as part of the grammar of the parser
-    parser->loadGrammar(xsd_file_path.c_str(), xercesc::Grammar::SchemaGrammarType, true);
-    // Set the schema location as the given URL plus the path to the file
-    parser->setExternalSchemaLocation(namespace_schema_location.c_str());
-    // Turn ON validation in the parser
-    parser->setValidationScheme(xercesc::XercesDOMParser::Val_Always);
-    // Force parser to use the given namespace URL for validation
-    parser->setDoNamespaces(true);
-    // Force parser to use the given XML schema for validation
-    parser->setDoSchema(true);
-    // Force parser to throw related exception no matter the severity of the issue found
-    parser->setValidationConstraintFatal(true);
 
     // Error handler would receive the exception from the parser, and report it as a FileNotFound expected exception
     error_handler = new eprosima::qosprof::utils::ParseXMLErrorHandler(
@@ -125,6 +108,24 @@ ParseXML::ParseXML (
             throw FileNotFound(ex);
         }
     }
+
+    // Set up Validation parameters: XSD pash
+    std::string xsd_file_path = FASTDDS_QOS_PROFILES_MANAGER_XML_SCHEMA;
+    // Set as namespace location both URL and the path to the XML schema
+    std::string namespace_schema_location = eprosima::qosprof::utils::tag::EPROSIMA_URL;
+    namespace_schema_location += " " + xsd_file_path;
+    // Load the schema as part of the grammar of the parser
+    parser->loadGrammar(xsd_file_path.c_str(), xercesc::Grammar::SchemaGrammarType, true);
+    // Set the schema location as the given URL plus the path to the file
+    parser->setExternalSchemaLocation(namespace_schema_location.c_str());
+    // Turn ON validation in the parser
+    parser->setValidationScheme(xercesc::XercesDOMParser::Val_Always);
+    // Force parser to use the given namespace URL for validation
+    parser->setDoNamespaces(true);
+    // Force parser to use the given XML schema for validation
+    parser->setDoSchema(true);
+    // Force parser to throw related exception no matter the severity of the issue found
+    parser->setValidationConstraintFatal(true);
 }
 
 ParseXML::~ParseXML()
