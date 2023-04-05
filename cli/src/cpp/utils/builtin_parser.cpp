@@ -23,6 +23,51 @@
 namespace eprosima {
 namespace qosprof_cli {
 
+bool builtin_locator_parser(
+        LocatorsList& locator_list,
+        std::string& element,
+        std::string& subelement,
+        std::string& key,
+        const std::vector<std::string>& values,
+        std::ostringstream& message)
+{
+    bool keyed = extract_element_subelement_key(element, subelement, key);
+
+    bool print_usage = false;
+
+    // Reinitialize message in case of error
+    message.str("");
+    message << "Participant builtin <" << element << "> locator list";
+
+    print_usage = check_help(values);
+
+    if (!print_usage)
+    {
+        // Validity element check
+        if (element == INITIAL_PEERS_ELEMENT)
+        {
+            locator_list = LocatorsList::PARTICIPANT_INITIAL_PEERS;
+        }
+        else if (element == METATRAFFIC_MULTICAST_ELEMENT)
+        {
+            locator_list = LocatorsList::PARTICIPANT_METATRAFFIC_MULTICAST;
+        }
+        else if (element == METATRAFFIC_UNICAST_ELEMENT)
+        {
+            locator_list = LocatorsList::PARTICIPANT_METATRAFFIC_UNICAST;
+        }
+        else
+        {
+            std::cout << "ERROR: " << message.str() << " not recognized" << std::endl;
+            print_usage = true;
+        }
+        // Valid locator list must be keyed
+        print_usage = print_usage || !check_keyed(true, keyed, message.str());
+    }
+
+    return !print_usage;
+}
+
 void builtin_parser(
         CommonCommands command,
         const std::string& filename,
@@ -84,7 +129,35 @@ void builtin_parser(
     }
     else if (element == LOCATORS_SUBELEMENT)
     {
-        std::cout << "Participant builtin locators configuration not yet supported" << std::endl;
+        // Show help if there is no subelement
+        print_usage = subelement.empty() && check_help(values);
+        // Not keyed element
+        print_usage = print_usage || !check_keyed(false, keyed, message.str());
+        // Locator element require a subelement
+        print_usage = print_usage || !check_final_element(false, subelement, message.str());
+        // Select locator list
+
+        LocatorsList locator_list;
+        std::string subsubelement;
+        print_usage = print_usage || !builtin_locator_parser(locator_list, subelement, subsubelement, key, values,
+                        message);
+
+        if (!print_usage)
+        {
+            locators_parser(locator_list, command, filename, profile_name, subsubelement, key, values, message);
+        }
+        else
+        {
+            if (CommonCommands::QUERY == command)
+            {
+                // TODO
+                // std::cout << PARTICIPANT_BUILTIN_LOCATORS_QUERY_USAGE << std::endl;
+            }
+            else
+            {
+                std::cout << PARTICIPANT_BUILTIN_LOCATORS_USAGE << std::endl;
+            }
+        }
     }
     else if (element == READER_SUBELEMENT)
     {

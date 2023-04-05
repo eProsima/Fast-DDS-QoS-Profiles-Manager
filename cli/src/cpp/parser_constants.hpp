@@ -84,8 +84,17 @@ constexpr const char* DEFAULT_UNICAST_ELEMENT = "default_unicast";
 constexpr const char* METATRAFFIC_UNICAST_ELEMENT = "metatraffic_unicast";
 constexpr const char* UNICAST_ELEMENT = "unicast";
 
+// CLI participant builtin specific locator lists
+constexpr const char* INITIAL_PEERS_ELEMENT = "initial_peers";
+constexpr const char* METATRAFFIC_MULTICAST_ELEMENT = "metatraffic_multicast";
+
 // CLI locators common subelements
 constexpr const char* ADDRESS_SUBELEMENT = "address";
+
+// CLI specific locator subelements
+constexpr const char* PHYSICAL_PORT_SUBELEMENT = "physical_port";
+constexpr const char* UNIQUE_LAN_ID_SUBELEMENT = "unique_lan_id";
+constexpr const char* WAN_ADDRESS_SUBELEMENT = "wan_address";
 
 // CLI external locators specific subelements
 constexpr const char* COST_SUBELEMENT = "cost";

@@ -34,15 +34,40 @@ enum CommonCommands
     SET
 };
 
+// Locator lists
+enum class LocatorsList
+{
+    DATAREADER_MULTICAST,
+    DATAREADER_UNICAST,
+    DATAWRITER_MULTICAST,
+    DATAWRITER_UNICAST,
+    PARTICIPANT_DEFAULT_MULTICAST,
+    PARTICIPANT_DEFAULT_UNICAST,
+    PARTICIPANT_INITIAL_PEERS,
+    PARTICIPANT_METATRAFFIC_MULTICAST,
+    PARTICIPANT_METATRAFFIC_UNICAST,
+    PARTICIPANT_REMOTE_SERVER_METATRAFFIC_UNICAST
+};
+
 // External locator lists
 enum class ExternalLocatorsList
 {
-    PARTICIPANT_DEFAULT_UNICAST,
-    PARTICIPANT_METATRAFFIC_UNICAST,
+    DATAREADER_UNICAST,
     DATAWRITER_UNICAST,
-    DATAREADER_UNICAST
+    PARTICIPANT_DEFAULT_UNICAST,
+    PARTICIPANT_METATRAFFIC_UNICAST
 };
 
+namespace locators {
+enum LocatorArgumentPosition
+{
+    KIND,
+    ADDRESS,
+    PORT
+};
+} // locators
+
+namespace external_locators {
 enum ExternalLocatorArgumentPosition
 {
     KIND,
@@ -52,6 +77,7 @@ enum ExternalLocatorArgumentPosition
     MASK,
     PORT
 };
+} // external_locators
 
 constexpr const int8_t DEFAULT_POSITION = 0;
 
@@ -87,11 +113,29 @@ void builtin_parser(
         const std::vector<std::string>& values);
 
 /**
+ * @brief Auxiliary participant builtin parser to parse the specific locator list.
+ *
+ * @param[out] locator_list Specific participant builtin locator list being accessed.
+ * @param[in, out] element String with the dot-separated subelements.
+ *                         Next subelement to be parsed is returned.
+ * @param[out] subelement Next element to be parsed.
+ * @param[out] key Index of the locator being modified.
+ * @param[out] message Error message in case of validity check failure.
+ * @return true if valid locator list. False otherwise.
+ */
+bool builtin_locator_parser(
+        LocatorsList& locator_list,
+        std::string& element,
+        std::string& subelement,
+        std::string& key,
+        std::ostringstream& message);
+
+/**
  * @brief Common parser for external locators lists
  *
- * @param[in] list Identify the specific list which is being modified.
+ * @param[in] list Identify the specific list which is being accessed.
  * @param[in] command Command kind.
- * @param[in] filename File to be modified.
+ * @param[in] filename File to be accessed.
  * @param[in] profile_name DDS entity profile name.
  * @param[in] element String with the dot-separated subelements.
  * @param[in] values Vector of strings with the values passed to CLI.
@@ -103,6 +147,28 @@ void external_locators_parser(
         const std::string& profile_name,
         std::string& element,
         const std::vector<std::string>& values);
+
+/**
+ * @brief Common parser for locator lists
+ *
+ * @param[in] list Identify the specific list which is being accessed.
+ * @param[in] command Command kind.
+ * @param[in] filename File to be accessed.
+ * @param[in] profile_name DDS entity profile name.
+ * @param[in] element String with the dot-separated subelements.
+ * @param[in] key Index of the locator to be accessed in the list.
+ * @param[in] values Vector of strings with the values passed to CLI.
+ * @param[in] message Error message in case of validity check failure.
+ */
+void locators_parser(
+        LocatorsList list,
+        CommonCommands command,
+        const std::string& filename,
+        const std::string& profile_name,
+        std::string& element,
+        const std::string& key,
+        const std::vector<std::string>& values,
+        std::ostringstream& message);
 
 /**
  * @brief Parser for the main element to be configured.

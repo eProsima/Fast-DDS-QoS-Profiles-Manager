@@ -381,7 +381,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_physical_port(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw BadParameter Exception if the index is not an integer.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void update_address(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_address(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& address,
