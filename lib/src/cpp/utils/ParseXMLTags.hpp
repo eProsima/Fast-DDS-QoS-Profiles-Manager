@@ -34,7 +34,7 @@ constexpr const char* PROFILES = "profiles";
 
 // PROFILE TAGS
 constexpr const char* PROFILE_NAME = "profile_name";
-constexpr const char* DEFAULT_PROF = "is_default_profile";
+constexpr const char* DEFAULT_PROFILE = "is_default_profile";
 constexpr const char* PARTICIPANT = "participant";
 
 /// PARTICIPANT
