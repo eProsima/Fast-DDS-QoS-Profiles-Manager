@@ -79,7 +79,9 @@ static const char PARTICIPANT_BUILTIN_LOCATORS_USAGE[] =
       initial_peers             Configure builtin initial peers locator list.
 
     The <index> element is OPTIONAL:
-      No <index> pushes a new element into the list.
+      No <index> with a SET command pushes a new element into the list.
+      No <index> with a PRINT command prints every element in the list. Printing any subelement requires setting an <index>.
+      No <index> with a CLEAR command clears every element in the list. Clearing any subelement requires setting an <index>. 
       Positive <index> accesses the element in that position starting from the first element in the list.
       Negative <index> accesses the element in that position starting from the last element in the list.
 
@@ -113,7 +115,9 @@ static const char PARTICIPANT_BUILTIN_METATRAFFIC_EXTERNAL_UNICAST_LOCATORS_USAG
     The <profile_name> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
 
     The <index> element is OPTIONAL:
-      No <index> pushes a new element into the list.
+      No <index> with a SET command pushes a new element into the list.
+      No <index> with a PRINT command prints every element in the list. Printing any subelement requires setting an <index>.
+      No <index> with a CLEAR command clears every element in the list. Clearing any subelement requires setting an <index>. 
       Positive <index> accesses the element in that position starting from the first element in the list.
       Negative <index> accesses the element in that position starting from the last element in the list.
 
@@ -176,7 +180,9 @@ static const char PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE[] =
     The <profile_name> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
 
     The <index> element is OPTIONAL:
-      No <index> pushes a new element into the list.
+      No <index> with a SET command pushes a new element into the list.
+      No <index> with a PRINT command prints every element in the list. Printing any subelement requires setting an <index>.
+      No <index> with a CLEAR command clears every element in the list. Clearing any subelement requires setting an <index>. 
       Positive <index> accesses the element in that position starting from the first element in the list.
       Negative <index> accesses the element in that position starting from the last element in the list.
 
