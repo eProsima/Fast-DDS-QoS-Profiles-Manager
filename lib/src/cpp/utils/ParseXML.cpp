@@ -18,12 +18,12 @@
 
 #include <utils/ParseXML.hpp>
 
+#include <unistd.h>
+
 #include <fastdds_qos_profiles_manager/exception/Exception.hpp>
 
 #include <utils/ParseXMLString.hpp>
 #include <utils/ParseXMLTags.hpp>
-
-#include <unistd.h>
 
 namespace eprosima {
 namespace qosprof {
@@ -196,14 +196,14 @@ xercesc::DOMNode* ParseXML::get_node(
     if (node_list == nullptr)
     {
         // Throw ElementNotFound exception
-        throw ElementNotFound("non-existent " + tag_name + " profile\n");
+        throw ElementNotFound("non-existent " + tag_name + " element\n");
     }
 
     // Throw exception if no nodes
     if (node_list->getLength() == 0)
     {
         // Throw eprosima::qosprof::ElementNotFound exception
-        throw ElementNotFound("non-existent " + tag_name + " profile\n");
+        throw ElementNotFound("non-existent " + tag_name + " element\n");
     }
     // Complex element Node
     else if (node_list->getLength() == 1)
@@ -219,7 +219,7 @@ xercesc::DOMNode* ParseXML::get_node(
         bool found = false;
 
         // Iterate through the REAL nodes
-        std::vector<uint>* index_list = get_real_index(node_list);
+        std::unique_ptr<std::vector<uint>> index_list = get_real_index(node_list);
         // TODO maybe trying with node->getNextSibling() iterator this function is more efficient
         for (int i = 0; i < index_list->size() && !found; i++)
         {
@@ -271,7 +271,7 @@ xercesc::DOMNode* ParseXML::get_node(
                         std::string in = *index;
 
                         // Empty index
-                        if (in == "")
+                        if (index->empty())
                         {
                             // return parent
                             return tag_node;
@@ -280,24 +280,22 @@ xercesc::DOMNode* ParseXML::get_node(
                         else
                         {
                             // Parse index value and obtain node
-                            int32_t int_index = 0;
                             int32_t real_index = 0;
 
                             try
                             {
                                 // Parse index from string to int
-                                int_index = std::stoi(in);
-                                real_index = int_index;
+                                real_index = std::stoi(*index);
                             }
-                            catch (...)
+                            catch (std::exception)
                             {
                                 throw BadParameter(in + " could not be used as integer index");
                             }
 
                             // Transform index to real index
-                            if (int_index < 0)
+                            if (real_index < 0)
                             {
-                                real_index = index_list->size() + int_index;
+                                real_index = index_list->size() + real_index;
                             }
 
                             // Check bounds
@@ -431,11 +429,11 @@ std::string ParseXML::get_absolute_path(
     return absolute_xml_file;
 }
 
-std::vector<uint>* ParseXML::get_real_index(
+std::unique_ptr<std::vector<uint>> ParseXML::get_real_index(
         xercesc::DOMNodeList*& node_list)
 {
     // Create new list
-    std::vector<uint>* index_list = new std::vector<uint>();
+    std::unique_ptr<std::vector<uint>> index_list (new std::vector<uint>());
 
     // Iterate through the list
     for (uint i = 0, size = node_list->getLength(); i < size; i++)

@@ -19,6 +19,7 @@
 #ifndef _FAST_DDS_QOS_PROFILES_MANAGER_UTILS_PARSE_XML_HPP_
 #define _FAST_DDS_QOS_PROFILES_MANAGER_UTILS_PARSE_XML_HPP_
 
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -159,7 +160,7 @@ public:
      * @param att_name string key (attribute) name of the node element in MAP cases
      * @param att_value string key (attribute) value of the node element in MAP cases
      *
-     * @return xercesc::DOMNode* with the node found
+     * @return xercesc::DOMNode* with the found node
      *
      * @throw ElementNotFound exception if expected node was not found
      */
@@ -211,9 +212,9 @@ private:
      * @brief Get the real index of the listed nodes (avoid empty nodes)
      *
      * @param[in]  node_list with the nodes to be filtered
-     * @return std::vector<uint>* with the indexes of the non-empty nodes
+     * @return std::unique_ptr<std::vector<uint>> with the indexes of the non-empty nodes
      */
-    std::vector<uint>* get_real_index(
+    std::unique_ptr<std::vector<uint>>  get_real_index(
             xercesc::DOMNodeList*& node_list);
 
     // CONSTANT CHAR USED BY XERCES

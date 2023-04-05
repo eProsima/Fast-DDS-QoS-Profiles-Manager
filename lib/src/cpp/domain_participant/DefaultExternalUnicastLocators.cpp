@@ -22,9 +22,6 @@
 
 #include <fastdds_qos_profiles_manager/exception/Exception.hpp>
 
-#include <utils/ParseXML.hpp>
-#include <utils/ParseXMLTags.hpp>
-
 namespace eprosima {
 namespace qosprof {
 namespace domain_participant {
