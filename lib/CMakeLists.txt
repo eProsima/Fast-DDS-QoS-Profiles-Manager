@@ -93,6 +93,7 @@ set(${PROJECT_NAME}_source_files
     src/cpp/domain_participant/PropertiesPolicy.cpp
     src/cpp/exception/Exception.cpp
     src/cpp/transport_descriptor/TransportDescriptor.cpp
+    src/cpp/common/LocatorList.cpp
     src/cpp/utils/ParseXML.cpp
     src/cpp/utils/ParseXMLString.cpp
     src/cpp/utils/ParseXMLErrorHandler.cpp
