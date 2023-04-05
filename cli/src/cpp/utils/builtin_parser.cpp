@@ -140,7 +140,7 @@ void builtin_parser(
         LocatorsList locator_list;
         std::string subsubelement;
         print_usage = print_usage || !builtin_locator_parser(locator_list, subelement, subsubelement, key, values,
-                message);
+                        message);
 
         if (!print_usage)
         {

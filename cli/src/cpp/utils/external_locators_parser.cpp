@@ -195,7 +195,7 @@ void external_locators_parser(
                             // TODO: query kind should be passed in order to select the corresponding library function
                             break;
                         case CommonCommands::SET:
-                            std::string address = set_every_element ? 
+                            std::string address = set_every_element ?
                                     values[external_locators::ExternalLocatorArgumentPosition::ADDRESS] :
                                     values[DEFAULT_POSITION];
                             switch (list)

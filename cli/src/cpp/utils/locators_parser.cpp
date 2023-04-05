@@ -44,7 +44,7 @@ void locators_parser(
 
     // Validity checks of locator list element has been performed in the upper level. Also help check
     print_usage = command != CommonCommands::SET && !check_command_arguments(command, 0, values.size(), message.str(),
-            true);
+                    true);
 
     // No subelement
     if (!print_usage && element.empty())
@@ -137,7 +137,7 @@ void locators_parser(
                     break;
             }
         }
-        catch(const qosprof::Exception& e)
+        catch (const qosprof::Exception& e)
         {
             std::cout << "Fast DDS QoS Profiles Manager exception caught: " << e.what() << std::endl;
         }
@@ -194,11 +194,11 @@ void locators_parser(
                                     break;
                                 case LocatorsList::PARTICIPANT_METATRAFFIC_MULTICAST:
                                     qosprof::domain_participant::builtin::metatraffic_multicast_locators::clear_address(
-                                            filename, profile_name, key);
+                                        filename, profile_name, key);
                                     break;
                                 case LocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
                                     qosprof::domain_participant::builtin::metatraffic_unicast_locators::clear_address(
-                                            filename, profile_name, key);
+                                        filename, profile_name, key);
                                     break;
                                 case LocatorsList::PARTICIPANT_REMOTE_SERVER_METATRAFFIC_UNICAST:
                                     // TODO
@@ -232,11 +232,11 @@ void locators_parser(
                                     break;
                                 case LocatorsList::PARTICIPANT_METATRAFFIC_MULTICAST:
                                     qosprof::domain_participant::builtin::metatraffic_multicast_locators::print_address(
-                                            filename, profile_name, key);
+                                        filename, profile_name, key);
                                     break;
                                 case LocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
                                     qosprof::domain_participant::builtin::metatraffic_unicast_locators::print_address(
-                                            filename, profile_name, key);
+                                        filename, profile_name, key);
                                     break;
                                 case LocatorsList::PARTICIPANT_REMOTE_SERVER_METATRAFFIC_UNICAST:
                                     // TODO
@@ -275,11 +275,11 @@ void locators_parser(
                                     break;
                                 case LocatorsList::PARTICIPANT_METATRAFFIC_MULTICAST:
                                     qosprof::domain_participant::builtin::metatraffic_multicast_locators::set_address(
-                                            filename, profile_name, address, key);
+                                        filename, profile_name, address, key);
                                     break;
                                 case LocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
                                     qosprof::domain_participant::builtin::metatraffic_unicast_locators::set_address(
-                                            filename, profile_name, address, key);
+                                        filename, profile_name, address, key);
                                     break;
                                 case LocatorsList::PARTICIPANT_REMOTE_SERVER_METATRAFFIC_UNICAST:
                                     // TODO
@@ -325,11 +325,11 @@ void locators_parser(
                                     break;
                                 case LocatorsList::PARTICIPANT_METATRAFFIC_MULTICAST:
                                     qosprof::domain_participant::builtin::metatraffic_multicast_locators::print_kind(
-                                            filename, profile_name, key);
+                                        filename, profile_name, key);
                                     break;
                                 case LocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
                                     qosprof::domain_participant::builtin::metatraffic_unicast_locators::print_kind(
-                                            filename, profile_name, key);
+                                        filename, profile_name, key);
                                     break;
                                 case LocatorsList::PARTICIPANT_REMOTE_SERVER_METATRAFFIC_UNICAST:
                                     // TODO
@@ -368,11 +368,11 @@ void locators_parser(
                                     break;
                                 case LocatorsList::PARTICIPANT_METATRAFFIC_MULTICAST:
                                     qosprof::domain_participant::builtin::metatraffic_multicast_locators::set_kind(
-                                            filename, profile_name, kind, key);
+                                        filename, profile_name, kind, key);
                                     break;
                                 case LocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
                                     qosprof::domain_participant::builtin::metatraffic_unicast_locators::set_kind(
-                                            filename, profile_name, kind, key);
+                                        filename, profile_name, kind, key);
                                     break;
                                 case LocatorsList::PARTICIPANT_REMOTE_SERVER_METATRAFFIC_UNICAST:
                                     // TODO
@@ -537,11 +537,11 @@ void locators_parser(
                                     break;
                                 case LocatorsList::PARTICIPANT_METATRAFFIC_MULTICAST:
                                     qosprof::domain_participant::builtin::metatraffic_multicast_locators::clear_port(
-                                            filename, profile_name, key);
+                                        filename, profile_name, key);
                                     break;
                                 case LocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
                                     qosprof::domain_participant::builtin::metatraffic_unicast_locators::clear_port(
-                                            filename, profile_name, key);
+                                        filename, profile_name, key);
                                     break;
                                 case LocatorsList::PARTICIPANT_REMOTE_SERVER_METATRAFFIC_UNICAST:
                                     // TODO
@@ -575,11 +575,11 @@ void locators_parser(
                                     break;
                                 case LocatorsList::PARTICIPANT_METATRAFFIC_MULTICAST:
                                     qosprof::domain_participant::builtin::metatraffic_multicast_locators::print_port(
-                                            filename, profile_name, key);
+                                        filename, profile_name, key);
                                     break;
                                 case LocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
                                     qosprof::domain_participant::builtin::metatraffic_unicast_locators::print_port(
-                                            filename, profile_name, key);
+                                        filename, profile_name, key);
                                     break;
                                 case LocatorsList::PARTICIPANT_REMOTE_SERVER_METATRAFFIC_UNICAST:
                                     // TODO
@@ -618,11 +618,11 @@ void locators_parser(
                                     break;
                                 case LocatorsList::PARTICIPANT_METATRAFFIC_MULTICAST:
                                     qosprof::domain_participant::builtin::metatraffic_multicast_locators::set_port(
-                                            filename, profile_name, port, key);
+                                        filename, profile_name, port, key);
                                     break;
                                 case LocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
                                     qosprof::domain_participant::builtin::metatraffic_unicast_locators::set_port(
-                                            filename, profile_name, port, key);
+                                        filename, profile_name, port, key);
                                     break;
                                 case LocatorsList::PARTICIPANT_REMOTE_SERVER_METATRAFFIC_UNICAST:
                                     // TODO
@@ -886,11 +886,11 @@ void locators_parser(
                     print_usage = true;
                 }
             }
-            catch(const qosprof::Exception& e)
+            catch (const qosprof::Exception& e)
             {
                 std::cout << "Fast DDS QoS Profiles Manager exception caught: " << e.what() << std::endl;
             }
-            
+
         }
     }
 
