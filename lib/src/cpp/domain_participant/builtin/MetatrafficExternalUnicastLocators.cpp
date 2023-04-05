@@ -256,7 +256,8 @@ void set_externality(
     // Obtain meta-traffic external unicast locator list node
     try
     {
-        locator_list_node = manager->get_node(builtin_node, eprosima::qosprof::utils::tag::METATRAFFIC_EXTERNAL_UNICAST_LOCATOR_LIST);
+        locator_list_node = manager->get_node(builtin_node,
+                        eprosima::qosprof::utils::tag::METATRAFFIC_EXTERNAL_UNICAST_LOCATOR_LIST);
     }
     catch (const eprosima::qosprof::ElementNotFound& ex)
     {
