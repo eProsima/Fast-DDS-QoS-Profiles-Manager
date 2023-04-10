@@ -246,7 +246,56 @@ void set_default_profile(
         const std::string& xml_file,
         const std::string& profile_id)
 {
-    throw Unsupported("Unsupported");
+    // Xerces document manage XML elements
+    xercesc::DOMDocument* doc = nullptr;
+
+    // XML nodes and values
+    xercesc::DOMNode* profiles_node = nullptr;
+    xercesc::DOMNode* participant_node = nullptr;
+    xercesc::DOMNode* default_profile_node = nullptr;
+
+    // Create XML manager and initialize the document
+    eprosima::qosprof::utils::ParseXML* manager = new eprosima::qosprof::utils::ParseXML(doc, xml_file, true);
+
+    // Obtain nodes
+    profiles_node = manager->get_node(doc, eprosima::qosprof::utils::tag::PROFILES);
+    participant_node = manager->get_node(
+        profiles_node,
+        eprosima::qosprof::utils::tag::PARTICIPANT,
+        eprosima::qosprof::utils::tag::PROFILE_NAME,
+        profile_id);
+
+
+    // Check if default profile already defined
+    default_profile_node = participant_node->getAttributes()->getNamedItem(
+        xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::DEFAULT_PROFILE));
+    if (default_profile_node != nullptr)
+    {
+        if (default_profile_node->getNodeValue() == xercesc::XMLString::transcode("true"))
+        {
+            // This profile is already the default profile
+            return;
+        }
+    }
+
+    // Set all participants as NOT default profile
+    xercesc::DOMNodeList* participant_list = static_cast<xercesc::DOMElement*>(profiles_node)->getElementsByTagName(
+        xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::PARTICIPANT));
+    // Iterate throw all the participants to set them as NOT default
+    for (int i = 0, size = participant_list->getLength(); i < size; i++)
+    {
+        static_cast<xercesc::DOMElement*>(participant_list->item(i))->setAttribute(
+            xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::DEFAULT_PROFILE),
+            xercesc::XMLString::transcode("false"));
+    }
+
+    // Set given participant as default profile
+    static_cast<xercesc::DOMElement*>(participant_node)->setAttribute(
+        xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::DEFAULT_PROFILE),
+        xercesc::XMLString::transcode("true"));
+
+    // Validate new XML element and save it
+    manager->validate_and_save_xml_document(doc);
 }
 
 void set_domain_id(
@@ -308,7 +357,6 @@ void set_name(
             xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::PROFILE_NAME),
             xercesc::XMLString::transcode(profile_id.c_str()));
         participant_node = (xercesc::DOMNode*)participant_element;
-
     }
 
     // Obtain rtps node
@@ -322,7 +370,6 @@ void set_name(
         rtps_node = (xercesc::DOMNode*) doc->createElement(
             xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::RTPS));
         participant_node->appendChild(rtps_node);
-
     }
 
     // Obtain name
