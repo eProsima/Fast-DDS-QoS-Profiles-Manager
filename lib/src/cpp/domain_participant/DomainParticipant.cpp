@@ -87,13 +87,6 @@ std::string print_participant_id(
 
 std::string print_user_transport(
         const std::string& xml_file,
-        const std::string& profile_id)
-{
-    throw Unsupported("Unsupported");
-}
-
-std::string print_user_transport(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -101,13 +94,6 @@ std::string print_user_transport(
 }
 
 std::string print_use_builtin_transports(
-        const std::string& xml_file,
-        const std::string& profile_id)
-{
-    throw Unsupported("Unsupported");
-}
-
-std::string print_user_data(
         const std::string& xml_file,
         const std::string& profile_id)
 {
@@ -200,13 +186,6 @@ void clear_participant_id(
 
 void clear_user_transports(
         const std::string& xml_file,
-        const std::string& profile_id)
-{
-    throw Unsupported("Unsupported");
-}
-
-void clear_user_transports(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -214,13 +193,6 @@ void clear_user_transports(
 }
 
 void clear_use_builtin_transports(
-        const std::string& xml_file,
-        const std::string& profile_id)
-{
-    throw Unsupported("Unsupported");
-}
-
-void clear_user_data(
         const std::string& xml_file,
         const std::string& profile_id)
 {

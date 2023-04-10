@@ -71,13 +71,6 @@ std::string print_max_initial_peers_range(
 
 std::string print_interface_whitelist(
         const std::string& xml_file,
-        const std::string& transport_descriptor_id)
-{
-    throw Unsupported("Unsupported");
-}
-
-std::string print_interface_whitelist(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& index)
 {
@@ -149,13 +142,6 @@ std::string print_logical_port_increment(
 
 std::string print_listening_ports(
         const std::string& xml_file,
-        const std::string& transport_descriptor_id)
-{
-    throw Unsupported("Unsupported");
-}
-
-std::string print_listening_ports(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& index)
 {
@@ -213,13 +199,6 @@ std::string print_tls_verify_file(
 
 std::string print_tls_verify_mode(
         const std::string& xml_file,
-        const std::string& transport_descriptor_id)
-{
-    throw Unsupported("Unsupported");
-}
-
-std::string print_tls_verify_mode(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& index)
 {
@@ -228,22 +207,8 @@ std::string print_tls_verify_mode(
 
 std::string print_tls_options(
         const std::string& xml_file,
-        const std::string& transport_descriptor_id)
-{
-    throw Unsupported("Unsupported");
-}
-
-std::string print_tls_options(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& index)
-{
-    throw Unsupported("Unsupported");
-}
-
-std::string print_tls_verify_paths(
-        const std::string& xml_file,
-        const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
@@ -417,13 +382,6 @@ void clear_max_initial_peers_range(
 
 void clear_interface_whitelist(
         const std::string& xml_file,
-        const std::string& transport_descriptor_id)
-{
-    throw Unsupported("Unsupported");
-}
-
-void clear_interface_whitelist(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& index)
 {
@@ -495,13 +453,6 @@ void clear_logical_port_increment(
 
 void clear_listening_ports(
         const std::string& xml_file,
-        const std::string& transport_descriptor_id)
-{
-    throw Unsupported("Unsupported");
-}
-
-void clear_listening_ports(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& index)
 {
@@ -559,13 +510,6 @@ void clear_tls_verify_file(
 
 void clear_tls_verify_mode(
         const std::string& xml_file,
-        const std::string& transport_descriptor_id)
-{
-    throw Unsupported("Unsupported");
-}
-
-void clear_tls_verify_mode(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& index)
 {
@@ -574,22 +518,8 @@ void clear_tls_verify_mode(
 
 void clear_tls_options(
         const std::string& xml_file,
-        const std::string& transport_descriptor_id)
-{
-    throw Unsupported("Unsupported");
-}
-
-void clear_tls_options(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& index)
-{
-    throw Unsupported("Unsupported");
-}
-
-void clear_tls_verify_paths(
-        const std::string& xml_file,
-        const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
