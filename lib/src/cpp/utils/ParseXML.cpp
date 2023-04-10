@@ -30,7 +30,6 @@ namespace qosprof {
 namespace utils {
 
 ParseXML::ParseXML (
-        xercesc::DOMDocument*& doc,
         const std::string& file_name,
         bool create_file)
 {
@@ -130,6 +129,7 @@ ParseXML::~ParseXML()
 
     // Release resources
     delete config;
+    delete doc;
     delete implementation;
     delete output;
     delete parser;
@@ -138,17 +138,20 @@ ParseXML::~ParseXML()
     delete error_handler;
 }
 
-void ParseXML::validate_and_save_xml_document(
-        xercesc::DOMDocument*& doc)
+xercesc::DOMDocument* ParseXML::get_doc()
 {
-    if (validate_xml(doc))
+    return doc;
+}
+
+void ParseXML::validate_and_save_xml_document()
+{
+    if (validate_xml())
     {
-        save_xml(doc);
+        save_xml();
     }
 }
 
-bool ParseXML::validate_xml(
-        xercesc::DOMDocument*& doc)
+bool ParseXML::validate_xml()
 {
     // Set ElementInvalid error handler
     error_handler = new eprosima::qosprof::utils::ParseXMLErrorHandler(
@@ -170,8 +173,7 @@ bool ParseXML::validate_xml(
     return true;
 }
 
-bool ParseXML::save_xml(
-        xercesc::DOMDocument*& doc)
+bool ParseXML::save_xml()
 {
     // Config would configure serialized XML data
     config = serializer->getDomConfig();
@@ -378,7 +380,6 @@ void ParseXML::reset_node(
 }
 
 void ParseXML::set_value_to_node(
-        xercesc::DOMDocument*& doc,
         xercesc::DOMNode*& node,
         const std::string& value)
 {
@@ -449,34 +450,30 @@ std::unique_ptr<std::vector<uint>> ParseXML::get_real_index(
 }
 
 xercesc::DOMNode* ParseXML::get_node(
-        xercesc::DOMDocument*& doc,
         const std::string& tag_name)
 {
     // Try call main get_node function with remain empty values
-    return get_node(doc, tag_name, nullptr, "", "");
+    return get_node(tag_name, nullptr, "", "");
 }
 
 xercesc::DOMNode* ParseXML::get_node(
-        xercesc::DOMDocument*& doc,
         const std::string& tag_name,
         const std::string* index)
 {
     // Try call main get_node function with remain empty values
-    return get_node(doc, tag_name, index, "", "");
+    return get_node(tag_name, index, "", "");
 }
 
 xercesc::DOMNode* ParseXML::get_node(
-        xercesc::DOMDocument*& doc,
         const std::string& tag_name,
         const std::string& att_name,
         const std::string& att_value)
 {
     // Try call main get_node function with remain empty values
-    return get_node(doc, tag_name, nullptr, att_name, att_value);
+    return get_node(tag_name, nullptr, att_name, att_value);
 }
 
 xercesc::DOMNode* ParseXML::get_node(
-        xercesc::DOMDocument*& doc,
         const std::string& tag_name,
         const std::string* index,
         const std::string& att_name,
