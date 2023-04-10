@@ -24,6 +24,7 @@ file(GLOB_RECURSE LIBRARY_HEADERS
 )
 
 file(GLOB_RECURSE LIBRARY_SOURCES
+    ${PROJECT_SOURCE_DIR}/src/cpp/common/LocatorList.cpp
     ${PROJECT_SOURCE_DIR}/src/cpp/domain_participant/Allocation.cpp
     ${PROJECT_SOURCE_DIR}/src/cpp/domain_participant/builtin/Builtin.cpp
     ${PROJECT_SOURCE_DIR}/src/cpp/domain_participant/builtin/discovery_config/DiscoveryConfig.cpp
@@ -42,8 +43,8 @@ file(GLOB_RECURSE LIBRARY_SOURCES
     ${PROJECT_SOURCE_DIR}/src/cpp/domain_participant/PropertiesPolicy.cpp
     ${PROJECT_SOURCE_DIR}/src/cpp/exception/Exception.cpp
     ${PROJECT_SOURCE_DIR}/src/cpp/utils/ParseXML.cpp
-    ${PROJECT_SOURCE_DIR}/src/cpp/utils/ParseXMLString.cpp
     ${PROJECT_SOURCE_DIR}/src/cpp/utils/ParseXMLErrorHandler.cpp
+    ${PROJECT_SOURCE_DIR}/src/cpp/utils/ParseXMLString.cpp
 )
 
 file(GLOB_RECURSE TEST_SOURCES
