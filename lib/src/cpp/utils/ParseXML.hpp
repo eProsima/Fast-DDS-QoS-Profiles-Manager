@@ -50,14 +50,12 @@ public:
      * @brief Construct a new Parse XML object, which initializes Xerces required tools,
      *  and reads given xml_file document
      *
-     * @param[in out] doc DOMDocument* to be created
      * @param[in] xml_file string with the file path
      * @param[in] create_file bool (optional) create file if it does not exist flag
      *
      * @throw FileNotFound exception if Xerces XML workspace could not be initialized
      */
     ParseXML(
-            xercesc::DOMDocument*& doc,
             const std::string& xml_file,
             bool create_file = false);
 
@@ -70,12 +68,9 @@ public:
     /**
      * @brief Validate the document, and save to disk if valid
      *
-     * @param doc DOMDocument XML document with the parsed / created nodes
-     *
      * @throw ElementInvalid exception if document does not pass parser validation
      */
-    void validate_and_save_xml_document(
-            xercesc::DOMDocument*& doc);
+    void validate_and_save_xml_document();
 
     /**
      * @brief Remove the given node from the parent node
@@ -100,35 +95,36 @@ public:
     /**
      * @brief Set the value to node object
      *
-     * @param[in out] doc DOMDocument* document to use
      * @param node DOMNode node to be set
      * @param value to be set in the node
      */
     void set_value_to_node(
-            xercesc::DOMDocument*& doc,
             xercesc::DOMNode*& node,
             const std::string& value);
+
+    /**
+     * @brief Temporal function to get the doc object
+     *
+     * @return xercesc::DOMDocument* doc object
+     */
+    xercesc::DOMDocument* get_doc();
 
     /*
      * AUX get_node functions based on the implementation needs
      */
     xercesc::DOMNode* get_node(
-            xercesc::DOMDocument*& doc,
             const std::string& tag_name);
 
     xercesc::DOMNode* get_node(
-            xercesc::DOMDocument*& doc,
             const std::string& tag_name,
             const std::string* index);
 
     xercesc::DOMNode* get_node(
-            xercesc::DOMDocument*& doc,
             const std::string& tag_name,
             const std::string& att_name,
             const std::string& att_value);
 
     xercesc::DOMNode* get_node(
-            xercesc::DOMDocument*& doc,
             const std::string& tag_name,
             const std::string* index,
             const std::string& att_name,
@@ -176,26 +172,20 @@ private:
     /**
      * @brief Save the document as string and validate
      *
-     * @param doc DOMDocument XML document with the parsed / created nodes
-     *
      * @return true document passes parser validation
      * @return false document does not pass parser validation
      *
      * @throw ElementInvalid exception if document does not pass parser validation
      */
-    bool validate_xml(
-            xercesc::DOMDocument*& doc);
+    bool validate_xml();
 
     /**
      * @brief  Save the document in the target file path
      *
-     * @param doc DOMDocument XML document with the parsed / created nodes
-     *
      * @return true document saved
      * @return false failure saving document
      */
-    bool save_xml(
-            xercesc::DOMDocument*& doc);
+    bool save_xml();
 
     /**
      * @brief Get the absolute path of the given file name [POSIX only]
@@ -224,6 +214,7 @@ private:
 
     // Xerces tools required for node management
     xercesc::DOMConfiguration* config = nullptr;
+    xercesc::DOMDocument* doc = nullptr;
     xercesc::DOMImplementation* implementation = nullptr;
     xercesc::DOMLSOutput* output = nullptr;
     xercesc::XercesDOMParser* parser = nullptr;
