@@ -47,7 +47,7 @@ ParseXML::ParseXML (
     catch (const xercesc::XMLException& toCatch)
     {
         // Unable to initialize XML workspace
-        throw FileNotFound(xercesc::XMLString::transcode(toCatch.getMessage()));
+        throw Error(xercesc::XMLString::transcode(toCatch.getMessage()));
     }
 
     // Create Xerces implementation
@@ -56,7 +56,7 @@ ParseXML::ParseXML (
     if (implementation == nullptr)
     {
         // Could not initialize XML workspace
-        throw FileNotFound("Could not set XML workspace");
+        throw Error("Could not set XML workspace");
     }
 
     // Create Xerces Required elements based on the implementation
