@@ -75,6 +75,7 @@ file(GLOB_RECURSE ALL_HEADERS
 set(${PROJECT_NAME}_source_files
     ${ALL_HEADERS}
 
+    src/cpp/common/LocatorList.cpp
     src/cpp/domain_participant/Allocation.cpp
     src/cpp/domain_participant/builtin/Builtin.cpp
     src/cpp/domain_participant/builtin/discovery_config/DiscoveryConfig.cpp
@@ -93,10 +94,9 @@ set(${PROJECT_NAME}_source_files
     src/cpp/domain_participant/PropertiesPolicy.cpp
     src/cpp/exception/Exception.cpp
     src/cpp/transport_descriptor/TransportDescriptor.cpp
-    src/cpp/common/LocatorList.cpp
     src/cpp/utils/ParseXML.cpp
-    src/cpp/utils/ParseXMLString.cpp
     src/cpp/utils/ParseXMLErrorHandler.cpp
+    src/cpp/utils/ParseXMLString.cpp
 )
 
 add_library(${PROJECT_NAME} SHARED ${${PROJECT_NAME}_source_files})

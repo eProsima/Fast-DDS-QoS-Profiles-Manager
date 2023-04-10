@@ -45,7 +45,7 @@ namespace locator_list {
  * @throw BadParameter Exception if the index is not an integer.
  */
 std::string print(
-        xercesc::DOMElement*& xml_node,
+        const xercesc::DOMElement& xml_node,
         const std::string& index);
 
 /**
@@ -58,10 +58,10 @@ std::string print(
  *
  * @throw ElementNotFound Exception if the list element does not exist, or the list does not contain
  *        any element in index position.
- * @throw BadParameter Exception if the index is not an integer.
+ * @throw BadParameter Exception if the index is empty or not an integer.
  */
 std::string print_kind(
-        xercesc::DOMElement*& xml_node,
+        const xercesc::DOMElement& xml_node,
         const std::string& index);
 
 /**
@@ -74,10 +74,10 @@ std::string print_kind(
  *
  * @throw ElementNotFound Exception if the list element does not exist, or the list does not contain
  *        any element in index position.
- * @throw BadParameter Exception if the index is not an integer.
+ * @throw BadParameter Exception if the index is empty or not an integer.
  */
 std::string print_port(
-        xercesc::DOMElement*& xml_node,
+        const xercesc::DOMElement& xml_node,
         const std::string& index);
 
 /**
@@ -91,10 +91,10 @@ std::string print_port(
  *
  * @throw ElementNotFound Exception if the list element does not exist, or the list does not contain
  *        any element in index position.
- * @throw BadParameter Exception if the index is not an integer.
+ * @throw BadParameter Exception if the index is empty or not an integer.
  */
 std::string print_physical_port(
-        xercesc::DOMElement*& xml_node,
+        const xercesc::DOMElement& xml_node,
         const std::string& index);
 
 /**
@@ -107,10 +107,10 @@ std::string print_physical_port(
  *
  * @throw ElementNotFound Exception if the list element does not exist, or the list does not contain
  *        any element in index position.
- * @throw BadParameter Exception if the index is not an integer.
+ * @throw BadParameter Exception if the index is empty or not an integer.
  */
 std::string print_address(
-        xercesc::DOMElement*& xml_node,
+        const xercesc::DOMElement& xml_node,
         const std::string& index);
 
 /**
@@ -124,10 +124,10 @@ std::string print_address(
  *
  * @throw ElementNotFound Exception if the list element does not exist, or the list does not contain
  *        any element in index position.
- * @throw BadParameter Exception if the index is not an integer.
+ * @throw BadParameter Exception if the index is empty or not an integer.
  */
 std::string print_unique_lan_id(
-        xercesc::DOMElement*& xml_node,
+        const xercesc::DOMElement& xml_node,
         const std::string& index);
 
 /**
@@ -141,10 +141,10 @@ std::string print_unique_lan_id(
  *
  * @throw ElementNotFound Exception if the list element does not exist, or the list does not contain
  *        any element in index position.
- * @throw BadParameter Exception if the index is not an integer.
+ * @throw BadParameter Exception if the index is empty or not an integer.
  */
 std::string print_wan_address(
-        xercesc::DOMElement*& xml_node,
+        const xercesc::DOMElement& xml_node,
         const std::string& index);
 
 /************************************************************************/
@@ -161,24 +161,25 @@ std::string print_wan_address(
  * @throw ElementNotFound Exception if the list has not been set.
  */
 uint32_t size(
-        xercesc::DOMElement*& xml_node);
+        const xercesc::DOMElement& xml_node);
 
 /************************************************************************/
 /* Clear functions                                                      */
 /************************************************************************/
 
 /**
- * @brief Remove locator or complete locator list.
+ * @brief Remove locator or complete locator list. If no index provided (empty string), the complete
+ *       locator list would be removed. If provided, then the corresponding locator would be removed.
  *
  * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] index Collection element to be removed. If empty, the complete list is removed.
  *
- * @throw ElementNotFound Exception if the list element does not exist, or the list does not contain
- *        any element in index position.
+ * @throw ElementNotFound Exception if the element does not exist in the collection if an index is
+ *        provided.
  * @throw BadParameter Exception if the index is not an integer.
  */
 void clear(
-        xercesc::DOMElement*& xml_node,
+        xercesc::DOMElement& xml_node,
         const std::string& index);
 
 /**
@@ -189,10 +190,10 @@ void clear(
  *
  * @throw ElementNotFound Exception if the list element does not exist, or the list does not contain
  *        any element in index position.
- * @throw BadParameter Exception if the index is not an integer.
+ * @throw BadParameter Exception if the index is empty or not an integer.
  */
 void clear_port(
-        xercesc::DOMElement*& xml_node,
+        xercesc::DOMElement& xml_node,
         const std::string& index);
 
 /**
@@ -203,10 +204,10 @@ void clear_port(
  *
  * @throw ElementNotFound Exception if the list element does not exist, or the list does not contain
  *        any element in index position.
- * @throw BadParameter Exception if the index is not an integer.
+ * @throw BadParameter Exception if the index is empty or not an integer.
  */
 void clear_physical_port(
-        xercesc::DOMElement*& xml_node,
+        xercesc::DOMElement& xml_node,
         const std::string& index);
 
 /**
@@ -217,10 +218,10 @@ void clear_physical_port(
  *
  * @throw ElementNotFound Exception if the list element does not exist, or the list does not contain
  *        any element in index position.
- * @throw BadParameter Exception if the index is not an integer.
+ * @throw BadParameter Exception if the index is empty or not an integer.
  */
 void clear_address(
-        xercesc::DOMElement*& xml_node,
+        xercesc::DOMElement& xml_node,
         const std::string& index);
 
 /**
@@ -231,10 +232,10 @@ void clear_address(
  *
  * @throw ElementNotFound Exception if the list element does not exist, or the list does not contain
  *        any element in index position.
- * @throw BadParameter Exception if the index is not an integer.
+ * @throw BadParameter Exception if the index is empty or not an integer.
  */
 void clear_unique_lan_id(
-        xercesc::DOMElement*& xml_node,
+        xercesc::DOMElement& xml_node,
         const std::string& index);
 
 /**
@@ -245,10 +246,10 @@ void clear_unique_lan_id(
  *
  * @throw ElementNotFound Exception if the list element does not exist, or the list does not contain
  *        any element in index position.
- * @throw BadParameter Exception if the index is not an integer.
+ * @throw BadParameter Exception if the index is empty or not an integer.
  */
 void clear_wan_address(
-        xercesc::DOMElement*& xml_node,
+        xercesc::DOMElement& xml_node,
         const std::string& index);
 
 /************************************************************************/
@@ -263,12 +264,12 @@ void clear_wan_address(
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided locator kind is not valid.
- * @throw ElementNotFound Exception if the list element does not exist, or the list does not contain
- *        any element in index position.
+ * @throw ElementNotFound Exception if index provided and the collection element is not found,
+ *        or if the element does not exist in the collection if an index is provided.
  * @throw BadParameter Exception if the index is not an integer.
  */
 void set_kind(
-        xercesc::DOMElement*& xml_node,
+        xercesc::DOMElement& xml_node,
         const std::string& kind,
         const std::string& index);
 
@@ -280,12 +281,12 @@ void set_kind(
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided locator port is not valid.
- * @throw ElementNotFound Exception if the list element does not exist, or the list does not contain
- *        any element in index position.
+ * @throw ElementNotFound Exception if index provided and the collection element is not found,
+ *        or if the element does not exist in the collection if an index is provided.
  * @throw BadParameter Exception if the index is not an integer.
  */
 void set_port(
-        xercesc::DOMElement*& xml_node,
+        xercesc::DOMElement& xml_node,
         const std::string& port,
         const std::string& index);
 
@@ -298,12 +299,12 @@ void set_port(
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided locator physical port is not valid.
- * @throw ElementNotFound Exception if the list element does not exist, or the list does not contain
- *        any element in index position.
+ * @throw ElementNotFound Exception if index provided and the collection element is not found,
+ *        or if the element does not exist in the collection if an index is provided.
  * @throw BadParameter Exception if the index is not an integer.
  */
 void set_physical_port(
-        xercesc::DOMElement*& xml_node,
+        xercesc::DOMElement& xml_node,
         const std::string& physical_port,
         const std::string& index);
 
@@ -315,12 +316,12 @@ void set_physical_port(
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided locator IP address is not valid.
- * @throw ElementNotFound Exception if the list element does not exist, or the list does not contain
- *        any element in index position.
+ * @throw ElementNotFound Exception if index provided and the collection element is not found,
+ *        or if the element does not exist in the collection if an index is provided.
  * @throw BadParameter Exception if the index is not an integer.
  */
 void set_address(
-        xercesc::DOMElement*& xml_node,
+        xercesc::DOMElement& xml_node,
         const std::string& address,
         const std::string& index);
 
@@ -333,12 +334,12 @@ void set_address(
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided locator identifier is not valid.
- * @throw ElementNotFound Exception if the list element does not exist, or the list does not contain
- *        any element in index position.
+ * @throw ElementNotFound Exception if index provided and the collection element is not found,
+ *        or if the element does not exist in the collection if an index is provided.
  * @throw BadParameter Exception if the index is not an integer.
  */
 void set_unique_lan_id(
-        xercesc::DOMElement*& xml_node,
+        xercesc::DOMElement& xml_node,
         const std::string& unique_lan_id,
         const std::string& index);
 
@@ -350,12 +351,12 @@ void set_unique_lan_id(
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided locator IP address is not valid.
- * @throw ElementNotFound Exception if the list element does not exist, or the list does not contain
- *        any element in index position.
+ * @throw ElementNotFound Exception if index provided and the collection element is not found,
+ *        or if the element does not exist in the collection if an index is provided.
  * @throw BadParameter Exception if the index is not an integer.
  */
 void set_wan_address(
-        xercesc::DOMElement*& xml_node,
+        xercesc::DOMElement& xml_node,
         const std::string& wan_address,
         const std::string& index);
 
