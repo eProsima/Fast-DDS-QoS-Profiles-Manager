@@ -185,22 +185,22 @@ void set_externality(
     xercesc::DOMNode* locator_node = nullptr;
 
     // Create XML manager and initialize the document
-    eprosima::qosprof::utils::ParseXML* manager = new eprosima::qosprof::utils::ParseXML(xml_file, true);
+    utils::ParseXML* manager = new utils::ParseXML(xml_file, true);
     doc = manager->get_doc();
 
     // Obtain profiles node
     try
     {
-        profiles_node = manager->get_node(eprosima::qosprof::utils::tag::PROFILES);
+        profiles_node = manager->get_node(utils::tag::PROFILES);
     }
-    catch (const eprosima::qosprof::ElementNotFound& ex)
+    catch (const ElementNotFound& ex)
     {
         // Obtain root element
         xercesc::DOMElement* root_element = doc->getDocumentElement();
 
         // Add profiles
         profiles_node = static_cast<xercesc::DOMNode*>(doc->createElement(
-                    xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::PROFILES)));
+                    xercesc::XMLString::transcode(utils::tag::PROFILES)));
         root_element->appendChild(profiles_node);
     }
 
@@ -209,18 +209,18 @@ void set_externality(
     {
         participant_node = manager->get_node(
             profiles_node,
-            eprosima::qosprof::utils::tag::PARTICIPANT,
-            eprosima::qosprof::utils::tag::PROFILE_NAME,
+            utils::tag::PARTICIPANT,
+            utils::tag::PROFILE_NAME,
             profile_id);
     }
-    catch (const eprosima::qosprof::ElementNotFound& ex)
+    catch (const ElementNotFound& ex)
     {
         // create if not existent
         xercesc::DOMElement* participant_element = doc->createElement(
-            xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::PARTICIPANT));
+            xercesc::XMLString::transcode(utils::tag::PARTICIPANT));
         profiles_node->appendChild(participant_element);
         participant_element->setAttribute(
-            xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::PROFILE_NAME),
+            xercesc::XMLString::transcode(utils::tag::PROFILE_NAME),
             xercesc::XMLString::transcode(profile_id.c_str()));
         participant_node = static_cast<xercesc::DOMNode*>(participant_element);
 
@@ -229,13 +229,13 @@ void set_externality(
     // Obtain rtps node
     try
     {
-        rtps_node = manager->get_node(participant_node, eprosima::qosprof::utils::tag::RTPS);
+        rtps_node = manager->get_node(participant_node, utils::tag::RTPS);
     }
-    catch (const eprosima::qosprof::ElementNotFound& ex)
+    catch (const ElementNotFound& ex)
     {
         // create if not existent
         rtps_node = static_cast<xercesc::DOMNode*>(doc->createElement(
-                    xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::RTPS)));
+                    xercesc::XMLString::transcode(utils::tag::RTPS)));
         participant_node->appendChild(rtps_node);
 
     }
@@ -244,13 +244,13 @@ void set_externality(
     try
     {
         locator_list_node = manager->get_node(rtps_node,
-                        eprosima::qosprof::utils::tag::DEFAULT_EXTERNAL_UNICAST_LOCATOR_LIST);
+                        utils::tag::DEFAULT_EXTERNAL_UNICAST_LOCATOR_LIST);
     }
-    catch (const eprosima::qosprof::ElementNotFound& ex)
+    catch (const ElementNotFound& ex)
     {
         // create if not existent
         locator_list_node = static_cast<xercesc::DOMNode*>(doc->createElement(xercesc::XMLString::transcode(
-                    eprosima::qosprof::utils::tag::DEFAULT_EXTERNAL_UNICAST_LOCATOR_LIST)));
+                    utils::tag::DEFAULT_EXTERNAL_UNICAST_LOCATOR_LIST)));
         rtps_node->appendChild(locator_list_node);
     }
 
@@ -259,17 +259,17 @@ void set_externality(
     if (index.empty())
     {
         locator_node = static_cast<xercesc::DOMNode*>(doc->createElement(xercesc::XMLString::transcode(
-                    eprosima::qosprof::utils::tag::UDP_V4_LOCATOR)));
+                    utils::tag::UDP_V4_LOCATOR)));
         locator_list_node->appendChild(locator_node);
     }
     // Update the locator of the given index
     else
     {
-        locator_node = manager->get_node(locator_list_node, eprosima::qosprof::utils::tag::UDP_V4_LOCATOR, &index);
+        locator_node = manager->get_node(locator_list_node, utils::tag::UDP_V4_LOCATOR, &index);
     }
     // Set the externality value
     static_cast<xercesc::DOMElement*>(locator_node)->setAttribute(
-        xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::EXTERNALITY),
+        xercesc::XMLString::transcode(utils::tag::EXTERNALITY),
         xercesc::XMLString::transcode(externality.c_str()));
 
     // Validate new XML element and save it

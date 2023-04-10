@@ -70,8 +70,8 @@ ParseXML::ParseXML (
     parser = new xercesc::XercesDOMParser();
 
     // Error handler would receive the exception from the parser, and report it as a FileNotFound expected exception
-    error_handler = new eprosima::qosprof::utils::ParseXMLErrorHandler(
-        eprosima::qosprof::utils::ParseXMLErrorHandler::Kind::FileNotFound);
+    error_handler = new utils::ParseXMLErrorHandler(
+        utils::ParseXMLErrorHandler::Kind::FileNotFound);
     parser->setErrorHandler(error_handler);
 
     // Read XML file and obtain the doc object
@@ -83,18 +83,18 @@ ParseXML::ParseXML (
         doc = parser->getDocument();
     }
     // Given file does not exist
-    catch (const eprosima::qosprof::FileNotFound& ex)
+    catch (const FileNotFound& ex)
     {
         // Create new document if required
         if (create_file && !file_exists)
         {
             // Implementation would create an empty document
             doc = implementation->createDocument(0, xercesc::XMLString::transcode(
-                                eprosima::qosprof::utils::tag::ROOT), 0);
+                                utils::tag::ROOT), 0);
             // The root element would be <dds>, with the 'xmlns' att.
             doc->getDocumentElement()->setAttribute(
-                xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::XMLNS),
-                xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::EPROSIMA_URL));
+                xercesc::XMLString::transcode(utils::tag::XMLNS),
+                xercesc::XMLString::transcode(utils::tag::EPROSIMA_URL));
         }
         // Propagate the exception
         else
@@ -106,7 +106,7 @@ ParseXML::ParseXML (
     // Set up Validation parameters: XSD pash
     std::string xsd_file_path = FASTDDS_QOS_PROFILES_MANAGER_XML_SCHEMA;
     // Set as namespace location both URL and the path to the XML schema
-    std::string namespace_schema_location = eprosima::qosprof::utils::tag::EPROSIMA_URL;
+    std::string namespace_schema_location = utils::tag::EPROSIMA_URL;
     namespace_schema_location += " " + xsd_file_path;
     // Load the schema as part of the grammar of the parser
     parser->loadGrammar(xsd_file_path.c_str(), xercesc::Grammar::SchemaGrammarType, true);
@@ -154,12 +154,12 @@ void ParseXML::validate_and_save_xml_document()
 bool ParseXML::validate_xml()
 {
     // Set ElementInvalid error handler
-    error_handler = new eprosima::qosprof::utils::ParseXMLErrorHandler(
-        eprosima::qosprof::utils::ParseXMLErrorHandler::Kind::ElementInvalid);
+    error_handler = new utils::ParseXMLErrorHandler(
+        utils::ParseXMLErrorHandler::Kind::ElementInvalid);
     parser->setErrorHandler(error_handler);
 
     // Create a XML string buffer for validation
-    eprosima::qosprof::utils::ParseXMLString* xml_string = new eprosima::qosprof::utils::ParseXMLString();
+    utils::ParseXMLString* xml_string = new utils::ParseXMLString();
 
     // Save XML document in the XML string buffer
     output->setByteStream(xml_string);
@@ -204,7 +204,7 @@ xercesc::DOMNode* ParseXML::get_node(
     // Throw exception if no nodes
     if (node_list->getLength() == 0)
     {
-        // Throw eprosima::qosprof::ElementNotFound exception
+        // Throw ElementNotFound exception
         throw ElementNotFound("non-existent " + tag_name + " element\n");
     }
     // Complex element Node
@@ -254,14 +254,14 @@ xercesc::DOMNode* ParseXML::get_node(
                             }
                             else
                             {
-                                // Throw eprosima::qosprof::ElementNotFound exception
+                                // Throw ElementNotFound exception
                                 throw ElementNotFound(
                                           tag_name + " does not have the attribute " + att_name + "\n");
                             }
                         }
                         else
                         {
-                            // Throw eprosima::qosprof::ElementNotFound exception
+                            // Throw ElementNotFound exception
                             throw ElementNotFound(
                                       tag_name + " does not have the attribute " + att_name + "\n");
                         }
@@ -303,7 +303,7 @@ xercesc::DOMNode* ParseXML::get_node(
                             // Check bounds
                             if (real_index < 0 || real_index >= index_list->size())
                             {
-                                // Throw eprosima::qosprof::ElementNotFound exception
+                                // Throw ElementNotFound exception
                                 throw ElementNotFound(
                                           tag_name + " does not have an element in position " +
                                           std::to_string(real_index) + "\n");

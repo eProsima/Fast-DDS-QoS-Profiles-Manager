@@ -225,7 +225,7 @@ private:
     std::string xml_file;
 
     // Custom utils
-    eprosima::qosprof::utils::ParseXMLErrorHandler* error_handler = nullptr;
+    utils::ParseXMLErrorHandler* error_handler = nullptr;
 };
 
 } /* parse */
