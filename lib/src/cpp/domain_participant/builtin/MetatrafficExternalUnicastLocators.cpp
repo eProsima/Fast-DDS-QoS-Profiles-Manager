@@ -254,7 +254,7 @@ void set_port(
             true);
 
     // Validate new XML element and save it
-    manager->validate_and_save_xml_document();    
+    manager->validate_and_save_xml_document();
 }
 
 void set_address(
@@ -359,7 +359,7 @@ void set_address(
             true);
 
     // Validate new XML element and save it
-    manager->validate_and_save_xml_document();    
+    manager->validate_and_save_xml_document();
 }
 
 void set_externality(

@@ -249,7 +249,8 @@ void set_port(
         builtin_node->appendChild(locator_list_node);
     }
 
-    common::locator_list::set_port(*manager, *dynamic_cast<xercesc::DOMElement*>(locator_list_node), port, index, false);
+    common::locator_list::set_port(*manager, *dynamic_cast<xercesc::DOMElement*>(locator_list_node), port, index,
+            false);
 
     // Validate new XML element and save it
     manager->validate_and_save_xml_document();
@@ -361,7 +362,8 @@ void set_address(
         builtin_node->appendChild(locator_list_node);
     }
 
-    common::locator_list::set_address(*manager, *dynamic_cast<xercesc::DOMElement*>(locator_list_node), address, index, false);
+    common::locator_list::set_address(*manager, *dynamic_cast<xercesc::DOMElement*>(locator_list_node), address, index,
+            false);
 
     // Validate new XML element and save it
     manager->validate_and_save_xml_document();
