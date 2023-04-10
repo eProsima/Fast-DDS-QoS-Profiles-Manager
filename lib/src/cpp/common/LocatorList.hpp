@@ -264,8 +264,7 @@ void clear_wan_address(
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided locator kind is not valid.
- * @throw ElementNotFound Exception if index provided and the collection element is not found,
- *        or if the element does not exist in the collection if an index is provided.
+ * @throw ElementNotFound Exception if the element does not exist in the collection if an index is provided.
  * @throw BadParameter Exception if the index is not an integer.
  */
 void set_kind(
@@ -281,8 +280,7 @@ void set_kind(
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided locator port is not valid.
- * @throw ElementNotFound Exception if index provided and the collection element is not found,
- *        or if the element does not exist in the collection if an index is provided.
+ * @throw ElementNotFound Exception if the element does not exist in the collection if an index is provided.
  * @throw BadParameter Exception if the index is not an integer.
  */
 void set_port(
@@ -299,8 +297,7 @@ void set_port(
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided locator physical port is not valid.
- * @throw ElementNotFound Exception if index provided and the collection element is not found,
- *        or if the element does not exist in the collection if an index is provided.
+ * @throw ElementNotFound Exception if the element does not exist in the collection if an index is provided.
  * @throw BadParameter Exception if the index is not an integer.
  */
 void set_physical_port(
@@ -316,8 +313,7 @@ void set_physical_port(
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided locator IP address is not valid.
- * @throw ElementNotFound Exception if index provided and the collection element is not found,
- *        or if the element does not exist in the collection if an index is provided.
+ * @throw ElementNotFound Exception if the element does not exist in the collection if an index is provided.
  * @throw BadParameter Exception if the index is not an integer.
  */
 void set_address(
@@ -334,8 +330,7 @@ void set_address(
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided locator identifier is not valid.
- * @throw ElementNotFound Exception if index provided and the collection element is not found,
- *        or if the element does not exist in the collection if an index is provided.
+ * @throw ElementNotFound Exception if the element does not exist in the collection if an index is provided.
  * @throw BadParameter Exception if the index is not an integer.
  */
 void set_unique_lan_id(
@@ -351,8 +346,7 @@ void set_unique_lan_id(
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
  * @throw ElementInvalid Exception if the provided locator IP address is not valid.
- * @throw ElementNotFound Exception if index provided and the collection element is not found,
- *        or if the element does not exist in the collection if an index is provided.
+ * @throw ElementNotFound Exception if the element does not exist in the collection if an index is provided.
  * @throw BadParameter Exception if the index is not an integer.
  */
 void set_wan_address(
