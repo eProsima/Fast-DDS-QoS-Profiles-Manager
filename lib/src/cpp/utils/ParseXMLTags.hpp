@@ -42,6 +42,14 @@ constexpr const char* RTPS = "rtps";
 
 /// RTPS PARTICIPANT
 constexpr const char* NAME = "name";
+constexpr const char* BUILTIN = "builtin";
+constexpr const char* METATRAFFIC_EXTERNAL_UNICAST_LOCATOR_LIST = "metatraffic_external_unicast_locators";
+
+// COMMONS
+/// LOCATOR
+constexpr const char* UDP_V4_LOCATOR = "udpv4";
+constexpr const char* UDP_V6_LOCATOR = "udpv6";
+constexpr const char* EXTERNALITY = "externality";
 
 } /* tag */
 } /* utils */

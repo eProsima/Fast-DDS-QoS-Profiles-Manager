@@ -19,7 +19,9 @@
 #ifndef _FAST_DDS_QOS_PROFILES_MANAGER_UTILS_PARSE_XML_HPP_
 #define _FAST_DDS_QOS_PROFILES_MANAGER_UTILS_PARSE_XML_HPP_
 
+#include <memory>
 #include <string>
+#include <vector>
 
 #include <xercesc/dom/DOM.hpp>
 #include <xercesc/framework/LocalFileFormatTarget.hpp>
@@ -76,28 +78,6 @@ public:
             xercesc::DOMDocument*& doc);
 
     /**
-     * @brief  MAIN get_node function.
-     *   Obtain the node in the list that matches tag name and
-     *   the given index or the given name-value attribute pair
-     *
-     * @param node_tag_list DOMNodeList list of nodes where tag_name should be part of
-     * @param tag_name string with the node (<tag>) name
-     * @param index int32 index of the node element in LIST cases
-     * @param att_name string key (attribute) name of the node element in MAP cases
-     * @param att_value string key (attribute) value of the node element in MAP cases
-     *
-     * @return xercesc::DOMNode* with the node found
-     *
-     * @throw ElementNotFound exception if expected node was not found
-     */
-    xercesc::DOMNode* get_node(
-            xercesc::DOMNodeList*& node_tag_list,
-            const std::string& tag_name,
-            int32_t index,
-            const std::string& att_name,
-            const std::string& att_value);
-
-    /**
      * @brief Remove the given node from the parent node
      *
      * @param parent_node DOMNode parent node which should contain the node to be deleted
@@ -139,7 +119,7 @@ public:
     xercesc::DOMNode* get_node(
             xercesc::DOMDocument*& doc,
             const std::string& tag_name,
-            int32_t index);
+            const std::string* index);
 
     xercesc::DOMNode* get_node(
             xercesc::DOMDocument*& doc,
@@ -150,7 +130,7 @@ public:
     xercesc::DOMNode* get_node(
             xercesc::DOMDocument*& doc,
             const std::string& tag_name,
-            int32_t index,
+            const std::string* index,
             const std::string& att_name,
             const std::string& att_value);
 
@@ -161,7 +141,7 @@ public:
     xercesc::DOMNode* get_node(
             xercesc::DOMNode*& parent_node,
             const std::string& tag_name,
-            int32_t index);
+            const std::string* index);
 
     xercesc::DOMNode* get_node(
             xercesc::DOMNode*& parent_node,
@@ -169,10 +149,25 @@ public:
             const std::string& att_name,
             const std::string& att_value);
 
+    /**
+     * @brief  MAIN get_node function.
+     *   Obtain the node in the list that matches tag name and
+     *   the given index or the given name-value attribute pair
+     *
+     * @param parent_node DOMNode with the parent node
+     * @param tag_name string with the node (<tag>) name
+     * @param index string index of the node element in LIST cases
+     * @param att_name string key (attribute) name of the node element in MAP cases
+     * @param att_value string key (attribute) value of the node element in MAP cases
+     *
+     * @return xercesc::DOMNode* with the found node
+     *
+     * @throw ElementNotFound exception if expected node was not found
+     */
     xercesc::DOMNode* get_node(
             xercesc::DOMNode*& parent_node,
             const std::string& tag_name,
-            int32_t index,
+            const std::string* index,
             const std::string& att_name,
             const std::string& att_value);
 
@@ -212,6 +207,15 @@ private:
     std::string get_absolute_path(
             const std::string& xml_file,
             bool& file_exists);
+
+    /**
+     * @brief Get the real index of the listed nodes (avoid empty nodes)
+     *
+     * @param[in]  node_list with the nodes to be filtered
+     * @return std::unique_ptr<std::vector<uint>> with the indexes of the non-empty nodes
+     */
+    std::unique_ptr<std::vector<uint>>  get_real_index(
+            xercesc::DOMNodeList*& node_list);
 
     // CONSTANT CHAR USED BY XERCES
     constexpr static const char* CORE = "Core";
