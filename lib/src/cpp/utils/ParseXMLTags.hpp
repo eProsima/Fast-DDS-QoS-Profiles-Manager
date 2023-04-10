@@ -49,7 +49,10 @@ constexpr const char* NAME = "name";
 
 // COMMONS
 /// LOCATOR
+constexpr const char* ADDRESS = "address";
 constexpr const char* EXTERNALITY = "externality";
+constexpr const char* LOCATOR = "locator";
+constexpr const char* PORT = "port";
 constexpr const char* UDP_V4_LOCATOR = "udpv4";
 constexpr const char* UDP_V6_LOCATOR = "udpv6";
 

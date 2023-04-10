@@ -345,7 +345,7 @@ void set_kind(
  */
 void set_port(
         utils::ParseXML& manager,
-        xercesc::DOMElement& xml_node,
+        xercesc::DOMNode* xml_node,
         const std::string& port,
         const std::string& index,
         const bool is_external);
@@ -386,7 +386,7 @@ void set_physical_port(
  */
 void set_address(
         utils::ParseXML& manager,
-        xercesc::DOMElement& xml_node,
+        xercesc::DOMNode* xml_node,
         const std::string& address,
         const std::string& index,
         const bool is_external);
