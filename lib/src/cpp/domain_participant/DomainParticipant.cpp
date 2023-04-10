@@ -334,8 +334,8 @@ void set_name(
         xercesc::DOMElement* root_element = doc->getDocumentElement();
 
         // Add profiles
-        profiles_node = (xercesc::DOMNode*) doc->createElement(
-            xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::PROFILES));
+        profiles_node = static_cast<xercesc::DOMNode*>(doc->createElement(
+            xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::PROFILES)));
         root_element->appendChild(profiles_node);
     }
     // Obtain participant node with the profile id
@@ -356,7 +356,7 @@ void set_name(
         participant_element->setAttribute(
             xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::PROFILE_NAME),
             xercesc::XMLString::transcode(profile_id.c_str()));
-        participant_node = (xercesc::DOMNode*)participant_element;
+        participant_node = static_cast<xercesc::DOMNode*>(participant_element);
     }
 
     // Obtain rtps node
@@ -367,8 +367,8 @@ void set_name(
     catch (const eprosima::qosprof::ElementNotFound& ex)
     {
         // create if not existent
-        rtps_node = (xercesc::DOMNode*) doc->createElement(
-            xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::RTPS));
+        rtps_node = static_cast<xercesc::DOMNode*>(doc->createElement(
+            xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::RTPS)));
         participant_node->appendChild(rtps_node);
     }
 
@@ -380,8 +380,8 @@ void set_name(
     catch (const eprosima::qosprof::ElementNotFound& ex)
     {
         // create if not existent
-        name_node = (xercesc::DOMNode*) doc->createElement(
-            xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::NAME));
+        name_node = static_cast<xercesc::DOMNode*>(doc->createElement(
+            xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::NAME)));
         rtps_node->appendChild(name_node);
     }
 
@@ -390,10 +390,6 @@ void set_name(
 
     // Validate new XML element and save it
     manager->validate_and_save_xml_document(doc);
-
-    // Close XML workspace
-    xercesc::XMLPlatformUtils::Terminate();
-    return;
 }
 
 void set_ignore_non_matching_locators(

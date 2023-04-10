@@ -198,9 +198,8 @@ void set_externality(
         xercesc::DOMElement* root_element = doc->getDocumentElement();
 
         // Add profiles
-        profiles_node =
-                (xercesc::DOMNode*) doc->createElement(xercesc::XMLString::transcode(eprosima::qosprof::utils::tag
-                                ::PROFILES));
+        profiles_node = static_cast<xercesc::DOMNode*>(doc->createElement(
+                        xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::PROFILES)));
         root_element->appendChild(profiles_node);
     }
 
@@ -222,7 +221,7 @@ void set_externality(
         participant_element->setAttribute(
             xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::PROFILE_NAME),
             xercesc::XMLString::transcode(profile_id.c_str()));
-        participant_node = (xercesc::DOMNode*)participant_element;
+        participant_node = static_cast<xercesc::DOMNode*>(participant_element);
 
     }
 
@@ -234,8 +233,8 @@ void set_externality(
     catch (const eprosima::qosprof::ElementNotFound& ex)
     {
         // create if not existent
-        rtps_node = (xercesc::DOMNode*) doc->createElement(xercesc::XMLString::transcode(
-                            eprosima::qosprof::utils::tag::RTPS));
+        rtps_node = static_cast<xercesc::DOMNode*>(doc->createElement(
+                            xercesc::XMLString::transcode(eprosima::qosprof::utils::tag::RTPS)));
         participant_node->appendChild(rtps_node);
 
     }
@@ -249,8 +248,8 @@ void set_externality(
     catch (const eprosima::qosprof::ElementNotFound& ex)
     {
         // create if not existent
-        locator_list_node = (xercesc::DOMNode*) doc->createElement(xercesc::XMLString::transcode(
-                            eprosima::qosprof::utils::tag::DEFAULT_EXTERNAL_UNICAST_LOCATOR_LIST));
+        locator_list_node = static_cast<xercesc::DOMNode*>(doc->createElement(xercesc::XMLString::transcode(
+                            eprosima::qosprof::utils::tag::DEFAULT_EXTERNAL_UNICAST_LOCATOR_LIST)));
         rtps_node->appendChild(locator_list_node);
     }
 
