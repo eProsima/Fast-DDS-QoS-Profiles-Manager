@@ -25,32 +25,32 @@ namespace utils {
 namespace tag {
 
 // HEADER TAGS
-constexpr const char* XMLNS = "xmlns";
 constexpr const char* EPROSIMA_URL = "http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles";
+constexpr const char* XMLNS = "xmlns";
 
 // MAIN ROOT TAGS
-constexpr const char* ROOT = "dds";
 constexpr const char* PROFILES = "profiles";
+constexpr const char* ROOT = "dds";
 
 // PROFILE TAGS
-constexpr const char* PROFILE_NAME = "profile_name";
 constexpr const char* DEFAULT_PROFILE = "is_default_profile";
 constexpr const char* PARTICIPANT = "participant";
+constexpr const char* PROFILE_NAME = "profile_name";
 
 /// PARTICIPANT
 constexpr const char* RTPS = "rtps";
 
 /// RTPS PARTICIPANT
-constexpr const char* NAME = "name";
 constexpr const char* BUILTIN = "builtin";
 constexpr const char* DEFAULT_EXTERNAL_UNICAST_LOCATOR_LIST = "default_external_unicast_locators";
 constexpr const char* METATRAFFIC_EXTERNAL_UNICAST_LOCATOR_LIST = "metatraffic_external_unicast_locators";
+constexpr const char* NAME = "name";
 
 // COMMONS
 /// LOCATOR
+constexpr const char* EXTERNALITY = "externality";
 constexpr const char* UDP_V4_LOCATOR = "udpv4";
 constexpr const char* UDP_V6_LOCATOR = "udpv6";
-constexpr const char* EXTERNALITY = "externality";
 
 } /* tag */
 } /* utils */
