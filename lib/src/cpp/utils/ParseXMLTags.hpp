@@ -43,6 +43,7 @@ constexpr const char* RTPS = "rtps";
 /// RTPS PARTICIPANT
 constexpr const char* BUILTIN = "builtin";
 constexpr const char* DEFAULT_EXTERNAL_UNICAST_LOCATOR_LIST = "default_external_unicast_locators";
+constexpr const char* INITIAL_PEERS_LIST = "initialPeersList";
 constexpr const char* METATRAFFIC_EXTERNAL_UNICAST_LOCATOR_LIST = "metatraffic_external_unicast_locators";
 constexpr const char* NAME = "name";
 

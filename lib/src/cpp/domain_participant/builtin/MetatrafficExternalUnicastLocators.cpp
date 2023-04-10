@@ -267,7 +267,6 @@ void set_externality(
         builtin_node->appendChild(locator_list_node);
     }
 
-
     // Check if locator should be created
     if (index.empty())
     {
