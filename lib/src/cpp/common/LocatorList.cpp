@@ -28,6 +28,7 @@ namespace common {
 namespace locator_list {
 
 std::string print(
+        eprosima::qosprof::utils::ParseXML& manager,
         xercesc::DOMElement*& xml_node,
         const std::string& index)
 {
@@ -35,6 +36,7 @@ std::string print(
 }
 
 std::string print_kind(
+        eprosima::qosprof::utils::ParseXML& manager,
         xercesc::DOMElement*& xml_node,
         const std::string& index)
 {
@@ -42,6 +44,7 @@ std::string print_kind(
 }
 
 std::string print_port(
+        eprosima::qosprof::utils::ParseXML& manager,
         xercesc::DOMElement*& xml_node,
         const std::string& index)
 {
@@ -49,6 +52,7 @@ std::string print_port(
 }
 
 std::string print_physical_port(
+        eprosima::qosprof::utils::ParseXML& manager,
         xercesc::DOMElement*& xml_node,
         const std::string& index)
 {
@@ -56,6 +60,7 @@ std::string print_physical_port(
 }
 
 std::string print_address(
+        eprosima::qosprof::utils::ParseXML& manager,
         xercesc::DOMElement*& xml_node,
         const std::string& index)
 {
@@ -63,6 +68,7 @@ std::string print_address(
 }
 
 std::string print_unique_lan_id(
+        eprosima::qosprof::utils::ParseXML& manager,
         xercesc::DOMElement*& xml_node,
         const std::string& index)
 {
@@ -70,6 +76,7 @@ std::string print_unique_lan_id(
 }
 
 std::string print_wan_address(
+        eprosima::qosprof::utils::ParseXML& manager,
         xercesc::DOMElement*& xml_node,
         const std::string& index)
 {
@@ -77,12 +84,14 @@ std::string print_wan_address(
 }
 
 uint32_t size(
+        eprosima::qosprof::utils::ParseXML& manager,
         xercesc::DOMElement*& xml_node)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear(
+        eprosima::qosprof::utils::ParseXML& manager,
         xercesc::DOMElement*& xml_node,
         const std::string& index)
 {
@@ -90,6 +99,7 @@ void clear(
 }
 
 void clear_port(
+        eprosima::qosprof::utils::ParseXML& manager,
         xercesc::DOMElement*& xml_node,
         const std::string& index)
 {
@@ -97,6 +107,7 @@ void clear_port(
 }
 
 void clear_physical_port(
+        eprosima::qosprof::utils::ParseXML& manager,
         xercesc::DOMElement*& xml_node,
         const std::string& index)
 {
@@ -104,6 +115,7 @@ void clear_physical_port(
 }
 
 void clear_address(
+        eprosima::qosprof::utils::ParseXML& manager,
         xercesc::DOMElement*& xml_node,
         const std::string& index)
 {
@@ -111,6 +123,7 @@ void clear_address(
 }
 
 void clear_unique_lan_id(
+        eprosima::qosprof::utils::ParseXML& manager,
         xercesc::DOMElement*& xml_node,
         const std::string& index)
 {
@@ -118,6 +131,7 @@ void clear_unique_lan_id(
 }
 
 void clear_wan_address(
+        eprosima::qosprof::utils::ParseXML& manager,
         xercesc::DOMElement*& xml_node,
         const std::string& index)
 {
@@ -125,6 +139,7 @@ void clear_wan_address(
 }
 
 void set_kind(
+        eprosima::qosprof::utils::ParseXML& manager,
         xercesc::DOMElement*& xml_node,
         const std::string& kind,
         const std::string& index)
@@ -133,6 +148,7 @@ void set_kind(
 }
 
 void set_port(
+        eprosima::qosprof::utils::ParseXML& manager,
         xercesc::DOMElement*& xml_node,
         const std::string& port,
         const std::string& index)
@@ -141,6 +157,7 @@ void set_port(
 }
 
 void set_physical_port(
+        eprosima::qosprof::utils::ParseXML& manager,
         xercesc::DOMElement*& xml_node,
         const std::string& physical_port,
         const std::string& index)
@@ -149,6 +166,7 @@ void set_physical_port(
 }
 
 void set_address(
+        eprosima::qosprof::utils::ParseXML& manager,
         xercesc::DOMElement*& xml_node,
         const std::string& address,
         const std::string& index)
@@ -157,6 +175,7 @@ void set_address(
 }
 
 void set_unique_lan_id(
+        eprosima::qosprof::utils::ParseXML& manager,
         xercesc::DOMElement*& xml_node,
         const std::string& unique_lan_id,
         const std::string& index)
@@ -165,6 +184,7 @@ void set_unique_lan_id(
 }
 
 void set_wan_address(
+        eprosima::qosprof::utils::ParseXML& manager,
         xercesc::DOMElement*& xml_node,
         const std::string& wan_address,
         const std::string& index)

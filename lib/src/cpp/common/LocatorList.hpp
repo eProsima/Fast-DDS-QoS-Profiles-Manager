@@ -21,7 +21,7 @@
 
 #include <string>
 
-#include <xercesc/dom/DOM.hpp>
+#include <utils/ParseXML.hpp>
 
 namespace eprosima {
 namespace qosprof {
@@ -35,6 +35,7 @@ namespace locator_list {
 /**
  * @brief Parse XML node and print the locator.
  *
+ * @param[in] manager Internal util manager to obtain and work with nodes
  * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] index Collection element to be printed. If empty, the complete list is printed.
  *
@@ -45,12 +46,14 @@ namespace locator_list {
  * @throw BadParameter Exception if the index is not an integer.
  */
 std::string print(
+        eprosima::qosprof::utils::ParseXML& manager,
         const xercesc::DOMElement& xml_node,
         const std::string& index);
 
 /**
  * @brief Parse XML node and print the locator kind.
  *
+ * @param[in] manager Internal util manager to obtain and work with nodes
  * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] index Collection element to be printed.
  *
@@ -61,12 +64,14 @@ std::string print(
  * @throw BadParameter Exception if the index is empty or not an integer.
  */
 std::string print_kind(
+        eprosima::qosprof::utils::ParseXML& manager,
         const xercesc::DOMElement& xml_node,
         const std::string& index);
 
 /**
  * @brief Parse XML node and print the locator port.
  *
+ * @param[in] manager Internal util manager to obtain and work with nodes
  * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] index Collection element to be printed.
  *
@@ -77,6 +82,7 @@ std::string print_kind(
  * @throw BadParameter Exception if the index is empty or not an integer.
  */
 std::string print_port(
+        eprosima::qosprof::utils::ParseXML& manager,
         const xercesc::DOMElement& xml_node,
         const std::string& index);
 
@@ -84,6 +90,7 @@ std::string print_port(
  * @brief Parse XML node and print the locator physical port.
  *        TCP only.
  *
+ * @param[in] manager Internal util manager to obtain and work with nodes
  * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] index Collection element to be printed.
  *
@@ -94,12 +101,14 @@ std::string print_port(
  * @throw BadParameter Exception if the index is empty or not an integer.
  */
 std::string print_physical_port(
+        eprosima::qosprof::utils::ParseXML& manager,
         const xercesc::DOMElement& xml_node,
         const std::string& index);
 
 /**
  * @brief Parse XML node and print the locator IP address.
  *
+ * @param[in] manager Internal util manager to obtain and work with nodes
  * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] index Collection element to be printed.
  *
@@ -110,6 +119,7 @@ std::string print_physical_port(
  * @throw BadParameter Exception if the index is empty or not an integer.
  */
 std::string print_address(
+        eprosima::qosprof::utils::ParseXML& manager,
         const xercesc::DOMElement& xml_node,
         const std::string& index);
 
@@ -117,6 +127,7 @@ std::string print_address(
  * @brief Parse XML node and print the locator unique LAN ID.
  *        TCPv4 only.
  *
+ * @param[in] manager Internal util manager to obtain and work with nodes
  * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] index Collection element to be printed.
  *
@@ -127,6 +138,7 @@ std::string print_address(
  * @throw BadParameter Exception if the index is empty or not an integer.
  */
 std::string print_unique_lan_id(
+        eprosima::qosprof::utils::ParseXML& manager,
         const xercesc::DOMElement& xml_node,
         const std::string& index);
 
@@ -134,6 +146,7 @@ std::string print_unique_lan_id(
  * @brief Parse XML node and print the locator WAN IPv4 address.
  *        TCPv4 only.
  *
+ * @param[in] manager Internal util manager to obtain and work with nodes
  * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] index Collection element to be printed.
  *
@@ -144,6 +157,7 @@ std::string print_unique_lan_id(
  * @throw BadParameter Exception if the index is empty or not an integer.
  */
 std::string print_wan_address(
+        eprosima::qosprof::utils::ParseXML& manager,
         const xercesc::DOMElement& xml_node,
         const std::string& index);
 
@@ -154,6 +168,7 @@ std::string print_wan_address(
 /**
  * @brief Number of locators defined.
  *
+ * @param[in] manager Internal util manager to obtain and work with nodes
  * @param[in] xml_node Locator list node where all locators are uploaded.
  *
  * @return uint32_t Number of locators in the list.
@@ -161,6 +176,7 @@ std::string print_wan_address(
  * @throw ElementNotFound Exception if the list has not been set.
  */
 uint32_t size(
+        eprosima::qosprof::utils::ParseXML& manager,
         const xercesc::DOMElement& xml_node);
 
 /************************************************************************/
@@ -171,6 +187,7 @@ uint32_t size(
  * @brief Remove locator or complete locator list. If no index provided (empty string), the complete
  *       locator list would be removed. If provided, then the corresponding locator would be removed.
  *
+ * @param[in] manager Internal util manager to obtain and work with nodes
  * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] index Collection element to be removed. If empty, the complete list is removed.
  *
@@ -179,12 +196,14 @@ uint32_t size(
  * @throw BadParameter Exception if the index is not an integer.
  */
 void clear(
+        eprosima::qosprof::utils::ParseXML& manager,
         xercesc::DOMElement& xml_node,
         const std::string& index);
 
 /**
  * @brief Remove locator port.
  *
+ * @param[in] manager Internal util manager to obtain and work with nodes
  * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] index Collection element to be modified.
  *
@@ -193,12 +212,14 @@ void clear(
  * @throw BadParameter Exception if the index is empty or not an integer.
  */
 void clear_port(
+        eprosima::qosprof::utils::ParseXML& manager,
         xercesc::DOMElement& xml_node,
         const std::string& index);
 
 /**
  * @brief Remove locator physical port.
  *
+ * @param[in] manager Internal util manager to obtain and work with nodes
  * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] index Collection element to be modified.
  *
@@ -207,12 +228,14 @@ void clear_port(
  * @throw BadParameter Exception if the index is empty or not an integer.
  */
 void clear_physical_port(
+        eprosima::qosprof::utils::ParseXML& manager,
         xercesc::DOMElement& xml_node,
         const std::string& index);
 
 /**
  * @brief Remove locator IP address.
  *
+ * @param[in] manager Internal util manager to obtain and work with nodes
  * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] index Collection element to be modified.
  *
@@ -221,12 +244,14 @@ void clear_physical_port(
  * @throw BadParameter Exception if the index is empty or not an integer.
  */
 void clear_address(
+        eprosima::qosprof::utils::ParseXML& manager,
         xercesc::DOMElement& xml_node,
         const std::string& index);
 
 /**
  * @brief Remove locator unique LAN ID.
  *
+ * @param[in] manager Internal util manager to obtain and work with nodes
  * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] index Collection element to be modified.
  *
@@ -235,12 +260,14 @@ void clear_address(
  * @throw BadParameter Exception if the index is empty or not an integer.
  */
 void clear_unique_lan_id(
+        eprosima::qosprof::utils::ParseXML& manager,
         xercesc::DOMElement& xml_node,
         const std::string& index);
 
 /**
  * @brief Remove locator WAN IP address.
  *
+ * @param[in] manager Internal util manager to obtain and work with nodes
  * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] index Collection element to be modified.
  *
@@ -249,6 +276,7 @@ void clear_unique_lan_id(
  * @throw BadParameter Exception if the index is empty or not an integer.
  */
 void clear_wan_address(
+        eprosima::qosprof::utils::ParseXML& manager,
         xercesc::DOMElement& xml_node,
         const std::string& index);
 
@@ -259,6 +287,7 @@ void clear_wan_address(
 /**
  * @brief Append a locator with specified kind or update the existing locator kind.
  *
+ * @param[in] manager Internal util manager to obtain and work with nodes
  * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] kind locator kind.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
@@ -268,6 +297,7 @@ void clear_wan_address(
  * @throw BadParameter Exception if the index is not an integer.
  */
 void set_kind(
+        eprosima::qosprof::utils::ParseXML& manager,
         xercesc::DOMElement& xml_node,
         const std::string& kind,
         const std::string& index);
@@ -275,6 +305,7 @@ void set_kind(
 /**
  * @brief Append a locator with specified port or update the existing locator port.
  *
+ * @param[in] manager Internal util manager to obtain and work with nodes
  * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] port locator port.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
@@ -284,6 +315,7 @@ void set_kind(
  * @throw BadParameter Exception if the index is not an integer.
  */
 void set_port(
+        eprosima::qosprof::utils::ParseXML& manager,
         xercesc::DOMElement& xml_node,
         const std::string& port,
         const std::string& index);
@@ -292,6 +324,7 @@ void set_port(
  * @brief Append a locator with specified physical port or update the existing locator physical port
  *        (TCP only).
  *
+ * @param[in] manager Internal util manager to obtain and work with nodes
  * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] physical_port locator TCP physical port.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
@@ -301,6 +334,7 @@ void set_port(
  * @throw BadParameter Exception if the index is not an integer.
  */
 void set_physical_port(
+        eprosima::qosprof::utils::ParseXML& manager,
         xercesc::DOMElement& xml_node,
         const std::string& physical_port,
         const std::string& index);
@@ -308,6 +342,7 @@ void set_physical_port(
 /**
  * @brief Append a locator with specified IP address or update the existing locator IP address.
  *
+ * @param[in] manager Internal util manager to obtain and work with nodes
  * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] address locator IP address.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
@@ -317,6 +352,7 @@ void set_physical_port(
  * @throw BadParameter Exception if the index is not an integer.
  */
 void set_address(
+        eprosima::qosprof::utils::ParseXML& manager,
         xercesc::DOMElement& xml_node,
         const std::string& address,
         const std::string& index);
@@ -325,6 +361,7 @@ void set_address(
  * @brief Append a TCPv4 locator with specified unique LAN ID or update the existing locator unique
  *        LAN ID.
  *
+ * @param[in] manager Internal util manager to obtain and work with nodes
  * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] unique_lan_id TCPv4 locator unique LAN ID.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
@@ -334,6 +371,7 @@ void set_address(
  * @throw BadParameter Exception if the index is not an integer.
  */
 void set_unique_lan_id(
+        eprosima::qosprof::utils::ParseXML& manager,
         xercesc::DOMElement& xml_node,
         const std::string& unique_lan_id,
         const std::string& index);
@@ -341,6 +379,7 @@ void set_unique_lan_id(
 /**
  * @brief Append a TCPv4 locator with specified WAN address or update the existing locator WAN address.
  *
+ * @param[in] manager Internal util manager to obtain and work with nodes
  * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] wan_address TCPv4 locator WAN address.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
@@ -350,6 +389,7 @@ void set_unique_lan_id(
  * @throw BadParameter Exception if the index is not an integer.
  */
 void set_wan_address(
+        eprosima::qosprof::utils::ParseXML& manager,
         xercesc::DOMElement& xml_node,
         const std::string& wan_address,
         const std::string& index);
