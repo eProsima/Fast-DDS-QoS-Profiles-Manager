@@ -835,7 +835,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_max_initial_peers_range(
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
- * @param[in] index Collection element to be printed. If empty, the complete collection is erased.
+ * @param[in] index Collection element to be removed. If empty, the complete collection is erased.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or if
@@ -969,7 +969,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_logical_port_increment(
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
- * @param[in] index Collection element to be printed. If empty, the complete collection is erased.
+ * @param[in] index Collection element to be removed. If empty, the complete collection is erased.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or if
@@ -1077,7 +1077,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_verify_file(
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
- * @param[in] index Collection element to be printed. If empty, the complete collection is erased.
+ * @param[in] index Collection element to be removed. If empty, the complete collection is erased.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or if
@@ -1094,7 +1094,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_verify_mode(
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
- * @param[in] index Collection element to be printed. If empty, the complete collection is erased.
+ * @param[in] index Collection element to be removed. If empty, the complete collection is erased.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or if
@@ -1111,7 +1111,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_options(
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
- * @param[in] index Collection element to be printed. If empty, the complete collection is erased.
+ * @param[in] index Collection element to be removed. If empty, the complete collection is erased.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or if

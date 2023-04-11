@@ -696,7 +696,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_client_announcement_period_nanose
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] index Collection element to be printed. If empty, the complete collection is erased.
+ * @param[in] index Collection element to be removed. If empty, the complete collection is erased.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if
