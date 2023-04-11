@@ -47,7 +47,7 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].allocations`|**PENDING** (currently `Participant allocations configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].binary_property`|**PENDING** (currently `Participant binary properties configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin`|`ERROR: Participant <builtin> must not be FINAL element`|`PARTICIPANT_BUILTIN_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].default_profile`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
+|`fastddsqosprof file.xml set participant[profile].default_profile`|N/A|N/A|
 |`fastddsqosprof file.xml set participant[profile].domain_id`|**PENDING** (currently `Participant domain ID configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].external_locators`|`ERROR: Participant <external_locators> must not be FINAL element`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].guid_prefix`|**PENDING** (currently `Participant GUID prefix configuration not yet supported`)|N/A|
@@ -105,8 +105,12 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].builtin.external_locators.metatraffic_unicast[].cost.element argument`|`ERROR: external locator <metatraffic_unicast> list <cost> attribute must be FINAL element`|`PARTICIPANT_BUILTIN_METATRAFFIC_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.external_locators.metatraffic_unicast[].externality`|`ERROR: set command for Participant builtin <external_locators> expects at least 1 arguments and received 0`|`PARTICIPANT_BUILTIN_METATRAFFIC_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.external_locators.metatraffic_unicast[].externality -h`|N/A|`PARTICIPANT_BUILTIN_METATRAFFIC_EXTERNAL_UNICAST_LOCATORS_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].builtin.external_locators.metatraffic_unicast[].externality argument`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
-|`fastddsqosprof file.xml set participant[profile].builtin.external_locators.metatraffic_unicast[11811].externality argument`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.external_locators.metatraffic_unicast[].externality argument`|`Fast DDS QoS Profiles Manager exception caught: value 'argument' does not match regular expression facet '[+\-]?[0-9]+'`|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.external_locators.metatraffic_unicast[11811].externality argument`|`Fast DDS QoS Profiles Manager exception caught: non-existent udpv4 element`|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.external_locators.metatraffic_unicast[].externality 15`|N/A|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.external_locators.metatraffic_unicast[-1].externality 23`|N/A|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.external_locators.metatraffic_unicast[-2].externality 23`|`Fast DDS QoS Profiles Manager exception caught: udpv4 does not have an element in position -1`|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.external_locators.metatraffic_unicast[11811].externality argument`|`Fast DDS QoS Profiles Manager exception caught: udpv4 does not have an element in position 11811`|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.external_locators.metatraffic_unicast[].externality[] argument`|`ERROR: external locator <metatraffic_unicast> list <externality> attribute must not be keyed []`|`PARTICIPANT_BUILTIN_METATRAFFIC_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.external_locators.metatraffic_unicast[].externality.element argument`|`ERROR: external locator <metatraffic_unicast> list <externality> attribute must be FINAL element`|`PARTICIPANT_BUILTIN_METATRAFFIC_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.external_locators.metatraffic_unicast[].kind`|`ERROR: set command for Participant builtin <external_locators> expects at least 1 arguments and received 0`|`PARTICIPANT_BUILTIN_METATRAFFIC_EXTERNAL_UNICAST_LOCATORS_USAGE`|
@@ -309,8 +313,12 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].cost.element argument`|`ERROR: external locator <default_unicast> list <cost> attribute must be FINAL element`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].externality`|`ERROR: set command for Participant <external_locators> expects at least 1 arguments and received 0`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].externality -h`|N/A|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].externality argument`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
-|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[11811].externality argument`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
+|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].externality argument`|`Fast DDS QoS Profiles Manager exception caught: value 'argument' does not match regular expression facet '[+\-]?[0-9]+'`|N/A|
+|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[11811].externality argument`|`Fast DDS QoS Profiles Manager exception caught: non-existent udpv4 element`|N/A|
+|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].externality 15`|N/A|N/A|
+|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[-1].externality 23`|N/A|N/A|
+|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[-2].externality 23`|`Fast DDS QoS Profiles Manager exception caught: udpv4 does not have an element in position -1`|N/A|
+|`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[11811].externality argument`|`Fast DDS QoS Profiles Manager exception caught: udpv4 does not have an element in position 11811`|N/A|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].externality[] argument`|`ERROR: external locator <default_unicast> list <externality> attribute must not be keyed []`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].externality.element argument`|`ERROR: external locator <default_unicast> list <externality> attribute must be FINAL element`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators.default_unicast[].kind`|`ERROR: set command for Participant <external_locators> expects at least 1 arguments and received 0`|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
