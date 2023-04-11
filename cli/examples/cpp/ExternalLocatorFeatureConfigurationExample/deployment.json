@@ -1,0 +1,68 @@
+{
+    "global_config": {
+        "user_port": 11213,
+        "discovery_port": 11212
+    },
+    "nodes": [
+        {
+            "name": "drone1_vm1",
+            "vm_ip": "10.10.10.4",
+            "drone_ip": "192.168.10.10",
+            "remote_vm_ip": [
+                {
+                    "ip_address": "10.10.10.5"
+                }
+            ],
+            "remote_drones_ip": [
+                {
+                    "ip_address": "192.168.10.11"
+                }
+            ]
+        },
+        {
+            "name": "drone1_vm2",
+            "vm_ip": "10.10.10.5",
+            "drone_ip": "192.168.10.10",
+            "remote_vm_ip": [
+                {
+                    "ip_address": "10.10.10.4"
+                }
+            ],
+            "remote_drones_ip": [
+                {
+                    "ip_address": "192.168.10.11"
+                }
+            ]
+        },
+        {
+            "name": "drone2_vm1",
+            "vm_ip": "10.10.10.4",
+            "drone_ip": "192.168.10.11",
+            "remote_vm_ip": [
+                {
+                    "ip_address": "10.10.10.5"
+                }
+            ],
+            "remote_drones_ip": [
+                {
+                    "ip_address": "192.168.10.10"
+                }
+            ]
+        },
+        {
+            "name": "drone2_vm2",
+            "vm_ip": "10.10.10.5",
+            "drone_ip": "192.168.10.11",
+            "remote_vm_ip": [
+                {
+                    "ip_address": "10.10.10.4"
+                }
+            ],
+            "remote_drones_ip": [
+                {
+                    "ip_address": "192.168.10.10"
+                }
+            ]
+        }
+    ]
+}
