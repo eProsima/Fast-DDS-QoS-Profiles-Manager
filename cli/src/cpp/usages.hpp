@@ -214,10 +214,10 @@ static const char PARTICIPANT_DEFAULT_PROFILE_USAGE[] =
 )";
 
 static const char PARTICIPANT_NAME_USAGE[] =
-        R"(Participant name parser:
+        R"(Participant name usage:
 
     Usage:
-      fastddsqosprof <file> <command> participant[<profile_name>].name <participant_name> (help | -h | --help)
+      fastddsqosprof <file> <command> participant[<profile_name>].name [<participant_name> (help | -h | --help)]
       fastddsqosprof <file> <command> participant[<profile_name>].name (help | -h | --help)
 
     Options:
@@ -234,7 +234,7 @@ static const char PARTICIPANT_NAME_USAGE[] =
 )";
 
 static const char PARTICIPANT_USAGE[] =
-        R"(Participant parser:
+        R"(Participant usage:
 
     Usage:
       fastddsqosprof <file> <command> participant[<profile_name>].<subelement> [<values>...]
@@ -272,8 +272,28 @@ static const char PARTICIPANT_USAGE[] =
       user_transports               Participant custom user-defined transports.
 )";
 
+static const char PARTICIPANT_USE_BUILTIN_TRANSPORTS_USAGE[] =
+        R"(Participant use_builtin_transports usage:
+
+    Usage:
+      fastddsqosprof <file> <command> participant[<profile_name>].use_builtin_transports [true | false (help | -h | --help)]
+      fastddsqosprof <file> <command> participant[<profile_name>].use_builtin_transports (help | -h | --help)
+
+    Options:
+      help -h --help                CLI participant use builtin transports flag usage
+
+    The allowed <command> options are:
+      clear                         Erase participant use builtin transports flag from XML file.
+      print                         Print participant use builtin transports flag.
+      set                           Set participant use builtin transports flag in the XML file.
+                                    Valid values: true, builtin transports enabled.
+                                                  false, builtin transports disabled.
+
+    The <profile_name> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
+)";
+
 static const char SET_SUBPARSER_USAGE[] =
-        R"(Set subparser: fastddsqosprof <file> set
+        R"(Set command parser: fastddsqosprof <file> set
 
     Usage:
       set <element> [<values>...]
