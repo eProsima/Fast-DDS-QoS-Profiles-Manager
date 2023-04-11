@@ -59,7 +59,7 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].port`|**PENDING** (currently `Participant port parameters configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].property`|**PENDING** (currently `Participant properties configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].send_socket_buffer_size`|**PENDING** (currently `Participant send socket buffer size configuration not yet supported`)|N/A|
-|`fastddsqosprof file.xml set participant[profile].use_builtin_transports`|**PENDING** (currently `Participant use builtin transports flag configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set participant[profile].use_builtin_transports`|`ERROR: set command for Participant <use_builtin_transports> expects 1 arguments and received 0`|`PARTICIPANT_USE_BUILTIN_TRANSPORTS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].user_data`|**PENDING** (currently `Participant user data QoS configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].user_transports`|**PENDING** (currently `Participant user transports configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].other`|`ERROR: other element not recognized`|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
@@ -341,7 +341,15 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].name help`|N/A|`PARTICIPANT_NAME_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].name arg1 arg2 -h`|N/A|`PARTICIPANT_NAME_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].name arg1 arg2`|`ERROR: set command for Participant <name> expects 1 arguments and received 2`|`PARTICIPANT_NAME_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].name arg1`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
+|`fastddsqosprof file.xml set participant[profile].name arg1`|N/A|N/A|
+|`fastddsqosprof file.xml set participant[profile].use_builtin_transports[]`|`ERROR: Participant <use_builtin_transports> must not be keyed []`|`PARTICIPANT_USE_BUILTIN_TRANSPORTS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].use_builtin_transports.subelement`|`ERROR: Participant <use_builtin_transports> must be FINAL element`|`PARTICIPANT_USE_BUILTIN_TRANSPORTS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].use_builtin_transports -h`|N/A|`PARTICIPANT_USE_BUILTIN_TRANSPORTS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].use_builtin_transports --help`|N/A|`PARTICIPANT_USE_BUILTIN_TRANSPORTS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].use_builtin_transports help`|N/A|`PARTICIPANT_USE_BUILTIN_TRANSPORTS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].use_builtin_transports arg1 arg2 -h`|N/A|`PARTICIPANT_USE_BUILTIN_TRANSPORTS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].use_builtin_transports arg1 arg2`|`ERROR: set command for Participant <use_builtin_transports> expects 1 arguments and received 2`|`PARTICIPANT_USE_BUILTIN_TRANSPORTS_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].use_builtin_transports arg1`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
 
 [^1]: **PENDING**: Print and clear default profile command will not require a profile name.
 [^2]: **PENDING**: Print, clear and query commands should not allow an empty index with a subelement.

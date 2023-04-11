@@ -286,8 +286,8 @@ static const char PARTICIPANT_USE_BUILTIN_TRANSPORTS_USAGE[] =
       clear                         Erase participant use builtin transports flag from XML file.
       print                         Print participant use builtin transports flag.
       set                           Set participant use builtin transports flag in the XML file.
-                                      Valid values: true, builtin transports enabled.
-                                                    false, builtin transports disabled.
+                                    Valid values: true, builtin transports enabled.
+                                                  false, builtin transports disabled.
 
     The <profile_name> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
 )";
