@@ -276,11 +276,11 @@ void participant_subelement_parser(
                         break;
                 }
             }
-            catch(const qosprof::Exception& e)
+            catch (const qosprof::Exception& e)
             {
                 std::cout << "Fast DDS QoS Profiles Manager exception caught: " << e.what() << std::endl;
             }
-            
+
         }
 
         if (print_usage)
