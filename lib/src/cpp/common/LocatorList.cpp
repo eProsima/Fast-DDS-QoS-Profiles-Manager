@@ -179,7 +179,7 @@ void set_port(
     {
         // create default udp v4 kind
         kind_node = static_cast<xercesc::DOMNode*> (doc->createElement(
-                                xercesc::XMLString::transcode(utils::tag::UDP_V4_LOCATOR)));
+                    xercesc::XMLString::transcode(utils::tag::UDP_V4_LOCATOR)));
 
         // append the new kind node directly to the given parent
         if (is_external)
@@ -190,20 +190,20 @@ void set_port(
         else
         {
             locator_node = static_cast<xercesc::DOMNode*> (doc->createElement(
-                                    xercesc::XMLString::transcode(utils::tag::LOCATOR)));
+                        xercesc::XMLString::transcode(utils::tag::LOCATOR)));
             xml_node->appendChild(locator_node);
             locator_node->appendChild(kind_node);
         }
 
         // add port node to the kind node
         port_node = static_cast<xercesc::DOMNode*> (doc->createElement(
-                                    xercesc::XMLString::transcode(utils::tag::PORT)));
+                    xercesc::XMLString::transcode(utils::tag::PORT)));
         kind_node->appendChild(port_node);
     }
     // set the port value in the locator defined by the index
     else
     {
-        std::string * ind = new std::string();
+        std::string* ind = new std::string();
         ind->append(index);
 
         // obtain the locator kind directly
@@ -234,10 +234,10 @@ void set_port(
             port_node = manager.get_node(kind_node, utils::tag::PORT);
         }
         // create the port node in the given locator
-        catch(const ElementNotFound& ex)
+        catch (const ElementNotFound& ex)
         {
             port_node = static_cast<xercesc::DOMNode*>(doc->createElement(
-                                    xercesc::XMLString::transcode(utils::tag::PORT)));
+                        xercesc::XMLString::transcode(utils::tag::PORT)));
             kind_node->appendChild(port_node);
         }
     }
@@ -272,7 +272,7 @@ void set_address(
     {
         // create default udp v4 kind
         kind_node = static_cast<xercesc::DOMNode*> (doc->createElement(
-                                xercesc::XMLString::transcode(utils::tag::UDP_V4_LOCATOR)));
+                    xercesc::XMLString::transcode(utils::tag::UDP_V4_LOCATOR)));
 
         // append the new kind node directly to the given parent
         if (is_external)
@@ -283,20 +283,20 @@ void set_address(
         else
         {
             locator_node = static_cast<xercesc::DOMNode*> (doc->createElement(
-                                    xercesc::XMLString::transcode(utils::tag::LOCATOR)));
+                        xercesc::XMLString::transcode(utils::tag::LOCATOR)));
             xml_node->appendChild(locator_node);
             locator_node->appendChild(kind_node);
         }
 
         // add address node to the kind node
         address_node = static_cast<xercesc::DOMNode*> (doc->createElement(
-                                    xercesc::XMLString::transcode(utils::tag::ADDRESS)));
+                    xercesc::XMLString::transcode(utils::tag::ADDRESS)));
         kind_node->appendChild(address_node);
     }
     // set the address value in the locator defined by the index
     else
     {
-        std::string * ind = new std::string();
+        std::string* ind = new std::string();
         ind->append(index);
 
         // obtain the locator kind directly
@@ -327,10 +327,10 @@ void set_address(
             address_node = manager.get_node(kind_node, utils::tag::ADDRESS);
         }
         // create the address node in the given locator
-        catch(const ElementNotFound& ex)
+        catch (const ElementNotFound& ex)
         {
             address_node = static_cast<xercesc::DOMNode*>(doc->createElement(
-                                    xercesc::XMLString::transcode(utils::tag::ADDRESS)));
+                        xercesc::XMLString::transcode(utils::tag::ADDRESS)));
             kind_node->appendChild(address_node);
         }
     }
