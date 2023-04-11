@@ -95,6 +95,18 @@ public:
             const std::string& value);
 
     /**
+     * @brief Set the attribute value associated to the attribute name to node object
+     *
+     * @param node DOMNode node which attribute would be set
+     * @param name to set the node attribute
+     * @param value to be set in the node
+     */
+    void set_attribute_to_node(
+            xercesc::DOMNode*& node,
+            const std::string& name,
+            const std::string& value);
+
+    /**
      * @brief Temporal function to get the doc object
      *
      * @return xercesc::DOMDocument* doc object

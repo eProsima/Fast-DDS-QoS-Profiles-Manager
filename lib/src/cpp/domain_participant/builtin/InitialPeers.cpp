@@ -201,13 +201,10 @@ void set_port(
     catch (const ElementNotFound& ex)
     {
         // create if not existent
-        xercesc::DOMElement* participant_element = doc->createElement(
-            xercesc::XMLString::transcode(utils::tag::PARTICIPANT));
-        profiles_node->appendChild(participant_element);
-        participant_element->setAttribute(
-            xercesc::XMLString::transcode(utils::tag::PROFILE_NAME),
-            xercesc::XMLString::transcode(profile_id.c_str()));
-        participant_node = static_cast<xercesc::DOMNode*>(participant_element);
+        participant_node = static_cast<xercesc::DOMNode*>(doc->createElement(
+            xercesc::XMLString::transcode(utils::tag::PARTICIPANT)));
+        manager->set_attribute_to_node(participant_node, utils::tag::PROFILE_NAME, profile_id);
+        profiles_node->appendChild(participant_node);
     }
 
     // Obtain rtps node
@@ -313,13 +310,10 @@ void set_address(
     catch (const ElementNotFound& ex)
     {
         // create if not existent
-        xercesc::DOMElement* participant_element = doc->createElement(
-            xercesc::XMLString::transcode(utils::tag::PARTICIPANT));
-        profiles_node->appendChild(participant_element);
-        participant_element->setAttribute(
-            xercesc::XMLString::transcode(utils::tag::PROFILE_NAME),
-            xercesc::XMLString::transcode(profile_id.c_str()));
-        participant_node = static_cast<xercesc::DOMNode*>(participant_element);
+        participant_node = static_cast<xercesc::DOMNode*>(doc->createElement(
+            xercesc::XMLString::transcode(utils::tag::PARTICIPANT)));
+        manager->set_attribute_to_node(participant_node, utils::tag::PROFILE_NAME, profile_id);
+        profiles_node->appendChild(participant_node);
     }
 
     // Obtain rtps node

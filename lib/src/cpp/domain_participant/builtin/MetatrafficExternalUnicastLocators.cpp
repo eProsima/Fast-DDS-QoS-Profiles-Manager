@@ -201,13 +201,10 @@ void set_port(
     catch (const ElementNotFound& ex)
     {
         // create if not existent
-        xercesc::DOMElement* participant_element = doc->createElement(
-            xercesc::XMLString::transcode(utils::tag::PARTICIPANT));
-        profiles_node->appendChild(participant_element);
-        participant_element->setAttribute(
-            xercesc::XMLString::transcode(utils::tag::PROFILE_NAME),
-            xercesc::XMLString::transcode(profile_id.c_str()));
-        participant_node = static_cast<xercesc::DOMNode*>(participant_element);
+        participant_node = static_cast<xercesc::DOMNode*>(doc->createElement(
+            xercesc::XMLString::transcode(utils::tag::PARTICIPANT)));
+        manager->set_attribute_to_node(participant_node, utils::tag::PROFILE_NAME, profile_id);
+        profiles_node->appendChild(participant_node);
     }
 
     // Obtain rtps node
@@ -305,13 +302,10 @@ void set_address(
     catch (const ElementNotFound& ex)
     {
         // create if not existent
-        xercesc::DOMElement* participant_element = doc->createElement(
-            xercesc::XMLString::transcode(utils::tag::PARTICIPANT));
-        profiles_node->appendChild(participant_element);
-        participant_element->setAttribute(
-            xercesc::XMLString::transcode(utils::tag::PROFILE_NAME),
-            xercesc::XMLString::transcode(profile_id.c_str()));
-        participant_node = static_cast<xercesc::DOMNode*>(participant_element);
+        participant_node = static_cast<xercesc::DOMNode*>(doc->createElement(
+            xercesc::XMLString::transcode(utils::tag::PARTICIPANT)));
+        manager->set_attribute_to_node(participant_node, utils::tag::PROFILE_NAME, profile_id);
+        profiles_node->appendChild(participant_node);
     }
 
     // Obtain rtps node
@@ -409,13 +403,10 @@ void set_externality(
     catch (const ElementNotFound& ex)
     {
         // create if not existent
-        xercesc::DOMElement* participant_element = doc->createElement(
-            xercesc::XMLString::transcode(utils::tag::PARTICIPANT));
-        profiles_node->appendChild(participant_element);
-        participant_element->setAttribute(
-            xercesc::XMLString::transcode(utils::tag::PROFILE_NAME),
-            xercesc::XMLString::transcode(profile_id.c_str()));
-        participant_node = static_cast<xercesc::DOMNode*>(participant_element);
+        participant_node = static_cast<xercesc::DOMNode*>(doc->createElement(
+            xercesc::XMLString::transcode(utils::tag::PARTICIPANT)));
+        manager->set_attribute_to_node(participant_node, utils::tag::PROFILE_NAME, profile_id);
+        profiles_node->appendChild(participant_node);
     }
 
     // Obtain rtps node
@@ -471,9 +462,7 @@ void set_externality(
         locator_node = manager->get_node(locator_list_node, utils::tag::UDP_V4_LOCATOR, &index);
     }
     // Set the externality value
-    static_cast<xercesc::DOMElement*>(locator_node)->setAttribute(
-        xercesc::XMLString::transcode(utils::tag::EXTERNALITY),
-        xercesc::XMLString::transcode(externality.c_str()));
+    manager->set_attribute_to_node(locator_node, utils::tag::EXTERNALITY, externality);
 
     // Validate new XML element and save it
     manager->validate_and_save_document();

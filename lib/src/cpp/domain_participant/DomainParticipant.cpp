@@ -257,15 +257,12 @@ void set_default_profile(
     // Iterate throw all the participants to set them as NOT default
     for (int i = 0, size = participant_list->getLength(); i < size; i++)
     {
-        static_cast<xercesc::DOMElement*>(participant_list->item(i))->setAttribute(
-            xercesc::XMLString::transcode(utils::tag::DEFAULT_PROFILE),
-            xercesc::XMLString::transcode("false"));
+        xercesc::DOMNode* temp_part_node = participant_list->item(i);
+        manager->set_attribute_to_node(temp_part_node, utils::tag::DEFAULT_PROFILE, "false");
     }
 
     // Set given participant as default profile
-    static_cast<xercesc::DOMElement*>(participant_node)->setAttribute(
-        xercesc::XMLString::transcode(utils::tag::DEFAULT_PROFILE),
-        xercesc::XMLString::transcode("true"));
+    manager->set_attribute_to_node(participant_node, utils::tag::DEFAULT_PROFILE, "true");
 
     // Validate new XML element and save it
     manager->validate_and_save_document();
@@ -324,13 +321,10 @@ void set_name(
     catch (const ElementNotFound& ex)
     {
         // create if not existent
-        xercesc::DOMElement* participant_element = doc->createElement(
-            xercesc::XMLString::transcode(utils::tag::PARTICIPANT));
-        profiles_node->appendChild(participant_element);
-        participant_element->setAttribute(
-            xercesc::XMLString::transcode(utils::tag::PROFILE_NAME),
-            xercesc::XMLString::transcode(profile_id.c_str()));
-        participant_node = static_cast<xercesc::DOMNode*>(participant_element);
+        participant_node = static_cast<xercesc::DOMNode*>(doc->createElement(
+            xercesc::XMLString::transcode(utils::tag::PARTICIPANT)));
+        manager->set_attribute_to_node(participant_node, utils::tag::PROFILE_NAME, profile_id);
+        profiles_node->appendChild(participant_node);
     }
 
     // Obtain rtps node

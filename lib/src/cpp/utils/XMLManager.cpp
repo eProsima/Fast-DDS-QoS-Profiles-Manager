@@ -391,6 +391,17 @@ void XMLManager::set_value_to_node(
     node->appendChild(name_value);
 }
 
+void XMLManager::set_attribute_to_node(
+        xercesc::DOMNode*& node,
+        const std::string& name,
+        const std::string& value)
+{
+    // Set the attribute value
+    static_cast<xercesc::DOMElement*>(node)->setAttribute(
+        xercesc::XMLString::transcode(name.c_str()),
+        xercesc::XMLString::transcode(value.c_str()));
+}
+
 std::string XMLManager::get_absolute_path(
         const std::string& xml_file,
         bool& file_exists)
