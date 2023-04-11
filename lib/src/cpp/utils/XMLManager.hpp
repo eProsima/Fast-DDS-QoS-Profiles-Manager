@@ -98,6 +98,38 @@ public:
             const std::string& value);
 
     /**
+     * @brief Set the attribute value of all node siblings to the given value associated to given name.
+     *
+     * @param[in] name to set the node attribute
+     * @param[in] value to be set in the node
+     */
+    void set_siblings_attribute(
+            const std::string& name,
+            const std::string& value);
+
+
+    /**
+     * @brief Get the node value (only for simple cases)
+     *
+     * @throw ElementNotFound exception if could not obtain node value
+     *
+     * @return std::string node value (Empty string if error)
+     */
+    std::string get_node_value();
+
+    /**
+     * @brief Get the node attribute value of the given attribute name
+     *
+     * @param[in] name attribute name
+     *
+     * @throw ElementNotFound exception if could not obtain node attribute value
+     *
+     * @return std::string node attribute value (Empty string if error)
+     */
+    std::string get_node_attribute_value(
+            const std::string& name);
+
+    /**
      * @brief Get the (unique) child node object that matches the given tag name.
      *
      * @param[in] tag_name string with the node (<tag>) name

@@ -158,98 +158,21 @@ void set_port(
         const std::string& port,
         const std::string& index)
 {
-    // Xerces document manage XML elements
-    xercesc::DOMDocument* doc = nullptr;
-
-    // XML nodes and values
-    xercesc::DOMNode* profiles_node = nullptr;
-    xercesc::DOMNode* participant_node = nullptr;
-    xercesc::DOMNode* rtps_node = nullptr;
-    xercesc::DOMNode* builtin_node = nullptr;
-    xercesc::DOMNode* locator_list_node = nullptr;
-    xercesc::DOMNode* locator_node = nullptr;
-
     // Create XML manager and initialize the document
-    utils::XMLManager* manager = new utils::XMLManager(xml_file, true);
-    doc = manager->get_doc();
+    utils::XMLManager manager(xml_file, true);
 
-    // Obtain profiles node
-    try
-    {
-        profiles_node = manager->get_node(utils::tag::PROFILES);
-    }
-    catch (const ElementNotFound& ex)
-    {
-        // Obtain root element
-        xercesc::DOMElement* root_element = doc->getDocumentElement();
+    // Iterate through required elements, and create them if not existent
+    manager.get_node(utils::tag::PROFILES, true);
+    manager.get_node(utils::tag::PARTICIPANT, utils::tag::PROFILE_NAME, profile_id, true);
+    manager.get_node(utils::tag::RTPS, true);
+    manager.get_node(utils::tag::BUILTIN, true);
+    manager.get_node(utils::tag::INITIAL_PEERS_LIST, true);
 
-        // Add profiles
-        profiles_node = static_cast<xercesc::DOMNode*>(doc->createElement(
-                    xercesc::XMLString::transcode(utils::tag::PROFILES)));
-        root_element->appendChild(profiles_node);
-    }
-
-    // Obtain participant node with the profile id
-    try
-    {
-        participant_node = manager->get_node(
-            profiles_node,
-            utils::tag::PARTICIPANT,
-            utils::tag::PROFILE_NAME,
-            profile_id);
-    }
-    catch (const ElementNotFound& ex)
-    {
-        // create if not existent
-        participant_node = static_cast<xercesc::DOMNode*>(doc->createElement(
-            xercesc::XMLString::transcode(utils::tag::PARTICIPANT)));
-        manager->set_attribute_to_node(participant_node, utils::tag::PROFILE_NAME, profile_id);
-        profiles_node->appendChild(participant_node);
-    }
-
-    // Obtain rtps node
-    try
-    {
-        rtps_node = manager->get_node(participant_node, utils::tag::RTPS);
-    }
-    catch (const ElementNotFound& ex)
-    {
-        // create if not existent
-        rtps_node = static_cast<xercesc::DOMNode*>(doc->createElement(xercesc::XMLString::transcode(
-                    utils::tag::RTPS)));
-        participant_node->appendChild(rtps_node);
-    }
-
-    // Obtain builtin node
-    try
-    {
-        builtin_node = manager->get_node(rtps_node, utils::tag::BUILTIN);
-    }
-    catch (const ElementNotFound& ex)
-    {
-        // create if not existent
-        builtin_node = static_cast<xercesc::DOMNode*>(doc->createElement(xercesc::XMLString::transcode(
-                    utils::tag::BUILTIN)));
-        rtps_node->appendChild(builtin_node);
-    }
-
-    // Obtain initial peers locator list node
-    try
-    {
-        locator_list_node = manager->get_node(builtin_node, utils::tag::INITIAL_PEERS_LIST);
-    }
-    catch (const ElementNotFound& ex)
-    {
-        // create if not existent
-        locator_list_node = static_cast<xercesc::DOMNode*>(doc->createElement(xercesc::XMLString::transcode(
-                    utils::tag::INITIAL_PEERS_LIST)));
-        builtin_node->appendChild(locator_list_node);
-    }
-
-    common::locator_list::set_port(*manager, locator_list_node, port, index, false);
+    // Set the port using commons
+    common::locator_list::set_port(manager, port, index, false);
 
     // Validate new XML element and save it
-    manager->validate_and_save_document();
+    manager.validate_and_save_document();
 }
 
 void set_physical_port(
@@ -267,98 +190,21 @@ void set_address(
         const std::string& address,
         const std::string& index)
 {
-    // Xerces document manage XML elements
-    xercesc::DOMDocument* doc = nullptr;
-
-    // XML nodes and values
-    xercesc::DOMNode* profiles_node = nullptr;
-    xercesc::DOMNode* participant_node = nullptr;
-    xercesc::DOMNode* rtps_node = nullptr;
-    xercesc::DOMNode* builtin_node = nullptr;
-    xercesc::DOMNode* locator_list_node = nullptr;
-    xercesc::DOMNode* locator_node = nullptr;
-
     // Create XML manager and initialize the document
-    utils::XMLManager* manager = new utils::XMLManager(xml_file, true);
-    doc = manager->get_doc();
+    utils::XMLManager manager(xml_file, true);
 
-    // Obtain profiles node
-    try
-    {
-        profiles_node = manager->get_node(utils::tag::PROFILES);
-    }
-    catch (const ElementNotFound& ex)
-    {
-        // Obtain root element
-        xercesc::DOMElement* root_element = doc->getDocumentElement();
+    // Iterate through required elements, and create them if not existent
+    manager.get_node(utils::tag::PROFILES, true);
+    manager.get_node(utils::tag::PARTICIPANT, utils::tag::PROFILE_NAME, profile_id, true);
+    manager.get_node(utils::tag::RTPS, true);
+    manager.get_node(utils::tag::BUILTIN, true);
+    manager.get_node(utils::tag::INITIAL_PEERS_LIST, true);
 
-        // Add profiles
-        profiles_node = static_cast<xercesc::DOMNode*>(doc->createElement(
-                    xercesc::XMLString::transcode(utils::tag::PROFILES)));
-        root_element->appendChild(profiles_node);
-    }
-
-    // Obtain participant node with the profile id
-    try
-    {
-        participant_node = manager->get_node(
-            profiles_node,
-            utils::tag::PARTICIPANT,
-            utils::tag::PROFILE_NAME,
-            profile_id);
-    }
-    catch (const ElementNotFound& ex)
-    {
-        // create if not existent
-        participant_node = static_cast<xercesc::DOMNode*>(doc->createElement(
-            xercesc::XMLString::transcode(utils::tag::PARTICIPANT)));
-        manager->set_attribute_to_node(participant_node, utils::tag::PROFILE_NAME, profile_id);
-        profiles_node->appendChild(participant_node);
-    }
-
-    // Obtain rtps node
-    try
-    {
-        rtps_node = manager->get_node(participant_node, utils::tag::RTPS);
-    }
-    catch (const ElementNotFound& ex)
-    {
-        // create if not existent
-        rtps_node = static_cast<xercesc::DOMNode*>(doc->createElement(xercesc::XMLString::transcode(
-                    utils::tag::RTPS)));
-        participant_node->appendChild(rtps_node);
-    }
-
-    // Obtain builtin node
-    try
-    {
-        builtin_node = manager->get_node(rtps_node, utils::tag::BUILTIN);
-    }
-    catch (const ElementNotFound& ex)
-    {
-        // create if not existent
-        builtin_node = static_cast<xercesc::DOMNode*>(doc->createElement(xercesc::XMLString::transcode(
-                    utils::tag::BUILTIN)));
-        rtps_node->appendChild(builtin_node);
-    }
-
-    // Obtain initial peers locator list node
-    try
-    {
-        locator_list_node = manager->get_node(builtin_node, utils::tag::INITIAL_PEERS_LIST);
-    }
-    catch (const ElementNotFound& ex)
-    {
-        // create if not existent
-        locator_list_node = static_cast<xercesc::DOMNode*>(doc->createElement(xercesc::XMLString::transcode(
-                    utils::tag::INITIAL_PEERS_LIST)));
-        builtin_node->appendChild(locator_list_node);
-    }
-
-    common::locator_list::set_address(*manager, locator_list_node, address, index, false);
+    // Set the address using commons
+    common::locator_list::set_address(manager, address, index, false);
 
     // Validate new XML element and save it
-    manager->validate_and_save_document();
+    manager.validate_and_save_document();
 }
 
 void set_unique_lan_id(

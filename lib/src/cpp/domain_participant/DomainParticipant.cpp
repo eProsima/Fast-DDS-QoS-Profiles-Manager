@@ -218,54 +218,38 @@ void set_default_profile(
         const std::string& xml_file,
         const std::string& profile_id)
 {
-    // Xerces document manage XML elements
-    xercesc::DOMDocument* doc = nullptr;
-
-    // XML nodes and values
-    xercesc::DOMNode* profiles_node = nullptr;
-    xercesc::DOMNode* participant_node = nullptr;
+    // Define a default_profile node
     xercesc::DOMNode* default_profile_node = nullptr;
 
     // Create XML manager and initialize the document
-    utils::XMLManager* manager = new utils::XMLManager(xml_file, true);
-    doc = manager->get_doc();
+    utils::XMLManager manager(xml_file, false);
 
-    // Obtain nodes
-    profiles_node = manager->get_node(utils::tag::PROFILES);
-    participant_node = manager->get_node(
-        profiles_node,
-        utils::tag::PARTICIPANT,
-        utils::tag::PROFILE_NAME,
-        profile_id);
-
+    // Iterate through required elements, and create them if not existent
+    manager.get_node(utils::tag::PROFILES, false);
+    manager.get_node(utils::tag::PARTICIPANT, utils::tag::PROFILE_NAME, profile_id, false);
 
     // Check if default profile already defined
-    default_profile_node = participant_node->getAttributes()->getNamedItem(
-        xercesc::XMLString::transcode(utils::tag::DEFAULT_PROFILE));
-    if (default_profile_node != nullptr)
+    try
     {
-        if (default_profile_node->getNodeValue() == xercesc::XMLString::transcode("true"))
+        if (manager.get_node_attribute_value(utils::tag::DEFAULT_PROFILE) == "true")
         {
             // This profile is already the default profile
             return;
         }
     }
-
-    // Set all participants as NOT default profile
-    xercesc::DOMNodeList* participant_list = static_cast<xercesc::DOMElement*>(profiles_node)->getElementsByTagName(
-        xercesc::XMLString::transcode(utils::tag::PARTICIPANT));
-    // Iterate throw all the participants to set them as NOT default
-    for (int i = 0, size = participant_list->getLength(); i < size; i++)
+    // Default profile attribute not defined
+    catch (const ElementNotFound& ex)
     {
-        xercesc::DOMNode* temp_part_node = participant_list->item(i);
-        manager->set_attribute_to_node(temp_part_node, utils::tag::DEFAULT_PROFILE, "false");
+        // do nothing
     }
+    // Set all domain participant 'is_default_profile' attributes as false
+    manager.set_siblings_attribute(utils::tag::DEFAULT_PROFILE, "false");
 
-    // Set given participant as default profile
-    manager->set_attribute_to_node(participant_node, utils::tag::DEFAULT_PROFILE, "true");
+    // Set this entity as default profile
+    manager.set_attribute_to_node(utils::tag::DEFAULT_PROFILE, "true");
 
     // Validate new XML element and save it
-    manager->validate_and_save_document();
+    manager.validate_and_save_document();
 }
 
 void set_domain_id(
@@ -281,83 +265,20 @@ void set_name(
         const std::string& profile_id,
         const std::string& name)
 {
-    // Xerces document manage XML elements
-    xercesc::DOMDocument* doc = nullptr;
-
-    // XML nodes and values
-    xercesc::DOMNode* profiles_node = nullptr;
-    xercesc::DOMNode* participant_node = nullptr;
-    xercesc::DOMNode* rtps_node = nullptr;
-    xercesc::DOMNode* name_node = nullptr;
-
     // Create XML manager and initialize the document
-    utils::XMLManager* manager = new utils::XMLManager(xml_file, true);
-    doc = manager->get_doc();
+    utils::XMLManager manager(xml_file, true);
 
-    // Obtain profiles node
-    try
-    {
-        profiles_node = manager->get_node(utils::tag::PROFILES);
-    }
-    catch (const ElementNotFound& ex)
-    {
-        // Obtain root element
-        xercesc::DOMElement* root_element = doc->getDocumentElement();
-
-        // Add profiles
-        profiles_node = static_cast<xercesc::DOMNode*>(doc->createElement(
-                    xercesc::XMLString::transcode(utils::tag::PROFILES)));
-        root_element->appendChild(profiles_node);
-    }
-    // Obtain participant node with the profile id
-    try
-    {
-        participant_node = manager->get_node(
-            profiles_node,
-            utils::tag::PARTICIPANT,
-            utils::tag::PROFILE_NAME,
-            profile_id);
-    }
-    catch (const ElementNotFound& ex)
-    {
-        // create if not existent
-        participant_node = static_cast<xercesc::DOMNode*>(doc->createElement(
-            xercesc::XMLString::transcode(utils::tag::PARTICIPANT)));
-        manager->set_attribute_to_node(participant_node, utils::tag::PROFILE_NAME, profile_id);
-        profiles_node->appendChild(participant_node);
-    }
-
-    // Obtain rtps node
-    try
-    {
-        rtps_node = manager->get_node(participant_node, utils::tag::RTPS);
-    }
-    catch (const ElementNotFound& ex)
-    {
-        // create if not existent
-        rtps_node = static_cast<xercesc::DOMNode*>(doc->createElement(
-                    xercesc::XMLString::transcode(utils::tag::RTPS)));
-        participant_node->appendChild(rtps_node);
-    }
-
-    // Obtain name
-    try
-    {
-        name_node = manager->get_node(rtps_node, utils::tag::NAME);
-    }
-    catch (const ElementNotFound& ex)
-    {
-        // create if not existent
-        name_node = static_cast<xercesc::DOMNode*>(doc->createElement(
-                    xercesc::XMLString::transcode(utils::tag::NAME)));
-        rtps_node->appendChild(name_node);
-    }
+    // Iterate through required elements, and create them if not existent
+    manager.get_node(utils::tag::PROFILES, true);
+    manager.get_node(utils::tag::PARTICIPANT, utils::tag::PROFILE_NAME, profile_id, true);
+    manager.get_node(utils::tag::RTPS, true);
+    manager.get_node(utils::tag::NAME, true);
 
     // Set the name node value
-    manager->set_value_to_node(name_node, name);
+    manager.set_value_to_node(name);
 
     // Validate new XML element and save it
-    manager->validate_and_save_document();
+    manager.validate_and_save_document();
 }
 
 void set_ignore_non_matching_locators(

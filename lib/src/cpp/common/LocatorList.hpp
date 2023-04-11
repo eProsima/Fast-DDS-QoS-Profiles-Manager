@@ -36,7 +36,6 @@ namespace locator_list {
  * @brief Parse XML node and print the locator.
  *
  * @param[in] manager Internal util manager to obtain and work with nodes
- * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] index Collection element to be printed. If empty, the complete list is printed.
  * @param[in] is_external bool to determine if locator managed is external locator or common locator.
  *
@@ -48,7 +47,6 @@ namespace locator_list {
  */
 std::string print(
         utils::XMLManager& manager,
-        xercesc::DOMNode* xml_node,
         const std::string& index,
         const bool is_external);
 
@@ -56,7 +54,6 @@ std::string print(
  * @brief Parse XML node and print the locator kind.
  *
  * @param[in] manager Internal util manager to obtain and work with nodes
- * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] index Collection element to be printed.
  * @param[in] is_external bool to determine if locator managed is external locator or common locator.
  *
@@ -68,7 +65,6 @@ std::string print(
  */
 std::string print_kind(
         utils::XMLManager& manager,
-        xercesc::DOMNode* xml_node,
         const std::string& index,
         const bool is_external);
 
@@ -76,7 +72,6 @@ std::string print_kind(
  * @brief Parse XML node and print the locator port.
  *
  * @param[in] manager Internal util manager to obtain and work with nodes
- * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] index Collection element to be printed.
  * @param[in] is_external bool to determine if locator managed is external locator or common locator.
  *
@@ -88,7 +83,6 @@ std::string print_kind(
  */
 std::string print_port(
         utils::XMLManager& manager,
-        xercesc::DOMNode* xml_node,
         const std::string& index,
         const bool is_external);
 
@@ -97,7 +91,6 @@ std::string print_port(
  *        TCP only.
  *
  * @param[in] manager Internal util manager to obtain and work with nodes
- * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] index Collection element to be printed.
  * @param[in] is_external bool to determine if locator managed is external locator or common locator.
  *
@@ -109,7 +102,6 @@ std::string print_port(
  */
 std::string print_physical_port(
         utils::XMLManager& manager,
-        xercesc::DOMNode* xml_node,
         const std::string& index,
         const bool is_external);
 
@@ -117,7 +109,6 @@ std::string print_physical_port(
  * @brief Parse XML node and print the locator IP address.
  *
  * @param[in] manager Internal util manager to obtain and work with nodes
- * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] index Collection element to be printed.
  * @param[in] is_external bool to determine if locator managed is external locator or common locator.
  *
@@ -129,7 +120,6 @@ std::string print_physical_port(
  */
 std::string print_address(
         utils::XMLManager& manager,
-        xercesc::DOMNode* xml_node,
         const std::string& index,
         const bool is_external);
 
@@ -138,7 +128,6 @@ std::string print_address(
  *        TCPv4 only.
  *
  * @param[in] manager Internal util manager to obtain and work with nodes
- * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] index Collection element to be printed.
  * @param[in] is_external bool to determine if locator managed is external locator or common locator.
  *
@@ -150,7 +139,6 @@ std::string print_address(
  */
 std::string print_unique_lan_id(
         utils::XMLManager& manager,
-        xercesc::DOMNode* xml_node,
         const std::string& index,
         const bool is_external);
 
@@ -159,7 +147,6 @@ std::string print_unique_lan_id(
  *        TCPv4 only.
  *
  * @param[in] manager Internal util manager to obtain and work with nodes
- * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] index Collection element to be printed.
  * @param[in] is_external bool to determine if locator managed is external locator or common locator.
  *
@@ -171,7 +158,6 @@ std::string print_unique_lan_id(
  */
 std::string print_wan_address(
         utils::XMLManager& manager,
-        xercesc::DOMNode* xml_node,
         const std::string& index,
         const bool is_external);
 
@@ -183,7 +169,6 @@ std::string print_wan_address(
  * @brief Number of locators defined.
  *
  * @param[in] manager Internal util manager to obtain and work with nodes
- * @param[in] xml_node Locator list node where all locators are uploaded.
  *
  * @return uint32_t Number of locators in the list.
  *
@@ -202,7 +187,6 @@ uint32_t size(
  *       locator list would be removed. If provided, then the corresponding locator would be removed.
  *
  * @param[in] manager Internal util manager to obtain and work with nodes
- * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] index Collection element to be removed. If empty, the complete list is removed.
  *
  * @throw ElementNotFound Exception if the element does not exist in the collection if an index is
@@ -211,14 +195,12 @@ uint32_t size(
  */
 void clear(
         utils::XMLManager& manager,
-        xercesc::DOMNode* xml_node,
         const std::string& index);
 
 /**
  * @brief Remove locator port.
  *
  * @param[in] manager Internal util manager to obtain and work with nodes
- * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] index Collection element to be modified.
  * @param[in] is_external bool to determine if locator managed is external locator or common locator.
  *
@@ -228,7 +210,6 @@ void clear(
  */
 void clear_port(
         utils::XMLManager& manager,
-        xercesc::DOMNode* xml_node,
         const std::string& index,
         const bool is_external);
 
@@ -236,7 +217,6 @@ void clear_port(
  * @brief Remove locator physical port.
  *
  * @param[in] manager Internal util manager to obtain and work with nodes
- * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] index Collection element to be modified.
  * @param[in] is_external bool to determine if locator managed is external locator or common locator.
  *
@@ -246,7 +226,6 @@ void clear_port(
  */
 void clear_physical_port(
         utils::XMLManager& manager,
-        xercesc::DOMNode* xml_node,
         const std::string& index,
         const bool is_external);
 
@@ -254,7 +233,6 @@ void clear_physical_port(
  * @brief Remove locator IP address.
  *
  * @param[in] manager Internal util manager to obtain and work with nodes
- * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] index Collection element to be modified.
  * @param[in] is_external bool to determine if locator managed is external locator or common locator.
  *
@@ -264,7 +242,6 @@ void clear_physical_port(
  */
 void clear_address(
         utils::XMLManager& manager,
-        xercesc::DOMNode* xml_node,
         const std::string& index,
         const bool is_external);
 
@@ -272,7 +249,6 @@ void clear_address(
  * @brief Remove locator unique LAN ID.
  *
  * @param[in] manager Internal util manager to obtain and work with nodes
- * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] index Collection element to be modified.
  * @param[in] is_external bool to determine if locator managed is external locator or common locator.
  *
@@ -282,7 +258,6 @@ void clear_address(
  */
 void clear_unique_lan_id(
         utils::XMLManager& manager,
-        xercesc::DOMNode* xml_node,
         const std::string& index,
         const bool is_external);
 
@@ -290,7 +265,6 @@ void clear_unique_lan_id(
  * @brief Remove locator WAN IP address.
  *
  * @param[in] manager Internal util manager to obtain and work with nodes
- * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] index Collection element to be modified.
  * @param[in] is_external bool to determine if locator managed is external locator or common locator.
  *
@@ -300,7 +274,6 @@ void clear_unique_lan_id(
  */
 void clear_wan_address(
         utils::XMLManager& manager,
-        xercesc::DOMNode* xml_node,
         const std::string& index,
         const bool is_external);
 
@@ -312,7 +285,6 @@ void clear_wan_address(
  * @brief Append a locator with specified kind or update the existing locator kind.
  *
  * @param[in] manager Internal util manager to obtain and work with nodes
- * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] kind locator kind.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  * @param[in] is_external bool to determine if locator managed is external locator or common locator.
@@ -323,7 +295,6 @@ void clear_wan_address(
  */
 void set_kind(
         utils::XMLManager& manager,
-        xercesc::DOMNode* xml_node,
         const std::string& kind,
         const std::string& index,
         const bool is_external);
@@ -332,7 +303,6 @@ void set_kind(
  * @brief Append a locator with specified port or update the existing locator port.
  *
  * @param[in] manager Internal util manager to obtain and work with nodes
- * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] port locator port.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  * @param[in] is_external bool to determine if locator managed is external locator or common locator.
@@ -343,7 +313,6 @@ void set_kind(
  */
 void set_port(
         utils::XMLManager& manager,
-        xercesc::DOMNode* xml_node,
         const std::string& port,
         const std::string& index,
         const bool is_external);
@@ -353,7 +322,6 @@ void set_port(
  *        (TCP only).
  *
  * @param[in] manager Internal util manager to obtain and work with nodes
- * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] physical_port locator TCP physical port.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  * @param[in] is_external bool to determine if locator managed is external locator or common locator.
@@ -364,7 +332,6 @@ void set_port(
  */
 void set_physical_port(
         utils::XMLManager& manager,
-        xercesc::DOMNode* xml_node,
         const std::string& physical_port,
         const std::string& index,
         const bool is_external);
@@ -373,7 +340,6 @@ void set_physical_port(
  * @brief Append a locator with specified IP address or update the existing locator IP address.
  *
  * @param[in] manager Internal util manager to obtain and work with nodes
- * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] address locator IP address.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  * @param[in] is_external bool to determine if locator managed is external locator or common locator.
@@ -384,7 +350,6 @@ void set_physical_port(
  */
 void set_address(
         utils::XMLManager& manager,
-        xercesc::DOMNode* xml_node,
         const std::string& address,
         const std::string& index,
         const bool is_external);
@@ -394,7 +359,6 @@ void set_address(
  *        LAN ID.
  *
  * @param[in] manager Internal util manager to obtain and work with nodes
- * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] unique_lan_id TCPv4 locator unique LAN ID.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  * @param[in] is_external bool to determine if locator managed is external locator or common locator.
@@ -405,7 +369,6 @@ void set_address(
  */
 void set_unique_lan_id(
         utils::XMLManager& manager,
-        xercesc::DOMNode* xml_node,
         const std::string& unique_lan_id,
         const std::string& index,
         const bool is_external);
@@ -414,7 +377,6 @@ void set_unique_lan_id(
  * @brief Append a TCPv4 locator with specified WAN address or update the existing locator WAN address.
  *
  * @param[in] manager Internal util manager to obtain and work with nodes
- * @param[in] xml_node Locator list node where all locators are uploaded.
  * @param[in] wan_address TCPv4 locator WAN address.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  * @param[in] is_external bool to determine if locator managed is external locator or common locator.
@@ -425,7 +387,6 @@ void set_unique_lan_id(
  */
 void set_wan_address(
         utils::XMLManager& manager,
-        xercesc::DOMNode* xml_node,
         const std::string& wan_address,
         const std::string& index,
         const bool is_external);
