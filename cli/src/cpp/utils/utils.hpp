@@ -248,6 +248,16 @@ inline bool check_help(
 }
 
 /**
+ * @brief Auxiliary method to output error when index must be empty.
+ *
+ * @param[in] index Index received 
+ * @return true 
+ * @return false 
+ */
+bool check_empty_index(
+        const std::string& index);
+
+/**
  * @brief Check if subelement should be keyed [].
  *
  * @param[in] expected_keyed Flag to set keyed expectations.
@@ -258,6 +268,17 @@ inline bool check_help(
 bool check_keyed(
         bool expected_keyed,
         bool keyed,
+        const std::string& element);
+
+/**
+ * @brief Auxiliary method to enforce a profile name.
+ *
+ * @param[in] profile_name
+ * @param[in] element Element being checked in order to be shown in the log.
+ * @return true always.
+ */
+bool check_profile(
+        const std::string& profile_name,
         const std::string& element);
 
 /**
@@ -273,17 +294,6 @@ bool extract_element_subelement_key(
         std::string& element,
         std::string& subelement,
         std::string& key);
-
-/**
- * @brief Auxiliary method to enforce a profile name.
- *
- * @param[in] profile_name
- * @param[in] element Element being checked in order to be shown in the log.
- * @return true always.
- */
-bool check_profile(
-        const std::string& profile_name,
-        const std::string& element);
 
 /**
  * @brief Auxiliary method to output error when query command is not allowed.

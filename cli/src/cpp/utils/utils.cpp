@@ -54,6 +54,17 @@ bool check_final_element(
     return true;
 }
 
+bool check_empty_index(
+        const std::string& index)
+{
+    if (!index.empty())
+    {
+        std::cout << "ERROR: query command requires empty <index>. Index read: " << index << std::endl;
+        return false;
+    }
+    return true;
+}
+
 bool check_keyed(
         bool expected_keyed,
         bool keyed,
