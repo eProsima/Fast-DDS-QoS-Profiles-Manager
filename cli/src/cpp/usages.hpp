@@ -293,7 +293,7 @@ static const char PARTICIPANT_USE_BUILTIN_TRANSPORTS_USAGE[] =
 )";
 
 static const char SET_SUBPARSER_USAGE[] =
-        R"(Set command usage: fastddsqosprof <file> set
+        R"(Set command parser: fastddsqosprof <file> set
 
     Usage:
       set <element> [<values>...]
