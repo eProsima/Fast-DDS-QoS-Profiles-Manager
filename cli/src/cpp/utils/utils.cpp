@@ -60,7 +60,8 @@ bool check_index(
 {
     if (expected_empty != index.empty())
     {
-        std::cout << "ERROR: <index> must " << (expected_empty ? "" : "not ") << "be empty." << (expected_empty ? "" : "Index read: ") << index << std::endl;
+        std::cout << "ERROR: <index> must " << (expected_empty ? "" : "not ") << "be empty." <<
+            (expected_empty ? "" : "Index read: ") << index << std::endl;
         return false;
     }
     return true;

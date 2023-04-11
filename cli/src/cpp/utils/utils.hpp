@@ -252,7 +252,7 @@ inline bool check_help(
  *
  * @param[in] index Index received in CLI.
  * @param[in] expected_empty Flag to set index expectations.
- * @return true if check is successful. False otherwise. 
+ * @return true if check is successful. False otherwise.
  */
 bool check_index(
         const std::string& index,
