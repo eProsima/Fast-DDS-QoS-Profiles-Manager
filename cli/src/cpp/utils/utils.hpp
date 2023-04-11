@@ -250,12 +250,13 @@ inline bool check_help(
 /**
  * @brief Auxiliary method to output error when index must be empty.
  *
- * @param[in] index Index received 
- * @return true 
- * @return false 
+ * @param[in] index Index received in CLI.
+ * @param[in] expected_empty Flag to set index expectations.
+ * @return true if check is successful. False otherwise. 
  */
-bool check_empty_index(
-        const std::string& index);
+bool check_index(
+        const std::string& index,
+        bool expected_empty);
 
 /**
  * @brief Check if subelement should be keyed [].

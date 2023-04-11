@@ -321,7 +321,7 @@ void participant_subelement_parser(
                         // TODO: maybe additional validity check is required checking that keys has not been passed to
                         //       the query command.
                         print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
-                        print_usage = print_usage || !check_empty_index(key);
+                        print_usage = print_usage || !check_index(key, true);
                         if (!print_usage)
                         {
                             qosprof::domain_participant::user_transports_size(filename, profile_name);
