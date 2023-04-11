@@ -16,20 +16,20 @@
  * @file
  */
 
-#include <utils/ParseXML.hpp>
+#include <utils/XMLManager.hpp>
 
 #include <unistd.h>
 
 #include <fastdds_qos_profiles_manager/exception/Exception.hpp>
 
-#include <utils/ParseXMLString.hpp>
-#include <utils/ParseXMLTags.hpp>
+#include <utils/StringXMLManager.hpp>
+#include <utils/TagsXMLManager.hpp>
 
 namespace eprosima {
 namespace qosprof {
 namespace utils {
 
-ParseXML::ParseXML (
+XMLManager::XMLManager (
         const std::string& file_name,
         bool create_file)
 {
@@ -70,8 +70,8 @@ ParseXML::ParseXML (
     parser = new xercesc::XercesDOMParser();
 
     // Error handler would receive the exception from the parser, and report it as a FileNotFound expected exception
-    error_handler = new utils::ParseXMLErrorHandler(
-        utils::ParseXMLErrorHandler::Kind::FileNotFound);
+    error_handler = new utils::ErrorHandlerXMLManager(
+        utils::ErrorHandlerXMLManager::Kind::FileNotFound);
     parser->setErrorHandler(error_handler);
 
     // Read XML file and obtain the doc object
@@ -122,7 +122,7 @@ ParseXML::ParseXML (
     parser->setValidationConstraintFatal(true);
 }
 
-ParseXML::~ParseXML()
+XMLManager::~XMLManager()
 {
     // Close XML workspace
     xercesc::XMLPlatformUtils::Terminate();
@@ -138,12 +138,12 @@ ParseXML::~ParseXML()
     delete error_handler;
 }
 
-xercesc::DOMDocument* ParseXML::get_doc()
+xercesc::DOMDocument* XMLManager::get_doc()
 {
     return doc;
 }
 
-void ParseXML::validate_and_save_xml_document()
+void XMLManager::validate_and_save_document()
 {
     if (validate_xml())
     {
@@ -151,15 +151,15 @@ void ParseXML::validate_and_save_xml_document()
     }
 }
 
-bool ParseXML::validate_xml()
+bool XMLManager::validate_xml()
 {
     // Set ElementInvalid error handler
-    error_handler = new utils::ParseXMLErrorHandler(
-        utils::ParseXMLErrorHandler::Kind::ElementInvalid);
+    error_handler = new utils::ErrorHandlerXMLManager(
+        utils::ErrorHandlerXMLManager::Kind::ElementInvalid);
     parser->setErrorHandler(error_handler);
 
     // Create a XML string buffer for validation
-    utils::ParseXMLString* xml_string = new utils::ParseXMLString();
+    utils::StringXMLManager* xml_string = new utils::StringXMLManager();
 
     // Save XML document in the XML string buffer
     output->setByteStream(xml_string);
@@ -173,7 +173,7 @@ bool ParseXML::validate_xml()
     return true;
 }
 
-bool ParseXML::save_xml()
+bool XMLManager::save_xml()
 {
     // Config would configure serialized XML data
     config = serializer->getDomConfig();
@@ -186,7 +186,7 @@ bool ParseXML::save_xml()
     return serializer->write(doc, output);
 }
 
-xercesc::DOMNode* ParseXML::get_node(
+xercesc::DOMNode* XMLManager::get_node(
         xercesc::DOMNode*& parent_node,
         const std::string& tag_name,
         const std::string* index,
@@ -335,7 +335,7 @@ xercesc::DOMNode* ParseXML::get_node(
     }
 }
 
-void ParseXML::clear_node(
+void XMLManager::clear_node(
         xercesc::DOMNode*& parent_node,
         xercesc::DOMNode*& node_to_be_deleted)
 {
@@ -362,7 +362,7 @@ void ParseXML::clear_node(
     node_to_be_deleted->release();
 }
 
-void ParseXML::reset_node(
+void XMLManager::reset_node(
         xercesc::DOMNode*& node)
 {
     // Loop for childs
@@ -379,7 +379,7 @@ void ParseXML::reset_node(
     }
 }
 
-void ParseXML::set_value_to_node(
+void XMLManager::set_value_to_node(
         xercesc::DOMNode*& node,
         const std::string& value)
 {
@@ -391,7 +391,7 @@ void ParseXML::set_value_to_node(
     node->appendChild(name_value);
 }
 
-std::string ParseXML::get_absolute_path(
+std::string XMLManager::get_absolute_path(
         const std::string& xml_file,
         bool& file_exists)
 {
@@ -430,7 +430,7 @@ std::string ParseXML::get_absolute_path(
     return absolute_xml_file;
 }
 
-std::unique_ptr<std::vector<uint>> ParseXML::get_real_index(
+std::unique_ptr<std::vector<uint>> XMLManager::get_real_index(
         xercesc::DOMNodeList*& node_list)
 {
     // Create new list
@@ -449,14 +449,14 @@ std::unique_ptr<std::vector<uint>> ParseXML::get_real_index(
     return index_list;
 }
 
-xercesc::DOMNode* ParseXML::get_node(
+xercesc::DOMNode* XMLManager::get_node(
         const std::string& tag_name)
 {
     // Try call main get_node function with remain empty values
     return get_node(tag_name, nullptr, "", "");
 }
 
-xercesc::DOMNode* ParseXML::get_node(
+xercesc::DOMNode* XMLManager::get_node(
         const std::string& tag_name,
         const std::string* index)
 {
@@ -464,7 +464,7 @@ xercesc::DOMNode* ParseXML::get_node(
     return get_node(tag_name, index, "", "");
 }
 
-xercesc::DOMNode* ParseXML::get_node(
+xercesc::DOMNode* XMLManager::get_node(
         const std::string& tag_name,
         const std::string& att_name,
         const std::string& att_value)
@@ -473,7 +473,7 @@ xercesc::DOMNode* ParseXML::get_node(
     return get_node(tag_name, nullptr, att_name, att_value);
 }
 
-xercesc::DOMNode* ParseXML::get_node(
+xercesc::DOMNode* XMLManager::get_node(
         const std::string& tag_name,
         const std::string* index,
         const std::string& att_name,
@@ -486,7 +486,7 @@ xercesc::DOMNode* ParseXML::get_node(
     return get_node(parent_node, tag_name, index, att_name, att_value);
 }
 
-xercesc::DOMNode* ParseXML::get_node(
+xercesc::DOMNode* XMLManager::get_node(
         xercesc::DOMNode*& parent_node,
         const std::string& tag_name)
 {
@@ -494,7 +494,7 @@ xercesc::DOMNode* ParseXML::get_node(
     return get_node(parent_node, tag_name, nullptr, "", "");
 }
 
-xercesc::DOMNode* ParseXML::get_node(
+xercesc::DOMNode* XMLManager::get_node(
         xercesc::DOMNode*& parent_node,
         const std::string& tag_name,
         const std::string* index)
@@ -503,7 +503,7 @@ xercesc::DOMNode* ParseXML::get_node(
     return get_node(parent_node, tag_name, index, "", "");
 }
 
-xercesc::DOMNode* ParseXML::get_node(
+xercesc::DOMNode* XMLManager::get_node(
         xercesc::DOMNode*& parent_node,
         const std::string& tag_name,
         const std::string& att_name,

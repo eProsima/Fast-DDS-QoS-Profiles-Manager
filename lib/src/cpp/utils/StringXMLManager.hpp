@@ -16,8 +16,8 @@
  * @file
  */
 
-#ifndef _FAST_DDS_QOS_PROFILES_MANAGER_UTILS_PARSE_XML_STRING_HPP_
-#define _FAST_DDS_QOS_PROFILES_MANAGER_UTILS_PARSE_XML_STRING_HPP_
+#ifndef _FAST_DDS_QOS_PROFILES_MANAGER_UTILS_XML_MANAGER_STRING_HPP_
+#define _FAST_DDS_QOS_PROFILES_MANAGER_UTILS_XML_MANAGER_STRING_HPP_
 
 #include <stdio.h>
 
@@ -28,15 +28,15 @@ namespace qosprof {
 namespace utils {
 
 /**
- * @brief ParseXMLString is a Memory buffer to save the XML document
+ * @brief StringXMLManager is a Memory buffer to save the XML document
  *  in memory. It aims validating the generated XML document before
  *  saving it in disk (in the given file).
  */
-class ParseXMLString : public xercesc::XMLFormatTarget
+class StringXMLManager : public xercesc::XMLFormatTarget
 {
 public:
 
-    ParseXMLString();
+    StringXMLManager();
 
     /**
      * @brief Obtain the buffer pointer for validation
@@ -75,4 +75,4 @@ protected:
 } /* qosprof */
 } /* eprosima */
 
-#endif // _FAST_DDS_QOS_PROFILES_MANAGER_UTILS_PARSE_XML_STRING_HPP_
+#endif // _FAST_DDS_QOS_PROFILES_MANAGER_UTILS_XML_MANAGER_STRING_HPP_

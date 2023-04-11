@@ -22,8 +22,8 @@
 
 #include <fastdds_qos_profiles_manager/exception/Exception.hpp>
 
-#include <utils/ParseXML.hpp>
-#include <utils/ParseXMLTags.hpp>
+#include <utils/TagsXMLManager.hpp>
+#include <utils/XMLManager.hpp>
 
 namespace eprosima {
 namespace qosprof {
@@ -31,7 +31,7 @@ namespace common {
 namespace locator_list {
 
 std::string print(
-        utils::ParseXML& manager,
+        utils::XMLManager& manager,
         const xercesc::DOMElement& xml_node,
         const std::string& index,
         const bool is_external)
@@ -40,7 +40,7 @@ std::string print(
 }
 
 std::string print_kind(
-        utils::ParseXML& manager,
+        utils::XMLManager& manager,
         const xercesc::DOMElement& xml_node,
         const std::string& index,
         const bool is_external)
@@ -49,7 +49,7 @@ std::string print_kind(
 }
 
 std::string print_port(
-        utils::ParseXML& manager,
+        utils::XMLManager& manager,
         const xercesc::DOMElement& xml_node,
         const std::string& index,
         const bool is_external)
@@ -58,7 +58,7 @@ std::string print_port(
 }
 
 std::string print_physical_port(
-        utils::ParseXML& manager,
+        utils::XMLManager& manager,
         const xercesc::DOMElement& xml_node,
         const std::string& index,
         const bool is_external)
@@ -67,7 +67,7 @@ std::string print_physical_port(
 }
 
 std::string print_address(
-        utils::ParseXML& manager,
+        utils::XMLManager& manager,
         const xercesc::DOMElement& xml_node,
         const std::string& index,
         const bool is_external)
@@ -76,7 +76,7 @@ std::string print_address(
 }
 
 std::string print_unique_lan_id(
-        utils::ParseXML& manager,
+        utils::XMLManager& manager,
         const xercesc::DOMElement& xml_node,
         const std::string& index,
         const bool is_external)
@@ -85,7 +85,7 @@ std::string print_unique_lan_id(
 }
 
 std::string print_wan_address(
-        utils::ParseXML& manager,
+        utils::XMLManager& manager,
         const xercesc::DOMElement& xml_node,
         const std::string& index,
         const bool is_external)
@@ -94,14 +94,14 @@ std::string print_wan_address(
 }
 
 uint32_t size(
-        utils::ParseXML& manager,
+        utils::XMLManager& manager,
         const xercesc::DOMElement& xml_node)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear(
-        utils::ParseXML& manager,
+        utils::XMLManager& manager,
         xercesc::DOMElement& xml_node,
         const std::string& index)
 {
@@ -109,7 +109,7 @@ void clear(
 }
 
 void clear_port(
-        utils::ParseXML& manager,
+        utils::XMLManager& manager,
         xercesc::DOMElement& xml_node,
         const std::string& index,
         const bool is_external)
@@ -118,7 +118,7 @@ void clear_port(
 }
 
 void clear_physical_port(
-        utils::ParseXML& manager,
+        utils::XMLManager& manager,
         xercesc::DOMElement& xml_node,
         const std::string& index,
         const bool is_external)
@@ -127,7 +127,7 @@ void clear_physical_port(
 }
 
 void clear_address(
-        utils::ParseXML& manager,
+        utils::XMLManager& manager,
         xercesc::DOMElement& xml_node,
         const std::string& index,
         const bool is_external)
@@ -136,7 +136,7 @@ void clear_address(
 }
 
 void clear_unique_lan_id(
-        utils::ParseXML& manager,
+        utils::XMLManager& manager,
         xercesc::DOMElement& xml_node,
         const std::string& index,
         const bool is_external)
@@ -145,7 +145,7 @@ void clear_unique_lan_id(
 }
 
 void clear_wan_address(
-        utils::ParseXML& manager,
+        utils::XMLManager& manager,
         xercesc::DOMElement& xml_node,
         const std::string& index,
         const bool is_external)
@@ -154,7 +154,7 @@ void clear_wan_address(
 }
 
 void set_kind(
-        utils::ParseXML& manager,
+        utils::XMLManager& manager,
         xercesc::DOMElement& xml_node,
         const std::string& kind,
         const std::string& index,
@@ -164,7 +164,7 @@ void set_kind(
 }
 
 void set_port(
-        utils::ParseXML& manager,
+        utils::XMLManager& manager,
         xercesc::DOMNode* xml_node,
         const std::string& port,
         const std::string& index,
@@ -247,7 +247,7 @@ void set_port(
 }
 
 void set_physical_port(
-        utils::ParseXML& manager,
+        utils::XMLManager& manager,
         xercesc::DOMElement& xml_node,
         const std::string& physical_port,
         const std::string& index,
@@ -257,7 +257,7 @@ void set_physical_port(
 }
 
 void set_address(
-        utils::ParseXML& manager,
+        utils::XMLManager& manager,
         xercesc::DOMNode* xml_node,
         const std::string& address,
         const std::string& index,
@@ -340,7 +340,7 @@ void set_address(
 }
 
 void set_unique_lan_id(
-        utils::ParseXML& manager,
+        utils::XMLManager& manager,
         xercesc::DOMElement& xml_node,
         const std::string& unique_lan_id,
         const std::string& index,
@@ -350,7 +350,7 @@ void set_unique_lan_id(
 }
 
 void set_wan_address(
-        utils::ParseXML& manager,
+        utils::XMLManager& manager,
         xercesc::DOMElement& xml_node,
         const std::string& wan_address,
         const std::string& index,

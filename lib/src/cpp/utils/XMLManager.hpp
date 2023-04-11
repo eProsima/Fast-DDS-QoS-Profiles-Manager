@@ -16,8 +16,8 @@
  * @file
  */
 
-#ifndef _FAST_DDS_QOS_PROFILES_MANAGER_UTILS_PARSE_XML_HPP_
-#define _FAST_DDS_QOS_PROFILES_MANAGER_UTILS_PARSE_XML_HPP_
+#ifndef _FAST_DDS_QOS_PROFILES_MANAGER_UTILS_XML_MANAGER_HPP_
+#define _FAST_DDS_QOS_PROFILES_MANAGER_UTILS_XML_MANAGER_HPP_
 
 #include <memory>
 #include <string>
@@ -30,19 +30,19 @@
 #include <xercesc/util/PlatformUtils.hpp>
 #include <xercesc/util/XMLString.hpp>
 
-#include <utils/ParseXMLErrorHandler.hpp>
+#include <utils/ErrorHandlerXMLManager.hpp>
 
 namespace eprosima {
 namespace qosprof {
 namespace utils {
 
 /**
- * @brief ParseXML is a tool to manage easily the XML elements given by Xerces
+ * @brief XMLManager is a tool to manage easily the XML elements given by Xerces
  *  library. It would deploy different functions to make the public library API
  *  easier to implement.
  *
  */
-class ParseXML
+class XMLManager
 {
 public:
 
@@ -55,7 +55,7 @@ public:
      *
      * @throw FileNotFound exception if Xerces XML workspace could not be initialized
      */
-    ParseXML(
+    XMLManager(
             const std::string& xml_file,
             bool create_file = false);
 
@@ -63,14 +63,14 @@ public:
      * @brief Pase XML Destructor
      *
      */
-    ~ParseXML();
+    ~XMLManager();
 
     /**
      * @brief Validate the document, and save to disk if valid
      *
      * @throw ElementInvalid exception if document does not pass parser validation
      */
-    void validate_and_save_xml_document();
+    void validate_and_save_document();
 
     /**
      * @brief Remove the given node from the parent node
@@ -83,14 +83,6 @@ public:
     void clear_node(
             xercesc::DOMNode*& parent_node,
             xercesc::DOMNode*& node_to_be_deleted);
-
-    /**
-     * @brief Clear node. Usage: remove all DOMText children from node
-     *
-     * @param node DOMNode to be reset
-     */
-    void reset_node(
-            xercesc::DOMNode*& node);
 
     /**
      * @brief Set the value to node object
@@ -207,6 +199,14 @@ private:
     std::unique_ptr<std::vector<uint>>  get_real_index(
             xercesc::DOMNodeList*& node_list);
 
+    /**
+     * @brief Clear node. Usage: remove all DOMText children from node
+     *
+     * @param node DOMNode to be reset
+     */
+    void reset_node(
+            xercesc::DOMNode*& node);
+
     // CONSTANT CHAR USED BY XERCES
     constexpr static const char* CORE = "Core";
     constexpr static const char* UTF8 = "UTF-8";
@@ -225,11 +225,11 @@ private:
     std::string xml_file;
 
     // Custom utils
-    utils::ParseXMLErrorHandler* error_handler = nullptr;
+    utils::ErrorHandlerXMLManager* error_handler = nullptr;
 };
 
 } /* parse */
 } /* qosprof */
 } /* eprosima */
 
-#endif // _FAST_DDS_QOS_PROFILES_MANAGER_UTILS_PARSE_XML_HPP_
+#endif // _FAST_DDS_QOS_PROFILES_MANAGER_UTILS_XML_MANAGER_HPP_

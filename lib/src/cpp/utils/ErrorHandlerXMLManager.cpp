@@ -16,7 +16,7 @@
  * @file
  */
 
-#include <utils/ParseXMLErrorHandler.hpp>
+#include <utils/ErrorHandlerXMLManager.hpp>
 
 #include <xercesc/sax/HandlerBase.hpp>
 
@@ -26,36 +26,36 @@ namespace eprosima {
 namespace qosprof {
 namespace utils {
 
-ParseXMLErrorHandler::ParseXMLErrorHandler(
+ErrorHandlerXMLManager::ErrorHandlerXMLManager(
         Kind k)
 {
     kind = k;
 }
 
-void ParseXMLErrorHandler::warning(
+void ErrorHandlerXMLManager::warning(
         const xercesc::SAXParseException& ex)
 {
     report_parse_exception(ex);
 }
 
-void ParseXMLErrorHandler::error(
+void ErrorHandlerXMLManager::error(
         const xercesc::SAXParseException& ex)
 {
     report_parse_exception(ex);
 }
 
-void ParseXMLErrorHandler::fatalError(
+void ErrorHandlerXMLManager::fatalError(
         const xercesc::SAXParseException& ex)
 {
     report_parse_exception(ex);
 }
 
-void ParseXMLErrorHandler::resetErrors()
+void ErrorHandlerXMLManager::resetErrors()
 {
 
 }
 
-void ParseXMLErrorHandler::report_parse_exception(
+void ErrorHandlerXMLManager::report_parse_exception(
         const xercesc::SAXParseException& ex)
 {
     // Throw custom Exceptions based on the selected kind
