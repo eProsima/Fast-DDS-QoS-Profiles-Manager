@@ -21,8 +21,6 @@
 
 #include <string>
 
-#include <xercesc/dom/DOM.hpp>
-
 #include <utils/ParseXML.hpp>
 
 namespace eprosima {
