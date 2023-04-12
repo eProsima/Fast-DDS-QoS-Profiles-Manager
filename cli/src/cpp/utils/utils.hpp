@@ -120,6 +120,7 @@ void builtin_parser(
  *                         Next subelement to be parsed is returned.
  * @param[out] subelement Next element to be parsed.
  * @param[out] key Index of the locator being modified.
+ * @param[in] values Vector of strings with the values passed to CLI.
  * @param[out] message Error message in case of validity check failure.
  * @return true if valid locator list. False otherwise.
  */
@@ -128,6 +129,7 @@ bool builtin_locator_parser(
         std::string& element,
         std::string& subelement,
         std::string& key,
+        const std::vector<std::string>& values,
         std::ostringstream& message);
 
 /**
