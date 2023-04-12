@@ -143,10 +143,10 @@ void XMLManager::transform_standalone_to_rooted_structure()
     {
         // Create new ROOT node
         xercesc::DOMNode* new_root_node = static_cast<xercesc::DOMNode*>(doc->createElement(
-                xercesc::XMLString::transcode(utils::tag::ROOT)));
+                    xercesc::XMLString::transcode(utils::tag::ROOT)));
         static_cast<xercesc::DOMElement*>(new_root_node)->setAttribute(
-                xercesc::XMLString::transcode(utils::tag::XMLNS),
-                xercesc::XMLString::transcode(utils::tag::EPROSIMA_URL));
+            xercesc::XMLString::transcode(utils::tag::XMLNS),
+            xercesc::XMLString::transcode(utils::tag::EPROSIMA_URL));
 
         // Create copy of node
         xercesc::DOMNode* copy_node = static_cast<xercesc::DOMNode*>(doc->createElement(last_node->getNodeName()));
