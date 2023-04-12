@@ -561,7 +561,7 @@ void XMLManager::get_locator_node(
 
 std::string XMLManager::get_absolute_path(
         const std::string& xml_file,
-        bool file_exists)
+        bool& file_exists)
 {
     std::string absolute_xml_file;
 

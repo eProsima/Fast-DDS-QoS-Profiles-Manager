@@ -230,7 +230,7 @@ private:
      */
     std::string get_absolute_path(
             const std::string& xml_file,
-            bool file_exists);
+            bool& file_exists);
 
     /**
      * @brief Get the real index of the listed nodes (avoid empty nodes).
