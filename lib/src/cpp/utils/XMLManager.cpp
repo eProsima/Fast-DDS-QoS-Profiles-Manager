@@ -129,16 +129,6 @@ XMLManager::~XMLManager()
 {
     // Close XML workspace
     xercesc::XMLPlatformUtils::Terminate();
-
-    // Release resources
-    /*delete config;
-       delete doc;
-       delete error_handler;
-       delete implementation;
-       delete output;
-       delete parser;
-       delete serializer;
-       delete target;*/
 }
 
 void XMLManager::validate_and_save_document()
@@ -184,6 +174,19 @@ bool XMLManager::save_xml()
     return serializer->write(doc, output);
 }
 
+void XMLManager::create_node(
+        const std::string& tag_name)
+{
+    // Save parent node
+    xercesc::DOMNode* parent_node = last_node;
+
+    // Create new node and save it as last node
+    last_node = static_cast<xercesc::DOMNode*>(doc->createElement(xercesc::XMLString::transcode(tag_name.c_str())));
+
+    // Append new node to parent node
+    parent_node->appendChild(last_node);
+}
+
 void XMLManager::clear_node()
 {
     // Remove node from parent
@@ -209,8 +212,8 @@ void XMLManager::clear_node()
     {
         // Invalid request: report exception
         std::string message = "Could not delete last element from ";
-        message.append(xercesc::XMLString::transcode(parent_node->getNodeValue()));
-        message.append(". Delete element by running the predecessor clear API.\n");
+        message += xercesc::XMLString::transcode(parent_node->getNodeValue());
+        message += ". Delete element by running the predecessor clear API.\n";
 
         // Throw ElementInvalid exception with custom message
         throw ElementInvalid(message);
@@ -319,46 +322,43 @@ std::string XMLManager::get_node_attribute_value(
 
 void XMLManager::get_node(
         const std::string& tag_name,
-        const bool& create_if_not_existent)
+        const bool create_if_not_existent)
 {
     // Obtain list of nodes based on the target tag
     xercesc::DOMNodeList* node_list = static_cast<xercesc::DOMElement*>(last_node)->getElementsByTagName(
         xercesc::XMLString::transcode(tag_name.c_str()));
+
+    // Check if node should be created if not found
+    if (node_list->getLength() == 0)
+    {
+        if (create_if_not_existent)
+        {
+            create_node(tag_name);
+        }
+        // Throw ElementNotFound exception
+        else
+        {
+            throw ElementNotFound("non-existent " + tag_name + " element\n");
+        }
+    }
     // Check for expected node
-    if (node_list->getLength() == 1)
+    else if (node_list->getLength() == 1)
     {
         // Return Node
         last_node = node_list->item(0);
-        return;
     }
-
-    // Check if node should be created if not found
-    if (create_if_not_existent)
-    {
-        // Save parent node
-        xercesc::DOMNode* parent_node = last_node;
-
-        // Create new node and save it as last node
-        last_node = static_cast<xercesc::DOMNode*>(doc->createElement(xercesc::XMLString::transcode(tag_name.c_str())));
-
-        // Append new node to parent node
-        parent_node->appendChild(last_node);
-    }
-    // Throw ElementNotFound exception
+    // Unexpected issue (misuse of the method)
     else
     {
-        throw ElementNotFound("non-existent " + tag_name + " element\n");
+        throw Error("Expected single" + tag_name + " returned multiple elements\n");
     }
 }
 
 void XMLManager::get_node(
         const std::string& index,
         const std::string& default_tag_name,
-        const bool& create_if_not_existent)
+        const bool create_if_not_existent)
 {
-    // Exception message declaration
-    std::string exception_message = "";
-
     // Index not empty
     if (!index.empty())
     {
@@ -368,62 +368,50 @@ void XMLManager::get_node(
         // Obtain REAL node list
         std::unique_ptr<std::vector<uint>> index_list = get_real_index(node_list);
 
-        if (index_list->size() > 0)
+        // Parse index value and obtain node
+        int32_t real_index = 0;
+        try
         {
-            // Parse index value and obtain node
-            int32_t real_index = 0;
-            try
-            {
-                // Parse index from string to int
-                real_index = std::stoi(index);
-            }
-            catch (std::exception)
-            {
-                throw BadParameter(index + " could not be used as integer index");
-            }
+            // Parse index from string to int
+            real_index = std::stoi(index);
+        }
+        catch (std::exception)
+        {
+            throw BadParameter(index + " could not be used as integer index");
+        }
 
-            // Transform index to real index
-            if (real_index < 0)
-            {
-                real_index = index_list->size() + real_index;
-            }
+        // Transform index to real index
+        if (real_index < 0)
+        {
+            real_index = index_list->size() + real_index;
+        }
 
-            // Check bounds
-            if (real_index >= 0 && real_index < index_list->size())
-            {
-                // Return Node
-                last_node = node_list->item(index_list->at(real_index));
-                return;
-            }
-
-            // Set up exception message to be thrown if node should not be created
-            exception_message = xercesc::XMLString::transcode(last_node->getNodeName());
-            exception_message += " does not have an element in position " + std::to_string(real_index) + "\n";
+        // Check bounds
+        if (real_index >= 0 && real_index < index_list->size())
+        {
+            // Return Node
+            last_node = node_list->item(index_list->at(real_index));
+            return;
         }
         else
         {
             // Set up exception message to be thrown if node should not be created
-            exception_message = xercesc::XMLString::transcode(last_node->getNodeName());
-            exception_message += " collection is empty\n";
+            std::string exception_message = xercesc::XMLString::transcode(last_node->getNodeName());
+            exception_message += " does not have an element in position " + std::to_string(real_index) + "\n";
+            throw ElementNotFound(exception_message);
         }
     }
-
     // Check if node should be created if not found
-    if (create_if_not_existent && exception_message.empty())
+    else if (create_if_not_existent)
     {
-        // Save parent node
-        xercesc::DOMNode* parent_node = last_node;
-
-        // Create new node and save it as last node
-        last_node = static_cast<xercesc::DOMNode*>(doc->createElement(
-                    xercesc::XMLString::transcode(default_tag_name.c_str())));
-
-        // Append new node to parent node
-        parent_node->appendChild(last_node);
+        create_node(default_tag_name);
     }
     // Throw ElementNotFound exception
     else
     {
+        // Set up exception message to be thrown if node should not be created
+        std::string exception_message = xercesc::XMLString::transcode(last_node->getNodeName());
+        exception_message += " does not have an element in position " + index + "\n";
         throw ElementNotFound(exception_message);
     }
 }
@@ -432,7 +420,7 @@ void XMLManager::get_node(
         const std::string& tag_name,
         const std::string& name,
         const std::string& value,
-        const bool& create_if_not_existent)
+        const bool create_if_not_existent)
 {
     // Obtain list of nodes based on the target tag
     xercesc::DOMNodeList* node_list = static_cast<xercesc::DOMElement*>(last_node)->getElementsByTagName(
@@ -465,17 +453,10 @@ void XMLManager::get_node(
     // Check if node should be created if not found
     if (create_if_not_existent)
     {
-        // Save parent node
-        xercesc::DOMNode* parent_node = last_node;
-
-        // Create new node and save it as last node
-        last_node = static_cast<xercesc::DOMNode*>(doc->createElement(xercesc::XMLString::transcode(tag_name.c_str())));
+        create_node(tag_name);
 
         // Record the given attribute name and attribute value in the new node
         set_attribute_to_node(name, value);
-
-        // Append new node to parent node
-        parent_node->appendChild(last_node);
     }
     // Throw ElementNotFound exception
     else
@@ -488,9 +469,18 @@ void XMLManager::get_node(
 
 void XMLManager::get_locator_node(
         const std::string& index,
-        const std::string& default_tag_name,
-        const bool& create_if_not_existent)
+        const bool is_external,
+        const bool create_if_not_existent)
 {
+    // Set default tag name for locator
+    std::string default_tag_name = utils::tag::LOCATOR;
+
+    // Update the default tag name if external locator case
+    if (is_external)
+    {
+        default_tag_name = utils::tag::UDP_V4_LOCATOR;
+    }
+
     // Obtain element from list
     get_node(index, default_tag_name, create_if_not_existent);
 
@@ -513,15 +503,7 @@ void XMLManager::get_locator_node(
         // Create default kind children if required
         else if (create_if_not_existent)
         {
-            // Save parent node
-            xercesc::DOMNode* parent_node = last_node;
-
-            // Create new node and save it as last node
-            last_node = static_cast<xercesc::DOMNode*>(doc->createElement(
-                        xercesc::XMLString::transcode(utils::tag::UDP_V4_LOCATOR)));
-
-            // Append new node to parent node
-            parent_node->appendChild(last_node);
+            create_node(utils::tag::UDP_V4_LOCATOR);
         }
         // Throw ElementNotFound exception
         else
@@ -535,7 +517,7 @@ void XMLManager::get_locator_node(
 
 std::string XMLManager::get_absolute_path(
         const std::string& xml_file,
-        bool& file_exists)
+        bool file_exists)
 {
     std::string absolute_xml_file;
 

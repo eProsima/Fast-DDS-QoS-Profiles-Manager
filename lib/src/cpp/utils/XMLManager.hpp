@@ -51,9 +51,9 @@ public:
      *  and reads given xml_file document.
      *
      * @param[in] xml_file string with the file path
-     * @param[in] create_file bool (optional) create file if it does not exist flag
+     * @param[in] create_file bool (optional) create file if the flag is set
      *
-     * @throw FileNotFound exception if Xerces XML workspace could not be initialized
+     * @throw Error exception if Xerces XML workspace could not be initialized
      */
     XMLManager(
             const std::string& xml_file,
@@ -88,20 +88,20 @@ public:
             const std::string& value);
 
     /**
-     * @brief Set the attribute value associated to the attribute name to node object.
+     * @brief Set the attribute value associated to the attribute name attached to the node object.
      *
-     * @param[in] name to set the node attribute
-     * @param[in] value to be set in the node
+     * @param[in] name of the attribute to be set
+     * @param[in] value to be set in the node attribute
      */
     void set_attribute_to_node(
             const std::string& name,
             const std::string& value);
 
     /**
-     * @brief Set the attribute value of all node siblings to the given value associated to given name.
+     * @brief Set the specific attribute of all node siblings to the given value.
      *
-     * @param[in] name to set the node attribute
-     * @param[in] value to be set in the node
+     * @param[in] name of the node attribute to be set
+     * @param[in] value to be set in the node attribute
      */
     void set_siblings_attribute(
             const std::string& name,
@@ -111,7 +111,7 @@ public:
     /**
      * @brief Get the node value (only for simple cases)
      *
-     * @throw ElementNotFound exception if could not obtain node value
+     * @throw ElementNotFound exception if the node value could not be obtained
      *
      * @return std::string node value (Empty string if error)
      */
@@ -122,7 +122,7 @@ public:
      *
      * @param[in] name attribute name
      *
-     * @throw ElementNotFound exception if could not obtain node attribute value
+     * @throw ElementNotFound exception if the attribute value could not be obtained from the node
      *
      * @return std::string node attribute value (Empty string if error)
      */
@@ -133,27 +133,27 @@ public:
      * @brief Get the (unique) child node object that matches the given tag name.
      *
      * @param[in] tag_name string with the node (<tag>) name
-     * @param[in] create_if_not_existent flag to create node if was not found
+     * @param[in] create_if_not_existent flag to create node if it is not found
      *
-     * @throw ElementNotFound exception if expected node was not found and node creation not required
+     * @throw ElementNotFound exception if expected node was not found and node creation was not required
      */
     void get_node(
             const std::string& tag_name,
-            const bool& create_if_not_existent);
+            const bool create_if_not_existent);
 
     /**
      * @brief Get the node object located in the index position. If empty index, current node is kept.
      *
      * @param[in] index string index of the node element
-     * @param[in] default_tag_name string with the default node (<tag>) name
-     * @param[in] create_if_not_existent flag to create node if was not found
+     * @param[in] default_tag_name string with the default node (<tag>) name required to create the node if required.
+     * @param[in] create_if_not_existent flag to create node if it is not found
      *
-     * @throw ElementNotFound exception if expected node was not found and node creation not required
+     * @throw ElementNotFound exception if expected node was not found and node creation was not required
      */
     void get_node(
             const std::string& index,
             const std::string& default_tag_name,
-            const bool& create_if_not_existent);
+            const bool create_if_not_existent);
 
     /**
      * @brief Get the node object that matches the given tag name, and has the same attribute key-value pair
@@ -162,29 +162,29 @@ public:
      * @param[in] tag_name string with the node (<tag>) name
      * @param[in] name string key (attribute) name of the node element
      * @param[in] value string value (attribute) value of the node element
-     * @param[in] create_if_not_existent flag to create node if was not found
+     * @param[in] create_if_not_existent flag to create node if it is not found
      *
-     * @throw ElementNotFound exception if expected node was not found and node creation not required
+     * @throw ElementNotFound exception if expected node was not found and node creation was not required
      */
     void get_node(
             const std::string& tag_name,
             const std::string& name,
             const std::string& value,
-            const bool& create_if_not_existent);
+            const bool create_if_not_existent);
 
     /**
      * @brief Get the locator node object found at index position. If empty index, current node is kept.
      *
      * @param[in] index string index of the node element
-     * @param[in] default_tag_name string with the default node (<tag>) name
-     * @param[in] create_if_not_existent flag to create node if was not found
+     * @param[in] is_external flag to determine if the locator node is external or common
+     * @param[in] create_if_not_existent flag to create node if it is not found
      *
-     * @throw ElementNotFound exception if expected node was not found and node creation not required
+     * @throw ElementNotFound exception if expected node was not found and node creation was not required
      */
     void get_locator_node(
             const std::string& index,
-            const std::string& default_tag_name,
-            const bool& create_if_not_existent);
+            const bool is_external,
+            const bool create_if_not_existent);
 
 private:
 
@@ -207,6 +207,14 @@ private:
     bool save_xml();
 
     /**
+     * @brief Auxiliar method that creates a new node with the given tag and appends it to the last node.
+     *
+     * @param tag_name string with the new node (<tag>) name
+     */
+    void create_node(
+            const std::string& tag_name);
+
+    /**
      * @brief Get the absolute path of the given file name (POSIX only).
      *
      * @param[in]  xml_file string with the given file name
@@ -216,7 +224,7 @@ private:
      */
     std::string get_absolute_path(
             const std::string& xml_file,
-            bool& file_exists);
+            bool file_exists);
 
     /**
      * @brief Get the real index of the listed nodes (avoid empty nodes).

@@ -175,8 +175,7 @@ std::string print_wan_address(
  * @throw ElementNotFound Exception if the list has not been set.
  */
 uint32_t size(
-        utils::XMLManager& manager,
-        const xercesc::DOMElement& xml_node);
+        utils::XMLManager& manager);
 
 /************************************************************************/
 /* Clear functions                                                      */

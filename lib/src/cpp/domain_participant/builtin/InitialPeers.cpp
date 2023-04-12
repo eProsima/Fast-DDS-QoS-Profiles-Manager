@@ -33,18 +33,18 @@ namespace builtin {
 namespace initial_peers {
 
 /**
- * @brief Private common method for all the functions that belong this namespace to obtain base node position.
+ * @brief Private common method for all the functions that belong to this namespace to obtain base node position.
  *
  * @param[in] manager utils::XMLManager to obtain the base node position in the XML document
  * @param[in] profile_id Domain participant profile identifier
  * @param[in] create_if_not_existent flag that enables the creation of the  element if it does not exist
  *
- * @throw ElementNotFound exception if expected node was not found and node creation not required
+ * @throw ElementNotFound exception if expected node was not found and node creation was not required
  */
 void initialize_namespace(
         utils::XMLManager& manager,
         const std::string& profile_id,
-        const bool& create_if_not_existent)
+        const bool create_if_not_existent)
 {
     // Iterate through required elements, and create them if not existent
     manager.get_node(utils::tag::PROFILES, create_if_not_existent);

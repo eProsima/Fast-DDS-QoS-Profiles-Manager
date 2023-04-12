@@ -87,8 +87,7 @@ std::string print_wan_address(
 }
 
 uint32_t size(
-        utils::XMLManager& manager,
-        const xercesc::DOMElement& xml_node)
+        utils::XMLManager& manager)
 {
     throw Unsupported("Unsupported");
 }
@@ -155,16 +154,8 @@ void set_port(
         const std::string& index,
         const bool is_external)
 {
-    // append the new kind node directly to the given parent
-    if (is_external)
-    {
-        manager.get_locator_node(index, utils::tag::UDP_V4_LOCATOR, true);
-    }
-    // create <locator> tag if required
-    else
-    {
-        manager.get_locator_node(index, utils::tag::LOCATOR, true);
-    }
+    // get the kind node
+    manager.get_locator_node(index, is_external, true);
 
     // add port node to the kind node
     manager.get_node(utils::tag::PORT, true);
@@ -188,16 +179,8 @@ void set_address(
         const std::string& index,
         const bool is_external)
 {
-    // append the new kind node directly to the given parent
-    if (is_external)
-    {
-        manager.get_locator_node(index, utils::tag::UDP_V4_LOCATOR, true);
-    }
-    // create <locator> tag if required
-    else
-    {
-        manager.get_locator_node(index, utils::tag::LOCATOR, true);
-    }
+    // get the kind node
+    manager.get_locator_node(index, is_external, true);
 
     // add address node to the kind node
     manager.get_node(utils::tag::ADDRESS, true);

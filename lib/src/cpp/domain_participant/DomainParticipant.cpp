@@ -31,22 +31,31 @@ namespace qosprof {
 namespace domain_participant {
 
 /**
- * @brief Private common method for all the functions that belong this namespace to obtain base node position.
+ * @brief Private common method for all the functions that belong to this namespace to obtain base node position.
  *
  * @param[in] manager utils::XMLManager to obtain the base node position in the XML document
  * @param[in] profile_id Domain participant profile identifier
  * @param[in] create_if_not_existent flag that enables the creation of the  element if it does not exist
+ * @param[in] additional_RTPS_tag additional RTPS tag to initialize directly
  *
- * @throw ElementNotFound exception if expected node was not found and node creation not required
+ * @throw ElementNotFound exception if expected node was not found and node creation was not required
  */
 void initialize_namespace(
         utils::XMLManager& manager,
         const std::string& profile_id,
-        const bool& create_if_not_existent)
+        const bool create_if_not_existent,
+        const std::string& additional_RTPS_tag)
 {
     // Iterate through required elements, and create them if not existent
     manager.get_node(utils::tag::PROFILES, create_if_not_existent);
     manager.get_node(utils::tag::PARTICIPANT, utils::tag::PROFILE_NAME, profile_id, create_if_not_existent);
+
+    // there are additional tags to obtain
+    if (!additional_RTPS_tag.empty())
+    {
+        manager.get_node(utils::tag::RTPS, create_if_not_existent);
+        manager.get_node(additional_RTPS_tag, create_if_not_existent);
+    }
 }
 
 std::string print(
@@ -241,7 +250,7 @@ void set_default_profile(
     utils::XMLManager manager(xml_file, false);
 
     // Obtain base node position
-    initialize_namespace(manager, profile_id, false);
+    initialize_namespace(manager, profile_id, false, "");
 
     // Check if default profile already defined
     try
@@ -284,11 +293,7 @@ void set_name(
     utils::XMLManager manager(xml_file, true);
 
     // Obtain base node position
-    initialize_namespace(manager, profile_id, true);
-
-    // Iterate through required elements, and create them if not existent
-    manager.get_node(utils::tag::RTPS, true);
-    manager.get_node(utils::tag::NAME, true);
+    initialize_namespace(manager, profile_id, true, utils::tag::NAME);
 
     // Set the name node value
     manager.set_value_to_node(name);
