@@ -377,6 +377,13 @@ inline bool query_not_allowed(
     return true;
 }
 
+void final_subelement_check(
+        CommonCommands command,
+        bool& print_usage,
+        std::string& element,
+        std::ostringstream& message,
+        uint32_t argument_number);
+
 } // qosprof_cli
 } // eprosima
 

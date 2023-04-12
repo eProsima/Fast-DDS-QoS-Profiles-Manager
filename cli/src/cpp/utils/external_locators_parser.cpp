@@ -129,17 +129,7 @@ void external_locators_parser(
     {
         if (!subelement.empty())
         {
-            std::string dummy_subelement;
-            std::string dummy_key;
-            keyed = extract_element_subelement_key(subelement, dummy_subelement, dummy_key);
-            message << " <" << subelement << "> attribute";
-            // Should not be keyed
-            print_usage = print_usage || !check_keyed(false, keyed, message.str());
-            // Should be final
-            print_usage = print_usage || !check_final_element(true, dummy_subelement, message.str());
-            // SET command requires only one argument
-            print_usage = print_usage || (CommonCommands::SET == command &&
-                    !check_command_arguments(command, 1, values.size(), message.str(), true));
+            final_subelement_check(command, print_usage, subelement, message, values.size());
         }
 
         // Call library
