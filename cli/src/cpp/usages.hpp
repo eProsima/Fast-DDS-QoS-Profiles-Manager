@@ -54,6 +54,36 @@ static const char QUERY_USAGE[] =
       fastddsqosprof <file> query [size | keys] <element>
 )";
 
+static const char PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_USAGE[] =
+        R"(Participant builtin discovery configuration usage:
+
+    Usage:
+      fastddsqosprof <file> <command> participant[<profile_name>].builtin.discovery_config.<subelement> [<values>... (help | -h | --help)]
+      fastddsqosprof <file> <command> participant[<profile_name>].builtin.discovery_config.<subelement> [(help | -h | --help)]
+      fastddsqosprof <file> <command> participant[<profile_name>].builtin.discovery_config [(help | -h | --help)]
+
+    Options:
+      help -h --help    CLI participant builtin discovery configuration usage
+
+    The allowed <command> options are:
+      clear                           Erase participant builtin discovery configuration from XML file.
+      print                           Print participant builtin discovery configuration.
+      set                             Write participant builtin discovery configuration to XML file.
+
+    The <profile_name> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
+
+    The allowed <subelement> options are:
+      client_announcements            Participant client announcement period configuration (Discovery Server specific).
+      discovery_protocol              Participant discovery protocol configuration.
+      duration                        Participant lease duration and announcement period configuration.
+      edp                             Participant Endpoint Discovery Phase (EDP) configuration.
+      ignore_participant_flags        Participant discovery metatraffic configuration.
+      initial_announcements           Participant initial announcements configuration.
+      remote_servers                  Participant remote servers list (Discovery Server specific).
+      simple_edp                      Participant simple Endpoint Discovery Phase (EDP) configuration (Standard EDP specific).
+      static_edp_xmls                 Participant static Endpoint Discovery Phase (EDP) configuration (Static EDP specific).
+)";
+
 static const char PARTICIPANT_BUILTIN_LOCATORS_USAGE[] =
         R"(Participant builtin locators usage:
 
