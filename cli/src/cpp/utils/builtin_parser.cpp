@@ -91,7 +91,26 @@ void builtin_parser(
     }
     else if (element == DISCOVERY_CONFIG_SUBELEMENT)
     {
-        std::cout << "Participant builtin dicovery mechanism configuration not yet supported" << std::endl;
+        print_usage = subelement.empty() && check_help(values);
+        print_usage = print_usage || !check_keyed(false, keyed, message.str());
+        print_usage = print_usage || !check_final_element(false, subelement, message.str());
+
+        if (!print_usage)
+        {
+            // TODO
+        }
+        else
+        {
+            if (CommonCommands::QUERY == command)
+            {
+                // TODO
+                // std::cout << PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_QUERY_USAGE << std::endl;
+            }
+            else
+            {
+                std::cout << PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_USAGE << std::endl;
+            }
+        }
     }
     else if (element == EXTERNAL_LOCATORS_SUBELEMENT)
     {
