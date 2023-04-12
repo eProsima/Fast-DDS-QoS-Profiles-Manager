@@ -132,13 +132,13 @@ XMLManager::~XMLManager()
 
     // Release resources
     /*delete config;
-    delete doc;
-    delete error_handler;
-    delete implementation;
-    delete output;
-    delete parser;
-    delete serializer;
-    delete target;*/
+       delete doc;
+       delete error_handler;
+       delete implementation;
+       delete output;
+       delete parser;
+       delete serializer;
+       delete target;*/
 }
 
 void XMLManager::validate_and_save_document()
@@ -323,7 +323,7 @@ void XMLManager::get_node(
 {
     // Obtain list of nodes based on the target tag
     xercesc::DOMNodeList* node_list = static_cast<xercesc::DOMElement*>(last_node)->getElementsByTagName(
-                xercesc::XMLString::transcode(tag_name.c_str()));
+        xercesc::XMLString::transcode(tag_name.c_str()));
     // Check for expected node
     if (node_list->getLength() == 1)
     {
@@ -436,7 +436,7 @@ void XMLManager::get_node(
 {
     // Obtain list of nodes based on the target tag
     xercesc::DOMNodeList* node_list = static_cast<xercesc::DOMElement*>(last_node)->getElementsByTagName(
-                xercesc::XMLString::transcode(tag_name.c_str()));
+        xercesc::XMLString::transcode(tag_name.c_str()));
 
     // Iterate through the nodes
     for (int i = 0, size = node_list->getLength(); i < size; i++)
@@ -448,7 +448,7 @@ void XMLManager::get_node(
         {
             // Obtain the attribute that matches the name
             xercesc::DOMNode* attribute_item = node_attributes->getNamedItem(
-                    xercesc::XMLString::transcode(name.c_str()));
+                xercesc::XMLString::transcode(name.c_str()));
             if (attribute_item != nullptr)
             {
                 // If the value of the attribute match
@@ -480,7 +480,9 @@ void XMLManager::get_node(
     // Throw ElementNotFound exception
     else
     {
-        throw ElementNotFound("non-existent " + tag_name + " element with attribute " + name + " and value " + value + "\n");
+        throw ElementNotFound(
+                  "non-existent " + tag_name + " element with attribute " + name + " and value " + value +
+                  "\n");
     }
 }
 
