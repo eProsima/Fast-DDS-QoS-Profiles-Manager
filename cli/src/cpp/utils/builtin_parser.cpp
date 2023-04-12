@@ -52,7 +52,7 @@ void builtin_discovery_config_parser(
     {
         std::cout <<
             "Participant builtin discovery lease duration and announcement period configuration not yet supported"
-            << std::endl;
+                  << std::endl;
     }
     else if (element == EDP_SUBELEMENT)
     {
