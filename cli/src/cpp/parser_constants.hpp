@@ -90,6 +90,10 @@ constexpr const char* REMOTE_SERVERS_SUBELEMENT = "remote_servers";
 constexpr const char* SIMPLE_EDP_SUBELEMENT = "simple_edp";
 constexpr const char* STATIC_EDP_XMLS_SUBELEMENT = "static_edp_xmls";
 
+// CLI common duration type subelements
+constexpr const char* SECONDS_SUBELEMENT = "sec";
+constexpr const char* NANOSECONDS_SUBELEMENT = "nanosec";
+
 // CLI locators common elements
 constexpr const char* DEFAULT_UNICAST_ELEMENT = "default_unicast";
 constexpr const char* METATRAFFIC_UNICAST_ELEMENT = "metatraffic_unicast";
