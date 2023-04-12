@@ -170,6 +170,35 @@ public:
 };
 
 /**
+ * @brief Exception to signal unexpected error in library dependencies
+ */
+class Error : public Exception
+{
+
+public:
+
+    // Use parent constructors.
+    using Exception::Exception;
+
+    /**
+     * @brief Copies the qosprof::Error exception into a new one
+     *
+     * @param other The original exception object to copy
+     */
+    FASTDDS_QOS_PROFILES_MANAGER_DllAPI Error(
+            const Error& other) = default;
+
+    /**
+     * @brief Copies the qosprof::Error exception into the current one
+     *
+     * @param other The original qosprof::Error exception to copy
+     * @return the current qosprof::Error exception after the copy
+     */
+    FASTDDS_QOS_PROFILES_MANAGER_DllAPI Error& operator =(
+            const Error& other) = default;
+};
+
+/**
  * @brief Exception to signal that the provided XML file does not exist
  */
 class FileNotFound : public Exception

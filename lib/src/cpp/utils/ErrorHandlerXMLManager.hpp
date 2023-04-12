@@ -16,8 +16,8 @@
  * @file
  */
 
-#ifndef _FAST_DDS_QOS_PROFILES_MANAGER_UTILS_PARSE_XML_ERROR_HANDLER_HPP_
-#define _FAST_DDS_QOS_PROFILES_MANAGER_UTILS_PARSE_XML_ERROR_HANDLER_HPP_
+#ifndef _FAST_DDS_QOS_PROFILES_MANAGER_UTILS_ERROR_HANDLER_XML_MANAGER_HPP_
+#define _FAST_DDS_QOS_PROFILES_MANAGER_UTILS_ERROR_HANDLER_XML_MANAGER_HPP_
 
 #include <string>
 
@@ -28,12 +28,12 @@ namespace qosprof {
 namespace utils {
 
 /**
- * @brief ParseXMLErrorHandler is an error handler that would
+ * @brief ErrorHandlerXMLManager is an error handler that would
  *  throw a eProsima QoS Profiles Manager Exception defined in
  *  its construction or default.
  *
  */
-class ParseXMLErrorHandler : public xercesc::ErrorHandler
+class ErrorHandlerXMLManager : public xercesc::ErrorHandler
 {
 public:
 
@@ -53,14 +53,14 @@ public:
      *
      * @param Kind kind of exception to be thrown
      */
-    ParseXMLErrorHandler(
+    ErrorHandlerXMLManager(
             Kind kind = Kind::FileNotFound);
 
     /**
      * @brief Destroy the Parse XML Error Handler object
      *
      */
-    ~ParseXMLErrorHandler() = default;
+    ~ErrorHandlerXMLManager() = default;
 
     /**
      * @brief Catch Xerces warning exceptions
@@ -114,4 +114,4 @@ private:
 } /* qosprof */
 } /* eprosima */
 
-#endif // _FAST_DDS_QOS_PROFILES_MANAGER_UTILS_PARSE_XML_ERROR_HANDLER_HPP_
+#endif // _FAST_DDS_QOS_PROFILES_MANAGER_UTILS_ERROR_HANDLER_XML_MANAGER_HPP_

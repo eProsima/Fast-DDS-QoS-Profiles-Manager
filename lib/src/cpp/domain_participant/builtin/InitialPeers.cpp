@@ -23,8 +23,8 @@
 #include <fastdds_qos_profiles_manager/exception/Exception.hpp>
 
 #include <common/LocatorList.hpp>
-#include <utils/ParseXML.hpp>
-#include <utils/ParseXMLTags.hpp>
+#include <utils/TagsXMLManager.hpp>
+#include <utils/XMLManager.hpp>
 
 namespace eprosima {
 namespace qosprof {
@@ -170,7 +170,7 @@ void set_port(
     xercesc::DOMNode* locator_node = nullptr;
 
     // Create XML manager and initialize the document
-    utils::ParseXML* manager = new utils::ParseXML(xml_file, true);
+    utils::XMLManager* manager = new utils::XMLManager(xml_file, true);
     doc = manager->get_doc();
 
     // Obtain profiles node
@@ -252,7 +252,7 @@ void set_port(
     common::locator_list::set_port(*manager, locator_list_node, port, index, false);
 
     // Validate new XML element and save it
-    manager->validate_and_save_xml_document();
+    manager->validate_and_save_document();
 }
 
 void set_physical_port(
@@ -282,7 +282,7 @@ void set_address(
     xercesc::DOMNode* locator_node = nullptr;
 
     // Create XML manager and initialize the document
-    utils::ParseXML* manager = new utils::ParseXML(xml_file, true);
+    utils::XMLManager* manager = new utils::XMLManager(xml_file, true);
     doc = manager->get_doc();
 
     // Obtain profiles node
@@ -364,7 +364,7 @@ void set_address(
     common::locator_list::set_address(*manager, locator_list_node, address, index, false);
 
     // Validate new XML element and save it
-    manager->validate_and_save_xml_document();
+    manager->validate_and_save_document();
 }
 
 void set_unique_lan_id(

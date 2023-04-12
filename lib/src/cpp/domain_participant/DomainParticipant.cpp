@@ -23,8 +23,8 @@
 
 #include <fastdds_qos_profiles_manager/exception/Exception.hpp>
 
-#include <utils/ParseXML.hpp>
-#include <utils/ParseXMLTags.hpp>
+#include <utils/TagsXMLManager.hpp>
+#include <utils/XMLManager.hpp>
 
 namespace eprosima {
 namespace qosprof {
@@ -87,13 +87,6 @@ std::string print_participant_id(
 
 std::string print_user_transport(
         const std::string& xml_file,
-        const std::string& profile_id)
-{
-    throw Unsupported("Unsupported");
-}
-
-std::string print_user_transport(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -101,13 +94,6 @@ std::string print_user_transport(
 }
 
 std::string print_use_builtin_transports(
-        const std::string& xml_file,
-        const std::string& profile_id)
-{
-    throw Unsupported("Unsupported");
-}
-
-std::string print_user_data(
         const std::string& xml_file,
         const std::string& profile_id)
 {
@@ -200,13 +186,6 @@ void clear_participant_id(
 
 void clear_user_transports(
         const std::string& xml_file,
-        const std::string& profile_id)
-{
-    throw Unsupported("Unsupported");
-}
-
-void clear_user_transports(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -214,13 +193,6 @@ void clear_user_transports(
 }
 
 void clear_use_builtin_transports(
-        const std::string& xml_file,
-        const std::string& profile_id)
-{
-    throw Unsupported("Unsupported");
-}
-
-void clear_user_data(
         const std::string& xml_file,
         const std::string& profile_id)
 {
@@ -255,7 +227,7 @@ void set_default_profile(
     xercesc::DOMNode* default_profile_node = nullptr;
 
     // Create XML manager and initialize the document
-    utils::ParseXML* manager = new utils::ParseXML(xml_file, true);
+    utils::XMLManager* manager = new utils::XMLManager(xml_file, true);
     doc = manager->get_doc();
 
     // Obtain nodes
@@ -296,7 +268,7 @@ void set_default_profile(
         xercesc::XMLString::transcode("true"));
 
     // Validate new XML element and save it
-    manager->validate_and_save_xml_document();
+    manager->validate_and_save_document();
 }
 
 void set_domain_id(
@@ -322,7 +294,7 @@ void set_name(
     xercesc::DOMNode* name_node = nullptr;
 
     // Create XML manager and initialize the document
-    utils::ParseXML* manager = new utils::ParseXML(xml_file, true);
+    utils::XMLManager* manager = new utils::XMLManager(xml_file, true);
     doc = manager->get_doc();
 
     // Obtain profiles node
@@ -391,7 +363,7 @@ void set_name(
     manager->set_value_to_node(name_node, name);
 
     // Validate new XML element and save it
-    manager->validate_and_save_xml_document();
+    manager->validate_and_save_document();
 }
 
 void set_ignore_non_matching_locators(

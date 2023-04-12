@@ -374,28 +374,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_client_announcement_period
         const std::string& profile_id);
 
 /**
- * @brief Parse XML file and print specific Domain Participant builtin discovery Static EDP XML configuration files.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
- *
- * @return std::string Domain Participant specific builtin discovery Static EDP XML configuration files.
- *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
- * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
- *        Static EDP XML configuration files element is not defined.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_static_edp_xml_config(
-        const std::string& xml_file,
-        const std::string& profile_id);
-
-/**
  * @brief Parse XML file and print specific Domain Participant builtin discovery specific Static EDP XML configuration
  *        file.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] index Collection element to be printed.
+ * @param[in] index Collection element to be printed. If empty, the complete collection is printed.
  *
  * @return std::string Domain Participant specific builtin discovery specific Static EDP XML configuration file.
  *
@@ -708,27 +692,15 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_client_announcement_period_nanose
         const std::string& profile_id);
 
 /**
- * @brief Remove specific Domain Participant builtin discovery Static EDP XML configuration files.
- *
- * @param[in] xml_file Absolute/relative path to the XML file.
- * @param[in] profile_id Domain participant profile identifier.
- *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
- * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
- */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_static_edp_xml_config(
-        const std::string& xml_file,
-        const std::string& profile_id);
-
-/**
  * @brief Remove specific Domain Participant builtin discovery specific Static EDP XML configuration file.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
- * @param[in] index Collection element to be removed.
+ * @param[in] index Collection element to be removed. If empty, the complete collection is erased.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
- * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
+ * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if
+ *        the element does not exist in the collection if an index is provided..
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_static_edp_xml_config(

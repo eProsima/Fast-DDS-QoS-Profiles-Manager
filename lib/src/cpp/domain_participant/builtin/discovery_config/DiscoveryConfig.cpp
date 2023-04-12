@@ -177,13 +177,6 @@ std::string print_client_announcement_period_nanosec(
 
 std::string print_static_edp_xml_config(
         const std::string& xml_file,
-        const std::string& profile_id)
-{
-    throw Unsupported("Unsupported");
-}
-
-std::string print_static_edp_xml_config(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -338,13 +331,6 @@ void clear_client_announcement_period_sec(
 }
 
 void clear_client_announcement_period_nanosec(
-        const std::string& xml_file,
-        const std::string& profile_id)
-{
-    throw Unsupported("Unsupported");
-}
-
-void clear_static_edp_xml_config(
         const std::string& xml_file,
         const std::string& profile_id)
 {

@@ -15,7 +15,7 @@
 /**
  * @file
  */
-#include <utils/ParseXMLString.hpp>
+#include <utils/StringXMLManager.hpp>
 
 #include <cstring>
 
@@ -23,23 +23,23 @@ namespace eprosima {
 namespace qosprof {
 namespace utils {
 
-ParseXMLString::ParseXMLString()
+StringXMLManager::StringXMLManager()
 {
     m_pBuffer = nullptr;
     m_nTotal = 0;
 }
 
-unsigned char* ParseXMLString::buffer()
+unsigned char* StringXMLManager::buffer()
 {
     return m_pBuffer;
 }
 
-unsigned long int ParseXMLString::length()
+unsigned long int StringXMLManager::length()
 {
     return m_nTotal;
 }
 
-void ParseXMLString::writeChars(
+void StringXMLManager::writeChars(
         const XMLByte* const toWrite,
         const XMLSize_t count,
         xercesc::XMLFormatter* const formatter)
