@@ -78,6 +78,17 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config`|`ERROR: Participant builtin <discovery_config> must not be FINAL element`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config[]`|`ERROR: Participant builtin <discovery_config> must not be keyed []`|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config help`|N/A|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.client_announcements`|**PENDING** (currently `Participant builtin discovery client announcements configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.discovery_protocol`|**PENDING** (currently `Participant builtin discovery protocol configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration`|**PENDING** (currently `Participant builtin discovery lease duration and announcement period configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.edp`|**PENDING** (currently `Participant builtin discovery EDP configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.ignore_participant_flags`|**PENDING** (currently `Participant builtin discovery ignore participant flags configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.initial_announcements`|**PENDING** (currently `Participant builtin discovery initial announcements configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.remote_servers`|**PENDING** (currently `Participant builtin discovery remote servers list configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.simple_edp`|**PENDING** (currently `Participant builtin discovery simple EDP configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.static_edp_xmls`|**PENDING** (currently `Participant builtin discovery static EDP configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.other`|`ERROR: other element not recognized`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.other --help`|N/A|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.external_locators`|`ERROR: Participant builtin <external_locators> must not be FINAL element`|`PARTICIPANT_BUILTIN_METATRAFFIC_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.external_locators -h`|N/A|`PARTICIPANT_BUILTIN_METATRAFFIC_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.external_locators --help`|N/A|`PARTICIPANT_BUILTIN_METATRAFFIC_EXTERNAL_UNICAST_LOCATORS_USAGE`|
