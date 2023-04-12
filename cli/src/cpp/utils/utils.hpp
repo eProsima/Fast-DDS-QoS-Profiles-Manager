@@ -17,6 +17,7 @@
 
 #include <iostream>
 #include <regex>
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -35,7 +36,7 @@ enum CommonCommands
 };
 
 // Duration elements
-enum class DurationList
+enum class DurationTypeList
 {
     DATAREADER_INITIAL_ACKNACK_DELAY,
     DATAREADER_HEARTBEAT_RESPONSE_DELAY,
@@ -176,6 +177,26 @@ void builtin_parser(
         const std::string& profile_name,
         std::string& element,
         const std::vector<std::string>& values);
+
+/**
+ * @brief Common parser for duration types.
+ *
+ * @param duration_type Duration type being parsed.
+ * @param command Command kind.
+ * @param filename File to be accessed.
+ * @param profile_name DDS entity profile name.
+ * @param element String with the dot-separated subelements.
+ * @param values Vector of strings with the values passed to CLI.
+ * @param message Error message in case of validity check failure.
+ */
+void duration_type_parser(
+        DurationTypeList duration_type,
+        CommonCommands command,
+        const std::string& filename,
+        const std::string& profile_name,
+        std::string& element,
+        const std::vector<std::string>& values,
+        std::ostringstream& message);
 
 /**
  * @brief Common parser for external locators lists
