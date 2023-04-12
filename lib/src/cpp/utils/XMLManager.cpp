@@ -106,6 +106,9 @@ XMLManager::XMLManager (
     // Obtain first document node
     last_node = static_cast<xercesc::DOMNode*>(doc->getDocumentElement());
 
+    // Check if XML document has rooted structure
+    transform_standalone_to_rooted_structure();
+
     // Set up Validation parameters: XSD pash
     std::string xsd_file_path = FASTDDS_QOS_PROFILES_MANAGER_XML_SCHEMA;
     // Set as namespace location both URL and the path to the XML schema
@@ -129,6 +132,47 @@ XMLManager::~XMLManager()
 {
     // Close XML workspace
     xercesc::XMLPlatformUtils::Terminate();
+}
+
+void XMLManager::transform_standalone_to_rooted_structure()
+{
+    std::string root_name = xercesc::XMLString::transcode(last_node->getNodeName());
+
+    // If NOT rooted structure (standalone structure)
+    if (root_name != utils::tag::ROOT)
+    {
+        // Create new ROOT node
+        xercesc::DOMNode* new_root_node = static_cast<xercesc::DOMNode*>(doc->createElement(
+                xercesc::XMLString::transcode(utils::tag::ROOT)));
+        static_cast<xercesc::DOMElement*>(new_root_node)->setAttribute(
+                xercesc::XMLString::transcode(utils::tag::XMLNS),
+                xercesc::XMLString::transcode(utils::tag::EPROSIMA_URL));
+
+        // Create copy of node
+        xercesc::DOMNode* copy_node = static_cast<xercesc::DOMNode*>(doc->createElement(last_node->getNodeName()));
+
+        // Recursive adoption to all child nodes:
+        xercesc::DOMNodeList* root_child_nodes = last_node->getChildNodes();
+        std::unique_ptr<std::vector<uint>> index_list = get_real_index(root_child_nodes);
+        for (int i = 0, size = index_list->size(); i < size; i++)
+        {
+            xercesc::DOMNode* adopted_node = root_child_nodes->item(index_list->at(i));
+            last_node->removeChild(adopted_node);
+            copy_node->appendChild(adopted_node);
+        }
+
+        // Add the copy node to the new root node
+        new_root_node->appendChild(copy_node);
+
+        // Remove node from document
+        doc->removeChild(last_node);
+
+        // Add new root to the document
+        doc->appendChild(new_root_node);
+
+        // set new root
+        last_node = new_root_node;
+    }
 }
 
 void XMLManager::validate_and_save_document()

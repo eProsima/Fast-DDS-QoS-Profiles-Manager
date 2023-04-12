@@ -189,6 +189,12 @@ public:
 private:
 
     /**
+     * @brief Transforms standalone XML document structure to rooted.
+     *
+     */
+    void transform_standalone_to_rooted_structure();
+
+    /**
      * @brief Save the document as string and validate.
      *
      * @throw ElementInvalid exception if document does not pass parser validation
