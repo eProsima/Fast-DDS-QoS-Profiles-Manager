@@ -23,6 +23,15 @@
 namespace eprosima {
 namespace qosprof_cli {
 
+void builtin_discovery_config_parser(
+        CommonCommands command,
+        const std::string& filename,
+        const std::string& profile_name,
+        std::string& element,
+        const std::vector<std::string>& values)
+{
+}
+
 bool builtin_locator_parser(
         LocatorsList& locator_list,
         std::string& element,
@@ -97,7 +106,7 @@ void builtin_parser(
 
         if (!print_usage)
         {
-            // TODO
+            builtin_discovery_config_parser(command, filename, profile_name, subelement, values);
         }
         else
         {
