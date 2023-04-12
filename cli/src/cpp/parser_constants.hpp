@@ -52,6 +52,7 @@ constexpr const char* TYPES_ELEMENT = "types";
 constexpr const char* ALLOCATIONS_SUBELEMENT = "allocations";
 constexpr const char* BINARY_PROPERTY_SUBELEMENT = "binary_property";
 constexpr const char* DEFAULT_PROFILE_SUBELEMENT = "default_profile";
+constexpr const char* DURATION_SUBELEMENT = "duration";
 constexpr const char* EXTERNAL_LOCATORS_SUBELEMENT = "external_locators";
 constexpr const char* IGNORE_NON_MATCHING_LOCATORS_SUBELEMENT = "ignore_non_matching_locators";
 constexpr const char* KIND_SUBELEMENT = "kind";
@@ -78,6 +79,16 @@ constexpr const char* MUTATION_TRIES_SUBELEMENT = "mutation_tries";
 constexpr const char* READER_SUBELEMENT = "reader";
 constexpr const char* USE_WRITER_LIVELINESS_PROTOCOL_SUBELEMENT = "use_writer_liveliness_protocol";
 constexpr const char* WRITER_SUBELEMENT = "writer";
+
+// CLI participant builtin discovery config subelements
+constexpr const char* CLIENT_ANNOUNCEMENTS_SUBELEMENT = "client_announcements";
+constexpr const char* DISCOVERY_PROTOCOL_SUBELEMENT = "discovery_protocol";
+constexpr const char* EDP_SUBELEMENT = "edp";
+constexpr const char* IGNORE_PARTICIPANT_FLAGS_SUBELEMENT = "ignore_participant_flags";
+constexpr const char* INITIAL_ANNOUNCEMENTS_SUBELEMENT = "initial_announcements";
+constexpr const char* REMOTE_SERVERS_SUBELEMENT = "remote_servers";
+constexpr const char* SIMPLE_EDP_SUBELEMENT = "simple_edp";
+constexpr const char* STATIC_EDP_XMLS_SUBELEMENT = "static_edp_xmls";
 
 // CLI locators common elements
 constexpr const char* DEFAULT_UNICAST_ELEMENT = "default_unicast";
