@@ -72,13 +72,13 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].builtin.other`|`ERROR: other element not recognized`|`PARTICIPANT_BUILTIN_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.other arg`|`ERROR: other element not recognized`|`PARTICIPANT_BUILTIN_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.other help`|N/A|`PARTICIPANT_BUILTIN_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].builtin.avoid_builtin_multicast`|**PENDING** (currently `Participant builtin avoid_builtin_multicast flag configuration not yet supported`)|`PARTICIPANT_BUILTIN_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].builtin.avoid_builtin_multicast`|**PENDING** (currently `Participant builtin avoid_builtin_multicast flag configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.avoid_builtin_multicast arg`|**PENDING** (currently `Participant builtin avoid_builtin_multicast flag configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.avoid_builtin_multicast help`|**PENDING** (currently `Participant builtin avoid_builtin_multicast flag configuration not yet supported`)|N/A|
-|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config`|**PENDING** (currently `Participant builtin dicovery mechanism configuration not yet supported`)|`PARTICIPANT_BUILTIN_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config arg`|**PENDING** (currently `Participant builtin dicovery mechanism configuration not yet supported`)|N/A|
-|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config help`|**PENDING** (currently `Participant builtin dicovery mechanism configuration not yet supported`)|N/A|
-|`fastddsqosprof file.xml set participant[profile].builtin.external_locators`|`ERROR: Participant builtin <external_locators> must not be FINAL element`|`PARTICIPANT_BUILTIN_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config`|`ERROR: Participant builtin <discovery_config> must not be FINAL element`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config[]`|`ERROR: Participant builtin <discovery_config> must not be keyed []`|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config help`|N/A|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].builtin.external_locators`|`ERROR: Participant builtin <external_locators> must not be FINAL element`|`PARTICIPANT_BUILTIN_METATRAFFIC_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.external_locators -h`|N/A|`PARTICIPANT_BUILTIN_METATRAFFIC_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.external_locators --help`|N/A|`PARTICIPANT_BUILTIN_METATRAFFIC_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.external_locators help`|N/A|`PARTICIPANT_BUILTIN_METATRAFFIC_EXTERNAL_UNICAST_LOCATORS_USAGE`|
@@ -136,7 +136,7 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].builtin.external_locators.metatraffic_unicast[].other`|`ERROR: set command for Participant builtin <external_locators> expects at least 1 arguments and received 0`|`PARTICIPANT_BUILTIN_METATRAFFIC_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.external_locators.metatraffic_unicast[].other -h`|N/A|`PARTICIPANT_BUILTIN_METATRAFFIC_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.external_locators.metatraffic_unicast[].other argument`|`ERROR: other subelement not recognized`|N/A|
-|`fastddsqosprof file.xml set participant[profile].builtin.mutation_tries`|**PENDING** (currently `Participant builtin mutation tries configuration not yet supported`)|`PARTICIPANT_BUILTIN_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].builtin.mutation_tries`|**PENDING** (currently `Participant builtin mutation tries configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.mutation_tries arg`|**PENDING** (currently `Participant builtin mutation tries configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.mutation_tries help`|**PENDING** (currently `Participant builtin mutation tries configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.locators`|`ERROR: Participant builtin <locators> must not be FINAL element`|`PARTICIPANT_BUILTIN_LOCATORS_USAGE`|
@@ -273,13 +273,13 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].builtin.locators.initial_peers[].other`|`ERROR: set command for Participant builtin <initial_peers> locator list <other> attribute expects 1 arguments and received 0`|`PARTICIPANT_BUILTIN_METATRAFFIC_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.locators.initial_peers[].other -h`|N/A|`PARTICIPANT_BUILTIN_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.locators.initial_peers[].other argument`|`ERROR: other subelement not recognized`|N/A|
-|`fastddsqosprof file.xml set participant[profile].builtin.reader`|**PENDING** (currently `Participant builtin readers configuration not yet supported`)|`PARTICIPANT_BUILTIN_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].builtin.reader`|**PENDING** (currently `Participant builtin readers configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.reader arg`|**PENDING** (currently `Participant builtin readers configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.reader help`|**PENDING** (currently `Participant builtin readers configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.use_writer_liveliness_protocol`|**PENDING** (currently `Participant builtin use writer liveliness protocol flag configuration not yet supported`)|`PARTICIPANT_BUILTIN_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.use_writer_liveliness_protocol arg`|**PENDING** (currently `Participant builtin use writer liveliness protocol flag configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.use_writer_liveliness_protocol help`|**PENDING** (currently `Participant builtin use writer liveliness protocol flag configuration not yet supported`)|N/A|
-|`fastddsqosprof file.xml set participant[profile].builtin.writer`|**PENDING** (currently `Participant builtin writers configuration not yet supported`)|`PARTICIPANT_BUILTIN_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].builtin.writer`|**PENDING** (currently `Participant builtin writers configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.writer arg`|**PENDING** (currently `Participant builtin writers configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.writer help`|**PENDING** (currently `Participant builtin writers configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].default_profile -h`|N/A|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
