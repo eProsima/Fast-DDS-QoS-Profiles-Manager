@@ -32,6 +32,28 @@ namespace domain_participant {
 namespace builtin {
 namespace metatraffic_external_unicast_locators {
 
+/**
+ * @brief Private common method for all the functions that belong this namespace to obtain base node position.
+ *
+ * @param[in] manager utils::XMLManager to obtain the base node position in the XML document
+ * @param[in] profile_id Domain participant profile identifier
+ * @param[in] create_if_not_existent flag that enables the creation of the  element if it does not exist
+ *
+ * @throw ElementNotFound exception if expected node was not found and node creation not required
+ */
+void initialize_namespace(
+        utils::XMLManager& manager,
+        const std::string& profile_id,
+        const bool& create_if_not_existent)
+{
+    // Iterate through required elements, and create them if not existent
+    manager.get_node(utils::tag::PROFILES, create_if_not_existent);
+    manager.get_node(utils::tag::PARTICIPANT, utils::tag::PROFILE_NAME, profile_id, create_if_not_existent);
+    manager.get_node(utils::tag::RTPS, create_if_not_existent);
+    manager.get_node(utils::tag::BUILTIN, create_if_not_existent);
+    manager.get_node(utils::tag::METATRAFFIC_EXTERNAL_UNICAST_LOCATOR_LIST, create_if_not_existent);
+}
+
 std::string print(
         const std::string& xml_file,
         const std::string& profile_id,
@@ -161,12 +183,8 @@ void set_port(
     // Create XML manager and initialize the document
     utils::XMLManager manager(xml_file, true);
 
-    // Iterate through required elements, and create them if not existent
-    manager.get_node(utils::tag::PROFILES, true);
-    manager.get_node(utils::tag::PARTICIPANT, utils::tag::PROFILE_NAME, profile_id, true);
-    manager.get_node(utils::tag::RTPS, true);
-    manager.get_node(utils::tag::BUILTIN, true);
-    manager.get_node(utils::tag::METATRAFFIC_EXTERNAL_UNICAST_LOCATOR_LIST, true);
+    // Obtain base node position
+    initialize_namespace(manager, profile_id, true);
 
     // Set the port using commons
     common::locator_list::set_port(manager, port, index, true);
@@ -184,12 +202,8 @@ void set_address(
     // Create XML manager and initialize the document
     utils::XMLManager manager(xml_file, true);
 
-    // Iterate through required elements, and create them if not existent
-    manager.get_node(utils::tag::PROFILES, true);
-    manager.get_node(utils::tag::PARTICIPANT, utils::tag::PROFILE_NAME, profile_id, true);
-    manager.get_node(utils::tag::RTPS, true);
-    manager.get_node(utils::tag::BUILTIN, true);
-    manager.get_node(utils::tag::METATRAFFIC_EXTERNAL_UNICAST_LOCATOR_LIST, true);
+    // Obtain base node position
+    initialize_namespace(manager, profile_id, true);
 
     // Set the address using commons
     common::locator_list::set_address(manager, address, index, true);
@@ -207,12 +221,10 @@ void set_externality(
     // Create XML manager and initialize the document
     utils::XMLManager manager(xml_file, true);
 
+    // Obtain base node position
+    initialize_namespace(manager, profile_id, true);
+
     // Iterate through required elements, and create them if not existent
-    manager.get_node(utils::tag::PROFILES, true);
-    manager.get_node(utils::tag::PARTICIPANT, utils::tag::PROFILE_NAME, profile_id, true);
-    manager.get_node(utils::tag::RTPS, true);
-    manager.get_node(utils::tag::BUILTIN, true);
-    manager.get_node(utils::tag::METATRAFFIC_EXTERNAL_UNICAST_LOCATOR_LIST, true);
     manager.get_locator_node(index, utils::tag::UDP_V4_LOCATOR, true);
 
     // Set the externality value

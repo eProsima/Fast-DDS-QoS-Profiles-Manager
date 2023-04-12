@@ -30,6 +30,25 @@ namespace eprosima {
 namespace qosprof {
 namespace domain_participant {
 
+/**
+ * @brief Private common method for all the functions that belong this namespace to obtain base node position.
+ *
+ * @param[in] manager utils::XMLManager to obtain the base node position in the XML document
+ * @param[in] profile_id Domain participant profile identifier
+ * @param[in] create_if_not_existent flag that enables the creation of the  element if it does not exist
+ *
+ * @throw ElementNotFound exception if expected node was not found and node creation not required
+ */
+void initialize_namespace(
+        utils::XMLManager& manager,
+        const std::string& profile_id,
+        const bool& create_if_not_existent)
+{
+    // Iterate through required elements, and create them if not existent
+    manager.get_node(utils::tag::PROFILES, create_if_not_existent);
+    manager.get_node(utils::tag::PARTICIPANT, utils::tag::PROFILE_NAME, profile_id, create_if_not_existent);
+}
+
 std::string print(
         const std::string& xml_file,
         const std::string& profile_id)
@@ -218,15 +237,11 @@ void set_default_profile(
         const std::string& xml_file,
         const std::string& profile_id)
 {
-    // Define a default_profile node
-    xercesc::DOMNode* default_profile_node = nullptr;
-
     // Create XML manager and initialize the document
     utils::XMLManager manager(xml_file, false);
 
-    // Iterate through required elements, and create them if not existent
-    manager.get_node(utils::tag::PROFILES, false);
-    manager.get_node(utils::tag::PARTICIPANT, utils::tag::PROFILE_NAME, profile_id, false);
+    // Obtain base node position
+    initialize_namespace(manager, profile_id, false);
 
     // Check if default profile already defined
     try
@@ -268,9 +283,10 @@ void set_name(
     // Create XML manager and initialize the document
     utils::XMLManager manager(xml_file, true);
 
+    // Obtain base node position
+    initialize_namespace(manager, profile_id, true);
+
     // Iterate through required elements, and create them if not existent
-    manager.get_node(utils::tag::PROFILES, true);
-    manager.get_node(utils::tag::PARTICIPANT, utils::tag::PROFILE_NAME, profile_id, true);
     manager.get_node(utils::tag::RTPS, true);
     manager.get_node(utils::tag::NAME, true);
 
