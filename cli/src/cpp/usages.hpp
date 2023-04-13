@@ -54,6 +54,35 @@ static const char QUERY_USAGE[] =
       fastddsqosprof <file> query [size | keys] <element>
 )";
 
+static const char PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE[] =
+        R"(Participant lease duration and announcement period configuration:
+
+    Usage:
+      fastddsqosprof <file> <command> participant[<profile_name>].builtin.discovery_config.duration.<duration_type> [<infinite | seconds_value> (<nanoseconds_value>) (help | -h | --help)]
+      fastddsqosprof <file> <command> participant[<profile_name>].builtin.discovery_config.duration.<duration_type>.<subelement> [<value> (help | -h | --help)]
+      fastddsqosprof <file> <command> participant[<profile_name>].builtin.discovery_config.duration.<duration_type>.<subelement> [(help | -h | --help)]
+      fastddsqosprof <file> <command> participant[<profile_name>].builtin.discovery_config.duration.<duration_type> [(help | -h | --help)]
+      fastddsqosprof <file> <command> participant[<profile_name>].builtin.discovery_config.duration [(help | -h | --help)]
+
+    Options:
+      help -h --help    CLI participant lease duration and announcement period configuration usage
+
+    The allowed <command> options are:
+      clear             Erase participant lease duration or announcement period from XML file.
+      print             Print participant lease duration or announcement period configuration.
+      set               Write participant lease duration or announcement period configuration to XML file.
+
+    The <profile_name> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
+
+    The allowed <duration_type> options are:
+      announcements     Configure participant lease announcement period.
+      lease             Configure participant lease duration.
+
+    The allowed <subelement> options are:
+      sec               Duration seconds. Valid set values: int32_t.
+      nanosec           Duration nanoseconds. Valid set values: uint32_t.
+)";
+
 static const char PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_USAGE[] =
         R"(Participant builtin discovery configuration usage:
 
@@ -92,6 +121,7 @@ static const char PARTICIPANT_BUILTIN_LOCATORS_USAGE[] =
       fastddsqosprof <file> <command> participant[<profile_name>].builtin.locators.<locator_list>[(<index>)].<subelement> [<value> (help | -h | --help)]
       fastddsqosprof <file> <command> participant[<profile_name>].builtin.locators.<locator_list>[(<index>)].<subelement> [(help | -h | --help)]
       fastddsqosprof <file> <command> participant[<profile_name>].builtin.locators.<locator_list>[(<index>)] [(help | -h | --help)]
+      fastddsqosprof <file> <command> participant[<profile_name>].builtin.locators [(help | -h | --help)]
 
     Options:
       help -h --help    CLI participant builtin locators usage
@@ -133,6 +163,7 @@ static const char PARTICIPANT_BUILTIN_METATRAFFIC_EXTERNAL_UNICAST_LOCATORS_USAG
       fastddsqosprof <file> <command> participant[<profile_name>].builtin.external_locators.metatraffic_unicast[(<index>)].<subelement> [<value> (help | -h | --help)]
       fastddsqosprof <file> <command> participant[<profile_name>].builtin.external_locators.metatraffic_unicast[(<index>)].<subelement> [(help | -h | --help)]
       fastddsqosprof <file> <command> participant[<profile_name>].builtin.external_locators.metatraffic_unicast[(<index>)] [(help | -h | --help)]
+      fastddsqosprof <file> <command> participant[<profile_name>].builtin.external_locators [(help | -h | --help)]
 
     Options:
       help -h --help    CLI participant builtin metatraffic external unicast locators usage
@@ -198,6 +229,7 @@ static const char PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE[] =
       fastddsqosprof <file> <command> participant[<profile_name>].external_locators.default_unicast[(<index>)].<subelement> [<value> (help | -h | --help)]
       fastddsqosprof <file> <command> participant[<profile_name>].external_locators.default_unicast[(<index>)].<subelement> [(help | -h | --help)]
       fastddsqosprof <file> <command> participant[<profile_name>].external_locators.default_unicast[(<index>)] [(help | -h | --help)]
+      fastddsqosprof <file> <command> participant[<profile_name>].external_locators [(help | -h | --help)]
 
     Options:
       help -h --help    CLI participant default external unicast locators usage
@@ -268,8 +300,8 @@ static const char PARTICIPANT_USAGE[] =
 
     Usage:
       fastddsqosprof <file> <command> participant[<profile_name>].<subelement> [<values>...]
-      fastddsqosprof <file> <command> participant[<profile_name>] (help | -h | --help)
       fastddsqosprof <file> <command> participant[<profile_name>].<subelement> (help | -h | --help)
+      fastddsqosprof <file> <command> participant[<profile_name>] (help | -h | --help)
 
     Options:
       help -h --help                CLI participant options

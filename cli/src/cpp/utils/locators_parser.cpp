@@ -147,14 +147,7 @@ void locators_parser(
     {
         if (!element.empty())
         {
-            std::string dummy_subelement;
-            std::string dummy_key;
-            bool keyed = extract_element_subelement_key(element, dummy_subelement, dummy_key);
-            message << " <" << element << "> attribute";
-            print_usage = print_usage || !check_keyed(false, keyed, message.str());
-            print_usage = print_usage || !check_final_element(true, dummy_subelement, message.str());
-            print_usage = print_usage || (CommonCommands::SET == command &&
-                    !check_command_arguments(command, 1, values.size(), message.str(), true));
+            final_subelement_check(command, print_usage, element, message, values.size());
         }
 
         if (!print_usage)

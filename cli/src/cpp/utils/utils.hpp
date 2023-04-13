@@ -17,6 +17,7 @@
 
 #include <iostream>
 #include <regex>
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -34,6 +35,53 @@ enum CommonCommands
     SET
 };
 
+// DDS entities
+enum class DDSEntity
+{
+    DATAREADER,
+    DATAWRITER,
+    PARTICIPANT,
+    TOPIC
+};
+
+// Duration elements
+enum class DurationTypeList
+{
+    DATAREADER_INITIAL_ACKNACK_DELAY,
+    DATAREADER_HEARTBEAT_RESPONSE_DELAY,
+    DATAREADER_QOS_DEADLINE_PERIOD,
+    DATAREADER_QOS_DISABLE_POSITIVE_ACKS_PERIOD,
+    DATAREADER_QOS_LATENCY_BUDGET_PERIOD,
+    DATAREADER_QOS_LIFESPAN_PERIOD,
+    DATAREADER_QOS_LIVELINESS_ANNOUNCEMENT_PERIOD,
+    DATAREADER_QOS_LIVELINESS_LEASE_DURATION,
+    DATAREADER_QOS_RELIABILITY_MAX_BLOCKING_TIME,
+    DATAWRITER_INITIAL_HEARTBEAT_DELAY,
+    DATAWRITER_HEARTBEAT_PERIOD,
+    DATAWRITER_NACK_RESPONSE_DELAY,
+    DATAWRITER_NACK_SUPRESSION,
+    DATAWRITER_QOS_DEADLINE_PERIOD,
+    DATAWRITER_QOS_DISABLE_POSITIVE_ACKS_PERIOD,
+    DATAWRITER_QOS_LATENCY_BUDGET_PERIOD,
+    DATAWRITER_QOS_LIFESPAN_PERIOD,
+    DATAWRITER_QOS_LIVELINESS_ANNOUNCEMENT_PERIOD,
+    DATAWRITER_QOS_LIVELINESS_LEASE_DURATION,
+    DATAWRITER_QOS_RELIABILITY_MAX_BLOCKING_TIME,
+    PARTICIPANT_ANNOUNCEMENT_PERIOD,
+    PARTICIPANT_CLIENT_ANNOUNCEMENT_PERIOD,
+    PARTICIPANT_INITIAL_ANNOUNCEMENTS_PERIOD,
+    PARTICIPANT_LEASE_DURATION
+};
+
+// External locator lists
+enum class ExternalLocatorsList
+{
+    DATAREADER_UNICAST,
+    DATAWRITER_UNICAST,
+    PARTICIPANT_DEFAULT_UNICAST,
+    PARTICIPANT_METATRAFFIC_UNICAST
+};
+
 // Locator lists
 enum class LocatorsList
 {
@@ -49,23 +97,11 @@ enum class LocatorsList
     PARTICIPANT_REMOTE_SERVER_METATRAFFIC_UNICAST
 };
 
-// External locator lists
-enum class ExternalLocatorsList
+enum DurationTypeArgumentPosition
 {
-    DATAREADER_UNICAST,
-    DATAWRITER_UNICAST,
-    PARTICIPANT_DEFAULT_UNICAST,
-    PARTICIPANT_METATRAFFIC_UNICAST
+    SECONDS,
+    NANOSECONDS
 };
-
-namespace locators {
-enum LocatorArgumentPosition
-{
-    KIND,
-    ADDRESS,
-    PORT
-};
-} // locators
 
 namespace external_locators {
 enum ExternalLocatorArgumentPosition
@@ -78,6 +114,15 @@ enum ExternalLocatorArgumentPosition
     PORT
 };
 } // external_locators
+
+namespace locators {
+enum LocatorArgumentPosition
+{
+    KIND,
+    ADDRESS,
+    PORT
+};
+} // locators
 
 constexpr const int8_t DEFAULT_POSITION = 0;
 
@@ -147,6 +192,26 @@ void builtin_parser(
         const std::string& profile_name,
         std::string& element,
         const std::vector<std::string>& values);
+
+/**
+ * @brief Common parser for duration types.
+ *
+ * @param duration_type Duration type being parsed.
+ * @param command Command kind.
+ * @param filename File to be accessed.
+ * @param profile_name DDS entity profile name.
+ * @param element String with the dot-separated subelements.
+ * @param values Vector of strings with the values passed to CLI.
+ * @param message Error message in case of validity check failure.
+ */
+void duration_type_parser(
+        DurationTypeList duration_type,
+        CommonCommands command,
+        const std::string& filename,
+        const std::string& profile_name,
+        std::string& element,
+        const std::vector<std::string>& values,
+        std::ostringstream& message);
 
 /**
  * @brief Common parser for external locators lists
@@ -315,6 +380,28 @@ bool extract_element_subelement_key(
         std::string& key);
 
 /**
+ * @brief Auxiliary function to select the corresponding Duration Type element.
+ *
+ * @param[in] entity DDS entity.
+ * @param[out] duration_type Specific duration type element.
+ * @param[in] parent Element just parsed in the previous level.
+ * @param[in, out] element String with the dot-separated subelements.
+ *                         Next subelement to be parsed is returned.
+ * @param[out] subelement Next element to be parsed.
+ * @param[in] values Vector of strings with the values passed to CLI.
+ * @param[out] message Error message in case of validity check failure.
+ * @return true if valid duration type element. False otherwise.
+ */
+bool duration_type_selector(
+        DDSEntity entity,
+        DurationTypeList& duration_type,
+        const std::string& parent,
+        std::string& element,
+        std::string& subelement,
+        const std::vector<std::string>& values,
+        std::ostringstream& message);
+
+/**
  * @brief Auxiliary method to output error when query command is not allowed.
  *
  * @param[in] element Element being checked in order to be shown in the log.
@@ -326,6 +413,13 @@ inline bool query_not_allowed(
     std::cout << "ERROR: query command not allowed. " << element << " is not a collection" << std::endl;
     return true;
 }
+
+void final_subelement_check(
+        CommonCommands command,
+        bool& print_usage,
+        std::string& element,
+        std::ostringstream& message,
+        uint32_t argument_number);
 
 } // qosprof_cli
 } // eprosima

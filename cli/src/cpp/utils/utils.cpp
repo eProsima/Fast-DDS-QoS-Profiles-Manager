@@ -18,6 +18,7 @@
 #include <regex>
 #include <sstream>
 #include <string>
+#include <vector>
 
 namespace eprosima {
 namespace qosprof_cli {
@@ -110,6 +111,26 @@ bool extract_element_subelement_key(
         return true;
     }
     return false;
+}
+
+void final_subelement_check(
+        CommonCommands command,
+        bool& print_usage,
+        std::string& element,
+        std::ostringstream& message,
+        uint32_t argument_number)
+{
+    std::string dummy_subelement;
+    std::string dummy_key;
+    bool keyed = extract_element_subelement_key(element, dummy_subelement, dummy_key);
+    message << " <" << element << "> attribute";
+    // Should not be keyed
+    print_usage = print_usage || !check_keyed(false, keyed, message.str());
+    // Should be final
+    print_usage = print_usage || !check_final_element(true, dummy_subelement, message.str());
+    // SET command requires only one argument
+    print_usage = print_usage || (CommonCommands::SET == command &&
+            !check_command_arguments(command, 1, argument_number, message.str(), true));
 }
 
 } // qosprof_cli
