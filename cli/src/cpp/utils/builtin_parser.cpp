@@ -57,7 +57,7 @@ void builtin_discovery_config_parser(
         DurationTypeList duration_type;
         std::string subsubelement;
         print_usage = print_usage || !duration_type_selector(DDSEntity::PARTICIPANT, duration_type,
-                DISCOVERY_CONFIG_SUBELEMENT, subelement, subsubelement, values, message);
+                        DISCOVERY_CONFIG_SUBELEMENT, subelement, subsubelement, values, message);
         if (!print_usage)
         {
             duration_type_parser(duration_type, command, filename, profile_name, subsubelement, values, message);

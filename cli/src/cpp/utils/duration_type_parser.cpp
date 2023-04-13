@@ -177,11 +177,11 @@ void duration_type_parser(
                             break;
                         case DurationTypeList::PARTICIPANT_CLIENT_ANNOUNCEMENT_PERIOD:
                             qosprof::domain_participant::builtin::discovery_config::clear_client_announcement_period(
-                                    filename, profile_name);
+                                filename, profile_name);
                             break;
                         case DurationTypeList::PARTICIPANT_INITIAL_ANNOUNCEMENTS_PERIOD:
                             qosprof::domain_participant::builtin::discovery_config::clear_initial_announcements_period(
-                                    filename, profile_name);
+                                filename, profile_name);
                             break;
                         case DurationTypeList::PARTICIPANT_LEASE_DURATION:
                             qosprof::domain_participant::builtin::discovery_config::clear_lease_duration(filename,
@@ -258,11 +258,11 @@ void duration_type_parser(
                             break;
                         case DurationTypeList::PARTICIPANT_CLIENT_ANNOUNCEMENT_PERIOD:
                             qosprof::domain_participant::builtin::discovery_config::print_client_announcement_period(
-                                    filename, profile_name);
+                                filename, profile_name);
                             break;
                         case DurationTypeList::PARTICIPANT_INITIAL_ANNOUNCEMENTS_PERIOD:
                             qosprof::domain_participant::builtin::discovery_config::print_initial_announcements_period(
-                                    filename, profile_name);
+                                filename, profile_name);
                             break;
                         case DurationTypeList::PARTICIPANT_LEASE_DURATION:
                             qosprof::domain_participant::builtin::discovery_config::print_lease_duration(filename,
@@ -396,7 +396,7 @@ void duration_type_parser(
                                     break;
                                 case DurationTypeList::PARTICIPANT_LEASE_DURATION:
                                     qosprof::domain_participant::builtin::discovery_config::clear_lease_duration_sec(
-                                            filename, profile_name);
+                                        filename, profile_name);
                                     break;
                             }
                             break;
@@ -477,7 +477,7 @@ void duration_type_parser(
                                     break;
                                 case DurationTypeList::PARTICIPANT_LEASE_DURATION:
                                     qosprof::domain_participant::builtin::discovery_config::print_lease_duration_sec(
-                                            filename, profile_name);
+                                        filename, profile_name);
                                     break;
                             }
                             break;
@@ -563,7 +563,7 @@ void duration_type_parser(
                                     break;
                                 case DurationTypeList::PARTICIPANT_LEASE_DURATION:
                                     qosprof::domain_participant::builtin::discovery_config::set_lease_duration_sec(
-                                            filename, profile_name, seconds);
+                                        filename, profile_name, seconds);
                                     break;
                             }
                             break;
@@ -814,11 +814,11 @@ void duration_type_parser(
                                 case DurationTypeList::PARTICIPANT_INITIAL_ANNOUNCEMENTS_PERIOD:
                                     qosprof::domain_participant::builtin::discovery_config::
                                             set_initial_announcements_period_nanosec(filename, profile_name,
-                                                nanoseconds);
+                                            nanoseconds);
                                     break;
                                 case DurationTypeList::PARTICIPANT_LEASE_DURATION:
                                     qosprof::domain_participant::builtin::discovery_config::set_lease_duration_nanosec(
-                                            filename, profile_name, nanoseconds);
+                                        filename, profile_name, nanoseconds);
                                     break;
                             }
                             break;
