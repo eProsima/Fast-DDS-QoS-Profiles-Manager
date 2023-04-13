@@ -113,7 +113,7 @@ public:
      *
      * @throw ElementNotFound exception if the node value could not be obtained
      *
-     * @return std::string node value (Empty string if error)
+     * @return std::string node value
      */
     std::string get_node_value();
 
@@ -149,6 +149,7 @@ public:
      * @param[in] create_if_not_existent flag to create node if it is not found
      *
      * @throw ElementNotFound exception if expected node was not found and node creation was not required
+     * @throw BadParameter exception if expected node could not be found by using the given index.
      */
     void get_node(
             const std::string& index,
@@ -180,6 +181,7 @@ public:
      * @param[in] create_if_not_existent flag to create node if it is not found
      *
      * @throw ElementNotFound exception if expected node was not found and node creation was not required
+     * @throw BadParameter exception if expected node could not be found by using the given index.
      */
     void get_locator_node(
             const std::string& index,
@@ -190,7 +192,6 @@ private:
 
     /**
      * @brief Transforms standalone XML document structure to rooted.
-     *
      */
     void transform_standalone_to_rooted_structure();
 

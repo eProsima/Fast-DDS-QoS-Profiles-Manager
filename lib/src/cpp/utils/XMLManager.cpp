@@ -450,13 +450,10 @@ void XMLManager::get_node(
     {
         create_node(default_tag_name);
     }
-    // Throw ElementNotFound exception
+    // Throw BadParameter exception
     else
     {
-        // Set up exception message to be thrown if node should not be created
-        std::string exception_message = xercesc::XMLString::transcode(last_node->getNodeName());
-        exception_message += " does not have an element in position " + index + "\n";
-        throw ElementNotFound(exception_message);
+        throw BadParameter("could not obtain collection element with empty index\n");
     }
 }
 
