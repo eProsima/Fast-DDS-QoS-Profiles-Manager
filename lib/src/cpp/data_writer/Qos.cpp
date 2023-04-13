@@ -16,7 +16,7 @@
  * @file
  */
 
-#include <fastdds_qos_profiles_manager/data_writer/qos/Qos.hpp>
+#include <fastdds_qos_profiles_manager/data_writer/Qos.hpp>
 
 #include <string>
 
@@ -36,7 +36,7 @@ namespace qos {
  * @brief Private common method for all the functions that belong to this namespace to obtain base node position.
  *
  * @param[in] manager utils::XMLManager to obtain the base node position in the XML document
- * @param[in] profile_id Data writer profile identifier
+ * @param[in] profile_id DataWriter profile identifier
  * @param[in] create_if_not_existent flag that enables the creation of the  element if it does not exist
  * @param[in] required_qos Required QoS TAG
  *

@@ -50,7 +50,6 @@ constexpr const char* DEFAULT_EXTERNAL_UNICAST_LOCATOR_LIST = "default_external_
 constexpr const char* INITIAL_PEERS_LIST = "initialPeersList";
 constexpr const char* METATRAFFIC_EXTERNAL_UNICAST_LOCATOR_LIST = "metatraffic_external_unicast_locators";
 constexpr const char* NAME = "name";
-constexpr const char* TRANSPORT_ID = "transport_id";
 constexpr const char* USE_BUILTIN_TRANSPORTS = "useBuiltinTransports";
 constexpr const char* USER_TRANSPORTS = "userTransports";
 

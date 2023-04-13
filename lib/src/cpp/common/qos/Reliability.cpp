@@ -54,7 +54,7 @@ void set_max_blocking_time_nanosec(
         const std::string& nanosec)
 {
     // Use the common api
-    common::duration::set_sec(manager, nanosec);
+    common::duration::set_nanosec(manager, nanosec);
 }
 
 } // reliability

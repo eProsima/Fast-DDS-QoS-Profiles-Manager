@@ -52,20 +52,20 @@ void set_kind(
         const std::string& kind);
 
 /**
- * @brief Save the given second value in the reliability max_blocking_time qos node.
+ * @brief Save the given seconds in the reliability max_blocking_time qos node.
  *
  * @param[in] manager Internal util manager to obtain and work with nodes
- * @param[in] sec second value to be set
+ * @param[in] sec seconds to be set
  */
 void set_max_blocking_time_sec(
         utils::XMLManager& manager,
         const std::string& sec);
 
 /**
- * @brief Save the given nanosecond value in the reliability max_blocking_time qos node.
+ * @brief Save the given nanoseconds in the reliability max_blocking_time qos node.
  *
  * @param[in] manager Internal util manager to obtain and work with nodes
- * @param[in] nanosec nanosecond value to be set
+ * @param[in] nanosec nanoseconds to be set
  */
 void set_max_blocking_time_nanosec(
         utils::XMLManager& manager,

@@ -26,10 +26,6 @@ file(GLOB_RECURSE LIBRARY_HEADERS
 file(GLOB_RECURSE LIBRARY_SOURCES
     ${PROJECT_SOURCE_DIR}/src/cpp/common/Duration.cpp
     ${PROJECT_SOURCE_DIR}/src/cpp/common/LocatorList.cpp
-    ${PROJECT_SOURCE_DIR}/src/cpp/common/qos/Durability.cpp
-    ${PROJECT_SOURCE_DIR}/src/cpp/common/qos/Reliability.cpp
-    ${PROJECT_SOURCE_DIR}/src/cpp/data_reader/qos/Qos.cpp
-    ${PROJECT_SOURCE_DIR}/src/cpp/data_writer/qos/Qos.cpp
     ${PROJECT_SOURCE_DIR}/src/cpp/domain_participant/Allocation.cpp
     ${PROJECT_SOURCE_DIR}/src/cpp/domain_participant/builtin/Builtin.cpp
     ${PROJECT_SOURCE_DIR}/src/cpp/domain_participant/builtin/discovery_config/DiscoveryConfig.cpp
