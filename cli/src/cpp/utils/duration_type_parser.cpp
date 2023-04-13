@@ -25,6 +25,66 @@
 namespace eprosima {
 namespace qosprof_cli {
 
+bool duration_type_selector(
+        DDSEntity entity,
+        DurationTypeList& duration_type,
+        const std::string& parent,
+        std::string& element,
+        std::string& subelement,
+        const std::vector<std::string>& values,
+        std::ostringstream& message)
+{
+    bool print_usage = false;
+    std::string dummy_key;
+    bool keyed = extract_element_subelement_key(element, subelement, dummy_key);
+
+    message << ": '" << element << "' duration type";
+
+    print_usage = check_help(values);
+
+    if (!print_usage)
+    {
+        switch (entity)
+        {
+            case DDSEntity::DATAREADER:
+                // TODO: parent elements not yet defined
+                break;
+            case DDSEntity::DATAWRITER:
+                // TODO: parent elements not yet defined
+                break;
+            case DDSEntity::PARTICIPANT:
+                if (parent == DISCOVERY_CONFIG_SUBELEMENT && element == LEASE_ELEMENT)
+                {
+                    duration_type = DurationTypeList::PARTICIPANT_LEASE_DURATION;
+                }
+                else if (parent == DISCOVERY_CONFIG_SUBELEMENT && element == ANNOUNCEMENTS_ELEMENT)
+                {
+                    duration_type = DurationTypeList::PARTICIPANT_ANNOUNCEMENT_PERIOD;
+                }
+                else if (parent == INITIAL_ANNOUNCEMENTS_SUBELEMENT && element == PERIOD_ELEMENT)
+                {
+                    duration_type = DurationTypeList::PARTICIPANT_INITIAL_ANNOUNCEMENTS_PERIOD;
+                }
+                else if (parent == CLIENT_ANNOUNCEMENTS_SUBELEMENT && element == PERIOD_ELEMENT)
+                {
+                    duration_type = DurationTypeList::PARTICIPANT_CLIENT_ANNOUNCEMENT_PERIOD;
+                }
+                else
+                {
+                    std::cout << "ERROR: " << message.str() << " not recognized" << std::endl;
+                    print_usage = true;
+                }
+                break;
+            case DDSEntity::TOPIC:
+                // TODO: parent elements not yet defined
+                break;
+        }
+        print_usage = print_usage || !check_keyed(false, keyed, message.str());
+    }
+
+    return !print_usage;
+}
+
 void duration_type_parser(
         DurationTypeList duration_type,
         CommonCommands command,
@@ -228,7 +288,8 @@ void duration_type_parser(
                         else
                         {
                             print_usage = true;
-                            std::cout << "ERROR: duration type element arguments not recognized as valid" << std::endl;
+                            std::cout << "ERROR: " << common_command_str[command] << " command for " << message.str()
+                                      << " expects at most 2 arguments and received " << values.size() << std::endl;
                         }
                     }
                     break;
@@ -240,7 +301,7 @@ void duration_type_parser(
         }
     }
 
-    if (!element.empty() || set_every_element)
+    if (!element.empty() || set_every_element || set_infinite_duration)
     {
         if (!element.empty())
         {
@@ -252,7 +313,7 @@ void duration_type_parser(
             try
             {
                 bool element_valid = false;
-                if (element == SECONDS_SUBELEMENT || set_every_element)
+                if (element == SECONDS_SUBELEMENT || set_every_element || set_infinite_duration)
                 {
                     element_valid = true;
                     switch (command)
