@@ -64,7 +64,6 @@ constexpr const char* PROPERTY_SUBELEMENT = "property";
 constexpr const char* QOS_SUBELEMENT = "qos";
 constexpr const char* TIMES_SUBELEMENT = "times";
 constexpr const char* USER_DEFINED_ID_SUBELEMENT = "user_defined_id";
-constexpr const char* USER_DATA_SUBELEMENT = "user_data";
 
 // CLI datareader main subelements
 constexpr const char* EXPECT_INLINE_QOS_SUBELEMENT = "expect_inline_qos";
@@ -78,6 +77,7 @@ constexpr const char* LISTEN_SOCKET_BUFFER_SIZE_SUBELEMENT = "listen_socket_buff
 constexpr const char* NAME_SUBELEMENT = "name";
 constexpr const char* SEND_SOCKET_BUFFER_SIZE_SUBELEMENT = "send_socket_buffer_size";
 constexpr const char* USE_BUILTIN_TRANSPORTS_SUBELEMENT = "use_builtin_transports";
+constexpr const char* USER_DATA_SUBELEMENT = "user_data";
 constexpr const char* USER_TRANSPORTS_SUBELEMENT = "user_transports";
 
 // CLI participant builtin subelements

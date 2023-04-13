@@ -306,7 +306,7 @@ static const char PARTICIPANT_BUILTIN_LOCATORS_USAGE[] =
     The <index> element is OPTIONAL:
       No <index> with a SET command pushes a new element into the list.
       No <index> with a PRINT command prints every element in the list. Printing any subelement requires setting an <index>.
-      No <index> with a CLEAR command clears every element in the list. Clearing any subelement requires setting an <index>. 
+      No <index> with a CLEAR command clears every element in the list. Clearing any subelement requires setting an <index>.
       Positive <index> accesses the element in that position starting from the first element in the list.
       Negative <index> accesses the element in that position starting from the last element in the list.
 
@@ -343,7 +343,7 @@ static const char PARTICIPANT_BUILTIN_METATRAFFIC_EXTERNAL_UNICAST_LOCATORS_USAG
     The <index> element is OPTIONAL:
       No <index> with a SET command pushes a new element into the list.
       No <index> with a PRINT command prints every element in the list. Printing any subelement requires setting an <index>.
-      No <index> with a CLEAR command clears every element in the list. Clearing any subelement requires setting an <index>. 
+      No <index> with a CLEAR command clears every element in the list. Clearing any subelement requires setting an <index>.
       Positive <index> accesses the element in that position starting from the first element in the list.
       Negative <index> accesses the element in that position starting from the last element in the list.
 
@@ -409,7 +409,7 @@ static const char PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE[] =
     The <index> element is OPTIONAL:
       No <index> with a SET command pushes a new element into the list.
       No <index> with a PRINT command prints every element in the list. Printing any subelement requires setting an <index>.
-      No <index> with a CLEAR command clears every element in the list. Clearing any subelement requires setting an <index>. 
+      No <index> with a CLEAR command clears every element in the list. Clearing any subelement requires setting an <index>.
       Positive <index> accesses the element in that position starting from the first element in the list.
       Negative <index> accesses the element in that position starting from the last element in the list.
 
@@ -628,6 +628,51 @@ static const char RELIABILITY_QOS_USAGE[] =
       duration                    Reliability QoS Policy maximum blocking time configuration.
 )";
 
+static const char TRANSPORT_USAGE[] =
+        R"(Transport usage:
+
+    Usage:
+      fastddsqosprof <file> <command> transport[<transport_id>].<subelement> [<values>... (help | -h | --help)]
+      fastddsqosprof <file> <command> transport[<transport_id>].<subelement> (help | -h | --help)
+      fastddsqosprof <file> <command> transport[<transport_id>] (help | -h | --help)
+
+    Options:
+      help -h --help                CLI transport options
+
+    The allowed <command> options are:
+      clear                         Erase transport description parameter from XML file.
+      print                         Print transport description as XML parameter.
+      set                           Write transport description parameter to XML file.
+
+    The <transport_id> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
+
+    The allowed <subelement> types are:
+      calculate_crc             Enable calculating Cyclic Redundancy Code for error control (only available for tcp kind)
+      check_crc                 Enable checking Cyclic Redundancy Code for error control (only available for tcp kind)
+      enable_tcp_nodelay        Enable the Nagle algorithm for sockets (only available for tcp kind)
+      healthy_check_timeout_ms  Max ms time-out for checking if listener is alive (only available for shared memory kind)
+      interface_whitelist       Transport interface whitelist (only available for udp and tcp kind)
+      keep_alive_frequency_ms   Frequency in ms for sending RTCP keep-alive requests (only available for tcp kind)
+      keep_alive_timeout_ms     Timeout in ms between RTCP keep-alive requests (only available for tcp kind)
+      kind                      Kind of transport descriptor.
+      listening_port            Collection of local ports (only available for tcp kind)
+      logical_port_increment    Increment between logical ports to try during RTCP negotiations (only available for tcp kind)
+      logical_port_range        Max number of logical ports per request to try RTCP negotiations (only available for tcp kind)
+      max_initial_peers_range   Max range of transport initial peers
+      max_logical_port          Max number of logical ports to try RTCP negotiations (only available for tcp kind)
+      max_message_size          Max size of transport messages
+      non_blocking_send         Transport socked non blocking send mode (only available for udp kind)
+      output_port               Port used for output bound (only available for udp kind)
+      port_queue_capacity       Max number of messages per listener (only available for shared memory kind)
+      receive_buffer_size       Transport receive buffer size.
+      rtps_dump_file            Complete path to store debugging RTPS messages (only available for shared memory kind)
+      segment_size              Size (in bytes) of the shared-memory segment (only available for shared memory kind)
+      send_buffer_size          Transport send buffer size.
+      tls                       Transport Layer Security configuration (only available for tcp kind)
+      ttl                       Transport Time To Live (only available for udp kind)
+      wan_address               Public ip_v4 wan address (only available for tcp_v4 kind)
+)";
+
 static const char SET_SUBPARSER_USAGE[] =
         R"(Set command parser: fastddsqosprof <file> set
 
@@ -682,7 +727,7 @@ static const char VALIDATE_USAGE[] =
         R"(Fast DDS QoS Profiles Manager CLI validate command usage
 
     Usage:
-      fastddsqosprof <file> validate        
+      fastddsqosprof <file> validate
 )";
 
 } // qosprof_cli

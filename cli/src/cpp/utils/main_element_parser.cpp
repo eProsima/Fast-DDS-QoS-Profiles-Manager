@@ -64,8 +64,8 @@ void main_element_parser(
     std::vector<std::string> values = args[PARSER_VALUES].asStringList();
 
     std::string subelement;
-    std::string profile_name;
-    extract_element_subelement_key(element, subelement, profile_name);
+    std::string identifier;
+    extract_element_subelement_key(element, subelement, identifier);
 
     bool print_usage = false;
     if (element == DATAREADER_ELEMENT || element == DATAWRITER_ELEMENT)
@@ -115,13 +115,13 @@ void main_element_parser(
         // Participant element requires a profile name
         // TODO: this would need to be refactored and check in the lower level because if the subelement is
         // default_profile, then the profile name is only mandatory in the SET command.
-        print_usage = print_usage || !check_profile(profile_name, element);
+        print_usage = print_usage || !check_profile(identifier, element);
         // Participant element requires a subelement
         print_usage = print_usage || !check_final_element(false, subelement, element);
 
         if (!print_usage)
         {
-            participant_subelement_parser(command, filename, profile_name, subelement, values);
+            participant_subelement_parser(command, filename, identifier, subelement, values);
         }
         else
         {
@@ -142,7 +142,29 @@ void main_element_parser(
     }
     else if (element == TRANSPORT_ELEMENT)
     {
-        std::cout << "Transport descriptor configuration not yet supported" << std::endl;
+        // If there is no subelement and the last value is (help | -h | --help), print usage
+        print_usage = subelement.empty() && check_help(values);
+        // Transport element requires a transport identifier
+        print_usage = print_usage || !check_profile(identifier, element);
+        // Transport element requires a subelement
+        print_usage = print_usage || !check_final_element(false, subelement, element);
+
+        if (!print_usage)
+        {
+            transport_subelement_parser(command, filename, identifier, subelement, values);
+        }
+        else
+        {
+            if (CommonCommands::QUERY != command)
+            {
+                std::cout << TRANSPORT_USAGE << std::endl;
+            }
+            else
+            {
+                // TODO
+                // std::cout << TRANSPORT_QUERY_USAGE << std::endl;
+            }
+        }
     }
     else if (element == TYPES_ELEMENT)
     {
