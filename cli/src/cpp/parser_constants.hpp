@@ -94,6 +94,10 @@ constexpr const char* STATIC_EDP_XMLS_SUBELEMENT = "static_edp_xmls";
 constexpr const char* SECONDS_SUBELEMENT = "sec";
 constexpr const char* NANOSECONDS_SUBELEMENT = "nanosec";
 
+// CLI duration type argument
+constexpr const char* CLI_INFINITE_ARGUMENT = "infinite";
+constexpr const char* LIB_INFINITE_ARGUMENT = "DURATION_INFINITY";
+
 // CLI locators common elements
 constexpr const char* DEFAULT_UNICAST_ELEMENT = "default_unicast";
 constexpr const char* METATRAFFIC_UNICAST_ELEMENT = "metatraffic_unicast";

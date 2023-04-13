@@ -88,6 +88,12 @@ enum class ExternalLocatorsList
     PARTICIPANT_METATRAFFIC_UNICAST
 };
 
+enum DurationTypeArgumentPosition
+{
+    SECONDS,
+    NANOSECONDS
+};
+
 namespace locators {
 enum LocatorArgumentPosition
 {
