@@ -35,6 +35,15 @@ enum CommonCommands
     SET
 };
 
+// DDS entities
+enum class DDSEntity
+{
+    DATAREADER,
+    DATAWRITER,
+    PARTICIPANT,
+    TOPIC
+};
+
 // Duration elements
 enum class DurationTypeList
 {
@@ -64,6 +73,15 @@ enum class DurationTypeList
     PARTICIPANT_LEASE_DURATION
 };
 
+// External locator lists
+enum class ExternalLocatorsList
+{
+    DATAREADER_UNICAST,
+    DATAWRITER_UNICAST,
+    PARTICIPANT_DEFAULT_UNICAST,
+    PARTICIPANT_METATRAFFIC_UNICAST
+};
+
 // Locator lists
 enum class LocatorsList
 {
@@ -79,29 +97,11 @@ enum class LocatorsList
     PARTICIPANT_REMOTE_SERVER_METATRAFFIC_UNICAST
 };
 
-// External locator lists
-enum class ExternalLocatorsList
-{
-    DATAREADER_UNICAST,
-    DATAWRITER_UNICAST,
-    PARTICIPANT_DEFAULT_UNICAST,
-    PARTICIPANT_METATRAFFIC_UNICAST
-};
-
 enum DurationTypeArgumentPosition
 {
     SECONDS,
     NANOSECONDS
 };
-
-namespace locators {
-enum LocatorArgumentPosition
-{
-    KIND,
-    ADDRESS,
-    PORT
-};
-} // locators
 
 namespace external_locators {
 enum ExternalLocatorArgumentPosition
@@ -114,6 +114,15 @@ enum ExternalLocatorArgumentPosition
     PORT
 };
 } // external_locators
+
+namespace locators {
+enum LocatorArgumentPosition
+{
+    KIND,
+    ADDRESS,
+    PORT
+};
+} // locators
 
 constexpr const int8_t DEFAULT_POSITION = 0;
 
@@ -373,7 +382,9 @@ bool extract_element_subelement_key(
 /**
  * @brief Auxiliary function to select the corresponding Duration Type element.
  *
+ * @param[in] entity DDS entity.
  * @param[out] duration_type Specific duration type element.
+ * @param[in] parent Element just parsed in the previous level.
  * @param[in, out] element String with the dot-separated subelements.
  *                         Next subelement to be parsed is returned.
  * @param[out] subelement Next element to be parsed.
@@ -382,7 +393,9 @@ bool extract_element_subelement_key(
  * @return true if valid duration type element. False otherwise.
  */
 bool duration_type_selector(
+        DDSEntity entity,
         DurationTypeList& duration_type,
+        const std::string& parent,
         std::string& element,
         std::string& subelement,
         const std::vector<std::string>& values,

@@ -94,6 +94,21 @@ constexpr const char* STATIC_EDP_XMLS_SUBELEMENT = "static_edp_xmls";
 constexpr const char* SECONDS_SUBELEMENT = "sec";
 constexpr const char* NANOSECONDS_SUBELEMENT = "nanosec";
 
+// CLI duration type elements
+constexpr const char* ANNOUNCEMENTS_ELEMENT = "announcements";
+constexpr const char* DEADLINE_PERIOD_ELEMENT = "deadline_period";
+constexpr const char* INITIAL_ACKNACK_DELAY_ELEMENT = "initial_acknack_delay";
+constexpr const char* INITIAL_HEARTBEAT_DELAY_ELEMENT = "initial_heartbeat_delay";
+constexpr const char* HEARTBEAT_PERIOD_ELEMENT = "heartbeat_period";
+constexpr const char* HEARTBEAT_RESPONSE_DELAY_ELEMENT = "heartbeat_response_delay";
+constexpr const char* LATENCY_BUDGET_ELEMENT = "latency_budget";
+constexpr const char* LEASE_ELEMENT = "lease";
+constexpr const char* LIFESPAN_ELEMENT = "lifespan";
+constexpr const char* MAX_BLOCKING_TIME_ELEMENT = "max_blocking_time";
+constexpr const char* NACK_RESPONSE_DELAY_ELEMENT = "nack_response_delay";
+constexpr const char* NACK_SUPRESSION_ELEMENT = "nack_supression";
+constexpr const char* PERIOD_ELEMENT = "period";
+
 // CLI duration type argument
 constexpr const char* CLI_INFINITE_ARGUMENT = "infinite";
 constexpr const char* LIB_INFINITE_ARGUMENT = "DURATION_INFINITY";

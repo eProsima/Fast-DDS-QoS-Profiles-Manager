@@ -96,13 +96,63 @@ bool check_profile(
 }
 
 bool duration_type_selector(
+        DDSEntity entity,
         DurationTypeList& duration_type,
+        const std::string& parent,
         std::string& element,
         std::string& subelement,
         const std::vector<std::string>& values,
         std::ostringstream& message)
 {
-    return false;
+    bool print_usage = false;
+    std::string dummy_key;
+    bool keyed = extract_element_subelement_key(element, subelement, dummy_key);
+
+    // TODO: message error
+
+    print_usage = check_help(values);
+
+    if (!print_usage)
+    {
+        switch (entity)
+        {
+            case DDSEntity::DATAREADER:
+                // TODO: parent elements not yet defined
+                break;
+            case DDSEntity::DATAWRITER:
+                // TODO: parent elements not yet defined
+                break;
+            case DDSEntity::PARTICIPANT:
+                if (parent == DISCOVERY_CONFIG_SUBELEMENT && element == LEASE_ELEMENT)
+                {
+                    duration_type = DurationTypeList::PARTICIPANT_LEASE_DURATION;
+                }
+                else if (parent == DISCOVERY_CONFIG_SUBELEMENT && element == ANNOUNCEMENTS_ELEMENT)
+                {
+                    duration_type = DurationTypeList::PARTICIPANT_ANNOUNCEMENT_PERIOD;
+                }
+                else if (parent == INITIAL_ANNOUNCEMENTS_SUBELEMENT && element == PERIOD_ELEMENT)
+                {
+                    duration_type = DurationTypeList::PARTICIPANT_INITIAL_ANNOUNCEMENTS_PERIOD;
+                }
+                else if (parent == CLIENT_ANNOUNCEMENTS_SUBELEMENT && element == PERIOD_ELEMENT)
+                {
+                    duration_type = DurationTypeList::PARTICIPANT_CLIENT_ANNOUNCEMENT_PERIOD;
+                }
+                else
+                {
+                    std::cout << "ERROR: " << message.str() << " not recognized" << std::endl;
+                    print_usage = true;
+                }
+                break;
+            case DDSEntity::TOPIC:
+                // TODO: parent elements not yet defined
+                break;
+        }
+        print_usage = print_usage || !check_keyed(false, keyed, message.str());
+    }
+
+    return !print_usage;
 }
 
 bool extract_element_subelement_key(
