@@ -50,9 +50,18 @@ void builtin_discovery_config_parser(
     }
     else if (element == DURATION_SUBELEMENT)
     {
-        std::cout <<
-            "Participant builtin discovery lease duration and announcement period configuration not yet supported"
-                  << std::endl;
+        DurationTypeList duration_type;
+        std::string subsubelement;
+        print_usage = print_usage || !duration_type_selector(DDSEntity::PARTICIPANT, duration_type,
+                DISCOVERY_CONFIG_SUBELEMENT, subelement, subsubelement, values, message);
+        if (!print_usage)
+        {
+            duration_type_parser(duration_type, command, filename, profile_name, subsubelement, values, message);
+        }
+        else
+        {
+            // std::cout << PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE << std::endl;
+        }
     }
     else if (element == EDP_SUBELEMENT)
     {
