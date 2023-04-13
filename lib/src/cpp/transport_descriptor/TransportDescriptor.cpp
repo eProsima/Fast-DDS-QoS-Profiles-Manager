@@ -36,17 +36,23 @@ namespace transport_descriptor {
  * @param[in] manager utils::XMLManager to obtain the base node position in the XML document
  * @param[in] transport_id Transport descriptor profile identifier
  * @param[in] create_if_not_existent flag that enables the creation of the  element if it does not exist
+ * @param[in] additional_tag additional tag to obtain node
  *
  * @throw ElementNotFound exception if expected node was not found and node creation was not required
  */
 void initialize_namespace(
         utils::XMLManager& manager,
         const std::string& transport_id,
-        const bool create_if_not_existent)
+        const bool create_if_not_existent,
+        const std::string& additional_tag)
 {
     // Iterate through required elements, and create them if not existent
     manager.get_node(utils::tag::PROFILES, create_if_not_existent);
     manager.get_transport_node(transport_id, create_if_not_existent);
+    if (!additional_tag.empty())
+    {
+        manager.get_node(additional_tag, create_if_not_existent);
+    }
 }
 
 std::string print(
@@ -640,10 +646,7 @@ void set_kind(
     utils::XMLManager manager(xml_file, true);
 
     // Obtain base node position
-    initialize_namespace(manager, transport_descriptor_id, true);
-
-    // Obtain kind node
-    manager.get_node(utils::tag::TRANSPORT_KIND, true);
+    initialize_namespace(manager, transport_descriptor_id, true, utils::tag::TRANSPORT_KIND);
 
     // Set the node value
     manager.set_value_to_node(kind);
@@ -902,10 +905,7 @@ void set_interface_whitelist(
     utils::XMLManager manager(xml_file, true);
 
     // Obtain base node position
-    initialize_namespace(manager, transport_descriptor_id, true);
-
-    // Obtain interface whitelist node
-    manager.get_node(utils::tag::INTERFACE_WHITELIST, true);
+    initialize_namespace(manager, transport_descriptor_id, true, utils::tag::INTERFACE_WHITELIST);
 
     // Obtain the address located in the index position
     manager.get_node(index, utils::tag::ADDRESS, true);

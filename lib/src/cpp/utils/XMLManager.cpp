@@ -579,10 +579,6 @@ void XMLManager::get_transport_node(
             xercesc::DOMNode* child = node_list->item(index_list->at(i));
             xercesc::DOMNodeList* child_node_list = static_cast<xercesc::DOMElement*>(child)->getElementsByTagName(
                 xercesc::XMLString::transcode(utils::tag::TRANSPORT_ID));
-            if (child_node_list->getLength() == 0)
-            {
-                continue; // keep iterating
-            }
             std::string identifier = xercesc::XMLString::transcode(child_node_list->item(0)->getNodeValue());
 
             // Check if the identifier is the required
