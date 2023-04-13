@@ -22,11 +22,37 @@
 
 #include <fastdds_qos_profiles_manager/exception/Exception.hpp>
 
+#include <common/Duration.hpp>
+#include <utils/TagsXMLManager.hpp>
+#include <utils/XMLManager.hpp>
+
 namespace eprosima {
 namespace qosprof {
 namespace domain_participant {
 namespace builtin {
 namespace discovery_config {
+
+/**
+ * @brief Private common method for all the functions that belong to this namespace to obtain base node position.
+ *
+ * @param[in] manager utils::XMLManager to obtain the base node position in the XML document
+ * @param[in] profile_id Domain participant profile identifier
+ * @param[in] create_if_not_existent flag that enables the creation of the  element if it does not exist
+ *
+ * @throw ElementNotFound exception if expected node was not found and node creation was not required
+ */
+void initialize_namespace(
+        utils::XMLManager& manager,
+        const std::string& profile_id,
+        const bool create_if_not_existent)
+{
+    // Iterate through required elements, and create them if not existent
+    manager.get_node(utils::tag::PROFILES, create_if_not_existent);
+    manager.get_node(utils::tag::PARTICIPANT, utils::tag::PROFILE_NAME, profile_id, create_if_not_existent);
+    manager.get_node(utils::tag::RTPS, create_if_not_existent);
+    manager.get_node(utils::tag::BUILTIN, create_if_not_existent);
+    manager.get_node(utils::tag::DISCOVERY_CONFIG, create_if_not_existent);
+}
 
 std::string print(
         const std::string& xml_file,
@@ -390,7 +416,20 @@ void set_lease_duration_sec(
         const std::string& profile_id,
         const std::string& duration_sec)
 {
-    throw Unsupported("Unsupported");
+    // Create XML manager and initialize the document
+    utils::XMLManager manager(xml_file, true);
+
+    // Obtain base node position
+    initialize_namespace(manager, profile_id, true);
+
+    // Obtain specific method node
+    manager.get_node(utils::tag::LEASE_DURATION, true);
+
+    // Set duration value
+    common::duration::set_sec(manager, duration_sec);
+
+    // Validate new XML element and save it
+    manager.validate_and_save_document();
 }
 
 void set_lease_duration_nanosec(
@@ -398,7 +437,20 @@ void set_lease_duration_nanosec(
         const std::string& profile_id,
         const std::string& duration_nanosec)
 {
-    throw Unsupported("Unsupported");
+    // Create XML manager and initialize the document
+    utils::XMLManager manager(xml_file, true);
+
+    // Obtain base node position
+    initialize_namespace(manager, profile_id, true);
+
+    // Obtain specific method node
+    manager.get_node(utils::tag::LEASE_DURATION, true);
+
+    // Set duration value
+    common::duration::set_nanosec(manager, duration_nanosec);
+
+    // Validate new XML element and save it
+    manager.validate_and_save_document();
 }
 
 void set_lease_announcement_sec(
@@ -406,7 +458,20 @@ void set_lease_announcement_sec(
         const std::string& profile_id,
         const std::string& announcement_sec)
 {
-    throw Unsupported("Unsupported");
+    // Create XML manager and initialize the document
+    utils::XMLManager manager(xml_file, true);
+
+    // Obtain base node position
+    initialize_namespace(manager, profile_id, true);
+
+    // Obtain specific method node
+    manager.get_node(utils::tag::LEASE_ANNOUNCEMENT, true);
+
+    // Set duration value
+    common::duration::set_sec(manager, announcement_sec);
+
+    // Validate new XML element and save it
+    manager.validate_and_save_document();
 }
 
 void set_lease_announcement_nanosec(
@@ -414,7 +479,20 @@ void set_lease_announcement_nanosec(
         const std::string& profile_id,
         const std::string& announcement_nanosec)
 {
-    throw Unsupported("Unsupported");
+    // Create XML manager and initialize the document
+    utils::XMLManager manager(xml_file, true);
+
+    // Obtain base node position
+    initialize_namespace(manager, profile_id, true);
+
+    // Obtain specific method node
+    manager.get_node(utils::tag::LEASE_ANNOUNCEMENT, true);
+
+    // Set duration value
+    common::duration::set_nanosec(manager, announcement_nanosec);
+
+    // Validate new XML element and save it
+    manager.validate_and_save_document();
 }
 
 void set_initial_announcements_count(

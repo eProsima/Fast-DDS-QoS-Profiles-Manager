@@ -75,6 +75,7 @@ file(GLOB_RECURSE ALL_HEADERS
 set(${PROJECT_NAME}_source_files
     ${ALL_HEADERS}
 
+    src/cpp/common/Duration.cpp
     src/cpp/common/LocatorList.cpp
     src/cpp/domain_participant/Allocation.cpp
     src/cpp/domain_participant/builtin/Builtin.cpp
