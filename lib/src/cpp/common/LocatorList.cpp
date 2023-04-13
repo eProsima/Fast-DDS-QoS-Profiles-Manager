@@ -32,7 +32,6 @@ namespace locator_list {
 
 std::string print(
         utils::XMLManager& manager,
-        const xercesc::DOMElement& xml_node,
         const std::string& index,
         const bool is_external)
 {
@@ -41,7 +40,6 @@ std::string print(
 
 std::string print_kind(
         utils::XMLManager& manager,
-        const xercesc::DOMElement& xml_node,
         const std::string& index,
         const bool is_external)
 {
@@ -50,7 +48,6 @@ std::string print_kind(
 
 std::string print_port(
         utils::XMLManager& manager,
-        const xercesc::DOMElement& xml_node,
         const std::string& index,
         const bool is_external)
 {
@@ -59,7 +56,6 @@ std::string print_port(
 
 std::string print_physical_port(
         utils::XMLManager& manager,
-        const xercesc::DOMElement& xml_node,
         const std::string& index,
         const bool is_external)
 {
@@ -68,7 +64,6 @@ std::string print_physical_port(
 
 std::string print_address(
         utils::XMLManager& manager,
-        const xercesc::DOMElement& xml_node,
         const std::string& index,
         const bool is_external)
 {
@@ -77,7 +72,6 @@ std::string print_address(
 
 std::string print_unique_lan_id(
         utils::XMLManager& manager,
-        const xercesc::DOMElement& xml_node,
         const std::string& index,
         const bool is_external)
 {
@@ -86,7 +80,6 @@ std::string print_unique_lan_id(
 
 std::string print_wan_address(
         utils::XMLManager& manager,
-        const xercesc::DOMElement& xml_node,
         const std::string& index,
         const bool is_external)
 {
@@ -94,15 +87,13 @@ std::string print_wan_address(
 }
 
 uint32_t size(
-        utils::XMLManager& manager,
-        const xercesc::DOMElement& xml_node)
+        utils::XMLManager& manager)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear(
         utils::XMLManager& manager,
-        xercesc::DOMElement& xml_node,
         const std::string& index)
 {
     throw Unsupported("Unsupported");
@@ -110,7 +101,6 @@ void clear(
 
 void clear_port(
         utils::XMLManager& manager,
-        xercesc::DOMElement& xml_node,
         const std::string& index,
         const bool is_external)
 {
@@ -119,7 +109,6 @@ void clear_port(
 
 void clear_physical_port(
         utils::XMLManager& manager,
-        xercesc::DOMElement& xml_node,
         const std::string& index,
         const bool is_external)
 {
@@ -128,7 +117,6 @@ void clear_physical_port(
 
 void clear_address(
         utils::XMLManager& manager,
-        xercesc::DOMElement& xml_node,
         const std::string& index,
         const bool is_external)
 {
@@ -137,7 +125,6 @@ void clear_address(
 
 void clear_unique_lan_id(
         utils::XMLManager& manager,
-        xercesc::DOMElement& xml_node,
         const std::string& index,
         const bool is_external)
 {
@@ -146,7 +133,6 @@ void clear_unique_lan_id(
 
 void clear_wan_address(
         utils::XMLManager& manager,
-        xercesc::DOMElement& xml_node,
         const std::string& index,
         const bool is_external)
 {
@@ -155,7 +141,6 @@ void clear_wan_address(
 
 void set_kind(
         utils::XMLManager& manager,
-        xercesc::DOMElement& xml_node,
         const std::string& kind,
         const std::string& index,
         const bool is_external)
@@ -165,90 +150,22 @@ void set_kind(
 
 void set_port(
         utils::XMLManager& manager,
-        xercesc::DOMNode* xml_node,
         const std::string& port,
         const std::string& index,
         const bool is_external)
 {
-    xercesc::DOMDocument* doc = manager.get_doc();
-    xercesc::DOMNode* locator_node = nullptr;
-    xercesc::DOMNode* kind_node = nullptr;
-    xercesc::DOMNode* port_node = nullptr;
+    // get the kind node
+    manager.get_locator_node(index, is_external, true);
 
-    // Create new locator and push it in the list
-    if (index.empty())
-    {
-        // create default udp v4 kind
-        kind_node = static_cast<xercesc::DOMNode*> (doc->createElement(
-                    xercesc::XMLString::transcode(utils::tag::UDP_V4_LOCATOR)));
+    // add port node to the kind node
+    manager.get_node(utils::tag::PORT, true);
 
-        // append the new kind node directly to the given parent
-        if (is_external)
-        {
-            xml_node->appendChild(kind_node);
-        }
-        // create <locator> tag if required
-        else
-        {
-            locator_node = static_cast<xercesc::DOMNode*> (doc->createElement(
-                        xercesc::XMLString::transcode(utils::tag::LOCATOR)));
-            xml_node->appendChild(locator_node);
-            locator_node->appendChild(kind_node);
-        }
-
-        // add port node to the kind node
-        port_node = static_cast<xercesc::DOMNode*> (doc->createElement(
-                    xercesc::XMLString::transcode(utils::tag::PORT)));
-        kind_node->appendChild(port_node);
-    }
-    // set the port value in the locator defined by the index
-    else
-    {
-        std::string* ind = new std::string();
-        ind->append(index);
-
-        // obtain the locator kind directly
-        if (is_external)
-        {
-            // TODO update this and the infraestructure
-            kind_node = manager.get_node(xml_node, utils::tag::UDP_V4_LOCATOR, ind);
-        }
-        // obtain kind from <locator> tag
-        else
-        {
-            locator_node = manager.get_node(xml_node, utils::tag::LOCATOR, ind);
-
-            xercesc::DOMNodeList* kind_list = locator_node->getChildNodes();
-            for (int i = 0, size = kind_list->getLength(); i < size; i++)
-            {
-                if (kind_list->item(i)->getNodeType() == xercesc::DOMNode::NodeType::ELEMENT_NODE)
-                {
-                    kind_node = kind_list->item(i);
-                    break;
-                }
-            }
-        }
-
-        // obtain the port of the given locator
-        try
-        {
-            port_node = manager.get_node(kind_node, utils::tag::PORT);
-        }
-        // create the port node in the given locator
-        catch (const ElementNotFound& ex)
-        {
-            port_node = static_cast<xercesc::DOMNode*>(doc->createElement(
-                        xercesc::XMLString::transcode(utils::tag::PORT)));
-            kind_node->appendChild(port_node);
-        }
-    }
     // set port node value
-    manager.set_value_to_node(port_node, port);
+    manager.set_value_to_node(port);
 }
 
 void set_physical_port(
         utils::XMLManager& manager,
-        xercesc::DOMElement& xml_node,
         const std::string& physical_port,
         const std::string& index,
         const bool is_external)
@@ -258,90 +175,22 @@ void set_physical_port(
 
 void set_address(
         utils::XMLManager& manager,
-        xercesc::DOMNode* xml_node,
         const std::string& address,
         const std::string& index,
         const bool is_external)
 {
-    xercesc::DOMDocument* doc = manager.get_doc();
-    xercesc::DOMNode* locator_node = nullptr;
-    xercesc::DOMNode* kind_node = nullptr;
-    xercesc::DOMNode* address_node = nullptr;
+    // get the kind node
+    manager.get_locator_node(index, is_external, true);
 
-    // Create new locator and push it in the list
-    if (index.empty())
-    {
-        // create default udp v4 kind
-        kind_node = static_cast<xercesc::DOMNode*> (doc->createElement(
-                    xercesc::XMLString::transcode(utils::tag::UDP_V4_LOCATOR)));
+    // add address node to the kind node
+    manager.get_node(utils::tag::ADDRESS, true);
 
-        // append the new kind node directly to the given parent
-        if (is_external)
-        {
-            xml_node->appendChild(kind_node);
-        }
-        // create <locator> tag if required
-        else
-        {
-            locator_node = static_cast<xercesc::DOMNode*> (doc->createElement(
-                        xercesc::XMLString::transcode(utils::tag::LOCATOR)));
-            xml_node->appendChild(locator_node);
-            locator_node->appendChild(kind_node);
-        }
-
-        // add address node to the kind node
-        address_node = static_cast<xercesc::DOMNode*> (doc->createElement(
-                    xercesc::XMLString::transcode(utils::tag::ADDRESS)));
-        kind_node->appendChild(address_node);
-    }
-    // set the address value in the locator defined by the index
-    else
-    {
-        std::string* ind = new std::string();
-        ind->append(index);
-
-        // obtain the locator kind directly
-        if (is_external)
-        {
-            // TODO update this and the infraestructure
-            kind_node = manager.get_node(xml_node, utils::tag::UDP_V4_LOCATOR, ind);
-        }
-        // obtain kind from <locator> tag
-        else
-        {
-            locator_node = manager.get_node(xml_node, utils::tag::LOCATOR, ind);
-
-            xercesc::DOMNodeList* kind_list = locator_node->getChildNodes();
-            for (int i = 0, size = kind_list->getLength(); i < size; i++)
-            {
-                if (kind_list->item(i)->getNodeType() == xercesc::DOMNode::NodeType::ELEMENT_NODE)
-                {
-                    kind_node = kind_list->item(i);
-                    break;
-                }
-            }
-        }
-
-        // obtain the address of the given locator
-        try
-        {
-            address_node = manager.get_node(kind_node, utils::tag::ADDRESS);
-        }
-        // create the address node in the given locator
-        catch (const ElementNotFound& ex)
-        {
-            address_node = static_cast<xercesc::DOMNode*>(doc->createElement(
-                        xercesc::XMLString::transcode(utils::tag::ADDRESS)));
-            kind_node->appendChild(address_node);
-        }
-    }
-    // set port node value
-    manager.set_value_to_node(address_node, address);
+    // set address node value
+    manager.set_value_to_node(address);
 }
 
 void set_unique_lan_id(
         utils::XMLManager& manager,
-        xercesc::DOMElement& xml_node,
         const std::string& unique_lan_id,
         const std::string& index,
         const bool is_external)
@@ -351,7 +200,6 @@ void set_unique_lan_id(
 
 void set_wan_address(
         utils::XMLManager& manager,
-        xercesc::DOMElement& xml_node,
         const std::string& wan_address,
         const std::string& index,
         const bool is_external)

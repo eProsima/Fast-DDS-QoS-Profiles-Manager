@@ -48,12 +48,12 @@ public:
 
     /**
      * @brief Construct a new Parse XML object, which initializes Xerces required tools,
-     *  and reads given xml_file document
+     *  and reads given xml_file document.
      *
      * @param[in] xml_file string with the file path
-     * @param[in] create_file bool (optional) create file if it does not exist flag
+     * @param[in] create_file bool (optional) create file if the flag is set
      *
-     * @throw FileNotFound exception if Xerces XML workspace could not be initialized
+     * @throw Error exception if Xerces XML workspace could not be initialized
      */
     XMLManager(
             const std::string& xml_file,
@@ -66,113 +66,147 @@ public:
     ~XMLManager();
 
     /**
-     * @brief Validate the document, and save to disk if valid
+     * @brief Validate the document, and save to disk if valid.
      *
      * @throw ElementInvalid exception if document does not pass parser validation
      */
     void validate_and_save_document();
 
     /**
-     * @brief Remove the given node from the parent node
-     *
-     * @param parent_node DOMNode parent node which should contain the node to be deleted
-     * @param node_to_be_deleted DOMNode node to be deleted
+     * @brief Remove the selected node.
      *
      * @throw ElementInvalid exception if node is the last node element (could not be deleted)
      */
-    void clear_node(
-            xercesc::DOMNode*& parent_node,
-            xercesc::DOMNode*& node_to_be_deleted);
+    void clear_node();
 
     /**
-     * @brief Set the value to node object
+     * @brief Set the value to node object.
      *
-     * @param node DOMNode node to be set
-     * @param value to be set in the node
+     * @param[in] value to be set in the node
      */
     void set_value_to_node(
-            xercesc::DOMNode*& node,
             const std::string& value);
 
     /**
-     * @brief Temporal function to get the doc object
+     * @brief Set the attribute value associated to the attribute name attached to the node object.
      *
-     * @return xercesc::DOMDocument* doc object
+     * @param[in] name of the attribute to be set
+     * @param[in] value to be set in the node attribute
      */
-    xercesc::DOMDocument* get_doc();
-
-    /*
-     * AUX get_node functions based on the implementation needs
-     */
-    xercesc::DOMNode* get_node(
-            const std::string& tag_name);
-
-    xercesc::DOMNode* get_node(
-            const std::string& tag_name,
-            const std::string* index);
-
-    xercesc::DOMNode* get_node(
-            const std::string& tag_name,
-            const std::string& att_name,
-            const std::string& att_value);
-
-    xercesc::DOMNode* get_node(
-            const std::string& tag_name,
-            const std::string* index,
-            const std::string& att_name,
-            const std::string& att_value);
-
-    xercesc::DOMNode* get_node(
-            xercesc::DOMNode*& parent_node,
-            const std::string& tag_name);
-
-    xercesc::DOMNode* get_node(
-            xercesc::DOMNode*& parent_node,
-            const std::string& tag_name,
-            const std::string* index);
-
-    xercesc::DOMNode* get_node(
-            xercesc::DOMNode*& parent_node,
-            const std::string& tag_name,
-            const std::string& att_name,
-            const std::string& att_value);
+    void set_attribute_to_node(
+            const std::string& name,
+            const std::string& value);
 
     /**
-     * @brief  MAIN get_node function.
-     *   Obtain the node in the list that matches tag name and
-     *   the given index or the given name-value attribute pair
+     * @brief Set the specific attribute of all node siblings to the given value.
      *
-     * @param parent_node DOMNode with the parent node
-     * @param tag_name string with the node (<tag>) name
-     * @param index string index of the node element in LIST cases
-     * @param att_name string key (attribute) name of the node element in MAP cases
-     * @param att_value string key (attribute) value of the node element in MAP cases
-     *
-     * @return xercesc::DOMNode* with the found node
-     *
-     * @throw ElementNotFound exception if expected node was not found
+     * @param[in] name of the node attribute to be set
+     * @param[in] value to be set in the node attribute
      */
-    xercesc::DOMNode* get_node(
-            xercesc::DOMNode*& parent_node,
+    void set_siblings_attribute(
+            const std::string& name,
+            const std::string& value);
+
+
+    /**
+     * @brief Get the node value (only for simple cases)
+     *
+     * @throw ElementNotFound exception if the node value could not be obtained
+     *
+     * @return std::string node value
+     */
+    std::string get_node_value();
+
+    /**
+     * @brief Get the node attribute value of the given attribute name
+     *
+     * @param[in] name attribute name
+     *
+     * @throw ElementNotFound exception if the attribute value could not be obtained from the node
+     *
+     * @return std::string node attribute value (Empty string if error)
+     */
+    std::string get_node_attribute_value(
+            const std::string& name);
+
+    /**
+     * @brief Get the (unique) child node object that matches the given tag name.
+     *
+     * @param[in] tag_name string with the node (<tag>) name
+     * @param[in] create_if_not_existent flag to create node if it is not found
+     *
+     * @throw ElementNotFound exception if expected node was not found and node creation was not required
+     */
+    void get_node(
             const std::string& tag_name,
-            const std::string* index,
-            const std::string& att_name,
-            const std::string& att_value);
+            const bool create_if_not_existent);
+
+    /**
+     * @brief Get the node object located in the index position. If empty index, current node is kept.
+     *
+     * @param[in] index string index of the node element
+     * @param[in] default_tag_name string with the default node (<tag>) name required to create the node if required.
+     * @param[in] create_if_not_existent flag to create node if it is not found
+     *
+     * @throw ElementNotFound exception if expected node was not found and node creation was not required
+     * @throw BadParameter exception if expected node could not be found by using the given index.
+     */
+    void get_node(
+            const std::string& index,
+            const std::string& default_tag_name,
+            const bool create_if_not_existent);
+
+    /**
+     * @brief Get the node object that matches the given tag name, and has the same attribute key-value pair
+     *        set as the given name-value pair.
+     *
+     * @param[in] tag_name string with the node (<tag>) name
+     * @param[in] name string key (attribute) name of the node element
+     * @param[in] value string value (attribute) value of the node element
+     * @param[in] create_if_not_existent flag to create node if it is not found
+     *
+     * @throw ElementNotFound exception if expected node was not found and node creation was not required
+     */
+    void get_node(
+            const std::string& tag_name,
+            const std::string& name,
+            const std::string& value,
+            const bool create_if_not_existent);
+
+    /**
+     * @brief Get the locator node object found at index position. If empty index, current node is kept.
+     *
+     * @param[in] index string index of the node element
+     * @param[in] is_external flag to determine if the locator node is external or common
+     * @param[in] create_if_not_existent flag to create node if it is not found
+     *
+     * @throw ElementNotFound exception if expected node was not found and node creation was not required
+     * @throw BadParameter exception if expected node could not be found by using the given index.
+     */
+    void get_locator_node(
+            const std::string& index,
+            const bool is_external,
+            const bool create_if_not_existent);
 
 private:
 
     /**
-     * @brief Save the document as string and validate
+     * @brief Transforms standalone XML document structure to rooted.
+     */
+    void transform_standalone_to_rooted_structure();
+
+    /**
+     * @brief Save the document as string and validate.
+     *
+     * @throw ElementInvalid exception if document does not pass parser validation
      *
      * @return true document passes parser validation
      * @return false document does not pass parser validation
-     *
-     * @throw ElementInvalid exception if document does not pass parser validation
      */
     bool validate_xml();
 
     /**
-     * @brief  Save the document in the target file path
+     * @brief  Save the document in the target file path.
      *
      * @return true document saved
      * @return false failure saving document
@@ -180,10 +214,19 @@ private:
     bool save_xml();
 
     /**
-     * @brief Get the absolute path of the given file name [POSIX only]
+     * @brief Auxiliar method that creates a new node with the given tag and appends it to the last node.
+     *
+     * @param tag_name string with the new node (<tag>) name
+     */
+    void create_node(
+            const std::string& tag_name);
+
+    /**
+     * @brief Get the absolute path of the given file name (POSIX only).
      *
      * @param[in]  xml_file string with the given file name
      * @param[out] file_exists bool reference to save file existence status
+     *
      * @return std::string with the absolute path
      */
     std::string get_absolute_path(
@@ -191,21 +234,20 @@ private:
             bool& file_exists);
 
     /**
-     * @brief Get the real index of the listed nodes (avoid empty nodes)
+     * @brief Get the real index of the listed nodes (avoid empty nodes).
      *
      * @param[in]  node_list with the nodes to be filtered
+     *
      * @return std::unique_ptr<std::vector<uint>> with the indexes of the non-empty nodes
      */
     std::unique_ptr<std::vector<uint>>  get_real_index(
             xercesc::DOMNodeList*& node_list);
 
     /**
-     * @brief Clear node. Usage: remove all DOMText children from node
+     * @brief Clear node. Usage: remove all DOMText children from node.
      *
-     * @param node DOMNode to be reset
      */
-    void reset_node(
-            xercesc::DOMNode*& node);
+    void reset_node();
 
     // CONSTANT CHAR USED BY XERCES
     constexpr static const char* CORE = "Core";
@@ -226,6 +268,9 @@ private:
 
     // Custom utils
     utils::ErrorHandlerXMLManager* error_handler = nullptr;
+
+    // Latest node navigated to
+    xercesc::DOMNode* last_node = nullptr;
 };
 
 } /* parse */
