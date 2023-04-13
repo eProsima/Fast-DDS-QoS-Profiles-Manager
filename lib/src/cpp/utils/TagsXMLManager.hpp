@@ -37,7 +37,6 @@ constexpr const char* DEFAULT_PROFILE = "is_default_profile";
 constexpr const char* PARTICIPANT = "participant";
 constexpr const char* PROFILE_NAME = "profile_name";
 
-
 /// PARTICIPANT
 constexpr const char* RTPS = "rtps";
 
@@ -57,7 +56,6 @@ constexpr const char* DISCOVERY_CONFIG = "discovery_config";
 ///// DISCOVERY CONFIG BUILTIN
 constexpr const char* LEASE_ANNOUNCEMENT = "leaseAnnouncement";
 constexpr const char* LEASE_DURATION = "leaseDuration";
-
 
 // COMMONS
 /// LOCATOR

@@ -41,10 +41,10 @@ namespace duration {
 /************************************************************************/
 
 /**
- * @brief Save the given second value in the duration type node.
+ * @brief Save the given seconds value in the duration type node.
  *
  * @param[in] manager Internal util manager to obtain and work with nodes
- * @param[in] sec second value to be set
+ * @param[in] sec seconds value to be set
  */
 void set_sec(
         utils::XMLManager& manager,

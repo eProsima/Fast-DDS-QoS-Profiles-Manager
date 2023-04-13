@@ -38,13 +38,15 @@ namespace discovery_config {
  * @param[in] manager utils::XMLManager to obtain the base node position in the XML document
  * @param[in] profile_id Domain participant profile identifier
  * @param[in] create_if_not_existent flag that enables the creation of the  element if it does not exist
+ * @param[in] additional_tag additional tag to obtain base node
  *
  * @throw ElementNotFound exception if expected node was not found and node creation was not required
  */
 void initialize_namespace(
         utils::XMLManager& manager,
         const std::string& profile_id,
-        const bool create_if_not_existent)
+        const bool create_if_not_existent,
+        const std::string& additional_tag)
 {
     // Iterate through required elements, and create them if not existent
     manager.get_node(utils::tag::PROFILES, create_if_not_existent);
@@ -52,6 +54,10 @@ void initialize_namespace(
     manager.get_node(utils::tag::RTPS, create_if_not_existent);
     manager.get_node(utils::tag::BUILTIN, create_if_not_existent);
     manager.get_node(utils::tag::DISCOVERY_CONFIG, create_if_not_existent);
+    if (!additional_tag.empty())
+    {
+        manager.get_node(additional_tag, create_if_not_existent);
+    }
 }
 
 std::string print(
@@ -420,10 +426,7 @@ void set_lease_duration_sec(
     utils::XMLManager manager(xml_file, true);
 
     // Obtain base node position
-    initialize_namespace(manager, profile_id, true);
-
-    // Obtain specific method node
-    manager.get_node(utils::tag::LEASE_DURATION, true);
+    initialize_namespace(manager, profile_id, true, utils::tag::LEASE_DURATION);
 
     // Set duration value
     common::duration::set_sec(manager, duration_sec);
@@ -441,10 +444,7 @@ void set_lease_duration_nanosec(
     utils::XMLManager manager(xml_file, true);
 
     // Obtain base node position
-    initialize_namespace(manager, profile_id, true);
-
-    // Obtain specific method node
-    manager.get_node(utils::tag::LEASE_DURATION, true);
+    initialize_namespace(manager, profile_id, true, utils::tag::LEASE_DURATION);
 
     // Set duration value
     common::duration::set_nanosec(manager, duration_nanosec);
@@ -462,10 +462,7 @@ void set_lease_announcement_sec(
     utils::XMLManager manager(xml_file, true);
 
     // Obtain base node position
-    initialize_namespace(manager, profile_id, true);
-
-    // Obtain specific method node
-    manager.get_node(utils::tag::LEASE_ANNOUNCEMENT, true);
+    initialize_namespace(manager, profile_id, true, utils::tag::LEASE_ANNOUNCEMENT);
 
     // Set duration value
     common::duration::set_sec(manager, announcement_sec);
@@ -483,10 +480,7 @@ void set_lease_announcement_nanosec(
     utils::XMLManager manager(xml_file, true);
 
     // Obtain base node position
-    initialize_namespace(manager, profile_id, true);
-
-    // Obtain specific method node
-    manager.get_node(utils::tag::LEASE_ANNOUNCEMENT, true);
+    initialize_namespace(manager, profile_id, true, utils::tag::LEASE_ANNOUNCEMENT);
 
     // Set duration value
     common::duration::set_nanosec(manager, announcement_nanosec);
