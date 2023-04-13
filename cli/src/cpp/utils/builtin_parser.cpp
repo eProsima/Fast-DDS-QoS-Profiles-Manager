@@ -60,7 +60,7 @@ void builtin_discovery_config_parser(
         }
         else
         {
-            // std::cout << PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE << std::endl;
+            std::cout << PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE << std::endl;
         }
     }
     else if (element == EDP_SUBELEMENT)

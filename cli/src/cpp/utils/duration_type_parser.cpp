@@ -19,6 +19,7 @@
 #include <fastdds_qos_profiles_manager/domain_participant/builtin/discovery_config/DiscoveryConfig.hpp>
 #include <fastdds_qos_profiles_manager/exception/Exception.hpp>
 
+#include <usages.hpp>
 #include <utils/utils.hpp>
 
 namespace eprosima {
@@ -841,15 +842,13 @@ void duration_type_parser(
                 // TODO
                 break;
             case DurationTypeList::PARTICIPANT_ANNOUNCEMENT_PERIOD:
-                // TODO
+            case DurationTypeList::PARTICIPANT_LEASE_DURATION:
+                usage = PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE;
                 break;
             case DurationTypeList::PARTICIPANT_CLIENT_ANNOUNCEMENT_PERIOD:
                 // TODO
                 break;
             case DurationTypeList::PARTICIPANT_INITIAL_ANNOUNCEMENTS_PERIOD:
-                // TODO
-                break;
-            case DurationTypeList::PARTICIPANT_LEASE_DURATION:
                 // TODO
                 break;
         }
