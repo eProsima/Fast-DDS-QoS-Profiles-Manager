@@ -170,7 +170,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_participant_id(
  *        list does not contain any element in index position.
  * @throw BadParameter Exception if the index is not an integer.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_user_transport(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_user_transports(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index);
@@ -266,7 +266,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::vector<std::string> keys(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
-FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t user_transport_size(
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t user_transports_size(
         const std::string& xml_file,
         const std::string& profile_id);
 

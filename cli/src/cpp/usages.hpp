@@ -292,6 +292,33 @@ static const char PARTICIPANT_USE_BUILTIN_TRANSPORTS_USAGE[] =
     The <profile_name> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
 )";
 
+static const char PARTICIPANT_USER_TRANSPORTS_USAGE[] =
+        R"(Participant user transports usage:
+
+    Usage:
+      fastddsqosprof <file> <command> participant[<profile_name>].user_transports[(<index>)] [<transport_id> (help | -h | --help)]
+      fastddsqosprof <file> <command> participant[<profile_name>].user_transports[(<index>)] (help | -h | --help)
+
+    Options:
+      help -h --help    CLI participant user transports usage
+
+    The allowed <command> options are:
+      clear             Erase user transport from the participant list.
+      print             Print user transport in the participant list.
+      set               Add or update user transport in the participant list.
+
+    The <profile_name> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
+
+    The <index> element is OPTIONAL:
+      No <index> with a SET command pushes a new element into the list.
+      No <index> with a PRINT command prints every element in the list. Printing any subelement requires setting an <index>.
+      No <index> with a CLEAR command clears every element in the list. Clearing any subelement requires setting an <index>.
+      Positive <index> accesses the element in that position starting from the first element in the list.
+      Negative <index> accesses the element in that position starting from the last element in the list.
+
+    SET command REQUIRES the <transport_id> element which should be any Transport Descriptor profile defined in the XML configuration file.
+)";
+
 static const char SET_SUBPARSER_USAGE[] =
         R"(Set command parser: fastddsqosprof <file> set
 

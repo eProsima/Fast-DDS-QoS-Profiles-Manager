@@ -280,7 +280,6 @@ void participant_subelement_parser(
             {
                 std::cout << "Fast DDS QoS Profiles Manager exception caught: " << e.what() << std::endl;
             }
-
         }
 
         if (print_usage)
@@ -294,7 +293,67 @@ void participant_subelement_parser(
     }
     else if (element == USER_TRANSPORTS_SUBELEMENT)
     {
-        std::cout << "Participant user transports configuration not yet supported" << std::endl;
+        print_usage = check_help(values);
+        print_usage = print_usage || !check_keyed(true, keyed, message.str());
+        print_usage = print_usage || !check_final_element(true, subelement, message.str());
+
+        if (!print_usage)
+        {
+            try
+            {
+                switch (command)
+                {
+                    case CommonCommands::CLEAR:
+                        print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
+                        if (!print_usage)
+                        {
+                            qosprof::domain_participant::clear_user_transports(filename, profile_name, key);
+                        }
+                        break;
+                    case CommonCommands::PRINT:
+                        print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
+                        if (!print_usage)
+                        {
+                            qosprof::domain_participant::print_user_transports(filename, profile_name, key);
+                        }
+                        break;
+                    case CommonCommands::QUERY:
+                        // TODO: maybe additional validity check is required checking that keys has not been passed to
+                        //       the query command.
+                        print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
+                        print_usage = print_usage || !check_index(key, true);
+                        if (!print_usage)
+                        {
+                            qosprof::domain_participant::user_transports_size(filename, profile_name);
+                        }
+                        break;
+                    case CommonCommands::SET:
+                        print_usage = !check_command_arguments(command, 1, values.size(), message.str(), true);
+                        if (!print_usage)
+                        {
+                            qosprof::domain_participant::set_user_transports(filename, profile_name, values[0], key);
+                        }
+                        break;
+                }
+            }
+            catch (const qosprof::Exception& e)
+            {
+                std::cout << "Fast DDS QoS Profiles Manager exception caught: " << e.what() << std::endl;
+            }
+        }
+
+        if (print_usage)
+        {
+            if (CommonCommands::QUERY != command)
+            {
+                std::cout << PARTICIPANT_USER_TRANSPORTS_USAGE << std::endl;
+            }
+            else
+            {
+                // TODO
+                // std::cout << PARTICIPANT_USER_TRANSPORTS_QUERY_USAGE << std::endl;
+            }
+        }
     }
     else
     {

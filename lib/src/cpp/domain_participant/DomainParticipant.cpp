@@ -85,7 +85,7 @@ std::string print_participant_id(
     throw Unsupported("Unsupported");
 }
 
-std::string print_user_transport(
+std::string print_user_transports(
         const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
@@ -115,7 +115,7 @@ std::string print_prefix(
     throw Unsupported("Unsupported");
 }
 
-uint32_t user_transport_size(
+uint32_t user_transports_size(
         const std::string& xml_file,
         const std::string& profile_id)
 {
