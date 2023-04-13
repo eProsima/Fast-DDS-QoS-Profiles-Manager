@@ -23,6 +23,81 @@
 namespace eprosima {
 namespace qosprof_cli {
 
+void builtin_discovery_config_parser(
+        CommonCommands command,
+        const std::string& filename,
+        const std::string& profile_name,
+        std::string& element,
+        const std::vector<std::string>& values)
+{
+    bool print_usage = false;
+    std::string subelement;
+    std::string key;
+
+    bool keyed = extract_element_subelement_key(element, subelement, key);
+
+    // Initialize message in case of error
+    std::ostringstream message;
+    message << "Participant builtin discovery config <" << element << ">";
+
+    if (element == CLIENT_ANNOUNCEMENTS_SUBELEMENT)
+    {
+        std::cout << "Participant builtin discovery client announcements configuration not yet supported" << std::endl;
+    }
+    else if (element == DISCOVERY_PROTOCOL_SUBELEMENT)
+    {
+        std::cout << "Participant builtin discovery protocol configuration not yet supported" << std::endl;
+    }
+    else if (element == DURATION_SUBELEMENT)
+    {
+        std::cout <<
+            "Participant builtin discovery lease duration and announcement period configuration not yet supported"
+                  << std::endl;
+    }
+    else if (element == EDP_SUBELEMENT)
+    {
+        std::cout << "Participant builtin discovery EDP configuration not yet supported" << std::endl;
+    }
+    else if (element == IGNORE_PARTICIPANT_FLAGS_SUBELEMENT)
+    {
+        std::cout << "Participant builtin discovery ignore participant flags configuration not yet supported"
+                  << std::endl;
+    }
+    else if (element == INITIAL_ANNOUNCEMENTS_SUBELEMENT)
+    {
+        std::cout << "Participant builtin discovery initial announcements configuration not yet supported" << std::endl;
+    }
+    else if (element == REMOTE_SERVERS_SUBELEMENT)
+    {
+        std::cout << "Participant builtin discovery remote servers list configuration not yet supported" << std::endl;
+    }
+    else if (element == SIMPLE_EDP_SUBELEMENT)
+    {
+        std::cout << "Participant builtin discovery simple EDP configuration not yet supported" << std::endl;
+    }
+    else if (element == STATIC_EDP_XMLS_SUBELEMENT)
+    {
+        std::cout << "Participant builtin discovery static EDP configuration not yet supported" << std::endl;
+    }
+    else
+    {
+        if (!check_help(values))
+        {
+            std::cout << "ERROR: " << element << " element not recognized" << std::endl;
+        }
+
+        if (CommonCommands::QUERY != command)
+        {
+            std::cout << PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_USAGE << std::endl;
+        }
+        else
+        {
+            // TODO
+            // std::cout << PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_QUERY_USAGE << std::endl;
+        }
+    }
+}
+
 bool builtin_locator_parser(
         LocatorsList& locator_list,
         std::string& element,
@@ -91,7 +166,26 @@ void builtin_parser(
     }
     else if (element == DISCOVERY_CONFIG_SUBELEMENT)
     {
-        std::cout << "Participant builtin dicovery mechanism configuration not yet supported" << std::endl;
+        print_usage = subelement.empty() && check_help(values);
+        print_usage = print_usage || !check_keyed(false, keyed, message.str());
+        print_usage = print_usage || !check_final_element(false, subelement, message.str());
+
+        if (!print_usage)
+        {
+            builtin_discovery_config_parser(command, filename, profile_name, subelement, values);
+        }
+        else
+        {
+            if (CommonCommands::QUERY == command)
+            {
+                // TODO
+                // std::cout << PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_QUERY_USAGE << std::endl;
+            }
+            else
+            {
+                std::cout << PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_USAGE << std::endl;
+            }
+        }
     }
     else if (element == EXTERNAL_LOCATORS_SUBELEMENT)
     {
@@ -187,7 +281,7 @@ void builtin_parser(
         else
         {
             // TODO
-            // std::cout << PARTICIPANT_QUERY_USAGE << std::endl;
+            // std::cout << PARTICIPANT_BUILTIN_QUERY_USAGE << std::endl;
         }
     }
 }

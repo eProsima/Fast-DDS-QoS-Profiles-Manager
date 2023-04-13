@@ -97,7 +97,7 @@ const std::regex bracket_pattern("\\[([^\\]]*)\\]");
 /**********************************************************************************************************************/
 
 /**
- * @brief Participant builtin parser.
+ * @brief Participant builtin discovery config parser.
  *
  * @param[in] command Command kind.
  * @param[in] filename File to be modified.
@@ -105,7 +105,7 @@ const std::regex bracket_pattern("\\[([^\\]]*)\\]");
  * @param[in] element String with the dot-separated subelements.
  * @param[in] values Vector of strings with the values passed to CLI.
  */
-void builtin_parser(
+void builtin_discovery_config_parser(
         CommonCommands command,
         const std::string& filename,
         const std::string& profile_name,
@@ -120,6 +120,7 @@ void builtin_parser(
  *                         Next subelement to be parsed is returned.
  * @param[out] subelement Next element to be parsed.
  * @param[out] key Index of the locator being modified.
+ * @param[in] values Vector of strings with the values passed to CLI.
  * @param[out] message Error message in case of validity check failure.
  * @return true if valid locator list. False otherwise.
  */
@@ -128,7 +129,24 @@ bool builtin_locator_parser(
         std::string& element,
         std::string& subelement,
         std::string& key,
+        const std::vector<std::string>& values,
         std::ostringstream& message);
+
+/**
+ * @brief Participant builtin parser.
+ *
+ * @param[in] command Command kind.
+ * @param[in] filename File to be modified.
+ * @param[in] profile_name Domain Participant profile name.
+ * @param[in] element String with the dot-separated subelements.
+ * @param[in] values Vector of strings with the values passed to CLI.
+ */
+void builtin_parser(
+        CommonCommands command,
+        const std::string& filename,
+        const std::string& profile_name,
+        std::string& element,
+        const std::vector<std::string>& values);
 
 /**
  * @brief Common parser for external locators lists
