@@ -77,6 +77,10 @@ constexpr const char* UDP_V6_LOCATOR = "udpv6";
 constexpr const char* NANOSEC = "nanosec";
 constexpr const char* SEC = "sec";
 
+/// QOS
+constexpr const char* KIND = "kind";
+
+
 } /* tag */
 } /* utils */
 } /* qosprof */
