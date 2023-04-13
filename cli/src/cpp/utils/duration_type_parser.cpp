@@ -98,7 +98,8 @@ void duration_type_parser(
     bool set_every_element = false;
     bool set_infinite_duration = false;
 
-    // TODO: think validity checks required at this level
+    print_usage = command != CommonCommands::SET && !check_command_arguments(command, 0, values.size(), message.str(),
+                    true);
 
     // No subelement
     if (!print_usage && element.empty())
