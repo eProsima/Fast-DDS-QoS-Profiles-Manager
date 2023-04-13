@@ -33,10 +33,13 @@ constexpr const char* PROFILES = "profiles";
 constexpr const char* ROOT = "dds";
 
 // PROFILE TAGS
+constexpr const char* DATA_READER = "data_reader";
+constexpr const char* DATA_WRITER = "data_writer";
 constexpr const char* DEFAULT_PROFILE = "is_default_profile";
 constexpr const char* PARTICIPANT = "participant";
 constexpr const char* PROFILE_NAME = "profile_name";
 constexpr const char* TRANSPORT_DESCRIPTOR_LIST = "transport_descriptors";
+
 
 /// PARTICIPANT
 constexpr const char* RTPS = "rtps";
@@ -78,7 +81,10 @@ constexpr const char* NANOSEC = "nanosec";
 constexpr const char* SEC = "sec";
 
 /// QOS
+constexpr const char* DURABILITY = "durability";
 constexpr const char* KIND = "kind";
+constexpr const char* QOS = "qos";
+constexpr const char* RELIABILITY = "reliability";
 
 
 } /* tag */
