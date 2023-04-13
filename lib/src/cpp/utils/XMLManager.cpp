@@ -556,6 +556,69 @@ void XMLManager::get_locator_node(
     }
 }
 
+void XMLManager::get_transport_node(
+        const std::string& transport_id,
+        const bool create_if_not_existent)
+{
+    // Obtain list node
+    get_node(utils::tag::TRANSPORT_DESCRIPTOR_LIST, create_if_not_existent);
+
+    // Obtain list of transports
+    xercesc::DOMNodeList* node_list = last_node->getChildNodes();
+
+    // Obtain REAL node list
+    std::unique_ptr<std::vector<uint>> index_list = get_real_index(node_list);
+
+    // If there are transport children
+    if (index_list->size() > 0)
+    {
+        // Iterate through nodes
+        for (int i = 0, size = index_list->size(); i < size; i++)
+        {
+            // Obtain each transport identifier
+            xercesc::DOMNode* child = node_list->item(index_list->at(i));
+            xercesc::DOMNodeList* child_node_list = static_cast<xercesc::DOMElement*>(child)->getElementsByTagName(
+                xercesc::XMLString::transcode(utils::tag::TRANSPORT_ID));
+            if (child_node_list->getLength() == 0)
+            {
+                continue; // keep iterating
+            }
+            std::string identifier = xercesc::XMLString::transcode(child_node_list->item(0)->getNodeValue());
+
+            // Check if the identifier is the required
+            if (identifier == transport_id)
+            {
+                // Save the transport node
+                last_node = child;
+                return;
+            }
+        }
+    }
+    // Create new transport if required
+    if (create_if_not_existent)
+    {
+        // Create transport node
+        create_node(utils::tag::TRANSPORT_DESCRIPTOR);
+
+        // Save the transport node pointer to be returned
+        xercesc::DOMNode* transport_node = last_node;
+
+        // Create transport_id identifier node
+        create_node(utils::tag::TRANSPORT_ID);
+
+        // Set the identifier
+        set_value_to_node(transport_id);
+
+        // Set the return node as the MAIN transport descriptor node
+        last_node = transport_node;
+    }
+    // Throw ElementNotFound exception
+    else
+    {
+        throw ElementNotFound("non-existent " + transport_id + " transport descriptor element\n");
+    }
+}
+
 std::string XMLManager::get_absolute_path(
         const std::string& xml_file,
         bool& file_exists)

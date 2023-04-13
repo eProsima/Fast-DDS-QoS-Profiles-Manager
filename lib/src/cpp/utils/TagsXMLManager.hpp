@@ -36,6 +36,7 @@ constexpr const char* ROOT = "dds";
 constexpr const char* DEFAULT_PROFILE = "is_default_profile";
 constexpr const char* PARTICIPANT = "participant";
 constexpr const char* PROFILE_NAME = "profile_name";
+constexpr const char* TRANSPORT_DESCRIPTOR_LIST = "transport_descriptors";
 
 /// PARTICIPANT
 constexpr const char* RTPS = "rtps";
@@ -46,6 +47,12 @@ constexpr const char* DEFAULT_EXTERNAL_UNICAST_LOCATOR_LIST = "default_external_
 constexpr const char* INITIAL_PEERS_LIST = "initialPeersList";
 constexpr const char* METATRAFFIC_EXTERNAL_UNICAST_LOCATOR_LIST = "metatraffic_external_unicast_locators";
 constexpr const char* NAME = "name";
+
+/// TRANSPORT DESCRIPTOR LIST
+constexpr const char* INTERFACE_WHITELIST = "interfaceWhiteList";
+constexpr const char* TRANSPORT_DESCRIPTOR = "transport_descriptor";
+constexpr const char* TRANSPORT_ID = "transport_id";
+constexpr const char* TRANSPORT_KIND = "type";
 
 // COMMONS
 /// LOCATOR
