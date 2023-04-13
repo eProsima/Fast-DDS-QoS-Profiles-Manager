@@ -50,6 +50,10 @@ void builtin_discovery_config_parser(
     }
     else if (element == DURATION_SUBELEMENT)
     {
+        print_usage = subelement.empty() && check_help(values);
+        print_usage = print_usage || !check_keyed(false, keyed, message.str());
+        print_usage = print_usage || !check_final_element(false, subelement, message.str());
+
         DurationTypeList duration_type;
         std::string subsubelement;
         print_usage = print_usage || !duration_type_selector(DDSEntity::PARTICIPANT, duration_type,
