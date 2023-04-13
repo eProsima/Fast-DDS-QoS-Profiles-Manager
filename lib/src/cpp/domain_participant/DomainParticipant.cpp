@@ -339,7 +339,17 @@ void set_use_builtin_transports(
         const std::string& profile_id,
         const std::string& use_builtin_transports)
 {
-    throw Unsupported("Unsupported");
+    // Create XML manager and initialize the document
+    utils::XMLManager manager(xml_file, true);
+
+    // Obtain base node position
+    initialize_namespace(manager, profile_id, true, utils::tag::USE_BUILTIN_TRANSPORTS);
+
+    // Set the name node value
+    manager.set_value_to_node(use_builtin_transports);
+
+    // Validate new XML element and save it
+    manager.validate_and_save_document();
 }
 
 void set_prefix(
@@ -356,7 +366,20 @@ void set_user_transports(
         const std::string& transport_id,
         const std::string& index)
 {
-    throw Unsupported("Unsupported");
+    // Create XML manager and initialize the document
+    utils::XMLManager manager(xml_file, true);
+
+    // Obtain base node position
+    initialize_namespace(manager, profile_id, true, utils::tag::USER_TRANSPORTS);
+
+    // Obtain / create the transport located at the index position in the collection
+    manager.get_node(index, utils::tag::TRANSPORT_ID, true);
+
+    // set node value
+    manager.set_value_to_node(transport_id);
+
+    // Validate new XML element and save it
+    manager.validate_and_save_document();
 }
 
 void set_user_data(

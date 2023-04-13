@@ -46,6 +46,16 @@ constexpr const char* DEFAULT_EXTERNAL_UNICAST_LOCATOR_LIST = "default_external_
 constexpr const char* INITIAL_PEERS_LIST = "initialPeersList";
 constexpr const char* METATRAFFIC_EXTERNAL_UNICAST_LOCATOR_LIST = "metatraffic_external_unicast_locators";
 constexpr const char* NAME = "name";
+constexpr const char* TRANSPORT_ID = "transport_id";
+constexpr const char* USE_BUILTIN_TRANSPORTS = "useBuiltinTransports";
+constexpr const char* USER_TRANSPORTS = "userTransports";
+
+//// BUILTIN RTPS PARTICIPANT
+constexpr const char* DISCOVERY_CONFIG = "discovery_config";
+
+///// DISCOVERY CONFIG BUILTIN
+constexpr const char* LEASE_ANNOUNCEMENT = "leaseAnnouncement";
+constexpr const char* LEASE_DURATION = "leaseDuration";
 
 // COMMONS
 /// LOCATOR
@@ -55,6 +65,10 @@ constexpr const char* LOCATOR = "locator";
 constexpr const char* PORT = "port";
 constexpr const char* UDP_V4_LOCATOR = "udpv4";
 constexpr const char* UDP_V6_LOCATOR = "udpv6";
+
+/// DURATION TYPE
+constexpr const char* NANOSEC = "nanosec";
+constexpr const char* SEC = "sec";
 
 } /* tag */
 } /* utils */
