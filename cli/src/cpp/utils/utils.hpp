@@ -371,6 +371,24 @@ bool extract_element_subelement_key(
         std::string& key);
 
 /**
+ * @brief Auxiliary function to select the corresponding Duration Type element.
+ *
+ * @param[out] duration_type Specific duration type element.
+ * @param[in, out] element String with the dot-separated subelements.
+ *                         Next subelement to be parsed is returned.
+ * @param[out] subelement Next element to be parsed.
+ * @param[in] values Vector of strings with the values passed to CLI.
+ * @param[out] message Error message in case of validity check failure.
+ * @return true if valid duration type element. False otherwise.
+ */
+bool duration_type_selector(
+        DurationTypeList& duration_type,
+        std::string& element,
+        std::string& subelement,
+        const std::vector<std::string>& values,
+        std::ostringstream& message);
+
+/**
  * @brief Auxiliary method to output error when query command is not allowed.
  *
  * @param[in] element Element being checked in order to be shown in the log.

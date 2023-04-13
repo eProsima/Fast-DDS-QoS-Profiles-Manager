@@ -95,6 +95,16 @@ bool check_profile(
     return true;
 }
 
+bool duration_type_selector(
+        DurationTypeList& duration_type,
+        std::string& element,
+        std::string& subelement,
+        const std::vector<std::string>& values,
+        std::ostringstream& message)
+{
+    return false;
+}
+
 bool extract_element_subelement_key(
         std::string& element,
         std::string& subelement,
