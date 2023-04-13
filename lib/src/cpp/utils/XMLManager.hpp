@@ -188,6 +188,18 @@ public:
             const bool is_external,
             const bool create_if_not_existent);
 
+    /**
+     * @brief Get the transport node object associated to the given identifier. New node is created if required.
+     *
+     * @param[in] transport_id string with the node identifier
+     * @param[in] create_if_not_existent flag to create node if it is not found
+     *
+     * @throw ElementNotFound exception if expected node was not found and node creation was not required
+     */
+    void get_transport_node(
+            const std::string& transport_id,
+            const bool create_if_not_existent);
+
 private:
 
     /**

@@ -36,6 +36,7 @@ constexpr const char* ROOT = "dds";
 constexpr const char* DEFAULT_PROFILE = "is_default_profile";
 constexpr const char* PARTICIPANT = "participant";
 constexpr const char* PROFILE_NAME = "profile_name";
+constexpr const char* TRANSPORT_DESCRIPTOR_LIST = "transport_descriptors";
 
 /// PARTICIPANT
 constexpr const char* RTPS = "rtps";
@@ -56,6 +57,12 @@ constexpr const char* DISCOVERY_CONFIG = "discovery_config";
 ///// DISCOVERY CONFIG BUILTIN
 constexpr const char* LEASE_ANNOUNCEMENT = "leaseAnnouncement";
 constexpr const char* LEASE_DURATION = "leaseDuration";
+
+/// TRANSPORT DESCRIPTOR LIST
+constexpr const char* INTERFACE_WHITELIST = "interfaceWhiteList";
+constexpr const char* TRANSPORT_DESCRIPTOR = "transport_descriptor";
+constexpr const char* TRANSPORT_ID = "transport_id";
+constexpr const char* TRANSPORT_KIND = "type";
 
 // COMMONS
 /// LOCATOR
