@@ -108,7 +108,7 @@ bool duration_type_selector(
     std::string dummy_key;
     bool keyed = extract_element_subelement_key(element, subelement, dummy_key);
 
-    // TODO: message error
+    message << ": '" << element << "' duration type";
 
     print_usage = check_help(values);
 
