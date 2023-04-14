@@ -50,22 +50,22 @@ void endpoint_subelement_parser(
         if (element == ALLOCATIONS_SUBELEMENT)
         {
             std::cout << ((DDSEntity::DATAREADER == endpoint) ? "DataReader " : "DataWriter ")
-                    << "allocations configuration not yet supported" << std::endl;
+                      << "allocations configuration not yet supported" << std::endl;
         }
         else if (element == BINARY_PROPERTY_SUBELEMENT)
         {
             std::cout << ((DDSEntity::DATAREADER == endpoint) ? "DataReader " : "DataWriter ")
-                    << "binary properties configuration not yet supported" << std::endl;
+                      << "binary properties configuration not yet supported" << std::endl;
         }
         else if (element == DEFAULT_PROFILE_SUBELEMENT)
         {
             std::cout << ((DDSEntity::DATAREADER == endpoint) ? "DataReader " : "DataWriter ")
-                    << "default attribute configuration not yet supported" << std::endl;
+                      << "default attribute configuration not yet supported" << std::endl;
         }
         else if (element == ENTITY_ID_SUBELEMENT)
         {
             std::cout << ((DDSEntity::DATAREADER == endpoint) ? "DataReader " : "DataWriter ")
-                    << "entity ID configuration not yet supported" << std::endl;
+                      << "entity ID configuration not yet supported" << std::endl;
         }
         else if (element == EXPECT_INLINE_QOS_SUBELEMENT)
         {
@@ -82,42 +82,42 @@ void endpoint_subelement_parser(
         else if (element == EXTERNAL_LOCATORS_SUBELEMENT)
         {
             std::cout << ((DDSEntity::DATAREADER == endpoint) ? "DataReader " : "DataWriter ")
-                    << "external locators not yet supported" << std::endl;
+                      << "external locators not yet supported" << std::endl;
         }
         else if (element == HISTORY_MEMORY_POLICY_SUBELEMENT)
         {
             std::cout << ((DDSEntity::DATAREADER == endpoint) ? "DataReader " : "DataWriter ")
-                    << "history memory policy configuration not yet supported" << std::endl;
+                      << "history memory policy configuration not yet supported" << std::endl;
         }
         else if (element == IGNORE_NON_MATCHING_LOCATORS_SUBELEMENT)
         {
             std::cout << ((DDSEntity::DATAREADER == endpoint) ? "DataReader " : "DataWriter ")
-                    << "ignore non matching locators configuration flag not yet supported" << std::endl;
+                      << "ignore non matching locators configuration flag not yet supported" << std::endl;
         }
         else if (element == LOCATORS_SUBELEMENT)
         {
             std::cout << ((DDSEntity::DATAREADER == endpoint) ? "DataReader " : "DataWriter ")
-                    << "locators configuration not yet supported" << std::endl;
+                      << "locators configuration not yet supported" << std::endl;
         }
         else if (element == PROPERTY_SUBELEMENT)
         {
             std::cout << ((DDSEntity::DATAREADER == endpoint) ? "DataReader " : "DataWriter ")
-                    << "properties configuration not yet supported" << std::endl;
+                      << "properties configuration not yet supported" << std::endl;
         }
         else if (element == QOS_SUBELEMENT)
         {
             std::cout << ((DDSEntity::DATAREADER == endpoint) ? "DataReader " : "DataWriter ")
-                    << "QoS configuration not yet supported" << std::endl;
+                      << "QoS configuration not yet supported" << std::endl;
         }
         else if (element == TIMES_SUBELEMENT)
         {
             std::cout << ((DDSEntity::DATAREADER == endpoint) ? "DataReader " : "DataWriter ")
-                    << "time related parameters configuration not yet supported" << std::endl;
+                      << "time related parameters configuration not yet supported" << std::endl;
         }
         else if (element == USER_DEFINED_ID_SUBELEMENT)
         {
             std::cout << ((DDSEntity::DATAREADER == endpoint) ? "DataReader " : "DataWriter ")
-                    << "user defined ID configuration not yet supported" << std::endl;
+                      << "user defined ID configuration not yet supported" << std::endl;
         }
         else
         {

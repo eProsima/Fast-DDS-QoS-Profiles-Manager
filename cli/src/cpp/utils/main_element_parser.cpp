@@ -79,7 +79,8 @@ void main_element_parser(
         if (!print_usage)
         {
             endpoint_subelement_parser(((element == DATAREADER_ELEMENT) ?
-                DDSEntity::DATAREADER : DDSEntity::DATAWRITER), command, filename, profile_name, subelement, values);
+                    DDSEntity::DATAREADER : DDSEntity::DATAWRITER), command, filename, profile_name, subelement,
+                    values);
         }
         else
         {
