@@ -33,6 +33,8 @@ constexpr const char* PROFILES = "profiles";
 constexpr const char* ROOT = "dds";
 
 // PROFILE TAGS
+constexpr const char* DATA_READER = "data_reader";
+constexpr const char* DATA_WRITER = "data_writer";
 constexpr const char* DEFAULT_PROFILE = "is_default_profile";
 constexpr const char* PARTICIPANT = "participant";
 constexpr const char* PROFILE_NAME = "profile_name";
@@ -47,7 +49,6 @@ constexpr const char* DEFAULT_EXTERNAL_UNICAST_LOCATOR_LIST = "default_external_
 constexpr const char* INITIAL_PEERS_LIST = "initialPeersList";
 constexpr const char* METATRAFFIC_EXTERNAL_UNICAST_LOCATOR_LIST = "metatraffic_external_unicast_locators";
 constexpr const char* NAME = "name";
-constexpr const char* TRANSPORT_ID = "transport_id";
 constexpr const char* USE_BUILTIN_TRANSPORTS = "useBuiltinTransports";
 constexpr const char* USER_TRANSPORTS = "userTransports";
 
@@ -76,6 +77,12 @@ constexpr const char* UDP_V6_LOCATOR = "udpv6";
 /// DURATION TYPE
 constexpr const char* NANOSEC = "nanosec";
 constexpr const char* SEC = "sec";
+
+/// QOS
+constexpr const char* DURABILITY = "durability";
+constexpr const char* KIND = "kind";
+constexpr const char* QOS = "qos";
+constexpr const char* RELIABILITY = "reliability";
 
 } /* tag */
 } /* utils */

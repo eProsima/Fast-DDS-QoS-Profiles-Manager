@@ -77,6 +77,10 @@ set(${PROJECT_NAME}_source_files
 
     src/cpp/common/Duration.cpp
     src/cpp/common/LocatorList.cpp
+    src/cpp/common/qos/Durability.cpp
+    src/cpp/common/qos/Reliability.cpp
+    src/cpp/data_reader/Qos.cpp
+    src/cpp/data_writer/Qos.cpp
     src/cpp/domain_participant/Allocation.cpp
     src/cpp/domain_participant/builtin/Builtin.cpp
     src/cpp/domain_participant/builtin/discovery_config/DiscoveryConfig.cpp
