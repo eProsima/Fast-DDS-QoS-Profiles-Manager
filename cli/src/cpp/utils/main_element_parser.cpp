@@ -78,7 +78,7 @@ void main_element_parser(
 
         if (!print_usage)
         {
-            datareader_subelement_parser(command, filename, profile_name, subelement, values);
+            endpoint_subelement_parser(DDSEntity::DATAREADER, command, filename, profile_name, subelement, values);
         }
         else
         {

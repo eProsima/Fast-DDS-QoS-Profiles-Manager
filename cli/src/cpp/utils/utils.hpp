@@ -196,13 +196,15 @@ void builtin_parser(
 /**
  * @brief Parser for the DataReader main subelements.
  *
+ * @param[in] endpoint Endpoint kind: DataReader | DataWriter.
  * @param[in] command Command kind.
  * @param[in] filename File to be modified.
  * @param[in] profile_name DataReader profile name.
  * @param[in] element String with the dot-separated subelements.
  * @param[in] values Vector of strings with the values passed to CLI.
  */
-void datareader_subelement_parser(
+void endpoint_subelement_parser(
+        DDSEntity endpoint,
         CommonCommands command,
         const std::string& filename,
         const std::string& profile_name,

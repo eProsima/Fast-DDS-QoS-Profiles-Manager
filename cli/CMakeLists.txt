@@ -43,8 +43,8 @@ set(${PROJECT_NAME}_source_files
 
     src/cpp/fastdds_qos_profiles_manager_cli.cpp
     src/cpp/utils/builtin_parser.cpp
-    src/cpp/utils/datareader_subelement_parser.cpp
     src/cpp/utils/duration_type_parser.cpp
+    src/cpp/utils/endpoint_subelement_parser.cpp
     src/cpp/utils/external_locators_parser.cpp
     src/cpp/utils/locators_parser.cpp
     src/cpp/utils/main_element_parser.cpp
