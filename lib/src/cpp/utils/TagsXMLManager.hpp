@@ -40,7 +40,6 @@ constexpr const char* PARTICIPANT = "participant";
 constexpr const char* PROFILE_NAME = "profile_name";
 constexpr const char* TRANSPORT_DESCRIPTOR_LIST = "transport_descriptors";
 
-
 /// PARTICIPANT
 constexpr const char* RTPS = "rtps";
 
@@ -84,7 +83,6 @@ constexpr const char* DURABILITY = "durability";
 constexpr const char* KIND = "kind";
 constexpr const char* QOS = "qos";
 constexpr const char* RELIABILITY = "reliability";
-
 
 } /* tag */
 } /* utils */
