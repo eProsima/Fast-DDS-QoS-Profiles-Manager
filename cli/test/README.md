@@ -86,34 +86,50 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease`|`ERROR: set command for Participant builtin discovery config <duration>: 'lease' duration type expects at least 1 arguments and received 0`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease[]`|`ERROR: Participant builtin discovery config <duration>: 'lease' duration type must not be keyed []`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease arg1 arg2 arg3`|`ERROR: set command for Participant builtin discovery config <duration>: 'lease' duration type expects at most 2 arguments and received 3`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease arg1`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
-|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease arg1 arg2`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease infinite`|N/A|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease 1`|N/A|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease other`|`ERROR: value 'other' does not match any member types of the union`|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease arg1 arg2 help`|N/A|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease 1 500`|**PENDING** (currently `invalid document structure`) [^3]|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease infinite 500`|**PENDING** (currently `invalid document structure`) [^3]|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease other 500`|**PENDING** (currently `invalid document structure`) [^3]|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease.sec`|`ERROR: set command for Participant builtin discovery config <duration>: 'lease' duration type <sec> attribute expects 1 arguments and received 0`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease.sec[]`|`ERROR: Participant builtin discovery config <duration>: 'lease' duration type <sec> attribute must not be keyed []`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease.sec.other`|`ERROR: Participant builtin discovery config <duration>: 'lease' duration type <sec> attribute must be FINAL element`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease.sec arg`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease.sec 10`|N/A|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease.sec infinite`|N/A|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease.sec other`|`ERROR: value 'other' does not match any member types of the union`|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease.sec -h`|N/A|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease.nanosec`|`ERROR: set command for Participant builtin discovery config <duration>: 'lease' duration type <nanosec> attribute expects 1 arguments and received 0`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease.nanosec[]`|`ERROR: Participant builtin discovery config <duration>: 'lease' duration type <nanosec> attribute must not be keyed []`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease.nanosec.other`|`ERROR: Participant builtin discovery config <duration>: 'lease' duration type <nanosec> attribute must be FINAL element`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease.nanosec arg`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease.nanosec 100`|N/A|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease.nanosec infinite`|N/A|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease.nanosec other`|`ERROR: value 'other' does not match any member types of the union`|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease.nanosec -h`|N/A|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements`|`ERROR: set command for Participant builtin discovery config <duration>: 'announcements' duration type expects at least 1 arguments and received 0`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements[]`|`ERROR: Participant builtin discovery config <duration>: 'announcements' duration type must not be keyed []`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements arg1 arg2 arg3`|`ERROR: set command for Participant builtin discovery config <duration>: 'announcements' duration type expects at most 2 arguments and received 3`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements arg1`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
-|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements arg1 arg2`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements infinite`|N/A|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements 1`|N/A|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements other`|`ERROR: value 'other' does not match any member types of the union`|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements arg1 arg2 help`|N/A|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements 1 500`|**PENDING** (currently `invalid document structure`) [^3]|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements infinite 500`|**PENDING** (currently `invalid document structure`) [^3]|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements other 500`|**PENDING** (currently `invalid document structure`) [^3]|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements.sec`|`ERROR: set command for Participant builtin discovery config <duration>: 'announcements' duration type <sec> attribute expects 1 arguments and received 0`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements.sec[]`|`ERROR: Participant builtin discovery config <duration>: 'announcements' duration type <sec> attribute must not be keyed []`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements.sec.other`|`ERROR: Participant builtin discovery config <duration>: 'announcements' duration type <sec> attribute must be FINAL element`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements.sec arg`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements.sec 10`|N/A|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements.sec infinite`|N/A|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements.sec other`|`ERROR: value 'other' does not match any member types of the union`|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements.sec -h`|N/A|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements.nanosec`|`ERROR: set command for Participant builtin discovery config <duration>: 'announcements' duration type <nanosec> attribute expects 1 arguments and received 0`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements.nanosec[]`|`ERROR: Participant builtin discovery config <duration>: 'announcements' duration type <nanosec> attribute must not be keyed []`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements.nanosec.other`|`ERROR: Participant builtin discovery config <duration>: 'announcements' duration type <nanosec> attribute must be FINAL element`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements.nanosec arg`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements.nanosec 100`|N/A|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements.nanosec infinite`|N/A|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements.nanosec other`|`ERROR: value 'other' does not match any member types of the union`|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements.nanosec -h`|N/A|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.other`|`ERROR: Participant builtin discovery config <duration>: 'other' duration type not recognized`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.other --help`|N/A|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
@@ -423,7 +439,9 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].use_builtin_transports help`|N/A|`PARTICIPANT_USE_BUILTIN_TRANSPORTS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].use_builtin_transports arg1 arg2 -h`|N/A|`PARTICIPANT_USE_BUILTIN_TRANSPORTS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].use_builtin_transports arg1 arg2`|`ERROR: set command for Participant <use_builtin_transports> expects 1 arguments and received 2`|`PARTICIPANT_USE_BUILTIN_TRANSPORTS_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].use_builtin_transports arg1`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
+|`fastddsqosprof file.xml set participant[profile].use_builtin_transports true`|N/A|N/A|
+|`fastddsqosprof file.xml set participant[profile].use_builtin_transports false`|N/A|N/A|
+|`fastddsqosprof file.xml set participant[profile].use_builtin_transports other`|`ERROR: value 'other' is invalid boolean`|N/A|
 |`fastddsqosprof file.xml set participant[profile].user_transports[]`|`ERROR: set command for Participant <user_transports> expects 1 arguments and received 0`|`PARTICIPANT_USER_TRANSPORTS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].user_transports[].subelement`|`ERROR: Participant <user_transports> must be FINAL element`|`PARTICIPANT_USER_TRANSPORTS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].user_transports[] -h`|N/A|`PARTICIPANT_USER_TRANSPORTS_USAGE`|
@@ -431,11 +449,13 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].user_transports[] help`|N/A|`PARTICIPANT_USER_TRANSPORTS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].user_transports[] arg1 arg2 -h`|N/A|`PARTICIPANT_USER_TRANSPORTS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].user_transports[] arg1 arg2`|`ERROR: set command for Participant <user_transports> expects 1 arguments and received 2`|`PARTICIPANT_USER_TRANSPORTS_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].user_transports[] argument`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
-|`fastddsqosprof file.xml set participant[profile].user_transports[11811] argument`|**UNSUPPORTED** (currently `Fast DDS QoS Profiles Manager exception caught: Unsupported`)|N/A|
+|`fastddsqosprof file.xml set participant[profile].user_transports[] argument`|N/A|N/A|
+|`fastddsqosprof file.xml set participant[profile].user_transports[0] argument`|N/A|N/A|
+|`fastddsqosprof file.xml set participant[profile].user_transports[11811] argument`|`Fast DDS QoS Profiles Manager exception caught: userTransports does not have an element in position 11811`|N/A|
 
 [^1]: **PENDING**: Print and clear default profile command will not require a profile name.
 [^2]: **PENDING**: Print, clear and query commands should not allow an empty index with a subelement.
+[^3]: **PENDING**: Fix a Xerces bug in which expected written file has not been written yet (simultaneous set instructions case)
 
 ## Caveats
 
