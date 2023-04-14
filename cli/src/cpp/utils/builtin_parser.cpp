@@ -17,6 +17,7 @@
 #include <string>
 #include <vector>
 
+#include <parser_constants.hpp>
 #include <usages.hpp>
 #include <utils/utils.hpp>
 
