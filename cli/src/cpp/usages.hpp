@@ -32,6 +32,40 @@ static const char COMPARE_USAGE[] =
       fastddsqosprof <file_1> compare <file_2>
 )";
 
+static const char DATAREADER_USAGE[] =
+        R"(DataReader usage:
+
+    Usage:
+      fastddsqosprof <file> <command> datareader[<profile_name>].<subelement> [<values>...]
+      fastddsqosprof <file> <command> datareader[<profile_name>].<subelement> (help | -h | --help)
+      fastddsqosprof <file> <command> datareader[<profile_name>] (help | -h | --help)
+
+    Options:
+      help -h --help                    CLI DataReader options
+
+    The allowed <command> options are:
+      clear                             Erase DataReader configuration parameter from XML file.
+      print                             Print DataReader XML configuration parameter.
+      set                               Write participant configuration parameter to XML file.
+
+    The <profile_name> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
+
+    The allowed <subelement> types are:
+      allocations                       DataReader allocations configuration.
+      binary_property                   DataReader binary properties according to Property QoS Policy.
+      default_profile                   Default profile attribute.
+      entity_id                         DataReader ID configuration.
+      expect_inline_qos                 DataReader flag enabled if QoS are expected inline.
+      external_locators                 DataReader external locators configuration.
+      history_memory_policy             DataReader history memory policy configuration.
+      ignore_non_matching_locators      DataReader ignore non matching locators flag.
+      locators                          DataReader locators configuration.
+      property                          DataReader properties according to Property QoS Policy.
+      qos                               DataReader QoS configuration.
+      times                             DataReader time related parameters configuration.
+      user_defined_id                   DataReader user ID for Static EDP discovery mechanism.
+)";
+
 static const char HELP_USAGE[] =
         R"(Fast DDS QoS Profiles Manager CLI help command usage
 
