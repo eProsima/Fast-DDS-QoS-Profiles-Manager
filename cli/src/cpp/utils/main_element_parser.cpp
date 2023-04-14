@@ -71,6 +71,8 @@ void main_element_parser(
     if (element == DATAREADER_ELEMENT)
     {
         print_usage = subelement.empty() && check_help(values);
+        // TODO: this would need to be refactored and check in the lower level because if the subelement is
+        // default_profile, then the profile name is only mandatory in the SET command.
         print_usage = print_usage || !check_profile(profile_name, element);
         print_usage = print_usage || !check_final_element(false, subelement, element);
 

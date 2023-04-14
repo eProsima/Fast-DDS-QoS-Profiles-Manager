@@ -27,7 +27,7 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set -h`|N/A|`SET_SUBPARSER_USAGE`|
 |`fastddsqosprof file.xml set --help`|N/A|`SET_SUBPARSER_USAGE`|
 |`fastddsqosprof file.xml set help`|N/A|`SET_SUBPARSER_USAGE`|
-|`fastddsqosprof file.xml set datareader`|**PENDING** (currently `DataReader configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader`|`ERROR: datareader requires a profile name` [^1]|`DATAREADER_USAGE`|
 |`fastddsqosprof file.xml set datawriter`|**PENDING** (currently `DataWriter configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set intraprocess`|**PENDING** (currently `Intra-process configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set log`|**PENDING** (currently `Log module configuration not yet supported`)|N/A|
@@ -36,12 +36,20 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set transport_descriptor`|**PENDING** (currently `Transport descriptor configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set types`|**PENDING** (currently `Dynamic types configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set other`|`ERROR: other element not recognized`|`SET_SUBPARSER_USAGE`|
+|`fastddsqosprof file.xml set datareader -h`|N/A|`DATAREADER_USAGE`|
+|`fastddsqosprof file.xml set datareader --help`|N/A|`DATAREADER_USAGE`|
+|`fastddsqosprof file.xml set datareader help`|N/A|`DATAREADER_USAGE`|
+|`fastddsqosprof file.xml set datareader argument1 argument2 help`|N/A|`DATAREADER_USAGE`|
+|`fastddsqosprof file.xml set datareader.default_profile`|`ERROR: datareader requires a profile name` [^1]|`DATAREADER_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile]`|`ERROR: datareader must not be FINAL element` [^1]|`DATAREADER_USAGE`|
+|`fastddsqosprof file.xml set datareader["a profile"]`|`ERROR: datareader must not be FINAL element` [^1]|`DATAREADER_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].allocations`|N/A|N/A|
 |`fastddsqosprof file.xml set participant -h`|N/A|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant --help`|N/A|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant help`|N/A|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant argument1 argument2 help`|N/A|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant.name`|`ERROR: participant requires a profile name`|`PARTICIPANT_USAGE`|
-|`fastddsqosprof file.xml set participant[]`|`ERROR: participant requires a profile name`|`PARTICIPANT_USAGE`|
+|`fastddsqosprof file.xml set participant[]`|`ERROR: participant requires a profile name` [^1]|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant[profile]`|`ERROR: participant must not be FINAL element`|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant["a profile"]`|`ERROR: participant must not be FINAL element`|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].allocations`|**PENDING** (currently `Participant allocations configuration not yet supported`)|N/A|
