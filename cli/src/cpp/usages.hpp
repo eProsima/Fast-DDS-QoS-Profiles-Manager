@@ -46,14 +46,14 @@ static const char DATAREADER_USAGE[] =
     The allowed <command> options are:
       clear                             Erase DataReader configuration parameter from XML file.
       print                             Print DataReader XML configuration parameter.
-      set                               Write participant configuration parameter to XML file.
+      set                               Write DataReader configuration parameter to XML file.
 
     The <profile_name> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
 
     The allowed <subelement> types are:
       allocations                       DataReader allocations configuration.
       binary_property                   DataReader binary properties according to Property QoS Policy.
-      default_profile                   Default profile attribute.
+      default_profile                   DataReader default profile attribute.
       entity_id                         DataReader ID configuration.
       expect_inline_qos                 DataReader flag enabled if QoS are expected inline.
       external_locators                 DataReader external locators configuration.
@@ -64,6 +64,39 @@ static const char DATAREADER_USAGE[] =
       qos                               DataReader QoS configuration.
       times                             DataReader time related parameters configuration.
       user_defined_id                   DataReader user ID for Static EDP discovery mechanism.
+)";
+
+static const char DATAWRITER_USAGE[] =
+        R"(DataWriter usage:
+
+    Usage:
+      fastddsqosprof <file> <command> datawriter[<profile_name>].<subelement> [<values>...]
+      fastddsqosprof <file> <command> datawriter[<profile_name>].<subelement> (help | -h | --help)
+      fastddsqosprof <file> <command> datawriter[<profile_name>] (help | -h | --help)
+
+    Options:
+      help -h --help                    CLI DataWriter options
+
+    The allowed <command> options are:
+      clear                             Erase DataWriter configuration parameter from XML file.
+      print                             Print DataWriter XML configuration parameter.
+      set                               Write DataWriter configuration parameter to XML file.
+
+    The <profile_name> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
+
+    The allowed <subelement> types are:
+      allocations                       DataWriter allocations configuration.
+      binary_property                   DataWriter binary properties according to Property QoS Policy.
+      default_profile                   DataWriter default profile attribute.
+      entity_id                         DataWriter ID configuration.
+      external_locators                 DataWriter external locators configuration.
+      history_memory_policy             DataWriter history memory policy configuration.
+      ignore_non_matching_locators      DataWriter ignore non matching locators flag.
+      locators                          DataWriter locators configuration.
+      property                          DataWriter properties according to Property QoS Policy.
+      qos                               DataWriter QoS configuration.
+      times                             DataWriter time related parameters configuration.
+      user_defined_id                   DataWriter user ID for Static EDP discovery mechanism.
 )";
 
 static const char HELP_USAGE[] =
@@ -351,7 +384,7 @@ static const char PARTICIPANT_USAGE[] =
       allocations                   Participant allocations configuration.
       binary_property               Participant binary properties according to Property QoS Policy.
       builtin                       Participant builtin configuration.
-      default_profile               Default profile attribute.
+      default_profile               Participant default profile attribute.
       domain_id                     Participant DDS Domain ID.
       external_locators             Participant external locators.
       guid_prefix                   Participant GUID prefix (unique identifier).
