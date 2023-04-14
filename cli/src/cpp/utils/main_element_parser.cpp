@@ -70,7 +70,26 @@ void main_element_parser(
     bool print_usage = false;
     if (element == DATAREADER_ELEMENT)
     {
-        std::cout << "DataReader configuration not yet supported" << std::endl;
+        print_usage = subelement.empty() && check_help(values);
+        print_usage = print_usage || !check_profile(profile_name, element);
+        print_usage = print_usage || !check_final_element(false, subelement, element);
+
+        if (!print_usage)
+        {
+            datareader_subelement_parser(command, filename, profile_name, subelement, values);
+        }
+        else
+        {
+            if (CommonCommands::QUERY != command)
+            {
+                std::cout << DATAREADER_USAGE << std::endl;
+            }
+            else
+            {
+                // TODO
+                // std::cout << DATAREADER_QUERY_USAGE << std::endl;
+            }
+        }
     }
     else if (element == DATAWRITER_ELEMENT)
     {
