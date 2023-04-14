@@ -43,7 +43,21 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set datareader.default_profile`|`ERROR: datareader requires a profile name` [^1]|`DATAREADER_USAGE`|
 |`fastddsqosprof file.xml set datareader[profile]`|`ERROR: datareader must not be FINAL element` [^1]|`DATAREADER_USAGE`|
 |`fastddsqosprof file.xml set datareader["a profile"]`|`ERROR: datareader must not be FINAL element` [^1]|`DATAREADER_USAGE`|
-|`fastddsqosprof file.xml set datareader[profile].allocations`|N/A|N/A|
+|`fastddsqosprof file.xml set datareader[profile].allocations`|**PENDING** (currently `DataReader allocations configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].binary_property`|**PENDING** (currently `DataReader binary properties configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].default_profile`|**PENDING** (currently `DataReader default attribute configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].entity_id`|**PENDING** (currently `DataReader entity ID configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].expect_inline_qos`|**PENDING** (currently `DataReader expect inline qos flag configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].external_locators`|**PENDING** (currently `DataReader default attribute configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].history_memory_policy`|**PENDING** (currently `DataReader history memory policy configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].ignore_non_matching_locators`|**PENDING** (currently `DataReader ignore non matching locators configuration flag not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].locators`|**PENDING** (currently `DataReader locators configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].property`|**PENDING** (currently `DataReader properties configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos`|**PENDING** (currently `DataReader QoS configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].times`|**PENDING** (currently `DataReader time related parameters configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].user_defined_id`|**PENDING** (currently `DataReader user defined ID configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].other`|`ERROR: other element not recognized`|`DATAREADER_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].other --help`|N/A|`DATAREADER_USAGE`|
 |`fastddsqosprof file.xml set participant -h`|N/A|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant --help`|N/A|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant help`|N/A|`PARTICIPANT_USAGE`|
