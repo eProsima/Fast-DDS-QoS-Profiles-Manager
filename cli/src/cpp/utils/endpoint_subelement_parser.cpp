@@ -130,12 +130,13 @@ void endpoint_subelement_parser(
     {
         if (CommonCommands::QUERY != command)
         {
-            std::cout << DATAREADER_USAGE << std::endl;
+            std::cout << ((endpoint == DDSEntity::DATAREADER) ? DATAREADER_USAGE : DATAWRITER_USAGE) << std::endl;
         }
         else
         {
             // TODO
-            // std::cout << DATAREADER_QUERY_USAGE << std::endl;
+            // std::cout << ((endpoint == DDSEntity::DATAREADER) ? DATAREADER_QUERY_USAGE :
+            //        DATAWRITER_QUERY_USAGE) << std::endl;
         }
     }
 }
