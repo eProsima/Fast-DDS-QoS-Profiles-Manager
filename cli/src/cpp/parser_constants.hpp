@@ -53,12 +53,20 @@ constexpr const char* ALLOCATIONS_SUBELEMENT = "allocations";
 constexpr const char* BINARY_PROPERTY_SUBELEMENT = "binary_property";
 constexpr const char* DEFAULT_PROFILE_SUBELEMENT = "default_profile";
 constexpr const char* DURATION_SUBELEMENT = "duration";
+constexpr const char* ENTITY_ID_SUBELEMENT = "entity_id";
 constexpr const char* EXTERNAL_LOCATORS_SUBELEMENT = "external_locators";
+constexpr const char* HISTORY_MEMORY_POLICY_SUBELEMENT = "history_memory_policy";
 constexpr const char* IGNORE_NON_MATCHING_LOCATORS_SUBELEMENT = "ignore_non_matching_locators";
 constexpr const char* KIND_SUBELEMENT = "kind";
 constexpr const char* LOCATORS_SUBELEMENT = "locators";
 constexpr const char* PORT_SUBELEMENT = "port";
 constexpr const char* PROPERTY_SUBELEMENT = "property";
+constexpr const char* QOS_SUBELEMENT = "qos";
+constexpr const char* TIMES_SUBELEMENT = "times";
+constexpr const char* USER_DEFINED_ID_SUBELEMENT = "user_defined_id";
+
+// CLI datareader main subelements
+constexpr const char* EXPECT_INLINE_QOS_SUBELEMENT = "expect_inline_qos";
 
 // CLI participant main subelements
 constexpr const char* BUILTIN_SUBELEMENT = "builtin";
