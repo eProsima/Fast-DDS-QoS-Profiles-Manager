@@ -64,6 +64,7 @@ constexpr const char* PROPERTY_SUBELEMENT = "property";
 constexpr const char* QOS_SUBELEMENT = "qos";
 constexpr const char* TIMES_SUBELEMENT = "times";
 constexpr const char* USER_DEFINED_ID_SUBELEMENT = "user_defined_id";
+constexpr const char* USER_DATA_SUBELEMENT = "user_data";
 
 // CLI datareader main subelements
 constexpr const char* EXPECT_INLINE_QOS_SUBELEMENT = "expect_inline_qos";
@@ -77,7 +78,6 @@ constexpr const char* LISTEN_SOCKET_BUFFER_SIZE_SUBELEMENT = "listen_socket_buff
 constexpr const char* NAME_SUBELEMENT = "name";
 constexpr const char* SEND_SOCKET_BUFFER_SIZE_SUBELEMENT = "send_socket_buffer_size";
 constexpr const char* USE_BUILTIN_TRANSPORTS_SUBELEMENT = "use_builtin_transports";
-constexpr const char* USER_DATA_SUBELEMENT = "user_data";
 constexpr const char* USER_TRANSPORTS_SUBELEMENT = "user_transports";
 
 // CLI participant builtin subelements
@@ -97,6 +97,30 @@ constexpr const char* INITIAL_ANNOUNCEMENTS_SUBELEMENT = "initial_announcements"
 constexpr const char* REMOTE_SERVERS_SUBELEMENT = "remote_servers";
 constexpr const char* SIMPLE_EDP_SUBELEMENT = "simple_edp";
 constexpr const char* STATIC_EDP_XMLS_SUBELEMENT = "static_edp_xmls";
+
+// CLI transport descriptor main subelements
+constexpr const char* CALCULATE_CRC_SUBELEMENT = "calculate_crc";
+constexpr const char* CHECK_CRC_SUBELEMENT = "check_crc";
+constexpr const char* ENABLE_TCP_NODELAY_SUBELEMENT = "enable_tcp_nodelay";
+constexpr const char* HEALTHY_CHECK_TIMEOUT_SUBELEMENT = "healthy_check_timeout_ms";
+constexpr const char* INTERFACE_WHITELIST_SUBELEMENT = "interface_whitelist";
+constexpr const char* KEEP_ALIVE_FREQUENCY_SUBELEMENT = "keep_alive_frequency_ms";
+constexpr const char* KEEP_ALIVE_TIMEOUT_SUBELEMENT = "keep_alive_timeout_ms";
+constexpr const char* LISTENING_PORT_SUBELEMENT = "listening_port";
+constexpr const char* LOGICAL_PORT_INCREMENT_SUBELEMENT = "logical_port_increment";
+constexpr const char* LOGICAL_PORT_RANGE_SUBELEMENT = "logical_port_range";
+constexpr const char* MAX_INITIAL_PEERS_RANGE_SUBELEMENT = "max_initial_peers_range";
+constexpr const char* MAX_LOGICAL_PORT_SUBELEMENT = "max_logical_port";
+constexpr const char* MAX_MESSAGE_SIZE_SUBELEMENT = "max_message_size";
+constexpr const char* NON_BLOCKING_SEND_SUBELEMENT = "non_blocking_send";
+constexpr const char* OUTPUT_PORT_SUBELEMENT = "output_port";
+constexpr const char* PORT_QUEUE_CAPACITY_SUBELEMENT = "port_queue_capacity";
+constexpr const char* RECEIVE_BUFFER_SIZE_SUBELEMENT = "receive_buffer_size";
+constexpr const char* RTPS_DUMP_FILE_SUBELEMENT = "rtps_dump_file";
+constexpr const char* SEGMENT_SIZE_SUBELEMENT = "segment_size";
+constexpr const char* SEND_BUFFER_SIZE_SUBELEMENT = "send_buffer_size";
+constexpr const char* TLS_SUBELEMENT = "tls";
+constexpr const char* TTL_SUBELEMENT = "ttl";
 
 // CLI common duration type subelements
 constexpr const char* SECONDS_SUBELEMENT = "sec";
