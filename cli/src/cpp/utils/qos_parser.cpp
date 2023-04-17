@@ -19,6 +19,7 @@
 #include <fastdds_qos_profiles_manager/data_writer/Qos.hpp>
 #include <fastdds_qos_profiles_manager/exception/Exception.hpp>
 
+#include <argument_constants.hpp>
 #include <parser_constants.hpp>
 #include <usages.hpp>
 #include <utils/utils.hpp>
@@ -105,8 +106,30 @@ void qos_parser(
                                 print_usage = !check_command_arguments(command, 1, values.size(), message.str(), true);
                                 if (!print_usage)
                                 {
+                                    std::string durability_kind;
+                                    if (values[DEFAULT_POSITION] == CLI_PERSISTENT_ARGUMENT)
+                                    {
+                                        durability_kind = LIB_PERSISTENT_ARGUMENT;
+                                    }
+                                    else if (values[DEFAULT_POSITION] == CLI_TRANSIENT_ARGUMENT)
+                                    {
+                                        durability_kind = LIB_TRANSIENT_ARGUMENT;
+                                    }
+                                    else if (values[DEFAULT_POSITION] == CLI_TRANSIENT_LOCAL_ARGUMENT)
+                                    {
+                                        durability_kind = LIB_TRANSIENT_LOCAL_ARGUMENT;
+                                    }
+                                    else if (values[DEFAULT_POSITION] == CLI_VOLATILE_ARGUMENT)
+                                    {
+                                        durability_kind = LIB_VOLATILE_ARGUMENT;
+                                    }
+                                    else
+                                    {
+                                        durability_kind = values[DEFAULT_POSITION];
+                                    }
+
                                     qosprof::data_reader::qos::set_durability_kind(filename, profile_name,
-                                            values[DEFAULT_POSITION]);
+                                            durability_kind);
                                 }
                                 break;
                         }
