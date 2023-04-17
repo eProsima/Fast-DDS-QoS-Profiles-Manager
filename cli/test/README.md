@@ -658,7 +658,19 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set transport_descriptor[transport_id].check_crc`|**PENDING** (currently `Check CRC configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set transport_descriptor[transport_id].enable_tcp_nodelay`|**PENDING** (currently `Enable TCP nodelay configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set transport_descriptor[transport_id].healthy_check_timeout_ms`|**PENDING** (currently `Healthy check timeout configuration not yet supported`)|N/A|
-|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist`|**PENDING** (currently `Interface whitelist configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist`|`ERROR: Transport <interface_whitelist> must be keyed []`|`TRANSPORT_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist -h`|N/A|`TRANSPORT_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist other`|`ERROR: Transport <interface_whitelist> must be keyed []`|`TRANSPORT_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist[]`|`ERROR: set command for Transport <interface_whitelist> expects 1 arguments and received 0`|`TRANSPORT_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist[].subelement`|`ERROR: Transport <interface_whitelist> must be FINAL element`|`TRANSPORT_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist[] -h`|N/A|`TRANSPORT_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist[] --help`|N/A|`TRANSPORT_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist[] help`|N/A|`TRANSPORT_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist[] arg1 arg2`|`ERROR: set command for Transport <interface_whitelist> expects 1 arguments and received 2`|`TRANSPORT_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist[] arg1 arg2 -h`|N/A|`TRANSPORT_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist[] 192.168.0.1`|N/A|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist[0] 192.168.0.2`|N/A|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist[11811] 192.168.0.3`|`Fast DDS QoS Profiles Manager exception caught: interfaceWhiteList does not have an element in position 11811`|N/A|
 |`fastddsqosprof file.xml set transport_descriptor[transport_id].keep_alive_frequency_ms`|**PENDING** (currently `Keep alive frequency configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set transport_descriptor[transport_id].keep_alive_timeout_ms`|**PENDING** (currently `Keep alive timeout configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set transport_descriptor[transport_id].kind`|`ERROR: set command for Transport <kind> expects 1 arguments and received 0`|`TRANSPORT_USAGE`|

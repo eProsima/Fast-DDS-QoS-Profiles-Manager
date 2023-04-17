@@ -64,7 +64,66 @@ void transport_subelement_parser(
         }
         else if (element == INTERFACE_WHITELIST_SUBELEMENT)
         {
-            std::cout << "Interface whitelist configuration not yet supported" << std::endl;
+            // If there is no subelement and the last value is (help | -h | --help), print usage
+            print_usage = subelement.empty() && check_help(values);
+            // Keyed element
+            print_usage = print_usage || !check_keyed(true, keyed, message.str());
+            // Kind element does NOT require a subelement
+            print_usage = print_usage || !check_final_element(true, subelement, message.str());
+
+            if (!print_usage)
+            {
+                try
+                {
+                    // Obtain key from values
+                    std::string key;
+                    extract_element_subelement_key(element, subelement, key);
+
+                    switch (command)
+                    {
+                        case CommonCommands::CLEAR:
+                            print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
+                            if (!print_usage)
+                            {
+                                // TODO
+                            }
+                            break;
+                        case CommonCommands::PRINT:
+                            print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
+                            if (!print_usage)
+                            {
+                                // TODO
+                            }
+                            break;
+                        case CommonCommands::QUERY:
+                            // TODO
+                            break;
+                        case CommonCommands::SET:
+                            print_usage = !check_command_arguments(command, 1, values.size(), message.str(), true);
+                            if (!print_usage)
+                            {
+                                qosprof::transport_descriptor::set_interface_whitelist(filename, transport_identifier, values[0], key);
+                            }
+                            break;
+                    }
+                }
+                catch (const qosprof::Exception& e)
+                {
+                    std::cout << "Fast DDS QoS Profiles Manager exception caught: " << e.what() << std::endl;
+                }
+            }
+            else
+            {
+                if (CommonCommands::QUERY == command)
+                {
+                    // TODO
+                    // std::cout << TRANSPORT_QUERY_USAGE << std::endl;
+                }
+                else
+                {
+                    std::cout << TRANSPORT_USAGE << std::endl;
+                }
+            }
         }
         else if (element == KEEP_ALIVE_FREQUENCY_SUBELEMENT)
         {
