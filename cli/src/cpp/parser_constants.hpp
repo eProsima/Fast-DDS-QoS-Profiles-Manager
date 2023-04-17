@@ -117,10 +117,6 @@ constexpr const char* NACK_RESPONSE_DELAY_ELEMENT = "nack_response_delay";
 constexpr const char* NACK_SUPRESSION_ELEMENT = "nack_supression";
 constexpr const char* PERIOD_ELEMENT = "period";
 
-// CLI duration type argument
-constexpr const char* CLI_INFINITE_ARGUMENT = "infinite";
-constexpr const char* LIB_INFINITE_ARGUMENT = "DURATION_INFINITY";
-
 // CLI locators common elements
 constexpr const char* DEFAULT_UNICAST_ELEMENT = "default_unicast";
 constexpr const char* METATRAFFIC_UNICAST_ELEMENT = "metatraffic_unicast";
@@ -160,7 +156,7 @@ constexpr const char* TOPIC_DATA_ELEMENT = "topic_data";
 constexpr const char* DISABLE_HEARTBEAT_PIGGYBACK_ELEMENT = "disable_heartbeat_piggyback";
 constexpr const char* PUBLISH_MODE_ELEMENT = "publish_mode";
 
-} // eprosima
 } // qosprof_cli
+} // eprosima
 
 #endif // _FASTDDS_QOS_PROFILES_MANAGER_CLI_PARSER_CONSTANTS_HPP_
