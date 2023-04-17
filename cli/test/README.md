@@ -92,7 +92,7 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease arg1 arg2 help`|N/A|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease 1 500`|**PENDING** (currently `Fast DDS QoS Profiles Manager exception caught: invalid document structure`) [^3]|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease infinite 500`|`Fast DDS QoS Profiles Manager exception caught: value 'infinite' does not match any member types of the union`|N/A|
-|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease 1 other`|`Fast DDS QoS Profiles Manager exception caught: value 'other' does not match any member types of the union`|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease 1 other`|**PENDING** (currently `Fast DDS QoS Profiles Manager exception caught: invalid document structure`) [^3]|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease.sec`|`ERROR: set command for Participant builtin discovery config <duration>: 'lease' duration type <sec> attribute expects 1 arguments and received 0`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease.sec[]`|`ERROR: Participant builtin discovery config <duration>: 'lease' duration type <sec> attribute must not be keyed []`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease.sec.other`|`ERROR: Participant builtin discovery config <duration>: 'lease' duration type <sec> attribute must be FINAL element`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
@@ -116,7 +116,7 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements arg1 arg2 help`|N/A|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements 1 500`|**PENDING** (currently `Fast DDS QoS Profiles Manager exception caught: invalid document structure`) [^3]|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements infinite 500`|`Fast DDS QoS Profiles Manager exception caught: value 'infinite' does not match any member types of the union`|N/A|
-|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements 1 other`|`Fast DDS QoS Profiles Manager exception caught: value 'other' does not match any member types of the union`|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements 1 other`|**PENDING** (currently `Fast DDS QoS Profiles Manager exception caught: invalid document structure`) [^3]|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements.sec`|`ERROR: set command for Participant builtin discovery config <duration>: 'announcements' duration type <sec> attribute expects 1 arguments and received 0`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements.sec[]`|`ERROR: Participant builtin discovery config <duration>: 'announcements' duration type <sec> attribute must not be keyed []`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements.sec.other`|`ERROR: Participant builtin discovery config <duration>: 'announcements' duration type <sec> attribute must be FINAL element`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
@@ -449,13 +449,13 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].user_transports[] help`|N/A|`PARTICIPANT_USER_TRANSPORTS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].user_transports[] arg1 arg2 -h`|N/A|`PARTICIPANT_USER_TRANSPORTS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].user_transports[] arg1 arg2`|`ERROR: set command for Participant <user_transports> expects 1 arguments and received 2`|`PARTICIPANT_USER_TRANSPORTS_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].user_transports[] arg1`|N/A|N/A|
+|`fastddsqosprof file.xml set participant[profile].user_transports[] argument`|N/A|N/A|
 |`fastddsqosprof file.xml set participant[profile].user_transports[0] arg1`|N/A|N/A|
 |`fastddsqosprof file.xml set participant[profile].user_transports[11811] argument`|`Fast DDS QoS Profiles Manager exception caught: userTransports does not have an element in position 11811`|N/A|
 
 [^1]: **PENDING**: Print and clear default profile command will not require a profile name.
 [^2]: **PENDING**: Print, clear and query commands should not allow an empty index with a subelement.
-[^3]: **PENDING**: Access to file before previous changes have been written although Xerces has correctly return from `write` operation.
+[^3]: **PENDING**: Access to file before previous changes have been written although Xerces has correctly returned from `write` operation.
 
 ## Caveats
 
@@ -466,6 +466,5 @@ Currently, this test plan is not concerned about the validity of the arguments p
 ## Known issues
 
 * Simultaneous `set` operations would lead to an unexpected exception reporting the following message: `Fast DDS QoS Profiles Manager exception caught: invalid document structure`.
-  This happens due to accessing to file before previous changes have been written although Xerces has correctly return from `write` operation.
-  This issue has been marked as pending with operand [^3].
-  These are some of the `set` calls that trigger this issue: `fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease 1 500`, `fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements 1 500`, and some other non-supported yet calls that have been already designed, as `fastddsqosprof file.xml set participant[profile].locators.default_unicast[] udpv4 127.0.0.1 1234`.
+  This happens due to accessing the file before previous changes have been written although Xerces has correctly returned from `write` operation.
+  These are some of the `set` calls that trigger this issue: `fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease 1 500`, `fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements 1 500`, and some other non-supported yet calls that have already been designed, as `fastddsqosprof file.xml set participant[profile].locators.default_unicast[] udpv4 127.0.0.1 1234`.
