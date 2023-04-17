@@ -32,11 +32,45 @@ static const char COMPARE_USAGE[] =
       fastddsqosprof <file_1> compare <file_2>
 )";
 
+static const char DATAREADER_QOS_USAGE[] =
+        R"(DataReader QoS usage:
+
+    Usage:
+      fastddsqosprof <file> <command> datareader[<profile_name>].qos.<subelement> [<values>... (help | -h | --help)]
+      fastddsqosprof <file> <command> datareader[<profile_name>].qos.<subelement> (help | -h | --help)
+      fastddsqosprof <file> <command> datareader[<profile_name>].qos (help | -h | --help)
+
+    Options:
+      help -h --help                    CLI DataReader QoS options
+
+    The allowed <command> options are:
+      clear                             Erase DataReader QoS configuration from XML file.
+      print                             Print DataReader QoS configuration.
+      set                               Write DataReader QoS configuration to XML file.
+    
+    The <profile_name> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
+
+    The allowed <subelement> types are:
+      datasharing                       Data-Sharing QoS Policy configuration.
+      duration                          Duration-related QoS Policies configuration: Deadline, Latency budget and Lifespan.
+      disable_positive_acks             Disable positive ACKs QoS Policy configuration.
+      durability                        Durability QoS Policy configuration.
+      group_data                        Group Data QoS Policy configuration.
+      history                           History QoS Policy configuration.
+      liveliness                        Liveliness QoS Policy configuration.
+      ownership                         Ownership and Ownership Strength QoS Policy configuration.
+      partitions                        Partition QoS Policy configuration.
+      reliability                       Realibility QoS Policy configuration.
+      resource_limits                   Resource Limits QoS Policy configuration.
+      topic_data                        Topic Data QoS Policy configuration.
+      user_data                         User Data QoS Policy configuration.
+)";
+
 static const char DATAREADER_USAGE[] =
         R"(DataReader usage:
 
     Usage:
-      fastddsqosprof <file> <command> datareader[<profile_name>].<subelement> [<values>...]
+      fastddsqosprof <file> <command> datareader[<profile_name>].<subelement> [<values>... (help | -h | --help)]
       fastddsqosprof <file> <command> datareader[<profile_name>].<subelement> (help | -h | --help)
       fastddsqosprof <file> <command> datareader[<profile_name>] (help | -h | --help)
 
@@ -66,11 +100,47 @@ static const char DATAREADER_USAGE[] =
       user_defined_id                   DataReader user ID for Static EDP discovery mechanism.
 )";
 
+static const char DATAWRITER_QOS_USAGE[] =
+        R"(DataWriter QoS usage:
+
+    Usage:
+      fastddsqosprof <file> <command> datawriter[<profile_name>].qos.<subelement> [<values>... (help | -h | --help)]
+      fastddsqosprof <file> <command> datawriter[<profile_name>].qos.<subelement> (help | -h | --help)
+      fastddsqosprof <file> <command> datawriter[<profile_name>].qos (help | -h | --help)
+
+    Options:
+      help -h --help                    CLI DataWriter QoS options
+
+    The allowed <command> options are:
+      clear                             Erase DataWriter QoS configuration from XML file.
+      print                             Print DataWriter QoS configuration.
+      set                               Write DataWriter QoS configuration to XML file.
+    
+    The <profile_name> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
+
+    The allowed <subelement> types are:
+      datasharing                       Data-Sharing QoS Policy configuration.
+      duration                          Duration-related QoS Policies configuration: Deadline, Latency budget and Lifespan.
+      disable_heartbeat_piggyback       Disable Heartbeat Piggyback QoS Policy configuration.
+      disable_positive_acks             Disable positive ACKs QoS Policy configuration.
+      durability                        Durability QoS Policy configuration.
+      group_data                        Group Data QoS Policy configuration.
+      history                           History QoS Policy configuration.
+      liveliness                        Liveliness QoS Policy configuration.
+      ownership                         Ownership and Ownership Strength QoS Policy configuration.
+      partitions                        Partition QoS Policy configuration.
+      publish_mode                      Publish Mode QoS Policy configuration.
+      reliability                       Realibility QoS Policy configuration.
+      resource_limits                   Resource Limits QoS Policy configuration.
+      topic_data                        Topic Data QoS Policy configuration.
+      user_data                         User Data QoS Policy configuration.
+)";
+
 static const char DATAWRITER_USAGE[] =
         R"(DataWriter usage:
 
     Usage:
-      fastddsqosprof <file> <command> datawriter[<profile_name>].<subelement> [<values>...]
+      fastddsqosprof <file> <command> datawriter[<profile_name>].<subelement> [<values>... (help | -h | --help)]
       fastddsqosprof <file> <command> datawriter[<profile_name>].<subelement> (help | -h | --help)
       fastddsqosprof <file> <command> datawriter[<profile_name>] (help | -h | --help)
 
@@ -366,7 +436,7 @@ static const char PARTICIPANT_USAGE[] =
         R"(Participant usage:
 
     Usage:
-      fastddsqosprof <file> <command> participant[<profile_name>].<subelement> [<values>...]
+      fastddsqosprof <file> <command> participant[<profile_name>].<subelement> [<values>... (help | -h | --help)]
       fastddsqosprof <file> <command> participant[<profile_name>].<subelement> (help | -h | --help)
       fastddsqosprof <file> <command> participant[<profile_name>] (help | -h | --help)
 

@@ -49,6 +49,7 @@ set(${PROJECT_NAME}_source_files
     src/cpp/utils/locators_parser.cpp
     src/cpp/utils/main_element_parser.cpp
     src/cpp/utils/participant_subelement_parser.cpp
+    src/cpp/utils/qos_parser.cpp
     src/cpp/utils/utils.cpp
 )
 

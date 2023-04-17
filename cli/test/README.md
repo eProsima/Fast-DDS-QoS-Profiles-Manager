@@ -53,7 +53,27 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set datareader[profile].ignore_non_matching_locators`|**PENDING** (currently `DataReader ignore non matching locators configuration flag not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datareader[profile].locators`|**PENDING** (currently `DataReader locators configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datareader[profile].property`|**PENDING** (currently `DataReader properties configuration not yet supported`)|N/A|
-|`fastddsqosprof file.xml set datareader[profile].qos`|**PENDING** (currently `DataReader QoS configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos`|`ERROR: DataReader <qos> must not be FINAL element`|`DATAREADER_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos -h`|N/A|`DATAREADER_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos[]`|`ERROR: DataReader <qos> must not be keyed []`|`DATAREADER_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos[] -h`|N/A|`DATAREADER_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.datasharing`|**PENDING** (currently `DataSharing QoS configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.duration`|**PENDING** (currently `Duration-related QoS (Deadline, Latency budget and Lifespan) configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.disable_heartbeat_piggyback`|`ERROR: DataReader <disable_heartbeat_piggyback> QoS not recognized`|`DATAREADER_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.disable_positive_acks`|**PENDING** (currently `Disable positive ACKs QoS Policy configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.durability`|**PENDING** (currently `Durability QoS configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.group_data`|**PENDING** (currently `Group Data QoS Policy configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.history`|**PENDING** (currently `History QoS Policy configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.liveliness`|**PENDING** (currently `Liveliness QoS Policy configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.ownership`|**PENDING** (currently `Ownership and Ownership strength QoS Policies configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.partitions`|**PENDING** (currently `Partitions QoS Policy not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.publish_mode`|`ERROR: DataReader <publish_mode> QoS not recognized`|`DATAREADER_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability`|**PENDING** (currently `Reliability QoS configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.resource_limits`|**PENDING** (currently `Resource Limits QoS configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.topic_data`|**PENDING** (currently `Topic Data QoS configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.user_data`|**PENDING** (currently `User Data QoS configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.other`|`DataReader <other> QoS not recognized`|`DATAREADER_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.other -h`|N/A|`DATAREADER_QOS_USAGE`|
 |`fastddsqosprof file.xml set datareader[profile].times`|**PENDING** (currently `DataReader time related parameters configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datareader[profile].user_defined_id`|**PENDING** (currently `DataReader user defined ID configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datareader[profile].other`|`ERROR: other element not recognized`|`DATAREADER_USAGE`|
@@ -74,7 +94,27 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set datawriter[profile].ignore_non_matching_locators`|**PENDING** (currently `DataWriter ignore non matching locators configuration flag not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].locators`|**PENDING** (currently `DataWriter locators configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].property`|**PENDING** (currently `DataWriter properties configuration not yet supported`)|N/A|
-|`fastddsqosprof file.xml set datawriter[profile].qos`|**PENDING** (currently `DataWriter QoS configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos`|`ERROR: DataWriter <qos> must not be FINAL element`|`DATAWRITER_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos -h`|N/A|`DATAWRITER_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos[]`|`ERROR: DataWriter <qos> must not be keyed []`|`DATAWRITER_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos[] -h`|N/A|`DATAWRITER_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.datasharing`|**PENDING** (currently `DataSharing QoS configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.duration`|**PENDING** (currently `Duration-related QoS (Deadline, Latency budget and Lifespan) configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.disable_heartbeat_piggyback`|**PENDING** (currently `Disable heartbeat piggyback QoS configuration not yet supported`)|`DATAWRITER_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.disable_positive_acks`|**PENDING** (currently `Disable positive ACKs QoS Policy configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.durability`|**PENDING** (currently `Durability QoS configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.group_data`|**PENDING** (currently `Group Data QoS Policy configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.history`|**PENDING** (currently `History QoS Policy configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.liveliness`|**PENDING** (currently `Liveliness QoS Policy configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.ownership`|**PENDING** (currently `Ownership and Ownership strength QoS Policies configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.partitions`|**PENDING** (currently `Partitions QoS Policy not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.publish_mode`|**PENDING** (currently `Publish mode QoS configuration not yet supported`)|`DATAWRITER_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability`|**PENDING** (currently `Reliability QoS configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.resource_limits`|**PENDING** (currently `Resource Limits QoS configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.topic_data`|**PENDING** (currently `Topic Data QoS configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.user_data`|**PENDING** (currently `User Data QoS configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.other`|`DataWriter <other> QoS not recognized`|`DATAWRITER_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.other -h`|N/A|`DATAWRITER_QOS_USAGE`|
 |`fastddsqosprof file.xml set datawriter[profile].times`|**PENDING** (currently `DataWriter time related parameters configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].user_defined_id`|**PENDING** (currently `DataWriter user defined ID configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].expect_inline_qos`|`ERROR: expect_inline_qos element not recognized`|`DATAWRITER_USAGE`|
