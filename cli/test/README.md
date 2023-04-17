@@ -33,7 +33,7 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set log`|**PENDING** (currently `Log module configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant`|`ERROR: participant requires a profile name` [^1]|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set topic`|**PENDING** (currently `Topic configuration not yet supported`)|N/A|
-|`fastddsqosprof file.xml set transport_descriptor`|**PENDING** (currently `Transport descriptor configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set transport_descriptor`|`ERROR: transport_descriptor requires a profile name` [^1]|N/A|
 |`fastddsqosprof file.xml set types`|**PENDING** (currently `Dynamic types configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set other`|`ERROR: other element not recognized`|`SET_SUBPARSER_USAGE`|
 |`fastddsqosprof file.xml set datareader -h`|N/A|`DATAREADER_USAGE`|
@@ -648,6 +648,36 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].user_transports[] argument`|N/A|N/A|
 |`fastddsqosprof file.xml set participant[profile].user_transports[0] arg1`|N/A|N/A|
 |`fastddsqosprof file.xml set participant[profile].user_transports[11811] argument`|`Fast DDS QoS Profiles Manager exception caught: userTransports does not have an element in position 11811`|N/A|
+|`fastddsqosprof file.xml set transport_descriptor -h`|N/A|`TRANSPORT_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor --help`|N/A|`TRANSPORT_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor help`|N/A|`TRANSPORT_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor argument1 argument2 help`|N/A|`TRANSPORT_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id]`|`ERROR: transport_descriptor must not be FINAL element`|`TRANSPORT_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor["transport id"]`|`ERROR: transport_descriptor must not be FINAL element`|`TRANSPORT_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].calculate_crc`|**PENDING** (currently `Calculate CRC configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].check_crc`|**PENDING** (currently `Check CRC configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].enable_tcp_nodelay`|**PENDING** (currently `Enable TCP nodelay configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].healthy_check_timeout_ms`|**PENDING** (currently `Healthy check timeout configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist`|**PENDING** (currently `Interface whitelist configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].keep_alive_frequency_ms`|**PENDING** (currently `Keep alive frequency configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].keep_alive_timeout_ms`|**PENDING** (currently `Keep alive timeout configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].kind`|**PENDING** (currently `Kind configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].listening_port`|**PENDING** (currently `Listening port configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].logical_port_increment`|**PENDING** (currently `Logical port increment configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].logical_port_range`|**PENDING** (currently `Logical port range configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].max_initial_peers_range`|**PENDING** (currently `Maximum initial peers range configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].max_logical_port`|**PENDING** (currently `Maximum logical port configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].max_message_size`|**PENDING** (currently `Maximum message size configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].non_blocking_send`|**PENDING** (currently `Non-blocking send configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].output_port`|**PENDING** (currently `Output port configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].port_queue_capacity`|**PENDING** (currently `Port queue capacity configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].receive_buffer_size`|**PENDING** (currently `Receive buffer size configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].rtps_dump_file`|**PENDING** (currently `RTPS dump file configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].segment_size`|**PENDING** (currently `Segment size configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].send_buffer_size`|**PENDING** (currently `Send buffer size configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].tls`|**PENDING** (currently `TLS configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].ttl`|**PENDING** (currently `TTL configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].wan_address`|**PENDING** (currently `WAN address configuration not yet supported`)|N/A|
 
 [^1]: **PENDING**: Print and clear default profile command will not require a profile name.
 [^2]: **PENDING**: Print, clear and query commands should not allow an empty index with a subelement.

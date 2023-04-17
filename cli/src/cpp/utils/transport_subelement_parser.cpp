@@ -81,7 +81,7 @@ void transport_subelement_parser(
         }
         else if (element == LOGICAL_PORT_INCREMENT_SUBELEMENT)
         {
-            std::cout << "logical port increment configuration not yet supported" << std::endl;
+            std::cout << "Logical port increment configuration not yet supported" << std::endl;
         }
         else if (element == LOGICAL_PORT_RANGE_SUBELEMENT)
         {
