@@ -54,6 +54,7 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set datareader[profile].locators`|**PENDING** (currently `DataReader locators configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datareader[profile].property`|**PENDING** (currently `DataReader properties configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datareader[profile].qos`|`ERROR: DataReader <qos> must not be FINAL element`|`DATAREADER_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos -h`|N/A|`DATAREADER_QOS_USAGE`|
 |`fastddsqosprof file.xml set datareader[profile].qos[]`|`ERROR: DataReader <qos> must not be keyed []`|`DATAREADER_QOS_USAGE`|
 |`fastddsqosprof file.xml set datareader[profile].qos[] -h`|N/A|`DATAREADER_QOS_USAGE`|
 |`fastddsqosprof file.xml set datareader[profile].qos.datasharing`|**PENDING** (currently `DataSharing QoS configuration not yet supported`)|N/A|
@@ -94,6 +95,7 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set datawriter[profile].locators`|**PENDING** (currently `DataWriter locators configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].property`|**PENDING** (currently `DataWriter properties configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].qos`|`ERROR: DataWriter <qos> must not be FINAL element`|`DATAWRITER_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos -h`|N/A|`DATAWRITER_QOS_USAGE`|
 |`fastddsqosprof file.xml set datawriter[profile].qos[]`|`ERROR: DataWriter <qos> must not be keyed []`|`DATAWRITER_QOS_USAGE`|
 |`fastddsqosprof file.xml set datawriter[profile].qos[] -h`|N/A|`DATAWRITER_QOS_USAGE`|
 |`fastddsqosprof file.xml set datawriter[profile].qos.datasharing`|**PENDING** (currently `DataSharing QoS configuration not yet supported`)|N/A|
