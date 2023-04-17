@@ -194,6 +194,24 @@ void builtin_parser(
         const std::vector<std::string>& values);
 
 /**
+ * @brief Parser for the DataReader main subelements.
+ *
+ * @param[in] endpoint Endpoint kind: DataReader | DataWriter.
+ * @param[in] command Command kind.
+ * @param[in] filename File to be modified.
+ * @param[in] profile_name DataReader profile name.
+ * @param[in] element String with the dot-separated subelements.
+ * @param[in] values Vector of strings with the values passed to CLI.
+ */
+void endpoint_subelement_parser(
+        DDSEntity endpoint,
+        CommonCommands command,
+        const std::string& filename,
+        const std::string& profile_name,
+        std::string& element,
+        const std::vector<std::string>& values);
+
+/**
  * @brief Common parser for duration types.
  *
  * @param duration_type Duration type being parsed.

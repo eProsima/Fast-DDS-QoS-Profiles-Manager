@@ -19,6 +19,7 @@
 #include <fastdds_qos_profiles_manager/domain_participant/builtin/discovery_config/DiscoveryConfig.hpp>
 #include <fastdds_qos_profiles_manager/exception/Exception.hpp>
 
+#include <parser_constants.hpp>
 #include <usages.hpp>
 #include <utils/utils.hpp>
 

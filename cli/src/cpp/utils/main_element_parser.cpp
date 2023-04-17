@@ -68,13 +68,33 @@ void main_element_parser(
     extract_element_subelement_key(element, subelement, profile_name);
 
     bool print_usage = false;
-    if (element == DATAREADER_ELEMENT)
+    if (element == DATAREADER_ELEMENT || element == DATAWRITER_ELEMENT)
     {
-        std::cout << "DataReader configuration not yet supported" << std::endl;
-    }
-    else if (element == DATAWRITER_ELEMENT)
-    {
-        std::cout << "DataWriter configuration not yet supported" << std::endl;
+        print_usage = subelement.empty() && check_help(values);
+        // TODO: this would need to be refactored and check in the lower level because if the subelement is
+        // default_profile, then the profile name is only mandatory in the SET command.
+        print_usage = print_usage || !check_profile(profile_name, element);
+        print_usage = print_usage || !check_final_element(false, subelement, element);
+
+        if (!print_usage)
+        {
+            endpoint_subelement_parser(((element == DATAREADER_ELEMENT) ?
+                    DDSEntity::DATAREADER : DDSEntity::DATAWRITER), command, filename, profile_name, subelement,
+                    values);
+        }
+        else
+        {
+            if (CommonCommands::QUERY != command)
+            {
+                std::cout << ((element == DATAREADER_ELEMENT) ? DATAREADER_USAGE : DATAWRITER_USAGE) << std::endl;
+            }
+            else
+            {
+                // TODO
+                // std::cout << ((element == DATAREADER_ELEMENT) ? DATAREADER_QUERY_USAGE : DATAWRITER_QUERY_USAGE)
+                //           << std::endl;
+            }
+        }
     }
     else if (element == HELP_COMMAND)
     {

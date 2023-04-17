@@ -27,8 +27,8 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set -h`|N/A|`SET_SUBPARSER_USAGE`|
 |`fastddsqosprof file.xml set --help`|N/A|`SET_SUBPARSER_USAGE`|
 |`fastddsqosprof file.xml set help`|N/A|`SET_SUBPARSER_USAGE`|
-|`fastddsqosprof file.xml set datareader`|**PENDING** (currently `DataReader configuration not yet supported`)|N/A|
-|`fastddsqosprof file.xml set datawriter`|**PENDING** (currently `DataWriter configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader`|`ERROR: datareader requires a profile name` [^1]|`DATAREADER_USAGE`|
+|`fastddsqosprof file.xml set datawriter`|`ERROR: datawriter requires a profile name` [^1]|`DATAWRITER_USAGE`|
 |`fastddsqosprof file.xml set intraprocess`|**PENDING** (currently `Intra-process configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set log`|**PENDING** (currently `Log module configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant`|`ERROR: participant requires a profile name` [^1]|`PARTICIPANT_USAGE`|
@@ -36,12 +36,56 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set transport_descriptor`|**PENDING** (currently `Transport descriptor configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set types`|**PENDING** (currently `Dynamic types configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set other`|`ERROR: other element not recognized`|`SET_SUBPARSER_USAGE`|
+|`fastddsqosprof file.xml set datareader -h`|N/A|`DATAREADER_USAGE`|
+|`fastddsqosprof file.xml set datareader --help`|N/A|`DATAREADER_USAGE`|
+|`fastddsqosprof file.xml set datareader help`|N/A|`DATAREADER_USAGE`|
+|`fastddsqosprof file.xml set datareader argument1 argument2 help`|N/A|`DATAREADER_USAGE`|
+|`fastddsqosprof file.xml set datareader.default_profile`|`ERROR: datareader requires a profile name` [^1]|`DATAREADER_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile]`|`ERROR: datareader must not be FINAL element` [^1]|`DATAREADER_USAGE`|
+|`fastddsqosprof file.xml set datareader["a profile"]`|`ERROR: datareader must not be FINAL element` [^1]|`DATAREADER_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].allocations`|**PENDING** (currently `DataReader allocations configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].binary_property`|**PENDING** (currently `DataReader binary properties configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].default_profile`|**PENDING** (currently `DataReader default attribute configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].entity_id`|**PENDING** (currently `DataReader entity ID configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].expect_inline_qos`|**PENDING** (currently `DataReader expect inline qos flag configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].external_locators`|**PENDING** (currently `DataReader default attribute configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].history_memory_policy`|**PENDING** (currently `DataReader history memory policy configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].ignore_non_matching_locators`|**PENDING** (currently `DataReader ignore non matching locators configuration flag not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].locators`|**PENDING** (currently `DataReader locators configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].property`|**PENDING** (currently `DataReader properties configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos`|**PENDING** (currently `DataReader QoS configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].times`|**PENDING** (currently `DataReader time related parameters configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].user_defined_id`|**PENDING** (currently `DataReader user defined ID configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].other`|`ERROR: other element not recognized`|`DATAREADER_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].other --help`|N/A|`DATAREADER_USAGE`|
+|`fastddsqosprof file.xml set datawriter -h`|N/A|`DATAWRITER_USAGE`|
+|`fastddsqosprof file.xml set datawriter --help`|N/A|`DATAWRITER_USAGE`|
+|`fastddsqosprof file.xml set datawriter help`|N/A|`DATAWRITER_USAGE`|
+|`fastddsqosprof file.xml set datawriter argument1 argument2 help`|N/A|`DATAWRITER_USAGE`|
+|`fastddsqosprof file.xml set datawriter.default_profile`|`ERROR: datawriter requires a profile name` [^1]|`DATAWRITER_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile]`|`ERROR: datawriter must not be FINAL element` [^1]|`DATAWRITER_USAGE`|
+|`fastddsqosprof file.xml set datawriter["a profile"]`|`ERROR: datawriter must not be FINAL element` [^1]|`DATAWRITER_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].allocations`|**PENDING** (currently `DataWriter allocations configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].binary_property`|**PENDING** (currently `DataWriter binary properties configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].default_profile`|**PENDING** (currently `DataWriter default attribute configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].entity_id`|**PENDING** (currently `DataWriter entity ID configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].external_locators`|**PENDING** (currently `DataWriter default attribute configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].history_memory_policy`|**PENDING** (currently `DataWriter history memory policy configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].ignore_non_matching_locators`|**PENDING** (currently `DataWriter ignore non matching locators configuration flag not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].locators`|**PENDING** (currently `DataWriter locators configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].property`|**PENDING** (currently `DataWriter properties configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos`|**PENDING** (currently `DataWriter QoS configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].times`|**PENDING** (currently `DataWriter time related parameters configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].user_defined_id`|**PENDING** (currently `DataWriter user defined ID configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].expect_inline_qos`|`ERROR: expect_inline_qos element not recognized`|`DATAWRITER_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].other`|`ERROR: other element not recognized`|`DATAWRITER_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].other --help`|N/A|`DATAWRITER_USAGE`|
 |`fastddsqosprof file.xml set participant -h`|N/A|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant --help`|N/A|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant help`|N/A|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant argument1 argument2 help`|N/A|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant.name`|`ERROR: participant requires a profile name`|`PARTICIPANT_USAGE`|
-|`fastddsqosprof file.xml set participant[]`|`ERROR: participant requires a profile name`|`PARTICIPANT_USAGE`|
+|`fastddsqosprof file.xml set participant[]`|`ERROR: participant requires a profile name` [^1]|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant[profile]`|`ERROR: participant must not be FINAL element`|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant["a profile"]`|`ERROR: participant must not be FINAL element`|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].allocations`|**PENDING** (currently `Participant allocations configuration not yet supported`)|N/A|
