@@ -216,7 +216,18 @@ void qos_parser(
     }
     else if (element == RELIABILITY_ELEMENT)
     {
-        std::cout << "Reliability QoS configuration not yet supported" << std::endl;
+        print_usage = subelement.empty() && check_help(values);
+        print_usage = print_usage || !check_keyed(false, keyed, message.str());
+        print_usage = print_usage || !check_final_element(false, subelement, message.str());
+
+        if (!print_usage)
+        {
+            // TODO
+        }
+        else
+        {
+            std::cout << RELIABILITY_QOS_USAGE << std::endl;
+        }
     }
     else if (element == RESOURCE_LIMITS_ELEMENT)
     {
