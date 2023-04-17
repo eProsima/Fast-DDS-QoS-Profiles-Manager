@@ -64,6 +64,7 @@ constexpr const char* PROPERTY_SUBELEMENT = "property";
 constexpr const char* QOS_SUBELEMENT = "qos";
 constexpr const char* TIMES_SUBELEMENT = "times";
 constexpr const char* USER_DEFINED_ID_SUBELEMENT = "user_defined_id";
+constexpr const char* USER_DATA_SUBELEMENT = "user_data";
 
 // CLI datareader main subelements
 constexpr const char* EXPECT_INLINE_QOS_SUBELEMENT = "expect_inline_qos";
@@ -77,7 +78,6 @@ constexpr const char* LISTEN_SOCKET_BUFFER_SIZE_SUBELEMENT = "listen_socket_buff
 constexpr const char* NAME_SUBELEMENT = "name";
 constexpr const char* SEND_SOCKET_BUFFER_SIZE_SUBELEMENT = "send_socket_buffer_size";
 constexpr const char* USE_BUILTIN_TRANSPORTS_SUBELEMENT = "use_builtin_transports";
-constexpr const char* USER_DATA_SUBELEMENT = "user_data";
 constexpr const char* USER_TRANSPORTS_SUBELEMENT = "user_transports";
 
 // CLI participant builtin subelements
@@ -142,6 +142,23 @@ constexpr const char* WAN_ADDRESS_SUBELEMENT = "wan_address";
 constexpr const char* COST_SUBELEMENT = "cost";
 constexpr const char* EXTERNALITY_SUBELEMENT = "externality";
 constexpr const char* MASK_SUBELEMENT = "mask";
+
+// CLI QoS subelements
+constexpr const char* DATASHARING_ELEMENT = "datasharing";
+constexpr const char* DISABLE_POSITIVE_ACKS_ELEMENT = "disable_positive_acks";
+constexpr const char* DURABILITY_ELEMENT = "durability";
+constexpr const char* GROUP_DATA_ELEMENT = "group_data";
+constexpr const char* HISTORY_ELEMENT = "history";
+constexpr const char* LIVELINESS_ELEMENT = "liveliness";
+constexpr const char* OWNERSHIP_ELEMENT = "ownership";
+constexpr const char* PARTITIONS_ELEMENT = "partitions";
+constexpr const char* RELIABILITY_ELEMENT = "reliability";
+constexpr const char* RESOURCE_LIMITS_ELEMENT = "resource_limits";
+constexpr const char* TOPIC_DATA_ELEMENT = "topic_data";
+
+// CLI DataWriter specific QoS subelements
+constexpr const char* DISABLE_HEARTBEAT_PIGGYBACK_ELEMENT = "disable_heartbeat_piggyback";
+constexpr const char* PUBLISH_MODE_ELEMENT = "publish_mode";
 
 } // eprosima
 } // qosprof_cli
