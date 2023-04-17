@@ -60,7 +60,7 @@ void endpoint_subelement_parser(
         else if (element == DEFAULT_PROFILE_SUBELEMENT)
         {
             std::cout << ((DDSEntity::DATAREADER == endpoint) ? "DataReader " : "DataWriter ")
-                      << "default attribute configuration not yet supported" << std::endl;
+                      << "default profile attribute configuration not yet supported" << std::endl;
         }
         else if (element == ENTITY_ID_SUBELEMENT)
         {

@@ -69,7 +69,6 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set datawriter[profile].binary_property`|**PENDING** (currently `DataWriter binary properties configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].default_profile`|**PENDING** (currently `DataWriter default attribute configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].entity_id`|**PENDING** (currently `DataWriter entity ID configuration not yet supported`)|N/A|
-|`fastddsqosprof file.xml set datawriter[profile].expect_inline_qos`|`ERROR: expect_inline_qos element not recognized`|`DATAWRITER_USAGE`|
 |`fastddsqosprof file.xml set datawriter[profile].external_locators`|**PENDING** (currently `DataWriter default attribute configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].history_memory_policy`|**PENDING** (currently `DataWriter history memory policy configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].ignore_non_matching_locators`|**PENDING** (currently `DataWriter ignore non matching locators configuration flag not yet supported`)|N/A|
@@ -78,6 +77,7 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set datawriter[profile].qos`|**PENDING** (currently `DataWriter QoS configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].times`|**PENDING** (currently `DataWriter time related parameters configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].user_defined_id`|**PENDING** (currently `DataWriter user defined ID configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].expect_inline_qos`|`ERROR: expect_inline_qos element not recognized`|`DATAWRITER_USAGE`|
 |`fastddsqosprof file.xml set datawriter[profile].other`|`ERROR: other element not recognized`|`DATAWRITER_USAGE`|
 |`fastddsqosprof file.xml set datawriter[profile].other --help`|N/A|`DATAWRITER_USAGE`|
 |`fastddsqosprof file.xml set participant -h`|N/A|`PARTICIPANT_USAGE`|
