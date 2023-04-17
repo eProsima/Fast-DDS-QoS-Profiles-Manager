@@ -222,7 +222,7 @@ void qos_parser(
 
         if (!print_usage)
         {
-            // TODO
+            reliability_qos_parser(entity, command, filename, profile_name, subelement, values, message);
         }
         else
         {
@@ -259,6 +259,17 @@ void qos_parser(
             //        DATAWRITER_QOS_QUERY_USAGE) << std::endl;
         }
     }
+}
+
+void reliability_qos_parser(
+        DDSEntity entity,
+        CommonCommands command,
+        const std::string& filename,
+        const std::string& profile_name,
+        std::string& element,
+        const std::vector<std::string>& values,
+        std::ostringstream& message)
+{
 }
 
 } // qosprof_cli
