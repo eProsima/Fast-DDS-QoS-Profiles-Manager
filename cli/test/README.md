@@ -61,7 +61,19 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set datareader[profile].qos.duration`|**PENDING** (currently `Duration-related QoS (Deadline, Latency budget and Lifespan) configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datareader[profile].qos.disable_heartbeat_piggyback`|`ERROR: DataReader <disable_heartbeat_piggyback> QoS not recognized`|`DATAREADER_QOS_USAGE`|
 |`fastddsqosprof file.xml set datareader[profile].qos.disable_positive_acks`|**PENDING** (currently `Disable positive ACKs QoS Policy configuration not yet supported`)|N/A|
-|`fastddsqosprof file.xml set datareader[profile].qos.durability`|**PENDING** (currently `Durability QoS configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.durability`|`ERROR: set command for DataReader <durability> QoS expects 1 arguments and received 0`|`DURABILITY_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.durability[]`|`ERROR: DataReader <durability> QoS must not be keyed []`|`DURABILITY_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.durability.other`|`ERROR: DataReader <durability> QoS must be FINAL element`|`DURABILITY_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.durability.other help`|N/A|`DURABILITY_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.durability argument`|`Fast DDS QoS Profiles Manager exception caught: value 'argument' not in enumeration`|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.durability volatile`|N/A|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.durability transient_local`|N/A|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.durability transient`|N/A|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.durability persistent`|N/A|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.durability VOLATILE`|N/A|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.durability TRANSIENT_LOCAL`|N/A|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.durability TRANSIENT`|N/A|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.durability PERSISTENT`|N/A|N/A|
 |`fastddsqosprof file.xml set datareader[profile].qos.group_data`|**PENDING** (currently `Group Data QoS Policy configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datareader[profile].qos.history`|**PENDING** (currently `History QoS Policy configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datareader[profile].qos.liveliness`|**PENDING** (currently `Liveliness QoS Policy configuration not yet supported`)|N/A|
@@ -102,7 +114,19 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set datawriter[profile].qos.duration`|**PENDING** (currently `Duration-related QoS (Deadline, Latency budget and Lifespan) configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].qos.disable_heartbeat_piggyback`|**PENDING** (currently `Disable heartbeat piggyback QoS configuration not yet supported`)|`DATAWRITER_QOS_USAGE`|
 |`fastddsqosprof file.xml set datawriter[profile].qos.disable_positive_acks`|**PENDING** (currently `Disable positive ACKs QoS Policy configuration not yet supported`)|N/A|
-|`fastddsqosprof file.xml set datawriter[profile].qos.durability`|**PENDING** (currently `Durability QoS configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.durability`|`ERROR: set command for DataWriter <durability> QoS expects 1 arguments and received 0`|`DURABILITY_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.durability[]`|`ERROR: DataWriter <durability> QoS must not be keyed []`|`DURABILITY_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.durability.other`|`ERROR: DataWriter <durability> QoS must be FINAL element`|`DURABILITY_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.durability.other help`|N/A|`DURABILITY_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.durability argument`|`Fast DDS QoS Profiles Manager exception caught: value 'argument' not in enumeration`|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.durability volatile`|N/A|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.durability transient_local`|N/A|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.durability transient`|N/A|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.durability persistent`|N/A|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.durability VOLATILE`|N/A|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.durability TRANSIENT_LOCAL`|N/A|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.durability TRANSIENT`|N/A|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.durability PERSISTENT`|N/A|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].qos.group_data`|**PENDING** (currently `Group Data QoS Policy configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].qos.history`|**PENDING** (currently `History QoS Policy configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].qos.liveliness`|**PENDING** (currently `Liveliness QoS Policy configuration not yet supported`)|N/A|
