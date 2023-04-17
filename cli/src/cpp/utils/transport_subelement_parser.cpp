@@ -98,7 +98,8 @@ void transport_subelement_parser(
                             print_usage = !check_command_arguments(command, 1, values.size(), message.str(), true);
                             if (!print_usage)
                             {
-                                qosprof::transport_descriptor::set_interface_whitelist(filename, transport_identifier, values[0], key);
+                                qosprof::transport_descriptor::set_interface_whitelist(filename, transport_identifier,
+                                        values[0], key);
                             }
                             break;
                     }
