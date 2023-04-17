@@ -51,7 +51,7 @@ void qos_parser(
         else if (element == DURATION_SUBELEMENT)
         {
             std::cout << "Duration-related QoS (Deadline, Latency budget and Lifespan) configuration not yet supported"
-                        << std::endl;
+                      << std::endl;
         }
         else if (element == DISABLE_HEARTBEAT_PIGGYBACK_ELEMENT)
         {

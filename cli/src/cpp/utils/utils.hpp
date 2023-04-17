@@ -302,7 +302,7 @@ void participant_subelement_parser(
         const std::vector<std::string>& values);
 /**
  * @brief Endpoint QoS parser.
- * 
+ *
  * @param entity Endpoint kind.
  * @param command Command kind.
  * @param filename File to be modified.
