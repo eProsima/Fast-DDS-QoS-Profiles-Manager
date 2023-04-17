@@ -15,6 +15,9 @@
 #include <string>
 #include <vector>
 
+#include <fastdds_qos_profiles_manager/transport_descriptor/TransportDescriptor.hpp>
+#include <fastdds_qos_profiles_manager/exception/Exception.hpp>
+
 #include <parser_constants.hpp>
 #include <usages.hpp>
 #include <utils/utils.hpp>
@@ -73,7 +76,83 @@ void transport_subelement_parser(
         }
         else if (element == KIND_SUBELEMENT)
         {
-            std::cout << "Kind configuration not yet supported" << std::endl;
+            // If there is no subelement and the last value is (help | -h | --help), print usage
+            print_usage = subelement.empty() && check_help(values);
+            // Not keyed element
+            print_usage = print_usage || !check_keyed(false, keyed, message.str());
+            // Kind element does NOT require a subelement
+            print_usage = print_usage || !check_final_element(true, subelement, message.str());
+
+            if (!print_usage)
+            {
+                try
+                {
+                    switch (command)
+                    {
+                        case CommonCommands::CLEAR:
+                            print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
+                            if (!print_usage)
+                            {
+                                // TODO
+                            }
+                            break;
+                        case CommonCommands::PRINT:
+                            print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
+                            if (!print_usage)
+                            {
+                                // TODO
+                            }
+                            break;
+                        case CommonCommands::QUERY:
+                            print_usage = query_not_allowed(message.str());
+                            break;
+                        case CommonCommands::SET:
+                            print_usage = !check_command_arguments(command, 1, values.size(), message.str(), true);
+                            if (!print_usage)
+                            {
+                                std::string kind = values[DEFAULT_POSITION];
+                                if (values[DEFAULT_POSITION] == CLI_UDP_V4_ARGUMENT)
+                                {
+                                    kind = LIB_UDP_V4_ARGUMENT;
+                                }
+                                else if (values[DEFAULT_POSITION] == CLI_UDP_V6_ARGUMENT)
+                                {
+                                    kind = LIB_UDP_V6_ARGUMENT;
+                                }
+                                else if (values[DEFAULT_POSITION] == CLI_TCP_V4_ARGUMENT)
+                                {
+                                    kind = LIB_TCP_V4_ARGUMENT;
+                                }
+                                else if (values[DEFAULT_POSITION] == CLI_TCP_V6_ARGUMENT)
+                                {
+                                    kind = LIB_TCP_V6_ARGUMENT;
+                                }
+                                else if (values[DEFAULT_POSITION] == CLI_SHM_ARGUMENT)
+                                {
+                                    kind = LIB_SHM_ARGUMENT;
+                                }
+                                qosprof::transport_descriptor::set_kind(filename, transport_identifier, kind);
+                            }
+                            break;
+                    }
+                }
+                catch (const qosprof::Exception& e)
+                {
+                    std::cout << "Fast DDS QoS Profiles Manager exception caught: " << e.what() << std::endl;
+                }
+            }
+            else
+            {
+                if (CommonCommands::QUERY == command)
+                {
+                    // TODO
+                    // std::cout << TRANSPORT_QUERY_USAGE << std::endl;
+                }
+                else
+                {
+                    std::cout << TRANSPORT_USAGE << std::endl;
+                }
+            }
         }
         else if (element == LISTENING_PORT_SUBELEMENT)
         {

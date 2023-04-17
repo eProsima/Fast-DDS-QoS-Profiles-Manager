@@ -661,7 +661,12 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist`|**PENDING** (currently `Interface whitelist configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set transport_descriptor[transport_id].keep_alive_frequency_ms`|**PENDING** (currently `Keep alive frequency configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set transport_descriptor[transport_id].keep_alive_timeout_ms`|**PENDING** (currently `Keep alive timeout configuration not yet supported`)|N/A|
-|`fastddsqosprof file.xml set transport_descriptor[transport_id].kind`|**PENDING** (currently `Kind configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].kind`|`ERROR: set command for Transport <kind> expects 1 arguments and received 0`|`TRANSPORT_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].kind[]`|`ERROR: Transport <kind> must not be keyed []`|`TRANSPORT_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].kind -h`|N/A|`TRANSPORT_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].kind arg1 arg2`|`ERROR: set command for Transport <kind> expects 1 arguments and received 2`|`TRANSPORT_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].kind udp_v4`|N/A|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].kind other`|`Fast DDS QoS Profiles Manager exception caught: value 'other' not in enumeration`|N/A|
 |`fastddsqosprof file.xml set transport_descriptor[transport_id].listening_port`|**PENDING** (currently `Listening port configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set transport_descriptor[transport_id].logical_port_increment`|**PENDING** (currently `Logical port increment configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set transport_descriptor[transport_id].logical_port_range`|**PENDING** (currently `Logical port range configuration not yet supported`)|N/A|
