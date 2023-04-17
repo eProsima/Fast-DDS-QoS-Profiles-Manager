@@ -75,10 +75,6 @@ void transport_subelement_parser(
             {
                 try
                 {
-                    // Obtain key from values
-                    std::string key;
-                    extract_element_subelement_key(element, subelement, key);
-
                     switch (command)
                     {
                         case CommonCommands::CLEAR:
