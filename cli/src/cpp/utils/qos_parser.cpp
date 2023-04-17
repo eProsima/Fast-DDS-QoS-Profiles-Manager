@@ -40,6 +40,8 @@ void qos_parser(
     std::ostringstream message;
     message << ((entity == DDSEntity::DATAREADER) ? "DataReader <" : "DataWriter <") << element << "> QoS";
 
+    print_usage = subelement.empty() && check_help(values);
+
     if (element == DATASHARING_ELEMENT)
     {
         std::cout << "DataSharing QoS configuration not yet supported" << std::endl;

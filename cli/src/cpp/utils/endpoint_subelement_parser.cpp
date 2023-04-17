@@ -106,8 +106,14 @@ void endpoint_subelement_parser(
         }
         else if (element == QOS_SUBELEMENT)
         {
-            std::cout << ((DDSEntity::DATAREADER == endpoint) ? "DataReader " : "DataWriter ")
-                      << "QoS configuration not yet supported" << std::endl;
+            print_usage = subelement.empty() && check_help(values);
+            print_usage = print_usage || !check_keyed(false, keyed, message.str());
+            print_usage = print_usage || !check_final_element(false, subelement, message.str());
+
+            if (!print_usage)
+            {
+                qos_parser(endpoint, command, filename, profile_name, subelement, values);
+            }
         }
         else if (element == TIMES_SUBELEMENT)
         {
