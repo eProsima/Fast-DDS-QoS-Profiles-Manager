@@ -15,6 +15,10 @@
 #include <string>
 #include <vector>
 
+#include <fastdds_qos_profiles_manager/data_reader/Qos.hpp>
+#include <fastdds_qos_profiles_manager/data_writer/Qos.hpp>
+#include <fastdds_qos_profiles_manager/exception/Exception.hpp>
+
 #include <parser_constants.hpp>
 #include <usages.hpp>
 #include <utils/utils.hpp>
@@ -67,7 +71,91 @@ void qos_parser(
     }
     else if (element == DURABILITY_ELEMENT)
     {
-        std::cout << "Durability QoS configuration not yet supported" << std::endl;
+        print_usage = check_help(values);
+        print_usage = print_usage || !check_keyed(false, keyed, message.str());
+        print_usage = print_usage || !check_final_element(true, subelement, message.str());
+
+        if (!print_usage)
+        {
+            try
+            {
+                switch (entity)
+                {
+                    case DDSEntity::DATAREADER:
+                        switch (command)
+                        {
+                            case CommonCommands::CLEAR:
+                                print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
+                                if (!print_usage)
+                                {
+                                    // TODO
+                                }
+                                break;
+                            case CommonCommands::PRINT:
+                                print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
+                                if (!print_usage)
+                                {
+                                    // TODO
+                                }
+                                break;
+                            case CommonCommands::QUERY:
+                                print_usage = !query_not_allowed(message.str());
+                                break;
+                            case CommonCommands::SET:
+                                print_usage = !check_command_arguments(command, 1, values.size(), message.str(), true);
+                                if (!print_usage)
+                                {
+                                    qosprof::data_reader::qos::set_durability_kind(filename, profile_name,
+                                            values[DEFAULT_POSITION]);
+                                }
+                                break;
+                        }
+                        break;
+                    case DDSEntity::DATAWRITER:
+                        switch (command)
+                        {
+                            case CommonCommands::CLEAR:
+                                print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
+                                if (!print_usage)
+                                {
+                                    // TODO
+                                }
+                                break;
+                            case CommonCommands::PRINT:
+                                print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
+                                if (!print_usage)
+                                {
+                                    // TODO
+                                }
+                                break;
+                            case CommonCommands::QUERY:
+                                print_usage = !query_not_allowed(message.str());
+                                break;
+                            case CommonCommands::SET:
+                                print_usage = !check_command_arguments(command, 1, values.size(), message.str(), true);
+                                if (!print_usage)
+                                {
+                                    qosprof::data_writer::qos::set_durability_kind(filename, profile_name,
+                                            values[DEFAULT_POSITION]);
+                                }
+                                break;
+                        }
+                        break;
+                    default:
+                        std::cout << "ERROR: Durability QoS cannot be set in given DDS Entity" << std::endl;
+                        break;
+                }
+            }
+            catch (const qosprof::Exception& e)
+            {
+                std::cout << "Fast DDS QoS Profiles Manager exception caught: " << e.what() << std::endl;
+            }
+        }
+
+        if (print_usage)
+        {
+            std::cout << DURABILITY_QOS_USAGE << std::endl;
+        }
     }
     else if (element == GROUP_DATA_ELEMENT)
     {
