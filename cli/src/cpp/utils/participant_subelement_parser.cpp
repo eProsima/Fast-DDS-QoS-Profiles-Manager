@@ -207,7 +207,7 @@ void participant_subelement_parser(
                         print_usage = !check_command_arguments(command, 1, values.size(), message.str(), true);
                         if (!print_usage)
                         {
-                            qosprof::domain_participant::set_name(filename, profile_name, values[0]);
+                            qosprof::domain_participant::set_name(filename, profile_name, values[DEFAULT_POSITION]);
                         }
                         break;
                 }
@@ -271,7 +271,8 @@ void participant_subelement_parser(
                         print_usage = !check_command_arguments(command, 1, values.size(), message.str(), true);
                         if (!print_usage)
                         {
-                            qosprof::domain_participant::set_use_builtin_transports(filename, profile_name, values[0]);
+                            qosprof::domain_participant::set_use_builtin_transports(filename, profile_name,
+                                    values[DEFAULT_POSITION]);
                         }
                         break;
                 }
@@ -331,7 +332,8 @@ void participant_subelement_parser(
                         print_usage = !check_command_arguments(command, 1, values.size(), message.str(), true);
                         if (!print_usage)
                         {
-                            qosprof::domain_participant::set_user_transports(filename, profile_name, values[0], key);
+                            qosprof::domain_participant::set_user_transports(filename, profile_name,
+                                    values[DEFAULT_POSITION], key);
                         }
                         break;
                 }
