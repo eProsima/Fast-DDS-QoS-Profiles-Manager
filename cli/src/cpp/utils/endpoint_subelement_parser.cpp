@@ -114,6 +114,12 @@ void endpoint_subelement_parser(
             {
                 qos_parser(endpoint, command, filename, profile_name, subelement, values);
             }
+            else
+            {
+                std::cout << ((DDSEntity::DATAREADER == endpoint) ? DATAREADER_QOS_USAGE : DATAWRITER_QOS_USAGE)
+                          << std::endl;
+                print_usage = false;
+            }
         }
         else if (element == TIMES_SUBELEMENT)
         {

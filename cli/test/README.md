@@ -53,7 +53,26 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set datareader[profile].ignore_non_matching_locators`|**PENDING** (currently `DataReader ignore non matching locators configuration flag not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datareader[profile].locators`|**PENDING** (currently `DataReader locators configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datareader[profile].property`|**PENDING** (currently `DataReader properties configuration not yet supported`)|N/A|
-|`fastddsqosprof file.xml set datareader[profile].qos`|**PENDING** (currently `DataReader QoS configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos`|`ERROR: DataReader <qos> must not be FINAL element`|`DATAREADER_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos[]`|`ERROR: DataReader <qos> must not be keyed []`|`DATAREADER_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos[] -h`|N/A|`DATAREADER_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.datasharing`|**PENDING** (currently `DataSharing QoS configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.duration`|**PENDING** (currently `Duration-related QoS (Deadline, Latency budget and Lifespan) configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.disable_heartbeat_piggyback`|`ERROR: DataReader <disable_heartbeat_piggyback> QoS not recognized`|`DATAREADER_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.disable_positive_acks`|**PENDING** (currently `Disable positive ACKs QoS Policy configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.durability`|**PENDING** (currently `Durability QoS configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.group_data`|**PENDING** (currently `Group Data QoS Policy configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.history`|**PENDING** (currently `History QoS Policy configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.liveliness`|**PENDING** (currently `Liveliness QoS Policy configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.ownership`|**PENDING** (currently `Ownership and Ownership strength QoS Policies configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.partitions`|**PENDING** (currently `Partitions QoS Policy not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.publish_mode`|`ERROR: DataReader <publish_mode> QoS not recognized`|`DATAREADER_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability`|**PENDING** (currently `Reliability QoS configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.resource_limits`|**PENDING** (currently `Resource Limits QoS configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.topic_data`|**PENDING** (currently `Topic Data QoS configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.user_data`|**PENDING** (currently `User Data QoS configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.other`|`DataReader <other> QoS not recognized`|`DATAREADER_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.other -h`|N/A|`DATAREADER_QOS_USAGE`|
 |`fastddsqosprof file.xml set datareader[profile].times`|**PENDING** (currently `DataReader time related parameters configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datareader[profile].user_defined_id`|**PENDING** (currently `DataReader user defined ID configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datareader[profile].other`|`ERROR: other element not recognized`|`DATAREADER_USAGE`|
