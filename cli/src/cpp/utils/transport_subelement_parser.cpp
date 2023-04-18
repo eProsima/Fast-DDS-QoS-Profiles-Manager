@@ -43,7 +43,7 @@ void transport_subelement_parser(
 
     // Initialize message in case of error
     std::ostringstream message;
-    message <<  "Transport <" << element << ">";
+    message <<  "Transport descriptor <" << element << ">";
 
     if (element == CALCULATE_CRC_SUBELEMENT)
     {
@@ -111,8 +111,8 @@ void transport_subelement_parser(
                 std::cout << "Fast DDS QoS Profiles Manager exception caught: " << e.what() << std::endl;
             }
         }
-        else
-        {
+
+        if (print_usage){
             if (CommonCommands::QUERY == command)
             {
                 // TODO
@@ -203,7 +203,8 @@ void transport_subelement_parser(
                 std::cout << "Fast DDS QoS Profiles Manager exception caught: " << e.what() << std::endl;
             }
         }
-        else
+
+        if (print_usage)
         {
             if (CommonCommands::QUERY == command)
             {
@@ -283,7 +284,7 @@ void transport_subelement_parser(
     else
     {
         print_usage = true;
-        std::cout << message.str() << " not recognized" << std::endl;
+        std::cout << "ERROR: " << message.str() << " element not recognized" << std::endl;
     }
 
 
