@@ -16,6 +16,10 @@
 #include <string>
 #include <vector>
 
+#include <fastdds_qos_profiles_manager/data_reader/DataReader.hpp>
+#include <fastdds_qos_profiles_manager/data_writer/DataWriter.hpp>
+#include <fastdds_qos_profiles_manager/exception/Exception.hpp>
+
 #include <parser_constants.hpp>
 #include <usages.hpp>
 #include <utils/utils.hpp>
@@ -56,8 +60,59 @@ void endpoint_subelement_parser(
     }
     else if (element == DEFAULT_PROFILE_SUBELEMENT)
     {
-        std::cout << ((DDSEntity::DATAREADER == endpoint) ? "DataReader " : "DataWriter ")
-                  << "default profile attribute configuration not yet supported" << std::endl;
+        bool print_error = false;
+        print_usage = check_help(values);
+        // No values are allowed (only if help is the last which has already been checked)
+        print_usage = print_usage || !check_command_arguments(command, 0, values.size(), message.str(), true);
+        // Not keyed element
+        print_usage = print_usage || !check_keyed(false, keyed, message.str());
+        // Final element
+        print_usage = print_usage || !check_final_element(true, subelement, message.str());
+
+        if (!print_usage)
+        {
+            try
+            {
+                // Call library
+                switch (command)
+                {
+                    case CommonCommands::CLEAR:
+                        // TODO
+                        break;
+                    case CommonCommands::PRINT:
+                        // TODO
+                        break;
+                    case CommonCommands::SET:
+                        switch (endpoint)
+                        {
+                            case DDSEntity::DATAREADER:
+                                qosprof::data_reader::set_default_profile(filename, profile_name);
+                                break;
+                            case DDSEntity::DATAWRITER:
+                                qosprof::data_writer::set_default_profile(filename, profile_name);
+                                break;
+                            default:
+                                print_error = true;
+                                break;
+                        }
+                        if (print_error)
+                        {
+                            std::cout << "ERROR: Default profile cannot be set in given DDS Entity" << std::endl;
+                            print_usage = true;
+                        }
+                        break;
+                }
+            }
+            catch (const qosprof::Exception& e)
+            {
+                std::cout << "Fast DDS QoS Profiles Manager exception caught: " << e.what() << std::endl;
+            }
+        }
+        if (print_usage)
+        {
+            std::cout << ((DDSEntity::DATAREADER == endpoint) ?
+                DATAREADER_DEFAULT_PROFILE_USAGE : DATAWRITER_DEFAULT_PROFILE_USAGE) << std::endl;
+        }
     }
     else if (element == ENTITY_ID_SUBELEMENT)
     {
