@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -34,6 +35,7 @@ void transport_subelement_parser(
         const std::vector<std::string>& values)
 {
     bool print_usage = false;
+    std::string usage_to_print;
     std::string subelement;
     std::string key;
 
@@ -43,250 +45,257 @@ void transport_subelement_parser(
     std::ostringstream message;
     message <<  "Transport <" << element << ">";
 
-    print_usage = subelement.empty() && check_help(values);
-
-    if (!print_usage)
+    if (element == CALCULATE_CRC_SUBELEMENT)
     {
-        if (element == CALCULATE_CRC_SUBELEMENT)
-        {
-            std::cout << "Calculate CRC configuration not yet supported" << std::endl;
-        }
-        else if (element == CHECK_CRC_SUBELEMENT)
-        {
-            std::cout << "Check CRC configuration not yet supported" << std::endl;
-        }
-        else if (element == ENABLE_TCP_NODELAY_SUBELEMENT)
-        {
-            std::cout << "Enable TCP nodelay configuration not yet supported" << std::endl;
-        }
-        else if (element == HEALTHY_CHECK_TIMEOUT_SUBELEMENT)
-        {
-            std::cout << "Healthy check timeout configuration not yet supported" << std::endl;
-        }
-        else if (element == INTERFACE_WHITELIST_SUBELEMENT)
-        {
-            // If there is no subelement and the last value is (help | -h | --help), print usage
-            print_usage = subelement.empty() && check_help(values);
-            // Keyed element
-            print_usage = print_usage || !check_keyed(true, keyed, message.str());
-            // Kind element does NOT require a subelement
-            print_usage = print_usage || !check_final_element(true, subelement, message.str());
+        std::cout << "Calculate CRC configuration not yet supported" << std::endl;
+    }
+    else if (element == CHECK_CRC_SUBELEMENT)
+    {
+        std::cout << "Check CRC configuration not yet supported" << std::endl;
+    }
+    else if (element == ENABLE_TCP_NODELAY_SUBELEMENT)
+    {
+        std::cout << "Enable TCP nodelay configuration not yet supported" << std::endl;
+    }
+    else if (element == HEALTHY_CHECK_TIMEOUT_SUBELEMENT)
+    {
+        std::cout << "Healthy check timeout configuration not yet supported" << std::endl;
+    }
+    else if (element == INTERFACE_WHITELIST_SUBELEMENT)
+    {
+        // If there is no subelement and the last value is (help | -h | --help), print usage
+        print_usage = subelement.empty() && check_help(values);
+        // Keyed element
+        print_usage = print_usage || !check_keyed(true, keyed, message.str());
+        // Kind element does NOT require a subelement
+        print_usage = print_usage || !check_final_element(true, subelement, message.str());
 
-            if (!print_usage)
+        if (!print_usage)
+        {
+            try
             {
-                try
+                switch (command)
                 {
-                    switch (command)
-                    {
-                        case CommonCommands::CLEAR:
-                            print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
-                            if (!print_usage)
-                            {
-                                // TODO
-                            }
-                            break;
-                        case CommonCommands::PRINT:
-                            print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
-                            if (!print_usage)
-                            {
-                                // TODO
-                            }
-                            break;
-                        case CommonCommands::QUERY:
-                            // TODO
-                            break;
-                        case CommonCommands::SET:
-                            print_usage = !check_command_arguments(command, 1, values.size(), message.str(), true);
-                            if (!print_usage)
-                            {
-                                qosprof::transport_descriptor::set_interface_whitelist(filename, transport_identifier,
-                                        values[0], key);
-                            }
-                            break;
-                    }
-                }
-                catch (const qosprof::Exception& e)
-                {
-                    std::cout << "Fast DDS QoS Profiles Manager exception caught: " << e.what() << std::endl;
+                    case CommonCommands::CLEAR:
+                        print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
+                        if (!print_usage)
+                        {
+                            qosprof::transport_descriptor::clear_interface_whitelist(filename, transport_identifier,
+                                    key);
+                        }
+                        break;
+                    case CommonCommands::PRINT:
+                        print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
+                        if (!print_usage)
+                        {
+                            qosprof::transport_descriptor::print_interface_whitelist(filename, transport_identifier,
+                                    key);
+                        }
+                        break;
+                    case CommonCommands::QUERY:
+                        // TODO: query kind should be passed in order to check the arguments and the amount of them
+                        //qosprof::transport_descriptor::interface_whitelist_size(filename, transport_identifier);
+                        break;
+                    case CommonCommands::SET:
+                        print_usage = !check_command_arguments(command, 1, values.size(), message.str(), true);
+                        if (!print_usage)
+                        {
+                            qosprof::transport_descriptor::set_interface_whitelist(filename, transport_identifier,
+                                    values[DEFAULT_POSITION], key);
+                        }
+                        break;
                 }
             }
-            else
+            catch (const qosprof::Exception& e)
             {
-                if (CommonCommands::QUERY == command)
-                {
-                    // TODO
-                    // std::cout << TRANSPORT_QUERY_USAGE << std::endl;
-                }
-                else
-                {
-                    std::cout << TRANSPORT_USAGE << std::endl;
-                }
+                std::cout << "Fast DDS QoS Profiles Manager exception caught: " << e.what() << std::endl;
             }
-        }
-        else if (element == KEEP_ALIVE_FREQUENCY_SUBELEMENT)
-        {
-            std::cout << "Keep alive frequency configuration not yet supported" << std::endl;
-        }
-        else if (element == KEEP_ALIVE_TIMEOUT_SUBELEMENT)
-        {
-            std::cout << "Keep alive timeout configuration not yet supported" << std::endl;
-        }
-        else if (element == KIND_SUBELEMENT)
-        {
-            // If there is no subelement and the last value is (help | -h | --help), print usage
-            print_usage = subelement.empty() && check_help(values);
-            // Not keyed element
-            print_usage = print_usage || !check_keyed(false, keyed, message.str());
-            // Kind element does NOT require a subelement
-            print_usage = print_usage || !check_final_element(true, subelement, message.str());
-
-            if (!print_usage)
-            {
-                try
-                {
-                    switch (command)
-                    {
-                        case CommonCommands::CLEAR:
-                            print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
-                            if (!print_usage)
-                            {
-                                // TODO
-                            }
-                            break;
-                        case CommonCommands::PRINT:
-                            print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
-                            if (!print_usage)
-                            {
-                                // TODO
-                            }
-                            break;
-                        case CommonCommands::QUERY:
-                            print_usage = query_not_allowed(message.str());
-                            break;
-                        case CommonCommands::SET:
-                            print_usage = !check_command_arguments(command, 1, values.size(), message.str(), true);
-                            if (!print_usage)
-                            {
-                                std::string kind = values[DEFAULT_POSITION];
-                                if (values[DEFAULT_POSITION] == CLI_UDP_V4_ARGUMENT)
-                                {
-                                    kind = LIB_UDP_V4_ARGUMENT;
-                                }
-                                else if (values[DEFAULT_POSITION] == CLI_UDP_V6_ARGUMENT)
-                                {
-                                    kind = LIB_UDP_V6_ARGUMENT;
-                                }
-                                else if (values[DEFAULT_POSITION] == CLI_TCP_V4_ARGUMENT)
-                                {
-                                    kind = LIB_TCP_V4_ARGUMENT;
-                                }
-                                else if (values[DEFAULT_POSITION] == CLI_TCP_V6_ARGUMENT)
-                                {
-                                    kind = LIB_TCP_V6_ARGUMENT;
-                                }
-                                else if (values[DEFAULT_POSITION] == CLI_SHM_ARGUMENT)
-                                {
-                                    kind = LIB_SHM_ARGUMENT;
-                                }
-                                qosprof::transport_descriptor::set_kind(filename, transport_identifier, kind);
-                            }
-                            break;
-                    }
-                }
-                catch (const qosprof::Exception& e)
-                {
-                    std::cout << "Fast DDS QoS Profiles Manager exception caught: " << e.what() << std::endl;
-                }
-            }
-            else
-            {
-                if (CommonCommands::QUERY == command)
-                {
-                    // TODO
-                    // std::cout << TRANSPORT_QUERY_USAGE << std::endl;
-                }
-                else
-                {
-                    std::cout << TRANSPORT_USAGE << std::endl;
-                }
-            }
-        }
-        else if (element == LISTENING_PORT_SUBELEMENT)
-        {
-            std::cout << "Listening port configuration not yet supported" << std::endl;
-        }
-        else if (element == LOGICAL_PORT_INCREMENT_SUBELEMENT)
-        {
-            std::cout << "Logical port increment configuration not yet supported" << std::endl;
-        }
-        else if (element == LOGICAL_PORT_RANGE_SUBELEMENT)
-        {
-            std::cout << "Logical port range configuration not yet supported" << std::endl;
-        }
-        else if (element == MAX_INITIAL_PEERS_RANGE_SUBELEMENT)
-        {
-            std::cout << "Maximum initial peers range configuration not yet supported" << std::endl;
-        }
-        else if (element == MAX_LOGICAL_PORT_SUBELEMENT)
-        {
-            std::cout << "Maximum logical port configuration not yet supported" << std::endl;
-        }
-        else if (element == MAX_MESSAGE_SIZE_SUBELEMENT)
-        {
-            std::cout << "Maximum message size configuration not yet supported" << std::endl;
-        }
-        else if (element == NON_BLOCKING_SEND_SUBELEMENT)
-        {
-            std::cout << "Non-blocking send configuration not yet supported" << std::endl;
-        }
-        else if (element == OUTPUT_PORT_SUBELEMENT)
-        {
-            std::cout << "Output port configuration not yet supported" << std::endl;
-        }
-        else if (element == PORT_QUEUE_CAPACITY_SUBELEMENT)
-        {
-            std::cout << "Port queue capacity configuration not yet supported" << std::endl;
-        }
-        else if (element == RECEIVE_BUFFER_SIZE_SUBELEMENT)
-        {
-            std::cout << "Receive buffer size configuration not yet supported" << std::endl;
-        }
-        else if (element == RTPS_DUMP_FILE_SUBELEMENT)
-        {
-            std::cout << "RTPS dump file configuration not yet supported" << std::endl;
-        }
-        else if (element == SEGMENT_SIZE_SUBELEMENT)
-        {
-            std::cout << "Segment size configuration not yet supported" << std::endl;
-        }
-        else if (element == SEND_BUFFER_SIZE_SUBELEMENT)
-        {
-            std::cout << "Send buffer size configuration not yet supported" << std::endl;
-        }
-        else if (element == TLS_SUBELEMENT)
-        {
-            std::cout << "TLS configuration not yet supported" << std::endl;
-        }
-        else if (element == TTL_SUBELEMENT)
-        {
-            std::cout << "TTL configuration not yet supported" << std::endl;
-        }
-        else if (element == WAN_ADDRESS_SUBELEMENT)
-        {
-            std::cout << "WAN address configuration not yet supported" << std::endl;
         }
         else
         {
-            print_usage = true;
-            std::cout << message.str() << " not recognized" << std::endl;
+            if (CommonCommands::QUERY == command)
+            {
+                // TODO
+                // std::cout << TRANSPORT_QUERY_USAGE << std::endl;
+            }
+            else
+            {
+                usage_to_print = TRANSPORT_WHITELIST_INTERFACE_USAGE;
+            }
         }
     }
+    else if (element == KEEP_ALIVE_FREQUENCY_SUBELEMENT)
+    {
+        std::cout << "Keep alive frequency configuration not yet supported" << std::endl;
+    }
+    else if (element == KEEP_ALIVE_TIMEOUT_SUBELEMENT)
+    {
+        std::cout << "Keep alive timeout configuration not yet supported" << std::endl;
+    }
+    else if (element == KIND_SUBELEMENT)
+    {
+        // If there is no subelement and the last value is (help | -h | --help), print usage
+        print_usage = subelement.empty() && check_help(values);
+        // Not keyed element
+        print_usage = print_usage || !check_keyed(false, keyed, message.str());
+        // Kind element does NOT require a subelement
+        print_usage = print_usage || !check_final_element(true, subelement, message.str());
+
+        if (!print_usage)
+        {
+            try
+            {
+                switch (command)
+                {
+                    case CommonCommands::CLEAR:
+                        print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
+                        if (!print_usage)
+                        {
+                            // TODO
+                        }
+                        break;
+                    case CommonCommands::PRINT:
+                        print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
+                        if (!print_usage)
+                        {
+                            // TODO
+                        }
+                        break;
+                    case CommonCommands::QUERY:
+                        print_usage = query_not_allowed(message.str());
+                        break;
+                    case CommonCommands::SET:
+                        print_usage = !check_command_arguments(command, 1, values.size(), message.str(), true);
+                        if (!print_usage)
+                        {
+                            std::string kind = values[DEFAULT_POSITION];
+                            if (values[DEFAULT_POSITION] == CLI_UDP_V4_ARGUMENT)
+                            {
+                                kind = LIB_UDP_V4_ARGUMENT;
+                            }
+                            else if (values[DEFAULT_POSITION] == CLI_UDP_V6_ARGUMENT)
+                            {
+                                kind = LIB_UDP_V6_ARGUMENT;
+                            }
+                            else if (values[DEFAULT_POSITION] == CLI_TCP_V4_ARGUMENT)
+                            {
+                                kind = LIB_TCP_V4_ARGUMENT;
+                            }
+                            else if (values[DEFAULT_POSITION] == CLI_TCP_V6_ARGUMENT)
+                            {
+                                kind = LIB_TCP_V6_ARGUMENT;
+                            }
+                            else if (values[DEFAULT_POSITION] == CLI_SHM_ARGUMENT)
+                            {
+                                kind = LIB_SHM_ARGUMENT;
+                            }
+                            else
+                            {
+                                kind = values[DEFAULT_POSITION];
+                            }
+                            qosprof::transport_descriptor::set_kind(filename, transport_identifier, kind);
+                        }
+                        break;
+                }
+            }
+            catch (const qosprof::Exception& e)
+            {
+                std::cout << "Fast DDS QoS Profiles Manager exception caught: " << e.what() << std::endl;
+            }
+        }
+        else
+        {
+            if (CommonCommands::QUERY == command)
+            {
+                // TODO
+                // std::cout << TRANSPORT_QUERY_USAGE << std::endl;
+            }
+            else
+            {
+                usage_to_print = TRANSPORT_KIND_USAGE;
+            }
+        }
+    }
+    else if (element == LISTENING_PORT_SUBELEMENT)
+    {
+        std::cout << "Listening port configuration not yet supported" << std::endl;
+    }
+    else if (element == LOGICAL_PORT_INCREMENT_SUBELEMENT)
+    {
+        std::cout << "Logical port increment configuration not yet supported" << std::endl;
+    }
+    else if (element == LOGICAL_PORT_RANGE_SUBELEMENT)
+    {
+        std::cout << "Logical port range configuration not yet supported" << std::endl;
+    }
+    else if (element == MAX_INITIAL_PEERS_RANGE_SUBELEMENT)
+    {
+        std::cout << "Maximum initial peers range configuration not yet supported" << std::endl;
+    }
+    else if (element == MAX_LOGICAL_PORT_SUBELEMENT)
+    {
+        std::cout << "Maximum logical port configuration not yet supported" << std::endl;
+    }
+    else if (element == MAX_MESSAGE_SIZE_SUBELEMENT)
+    {
+        std::cout << "Maximum message size configuration not yet supported" << std::endl;
+    }
+    else if (element == NON_BLOCKING_SEND_SUBELEMENT)
+    {
+        std::cout << "Non-blocking send configuration not yet supported" << std::endl;
+    }
+    else if (element == OUTPUT_PORT_SUBELEMENT)
+    {
+        std::cout << "Output port configuration not yet supported" << std::endl;
+    }
+    else if (element == PORT_QUEUE_CAPACITY_SUBELEMENT)
+    {
+        std::cout << "Port queue capacity configuration not yet supported" << std::endl;
+    }
+    else if (element == RECEIVE_BUFFER_SIZE_SUBELEMENT)
+    {
+        std::cout << "Receive buffer size configuration not yet supported" << std::endl;
+    }
+    else if (element == RTPS_DUMP_FILE_SUBELEMENT)
+    {
+        std::cout << "RTPS dump file configuration not yet supported" << std::endl;
+    }
+    else if (element == SEGMENT_SIZE_SUBELEMENT)
+    {
+        std::cout << "Segment size configuration not yet supported" << std::endl;
+    }
+    else if (element == SEND_BUFFER_SIZE_SUBELEMENT)
+    {
+        std::cout << "Send buffer size configuration not yet supported" << std::endl;
+    }
+    else if (element == TLS_SUBELEMENT)
+    {
+        std::cout << "TLS configuration not yet supported" << std::endl;
+    }
+    else if (element == TTL_SUBELEMENT)
+    {
+        std::cout << "TTL configuration not yet supported" << std::endl;
+    }
+    else if (element == WAN_ADDRESS_SUBELEMENT)
+    {
+        std::cout << "WAN address configuration not yet supported" << std::endl;
+    }
+    else
+    {
+        print_usage = true;
+        std::cout << message.str() << " not recognized" << std::endl;
+    }
+
 
     if (print_usage)
     {
         if (CommonCommands::QUERY != command)
         {
-            std::cout <<  TRANSPORT_USAGE << std::endl;
+            if (usage_to_print.empty())
+            {
+                usage_to_print = TRANSPORT_USAGE;
+            }
+            std::cout <<  usage_to_print << std::endl;
         }
         else
         {

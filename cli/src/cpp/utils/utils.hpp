@@ -317,7 +317,17 @@ void qos_parser(
         const std::string& profile_name,
         std::string& element,
         const std::vector<std::string>& values);
-
+/**
+ * @brief Reliability QoS parser
+ *
+ * @param entity Endpoint kind.
+ * @param command Command kind.
+ * @param filename File to be modified.
+ * @param profile_name Endpoint profile name.
+ * @param element String with the dot-separated subelements.
+ * @param values Vector of strings with the values passed to CLI.
+ * @param message output stream message
+ */
 void reliability_qos_parser(
         DDSEntity entity,
         CommonCommands command,

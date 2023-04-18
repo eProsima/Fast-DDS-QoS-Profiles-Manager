@@ -33,13 +33,14 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set log`|**PENDING** (currently `Log module configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant`|`ERROR: participant requires a profile name` [^1]|`PARTICIPANT_USAGE`|
 |`fastddsqosprof file.xml set topic`|**PENDING** (currently `Topic configuration not yet supported`)|N/A|
-|`fastddsqosprof file.xml set transport_descriptor`|`ERROR: transport_descriptor requires a profile name` [^1]|N/A|
+|`fastddsqosprof file.xml set transport_descriptor`|`ERROR: transport_descriptor requires a profile name`|N/A|
 |`fastddsqosprof file.xml set types`|**PENDING** (currently `Dynamic types configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set other`|`ERROR: other element not recognized`|`SET_SUBPARSER_USAGE`|
 |`fastddsqosprof file.xml set datareader -h`|N/A|`DATAREADER_USAGE`|
 |`fastddsqosprof file.xml set datareader --help`|N/A|`DATAREADER_USAGE`|
 |`fastddsqosprof file.xml set datareader help`|N/A|`DATAREADER_USAGE`|
 |`fastddsqosprof file.xml set datareader argument1 argument2 help`|N/A|`DATAREADER_USAGE`|
+|`fastddsqosprof file.xml set datareader[]`|`ERROR: datareader requires a profile name` [^1]|`DATAREADER_USAGE`|
 |`fastddsqosprof file.xml set datareader.default_profile`|`ERROR: datareader requires a profile name` [^1]|`DATAREADER_USAGE`|
 |`fastddsqosprof file.xml set datareader[profile]`|`ERROR: datareader must not be FINAL element` [^1]|`DATAREADER_USAGE`|
 |`fastddsqosprof file.xml set datareader["a profile"]`|`ERROR: datareader must not be FINAL element` [^1]|`DATAREADER_USAGE`|
@@ -138,6 +139,7 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set datawriter --help`|N/A|`DATAWRITER_USAGE`|
 |`fastddsqosprof file.xml set datawriter help`|N/A|`DATAWRITER_USAGE`|
 |`fastddsqosprof file.xml set datawriter argument1 argument2 help`|N/A|`DATAWRITER_USAGE`|
+|`fastddsqosprof file.xml set datawriter[]`|`ERROR: datawriter requires a profile name` [^1]|`DATAWRITER_USAGE`|
 |`fastddsqosprof file.xml set datawriter.default_profile`|`ERROR: datawriter requires a profile name` [^1]|`DATAWRITER_USAGE`|
 |`fastddsqosprof file.xml set datawriter[profile]`|`ERROR: datawriter must not be FINAL element` [^1]|`DATAWRITER_USAGE`|
 |`fastddsqosprof file.xml set datawriter["a profile"]`|`ERROR: datawriter must not be FINAL element` [^1]|`DATAWRITER_USAGE`|
@@ -652,32 +654,43 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set transport_descriptor --help`|N/A|`TRANSPORT_USAGE`|
 |`fastddsqosprof file.xml set transport_descriptor help`|N/A|`TRANSPORT_USAGE`|
 |`fastddsqosprof file.xml set transport_descriptor argument1 argument2 help`|N/A|`TRANSPORT_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor[]`|`ERROR: transport_descriptor requires a profile name`|`TRANSPORT_USAGE`|
 |`fastddsqosprof file.xml set transport_descriptor[transport_id]`|`ERROR: transport_descriptor must not be FINAL element`|`TRANSPORT_USAGE`|
 |`fastddsqosprof file.xml set transport_descriptor["transport id"]`|`ERROR: transport_descriptor must not be FINAL element`|`TRANSPORT_USAGE`|
 |`fastddsqosprof file.xml set transport_descriptor[transport_id].calculate_crc`|**PENDING** (currently `Calculate CRC configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set transport_descriptor[transport_id].check_crc`|**PENDING** (currently `Check CRC configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set transport_descriptor[transport_id].enable_tcp_nodelay`|**PENDING** (currently `Enable TCP nodelay configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set transport_descriptor[transport_id].healthy_check_timeout_ms`|**PENDING** (currently `Healthy check timeout configuration not yet supported`)|N/A|
-|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist`|`ERROR: Transport <interface_whitelist> must be keyed []`|`TRANSPORT_USAGE`|
-|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist -h`|N/A|`TRANSPORT_USAGE`|
-|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist other`|`ERROR: Transport <interface_whitelist> must be keyed []`|`TRANSPORT_USAGE`|
-|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist[]`|`ERROR: set command for Transport <interface_whitelist> expects 1 arguments and received 0`|`TRANSPORT_USAGE`|
-|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist[].subelement`|`ERROR: Transport <interface_whitelist> must be FINAL element`|`TRANSPORT_USAGE`|
-|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist[] -h`|N/A|`TRANSPORT_USAGE`|
-|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist[] --help`|N/A|`TRANSPORT_USAGE`|
-|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist[] help`|N/A|`TRANSPORT_USAGE`|
-|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist[] arg1 arg2`|`ERROR: set command for Transport <interface_whitelist> expects 1 arguments and received 2`|`TRANSPORT_USAGE`|
-|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist[] arg1 arg2 -h`|N/A|`TRANSPORT_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist`|`ERROR: Transport <interface_whitelist> must be keyed []`|`TRANSPORT_WHITELIST_INTERFACE_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist -h`|N/A|`TRANSPORT_WHITELIST_INTERFACE_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist other`|`ERROR: Transport <interface_whitelist> must be keyed []`|`TRANSPORT_WHITELIST_INTERFACE_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist[]`|`ERROR: set command for Transport <interface_whitelist> expects 1 arguments and received 0`|`TRANSPORT_WHITELIST_INTERFACE_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist[].subelement`|`ERROR: Transport <interface_whitelist> must be FINAL element`|`TRANSPORT_WHITELIST_INTERFACE_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist[] -h`|N/A|`TRANSPORT_WHITELIST_INTERFACE_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist[] --help`|N/A|`TRANSPORT_WHITELIST_INTERFACE_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist[] help`|N/A|`TRANSPORT_WHITELIST_INTERFACE_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist[] arg1 arg2`|`ERROR: set command for Transport <interface_whitelist> expects 1 arguments and received 2`|`TRANSPORT_WHITELIST_INTERFACE_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist[] arg1 arg2 -h`|N/A|`TRANSPORT_WHITELIST_INTERFACE_USAGE`|
 |`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist[] 192.168.0.1`|N/A|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist[] 2001:0db8:85a3:0000:0000:8a2e:0370:7334`|N/A|N/A|
 |`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist[0] 192.168.0.2`|N/A|N/A|
 |`fastddsqosprof file.xml set transport_descriptor[transport_id].interface_whitelist[11811] 192.168.0.3`|`Fast DDS QoS Profiles Manager exception caught: interfaceWhiteList does not have an element in position 11811`|N/A|
 |`fastddsqosprof file.xml set transport_descriptor[transport_id].keep_alive_frequency_ms`|**PENDING** (currently `Keep alive frequency configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set transport_descriptor[transport_id].keep_alive_timeout_ms`|**PENDING** (currently `Keep alive timeout configuration not yet supported`)|N/A|
-|`fastddsqosprof file.xml set transport_descriptor[transport_id].kind`|`ERROR: set command for Transport <kind> expects 1 arguments and received 0`|`TRANSPORT_USAGE`|
-|`fastddsqosprof file.xml set transport_descriptor[transport_id].kind[]`|`ERROR: Transport <kind> must not be keyed []`|`TRANSPORT_USAGE`|
-|`fastddsqosprof file.xml set transport_descriptor[transport_id].kind -h`|N/A|`TRANSPORT_USAGE`|
-|`fastddsqosprof file.xml set transport_descriptor[transport_id].kind arg1 arg2`|`ERROR: set command for Transport <kind> expects 1 arguments and received 2`|`TRANSPORT_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].kind`|`ERROR: set command for Transport <kind> expects 1 arguments and received 0`|`TRANSPORT_KIND_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].kind[]`|`ERROR: Transport <kind> must not be keyed []`|`TRANSPORT_KIND_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].kind -h`|N/A|`TRANSPORT_KIND_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].kind arg1 arg2`|`ERROR: set command for Transport <kind> expects 1 arguments and received 2`|`TRANSPORT_KIND_USAGE`|
 |`fastddsqosprof file.xml set transport_descriptor[transport_id].kind udp_v4`|N/A|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].kind udp_v6`|N/A|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].kind tcp_v4`|N/A|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].kind tcp_v6`|N/A|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].kind shm`|N/A|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].kind UDPv4`|N/A|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].kind UDPv6`|N/A|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].kind TCPv4`|N/A|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].kind TCPv6`|N/A|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].kind SHM`|N/A|N/A|
 |`fastddsqosprof file.xml set transport_descriptor[transport_id].kind other`|`Fast DDS QoS Profiles Manager exception caught: value 'other' not in enumeration`|N/A|
 |`fastddsqosprof file.xml set transport_descriptor[transport_id].listening_port`|**PENDING** (currently `Listening port configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set transport_descriptor[transport_id].logical_port_increment`|**PENDING** (currently `Logical port increment configuration not yet supported`)|N/A|
@@ -695,6 +708,8 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set transport_descriptor[transport_id].tls`|**PENDING** (currently `TLS configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set transport_descriptor[transport_id].ttl`|**PENDING** (currently `TTL configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set transport_descriptor[transport_id].wan_address`|**PENDING** (currently `WAN address configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].other`|`Transport <other> not recognized`|`TRANSPORT_USAGE`|
+|`fastddsqosprof file.xml set transport_descriptor[transport_id].other --help`|N/A|`TRANSPORT_USAGE`|
 
 [^1]: **PENDING**: Print and clear default profile command will not require a profile name.
 [^2]: **PENDING**: Print, clear and query commands should not allow an empty index with a subelement.

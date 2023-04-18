@@ -47,7 +47,7 @@ static const char DATAREADER_QOS_USAGE[] =
       clear                             Erase DataReader QoS configuration from XML file.
       print                             Print DataReader QoS configuration.
       set                               Write DataReader QoS configuration to XML file.
-    
+
     The <profile_name> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
 
     The allowed <subelement> types are:
@@ -73,6 +73,7 @@ static const char DATAREADER_USAGE[] =
       fastddsqosprof <file> <command> datareader[<profile_name>].<subelement> [<values>... (help | -h | --help)]
       fastddsqosprof <file> <command> datareader[<profile_name>].<subelement> (help | -h | --help)
       fastddsqosprof <file> <command> datareader[<profile_name>] (help | -h | --help)
+      fastddsqosprof <file> <command> datareader (help | -h | --help)
 
     Options:
       help -h --help                    CLI DataReader options
@@ -115,7 +116,7 @@ static const char DATAWRITER_QOS_USAGE[] =
       clear                             Erase DataWriter QoS configuration from XML file.
       print                             Print DataWriter QoS configuration.
       set                               Write DataWriter QoS configuration to XML file.
-    
+
     The <profile_name> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
 
     The allowed <subelement> types are:
@@ -143,6 +144,7 @@ static const char DATAWRITER_USAGE[] =
       fastddsqosprof <file> <command> datawriter[<profile_name>].<subelement> [<values>... (help | -h | --help)]
       fastddsqosprof <file> <command> datawriter[<profile_name>].<subelement> (help | -h | --help)
       fastddsqosprof <file> <command> datawriter[<profile_name>] (help | -h | --help)
+      fastddsqosprof <file> <command> datawriter (help | -h | --help)
 
     Options:
       help -h --help                    CLI DataWriter options
@@ -467,6 +469,7 @@ static const char PARTICIPANT_USAGE[] =
       fastddsqosprof <file> <command> participant[<profile_name>].<subelement> [<values>... (help | -h | --help)]
       fastddsqosprof <file> <command> participant[<profile_name>].<subelement> (help | -h | --help)
       fastddsqosprof <file> <command> participant[<profile_name>] (help | -h | --help)
+      fastddsqosprof <file> <command> participant (help | -h | --help)
 
     Options:
       help -h --help                CLI participant options
@@ -628,49 +631,100 @@ static const char RELIABILITY_QOS_USAGE[] =
       duration                    Reliability QoS Policy maximum blocking time configuration.
 )";
 
-static const char TRANSPORT_USAGE[] =
-        R"(Transport usage:
-
+static const char TRANSPORT_KIND_USAGE[] =
+        R"(Transport descriptor kind usage:
     Usage:
-      fastddsqosprof <file> <command> transport[<transport_id>].<subelement> [<values>... (help | -h | --help)]
-      fastddsqosprof <file> <command> transport[<transport_id>].<subelement> (help | -h | --help)
-      fastddsqosprof <file> <command> transport[<transport_id>] (help | -h | --help)
+      fastddsqosprof <file> <command> transport_descriptor[<transport_id>].kind [<transport_kind> (help | -h | --help)]
+      fastddsqosprof <file> <command> transport_descriptor[<transport_id>].kind (help | -h | --help)
 
     Options:
-      help -h --help                CLI transport options
+      help -h --help              CLI transport descriptor kind usage
 
     The allowed <command> options are:
-      clear                         Erase transport description parameter from XML file.
-      print                         Print transport description as XML parameter.
-      set                           Write transport description parameter to XML file.
+      clear                       Erase transport descriptor kind from XML file.
+      print                       Print transport descriptor kind.
+      set                         Set transport descriptor kind in the XML file.
+
+    The <transport_id> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
+
+    SET command REQUIRES a <transport_kind> value. The accepted values are:
+      udp_v4
+      udp_v6
+      tcp_v4
+      tcp_v6
+      shm
+)";
+
+static const char TRANSPORT_USAGE[] =
+        R"(Transport descriptor usage:
+
+    Usage:
+      fastddsqosprof <file> <command> transport_descriptor[<transport_id>].<subelement> [<values>... (help | -h | --help)]
+      fastddsqosprof <file> <command> transport_descriptor[<transport_id>].<subelement> (help | -h | --help)
+      fastddsqosprof <file> <command> transport_descriptor[<transport_id>] (help | -h | --help)
+      fastddsqosprof <file> <command> transport_descriptor (help | -h | --help)
+
+    Options:
+      help -h --help                CLI transport descriptor options
+
+    The allowed <command> options are:
+      clear                         Erase transport descriptor configuration parameter from XML file.
+      print                         Print transport descriptor configuration as XML parameter.
+      set                           Write transport descriptor configuration parameter to XML file.
 
     The <transport_id> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
 
     The allowed <subelement> types are:
-      calculate_crc             Enable calculating Cyclic Redundancy Code for error control (only available for tcp kind)
-      check_crc                 Enable checking Cyclic Redundancy Code for error control (only available for tcp kind)
-      enable_tcp_nodelay        Enable the Nagle algorithm for sockets (only available for tcp kind)
-      healthy_check_timeout_ms  Max ms time-out for checking if listener is alive (only available for shared memory kind)
-      interface_whitelist       Transport interface whitelist (only available for udp and tcp kind)
-      keep_alive_frequency_ms   Frequency in ms for sending RTCP keep-alive requests (only available for tcp kind)
-      keep_alive_timeout_ms     Timeout in ms between RTCP keep-alive requests (only available for tcp kind)
-      kind                      Kind of transport descriptor.
-      listening_port            Collection of local ports (only available for tcp kind)
-      logical_port_increment    Increment between logical ports to try during RTCP negotiations (only available for tcp kind)
-      logical_port_range        Max number of logical ports per request to try RTCP negotiations (only available for tcp kind)
-      max_initial_peers_range   Max range of transport initial peers
-      max_logical_port          Max number of logical ports to try RTCP negotiations (only available for tcp kind)
-      max_message_size          Max size of transport messages
-      non_blocking_send         Transport socked non blocking send mode (only available for udp kind)
-      output_port               Port used for output bound (only available for udp kind)
-      port_queue_capacity       Max number of messages per listener (only available for shared memory kind)
-      receive_buffer_size       Transport receive buffer size.
-      rtps_dump_file            Complete path to store debugging RTPS messages (only available for shared memory kind)
-      segment_size              Size (in bytes) of the shared-memory segment (only available for shared memory kind)
-      send_buffer_size          Transport send buffer size.
-      tls                       Transport Layer Security configuration (only available for tcp kind)
-      ttl                       Transport Time To Live (only available for udp kind)
-      wan_address               Public ip_v4 wan address (only available for tcp_v4 kind)
+      calculate_crc                 Enable calculating Cyclic Redundancy Code for error control (only available for TCP transport kind)
+      check_crc                     Enable checking Cyclic Redundancy Code for error control (only available for TCP transport kind)
+      enable_tcp_nodelay            Enable the Nagle algorithm for sockets (only available for TCP transport kind)
+      healthy_check_timeout_ms      Maximum time-out (in milliseconds) for checking if listener is alive (only available for shared memory transport kind)
+      interface_whitelist           Transport interface whitelist (only available for udp and TCP transport kind)
+      keep_alive_frequency_ms       Frequency in milliseconds for sending RTCP keep-alive requests (only available for TCP transport kind)
+      keep_alive_timeout_ms         Timeout in milliseconds between RTCP keep-alive requests (only available for TCP transport kind)
+      kind                          Kind of transport descriptor.
+      listening_port                Collection of local ports (only available for TCP transport kind)
+      logical_port_increment        Increment between logical ports to try during RTCP negotiations (only available for TCP transport kind)
+      logical_port_range            Maximum number of logical ports per request to try RTCP negotiations (only available for TCP transport kind)
+      max_initial_peers_range       Maximum range of transport initial peers
+      max_logical_port              Maximum number of logical ports to try RTCP negotiations (only available for TCP transport kind)
+      max_message_size              Maximum size of transport messages
+      non_blocking_send             Transport socket non blocking send mode configuration (only available for UDP transport kind)
+      output_port                   Port used for output bound (only available for UDP transport kind)
+      port_queue_capacity           Maximum number of messages per listener (only available for shared memory transport kind)
+      receive_buffer_size           Transport receive buffer size.
+      rtps_dump_file                Complete path to store debugging RTPS messages (only available for shared memory transport kind)
+      segment_size                  Size (in bytes) of the shared-memory segment (only available for shared memory transport kind)
+      send_buffer_size              Transport send buffer size.
+      tls                           Transport Layer Security configuration (only available for TCP transport kind)
+      ttl                           Transport Time To Live (only available for UDP transport kind)
+      wan_address                   Public IPv4 wan address (only available for TCPv4 transport kind)
+)";
+
+static const char TRANSPORT_WHITELIST_INTERFACE_USAGE[] =
+        R"(Transport descriptor whitelist interface usage:
+    Usage:
+      fastddsqosprof <file> <command> transport_descriptor[<transport_id>].interface_whitelist[(<index>)] [<address_value> (help | -h | --help)]
+      fastddsqosprof <file> <command> transport_descriptor[<transport_id>].interface_whitelist[(<index>)] [(help | -h | --help)]
+
+    Options:
+      help -h --help    CLI transport descriptor interface whitelist usage
+
+    The allowed <command> options are:
+      clear             Erase transport descriptor interface whitelist configuration parameter from XML file.
+      print             Print transport descriptor interface whitelist XML configuration parameter.
+      set               Write transport descriptor interface whitelist configuration parameter to XML file.
+
+    The <transport_id> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
+
+    The <index> element is OPTIONAL:
+      No <index> with a SET command pushes a new element into the list.
+      No <index> with a PRINT command prints every element in the list. Printing any subelement requires setting an <index>.
+      No <index> with a CLEAR command clears every element in the list. Clearing any subelement requires setting an <index>.
+      Positive <index> accesses the element in that position starting from the first element in the list.
+      Negative <index> accesses the element in that position starting from the last element in the list.
+
+    SET command REQUIRES a <address_value> element. The accepted values are IP format or DNS.
 )";
 
 static const char SET_SUBPARSER_USAGE[] =
