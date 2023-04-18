@@ -112,7 +112,8 @@ void transport_subelement_parser(
             }
         }
 
-        if (print_usage){
+        if (print_usage)
+        {
             if (CommonCommands::QUERY == command)
             {
                 // TODO
