@@ -145,6 +145,10 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability[]`|`ERROR: DataWriter <reliability> QoS must not be keyed []`|`RELIABILITY_QOS_USAGE`|
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability[] help`|N/A|`RELIABILITY_QOS_USAGE`|
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability.kind`|N/A|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.kind[]`|`ERROR: DataWriter <reliability> QoS: 'kind' attribute must not be keyed []`|`RELIABILITY_KIND_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.kind[] --help`|N/A|`RELIABILITY_KIND_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.kind.other`|`ERROR: DataWriter <reliability> QoS: 'kind' attribute must be FINAL element`|`RELIABILITY_KIND_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.kind.other arg1 help`|N/A|`RELIABILITY_KIND_QOS_USAGE`|
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration`|N/A|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability.other`|`ERROR: DataWriter <reliability> QoS: 'other' attribute not recognized`|`RELIABILITY_QOS_USAGE`|
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability.other help`|N/A|`RELIABILITY_QOS_USAGE`|

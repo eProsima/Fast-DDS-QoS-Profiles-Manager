@@ -279,7 +279,18 @@ void reliability_qos_parser(
 
     if (element == KIND_SUBELEMENT)
     {
-        std::cout << message.str() << " not yet supported" << std::endl;
+        print_usage = check_help(values);
+        print_usage = print_usage || !check_keyed(false, keyed, message.str());
+        print_usage = print_usage || !check_final_element(true, subelement, message.str());
+
+        if (!print_usage)
+        {
+            // TODO
+        }
+        else
+        {
+            std::cout << RELIABILITY_KIND_QOS_USAGE << std::endl;
+        }
     }
     else if (element == DURATION_SUBELEMENT)
     {
