@@ -81,6 +81,7 @@ constexpr const char* SEC = "sec";
 /// QOS
 constexpr const char* DURABILITY = "durability";
 constexpr const char* KIND = "kind";
+constexpr const char* MAX_BLOCKING_TIME = "max_blocking_time";
 constexpr const char* QOS = "qos";
 constexpr const char* RELIABILITY = "reliability";
 

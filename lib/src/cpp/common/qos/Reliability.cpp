@@ -45,6 +45,9 @@ void set_max_blocking_time_sec(
         utils::XMLManager& manager,
         const std::string& sec)
 {
+    // Obtain max blocking time node
+    manager.get_node(utils::tag::MAX_BLOCKING_TIME, true);
+
     // Use the common api
     common::duration::set_sec(manager, sec);
 }
@@ -53,6 +56,9 @@ void set_max_blocking_time_nanosec(
         utils::XMLManager& manager,
         const std::string& nanosec)
 {
+    // Obtain max blocking time node
+    manager.get_node(utils::tag::MAX_BLOCKING_TIME, true);
+
     // Use the common api
     common::duration::set_nanosec(manager, nanosec);
 }
