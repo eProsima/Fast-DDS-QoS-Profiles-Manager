@@ -72,6 +72,7 @@ void qos_parser(
     }
     else if (element == DURABILITY_ELEMENT)
     {
+        bool print_error = false;
         print_usage = check_help(values);
         print_usage = print_usage || !check_keyed(false, keyed, message.str());
         print_usage = print_usage || !check_final_element(true, subelement, message.str());
@@ -80,93 +81,94 @@ void qos_parser(
         {
             try
             {
-                switch (entity)
+                switch (command)
                 {
-                    case DDSEntity::DATAREADER:
-                        switch (command)
+                    case CommonCommands::CLEAR:
+                        print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
+                        if (!print_usage)
                         {
-                            case CommonCommands::CLEAR:
-                                print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
-                                if (!print_usage)
-                                {
+                            switch (entity)
+                            {
+                                case DDSEntity::DATAREADER:
                                     // TODO
-                                }
-                                break;
-                            case CommonCommands::PRINT:
-                                print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
-                                if (!print_usage)
-                                {
+                                    break;
+                                case DDSEntity::DATAWRITER:
                                     // TODO
-                                }
-                                break;
-                            case CommonCommands::QUERY:
-                                print_usage = !query_not_allowed(message.str());
-                                break;
-                            case CommonCommands::SET:
-                                print_usage = !check_command_arguments(command, 1, values.size(), message.str(), true);
-                                if (!print_usage)
-                                {
-                                    std::string durability_kind;
-                                    if (values[DEFAULT_POSITION] == CLI_PERSISTENT_ARGUMENT)
-                                    {
-                                        durability_kind = LIB_PERSISTENT_ARGUMENT;
-                                    }
-                                    else if (values[DEFAULT_POSITION] == CLI_TRANSIENT_ARGUMENT)
-                                    {
-                                        durability_kind = LIB_TRANSIENT_ARGUMENT;
-                                    }
-                                    else if (values[DEFAULT_POSITION] == CLI_TRANSIENT_LOCAL_ARGUMENT)
-                                    {
-                                        durability_kind = LIB_TRANSIENT_LOCAL_ARGUMENT;
-                                    }
-                                    else if (values[DEFAULT_POSITION] == CLI_VOLATILE_ARGUMENT)
-                                    {
-                                        durability_kind = LIB_VOLATILE_ARGUMENT;
-                                    }
-                                    else
-                                    {
-                                        durability_kind = values[DEFAULT_POSITION];
-                                    }
+                                    break;
+                                default:
+                                    print_error = true;
+                                    break;
+                            }
+                        }
+                        break;
+                    case CommonCommands::PRINT:
+                        print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
+                        if (!print_usage)
+                        {
+                            switch (entity)
+                            {
+                                case DDSEntity::DATAREADER:
+                                    // TODO
+                                    break;
+                                case DDSEntity::DATAWRITER:
+                                    // TODO
+                                    break;
+                                default:
+                                    print_error = true;
+                                    break;
+                            }
+                        }
+                        break;
+                    case CommonCommands::QUERY:
+                        print_usage = !query_not_allowed(message.str());
+                        break;
+                    case CommonCommands::SET:
+                        print_usage = !check_command_arguments(command, 1, values.size(), message.str(), true);
+                        if (!print_usage)
+                        {
+                            std::string durability_kind;
+                            if (values[DEFAULT_POSITION] == CLI_PERSISTENT_ARGUMENT)
+                            {
+                                durability_kind = LIB_PERSISTENT_ARGUMENT;
+                            }
+                            else if (values[DEFAULT_POSITION] == CLI_TRANSIENT_ARGUMENT)
+                            {
+                                durability_kind = LIB_TRANSIENT_ARGUMENT;
+                            }
+                            else if (values[DEFAULT_POSITION] == CLI_TRANSIENT_LOCAL_ARGUMENT)
+                            {
+                                durability_kind = LIB_TRANSIENT_LOCAL_ARGUMENT;
+                            }
+                            else if (values[DEFAULT_POSITION] == CLI_VOLATILE_ARGUMENT)
+                            {
+                                durability_kind = LIB_VOLATILE_ARGUMENT;
+                            }
+                            else
+                            {
+                                durability_kind = values[DEFAULT_POSITION];
+                            }
 
+                            switch (entity)
+                            {
+                                case DDSEntity::DATAREADER:
                                     qosprof::data_reader::qos::set_durability_kind(filename, profile_name,
                                             durability_kind);
-                                }
-                                break;
-                        }
-                        break;
-                    case DDSEntity::DATAWRITER:
-                        switch (command)
-                        {
-                            case CommonCommands::CLEAR:
-                                print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
-                                if (!print_usage)
-                                {
-                                    // TODO
-                                }
-                                break;
-                            case CommonCommands::PRINT:
-                                print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
-                                if (!print_usage)
-                                {
-                                    // TODO
-                                }
-                                break;
-                            case CommonCommands::QUERY:
-                                print_usage = !query_not_allowed(message.str());
-                                break;
-                            case CommonCommands::SET:
-                                print_usage = !check_command_arguments(command, 1, values.size(), message.str(), true);
-                                if (!print_usage)
-                                {
+                                    break;
+                                case DDSEntity::DATAWRITER:
                                     qosprof::data_writer::qos::set_durability_kind(filename, profile_name,
-                                            values[DEFAULT_POSITION]);
-                                }
-                                break;
+                                            durability_kind);
+                                    break;
+                                default:
+                                    print_error = true;
+                                    break;
+                            }
                         }
                         break;
-                    default:
-                        std::cout << "ERROR: Durability QoS cannot be set in given DDS Entity" << std::endl;
-                        break;
+                }
+                if (print_error)
+                {
+                    std::cout << "ERROR: Durability QoS cannot be set in given DDS Entity" << std::endl;
+                    print_usage = true;
                 }
             }
             catch (const qosprof::Exception& e)
