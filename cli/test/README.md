@@ -84,7 +84,16 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set datareader[profile].qos.reliability -h`|N/A|`RELIABILITY_QOS_USAGE`|
 |`fastddsqosprof file.xml set datareader[profile].qos.reliability[]`|`ERROR: DataReader <reliability> QoS must not be keyed []`|`RELIABILITY_QOS_USAGE`|
 |`fastddsqosprof file.xml set datareader[profile].qos.reliability[] help`|N/A|`RELIABILITY_QOS_USAGE`|
-|`fastddsqosprof file.xml set datareader[profile].qos.reliability.kind`|N/A|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.kind`|`ERROR: set command for DataReader <reliability> QoS: 'kind' attribute expects 1 arguments and received 0`|`RELIABILITY_KIND_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.kind[]`|`ERROR: DataReader <reliability> QoS: 'kind' attribute must not be keyed []`|`RELIABILITY_KIND_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.kind[] --help`|N/A|`RELIABILITY_KIND_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.kind.other`|`ERROR: DataReader <reliability> QoS: 'kind' attribute must be FINAL element`|`RELIABILITY_KIND_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.kind.other arg1 help`|N/A|`RELIABILITY_KIND_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.kind best_effort`|N/A|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.kind reliable`|N/A|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.kind BEST_EFFORT`|N/A|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.kind RELIABLE`|N/A|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.kind argument`|`Fast DDS QoS Profiles Manager exception caught: value 'argument' not in enumeration`|N/A|
 |`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration`|N/A|N/A|
 |`fastddsqosprof file.xml set datareader[profile].qos.reliability.other`|`ERROR: DataReader <reliability> QoS: 'other' attribute not recognized`|`RELIABILITY_QOS_USAGE`|
 |`fastddsqosprof file.xml set datareader[profile].qos.reliability.other help`|N/A|`RELIABILITY_QOS_USAGE`|
@@ -144,11 +153,16 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability -h`|N/A|`RELIABILITY_QOS_USAGE`|
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability[]`|`ERROR: DataWriter <reliability> QoS must not be keyed []`|`RELIABILITY_QOS_USAGE`|
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability[] help`|N/A|`RELIABILITY_QOS_USAGE`|
-|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.kind`|N/A|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.kind`|`ERROR: set command for DataWriter <reliability> QoS: 'kind' attribute expects 1 arguments and received 0`|`RELIABILITY_KIND_QOS_USAGE`|
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability.kind[]`|`ERROR: DataWriter <reliability> QoS: 'kind' attribute must not be keyed []`|`RELIABILITY_KIND_QOS_USAGE`|
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability.kind[] --help`|N/A|`RELIABILITY_KIND_QOS_USAGE`|
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability.kind.other`|`ERROR: DataWriter <reliability> QoS: 'kind' attribute must be FINAL element`|`RELIABILITY_KIND_QOS_USAGE`|
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability.kind.other arg1 help`|N/A|`RELIABILITY_KIND_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.kind best_effort`|N/A|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.kind reliable`|N/A|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.kind BEST_EFFORT`|N/A|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.kind RELIABLE`|N/A|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.kind argument`|`Fast DDS QoS Profiles Manager exception caught: value 'argument' not in enumeration`|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration`|N/A|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability.other`|`ERROR: DataWriter <reliability> QoS: 'other' attribute not recognized`|`RELIABILITY_QOS_USAGE`|
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability.other help`|N/A|`RELIABILITY_QOS_USAGE`|
