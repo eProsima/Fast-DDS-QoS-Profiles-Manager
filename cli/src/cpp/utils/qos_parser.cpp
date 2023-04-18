@@ -382,7 +382,22 @@ void reliability_qos_parser(
     }
     else if (element == DURATION_SUBELEMENT)
     {
-        std::cout << message.str() << " not yet supported" << std::endl;
+        print_usage = check_help(values);
+        print_usage = print_usage || !check_keyed(false, keyed, message.str());
+        print_usage = print_usage || !check_final_element(false, subelement, message.str());
+
+        DurationTypeList duration_type;
+        std::string subsubelement;
+        print_usage = print_usage || !duration_type_selector(entity, duration_type, RELIABILITY_ELEMENT, subelement,
+                subsubelement, values, message);
+        if (!print_usage)
+        {
+            duration_type_parser(duration_type, command, filename, profile_name, subsubelement, values, message);
+        }
+        else
+        {
+            std::cout << RELIABILITY_DURATION_QOS_USAGE << std::endl;
+        }
     }
     else
     {

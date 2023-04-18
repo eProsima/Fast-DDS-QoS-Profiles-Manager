@@ -94,7 +94,33 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set datareader[profile].qos.reliability.kind BEST_EFFORT`|N/A|N/A|
 |`fastddsqosprof file.xml set datareader[profile].qos.reliability.kind RELIABLE`|N/A|N/A|
 |`fastddsqosprof file.xml set datareader[profile].qos.reliability.kind argument`|`Fast DDS QoS Profiles Manager exception caught: value 'argument' not in enumeration`|N/A|
-|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration`|N/A|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration`|`ERROR: DataReader <reliability> QoS: 'duration' attribute must not be FINAL element`|`RELIABILITY_DURATION_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration[]`|`ERROR: DataReader <reliability> QoS: 'duration' attribute must not be keyed []`|`RELIABILITY_DURATION_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration -h`|N/A|`RELIABILITY_DURATION_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time`|`ERROR: set command for DataReader <reliability> QoS: 'duration' attribute: 'max_blocking_time' duration type expects at least 1 arguments and received 0`|`RELIABILITY_DURATION_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time[]`|`ERROR: DataReader <reliability> QoS: 'duration' attribute: 'max_blocking_time' duration type must not be keyed []`|`RELIABILITY_DURATION_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time arg1 arg2 arg3`|`ERROR: set command for DataReader <reliability> QoS: 'duration' attribute: 'max_blocking_time' duration type expects at most 2 arguments and received 3`|`RELIABILITY_DURATION_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time infinite`|N/A|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time 1`|N/A|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time other`|`Fast DDS QoS Profiles Manager exception caught: value 'other' does not match any member types of the union`|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time arg1 arg2 -h`|N/A|`RELIABILITY_DURATION_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time 2 500`|**BUG** (currently `Fast DDS QoS Profiles Manager exception caught: invalid document structure`) [^3]|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time infinite 500`|`Fast DDS QoS Profiles Manager exception caught: value 'infinite' does not match any member types of the union`|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time 1 other`|**BUG** (currently `Fast DDS QoS Profiles Manager exception caught: invalid document structure`) [^3]|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time.sec`|`ERROR: set command for DataReader <reliability> QoS: 'duration' attribute: 'max_blocking_time' duration type <sec> attribute expects 1 arguments and received 0`|`RELIABILITY_DURATION_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time.sec[]`|`ERROR: DataReader <reliability> QoS: 'duration' attribute: 'max_blocking_time' duration type <sec> attribute must not be keyed []`|`RELIABILITY_DURATION_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time.sec.other`|`ERROR: DataReader <reliability> QoS: 'duration' attribute: 'max_blocking_time' duration type <sec> attribute must be FINAL element`|`RELIABILITY_DURATION_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time.sec 10`|N/A|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time.sec infinite`|`Fast DDS QoS Profiles Manager exception caught: value 'infinite' does not match any member types of the union`|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time.sec other`|`Fast DDS QoS Profiles Manager exception caught: value 'other' does not match any member types of the union`|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time.sec -h`|N/A|`RELIABILITY_DURATION_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time.nanosec`|`ERROR: set command for DataReader <reliability> QoS: 'duration' attribute: 'max_blocking_time' duration type <nanosec> attribute expects 1 arguments and received 0`|`RELIABILITY_DURATION_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time.nanosec[]`|`ERROR: DataReader <reliability> QoS: 'duration' attribute: 'max_blocking_time' duration type <nanosec> attribute must not be keyed []`|`RELIABILITY_DURATION_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time.nanosec.other`|`ERROR: DataReader <reliability> QoS: 'duration' attribute: 'max_blocking_time' duration type <nanosec> attribute must be FINAL element`|`RELIABILITY_DURATION_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time.nanosec 100`|N/A|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time.nanosec infinite`|`Fast DDS QoS Profiles Manager exception caught: value 'infinite' does not match any member types of the union`|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time.nanosec other`|`Fast DDS QoS Profiles Manager exception caught: value 'other' does not match any member types of the union`|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time.nanosec -h`|N/A|`RELIABILITY_DURATION_QOS_USAGE`|
 |`fastddsqosprof file.xml set datareader[profile].qos.reliability.other`|`ERROR: DataReader <reliability> QoS: 'other' attribute not recognized`|`RELIABILITY_QOS_USAGE`|
 |`fastddsqosprof file.xml set datareader[profile].qos.reliability.other help`|N/A|`RELIABILITY_QOS_USAGE`|
 |`fastddsqosprof file.xml set datareader[profile].qos.resource_limits`|**PENDING** (currently `Resource Limits QoS configuration not yet supported`)|N/A|
@@ -163,7 +189,33 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability.kind BEST_EFFORT`|N/A|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability.kind RELIABLE`|N/A|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability.kind argument`|`Fast DDS QoS Profiles Manager exception caught: value 'argument' not in enumeration`|N/A|
-|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration`|N/A|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration`|`ERROR: DataWriter <reliability> QoS: 'duration' attribute must not be FINAL element`|`RELIABILITY_DURATION_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration[]`|`ERROR: DataWriter <reliability> QoS: 'duration' attribute must not be keyed []`|`RELIABILITY_DURATION_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration -h`|N/A|`RELIABILITY_DURATION_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time`|`ERROR: set command for DataWriter <reliability> QoS: 'duration' attribute: 'max_blocking_time' duration type expects at least 1 arguments and received 0`|`RELIABILITY_DURATION_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time[]`|`ERROR: DataWriter <reliability> QoS: 'duration' attribute: 'max_blocking_time' duration type must not be keyed []`|`RELIABILITY_DURATION_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time arg1 arg2 arg3`|`ERROR: set command for DataWriter <reliability> QoS: 'duration' attribute: 'max_blocking_time' duration type expects at most 2 arguments and received 3`|`RELIABILITY_DURATION_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time infinite`|N/A|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time 1`|N/A|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time other`|`Fast DDS QoS Profiles Manager exception caught: value 'other' does not match any member types of the union`|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time arg1 arg2 -h`|N/A|`RELIABILITY_DURATION_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time 2 500`|**BUG** (currently `Fast DDS QoS Profiles Manager exception caught: invalid document structure`) [^3]|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time infinite 500`|`Fast DDS QoS Profiles Manager exception caught: value 'infinite' does not match any member types of the union`|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time 1 other`|**BUG** (currently `Fast DDS QoS Profiles Manager exception caught: invalid document structure`) [^3]|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time.sec`|`ERROR: set command for DataWriter <reliability> QoS: 'duration' attribute: 'max_blocking_time' duration type <sec> attribute expects 1 arguments and received 0`|`RELIABILITY_DURATION_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time.sec[]`|`ERROR: DataWriter <reliability> QoS: 'duration' attribute: 'max_blocking_time' duration type <sec> attribute must not be keyed []`|`RELIABILITY_DURATION_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time.sec.other`|`ERROR: DataWriter <reliability> QoS: 'duration' attribute: 'max_blocking_time' duration type <sec> attribute must be FINAL element`|`RELIABILITY_DURATION_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time.sec 10`|N/A|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time.sec infinite`|`Fast DDS QoS Profiles Manager exception caught: value 'infinite' does not match any member types of the union`|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time.sec other`|`Fast DDS QoS Profiles Manager exception caught: value 'other' does not match any member types of the union`|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time.sec -h`|N/A|`RELIABILITY_DURATION_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time.nanosec`|`ERROR: set command for DataWriter <reliability> QoS: 'duration' attribute: 'max_blocking_time' duration type <nanosec> attribute expects 1 arguments and received 0`|`RELIABILITY_DURATION_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time.nanosec[]`|`ERROR: DataWriter <reliability> QoS: 'duration' attribute: 'max_blocking_time' duration type <nanosec> attribute must not be keyed []`|`RELIABILITY_DURATION_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time.nanosec.other`|`ERROR: DataWriter <reliability> QoS: 'duration' attribute: 'max_blocking_time' duration type <nanosec> attribute must be FINAL element`|`RELIABILITY_DURATION_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time.nanosec 100`|N/A|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time.nanosec infinite`|`Fast DDS QoS Profiles Manager exception caught: value 'infinite' does not match any member types of the union`|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time.nanosec other`|`Fast DDS QoS Profiles Manager exception caught: value 'other' does not match any member types of the union`|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time.nanosec -h`|N/A|`RELIABILITY_DURATION_QOS_USAGE`|
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability.other`|`ERROR: DataWriter <reliability> QoS: 'other' attribute not recognized`|`RELIABILITY_QOS_USAGE`|
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability.other help`|N/A|`RELIABILITY_QOS_USAGE`|
 |`fastddsqosprof file.xml set datawriter[profile].qos.resource_limits`|**PENDING** (currently `Resource Limits QoS configuration not yet supported`)|N/A|
@@ -230,9 +282,9 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease 1`|N/A|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease other`|`Fast DDS QoS Profiles Manager exception caught: value 'other' does not match any member types of the union`|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease arg1 arg2 help`|N/A|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease 1 500`|**PENDING** (currently `Fast DDS QoS Profiles Manager exception caught: invalid document structure`) [^3]|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease 1 500`|**BUG** (currently `Fast DDS QoS Profiles Manager exception caught: invalid document structure`) [^3]|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease infinite 500`|`Fast DDS QoS Profiles Manager exception caught: value 'infinite' does not match any member types of the union`|N/A|
-|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease 1 other`|**PENDING** (currently `Fast DDS QoS Profiles Manager exception caught: invalid document structure`) [^3]|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease 1 other`|**BUG** (currently `Fast DDS QoS Profiles Manager exception caught: invalid document structure`) [^3]|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease.sec`|`ERROR: set command for Participant builtin discovery config <duration>: 'lease' duration type <sec> attribute expects 1 arguments and received 0`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease.sec[]`|`ERROR: Participant builtin discovery config <duration>: 'lease' duration type <sec> attribute must not be keyed []`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease.sec.other`|`ERROR: Participant builtin discovery config <duration>: 'lease' duration type <sec> attribute must be FINAL element`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
@@ -254,9 +306,9 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements 1`|N/A|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements other`|`Fast DDS QoS Profiles Manager exception caught: value 'other' does not match any member types of the union`|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements arg1 arg2 help`|N/A|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements 1 500`|**PENDING** (currently `Fast DDS QoS Profiles Manager exception caught: invalid document structure`) [^3]|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements 1 500`|**BUG** (currently `Fast DDS QoS Profiles Manager exception caught: invalid document structure`) [^3]|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements infinite 500`|`Fast DDS QoS Profiles Manager exception caught: value 'infinite' does not match any member types of the union`|N/A|
-|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements 1 other`|**PENDING** (currently `Fast DDS QoS Profiles Manager exception caught: invalid document structure`) [^3]|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements 1 other`|**BUG** (currently `Fast DDS QoS Profiles Manager exception caught: invalid document structure`) [^3]|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements.sec`|`ERROR: set command for Participant builtin discovery config <duration>: 'announcements' duration type <sec> attribute expects 1 arguments and received 0`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements.sec[]`|`ERROR: Participant builtin discovery config <duration>: 'announcements' duration type <sec> attribute must not be keyed []`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements.sec.other`|`ERROR: Participant builtin discovery config <duration>: 'announcements' duration type <sec> attribute must be FINAL element`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|

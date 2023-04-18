@@ -16,6 +16,8 @@
 #include <string>
 #include <vector>
 
+#include <fastdds_qos_profiles_manager/data_reader/Qos.hpp>
+#include <fastdds_qos_profiles_manager/data_writer/Qos.hpp>
 #include <fastdds_qos_profiles_manager/domain_participant/builtin/discovery_config/DiscoveryConfig.hpp>
 #include <fastdds_qos_profiles_manager/exception/Exception.hpp>
 
@@ -49,10 +51,24 @@ bool duration_type_selector(
         switch (entity)
         {
             case DDSEntity::DATAREADER:
-                // TODO: parent elements not yet defined
+                if (parent == RELIABILITY_ELEMENT && element == MAX_BLOCKING_TIME_ELEMENT)
+                {
+                    duration_type = DurationTypeList::DATAREADER_QOS_RELIABILITY_MAX_BLOCKING_TIME;
+                }
+                else
+                {
+                    std::cout << message.str() << "not yet implemented or not recognized" << std::endl;
+                }
                 break;
             case DDSEntity::DATAWRITER:
-                // TODO: parent elements not yet defined
+                if (parent == RELIABILITY_ELEMENT && element == MAX_BLOCKING_TIME_ELEMENT)
+                {
+                    duration_type = DurationTypeList::DATAWRITER_QOS_RELIABILITY_MAX_BLOCKING_TIME;
+                }
+                else
+                {
+                    std::cout << message.str() << "not yet implemented or not recognized" << std::endl;
+                }
                 break;
             case DDSEntity::PARTICIPANT:
                 if (parent == DISCOVERY_CONFIG_SUBELEMENT && element == LEASE_ELEMENT)
@@ -516,7 +532,8 @@ void duration_type_parser(
                                     // TODO
                                     break;
                                 case DurationTypeList::DATAREADER_QOS_RELIABILITY_MAX_BLOCKING_TIME:
-                                    // TODO
+                                    qosprof::data_reader::qos::set_reliability_max_blocking_time_sec(filename,
+                                            profile_name, seconds);
                                     break;
                                 case DurationTypeList::DATAWRITER_HEARTBEAT_PERIOD:
                                     // TODO
@@ -549,7 +566,8 @@ void duration_type_parser(
                                     // TODO
                                     break;
                                 case DurationTypeList::DATAWRITER_QOS_RELIABILITY_MAX_BLOCKING_TIME:
-                                    // TODO
+                                    qosprof::data_writer::qos::set_reliability_max_blocking_time_sec(filename,
+                                            profile_name, seconds);
                                     break;
                                 case DurationTypeList::PARTICIPANT_ANNOUNCEMENT_PERIOD:
                                     qosprof::domain_participant::builtin::discovery_config::
@@ -770,7 +788,8 @@ void duration_type_parser(
                                     // TODO
                                     break;
                                 case DurationTypeList::DATAREADER_QOS_RELIABILITY_MAX_BLOCKING_TIME:
-                                    // TODO
+                                    qosprof::data_reader::qos::set_reliability_max_blocking_time_nanosec(filename,
+                                            profile_name, nanoseconds);
                                     break;
                                 case DurationTypeList::DATAWRITER_HEARTBEAT_PERIOD:
                                     // TODO
@@ -803,7 +822,8 @@ void duration_type_parser(
                                     // TODO
                                     break;
                                 case DurationTypeList::DATAWRITER_QOS_RELIABILITY_MAX_BLOCKING_TIME:
-                                    // TODO
+                                    qosprof::data_writer::qos::set_reliability_max_blocking_time_nanosec(filename,
+                                            profile_name, nanoseconds);
                                     break;
                                 case DurationTypeList::PARTICIPANT_ANNOUNCEMENT_PERIOD:
                                     qosprof::domain_participant::builtin::discovery_config::
@@ -870,7 +890,8 @@ void duration_type_parser(
                 // TODO
                 break;
             case DurationTypeList::DATAREADER_QOS_RELIABILITY_MAX_BLOCKING_TIME:
-                // TODO
+            case DurationTypeList::DATAWRITER_QOS_RELIABILITY_MAX_BLOCKING_TIME:
+                usage = RELIABILITY_DURATION_QOS_USAGE;
                 break;
             case DurationTypeList::DATAWRITER_HEARTBEAT_PERIOD:
                 // TODO
@@ -900,9 +921,6 @@ void duration_type_parser(
                 // TODO
                 break;
             case DurationTypeList::DATAWRITER_QOS_LIVELINESS_LEASE_DURATION:
-                // TODO
-                break;
-            case DurationTypeList::DATAWRITER_QOS_RELIABILITY_MAX_BLOCKING_TIME:
                 // TODO
                 break;
             case DurationTypeList::PARTICIPANT_ANNOUNCEMENT_PERIOD:
