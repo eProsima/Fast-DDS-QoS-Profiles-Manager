@@ -318,6 +318,15 @@ void qos_parser(
         std::string& element,
         const std::vector<std::string>& values);
 
+void reliability_qos_parser(
+        DDSEntity entity,
+        CommonCommands command,
+        const std::string& filename,
+        const std::string& profile_name,
+        std::string& element,
+        const std::vector<std::string>& values,
+        std::ostringstream& message);
+
 /**********************************************************************************************************************/
 /* AUXILIARY FUNCTIONS                                                                                                */
 /**********************************************************************************************************************/

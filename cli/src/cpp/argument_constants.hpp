@@ -33,6 +33,13 @@ constexpr const char* LIB_TRANSIENT_LOCAL_ARGUMENT  = "TRANSIENT_LOCAL";
 constexpr const char* LIB_TRANSIENT_ARGUMENT = "TRANSIENT";
 constexpr const char* LIB_PERSISTENT_ARGUMENT = "PERSISTENT";
 
+// Reliability QoS kind
+constexpr const char* CLI_BEST_EFFORT_ARGUMENT = "best_effort";
+constexpr const char* CLI_RELIABLE_ARGUMENT = "reliable";
+
+constexpr const char* LIB_BEST_EFFORT_ARGUMENT = "BEST_EFFORT";
+constexpr const char* LIB_RELIABLE_ARGUMENT = "RELIABLE";
+
 } // qosprof_cli
 } // eprosima
 

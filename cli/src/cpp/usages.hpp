@@ -190,7 +190,7 @@ static const char DURABILITY_QOS_USAGE[] =
 
     The <profile_name> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
 
-    The <durability_kind> value is MANDATORY. The accepted values are:
+    SET command REQUIRES a <durability_kind> value. The accepted values are:
       volatile
       transient_local
       transient
@@ -427,7 +427,7 @@ static const char PARTICIPANT_DEFAULT_PROFILE_USAGE[] =
         R"(Participant default profile usage:
 
     Usage:
-      fastddsqosprof <file> <command> participant[<profile_name>].default_profile [(help | -h | --help)]
+      fastddsqosprof <file> <command> participant[(<profile_name>)].default_profile [(help | -h | --help)]
 
     Options:
       help -h --help                CLI participant default profile usage
@@ -437,7 +437,7 @@ static const char PARTICIPANT_DEFAULT_PROFILE_USAGE[] =
       print                         Print participant default profile.
       set                           Set participant profile as default in the XML file.
 
-    The <profile_name> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
+    SET command REQUIRES a <profile_name> element. It can be any string (whitespaces are supported if quoted).
 )";
 
 static const char PARTICIPANT_NAME_USAGE[] =
@@ -457,7 +457,7 @@ static const char PARTICIPANT_NAME_USAGE[] =
 
     The <profile_name> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
 
-    The <participant_name> value is MANDATORY and it can be any string (whitespaces are supported if quoted).
+    SET command REQUIRES a <participant_name> value. It can be any string (whitespaces are supported if quoted).
 )";
 
 static const char PARTICIPANT_USAGE[] =
@@ -543,7 +543,89 @@ static const char PARTICIPANT_USER_TRANSPORTS_USAGE[] =
       Positive <index> accesses the element in that position starting from the first element in the list.
       Negative <index> accesses the element in that position starting from the last element in the list.
 
-    SET command REQUIRES the <transport_id> element which should be any Transport Descriptor profile defined in the XML configuration file.
+    SET command REQUIRES a <transport_id> element which should be any Transport Descriptor profile defined in the XML configuration file.
+)";
+
+static const char RELIABILITY_DURATION_QOS_USAGE[] =
+        R"(DataReader/DataWriter Reliability QoS Policy maximum blocking time usage:
+
+    Usage:
+      fastddsqosprof <file> <command> <endpoint>[<profile_name>].qos.reliability.duration.max_blocking_time [infinite | <seconds_value> (<nanoseconds_value>) (help | -h | --help)]
+      fastddsqosprof <file> <command> <endpoint>[<profile_name>].qos.reliability.duration.max_blocking_time.<subelement> [<value> (help | -h | --help)]
+      fastddsqosprof <file> <command> <endpoint>[<profile_name>].qos.reliability.duration.max_blocking_time.<subelement> [(help | -h | --help)]
+      fastddsqosprof <file> <command> <endpoint>[<profile_name>].qos.reliability.duration.max_blocking_time [(help | -h | --help)]
+      fastddsqosprof <file> <command> <endpoint>[<profile_name>].qos.reliability.duration [(help | -h | --help)]
+
+    Options:
+      help -h --help              CLI DataReader/DataWriter Reliability QoS Policy maximum blocking time usage
+
+    The allowed <command> options are:
+      clear                       Erase Reliability QoS Policy maximum blocking time from XML file.
+      print                       Print Reliability QoS Policy maximum blocking time.
+      set                         Set Reliability QoS Policy maximum blocking time in the XML file.
+
+    The allowed <endpoint> options are:
+      datareader                  DataReader Reliability QoS Policy maximum blocking time.
+      datawriter                  DataWriter Reliability QoS Policy maximum blocking time.
+
+    The <profile_name> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
+
+    The allowed <subelement> options are:
+      sec               Duration seconds. Valid set values: int32_t.
+      nanosec           Duration nanoseconds. Valid set values: uint32_t.
+)";
+
+static const char RELIABILITY_KIND_QOS_USAGE[] =
+        R"(DataReader/DataWriter Reliability QoS Policy kind usage:
+
+    Usage:
+      fastddsqosprof <file> <command> <endpoint>[<profile_name>].qos.reliability.kind [<reliability_kind (help | -h | --help)]
+      fastddsqosprof <file> <command> <endpoint>[<profile_name>].qos.reliability.kind (help | -h | --help)
+
+    Options:
+      help -h --help              CLI DataReader/DataWriter Reliability QoS Policy kind usage
+
+    The allowed <command> options are:
+      clear                       Erase Reliability QoS Policy kind from XML file.
+      print                       Print Reliability QoS Policy kind.
+      set                         Set Reliability QoS Policy kind in the XML file.
+
+    The allowed <endpoint> options are:
+      datareader                  DataReader Reliability QoS Policy kind.
+      datawriter                  DataWriter Reliability QoS Policy kind.
+
+    The <profile_name> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
+
+    SET command REQUIRES a <reliability_kind> value. The accepted values are:
+      best_effort
+      reliable
+)";
+
+static const char RELIABILITY_QOS_USAGE[] =
+        R"(DataReader/DataWriter Reliability QoS Policy usage:
+
+    Usage:
+      fastddsqosprof <file> <command> <endpoint>[<profile_name>].qos.reliability.<subelement> [<values>... (help | -h | --help)]
+      fastddsqosprof <file> <command> <endpoint>[<profile_name>].qos.reliability.<subelement> [(help | -h | --help)]
+      fastddsqosprof <file> <command> <endpoint>[<profile_name>].qos.reliability [(help | -h | --help)]
+
+    Options:
+      help -h --help              CLI DataReader/DataWriter Reliability QoS Policy usage
+
+    The allowed <command> options are:
+      clear                       Erase Reliability QoS Policy from XML file.
+      print                       Print Reliability QoS Policy.
+      set                         Set Reliability QoS Policy in the XML file.
+
+    The allowed <endpoint> options are:
+      datareader                  DataReader Reliability QoS Policy.
+      datawriter                  DataWriter Reliability QoS Policy.
+
+    The <profile_name> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
+
+    The allowed <subelement> options are:
+      kind                        Reliability QoS Policy kind configuration.
+      duration                    Reliability QoS Policy maximum blocking time configuration.
 )";
 
 static const char SET_SUBPARSER_USAGE[] =
