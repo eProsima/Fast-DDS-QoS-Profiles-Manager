@@ -151,14 +151,14 @@ void transport_subelement_parser(
                         print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
                         if (!print_usage)
                         {
-                            // TODO
+                            qosprof::transport_descriptor::clear_kind(filename, transport_identifier);
                         }
                         break;
                     case CommonCommands::PRINT:
                         print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
                         if (!print_usage)
                         {
-                            // TODO
+                            qosprof::transport_descriptor::print_kind(filename, transport_identifier);
                         }
                         break;
                     case CommonCommands::QUERY:

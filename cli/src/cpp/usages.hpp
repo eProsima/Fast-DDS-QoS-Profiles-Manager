@@ -679,7 +679,7 @@ static const char TRANSPORT_USAGE[] =
       check_crc                     Enable checking Cyclic Redundancy Code for error control (only available for TCP transport kind)
       enable_tcp_nodelay            Enable the Nagle algorithm for sockets (only available for TCP transport kind)
       healthy_check_timeout_ms      Maximum time-out (in milliseconds) for checking if listener is alive (only available for shared memory transport kind)
-      interface_whitelist           Transport interface whitelist (only available for udp and TCP transport kind)
+      interface_whitelist           Transport interface whitelist (only available for UDP and TCP transport kind)
       keep_alive_frequency_ms       Frequency in milliseconds for sending RTCP keep-alive requests (only available for TCP transport kind)
       keep_alive_timeout_ms         Timeout in milliseconds between RTCP keep-alive requests (only available for TCP transport kind)
       kind                          Kind of transport descriptor.

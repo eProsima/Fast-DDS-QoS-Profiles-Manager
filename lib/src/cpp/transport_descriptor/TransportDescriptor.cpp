@@ -380,6 +380,13 @@ void clear(
     throw Unsupported("Unsupported");
 }
 
+void clear_kind(
+        const std::string& xml_file,
+        const std::string& transport_descriptor_id)
+{
+    throw Unsupported("Unsupported");
+}
+
 void clear_send_buffer_size(
         const std::string& xml_file,
         const std::string& transport_descriptor_id)
