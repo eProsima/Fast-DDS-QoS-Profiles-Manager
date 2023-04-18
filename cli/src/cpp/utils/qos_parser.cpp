@@ -15,6 +15,11 @@
 #include <string>
 #include <vector>
 
+#include <fastdds_qos_profiles_manager/data_reader/Qos.hpp>
+#include <fastdds_qos_profiles_manager/data_writer/Qos.hpp>
+#include <fastdds_qos_profiles_manager/exception/Exception.hpp>
+
+#include <argument_constants.hpp>
 #include <parser_constants.hpp>
 #include <usages.hpp>
 #include <utils/utils.hpp>
@@ -40,96 +45,198 @@ void qos_parser(
     std::ostringstream message;
     message << ((entity == DDSEntity::DATAREADER) ? "DataReader <" : "DataWriter <") << element << "> QoS";
 
-    print_usage = subelement.empty() && check_help(values);
-
-    if (!print_usage)
+    if (element == DATASHARING_ELEMENT)
     {
-        if (element == DATASHARING_ELEMENT)
+        std::cout << "DataSharing QoS configuration not yet supported" << std::endl;
+    }
+    else if (element == DURATION_SUBELEMENT)
+    {
+        std::cout << "Duration-related QoS (Deadline, Latency budget and Lifespan) configuration not yet supported"
+                  << std::endl;
+    }
+    else if (element == DISABLE_HEARTBEAT_PIGGYBACK_ELEMENT)
+    {
+        if (entity == DDSEntity::DATAREADER)
         {
-            std::cout << "DataSharing QoS configuration not yet supported" << std::endl;
-        }
-        else if (element == DURATION_SUBELEMENT)
-        {
-            std::cout << "Duration-related QoS (Deadline, Latency budget and Lifespan) configuration not yet supported"
-                      << std::endl;
-        }
-        else if (element == DISABLE_HEARTBEAT_PIGGYBACK_ELEMENT)
-        {
-            if (entity == DDSEntity::DATAREADER)
-            {
-                print_usage = true;
-                std::cout << "ERROR: " << message.str() << " not recognized" << std::endl;
-            }
-            else
-            {
-                std::cout << "Disable heartbeat piggyback QoS configuration not yet supported" << std::endl;
-            }
-        }
-        else if (element == DISABLE_POSITIVE_ACKS_ELEMENT)
-        {
-            std::cout << "Disable positive ACKs QoS Policy configuration not yet supported" << std::endl;
-        }
-        else if (element == DURABILITY_ELEMENT)
-        {
-            std::cout << "Durability QoS configuration not yet supported" << std::endl;
-        }
-        else if (element == GROUP_DATA_ELEMENT)
-        {
-            std::cout << "Group Data QoS Policy configuration not yet supported" << std::endl;
-        }
-        else if (element == HISTORY_ELEMENT)
-        {
-            std::cout << "History QoS Policy configuration not yet supported" << std::endl;
-        }
-        else if (element == LIVELINESS_ELEMENT)
-        {
-            std::cout << "Liveliness QoS Policy configuration not yet supported" << std::endl;
-        }
-        else if (element == OWNERSHIP_ELEMENT)
-        {
-            std::cout << "Ownership and Ownership strength QoS Policies configuration not yet supported" << std::endl;
-        }
-        else if (element == PARTITIONS_ELEMENT)
-        {
-            std::cout << "Partitions QoS Policy not yet supported" << std::endl;
-        }
-        else if (element == PUBLISH_MODE_ELEMENT)
-        {
-            if (entity == DDSEntity::DATAREADER)
-            {
-                print_usage = true;
-                std::cout << "ERROR: " << message.str() << " not recognized" << std::endl;
-            }
-            else
-            {
-                std::cout << "Publish mode QoS configuration not yet supported" << std::endl;
-            }
-        }
-        else if (element == RELIABILITY_ELEMENT)
-        {
-            std::cout << "Reliability QoS configuration not yet supported" << std::endl;
-        }
-        else if (element == RESOURCE_LIMITS_ELEMENT)
-        {
-            std::cout << "Resource Limits QoS configuration not yet supported" << std::endl;
-        }
-        else if (element == TOPIC_DATA_ELEMENT)
-        {
-            std::cout << "Topic Data QoS configuration not yet supported" << std::endl;
-        }
-        else if (element == USER_DATA_SUBELEMENT)
-        {
-            std::cout << "User Data QoS configuration not yet supported" << std::endl;
+            print_usage = true;
+            std::cout << "ERROR: " << message.str() << " not recognized" << std::endl;
         }
         else
         {
-            print_usage = true;
-            std::cout << message.str() << " not recognized" << std::endl;
+            std::cout << "Disable heartbeat piggyback QoS configuration not yet supported" << std::endl;
         }
     }
-
-    if (print_usage)
+    else if (element == DISABLE_POSITIVE_ACKS_ELEMENT)
     {
+        std::cout << "Disable positive ACKs QoS Policy configuration not yet supported" << std::endl;
+    }
+    else if (element == DURABILITY_ELEMENT)
+    {
+        bool print_error = false;
+        print_usage = check_help(values);
+        print_usage = print_usage || !check_keyed(false, keyed, message.str());
+        print_usage = print_usage || !check_final_element(true, subelement, message.str());
+
+        if (!print_usage)
+        {
+            try
+            {
+                switch (command)
+                {
+                    case CommonCommands::CLEAR:
+                        print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
+                        if (!print_usage)
+                        {
+                            switch (entity)
+                            {
+                                case DDSEntity::DATAREADER:
+                                    // TODO
+                                    break;
+                                case DDSEntity::DATAWRITER:
+                                    // TODO
+                                    break;
+                                default:
+                                    print_error = true;
+                                    break;
+                            }
+                        }
+                        break;
+                    case CommonCommands::PRINT:
+                        print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
+                        if (!print_usage)
+                        {
+                            switch (entity)
+                            {
+                                case DDSEntity::DATAREADER:
+                                    // TODO
+                                    break;
+                                case DDSEntity::DATAWRITER:
+                                    // TODO
+                                    break;
+                                default:
+                                    print_error = true;
+                                    break;
+                            }
+                        }
+                        break;
+                    case CommonCommands::QUERY:
+                        print_usage = !query_not_allowed(message.str());
+                        break;
+                    case CommonCommands::SET:
+                        print_usage = !check_command_arguments(command, 1, values.size(), message.str(), true);
+                        if (!print_usage)
+                        {
+                            std::string durability_kind;
+                            if (values[DEFAULT_POSITION] == CLI_PERSISTENT_ARGUMENT)
+                            {
+                                durability_kind = LIB_PERSISTENT_ARGUMENT;
+                            }
+                            else if (values[DEFAULT_POSITION] == CLI_TRANSIENT_ARGUMENT)
+                            {
+                                durability_kind = LIB_TRANSIENT_ARGUMENT;
+                            }
+                            else if (values[DEFAULT_POSITION] == CLI_TRANSIENT_LOCAL_ARGUMENT)
+                            {
+                                durability_kind = LIB_TRANSIENT_LOCAL_ARGUMENT;
+                            }
+                            else if (values[DEFAULT_POSITION] == CLI_VOLATILE_ARGUMENT)
+                            {
+                                durability_kind = LIB_VOLATILE_ARGUMENT;
+                            }
+                            else
+                            {
+                                durability_kind = values[DEFAULT_POSITION];
+                            }
+
+                            switch (entity)
+                            {
+                                case DDSEntity::DATAREADER:
+                                    qosprof::data_reader::qos::set_durability_kind(filename, profile_name,
+                                            durability_kind);
+                                    break;
+                                case DDSEntity::DATAWRITER:
+                                    qosprof::data_writer::qos::set_durability_kind(filename, profile_name,
+                                            durability_kind);
+                                    break;
+                                default:
+                                    print_error = true;
+                                    break;
+                            }
+                        }
+                        break;
+                }
+                if (print_error)
+                {
+                    std::cout << "ERROR: Durability QoS cannot be set in given DDS Entity" << std::endl;
+                    print_usage = true;
+                }
+            }
+            catch (const qosprof::Exception& e)
+            {
+                std::cout << "Fast DDS QoS Profiles Manager exception caught: " << e.what() << std::endl;
+            }
+        }
+
+        if (print_usage)
+        {
+            std::cout << DURABILITY_QOS_USAGE << std::endl;
+        }
+    }
+    else if (element == GROUP_DATA_ELEMENT)
+    {
+        std::cout << "Group Data QoS Policy configuration not yet supported" << std::endl;
+    }
+    else if (element == HISTORY_ELEMENT)
+    {
+        std::cout << "History QoS Policy configuration not yet supported" << std::endl;
+    }
+    else if (element == LIVELINESS_ELEMENT)
+    {
+        std::cout << "Liveliness QoS Policy configuration not yet supported" << std::endl;
+    }
+    else if (element == OWNERSHIP_ELEMENT)
+    {
+        std::cout << "Ownership and Ownership strength QoS Policies configuration not yet supported" << std::endl;
+    }
+    else if (element == PARTITIONS_ELEMENT)
+    {
+        std::cout << "Partitions QoS Policy not yet supported" << std::endl;
+    }
+    else if (element == PUBLISH_MODE_ELEMENT)
+    {
+        if (entity == DDSEntity::DATAREADER)
+        {
+            print_usage = true;
+            std::cout << "ERROR: " << message.str() << " not recognized" << std::endl;
+        }
+        else
+        {
+            std::cout << "Publish mode QoS configuration not yet supported" << std::endl;
+        }
+    }
+    else if (element == RELIABILITY_ELEMENT)
+    {
+        std::cout << "Reliability QoS configuration not yet supported" << std::endl;
+    }
+    else if (element == RESOURCE_LIMITS_ELEMENT)
+    {
+        std::cout << "Resource Limits QoS configuration not yet supported" << std::endl;
+    }
+    else if (element == TOPIC_DATA_ELEMENT)
+    {
+        std::cout << "Topic Data QoS configuration not yet supported" << std::endl;
+    }
+    else if (element == USER_DATA_SUBELEMENT)
+    {
+        std::cout << "User Data QoS configuration not yet supported" << std::endl;
+    }
+    else
+    {
+        if (!check_help(values))
+        {
+            std::cout << message.str() << " not recognized" << std::endl;
+        }
+
         if (CommonCommands::QUERY != command)
         {
             std::cout << ((entity == DDSEntity::DATAREADER) ? DATAREADER_QOS_USAGE : DATAWRITER_QOS_USAGE) << std::endl;

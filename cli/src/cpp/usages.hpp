@@ -169,6 +169,34 @@ static const char DATAWRITER_USAGE[] =
       user_defined_id                   DataWriter user ID for Static EDP discovery mechanism.
 )";
 
+static const char DURABILITY_QOS_USAGE[] =
+        R"(DataReader/DataWriter Durability QoS Policy usage:
+
+    Usage:
+      fastddsqosprof <file> <command> <endpoint>[<profile_name>].qos.durability [<durability_kind> (help | -h | --help)]
+      fastddsqosprof <file> <command> <endpoint>[<profile_name>].qos.durability (help | -h | --help)
+
+    Options:
+      help -h --help              CLI DataReader/DataWriter Durability QoS Policy usage
+
+    The allowed <command> options are:
+      clear                       Erase Durability QoS Policy from XML file.
+      print                       Print Durability QoS Policy.
+      set                         Set Durability QoS Policy in the XML file.
+
+    The allowed <endpoint> options are:
+      datareader                  DataReader Durability QoS Policy.
+      datawriter                  DataWriter Durability QoS Policy.
+
+    The <profile_name> element is MANDATORY and it can be any string (whitespaces are supported if quoted).
+
+    The <durability_kind> value is MANDATORY. The accepted values are:
+      volatile
+      transient_local
+      transient
+      persistent
+)";
+
 static const char HELP_USAGE[] =
         R"(Fast DDS QoS Profiles Manager CLI help command usage
 
