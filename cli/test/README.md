@@ -46,7 +46,14 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set datareader["a profile"]`|`ERROR: datareader must not be FINAL element` [^1]|`DATAREADER_USAGE`|
 |`fastddsqosprof file.xml set datareader[profile].allocations`|**PENDING** (currently `DataReader allocations configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datareader[profile].binary_property`|**PENDING** (currently `DataReader binary properties configuration not yet supported`)|N/A|
-|`fastddsqosprof file.xml set datareader[profile].default_profile`|**PENDING** (currently `DataReader default attribute configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datareader[profile].default_profile`|N/A|N/A|
+|`fastddsqosprof file.xml set datareader[profile].default_profile -h`|N/A|`DATAREADER_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].default_profile --help`|N/A|`DATAREADER_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].default_profile help`|N/A|`DATAREADER_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].default_profile argument1 argument2 help`|N/A|`DATAREADER_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].default_profile[]`|`ERROR: DataReader <default_profile> must not be keyed []`|`DATAREADER_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].default_profile.element`|`ERROR: DataReader <default_profile> must be FINAL element`|`DATAREADER_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].default_profile argument`|`ERROR: set command for DataReader <default_profile> expects 0 arguments and received 1`|`DATAREADER_DEFAULT_PROFILE_USAGE`|
 |`fastddsqosprof file.xml set datareader[profile].entity_id`|**PENDING** (currently `DataReader entity ID configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datareader[profile].expect_inline_qos`|**PENDING** (currently `DataReader expect inline qos flag configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datareader[profile].external_locators`|**PENDING** (currently `DataReader default attribute configuration not yet supported`)|N/A|
@@ -146,6 +153,14 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set datawriter[profile].allocations`|**PENDING** (currently `DataWriter allocations configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].binary_property`|**PENDING** (currently `DataWriter binary properties configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].default_profile`|**PENDING** (currently `DataWriter default attribute configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].default_profile`|N/A|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].default_profile -h`|N/A|`DATAWRITER_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].default_profile --help`|N/A|`DATAWRITER_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].default_profile help`|N/A|`DATAWRITER_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].default_profile argument1 argument2 help`|N/A|`DATAWRITER_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].default_profile[]`|`ERROR: DataWriter <default_profile> must not be keyed []`|`DATAWRITER_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].default_profile.element`|`ERROR: DataWriter <default_profile> must be FINAL element`|`DATAWRITER_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].default_profile argument`|`ERROR: set command for DataWriter <default_profile> expects 0 arguments and received 1`|`DATAWRITER_DEFAULT_PROFILE_USAGE`|
 |`fastddsqosprof file.xml set datawriter[profile].entity_id`|**PENDING** (currently `DataWriter entity ID configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].external_locators`|**PENDING** (currently `DataWriter default attribute configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].history_memory_policy`|**PENDING** (currently `DataWriter history memory policy configuration not yet supported`)|N/A|
