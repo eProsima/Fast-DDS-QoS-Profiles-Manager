@@ -180,18 +180,6 @@ constexpr const char* TOPIC_DATA_ELEMENT = "topic_data";
 constexpr const char* DISABLE_HEARTBEAT_PIGGYBACK_ELEMENT = "disable_heartbeat_piggyback";
 constexpr const char* PUBLISH_MODE_ELEMENT = "publish_mode";
 
-// CLI transport descriptor kind type argument
-constexpr const char* CLI_UDP_V4_ARGUMENT = "udp_v4";
-constexpr const char* LIB_UDP_V4_ARGUMENT = "UDPv4";
-constexpr const char* CLI_UDP_V6_ARGUMENT = "udp_v6";
-constexpr const char* LIB_UDP_V6_ARGUMENT = "UDPv6";
-constexpr const char* CLI_TCP_V4_ARGUMENT = "tcp_v4";
-constexpr const char* LIB_TCP_V4_ARGUMENT = "TCPv4";
-constexpr const char* CLI_TCP_V6_ARGUMENT = "tcp_v6";
-constexpr const char* LIB_TCP_V6_ARGUMENT = "TCPv6";
-constexpr const char* CLI_SHM_ARGUMENT = "shm";
-constexpr const char* LIB_SHM_ARGUMENT = "SHM";
-
 } // qosprof_cli
 } // eprosima
 

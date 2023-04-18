@@ -18,6 +18,7 @@
 #include <fastdds_qos_profiles_manager/transport_descriptor/TransportDescriptor.hpp>
 #include <fastdds_qos_profiles_manager/exception/Exception.hpp>
 
+#include <argument_constants.hpp>
 #include <parser_constants.hpp>
 #include <usages.hpp>
 #include <utils/utils.hpp>
