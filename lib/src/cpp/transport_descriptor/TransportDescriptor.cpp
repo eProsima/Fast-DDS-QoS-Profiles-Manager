@@ -47,11 +47,12 @@ void initialize_namespace(
         const std::string& additional_tag)
 {
     // Iterate through required elements, and create them if not existent
-    manager.get_node(utils::tag::PROFILES, create_if_not_existent);
-    manager.get_transport_node(transport_id, create_if_not_existent);
+    manager.move_to_root_node();
+    manager.move_to_node(utils::tag::PROFILES, create_if_not_existent);
+    manager.move_to_transport_node(transport_id, create_if_not_existent);
     if (!additional_tag.empty())
     {
-        manager.get_node(additional_tag, create_if_not_existent);
+        manager.move_to_node(additional_tag, create_if_not_existent);
     }
 }
 
@@ -650,7 +651,7 @@ void set_kind(
         const std::string& kind)
 {
     // Create XML manager and initialize the document
-    utils::XMLManager manager(xml_file, true);
+    utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
     // Obtain base node position
     initialize_namespace(manager, transport_descriptor_id, true, utils::tag::TRANSPORT_KIND);
@@ -909,13 +910,13 @@ void set_interface_whitelist(
         const std::string& index)
 {
     // Create XML manager and initialize the document
-    utils::XMLManager manager(xml_file, true);
+    utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
     // Obtain base node position
     initialize_namespace(manager, transport_descriptor_id, true, utils::tag::INTERFACE_WHITELIST);
 
     // Obtain the address located in the index position
-    manager.get_node(index, utils::tag::ADDRESS, true);
+    manager.move_to_node(index, utils::tag::ADDRESS, true);
 
     // Set the node value
     manager.set_value_to_node(ip_address);

@@ -47,14 +47,15 @@ void initialize_namespace(
         const std::string& additional_RTPS_tag)
 {
     // Iterate through required elements, and create them if not existent
-    manager.get_node(utils::tag::PROFILES, create_if_not_existent);
-    manager.get_node(utils::tag::PARTICIPANT, utils::tag::PROFILE_NAME, profile_id, create_if_not_existent);
+    manager.move_to_root_node();
+    manager.move_to_node(utils::tag::PROFILES, create_if_not_existent);
+    manager.move_to_node(utils::tag::PARTICIPANT, utils::tag::PROFILE_NAME, profile_id, create_if_not_existent);
 
     // there are additional tags to obtain
     if (!additional_RTPS_tag.empty())
     {
-        manager.get_node(utils::tag::RTPS, create_if_not_existent);
-        manager.get_node(additional_RTPS_tag, create_if_not_existent);
+        manager.move_to_node(utils::tag::RTPS, create_if_not_existent);
+        manager.move_to_node(additional_RTPS_tag, create_if_not_existent);
     }
 }
 
@@ -247,7 +248,7 @@ void set_default_profile(
         const std::string& profile_id)
 {
     // Create XML manager and initialize the document
-    utils::XMLManager manager(xml_file, false);
+    utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
     // Obtain base node position
     initialize_namespace(manager, profile_id, false, "");
@@ -290,7 +291,7 @@ void set_name(
         const std::string& name)
 {
     // Create XML manager and initialize the document
-    utils::XMLManager manager(xml_file, true);
+    utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
     // Obtain base node position
     initialize_namespace(manager, profile_id, true, utils::tag::NAME);
@@ -340,7 +341,7 @@ void set_use_builtin_transports(
         const std::string& use_builtin_transports)
 {
     // Create XML manager and initialize the document
-    utils::XMLManager manager(xml_file, true);
+    utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
     // Obtain base node position
     initialize_namespace(manager, profile_id, true, utils::tag::USE_BUILTIN_TRANSPORTS);
@@ -367,13 +368,13 @@ void set_user_transports(
         const std::string& index)
 {
     // Create XML manager and initialize the document
-    utils::XMLManager manager(xml_file, true);
+    utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
     // Obtain base node position
     initialize_namespace(manager, profile_id, true, utils::tag::USER_TRANSPORTS);
 
     // Obtain / create the transport located at the index position in the collection
-    manager.get_node(index, utils::tag::TRANSPORT_ID, true);
+    manager.move_to_node(index, utils::tag::TRANSPORT_ID, true);
 
     // set node value
     manager.set_value_to_node(transport_id);

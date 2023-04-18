@@ -33,7 +33,7 @@ void set_sec(
         const std::string& sec)
 {
     // Obtain second node
-    manager.get_node(utils::tag::SEC, true);
+    manager.move_to_node(utils::tag::SEC, true);
 
     // Set duration value to node
     manager.set_value_to_node(sec);
@@ -44,7 +44,7 @@ void set_nanosec(
         const std::string& nanosec)
 {
     // Obtain nanosecond node
-    manager.get_node(utils::tag::NANOSEC, true);
+    manager.move_to_node(utils::tag::NANOSEC, true);
 
     // Set duration value to node
     manager.set_value_to_node(nanosec);

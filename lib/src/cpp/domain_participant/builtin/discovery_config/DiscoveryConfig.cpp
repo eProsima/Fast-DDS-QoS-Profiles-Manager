@@ -49,14 +49,15 @@ void initialize_namespace(
         const std::string& additional_tag)
 {
     // Iterate through required elements, and create them if not existent
-    manager.get_node(utils::tag::PROFILES, create_if_not_existent);
-    manager.get_node(utils::tag::PARTICIPANT, utils::tag::PROFILE_NAME, profile_id, create_if_not_existent);
-    manager.get_node(utils::tag::RTPS, create_if_not_existent);
-    manager.get_node(utils::tag::BUILTIN, create_if_not_existent);
-    manager.get_node(utils::tag::DISCOVERY_CONFIG, create_if_not_existent);
+    manager.move_to_root_node();
+    manager.move_to_node(utils::tag::PROFILES, create_if_not_existent);
+    manager.move_to_node(utils::tag::PARTICIPANT, utils::tag::PROFILE_NAME, profile_id, create_if_not_existent);
+    manager.move_to_node(utils::tag::RTPS, create_if_not_existent);
+    manager.move_to_node(utils::tag::BUILTIN, create_if_not_existent);
+    manager.move_to_node(utils::tag::DISCOVERY_CONFIG, create_if_not_existent);
     if (!additional_tag.empty())
     {
-        manager.get_node(additional_tag, create_if_not_existent);
+        manager.move_to_node(additional_tag, create_if_not_existent);
     }
 }
 
@@ -423,7 +424,7 @@ void set_lease_duration_sec(
         const std::string& duration_sec)
 {
     // Create XML manager and initialize the document
-    utils::XMLManager manager(xml_file, true);
+    utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
     // Obtain base node position
     initialize_namespace(manager, profile_id, true, utils::tag::LEASE_DURATION);
@@ -441,7 +442,7 @@ void set_lease_duration_nanosec(
         const std::string& duration_nanosec)
 {
     // Create XML manager and initialize the document
-    utils::XMLManager manager(xml_file, true);
+    utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
     // Obtain base node position
     initialize_namespace(manager, profile_id, true, utils::tag::LEASE_DURATION);
@@ -459,7 +460,7 @@ void set_lease_announcement_sec(
         const std::string& announcement_sec)
 {
     // Create XML manager and initialize the document
-    utils::XMLManager manager(xml_file, true);
+    utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
     // Obtain base node position
     initialize_namespace(manager, profile_id, true, utils::tag::LEASE_ANNOUNCEMENT);
@@ -477,7 +478,7 @@ void set_lease_announcement_nanosec(
         const std::string& announcement_nanosec)
 {
     // Create XML manager and initialize the document
-    utils::XMLManager manager(xml_file, true);
+    utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
     // Obtain base node position
     initialize_namespace(manager, profile_id, true, utils::tag::LEASE_ANNOUNCEMENT);

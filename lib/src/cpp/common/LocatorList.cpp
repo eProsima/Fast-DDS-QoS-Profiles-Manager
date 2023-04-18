@@ -155,10 +155,10 @@ void set_port(
         const bool is_external)
 {
     // get the kind node
-    manager.get_locator_node(index, is_external, true);
+    manager.move_to_locator_node(index, is_external, true);
 
     // add port node to the kind node
-    manager.get_node(utils::tag::PORT, true);
+    manager.move_to_node(utils::tag::PORT, true);
 
     // set port node value
     manager.set_value_to_node(port);
@@ -180,10 +180,10 @@ void set_address(
         const bool is_external)
 {
     // get the kind node
-    manager.get_locator_node(index, is_external, true);
+    manager.move_to_locator_node(index, is_external, true);
 
     // add address node to the kind node
-    manager.get_node(utils::tag::ADDRESS, true);
+    manager.move_to_node(utils::tag::ADDRESS, true);
 
     // set address node value
     manager.set_value_to_node(address);

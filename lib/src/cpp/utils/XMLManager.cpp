@@ -29,10 +29,13 @@ namespace eprosima {
 namespace qosprof {
 namespace utils {
 
-XMLManager::XMLManager (
+void XMLManager::initialize (
         const std::string& file_name,
         bool create_file)
 {
+    // Write required flag
+    write_required = false;
+
     // File exists flag
     bool file_exists = false;
 
@@ -128,12 +131,6 @@ XMLManager::XMLManager (
     parser->setValidationConstraintFatal(true);
 }
 
-XMLManager::~XMLManager()
-{
-    // Close XML workspace
-    xercesc::XMLPlatformUtils::Terminate();
-}
-
 void XMLManager::transform_standalone_to_rooted_structure()
 {
     std::string root_name = xercesc::XMLString::transcode(last_node->getNodeName());
@@ -177,9 +174,13 @@ void XMLManager::transform_standalone_to_rooted_structure()
 
 void XMLManager::validate_and_save_document()
 {
+    // Set the write required as false by default
+    write_required = false;
+
+    // Set write as required if XML is valid
     if (validate_xml())
     {
-        save_xml();
+        write_required = true;
     }
 }
 
@@ -207,15 +208,20 @@ bool XMLManager::validate_xml()
 
 bool XMLManager::save_xml()
 {
-    // Config would configure serialized XML data
-    config = serializer->getDomConfig();
-    config->setParameter(xercesc::XMLUni::fgDOMWRTFormatPrettyPrint, true);
-    config->setParameter(xercesc::XMLUni::fgDOMXMLDeclaration, true);
+    if (write_required)
+    {
+        // Config would configure serialized XML data
+        config = serializer->getDomConfig();
+        config->setParameter(xercesc::XMLUni::fgDOMWRTFormatPrettyPrint, true);
+        config->setParameter(xercesc::XMLUni::fgDOMXMLDeclaration, true);
 
-    // Save XML document in target file path
-    target = new xercesc::LocalFileFormatTarget(xercesc::XMLString::transcode(xml_file.c_str()));
-    output->setByteStream(target);
-    return serializer->write(doc, output);
+        // Save XML document in target file path
+        target = new xercesc::LocalFileFormatTarget(xercesc::XMLString::transcode(xml_file.c_str()));
+
+        output->setByteStream(target);
+        return serializer->write(doc, output);
+    }
+    return false;
 }
 
 void XMLManager::create_node(
@@ -364,7 +370,7 @@ std::string XMLManager::get_node_attribute_value(
     throw ElementNotFound(exception_message + "\n");
 }
 
-void XMLManager::get_node(
+void XMLManager::move_to_node(
         const std::string& tag_name,
         const bool create_if_not_existent)
 {
@@ -398,7 +404,7 @@ void XMLManager::get_node(
     }
 }
 
-void XMLManager::get_node(
+void XMLManager::move_to_node(
         const std::string& index,
         const std::string& default_tag_name,
         const bool create_if_not_existent)
@@ -457,7 +463,7 @@ void XMLManager::get_node(
     }
 }
 
-void XMLManager::get_node(
+void XMLManager::move_to_node(
         const std::string& tag_name,
         const std::string& name,
         const std::string& value,
@@ -508,7 +514,13 @@ void XMLManager::get_node(
     }
 }
 
-void XMLManager::get_locator_node(
+void XMLManager::move_to_root_node()
+{
+    // Set the last node as the root node
+    last_node = doc->getElementsByTagName(xercesc::XMLString::transcode(tag::ROOT))->item(0);
+}
+
+void XMLManager::move_to_locator_node(
         const std::string& index,
         const bool is_external,
         const bool create_if_not_existent)
@@ -523,7 +535,7 @@ void XMLManager::get_locator_node(
     }
 
     // Obtain element from list
-    get_node(index, default_tag_name, create_if_not_existent);
+    move_to_node(index, default_tag_name, create_if_not_existent);
 
     // Check if external or common locator
     std::string tag = xercesc::XMLString::transcode(last_node->getNodeName());
@@ -556,12 +568,12 @@ void XMLManager::get_locator_node(
     }
 }
 
-void XMLManager::get_transport_node(
+void XMLManager::move_to_transport_node(
         const std::string& transport_id,
         const bool create_if_not_existent)
 {
     // Obtain list node
-    get_node(utils::tag::TRANSPORT_DESCRIPTOR_LIST, create_if_not_existent);
+    move_to_node(utils::tag::TRANSPORT_DESCRIPTOR_LIST, create_if_not_existent);
 
     // Obtain list of transports
     xercesc::DOMNodeList* node_list = last_node->getChildNodes();

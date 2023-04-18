@@ -46,11 +46,12 @@ void initialize_namespace(
         const std::string& additional_tag)
 {
     // Iterate through required elements, and create them if not existent
-    manager.get_node(utils::tag::PROFILES, create_if_not_existent);
-    manager.get_node(utils::tag::DATA_READER, utils::tag::PROFILE_NAME, profile_id, create_if_not_existent);
+    manager.move_to_root_node();
+    manager.move_to_node(utils::tag::PROFILES, create_if_not_existent);
+    manager.move_to_node(utils::tag::DATA_READER, utils::tag::PROFILE_NAME, profile_id, create_if_not_existent);
     if (!additional_tag.empty())
     {
-        manager.get_node(additional_tag, create_if_not_existent);
+        manager.move_to_node(additional_tag, create_if_not_existent);
     }
 }
 
@@ -59,7 +60,7 @@ void set_default_profile(
         const std::string& profile_id)
 {
     // Create XML manager and initialize the document
-    utils::XMLManager manager(xml_file, false);
+    utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
     // Obtain base node position
     initialize_namespace(manager, profile_id, false, "");

@@ -16,32 +16,34 @@
  * @file
  */
 
-#include <common/qos/Durability.hpp>
+#ifndef _FAST_DDS_QOS_PROFILES_MANAGER_HPP_
+#define _FAST_DDS_QOS_PROFILES_MANAGER_HPP_
+
+#include <fastdds_qos_profiles_manager_lib/fastdds_qos_profiles_manager_dll.h>
 
 #include <string>
 
-#include <utils/TagsXMLManager.hpp>
-#include <utils/XMLManager.hpp>
-
 namespace eprosima {
 namespace qosprof {
-namespace common {
-namespace qos {
-namespace durability {
 
-void set_kind(
-        utils::XMLManager& manager,
-        const std::string& kind)
-{
-    // Obtain kind node
-    manager.move_to_node(utils::tag::KIND, true);
+/**
+ * @brief Initialize XML workspace
+ *
+ * @param xml_file Absolute/relative path to the XML file.
+ * @param create_file bool create file if the flag is set
+ *
+ * @throw Error Exception if the workspace could not be initialized
+ */
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void initialize(
+        const std::string& xml_file,
+        const bool create_file);
 
-    // Set value to node
-    manager.set_value_to_node(kind);
-}
+/**
+ * @brief Terminate XML workspace
+ */
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void terminate();
 
-} // durability
-} // qos
-} // common
 } // qosprof
 } // eprosima
+
+#endif // _FAST_DDS_QOS_PROFILES_MANAGER_HPP_

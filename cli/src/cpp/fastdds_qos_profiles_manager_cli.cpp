@@ -17,6 +17,8 @@
 #include <string>
 
 #include <docopt/docopt.h>
+#include <fastdds_qos_profiles_manager_lib/QoSProfileManager.hpp>
+#include <fastdds_qos_profiles_manager_lib/exception/Exception.hpp>
 
 #include <config.h>
 #include <parser_constants.hpp>
@@ -37,6 +39,10 @@ int main(
         true);                                                      // options first
 
     std::string command = args[PARSER_COMMAND].asString();
+
+    // Open XML workspace
+    eprosima::qosprof::initialize(args[PARSER_FILE].asString(), command == SET_COMMAND);
+
     if (command == SET_COMMAND)
     {
         // Set command requires at least one more follow-up arguments: element being set
@@ -139,6 +145,9 @@ int main(
         std::cout << "ERROR: " << command << " command not recognized" << std::endl;
         std::cout << USAGE << std::endl;
     }
+
+    // Close XML workspace
+    eprosima::qosprof::terminate();
 
     return 0;
 }

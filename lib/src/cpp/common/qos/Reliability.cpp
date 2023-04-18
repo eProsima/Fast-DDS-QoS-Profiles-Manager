@@ -35,7 +35,7 @@ void set_kind(
         const std::string& kind)
 {
     // Obtain kind node
-    manager.get_node(utils::tag::KIND, true);
+    manager.move_to_node(utils::tag::KIND, true);
 
     // Set value to node
     manager.set_value_to_node(kind);
@@ -46,7 +46,7 @@ void set_max_blocking_time_sec(
         const std::string& sec)
 {
     // Obtain max blocking time node
-    manager.get_node(utils::tag::MAX_BLOCKING_TIME, true);
+    manager.move_to_node(utils::tag::MAX_BLOCKING_TIME, true);
 
     // Use the common api
     common::duration::set_sec(manager, sec);
@@ -57,7 +57,7 @@ void set_max_blocking_time_nanosec(
         const std::string& nanosec)
 {
     // Obtain max blocking time node
-    manager.get_node(utils::tag::MAX_BLOCKING_TIME, true);
+    manager.move_to_node(utils::tag::MAX_BLOCKING_TIME, true);
 
     // Use the common api
     common::duration::set_nanosec(manager, nanosec);

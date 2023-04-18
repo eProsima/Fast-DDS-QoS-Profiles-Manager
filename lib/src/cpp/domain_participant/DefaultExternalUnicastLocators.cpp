@@ -46,10 +46,11 @@ void initialize_namespace(
         const bool create_if_not_existent)
 {
     // Iterate through required elements, and create them if not existent
-    manager.get_node(utils::tag::PROFILES, create_if_not_existent);
-    manager.get_node(utils::tag::PARTICIPANT, utils::tag::PROFILE_NAME, profile_id, create_if_not_existent);
-    manager.get_node(utils::tag::RTPS, create_if_not_existent);
-    manager.get_node(utils::tag::DEFAULT_EXTERNAL_UNICAST_LOCATOR_LIST, create_if_not_existent);
+    manager.move_to_root_node();
+    manager.move_to_node(utils::tag::PROFILES, create_if_not_existent);
+    manager.move_to_node(utils::tag::PARTICIPANT, utils::tag::PROFILE_NAME, profile_id, create_if_not_existent);
+    manager.move_to_node(utils::tag::RTPS, create_if_not_existent);
+    manager.move_to_node(utils::tag::DEFAULT_EXTERNAL_UNICAST_LOCATOR_LIST, create_if_not_existent);
 }
 
 std::string print(
@@ -179,7 +180,7 @@ void set_port(
         const std::string& index)
 {
     // Create XML manager and initialize the document
-    utils::XMLManager manager(xml_file, true);
+    utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
     // Obtain base node position
     initialize_namespace(manager, profile_id, true);
@@ -198,7 +199,7 @@ void set_address(
         const std::string& index)
 {
     // Create XML manager and initialize the document
-    utils::XMLManager manager(xml_file, true);
+    utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
     // Obtain base node position
     initialize_namespace(manager, profile_id, true);
@@ -217,13 +218,13 @@ void set_externality(
         const std::string& index)
 {
     // Create XML manager and initialize the document
-    utils::XMLManager manager(xml_file, true);
+    utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
     // Obtain base node position
     initialize_namespace(manager, profile_id, true);
 
     // Iterate through required elements, and create them if not existent
-    manager.get_locator_node(index, true, true);
+    manager.move_to_locator_node(index, true, true);
 
     // Set the externality value
     manager.set_attribute_to_node(utils::tag::EXTERNALITY, externality);

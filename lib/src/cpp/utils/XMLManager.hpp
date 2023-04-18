@@ -44,33 +44,59 @@ namespace utils {
  */
 class XMLManager
 {
+//======================//
+// Singleton management //
+//======================//
 public:
+    /**
+     * @brief Get the instance object of the singleton class
+     *
+     * @return XMLManager&
+     */
+    static XMLManager& get_instance()
+    {
+        static XMLManager instance;
+        return instance;
+    }
 
     /**
      * @brief Construct a new Parse XML object, which initializes Xerces required tools,
      *  and reads given xml_file document.
      *
      * @param[in] xml_file string with the file path
-     * @param[in] create_file bool (optional) create file if the flag is set
+     * @param[in] create_file bool create file if the flag is set
      *
      * @throw Error exception if Xerces XML workspace could not be initialized
      */
-    XMLManager(
+    void initialize(
             const std::string& xml_file,
-            bool create_file = false);
+            bool create_file);
+
 
     /**
-     * @brief Pase XML Destructor
-     *
-     */
-    ~XMLManager();
-
-    /**
-     * @brief Validate the document, and save to disk if valid.
+     * @brief Validate the document, and set flag to save to disk later if valid.
      *
      * @throw ElementInvalid exception if document does not pass parser validation
      */
     void validate_and_save_document();
+
+    /**
+     * @brief Save the document as string and validate.
+     *
+     * @throw ElementInvalid exception if document does not pass parser validation
+     *
+     * @return true document passes parser validation
+     * @return false document does not pass parser validation
+     */
+    bool validate_xml();
+
+    /**
+     * @brief  Save the document in the target file path.
+     *
+     * @return true document saved
+     * @return false failure saving document
+     */
+    bool save_xml();
 
     /**
      * @brief Remove the selected node.
@@ -137,7 +163,7 @@ public:
      *
      * @throw ElementNotFound exception if expected node was not found and node creation was not required
      */
-    void get_node(
+    void move_to_node(
             const std::string& tag_name,
             const bool create_if_not_existent);
 
@@ -151,7 +177,7 @@ public:
      * @throw ElementNotFound exception if expected node was not found and node creation was not required
      * @throw BadParameter exception if expected node could not be found by using the given index.
      */
-    void get_node(
+    void move_to_node(
             const std::string& index,
             const std::string& default_tag_name,
             const bool create_if_not_existent);
@@ -167,11 +193,16 @@ public:
      *
      * @throw ElementNotFound exception if expected node was not found and node creation was not required
      */
-    void get_node(
+    void move_to_node(
             const std::string& tag_name,
             const std::string& name,
             const std::string& value,
             const bool create_if_not_existent);
+
+    /**
+     * @brief Gets the root node of the document
+     */
+    void move_to_root_node();
 
     /**
      * @brief Get the locator node object found at index position. If empty index, current node is kept.
@@ -183,7 +214,7 @@ public:
      * @throw ElementNotFound exception if expected node was not found and node creation was not required
      * @throw BadParameter exception if expected node could not be found by using the given index.
      */
-    void get_locator_node(
+    void move_to_locator_node(
             const std::string& index,
             const bool is_external,
             const bool create_if_not_existent);
@@ -196,34 +227,17 @@ public:
      *
      * @throw ElementNotFound exception if expected node was not found and node creation was not required
      */
-    void get_transport_node(
+    void move_to_transport_node(
             const std::string& transport_id,
             const bool create_if_not_existent);
 
 private:
+    XMLManager() {}
 
     /**
      * @brief Transforms standalone XML document structure to rooted.
      */
     void transform_standalone_to_rooted_structure();
-
-    /**
-     * @brief Save the document as string and validate.
-     *
-     * @throw ElementInvalid exception if document does not pass parser validation
-     *
-     * @return true document passes parser validation
-     * @return false document does not pass parser validation
-     */
-    bool validate_xml();
-
-    /**
-     * @brief  Save the document in the target file path.
-     *
-     * @return true document saved
-     * @return false failure saving document
-     */
-    bool save_xml();
 
     /**
      * @brief Auxiliar method that creates a new node with the given tag and appends it to the last node.
@@ -283,6 +297,9 @@ private:
 
     // Latest node navigated to
     xercesc::DOMNode* last_node = nullptr;
+
+    // Flag to write before exit
+    bool write_required = false;
 };
 
 } /* parse */
