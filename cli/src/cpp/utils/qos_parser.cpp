@@ -330,7 +330,7 @@ void reliability_qos_parser(
                         print_usage = !query_not_allowed(message.str());
                         break;
                     case CommonCommands::SET:
-                        print_usage = !check_command_arguments(command, 1 , values.size(), message.str(), true);
+                        print_usage = !check_command_arguments(command, 1, values.size(), message.str(), true);
                         if (!print_usage)
                         {
                             std::string reliability_kind;
@@ -389,7 +389,7 @@ void reliability_qos_parser(
         DurationTypeList duration_type;
         std::string subsubelement;
         print_usage = print_usage || !duration_type_selector(entity, duration_type, RELIABILITY_ELEMENT, subelement,
-                subsubelement, values, message);
+                        subsubelement, values, message);
         if (!print_usage)
         {
             duration_type_parser(duration_type, command, filename, profile_name, subsubelement, values, message);
