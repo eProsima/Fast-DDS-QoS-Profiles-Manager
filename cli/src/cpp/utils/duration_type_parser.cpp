@@ -57,7 +57,8 @@ bool duration_type_selector(
                 }
                 else
                 {
-                    std::cout << message.str() << "not yet implemented or not recognized" << std::endl;
+                    std::cout << message.str() << " not yet implemented or not recognized" << std::endl;
+                    print_usage = true;
                 }
                 break;
             case DDSEntity::DATAWRITER:
@@ -67,7 +68,8 @@ bool duration_type_selector(
                 }
                 else
                 {
-                    std::cout << message.str() << "not yet implemented or not recognized" << std::endl;
+                    std::cout << message.str() << " not yet implemented or not recognized" << std::endl;
+                    print_usage = true;
                 }
                 break;
             case DDSEntity::PARTICIPANT:

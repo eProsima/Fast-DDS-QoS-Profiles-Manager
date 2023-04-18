@@ -121,6 +121,8 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time.nanosec infinite`|`Fast DDS QoS Profiles Manager exception caught: value 'infinite' does not match any member types of the union`|N/A|
 |`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time.nanosec other`|`Fast DDS QoS Profiles Manager exception caught: value 'other' does not match any member types of the union`|N/A|
 |`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time.nanosec -h`|N/A|`RELIABILITY_DURATION_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.other`|`DataReader <reliability> QoS: 'duration' attribute: 'other' duration type not yet implemented or not recognized`|`RELIABILITY_DURATION_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.other --help`|N/A|`RELIABILITY_DURATION_QOS_USAGE`|
 |`fastddsqosprof file.xml set datareader[profile].qos.reliability.other`|`ERROR: DataReader <reliability> QoS: 'other' attribute not recognized`|`RELIABILITY_QOS_USAGE`|
 |`fastddsqosprof file.xml set datareader[profile].qos.reliability.other help`|N/A|`RELIABILITY_QOS_USAGE`|
 |`fastddsqosprof file.xml set datareader[profile].qos.resource_limits`|**PENDING** (currently `Resource Limits QoS configuration not yet supported`)|N/A|
@@ -216,6 +218,8 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time.nanosec infinite`|`Fast DDS QoS Profiles Manager exception caught: value 'infinite' does not match any member types of the union`|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time.nanosec other`|`Fast DDS QoS Profiles Manager exception caught: value 'other' does not match any member types of the union`|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time.nanosec -h`|N/A|`RELIABILITY_DURATION_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.other`|`DataWriter <reliability> QoS: 'duration' attribute: 'other' duration type not yet implemented or not recognized`|`RELIABILITY_DURATION_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.other --help`|N/A|`RELIABILITY_DURATION_QOS_USAGE`|
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability.other`|`ERROR: DataWriter <reliability> QoS: 'other' attribute not recognized`|`RELIABILITY_QOS_USAGE`|
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability.other help`|N/A|`RELIABILITY_QOS_USAGE`|
 |`fastddsqosprof file.xml set datawriter[profile].qos.resource_limits`|**PENDING** (currently `Resource Limits QoS configuration not yet supported`)|N/A|
@@ -647,7 +651,7 @@ This document includes CLI commands and the expected CLI output in order to help
 
 [^1]: **PENDING**: Print and clear default profile command will not require a profile name.
 [^2]: **PENDING**: Print, clear and query commands should not allow an empty index with a subelement.
-[^3]: **PENDING**: Access to file before previous changes have been written although Xerces has correctly returned from `write` operation.
+[^3]: **BUG**: Access to file before previous changes have been written although Xerces has correctly returned from `write` operation.
 
 ## Caveats
 
