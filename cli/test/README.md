@@ -85,6 +85,9 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set datareader[profile].qos.reliability[]`|`ERROR: DataReader <reliability> QoS must not be keyed []`|`RELIABILITY_QOS_USAGE`|
 |`fastddsqosprof file.xml set datareader[profile].qos.reliability[] help`|N/A|`RELIABILITY_QOS_USAGE`|
 |`fastddsqosprof file.xml set datareader[profile].qos.reliability.kind`|N/A|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration`|N/A|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.other`|`ERROR: DataReader <reliability> QoS: 'other' attribute not recognized`|`RELIABILITY_QOS_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.other help`|N/A|`RELIABILITY_QOS_USAGE`|
 |`fastddsqosprof file.xml set datareader[profile].qos.resource_limits`|**PENDING** (currently `Resource Limits QoS configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datareader[profile].qos.topic_data`|**PENDING** (currently `Topic Data QoS configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datareader[profile].qos.user_data`|**PENDING** (currently `User Data QoS configuration not yet supported`)|N/A|
@@ -137,7 +140,14 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set datawriter[profile].qos.ownership`|**PENDING** (currently `Ownership and Ownership strength QoS Policies configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].qos.partitions`|**PENDING** (currently `Partitions QoS Policy not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].qos.publish_mode`|**PENDING** (currently `Publish mode QoS configuration not yet supported`)|`DATAWRITER_QOS_USAGE`|
-|`fastddsqosprof file.xml set datawriter[profile].qos.reliability`|**PENDING** (currently `Reliability QoS configuration not yet supported`)|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability`|`ERROR: DataWriter <reliability> QoS must not be FINAL element`|`RELIABILITY_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability -h`|N/A|`RELIABILITY_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability[]`|`ERROR: DataWriter <reliability> QoS must not be keyed []`|`RELIABILITY_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability[] help`|N/A|`RELIABILITY_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.kind`|N/A|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration`|N/A|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.other`|`ERROR: DataWriter <reliability> QoS: 'other' attribute not recognized`|`RELIABILITY_QOS_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.other help`|N/A|`RELIABILITY_QOS_USAGE`|
 |`fastddsqosprof file.xml set datawriter[profile].qos.resource_limits`|**PENDING** (currently `Resource Limits QoS configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].qos.topic_data`|**PENDING** (currently `Topic Data QoS configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].qos.user_data`|**PENDING** (currently `User Data QoS configuration not yet supported`)|N/A|

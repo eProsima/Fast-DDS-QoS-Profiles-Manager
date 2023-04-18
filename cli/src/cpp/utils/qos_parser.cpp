@@ -270,6 +270,29 @@ void reliability_qos_parser(
         const std::vector<std::string>& values,
         std::ostringstream& message)
 {
+    bool print_usage = false;
+    std::string subelement;
+    std::string dummy_key;
+
+    bool keyed = extract_element_subelement_key(element, subelement, dummy_key);
+    message << ": '" << element << "' attribute";
+
+    if (element == KIND_SUBELEMENT)
+    {
+        std::cout << message.str() << " not yet supported" << std::endl;
+    }
+    else if (element == DURATION_SUBELEMENT)
+    {
+        std::cout << message.str() << " not yet supported" << std::endl;
+    }
+    else
+    {
+        if (!check_help(values))
+        {
+            std::cout << "ERROR: " << message.str() << " not recognized" << std::endl;
+        }
+        std::cout << RELIABILITY_QOS_USAGE << std::endl;
+    }
 }
 
 } // qosprof_cli
