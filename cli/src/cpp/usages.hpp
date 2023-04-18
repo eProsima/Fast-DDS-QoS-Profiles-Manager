@@ -32,6 +32,23 @@ static const char COMPARE_USAGE[] =
       fastddsqosprof <file_1> compare <file_2>
 )";
 
+static const char DATAREADER_DEFAULT_PROFILE_USAGE[] =
+        R"(DataReader default profile usage:
+
+    Usage:
+      fastddsqosprof <file> <command> datareader[<profile_name>].default_profile [(help | -h | --help)]
+
+    Options:
+      help -h --help                CLI DataReader default profile usage
+
+    The allowed <command> options are:
+      clear                         Erase DataReader default profile from XML file.
+      print                         Print DataReader default profile.
+      set                           Set DataReader profile as default in the XML file.
+
+    SET command REQUIRES a <profile_name> element. It can be any string (whitespaces are supported if quoted).
+)";
+
 static const char DATAREADER_QOS_USAGE[] =
         R"(DataReader QoS usage:
 
@@ -99,6 +116,23 @@ static const char DATAREADER_USAGE[] =
       qos                               DataReader QoS configuration.
       times                             DataReader time related parameters configuration.
       user_defined_id                   DataReader user ID for Static EDP discovery mechanism.
+)";
+
+static const char DATAWRITER_DEFAULT_PROFILE_USAGE[] =
+        R"(DataWriter default profile usage:
+
+    Usage:
+      fastddsqosprof <file> <command> datawriter[<profile_name>].default_profile [(help | -h | --help)]
+
+    Options:
+      help -h --help                CLI DataWriter default profile usage
+
+    The allowed <command> options are:
+      clear                         Erase DataWriter default profile from XML file.
+      print                         Print DataWriter default profile.
+      set                           Set DataWriter profile as default in the XML file.
+
+    SET command REQUIRES a <profile_name> element. It can be any string (whitespaces are supported if quoted).
 )";
 
 static const char DATAWRITER_QOS_USAGE[] =
