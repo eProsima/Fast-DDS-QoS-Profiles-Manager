@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-cmake_minimum_required(VERSION 3.16.3)
+cmake_minimum_required(VERSION 3.19)
 cmake_policy(VERSION 3.16.3...3.20.3)
 
 project(fastdds_qos_profiles_manager_cli VERSION "0.1.0" LANGUAGES CXX)
