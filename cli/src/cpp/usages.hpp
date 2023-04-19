@@ -200,20 +200,20 @@ static const char DURABILITY_QOS_USAGE[] =
 )";
 
 static const char ENTITY_DEFAULT_PROFILE_USAGE[] =
-        R"(Profiles entity default profile usage:
+        R"(DDS entity default profile usage:
 
     Usage:
       fastddsqosprof <file> <command> <entity>[(<profile_name>)].default_profile [(help | -h | --help)]
 
     Options:
-      help -h --help                CLI profiles entity default profile usage
+      help -h --help                CLI DDS entity default profile usage
 
     The allowed <command> options are:
-      clear                         Erase profiles entity default profile from XML file.
-      print                         Print profiles entity default profile.
-      set                           Set profiles entity profile as default in the XML file.
+      clear                         Erase DDS entity default profile from XML file.
+      print                         Print DDS entity default profile.
+      set                           Set DDS entity profile as default in the XML file.
 
-    The allowed profiles <entity> options are:
+    The allowed DDS <entity> options are:
       datareader                  DataReader profile.
       datawriter                  DataWriter profile.
       participant                 Participant profile.
