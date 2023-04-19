@@ -576,10 +576,28 @@ void XMLManager::get_transport_node(
         for (int i = 0, size = index_list->size(); i < size; i++)
         {
             // Obtain each transport identifier
+            std::string identifier;
             xercesc::DOMNode* child = node_list->item(index_list->at(i));
             xercesc::DOMNodeList* child_node_list = static_cast<xercesc::DOMElement*>(child)->getElementsByTagName(
                 xercesc::XMLString::transcode(utils::tag::TRANSPORT_ID));
-            std::string identifier = xercesc::XMLString::transcode(child_node_list->item(0)->getNodeValue());
+            try
+            {
+                identifier = xercesc::XMLString::transcode(child_node_list->item(0)->getFirstChild()->getNodeValue());
+            }
+            // return value was nullptr
+            catch (const std::exception& ex)
+            {
+                // obtain the identifier in some other way
+                try
+                {
+                    identifier = xercesc::XMLString::transcode(child_node_list->item(0)->getNodeValue());
+                }
+                // There is definitely not elements there
+                catch (const std::exception& ex)
+                {
+                    continue;
+                }
+            }
 
             // Check if the identifier is the required
             if (identifier == transport_id)

@@ -40,6 +40,19 @@ constexpr const char* CLI_RELIABLE_ARGUMENT = "reliable";
 constexpr const char* LIB_BEST_EFFORT_ARGUMENT = "BEST_EFFORT";
 constexpr const char* LIB_RELIABLE_ARGUMENT = "RELIABLE";
 
+// CLI transport descriptor kind
+constexpr const char* CLI_UDP_V4_ARGUMENT = "udp_v4";
+constexpr const char* CLI_UDP_V6_ARGUMENT = "udp_v6";
+constexpr const char* CLI_TCP_V4_ARGUMENT = "tcp_v4";
+constexpr const char* CLI_TCP_V6_ARGUMENT = "tcp_v6";
+constexpr const char* CLI_SHM_ARGUMENT = "shm";
+
+constexpr const char* LIB_UDP_V4_ARGUMENT = "UDPv4";
+constexpr const char* LIB_UDP_V6_ARGUMENT = "UDPv6";
+constexpr const char* LIB_TCP_V4_ARGUMENT = "TCPv4";
+constexpr const char* LIB_TCP_V6_ARGUMENT = "TCPv6";
+constexpr const char* LIB_SHM_ARGUMENT = "SHM";
+
 } // qosprof_cli
 } // eprosima
 

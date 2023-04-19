@@ -142,7 +142,29 @@ void main_element_parser(
     }
     else if (element == TRANSPORT_ELEMENT)
     {
-        std::cout << "Transport descriptor configuration not yet supported" << std::endl;
+        // If there is no subelement and the last value is (help | -h | --help), print usage
+        print_usage = subelement.empty() && check_help(values);
+        // Transport element requires a transport identifier
+        print_usage = print_usage || !check_profile(profile_name, element);
+        // Transport element requires a subelement
+        print_usage = print_usage || !check_final_element(false, subelement, element);
+
+        if (!print_usage)
+        {
+            transport_subelement_parser(command, filename, profile_name, subelement, values);
+        }
+        else
+        {
+            if (CommonCommands::QUERY != command)
+            {
+                std::cout << TRANSPORT_USAGE << std::endl;
+            }
+            else
+            {
+                // TODO
+                // std::cout << TRANSPORT_QUERY_USAGE << std::endl;
+            }
+        }
     }
     else if (element == TYPES_ELEMENT)
     {

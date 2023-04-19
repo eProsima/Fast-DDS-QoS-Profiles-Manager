@@ -779,6 +779,20 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
         const std::string& transport_descriptor_id);
 
 /**
+ * @brief Remove transport descriptor profile kind.
+ *
+ * @param[in] xml_file Absolute/relative path to the XML file.
+ * @param[in] transport_descriptor_id Transport descriptor profile identifier.
+ *
+ *
+ * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
+ */
+FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_kind(
+        const std::string& xml_file,
+        const std::string& transport_descriptor_id);
+
+/**
  * @brief Remove send buffer size element from specific Transport Descriptor profile.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.

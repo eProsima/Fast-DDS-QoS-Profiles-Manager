@@ -317,7 +317,17 @@ void qos_parser(
         const std::string& profile_name,
         std::string& element,
         const std::vector<std::string>& values);
-
+/**
+ * @brief Reliability QoS parser
+ *
+ * @param entity Endpoint kind.
+ * @param command Command kind.
+ * @param filename File to be modified.
+ * @param profile_name Endpoint profile name.
+ * @param element String with the dot-separated subelements.
+ * @param values Vector of strings with the values passed to CLI.
+ * @param message output stream message
+ */
 void reliability_qos_parser(
         DDSEntity entity,
         CommonCommands command,
@@ -326,6 +336,21 @@ void reliability_qos_parser(
         std::string& element,
         const std::vector<std::string>& values,
         std::ostringstream& message);
+/**
+ * @brief Transport descriptor parser
+ *
+ * @param command Command kind.
+ * @param filename File to be modified.
+ * @param transport_identifier transport identifier.
+ * @param element String with the dot-separated subelements.
+ * @param values Vector of strings with the values passed to CLI.
+ */
+void transport_subelement_parser(
+        CommonCommands command,
+        const std::string& filename,
+        const std::string& transport_identifier,
+        std::string& element,
+        const std::vector<std::string>& values);
 
 /**********************************************************************************************************************/
 /* AUXILIARY FUNCTIONS                                                                                                */
