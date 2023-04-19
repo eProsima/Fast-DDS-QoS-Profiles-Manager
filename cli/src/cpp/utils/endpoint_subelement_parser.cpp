@@ -110,8 +110,7 @@ void endpoint_subelement_parser(
         }
         if (print_usage)
         {
-            std::cout << ((DDSEntity::DATAREADER == endpoint) ?
-            ENTITY_DEFAULT_PROFILE_USAGE : ENTITY_DEFAULT_PROFILE_USAGE) << std::endl;
+            std::cout << ENTITY_DEFAULT_PROFILE_USAGE << std::endl;
         }
     }
     else if (element == ENTITY_ID_SUBELEMENT)
