@@ -40,6 +40,7 @@ set(BIN_INSTALL_DIR bin/ CACHE PATH "Installation directory for binaries")
 set(INCLUDE_INSTALL_DIR include/ CACHE PATH "Installation directory for C++ headers")
 set(LIB_INSTALL_DIR lib${LIB_SUFFIX}/ CACHE PATH "Installation directory for libraries")
 set(DATA_INSTALL_DIR share/ CACHE PATH "Installation directory for data")
+set(DOC_INSTALL_DIR docs/ CACHE PATH "Documentation directory for documentation")
 set(LICENSE_INSTALL_DIR ${DATA_INSTALL_DIR}/${PROJECT_NAME} CACHE PATH "Installation directory for licenses")
 set(INSTALL_DESTINATION_PATH ${DATA_INSTALL_DIR}/${CMAKE_PROJECT_NAME}/cmake)
 
@@ -47,7 +48,7 @@ set(INSTALL_DESTINATION_PATH ${DATA_INSTALL_DIR}/${CMAKE_PROJECT_NAME}/cmake)
 # Configuration steps
 ###############################################################################
 # Configure template doxyfile
-configure_file(doxyfile.in ${PROJECT_BINARY_DIR}/doc/doxyfile @ONLY IMMEDIATE)
+configure_file(doxyfile.in ${PROJECT_BINARY_DIR}/docs/doxyfile @ONLY IMMEDIATE)
 
 # Configure config file
 configure_file(${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}/config.h.in
@@ -172,6 +173,11 @@ install(FILES ${PROJECT_BINARY_DIR}/include/${PROJECT_NAME}/config.h
     COMPONENT headers
 )
 
+# Install doxyfile
+install(FILES ${PROJECT_BINARY_DIR}/docs/doxyfile
+    DESTINATION ${DOC_INSTALL_DIR}
+    COMPONENT documentation)
+
 ###############################################################################
 # Create CMake package config file
 ###############################################################################
@@ -180,7 +186,7 @@ include(CMakePackageConfigHelpers)
 configure_package_config_file(${PROJECT_SOURCE_DIR}/cmake/packaging/Config.cmake.in
     ${PROJECT_BINARY_DIR}/cmake/config/${PROJECT_NAME}-config.cmake
     INSTALL_DESTINATION ${INSTALL_DESTINATION_PATH}
-    PATH_VARS BIN_INSTALL_DIR INCLUDE_INSTALL_DIR LIB_INSTALL_DIR
+    PATH_VARS BIN_INSTALL_DIR INCLUDE_INSTALL_DIR LIB_INSTALL_DIR DOC_INSTALL_DIR
     )
 write_basic_package_version_file(${PROJECT_BINARY_DIR}/cmake/config/${PROJECT_NAME}-config-version.cmake
     VERSION ${PROJECT_VERSION}
