@@ -21,9 +21,20 @@ project(fastdds_qos_profiles_manager VERSION "0.1.0" LANGUAGES CXX)
 find_package(XercesC)
 
 ###############################################################################
+# Installation paths
+###############################################################################
+set(BIN_INSTALL_DIR bin/ CACHE PATH "Installation directory for binaries")
+set(DATA_INSTALL_DIR share/ CACHE PATH "Installation directory for data")
+set(DOC_INSTALL_DIR docs/ CACHE PATH "Documentation directory for documentation")
+set(INCLUDE_INSTALL_DIR include/ CACHE PATH "Installation directory for C++ headers")
+set(LIB_INSTALL_DIR lib${LIB_SUFFIX}/ CACHE PATH "Installation directory for libraries")
+set(LICENSE_INSTALL_DIR ${DATA_INSTALL_DIR}/${PROJECT_NAME} CACHE PATH "Installation directory for licenses")
+
+set(INSTALL_DESTINATION_PATH ${DATA_INSTALL_DIR}/${CMAKE_PROJECT_NAME}/cmake)
+
+###############################################################################
 # Download and install external files
 ###############################################################################
-set(DATA_INSTALL_DIR share/ CACHE PATH "Installation directory for data")
 # Download XML schema
 file(DOWNLOAD "https://raw.githubusercontent.com/eProsima/Fast-DDS/master/resources/xsd/fastRTPS_profiles.xsd"
     ${PROJECT_BINARY_DIR}/${DATA_INSTALL_DIR}/fastdds_profiles.xsd)
@@ -32,17 +43,6 @@ install(FILES ${PROJECT_BINARY_DIR}/${DATA_INSTALL_DIR}/fastdds_profiles.xsd
     DESTINATION ${DATA_INSTALL_DIR})
 # Set XML absolute path
 file(REAL_PATH ${CMAKE_INSTALL_PREFIX}/${DATA_INSTALL_DIR}/fastdds_profiles.xsd XML_SCHEMA_PATH)
-
-###############################################################################
-# Installation paths
-###############################################################################
-set(BIN_INSTALL_DIR bin/ CACHE PATH "Installation directory for binaries")
-set(INCLUDE_INSTALL_DIR include/ CACHE PATH "Installation directory for C++ headers")
-set(LIB_INSTALL_DIR lib${LIB_SUFFIX}/ CACHE PATH "Installation directory for libraries")
-set(DATA_INSTALL_DIR share/ CACHE PATH "Installation directory for data")
-set(DOC_INSTALL_DIR docs/ CACHE PATH "Documentation directory for documentation")
-set(LICENSE_INSTALL_DIR ${DATA_INSTALL_DIR}/${PROJECT_NAME} CACHE PATH "Installation directory for licenses")
-set(INSTALL_DESTINATION_PATH ${DATA_INSTALL_DIR}/${CMAKE_PROJECT_NAME}/cmake)
 
 ###############################################################################
 # Configuration steps
