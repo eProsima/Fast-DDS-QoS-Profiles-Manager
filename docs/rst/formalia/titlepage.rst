@@ -1,5 +1,7 @@
 .. raw:: html
 
+.. _qos_prof_description_:
+
   <h1>
     eProsima Fast DDS QoS Profiles Manager
   </h1>
