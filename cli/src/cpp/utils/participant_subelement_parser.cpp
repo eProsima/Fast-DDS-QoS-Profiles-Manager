@@ -114,7 +114,7 @@ void participant_subelement_parser(
         }
         else
         {
-            std::cout << PARTICIPANT_DEFAULT_PROFILE_USAGE << std::endl;
+            std::cout << ENTITY_DEFAULT_PROFILE_USAGE << std::endl;
         }
     }
     else if (element == DOMAIN_ID_SUBELEMENT)

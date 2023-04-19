@@ -79,6 +79,8 @@ set(${PROJECT_NAME}_source_files
     src/cpp/common/LocatorList.cpp
     src/cpp/common/qos/Durability.cpp
     src/cpp/common/qos/Reliability.cpp
+    src/cpp/data_reader/DataReader.cpp
+    src/cpp/data_writer/DataWriter.cpp
     src/cpp/data_reader/Qos.cpp
     src/cpp/data_writer/Qos.cpp
     src/cpp/domain_participant/Allocation.cpp

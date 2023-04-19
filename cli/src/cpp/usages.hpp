@@ -199,6 +199,28 @@ static const char DURABILITY_QOS_USAGE[] =
       persistent
 )";
 
+static const char ENTITY_DEFAULT_PROFILE_USAGE[] =
+        R"(DDS entity default profile usage:
+
+    Usage:
+      fastddsqosprof <file> <command> <entity>[(<profile_name>)].default_profile [(help | -h | --help)]
+
+    Options:
+      help -h --help                CLI DDS entity default profile usage
+
+    The allowed <command> options are:
+      clear                         Erase DDS entity default profile from XML file.
+      print                         Print DDS entity default profile.
+      set                           Set DDS entity profile as default in the XML file.
+
+    The allowed DDS <entity> options are:
+      datareader                  DataReader profile.
+      datawriter                  DataWriter profile.
+      participant                 Participant profile.
+
+    SET command REQUIRES a <profile_name> element. It can be any string (whitespaces are supported if quoted).
+)";
+
 static const char HELP_USAGE[] =
         R"(Fast DDS QoS Profiles Manager CLI help command usage
 
@@ -423,23 +445,6 @@ static const char PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE[] =
                         kind is a mandatory parameter. Consequently, this parameter cannot be cleared. Erase the entire locator or update the kind.
       mask              Default external unicast locator mask. Valid set values: udp_v4 [1, 31] | udp_v6 [1, 127]
       port              Default external unicast locator port. Valid set values: [0, 65535]
-)";
-
-static const char PARTICIPANT_DEFAULT_PROFILE_USAGE[] =
-        R"(Participant default profile usage:
-
-    Usage:
-      fastddsqosprof <file> <command> participant[(<profile_name>)].default_profile [(help | -h | --help)]
-
-    Options:
-      help -h --help                CLI participant default profile usage
-
-    The allowed <command> options are:
-      clear                         Erase participant default profile from XML file.
-      print                         Print participant default profile.
-      set                           Set participant profile as default in the XML file.
-
-    SET command REQUIRES a <profile_name> element. It can be any string (whitespaces are supported if quoted).
 )";
 
 static const char PARTICIPANT_NAME_USAGE[] =
