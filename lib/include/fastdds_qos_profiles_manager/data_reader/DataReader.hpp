@@ -40,7 +40,7 @@ namespace data_reader {
 /************************************************************************/
 
 /**
- * @brief Set the selected DataReader as default profile.
+ * @brief Set the selected DataReader profile as default profile.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id DataReader profile identifier.

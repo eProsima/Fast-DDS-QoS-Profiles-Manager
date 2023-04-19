@@ -47,7 +47,7 @@ void initialize_namespace(
 {
     // Iterate through required elements, and create them if not existent
     manager.get_node(utils::tag::PROFILES, create_if_not_existent);
-    manager.get_node(utils::tag::DATA_READER, utils::tag::PROFILE_NAME, profile_id, create_if_not_existent);
+    manager.get_node(utils::tag::DATA_WRITER, utils::tag::PROFILE_NAME, profile_id, create_if_not_existent);
     if (!additional_tag.empty())
     {
         manager.get_node(additional_tag, create_if_not_existent);

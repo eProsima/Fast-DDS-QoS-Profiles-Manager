@@ -32,23 +32,6 @@ static const char COMPARE_USAGE[] =
       fastddsqosprof <file_1> compare <file_2>
 )";
 
-static const char DATAREADER_DEFAULT_PROFILE_USAGE[] =
-        R"(DataReader default profile usage:
-
-    Usage:
-      fastddsqosprof <file> <command> datareader[<profile_name>].default_profile [(help | -h | --help)]
-
-    Options:
-      help -h --help                CLI DataReader default profile usage
-
-    The allowed <command> options are:
-      clear                         Erase DataReader default profile from XML file.
-      print                         Print DataReader default profile.
-      set                           Set DataReader profile as default in the XML file.
-
-    SET command REQUIRES a <profile_name> element. It can be any string (whitespaces are supported if quoted).
-)";
-
 static const char DATAREADER_QOS_USAGE[] =
         R"(DataReader QoS usage:
 
@@ -116,23 +99,6 @@ static const char DATAREADER_USAGE[] =
       qos                               DataReader QoS configuration.
       times                             DataReader time related parameters configuration.
       user_defined_id                   DataReader user ID for Static EDP discovery mechanism.
-)";
-
-static const char DATAWRITER_DEFAULT_PROFILE_USAGE[] =
-        R"(DataWriter default profile usage:
-
-    Usage:
-      fastddsqosprof <file> <command> datawriter[<profile_name>].default_profile [(help | -h | --help)]
-
-    Options:
-      help -h --help                CLI DataWriter default profile usage
-
-    The allowed <command> options are:
-      clear                         Erase DataWriter default profile from XML file.
-      print                         Print DataWriter default profile.
-      set                           Set DataWriter profile as default in the XML file.
-
-    SET command REQUIRES a <profile_name> element. It can be any string (whitespaces are supported if quoted).
 )";
 
 static const char DATAWRITER_QOS_USAGE[] =
@@ -231,6 +197,28 @@ static const char DURABILITY_QOS_USAGE[] =
       transient_local
       transient
       persistent
+)";
+
+static const char ENTITY_DEFAULT_PROFILE_USAGE[] =
+        R"(Profiles entity default profile usage:
+
+    Usage:
+      fastddsqosprof <file> <command> <entity>[(<profile_name>)].default_profile [(help | -h | --help)]
+
+    Options:
+      help -h --help                CLI profiles entity default profile usage
+
+    The allowed <command> options are:
+      clear                         Erase profiles entity default profile from XML file.
+      print                         Print profiles entity default profile.
+      set                           Set profiles entity profile as default in the XML file.
+
+    The allowed profiles <entity> options are:
+      datareader                  DataReader profile.
+      datawriter                  DataWriter profile.
+      participant                 Participant profile.
+
+    SET command REQUIRES a <profile_name> element. It can be any string (whitespaces are supported if quoted).
 )";
 
 static const char HELP_USAGE[] =
@@ -457,23 +445,6 @@ static const char PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE[] =
                         kind is a mandatory parameter. Consequently, this parameter cannot be cleared. Erase the entire locator or update the kind.
       mask              Default external unicast locator mask. Valid set values: udp_v4 [1, 31] | udp_v6 [1, 127]
       port              Default external unicast locator port. Valid set values: [0, 65535]
-)";
-
-static const char PARTICIPANT_DEFAULT_PROFILE_USAGE[] =
-        R"(Participant default profile usage:
-
-    Usage:
-      fastddsqosprof <file> <command> participant[(<profile_name>)].default_profile [(help | -h | --help)]
-
-    Options:
-      help -h --help                CLI participant default profile usage
-
-    The allowed <command> options are:
-      clear                         Erase participant default profile from XML file.
-      print                         Print participant default profile.
-      set                           Set participant profile as default in the XML file.
-
-    SET command REQUIRES a <profile_name> element. It can be any string (whitespaces are supported if quoted).
 )";
 
 static const char PARTICIPANT_NAME_USAGE[] =

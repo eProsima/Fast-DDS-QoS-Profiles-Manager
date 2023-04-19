@@ -47,13 +47,13 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set datareader[profile].allocations`|**PENDING** (currently `DataReader allocations configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datareader[profile].binary_property`|**PENDING** (currently `DataReader binary properties configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datareader[profile].default_profile`|N/A|N/A|
-|`fastddsqosprof file.xml set datareader[profile].default_profile -h`|N/A|`DATAREADER_DEFAULT_PROFILE_USAGE`|
-|`fastddsqosprof file.xml set datareader[profile].default_profile --help`|N/A|`DATAREADER_DEFAULT_PROFILE_USAGE`|
-|`fastddsqosprof file.xml set datareader[profile].default_profile help`|N/A|`DATAREADER_DEFAULT_PROFILE_USAGE`|
-|`fastddsqosprof file.xml set datareader[profile].default_profile argument1 argument2 help`|N/A|`DATAREADER_DEFAULT_PROFILE_USAGE`|
-|`fastddsqosprof file.xml set datareader[profile].default_profile[]`|`ERROR: DataReader <default_profile> must not be keyed []`|`DATAREADER_DEFAULT_PROFILE_USAGE`|
-|`fastddsqosprof file.xml set datareader[profile].default_profile.element`|`ERROR: DataReader <default_profile> must be FINAL element`|`DATAREADER_DEFAULT_PROFILE_USAGE`|
-|`fastddsqosprof file.xml set datareader[profile].default_profile argument`|`ERROR: set command for DataReader <default_profile> expects 0 arguments and received 1`|`DATAREADER_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].default_profile -h`|N/A|`ENTITY_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].default_profile --help`|N/A|`ENTITY_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].default_profile help`|N/A|`ENTITY_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].default_profile argument1 argument2 help`|N/A|`ENTITY_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].default_profile[]`|`ERROR: DataReader <default_profile> must not be keyed []`|`ENTITY_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].default_profile.element`|`ERROR: DataReader <default_profile> must be FINAL element`|`ENTITY_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set datareader[profile].default_profile argument`|`ERROR: set command for DataReader <default_profile> expects 0 arguments and received 1`|`ENTITY_DEFAULT_PROFILE_USAGE`|
 |`fastddsqosprof file.xml set datareader[profile].entity_id`|**PENDING** (currently `DataReader entity ID configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datareader[profile].expect_inline_qos`|**PENDING** (currently `DataReader expect inline qos flag configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datareader[profile].external_locators`|**PENDING** (currently `DataReader default attribute configuration not yet supported`)|N/A|
@@ -154,13 +154,13 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set datawriter[profile].binary_property`|**PENDING** (currently `DataWriter binary properties configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].default_profile`|**PENDING** (currently `DataWriter default attribute configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].default_profile`|N/A|N/A|
-|`fastddsqosprof file.xml set datawriter[profile].default_profile -h`|N/A|`DATAWRITER_DEFAULT_PROFILE_USAGE`|
-|`fastddsqosprof file.xml set datawriter[profile].default_profile --help`|N/A|`DATAWRITER_DEFAULT_PROFILE_USAGE`|
-|`fastddsqosprof file.xml set datawriter[profile].default_profile help`|N/A|`DATAWRITER_DEFAULT_PROFILE_USAGE`|
-|`fastddsqosprof file.xml set datawriter[profile].default_profile argument1 argument2 help`|N/A|`DATAWRITER_DEFAULT_PROFILE_USAGE`|
-|`fastddsqosprof file.xml set datawriter[profile].default_profile[]`|`ERROR: DataWriter <default_profile> must not be keyed []`|`DATAWRITER_DEFAULT_PROFILE_USAGE`|
-|`fastddsqosprof file.xml set datawriter[profile].default_profile.element`|`ERROR: DataWriter <default_profile> must be FINAL element`|`DATAWRITER_DEFAULT_PROFILE_USAGE`|
-|`fastddsqosprof file.xml set datawriter[profile].default_profile argument`|`ERROR: set command for DataWriter <default_profile> expects 0 arguments and received 1`|`DATAWRITER_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].default_profile -h`|N/A|`ENTITY_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].default_profile --help`|N/A|`ENTITY_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].default_profile help`|N/A|`ENTITY_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].default_profile argument1 argument2 help`|N/A|`ENTITY_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].default_profile[]`|`ERROR: DataWriter <default_profile> must not be keyed []`|`ENTITY_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].default_profile.element`|`ERROR: DataWriter <default_profile> must be FINAL element`|`ENTITY_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set datawriter[profile].default_profile argument`|`ERROR: set command for DataWriter <default_profile> expects 0 arguments and received 1`|`ENTITY_DEFAULT_PROFILE_USAGE`|
 |`fastddsqosprof file.xml set datawriter[profile].entity_id`|**PENDING** (currently `DataWriter entity ID configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].external_locators`|**PENDING** (currently `DataWriter default attribute configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].history_memory_policy`|**PENDING** (currently `DataWriter history memory policy configuration not yet supported`)|N/A|
@@ -275,8 +275,8 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].use_builtin_transports`|`ERROR: set command for Participant <use_builtin_transports> expects 1 arguments and received 0`|`PARTICIPANT_USE_BUILTIN_TRANSPORTS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].user_data`|**PENDING** (currently `Participant user data QoS configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].user_transports`|`ERROR: Participant <user_transports> must be keyed []`|`PARTICIPANT_USER_TRANSPORTS_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].other`|`ERROR: other element not recognized`|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].other -h`|N/A|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].other`|`ERROR: other element not recognized`|`ENTITY_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].other -h`|N/A|`ENTITY_DEFAULT_PROFILE_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin -h`|N/A|`PARTICIPANT_BUILTIN_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin --help`|N/A|`PARTICIPANT_BUILTIN_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin help`|N/A|`PARTICIPANT_BUILTIN_USAGE`|
@@ -568,13 +568,13 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].builtin.writer`|**PENDING** (currently `Participant builtin writers configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.writer arg`|**PENDING** (currently `Participant builtin writers configuration not yet supported`)|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.writer help`|**PENDING** (currently `Participant builtin writers configuration not yet supported`)|N/A|
-|`fastddsqosprof file.xml set participant[profile].default_profile -h`|N/A|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].default_profile --help`|N/A|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].default_profile help`|N/A|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].default_profile argument1 argument2 help`|N/A|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].default_profile[]`|`ERROR: Participant <default_profile> must not be keyed []`|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].default_profile.element`|`ERROR: Participant <default_profile> must be FINAL element`|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].default_profile argument`|`ERROR: set command for Participant <default_profile> expects 0 arguments and received 1`|`PARTICIPANT_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].default_profile -h`|N/A|`ENTITY_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].default_profile --help`|N/A|`ENTITY_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].default_profile help`|N/A|`ENTITY_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].default_profile argument1 argument2 help`|N/A|`ENTITY_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].default_profile[]`|`ERROR: Participant <default_profile> must not be keyed []`|`ENTITY_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].default_profile.element`|`ERROR: Participant <default_profile> must be FINAL element`|`ENTITY_DEFAULT_PROFILE_USAGE`|
+|`fastddsqosprof file.xml set participant[profile].default_profile argument`|`ERROR: set command for Participant <default_profile> expects 0 arguments and received 1`|`ENTITY_DEFAULT_PROFILE_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators -h`|N/A|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators --help`|N/A|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].external_locators help`|N/A|`PARTICIPANT_DEFAULT_EXTERNAL_UNICAST_LOCATORS_USAGE`|

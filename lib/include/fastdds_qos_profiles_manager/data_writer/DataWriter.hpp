@@ -40,7 +40,7 @@ namespace data_writer {
 /************************************************************************/
 
 /**
- * @brief Set the selected DataWriter as default profile.
+ * @brief Set the selected DataWriter profile as default profile.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id DataWriter profile identifier.
