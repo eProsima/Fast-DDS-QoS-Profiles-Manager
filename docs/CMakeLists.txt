@@ -21,6 +21,7 @@ project(fastdds_qos_profiles_manager_docs VERSION 0.1.0 LANGUAGES CXX)
 # Load external dependencies
 ###############################################################################
 find_package(fastdds_qos_profiles_manager REQUIRED)
+find_package(Doxygen REQUIRED)
 
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/modules" ${CMAKE_MODULE_PATH})
 find_package(Sphinx REQUIRED)
@@ -32,17 +33,26 @@ set(PROJECT_SOURCE_DOCS_DIR ${PROJECT_SOURCE_DIR})
 set(PROJECT_BINARY_DOCS_DIR ${PROJECT_BINARY_DIR}/docs)
 set(DOCS_OUTPUT_HTML_DIR ${PROJECT_BINARY_DOCS_DIR}/html)
 
-# Create docs directories
-add_custom_target(doc-dirs
-    COMMAND ${CMAKE_COMMAND} -E make_directory ${PROJECT_BINARY_DOCS_DIR}
-    COMMAND ${CMAKE_COMMAND} -E make_directory ${DOCS_OUTPUT_HTML_DIR}
-    COMMENT "Creating documentation directories" VERBATIM)
-
 ####################################################################################################
 # Build Fast DDS QoS Profiles Manager Library Doxygen documentation
 ####################################################################################################
+add_custom_target(doxygen ALL
+    COMMAND ${DOXYGEN_EXECUTABLE} ${fastdds_qos_profiles_manager_DOC_DIR}/doxyfile
+    SOURCES "${fastdds_qos_profiles_manager_DOC_DIR}/doxyfile"
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    COMMENT "Generating Fast DDS QoS Profiles Manager library API reference with doxygen" VERBATIM)
 
-# TODO
+####################################################################################################
+# Install Doxygen documentation
+####################################################################################################
+install(DIRECTORY ${fastdds_qos_profiles_manager_XML_DIR}
+    DESTINATION docs/${PROJECT_NAME}/doxygen
+    COMPONENT fastdds_qos_profiles_manager_lib-doxygen)
+
+set(CPACK_COMPONENT_fastdds_qos_profiles_manager_lib-doxygen_DISPLAY_NAME "Fast DDS QoS Profiles Manager Library API reference")
+set(CPACK_COMPONENT_fastdds_qos_profiles_managerlib-doxygen_DESCRIPTION
+    "eProsima Fast DDS QoS Profiles Manager Library doxygen documentation")
+set(CPACK_COMPONENTS_ALL ${CPACK_COMPONENTS_ALL} doxygen)
 
 ####################################################################################################
 # Build Sphinx documentation
@@ -52,19 +62,23 @@ set(DOCS_BUILDER html)
 add_custom_target(Sphinx ALL
     COMMAND
     ${SPHINX_EXECUTABLE} -b ${DOCS_BUILDER}
+    # Tell breathe where to find the Doxygen output
+    -D breathe_projects.fastdds_qos_profiles_manager=${fastdds_qos_profiles_manager_XML_DIR}
     -d "${PROJECT_BINARY_DOCS_DIR}/doctrees"
     ${PROJECT_SOURCE_DOCS_DIR}
     ${DOCS_OUTPUT_HTML_DIR}
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    DEPENDS doxygen
     COMMENT "Generating documentation with Sphinx")
 
 ####################################################################################################
-# Install documentation
+# Install Sphinx documentation
 ####################################################################################################
 install(DIRECTORY ${DOCS_OUTPUT_HTML_DIR}
     DESTINATION docs/${PROJECT_NAME}/sphinx
     COMPONENT fastdds_qos_profiles_manager-sphinx
     PATTERN ".buildinfo" EXCLUDE)
+
 set(CPACK_COMPONENT_fastdds_qos_profiles_manager-sphinx_DISPLAY_NAME "Fast DDS QoS Profiles Manager Sphinx")
 set(CPACK_COMPONENT_fastdds_qos_profiles_manager-sphinx_DESCRIPTION
     "eProsima Fast DDS QoS Profiles Manager documentation in ${DOCS_BUILDER} format")
