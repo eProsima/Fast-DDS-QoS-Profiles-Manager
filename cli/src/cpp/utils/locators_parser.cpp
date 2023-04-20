@@ -17,10 +17,10 @@
 #include <string>
 #include <vector>
 
-#include <fastdds_qos_profiles_manager/domain_participant/builtin/InitialPeers.hpp>
-#include <fastdds_qos_profiles_manager/domain_participant/builtin/MetatrafficMulticastLocators.hpp>
-#include <fastdds_qos_profiles_manager/domain_participant/builtin/MetatrafficUnicastLocators.hpp>
-#include <fastdds_qos_profiles_manager/exception/Exception.hpp>
+#include <fastdds_qos_profiles_manager_lib/domain_participant/builtin/InitialPeers.hpp>
+#include <fastdds_qos_profiles_manager_lib/domain_participant/builtin/MetatrafficMulticastLocators.hpp>
+#include <fastdds_qos_profiles_manager_lib/domain_participant/builtin/MetatrafficUnicastLocators.hpp>
+#include <fastdds_qos_profiles_manager_lib/exception/Exception.hpp>
 
 #include <parser_constants.hpp>
 #include <utils/utils.hpp>

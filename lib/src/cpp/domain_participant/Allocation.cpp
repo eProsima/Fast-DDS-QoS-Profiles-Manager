@@ -16,11 +16,11 @@
  * @file
  */
 
-#include <fastdds_qos_profiles_manager/domain_participant/Allocation.hpp>
+#include <fastdds_qos_profiles_manager_lib/domain_participant/Allocation.hpp>
 
 #include <string>
 
-#include <fastdds_qos_profiles_manager/exception/Exception.hpp>
+#include <fastdds_qos_profiles_manager_lib/exception/Exception.hpp>
 
 namespace eprosima {
 namespace qosprof {

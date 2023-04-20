@@ -48,7 +48,7 @@ def get_cmake_project_version(cmakelists):
         'project\(.*VERSION\s+(\d+)\.(\d+)\.(\d+)',
         "".join(open(cmakelists, 'r').readlines()),
         flags=re.MULTILINE)[0]
-    
+
     return {
         'major': matches[0],
         'minor': matches[1],
@@ -151,9 +151,9 @@ project_binary_docs_dir = os.path.abspath(
 output_dir = os.path.abspath('{}/doxygen'.format(project_binary_docs_dir))
 
 breathe_projects = {
-    'fastdds_qos_profiles_manager': os.path.abspath('{}/xml'.format(output_dir))
+    'fastdds_qos_profiles_manager_lib': os.path.abspath('{}/xml'.format(output_dir))
 }
-breathe_default_project = 'fastdds_qos_profiles_manager'
+breathe_default_project = 'fastdds_qos_profiles_manager_lib'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

@@ -6,4 +6,4 @@ DataReader
 ----------
 
 .. doxygennamespace:: eprosima::qosprof::data_reader
-    :project: fastdds_qos_profiles_manager
+    :project: fastdds_qos_profiles_manager_lib

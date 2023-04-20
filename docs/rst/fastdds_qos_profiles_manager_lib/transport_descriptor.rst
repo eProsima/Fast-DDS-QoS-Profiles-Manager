@@ -6,4 +6,4 @@ Transport Descriptor
 --------------------
 
 .. doxygennamespace:: eprosima::qosprof::transport_descriptor
-    :project: fastdds_qos_profiles_manager
+    :project: fastdds_qos_profiles_manager_lib

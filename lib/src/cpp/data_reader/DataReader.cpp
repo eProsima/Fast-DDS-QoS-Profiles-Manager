@@ -16,11 +16,11 @@
  * @file
  */
 
-#include <fastdds_qos_profiles_manager/data_reader/DataReader.hpp>
+#include <fastdds_qos_profiles_manager_lib/data_reader/DataReader.hpp>
 
 #include <string>
 
-#include <fastdds_qos_profiles_manager/exception/Exception.hpp>
+#include <fastdds_qos_profiles_manager_lib/exception/Exception.hpp>
 
 #include <utils/TagsXMLManager.hpp>
 #include <utils/XMLManager.hpp>

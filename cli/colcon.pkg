@@ -1,5 +1,5 @@
 {
     "name": "fastdds_qos_profiles_manager_cli",
     "type": "cmake",
-    "dependencies": ["fastdds_qos_profiles_manager"]
+    "dependencies": ["fastdds_qos_profiles_manager_lib"]
 }

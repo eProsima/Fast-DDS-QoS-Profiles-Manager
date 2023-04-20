@@ -30,12 +30,12 @@ jobs:
 
       - name: Generate documentation
         run: |
-          cd src/Fast-DDS-QoS-Profiles-Manager/lib/build/fastdds_qos_profiles_manager/doc
+          cd src/Fast-DDS-QoS-Profiles-Manager/lib/build/fastdds_qos_profiles_manager_lib/doc
           doxygen doxyfile
 
       - name: Upload api reference
         uses: actions/upload-artifact@v1
         with:
           name: api_reference
-          path: src/Fast-DDS-QoS-Profiles-Manager/lib/build/fastdds_qos_profiles_manager/doc
+          path: src/Fast-DDS-QoS-Profiles-Manager/lib/build/fastdds_qos_profiles_manager_lib/doc
         if: always()

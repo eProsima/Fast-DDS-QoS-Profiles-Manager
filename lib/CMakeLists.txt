@@ -15,7 +15,7 @@
 cmake_minimum_required(VERSION 3.19)
 cmake_policy(VERSION 3.16.3...3.20.3)
 
-project(fastdds_qos_profiles_manager VERSION "0.1.0" LANGUAGES CXX)
+project(fastdds_qos_profiles_manager_lib VERSION "0.1.0" LANGUAGES CXX)
 
 # Search for Xerces package
 find_package(XercesC)

@@ -6,4 +6,4 @@ DataWriter
 ----------
 
 .. doxygennamespace:: eprosima::qosprof::data_writer
-    :project: fastdds_qos_profiles_manager
+    :project: fastdds_qos_profiles_manager_lib

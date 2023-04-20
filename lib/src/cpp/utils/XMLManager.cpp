@@ -20,7 +20,7 @@
 
 #include <unistd.h>
 
-#include <fastdds_qos_profiles_manager/exception/Exception.hpp>
+#include <fastdds_qos_profiles_manager_lib/exception/Exception.hpp>
 
 #include <utils/StringXMLManager.hpp>
 #include <utils/TagsXMLManager.hpp>
@@ -110,7 +110,7 @@ XMLManager::XMLManager (
     transform_standalone_to_rooted_structure();
 
     // Set up Validation parameters: XSD pash
-    std::string xsd_file_path = FASTDDS_QOS_PROFILES_MANAGER_XML_SCHEMA;
+    std::string xsd_file_path = FASTDDS_QOS_PROFILES_MANAGER_LIB_XML_SCHEMA;
     // Set as namespace location both URL and the path to the XML schema
     std::string namespace_schema_location = utils::tag::EPROSIMA_URL;
     namespace_schema_location += " " + xsd_file_path;
