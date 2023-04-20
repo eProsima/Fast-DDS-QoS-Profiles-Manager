@@ -30,6 +30,7 @@ set(HTML_INSTALL_DIR docs/doxygen/html CACHE PATH "Installation directory for AP
 set(INCLUDE_INSTALL_DIR include/ CACHE PATH "Installation directory for C++ headers")
 set(LIB_INSTALL_DIR lib${LIB_SUFFIX}/ CACHE PATH "Installation directory for libraries")
 set(LICENSE_INSTALL_DIR ${DATA_INSTALL_DIR}/${PROJECT_NAME} CACHE PATH "Installation directory for licenses")
+set(XML_INSTALL_DIR docs/doxygen/xml CACHE PATH "Installation directory for API reference")
 
 set(INSTALL_DESTINATION_PATH ${DATA_INSTALL_DIR}/${CMAKE_PROJECT_NAME}/cmake)
 
@@ -181,6 +182,7 @@ install(FILES ${PROJECT_BINARY_DIR}/docs/doxyfile
 
 # Create docs directory
 install(DIRECTORY DESTINATION ${HTML_INSTALL_DIR})
+install(DIRECTORY DESTINATION ${XML_INSTALL_DIR})
 
 ###############################################################################
 # Create CMake package config file
@@ -190,7 +192,7 @@ include(CMakePackageConfigHelpers)
 configure_package_config_file(${PROJECT_SOURCE_DIR}/cmake/packaging/Config.cmake.in
     ${PROJECT_BINARY_DIR}/cmake/config/${PROJECT_NAME}-config.cmake
     INSTALL_DESTINATION ${INSTALL_DESTINATION_PATH}
-    PATH_VARS BIN_INSTALL_DIR INCLUDE_INSTALL_DIR LIB_INSTALL_DIR DOC_INSTALL_DIR HTML_INSTALL_DIR
+    PATH_VARS BIN_INSTALL_DIR INCLUDE_INSTALL_DIR LIB_INSTALL_DIR DOC_INSTALL_DIR HTML_INSTALL_DIR XML_INSTALL_DIR
     )
 write_basic_package_version_file(${PROJECT_BINARY_DIR}/cmake/config/${PROJECT_NAME}-config-version.cmake
     VERSION ${PROJECT_VERSION}

@@ -20,6 +20,7 @@ set_and_check(@PROJECT_NAME@_INCLUDE_DIR "@PACKAGE_INCLUDE_INSTALL_DIR@")
 set_and_check(@PROJECT_NAME@_LIB_DIR "@PACKAGE_LIB_INSTALL_DIR@")
 set_and_check(@PROJECT_NAME@_DOC_DIR "@PACKAGE_DOC_INSTALL_DIR@")
 set_and_check(@PROJECT_NAME@_HTML_DIR "@PACKAGE_HTML_INSTALL_DIR@")
+set_and_check(@PROJECT_NAME@_XML_DIR "@PACKAGE_XML_INSTALL_DIR@")
 
 set(fastdds_qos_profiles_manager_known_comp static shared)
 set(fastdds_qos_profiles_manager_comp_static NO)
