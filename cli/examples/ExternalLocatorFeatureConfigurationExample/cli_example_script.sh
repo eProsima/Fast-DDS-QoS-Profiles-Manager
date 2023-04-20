@@ -28,27 +28,27 @@ while [ $NAME != "null" ]; do
     XML_FILE_NAME="${XML_FILE_NAME_PREFIX}_${NAME}.xml"
     ## External locators for user traffic
     ### Drone IP
-    fastddsqosprof $XML_FILE_NAME set participant[$NAME].external_locators.default_unicast[].externality 2
-    fastddsqosprof $XML_FILE_NAME set participant[$NAME].external_locators.default_unicast[-1].address $DRONE_IP
-    fastddsqosprof $XML_FILE_NAME set participant[$NAME].external_locators.default_unicast[-1].port $USER_PORT
+    fastddsqosprof $XML_FILE_NAME set participant[participant_profile_fog_sw].external_locators.default_unicast[].externality 2
+    fastddsqosprof $XML_FILE_NAME set participant[participant_profile_fog_sw].external_locators.default_unicast[-1].address $DRONE_IP
+    fastddsqosprof $XML_FILE_NAME set participant[participant_profile_fog_sw].external_locators.default_unicast[-1].port $USER_PORT
     ### VM IP
-    fastddsqosprof $XML_FILE_NAME set participant[$NAME].external_locators.default_unicast[].externality 1
-    fastddsqosprof $XML_FILE_NAME set participant[$NAME].external_locators.default_unicast[-1].address $VM_IP
-    fastddsqosprof $XML_FILE_NAME set participant[$NAME].external_locators.default_unicast[-1].port $USER_PORT
+    fastddsqosprof $XML_FILE_NAME set participant[participant_profile_fog_sw].external_locators.default_unicast[].externality 1
+    fastddsqosprof $XML_FILE_NAME set participant[participant_profile_fog_sw].external_locators.default_unicast[-1].address $VM_IP
+    fastddsqosprof $XML_FILE_NAME set participant[participant_profile_fog_sw].external_locators.default_unicast[-1].port $USER_PORT
     ## External locators for discovery traffic
     ### Drone IP
-    fastddsqosprof $XML_FILE_NAME set participant[$NAME].builtin.external_locators.metatraffic_unicast[].externality 2
-    fastddsqosprof $XML_FILE_NAME set participant[$NAME].builtin.external_locators.metatraffic_unicast[-1].address $DRONE_IP
-    fastddsqosprof $XML_FILE_NAME set participant[$NAME].builtin.external_locators.metatraffic_unicast[-1].port $DISCOVERY_PORT
+    fastddsqosprof $XML_FILE_NAME set participant[participant_profile_fog_sw].builtin.external_locators.metatraffic_unicast[].externality 2
+    fastddsqosprof $XML_FILE_NAME set participant[participant_profile_fog_sw].builtin.external_locators.metatraffic_unicast[-1].address $DRONE_IP
+    fastddsqosprof $XML_FILE_NAME set participant[participant_profile_fog_sw].builtin.external_locators.metatraffic_unicast[-1].port $DISCOVERY_PORT
     ### VM IP
-    fastddsqosprof $XML_FILE_NAME set participant[$NAME].builtin.external_locators.metatraffic_unicast[].externality 1
-    fastddsqosprof $XML_FILE_NAME set participant[$NAME].builtin.external_locators.metatraffic_unicast[-1].address $VM_IP
-    fastddsqosprof $XML_FILE_NAME set participant[$NAME].builtin.external_locators.metatraffic_unicast[-1].port $DISCOVERY_PORT
+    fastddsqosprof $XML_FILE_NAME set participant[participant_profile_fog_sw].builtin.external_locators.metatraffic_unicast[].externality 1
+    fastddsqosprof $XML_FILE_NAME set participant[participant_profile_fog_sw].builtin.external_locators.metatraffic_unicast[-1].address $VM_IP
+    fastddsqosprof $XML_FILE_NAME set participant[participant_profile_fog_sw].builtin.external_locators.metatraffic_unicast[-1].port $DISCOVERY_PORT
     ## Initial peers: remote participants locators (discovery)
     ### Other containers in the same VM: multicast
-    fastddsqosprof $XML_FILE_NAME set participant[$NAME].builtin.locators.initial_peers[].address 239.255.0.1
+    fastddsqosprof $XML_FILE_NAME set participant[participant_profile_fog_sw].builtin.locators.initial_peers[].address 239.255.0.1
     #### Attention: this port is the one corresponding to the Domain ID 0 according to the DDS specification.
-    fastddsqosprof $XML_FILE_NAME set participant[$NAME].builtin.locators.initial_peers[-1].port 7400
+    fastddsqosprof $XML_FILE_NAME set participant[participant_profile_fog_sw].builtin.locators.initial_peers[-1].port 7400
     ### Other VM in the same drone: traverse remote VM IPs list to add to initial peers list
     INTERNAL_COUNTER=0
     IP_ADDRESS=$(jq .nodes[$COUNTER] $FILE | jq .remote_vm_ip[$INTERNAL_COUNTER] | jq .ip_address)
@@ -56,8 +56,8 @@ while [ $NAME != "null" ]; do
         IP_ADDRESS=${IP_ADDRESS//\"}
         echo "Adding $IP_ADDRESS to initial peers list"
 
-        fastddsqosprof $XML_FILE_NAME set participant[$NAME].builtin.locators.initial_peers[].address $IP_ADDRESS
-        fastddsqosprof $XML_FILE_NAME set participant[$NAME].builtin.locators.initial_peers[-1].port $DISCOVERY_PORT
+        fastddsqosprof $XML_FILE_NAME set participant[participant_profile_fog_sw].builtin.locators.initial_peers[].address $IP_ADDRESS
+        fastddsqosprof $XML_FILE_NAME set participant[participant_profile_fog_sw].builtin.locators.initial_peers[-1].port $DISCOVERY_PORT
 
         INTERNAL_COUNTER=$INTERNAL_COUNTER+1
         IP_ADDRESS=$(jq .nodes[$COUNTER] $FILE | jq .remote_vm_ip[$INTERNAL_COUNTER] | jq .ip_address)
@@ -69,14 +69,14 @@ while [ $NAME != "null" ]; do
         IP_ADDRESS=${IP_ADDRESS//\"}
         echo "Adding $IP_ADDRESS to initial peers list"
 
-        fastddsqosprof $XML_FILE_NAME set participant[$NAME].builtin.locators.initial_peers[].address $IP_ADDRESS
-        fastddsqosprof $XML_FILE_NAME set participant[$NAME].builtin.locators.initial_peers[-1].port $DISCOVERY_PORT
+        fastddsqosprof $XML_FILE_NAME set participant[participant_profile_fog_sw].builtin.locators.initial_peers[].address $IP_ADDRESS
+        fastddsqosprof $XML_FILE_NAME set participant[participant_profile_fog_sw].builtin.locators.initial_peers[-1].port $DISCOVERY_PORT
 
         INTERNAL_COUNTER=$INTERNAL_COUNTER+1
         IP_ADDRESS=$(jq .nodes[$COUNTER] $FILE | jq .remote_drones_ip[$INTERNAL_COUNTER] | jq .ip_address)
     done
     ## Set as default profile (the profile MUST exist)
-    fastddsqosprof $XML_FILE_NAME set participant[$NAME].default_profile
+    fastddsqosprof $XML_FILE_NAME set participant[participant_profile_fog_sw].default_profile
 
     COUNTER=$COUNTER+1
     NAME=$(jq .nodes[$COUNTER] $FILE | jq .name)
