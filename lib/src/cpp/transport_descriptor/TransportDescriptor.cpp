@@ -16,12 +16,12 @@
  * @file
  */
 
-#include <fastdds_qos_profiles_manager/transport_descriptor/TransportDescriptor.hpp>
+#include <fastdds_qos_profiles_manager_lib/transport_descriptor/TransportDescriptor.hpp>
 
 #include <string>
 #include <vector>
 
-#include <fastdds_qos_profiles_manager/exception/Exception.hpp>
+#include <fastdds_qos_profiles_manager_lib/exception/Exception.hpp>
 
 #include <utils/TagsXMLManager.hpp>
 #include <utils/XMLManager.hpp>

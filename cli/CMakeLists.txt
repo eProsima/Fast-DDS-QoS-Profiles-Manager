@@ -26,7 +26,7 @@ configure_file(${PROJECT_SOURCE_DIR}/include/config.h.in
 ###############################################################################
 # Load external dependencies
 ###############################################################################
-find_package(fastdds_qos_profiles_manager REQUIRED)
+find_package(fastdds_qos_profiles_manager_lib REQUIRED)
 find_package(docopt COMPONENTS CXX REQUIRED)
 
 ###############################################################################
@@ -61,11 +61,11 @@ target_include_directories(${EXECUTABLE_NAME} PUBLIC
     ${PROJECT_BINARY_DIR}/include
     PRIVATE
     ${PROJECT_SOURCE_DIR}/src/cpp
-    ${fastdds_qos_profiles_manager_INCLUDE_DIR})
+    ${fastdds_qos_profiles_manager_lib_INCLUDE_DIR})
 
 target_link_libraries(${EXECUTABLE_NAME}
     docopt
-    fastdds_qos_profiles_manager
+    fastdds_qos_profiles_manager_lib
 )
 
 ###############################################################################

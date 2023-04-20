@@ -20,7 +20,7 @@
 
 #include <xercesc/sax/HandlerBase.hpp>
 
-#include <fastdds_qos_profiles_manager/exception/Exception.hpp>
+#include <fastdds_qos_profiles_manager_lib/exception/Exception.hpp>
 
 namespace eprosima {
 namespace qosprof {

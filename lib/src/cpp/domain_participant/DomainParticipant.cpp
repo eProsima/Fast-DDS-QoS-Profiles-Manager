@@ -16,12 +16,12 @@
  * @file
  */
 
-#include <fastdds_qos_profiles_manager/domain_participant/DomainParticipant.hpp>
+#include <fastdds_qos_profiles_manager_lib/domain_participant/DomainParticipant.hpp>
 
 #include <string>
 #include <vector>
 
-#include <fastdds_qos_profiles_manager/exception/Exception.hpp>
+#include <fastdds_qos_profiles_manager_lib/exception/Exception.hpp>
 
 #include <utils/TagsXMLManager.hpp>
 #include <utils/XMLManager.hpp>
