@@ -21,9 +21,22 @@ project(fastdds_qos_profiles_manager VERSION "0.1.0" LANGUAGES CXX)
 find_package(XercesC)
 
 ###############################################################################
+# Installation paths
+###############################################################################
+set(BIN_INSTALL_DIR bin/ CACHE PATH "Installation directory for binaries")
+set(DATA_INSTALL_DIR share/ CACHE PATH "Installation directory for data")
+set(DOC_INSTALL_DIR docs/ CACHE PATH "Installation directory for documentation")
+set(HTML_INSTALL_DIR docs/doxygen/html CACHE PATH "Installation directory for API reference")
+set(INCLUDE_INSTALL_DIR include/ CACHE PATH "Installation directory for C++ headers")
+set(LIB_INSTALL_DIR lib${LIB_SUFFIX}/ CACHE PATH "Installation directory for libraries")
+set(LICENSE_INSTALL_DIR ${DATA_INSTALL_DIR}/${PROJECT_NAME} CACHE PATH "Installation directory for licenses")
+set(XML_INSTALL_DIR docs/doxygen/xml CACHE PATH "Installation directory for API reference")
+
+set(INSTALL_DESTINATION_PATH ${DATA_INSTALL_DIR}/${CMAKE_PROJECT_NAME}/cmake)
+
+###############################################################################
 # Download and install external files
 ###############################################################################
-set(DATA_INSTALL_DIR share/ CACHE PATH "Installation directory for data")
 # Download XML schema
 file(DOWNLOAD "https://raw.githubusercontent.com/eProsima/Fast-DDS/master/resources/xsd/fastRTPS_profiles.xsd"
     ${PROJECT_BINARY_DIR}/${DATA_INSTALL_DIR}/fastdds_profiles.xsd)
@@ -34,20 +47,10 @@ install(FILES ${PROJECT_BINARY_DIR}/${DATA_INSTALL_DIR}/fastdds_profiles.xsd
 file(REAL_PATH ${CMAKE_INSTALL_PREFIX}/${DATA_INSTALL_DIR}/fastdds_profiles.xsd XML_SCHEMA_PATH)
 
 ###############################################################################
-# Installation paths
-###############################################################################
-set(BIN_INSTALL_DIR bin/ CACHE PATH "Installation directory for binaries")
-set(INCLUDE_INSTALL_DIR include/ CACHE PATH "Installation directory for C++ headers")
-set(LIB_INSTALL_DIR lib${LIB_SUFFIX}/ CACHE PATH "Installation directory for libraries")
-set(DATA_INSTALL_DIR share/ CACHE PATH "Installation directory for data")
-set(LICENSE_INSTALL_DIR ${DATA_INSTALL_DIR}/${PROJECT_NAME} CACHE PATH "Installation directory for licenses")
-set(INSTALL_DESTINATION_PATH ${DATA_INSTALL_DIR}/${CMAKE_PROJECT_NAME}/cmake)
-
-###############################################################################
 # Configuration steps
 ###############################################################################
 # Configure template doxyfile
-configure_file(doxyfile.in ${PROJECT_BINARY_DIR}/doc/doxyfile @ONLY IMMEDIATE)
+configure_file(doxyfile.in ${PROJECT_BINARY_DIR}/docs/doxyfile @ONLY IMMEDIATE)
 
 # Configure config file
 configure_file(${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}/config.h.in
@@ -172,6 +175,15 @@ install(FILES ${PROJECT_BINARY_DIR}/include/${PROJECT_NAME}/config.h
     COMPONENT headers
 )
 
+# Install doxyfile
+install(FILES ${PROJECT_BINARY_DIR}/docs/doxyfile
+    DESTINATION ${DOC_INSTALL_DIR}
+    COMPONENT documentation)
+
+# Create docs directory
+install(DIRECTORY DESTINATION ${HTML_INSTALL_DIR})
+install(DIRECTORY DESTINATION ${XML_INSTALL_DIR})
+
 ###############################################################################
 # Create CMake package config file
 ###############################################################################
@@ -180,7 +192,7 @@ include(CMakePackageConfigHelpers)
 configure_package_config_file(${PROJECT_SOURCE_DIR}/cmake/packaging/Config.cmake.in
     ${PROJECT_BINARY_DIR}/cmake/config/${PROJECT_NAME}-config.cmake
     INSTALL_DESTINATION ${INSTALL_DESTINATION_PATH}
-    PATH_VARS BIN_INSTALL_DIR INCLUDE_INSTALL_DIR LIB_INSTALL_DIR
+    PATH_VARS BIN_INSTALL_DIR INCLUDE_INSTALL_DIR LIB_INSTALL_DIR DOC_INSTALL_DIR HTML_INSTALL_DIR XML_INSTALL_DIR
     )
 write_basic_package_version_file(${PROJECT_BINARY_DIR}/cmake/config/${PROJECT_NAME}-config-version.cmake
     VERSION ${PROJECT_VERSION}

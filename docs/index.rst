@@ -31,6 +31,16 @@
 
     /rst/fastdds_qos_profiles_manager_cli/cli
 
+.. _index_fastdds_qos_profiles_manager_lib:
+
+.. toctree::
+    :caption: Fast DDS QoS Profiles Manager Library API Reference
+    :maxdepth: 2
+    :numbered: 5
+    :hidden:
+
+    /rst/fastdds_qos_profiles_manager_lib/api_reference
+
 .. _index_notes:
 
 .. toctree::
