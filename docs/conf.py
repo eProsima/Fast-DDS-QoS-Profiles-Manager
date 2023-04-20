@@ -124,6 +124,11 @@ doxygen_html = os.path.abspath(
     '{}/doxygen/html'.format(project_binary_docs_dir)
 )
 
+breathe_projects = {
+    'fastdds_qos_profiles_manager': os.path.abspath('{}/xml'.format(output_dir))
+}
+breathe_default_project = 'fastdds_qos_profiles_manager'
+
 
 # -- General configuration ------------------------------------------------
 
@@ -135,8 +140,9 @@ doxygen_html = os.path.abspath(
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'breathe',
     'sphinx.ext.todo',
-    'sphinx_tabs.tabs'
+    'sphinx_tabs.tabs',
 ]
 
 sphinx_tabs_disable_css_loading = False
