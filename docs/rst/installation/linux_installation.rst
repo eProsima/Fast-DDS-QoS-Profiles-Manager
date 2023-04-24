@@ -105,52 +105,50 @@ In Ubuntu, the dependency can be installed running:
 
 Optionally, `GTest <https://github.com/google/googletest>`_ dependency could be installed to run the test suite.
 
-.. _lib_building_colcon_sl:
+.. _lib_building_sl:
 
-Building with colcon
-^^^^^^^^^^^^^^^^^^^^
+.. tabs::
 
-*eProsima Fast DDS QoS Profiles Manager library* is build using `colcon <https://colcon.readthedocs.io/en/released/>`_
-by running:
+    .. tab:: Building with colcon
 
-.. code-block:: bash
+        *eProsima Fast DDS QoS Profiles Manager library* is build using `colcon <https://colcon.readthedocs.io/en/released/>`_
+        by running:
 
-    cd ~/Fast-DDS-QoS-Profiles-Manager
-    colcon build --packages-select fastdds_qos_profiles_manager_lib
+        .. code-block:: bash
 
-.. note::
+            cd ~/Fast-DDS-QoS-Profiles-Manager
+            colcon build --packages-select fastdds_qos_profiles_manager_lib
 
-    Being based on `CMake <https://cmake.org/>`_ it is possible to pass CMake configuration options to the
-    :code:`colcon build` command.
-    That is the case if test compilation is needed.
-    To do so, the previous command would be updated to include the enable test build flag `EPROSIMA_BUILD_TESTS`:
+        .. note::
 
-    .. code-block:: bash
+            Being based on `CMake <https://cmake.org/>`_ it is possible to pass CMake configuration options to the
+            :code:`colcon build` command.
+            That is the case if test compilation is needed.
+            To do so, the previous command would be updated to include the enable test build flag `EPROSIMA_BUILD_TESTS`:
 
-        colcon build --packages-select fastdds_qos_profiles_manager_lib --cmake-args -DEPROSIMA_BUILD_TESTS=ON
+            .. code-block:: bash
 
-.. _lib_building_cmake_sl:
+                colcon build --packages-select fastdds_qos_profiles_manager_lib --cmake-args -DEPROSIMA_BUILD_TESTS=ON
 
-Building with CMake
-^^^^^^^^^^^^^^^^^^^
+    .. tab:: Building with CMake
 
-*eProsima Fast DDS QoS Profiles Manager library* is build using `CMake <https://cmake.org/>`_ by running:
+        *eProsima Fast DDS QoS Profiles Manager library* is build using `CMake <https://cmake.org/>`_ by running:
 
-.. code-block:: bash
+        .. code-block:: bash
 
-    mkdir -p ~/Fast-DDS-QoS-Profiles-Manager/build/lib
-    cd ~/Fast-DDS-QoS-Profiles-Manager/build/lib
-    cmake ../../src/Fast-DDS-QoS-Profiles-Manager/lib -DCMAKE_INSTALL_PREFIX=../../install/lib
-    cmake --build . --target install
+            mkdir -p ~/Fast-DDS-QoS-Profiles-Manager/build/lib
+            cd ~/Fast-DDS-QoS-Profiles-Manager/build/lib
+            cmake ../../src/Fast-DDS-QoS-Profiles-Manager/lib -DCMAKE_INSTALL_PREFIX=../../install/lib
+            cmake --build . --target install
 
-.. note::
+        .. note::
 
-    As happened before, if test compilation is needed, the enable test build flag `EPROSIMA_BUILD_TESTS` should be
-    included too:
+            As happened before, if test compilation is needed, the enable test build flag `EPROSIMA_BUILD_TESTS` should be
+            included too:
 
-    .. code-block:: bash
+            .. code-block:: bash
 
-        cmake ../../src/Fast-DDS-QoS-Profiles-Manager/lib -DCMAKE_INSTALL_PREFIX=../../install/lib -DEPROSIMA_BUILD_TESTS=ON
+                cmake ../../src/Fast-DDS-QoS-Profiles-Manager/lib -DCMAKE_INSTALL_PREFIX=../../install/lib -DEPROSIMA_BUILD_TESTS=ON
 
 .. _cli_installation_sl:
 
@@ -178,66 +176,64 @@ In Ubuntu, the dependency can be installed running:
 
 Optionally, `GTest <https://github.com/google/googletest>`_ dependency could be installed to run the test suite.
 
-.. _cli_building_colcon_sl:
+.. _cli_building_sl:
 
-Building with colcon
-^^^^^^^^^^^^^^^^^^^^
+.. tabs::
 
-*eProsima Fast DDS QoS Profiles Manager CLI* is build using `colcon <https://colcon.readthedocs.io/en/released/>`_
-by running:
+    .. tab:: Building with colcon
 
-.. code-block:: bash
+        *eProsima Fast DDS QoS Profiles Manager CLI* is build using `colcon <https://colcon.readthedocs.io/en/released/>`_
+        by running:
 
-    cd ~/Fast-DDS-QoS-Profiles-Manager
-    colcon build --packages-select fastdds_qos_profiles_manager_lib fastdds_qos_profiles_manager_cli
+        .. code-block:: bash
 
-.. note::
+            cd ~/Fast-DDS-QoS-Profiles-Manager
+            colcon build --packages-select fastdds_qos_profiles_manager_lib fastdds_qos_profiles_manager_cli
 
-    As happened in the *library* build process, if test compilation is needed, the enable test build flag
-    `EPROSIMA_BUILD_TESTS` should be included too:
+        .. note::
 
-    .. code-block:: bash
+            As happened in the *library* build process, if test compilation is needed, the enable test build flag
+            `EPROSIMA_BUILD_TESTS` should be included too:
 
-        colcon build --packages-select fastdds_qos_profiles_manager_lib fastdds_qos_profiles_manager_cli --cmake-args -DEPROSIMA_BUILD_TESTS=ON
+            .. code-block:: bash
 
-The ``fastddsqosprof`` executable file is generated in the installation path.
-The following setup call must be run in order to set the *CLI* command:
+                colcon build --packages-select fastdds_qos_profiles_manager_lib fastdds_qos_profiles_manager_cli --cmake-args -DEPROSIMA_BUILD_TESTS=ON
 
-.. code-block:: bash
+        The ``fastddsqosprof`` executable file is generated in the installation path.
+        The following setup call must be run in order to set the *CLI* command:
 
-    source ~/Fast-DDS-QoS-Profiles-Manager/install/setup.bash
+        .. code-block:: bash
 
-.. _cli_building_cmake_sl:
+            source ~/Fast-DDS-QoS-Profiles-Manager/install/setup.bash
 
-Building with CMake
-^^^^^^^^^^^^^^^^^^^
+    .. tab:: Building with CMake
 
-*eProsima Fast DDS QoS Profiles Manager CLI* is build using `CMake <https://cmake.org/>`_ by running:
+        *eProsima Fast DDS QoS Profiles Manager CLI* is build using `CMake <https://cmake.org/>`_ by running:
 
-.. code-block:: bash
+        .. code-block:: bash
 
-    mkdir -p ~/Fast-DDS-QoS-Profiles-Manager/build/cli
-    cd ~/Fast-DDS-QoS-Profiles-Manager/build/cli
-    CMAKE_PREFIX_PATH+=~/Fast-DDS-QoS-Profiles-Manager/install/lib
-    cmake ../../src/Fast-DDS-QoS-Profiles-Manager/cli -DCMAKE_INSTALL_PREFIX=../../install/cli
-    cmake --build . --target install
+            mkdir -p ~/Fast-DDS-QoS-Profiles-Manager/build/cli
+            cd ~/Fast-DDS-QoS-Profiles-Manager/build/cli
+            CMAKE_PREFIX_PATH+=~/Fast-DDS-QoS-Profiles-Manager/install/lib
+            cmake ../../src/Fast-DDS-QoS-Profiles-Manager/cli -DCMAKE_INSTALL_PREFIX=../../install/cli
+            cmake --build . --target install
 
-.. note::
+        .. note::
 
-    As happened before, if test compilation is needed, the enable test build flag `EPROSIMA_BUILD_TESTS` should be
-    included too:
+            As happened before, if test compilation is needed, the enable test build flag `EPROSIMA_BUILD_TESTS` should be
+            included too:
 
-    .. code-block:: bash
+            .. code-block:: bash
 
-        cmake ../../src/Fast-DDS-QoS-Profiles-Manager/cli -DCMAKE_INSTALL_PREFIX=../../install/cli -DEPROSIMA_BUILD_TESTS=ON
+                cmake ../../src/Fast-DDS-QoS-Profiles-Manager/cli -DCMAKE_INSTALL_PREFIX=../../install/cli -DEPROSIMA_BUILD_TESTS=ON
 
-The ``fastddsqosprof`` executable file is generated in the installation path.
-The following setup call must be run in order to set the *CLI* command:
+        The ``fastddsqosprof`` executable file is generated in the installation path.
+        The following setup call must be run in order to set the *CLI* command:
 
-.. code-block:: bash
+        .. code-block:: bash
 
-    export LD_LIBRARY_PATH=~/Fast-DDS-QoS-Profiles-Manager/install/lib/lib
-    export PATH=$PATH:~/Fast-DDS-QoS-Profiles-Manager/install/cli/bin
+            export LD_LIBRARY_PATH=~/Fast-DDS-QoS-Profiles-Manager/install/lib/lib
+            export PATH=$PATH:~/Fast-DDS-QoS-Profiles-Manager/install/cli/bin
 
 
 .. _gui_installation_sl:
@@ -245,7 +241,9 @@ The following setup call must be run in order to set the *CLI* command:
 Fast DDS QoS Profiles Manager GUI
 """""""""""""""""""""""""""""""""
 
-**Caveat**: this section is in development process.
+.. warning::
+
+    This section is still in development process.
 
 .. _doc_installation_sl:
 
