@@ -25,17 +25,20 @@ The currently supported transport descriptor configurable ``<subelements>`` are 
     :header-rows: 1
     :align: left
 
-    * - CLI access
+    * - ``<subelement>``
+      - CLI access
       - :ref:`fastdds_qos_profiles_manager_element_classification`
       - Valid ``set`` values
-    * - ``transport_descriptor[profile_name].kind``
+    * - Transport descriptor kind
+      - ``transport_descriptor[profile_name].kind``
       - Simple parameter
       - ``udp_v4`` (Default value) |br|
         ``udp_v6`` |br|
         ``tcp_v4`` |br|
         ``tcp_v6`` |br|
         ``shm``
-    * - ``transport_descriptor[profile_name].interface_whitelist[]``
+    * - Interface Whitelist
+      - ``transport_descriptor[profile_name].interface_whitelist[]``
       - Simple parameter list
       - IP or DNS address
 
