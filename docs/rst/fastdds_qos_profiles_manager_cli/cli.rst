@@ -14,4 +14,5 @@ Once the CLI has been installed and sourced (read the :ref:`Installation manual 
     :maxdepth: 2
 
     cli_usage
+    cli_verbs/cli_verbs_intro
     cli_elements/cli_elements_intro
