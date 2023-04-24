@@ -12,6 +12,7 @@ Please, refer to `Fast DDS documentation <https://fast-dds.docs.eprosima.com/en/
 The transport descriptor profile is accessed through the ``transport_descriptor`` element.
 The profile name is mandatory and must be passed within brackets.
 Whitespaces are allowed in the profile name if the profile name is quoted.
+The transport descriptor profile name matches the ``transport_id`` name defined in Fast DDS documentation.
 Consequently, ``transport_descriptor`` is a complex parameter map according to the :ref:`fastdds_qos_profiles_manager_element_classification` with the profile name as ``key``.
 
 .. code-block:: bash
