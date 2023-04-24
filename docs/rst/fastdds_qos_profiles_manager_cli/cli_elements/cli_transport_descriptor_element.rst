@@ -5,7 +5,7 @@
 Transport Descriptor configuration access
 -----------------------------------------
 
-This section explains how to access the different configurable paramenters in a transport descriptor profile.
+This section explains how to access the different configurable parameters in a transport descriptor profile.
 The scope of this section does not include explaining the usage of these specific parameters.
 Please, refer to `Fast DDS documentation <https://fast-dds.docs.eprosima.com/en/latest/fastdds/xml_configuration/transports.html>`_ for that information.
 
