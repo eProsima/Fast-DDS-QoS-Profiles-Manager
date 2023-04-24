@@ -143,8 +143,7 @@ Optionally, `GTest <https://github.com/google/googletest>`_ dependency could be 
 
         .. note::
 
-            As happened before, if test compilation is needed, the enable test build flag `EPROSIMA_BUILD_TESTS` should be
-            included too:
+            If test compilation is needed, the enable test build flag `EPROSIMA_BUILD_TESTS` should be included:
 
             .. code-block:: bash
 
@@ -220,8 +219,8 @@ Optionally, `GTest <https://github.com/google/googletest>`_ dependency could be 
 
         .. note::
 
-            As happened before, if test compilation is needed, the enable test build flag `EPROSIMA_BUILD_TESTS` should be
-            included too:
+            As happened in the *library* build process, if test compilation is needed, the enable test build flag
+            `EPROSIMA_BUILD_TESTS` should be included too:
 
             .. code-block:: bash
 
@@ -249,3 +248,69 @@ Fast DDS QoS Profiles Manager GUI
 
 Fast DDS QoS Profiles Manager Documentation
 """""""""""""""""""""""""""""""""""""""""""
+Finally, this section describes the instructions for installing *eProsima Fast DDS QoS Profiles Manager documentation*
+in a Linux environment from sources.
+
+The *eProsima Fast DDS QoS Profiles Manager library* is required to build the *documentation*, so make sure all steps
+described in the :ref:`library installation section <library_api_installation_sl>` were reproduced.
+Despite that, :ref:`doc_dependencies_sl` detailed below need to be met.
+
+.. _doc_dependencies_sl:
+
+Dependencies
+^^^^^^^^^^^^
+
+*eProsima Fast DDS QoS Profiles Manager documentation* depends on `Doxygen code documentation generator
+<https://www.doxygen.nl/>`_ for the :ref:`fastdds_qos_profiles_manager_lib_api_reference`.
+In Ubuntu, the dependency can be installed running:
+
+.. code-block:: bash
+
+    sudo apt install doxygen
+
+.. note::
+
+    If desired, the remain *documentation* dependencies can be installed in a python3 virtual environment.
+    That would avoid polluting the user's installation.
+    Create the virtual environment by running the following commands:
+
+    .. code-block:: bash
+
+        sudo apt install python3
+        cd ~/Fast-DDS-QoS-Profiles-Manager
+        python3 -m venv fastdds_qos_profiles_manager_venv
+        source fastdds_qos_profiles_manager_venv/bin/activate
+
+Install the dependencies using `pip3 <https://docs.python.org/3/installing/index.html>`_:
+
+.. code-block:: bash
+
+    cd ~/Fast-DDS-QoS-Profiles-Manager/src/Fast-DDS-QoS-Profiles-Manager/docs
+    pip3 install -r requirements.txt
+
+
+.. _doc_building_sl:
+
+.. tabs::
+
+    .. tab:: Building with colcon
+
+        *eProsima Fast DDS QoS Profiles Manager documentation* is build using
+        `colcon <https://colcon.readthedocs.io/en/released/>`_ by running:
+
+        .. code-block:: bash
+
+            cd ~/Fast-DDS-QoS-Profiles-Manager
+            colcon build --packages-select fastdds_qos_profiles_manager_lib fastdds_qos_profiles_manager_docs
+
+    .. tab:: Building with CMake
+
+        *eProsima Fast DDS QoS Profiles Manager documentation* is build using `CMake <https://cmake.org/>`_ by running:
+
+        .. code-block:: bash
+
+            mkdir -p ~/Fast-DDS-QoS-Profiles-Manager/build/docs
+            cd ~/Fast-DDS-QoS-Profiles-Manager/build/docs
+            CMAKE_PREFIX_PATH+=~/Fast-DDS-QoS-Profiles-Manager/install/lib
+            cmake ../../src/Fast-DDS-QoS-Profiles-Manager/docs -DCMAKE_INSTALL_PREFIX=../../install/docs
+            cmake --build . --target install
