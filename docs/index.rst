@@ -21,16 +21,6 @@
 
     /rst/installation/linux_installation
 
-.. _index_fastdds_qos_profiles_manager_cli:
-
-.. toctree::
-    :caption: Command Line Interface
-    :maxdepth: 2
-    :numbered: 5
-    :hidden:
-
-    /rst/fastdds_qos_profiles_manager_cli/cli
-
 .. _index_fastdds_qos_profiles_manager_gui:
 
 .. toctree::
@@ -40,6 +30,16 @@
     :hidden:
 
     /rst/fastdds_qos_profiles_manager_gui/gui
+
+.. _index_fastdds_qos_profiles_manager_cli:
+
+.. toctree::
+    :caption: Command Line Interface
+    :maxdepth: 2
+    :numbered: 5
+    :hidden:
+
+    /rst/fastdds_qos_profiles_manager_cli/cli
 
 .. _index_fastdds_qos_profiles_manager_lib:
 
