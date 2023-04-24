@@ -205,6 +205,8 @@ if read_the_docs_build:
 # ones.
 extensions = [
     'breathe',
+    'sphinxcontrib.mermaid',
+    'sphinxcontrib.plantuml',
     'sphinx.ext.todo',
     'sphinx_tabs.tabs',
 ]
