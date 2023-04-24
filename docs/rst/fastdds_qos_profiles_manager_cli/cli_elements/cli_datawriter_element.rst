@@ -38,7 +38,7 @@ The currently supported DataWriter configurable ``<subelements>`` are explained 
       - Simple parameter
       - ``true`` |br|
         ``false`` |br|
-        ``profile_name`` is only required with verb ``set``.
+        (``profile_name`` is only required with verb ``set``).
     * - QoS configuration
       - ``datawriter[profile_name].qos``
       - Complex parameter. |br|

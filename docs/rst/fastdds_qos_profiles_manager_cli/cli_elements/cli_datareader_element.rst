@@ -38,7 +38,7 @@ The currently supported DataReader configurable ``<subelements>`` are explained 
       - Simple parameter
       - ``true`` |br|
         ``false`` |br|
-        ``profile_name`` is only required with verb ``set``.
+        (``profile_name`` is only required with verb ``set``).
     * - QoS configuration
       - ``datareader[profile_name].qos``
       - Complex parameter. |br|
