@@ -24,7 +24,7 @@
 .. _index_fastdds_qos_profiles_manager_cli:
 
 .. toctree::
-    :caption: Fast DDS QoS Profiles Manager CLI
+    :caption: Command Line Interface
     :maxdepth: 2
     :numbered: 5
     :hidden:
@@ -34,7 +34,7 @@
 .. _index_fastdds_qos_profiles_manager_gui:
 
 .. toctree::
-    :caption: Fast DDS QoS Profiles Manager GUI
+    :caption: Graphical User Interface
     :maxdepth: 2
     :numbered: 5
     :hidden:
@@ -44,7 +44,7 @@
 .. _index_fastdds_qos_profiles_manager_lib:
 
 .. toctree::
-    :caption: Fast DDS QoS Profiles Manager Library API Reference
+    :caption: Library API Reference
     :maxdepth: 2
     :numbered: 5
     :hidden:

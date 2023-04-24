@@ -20,7 +20,7 @@ Graphical User Interface
 *eProsima Fast DDS QoS Profiles Manager* provides a GUI to facilitate users the creation and modification of XML configuration files in an easy way.
 With an easy to use interface which allows to navigate between the configuration menus, the corresponding features can be configured and the XML to be deployed can be validated and created.
 Thus, the user can be agnostic of the specific XML format followed by *eProsima Fast DDS*.
-More information can be found in the :ref:`fastdds_qos_profiles_manager_gui` section.
+More information can be found in the :ref:`Fast DDS QoS Profiles Manager GUI <fastdds_qos_profiles_manager_gui>` section.
 
 Command Line Interface
 ^^^^^^^^^^^^^^^^^^^^^^
