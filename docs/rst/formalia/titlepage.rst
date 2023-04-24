@@ -25,16 +25,16 @@ More information can be found in the :ref:`fastdds_qos_profiles_manager_gui` sec
 Command Line Interface
 ^^^^^^^^^^^^^^^^^^^^^^
 
-*eProsima Fast DDS QoS Profiles Manager CLI* provides a command line interface which can be integrated in any user script to automatically generate the deployment XML configuration files.
+*eProsima Fast DDS QoS Profiles Manager CLI* provides a command line interface which can be integrated in any script to automatically generate the deployment XML configuration files.
 More information about the CLI and how to use it can be found in the :ref:`fastdds_qos_profiles_manager_cli` section.
-Also, examples of how to integrate the CLI in a script to generate deployment configuration files can be found in the `repository <https://github.com/eProsima/Fast-DDS-QoS-Profiles-Manager/tree/main/cli/examples>`_.
+Also, examples of how to integrate the CLI in a script to generate deployment configuration files can be found in the `tool suite repository <https://github.com/eProsima/Fast-DDS-QoS-Profiles-Manager/tree/main/cli/examples>`_.
 
 Fast DDS QoS Profiles Manager Library
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Both the CLI and GUI tools depends on a library which takes charge of handling and modifying the XML configuration files.
 The :ref:`fastdds_qos_profiles_manager_lib_api_reference` section summarizes the API exposed publicly.
-Any user can consequently develop any other integration tool adapted to its own development environment, though the most common use will be through the CLI or GUI tools provided by eProsima.
+Any user can consequently develop any other integration tool adapted to its own development environment, although the most common use would be through the CLI or GUI tools provided by eProsima.
 The graph below shows the relationship between the different packages provided in the tool suite.
 
 .. mermaid::
