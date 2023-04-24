@@ -73,7 +73,7 @@ This section explains how to use it to compile *eProsima Fast DDS QoS Profiles M
 
 
 Installation
-""""""""""""
+^^^^^^^^^^^^
 
 Create a :code:`Fast-DDS-QoS-Profiles-Manager` directory and download the project:
 
@@ -106,6 +106,9 @@ In Ubuntu, the dependency can be installed running:
 Optionally, `GTest <https://github.com/google/googletest>`_ dependency could be installed to run the test suite.
 
 .. _lib_building_sl:
+
+Build
+^^^^^
 
 .. tabs::
 
@@ -177,6 +180,9 @@ Optionally, `GTest <https://github.com/google/googletest>`_ dependency could be 
 
 .. _cli_building_sl:
 
+Build
+^^^^^
+
 .. tabs::
 
     .. tab:: Building with colcon
@@ -238,7 +244,7 @@ Optionally, `GTest <https://github.com/google/googletest>`_ dependency could be 
 .. _gui_installation_sl:
 
 Fast DDS QoS Profiles Manager GUI
-"""""""""""""""""""""""""""""""""
+---------------------------------
 
 .. warning::
 
@@ -247,7 +253,8 @@ Fast DDS QoS Profiles Manager GUI
 .. _doc_installation_sl:
 
 Fast DDS QoS Profiles Manager Documentation
-"""""""""""""""""""""""""""""""""""""""""""
+-------------------------------------------
+
 Finally, this section describes the instructions for installing *eProsima Fast DDS QoS Profiles Manager documentation*
 in a Linux environment from sources.
 
@@ -290,6 +297,9 @@ Install the dependencies using `pip3 <https://docs.python.org/3/installing/index
 
 
 .. _doc_building_sl:
+
+Build
+^^^^^
 
 .. tabs::
 
