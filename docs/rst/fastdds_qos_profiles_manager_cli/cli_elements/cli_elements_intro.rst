@@ -4,7 +4,7 @@ Configuration parameter access
 ==============================
 
 The access to each configuration parameter is done sequentially using a dot-separated entity string.
-This section explains with detail how to access the different configuration parameter.
+This section explains with detail how to access the different configuration parameters.
 
 .. note::
 
@@ -35,6 +35,36 @@ The main supported elements that can be configured using the CLI are:
       - `Fast DDS log module <https://fast-dds.docs.eprosima.com/en/latest/fastdds/xml_configuration/log.html>`_ configuration.
     * - ``types``
       - `Dynamic types <https://fast-dds.docs.eprosima.com/en/latest/fastdds/xml_configuration/dynamic_types.html>`_ configuration.
+
+.. _fastdds_qos_profiles_manager_element_classification:
+
+Configuration parameter classification
+--------------------------------------
+
+Every configurable parameter can be classified using the following concepts:
+
+* **Simple parameters**: these parameters are final configurable elements.
+  Access through the CLI is done by means of a dot-separated string until reaching the final element which is always a simple parameter.
+* **Complex parameters**: these parameters contain another configurable parameters.
+  Consequently, complex parameters are not final and another subelement can be configured within them.
+* **Parameter lists**: some parameters allows for an undefined number of elements.
+  These collections should be accessed by means of a given integer index between brackets to select the specific collection element.
+  Both positive and negative indexes are allowed to access the collection from both ends.
+  If no index is provided, the complete collection is selected (either to be printed or cleared, for instance).
+  To push a new element into the collection, no index should be provided to the ``set`` command.
+  Parameter lists can be simple or complex depending on the contained element.
+* **Parameter maps**: these parameters are a specific collection kind whose access is performed using a ``key`` instead of an integer index.
+  Parameter maps can be simple or complex depending on the contained element.
+
+.. note::
+
+  The verb ``query`` can only be used with parameter lists or maps.
+  Querying a non-collection parameter would result in an error being displayed.
+
+Main supported elements configurable parameters
+-----------------------------------------------
+
+The sections below explain the configurable parameters in each of the main supported elements.
 
 .. toctree::
   :maxdepth: 2
