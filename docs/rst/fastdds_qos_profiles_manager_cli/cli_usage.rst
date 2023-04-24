@@ -56,6 +56,7 @@ If the parameter is being ``set``, the corresponding configuration ``value`` has
     fastddsqosprof file.xml set participant -h
     
   will show the usage corresponding to the DomainParticipant profiles configuration.
+  More information can be found in :ref:`fastdds_qos_profiles_manager_cli_help_verb`.
 
 The previous usage is the most common among the supported verbs.
 However, some of the verbs have a specific usage which is shown below.
