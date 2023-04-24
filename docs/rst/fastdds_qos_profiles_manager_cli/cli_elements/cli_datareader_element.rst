@@ -41,7 +41,7 @@ The currently supported DataReader configurable ``<subelements>`` are explained 
         ``profile_name`` is only required with verb ``set``.
     * - QoS configuration
       - ``datareader[profile_name].qos``
-      - Complex parameter |br|
+      - Complex parameter. |br|
         Please, refer to :ref:`fastdds_qos_profiles_manager_cli_common_qos_element` |br|
         section for more information.
       - N/A
