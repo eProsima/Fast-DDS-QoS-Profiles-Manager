@@ -157,6 +157,87 @@ Building with CMake
 Fast DDS QoS Profiles Manager CLI
 ---------------------------------
 
+This section describes the instructions for installing *eProsima Fast DDS QoS Profiles Manager CLI* in a Linux
+environment from sources.
+
+The *eProsima Fast DDS QoS Profiles Manager library* is required to use the *CLI*, so make sure all steps described in
+:ref:`its installation section <library_api_installation_sl>` were reproduced.
+Despite that, :ref:`cli_dependencies_sl` detailed below need to be met.
+
+.. _cli_dependencies_sl:
+
+Dependencies
+^^^^^^^^^^^^
+
+*eProsima Fast DDS QoS Profiles Manager CLI* depends on `docopt CLI description language <http://docopt.org/>`_.
+In Ubuntu, the dependency can be installed running:
+
+.. code-block:: bash
+
+    sudo apt install libdocopt-dev
+
+Optionally, `GTest <https://github.com/google/googletest>`_ dependency could be installed to run the test suite.
+
+.. _cli_building_colcon_sl:
+
+Building with colcon
+^^^^^^^^^^^^^^^^^^^^
+
+*eProsima Fast DDS QoS Profiles Manager CLI* is build using `colcon <https://colcon.readthedocs.io/en/released/>`_
+by running:
+
+.. code-block:: bash
+
+    cd ~/Fast-DDS-QoS-Profiles-Manager
+    colcon build --packages-select fastdds_qos_profiles_manager_lib fastdds_qos_profiles_manager_cli
+
+.. note::
+
+    As happened in the *library* build process, if test compilation is needed, the enable test build flag
+    `EPROSIMA_BUILD_TESTS` should be included too:
+
+    .. code-block:: bash
+
+        colcon build --packages-select fastdds_qos_profiles_manager_lib fastdds_qos_profiles_manager_cli --cmake-args -DEPROSIMA_BUILD_TESTS=ON
+
+The ``fastddsqosprof`` executable file is generated in the installation path.
+The following setup call must be run in order to set the *CLI* command:
+
+.. code-block:: bash
+
+    source ~/Fast-DDS-QoS-Profiles-Manager/install/setup.bash
+
+.. _cli_building_cmake_sl:
+
+Building with CMake
+^^^^^^^^^^^^^^^^^^^
+
+*eProsima Fast DDS QoS Profiles Manager CLI* is build using `CMake <https://cmake.org/>`_ by running:
+
+.. code-block:: bash
+
+    mkdir -p ~/Fast-DDS-QoS-Profiles-Manager/build/cli
+    cd ~/Fast-DDS-QoS-Profiles-Manager/build/cli
+    CMAKE_PREFIX_PATH+=~/Fast-DDS-QoS-Profiles-Manager/install/lib
+    cmake ../../src/Fast-DDS-QoS-Profiles-Manager/cli -DCMAKE_INSTALL_PREFIX=../../install/cli
+    cmake --build . --target install
+
+.. note::
+
+    As happened before, if test compilation is needed, the enable test build flag `EPROSIMA_BUILD_TESTS` should be
+    included too:
+
+    .. code-block:: bash
+
+        cmake ../../src/Fast-DDS-QoS-Profiles-Manager/cli -DCMAKE_INSTALL_PREFIX=../../install/cli -DEPROSIMA_BUILD_TESTS=ON
+
+The ``fastddsqosprof`` executable file is generated in the installation path.
+The following setup call must be run in order to set the *CLI* command:
+
+.. code-block:: bash
+
+    export LD_LIBRARY_PATH=~/Fast-DDS-QoS-Profiles-Manager/install/lib/lib
+    export PATH=$PATH:~/Fast-DDS-QoS-Profiles-Manager/install/cli/bin
 
 
 .. _gui_installation_sl:
