@@ -77,4 +77,4 @@ The sections below explain the configurable parameters in each of the main suppo
   cli_intraprocess_element
   cli_log_element
   cli_types_element
-  cli_common_elements
+  cli_common_elements/cli_common_elements
