@@ -34,7 +34,7 @@ jobs:
           doxygen doxyfile
 
       - name: Upload api reference
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           name: api_reference
           path: src/Fast-DDS-QoS-Profiles-Manager/lib/build/fastdds_qos_profiles_manager_lib/docs
