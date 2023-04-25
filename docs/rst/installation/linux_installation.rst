@@ -75,7 +75,7 @@ GTest (optional)
 
 GTest is a unit testing library for C++.
 By default, *eProsima Fast DDS QoS Profiles Manager* does not compile tests.
-It is possible to activate them with the opportune `CMake configuration options <https://cmake.org/cmake/help/v3.6/manual/cmake.1.html#options>`_ when calling colcon or CMake.
+It is possible to activate them with the opportune `CMake configuration <https://cmake.org/cmake/help/v3.6/manual/cmake.1.html#options>`_ options when calling colcon or CMake.
 If following the colcon deployment, the GTest dependency needs to be included in the *Library* ``colcon.pkg`` file.
 Please check the :ref:`colcon build procedure <installation_build_source_linux>` for further information.
 
