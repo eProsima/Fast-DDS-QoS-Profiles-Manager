@@ -3,11 +3,14 @@
 Fast DDS QoS Profiles Manager CLI ``set`` verb
 ----------------------------------------------
 
-Passing to the CLI the verb ``set`` as the third argument would include the given ``value`` in the selected XML ``element``.
+Passing to the CLI the verb ``set`` would include the given ``value`` in the selected XML ``element``.
+The verb is the third argument passed to the CLI (see :ref:`fastdds_qos_profiles_manager_cli_usage` section).
+The element is given by a dot-separated string accessing the configuration parameter to be set (see :ref:`fastdds_qos_profiles_manager_cli_element_intro` section).
+The set command requires usually at least the value desired for the specified element.
 
 .. note::
 
-    There are exceptions in which the verb ``set`` does not need a ``value``, as in ``default_profile`` cases for the entities ``datareader``, ``datawriter`` and ``participant``.
+    There are exceptions in which the verb ``set`` does not need a ``value``, as in the ``default_profile`` attribute cases for ``datareader``, ``datawriter`` and ``participant`` entities.
 
 The snippet below shows different examples:
 
@@ -29,41 +32,5 @@ The snippet below shows different examples:
 
 The following XML configuration file represents the result of the consecutive CLI commands run.
 
-.. code-block:: xml
-
-    <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-    <dds xmlns="http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles">
-        <profiles>
-            <data_reader is_default_profile="true" profile_name="dr_profile">
-                <qos>
-                    <durability>
-                        <kind>VOLATILE</kind>
-                    </durability>
-                </qos>
-            </data_reader>
-            <data_writer profile_name="dw_profile">
-                <qos>
-                    <reliability>
-                        <max_blocking_time>
-                            <sec>1</sec>
-                        </max_blocking_time>
-                    </reliability>
-                </qos>
-            </data_writer>
-            <participant profile_name="p_profile">
-                <rtps>
-                    <name>My participant</name>
-                    <useBuiltinTransports>true</useBuiltinTransports>
-                    <userTransports>
-                        <transport_id>td_profile</transport_id>
-                    </userTransports>
-                </rtps>
-            </participant>
-            <transport_descriptors>
-                <transport_descriptor>
-                    <transport_id>td_profile</transport_id>
-                    <type>SHM</type>
-                </transport_descriptor>
-            </transport_descriptors>
-        </profiles>
-    </dds>
+.. literalinclude:: /code/cli_verb_set_example.xml
+    :language: xml
