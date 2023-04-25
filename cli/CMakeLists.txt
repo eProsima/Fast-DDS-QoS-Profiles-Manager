@@ -26,7 +26,6 @@ configure_file(${PROJECT_SOURCE_DIR}/include/config.h.in
 ###############################################################################
 # Load external dependencies
 ###############################################################################
-set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/modules" ${CMAKE_MODULE_PATH})
 find_package(fastdds_qos_profiles_manager_lib REQUIRED)
 find_package(docopt COMPONENTS CXX REQUIRED)
 

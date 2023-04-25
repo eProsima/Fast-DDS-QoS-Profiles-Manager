@@ -20,10 +20,10 @@ project(fastdds_qos_profiles_manager_docs VERSION 0.1.0 LANGUAGES CXX)
 ###############################################################################
 # Load external dependencies
 ###############################################################################
-set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/modules" ${CMAKE_MODULE_PATH})
-
-find_package(Doxygen REQUIRED)
 find_package(fastdds_qos_profiles_manager_lib REQUIRED)
+find_package(Doxygen REQUIRED)
+
+set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/modules" ${CMAKE_MODULE_PATH})
 find_package(Sphinx REQUIRED)
 
 ####################################################################################################
