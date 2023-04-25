@@ -44,10 +44,12 @@ namespace utils {
  */
 class XMLManager
 {
-//======================//
-// Singleton management //
-//======================//
+    //======================//
+    // Singleton management //
+    //======================//
+
 public:
+
     /**
      * @brief Get the instance object of the singleton class
      *
@@ -232,7 +234,10 @@ public:
             const bool create_if_not_existent);
 
 private:
-    XMLManager() {}
+
+    XMLManager()
+    {
+    }
 
     /**
      * @brief Transforms standalone XML document structure to rooted.
