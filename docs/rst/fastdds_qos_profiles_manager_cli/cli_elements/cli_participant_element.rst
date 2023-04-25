@@ -7,7 +7,7 @@ Participant profiles configuration access
 
 This section explains how to access the different configurable parameters in a DomainParticipant profile.
 The scope of this section does not include explaining the usage of these specific parameters.
-Please, refer to `Fast DDS documentation <https://fast-dds.docs.eprosima.com/en/latest/fastdds/xml_configuration/domainparticipant.html>`_ for that information.
+Please, refer to `Domain Participant Fast DDS documentation <https://fast-dds.docs.eprosima.com/en/latest/fastdds/xml_configuration/domainparticipant.html>`_ for that information.
 
 The DomainParticipant profile is accessed through the ``participant`` element.
 The profile name is mandatory and must be passed within brackets.
@@ -77,7 +77,7 @@ Builtin configuration
 
 The DomainParticipant builtin configuration is accessed through the ``builtin`` element which is a complex parameter according to the :ref:`fastdds_qos_profiles_manager_element_classification`.
 The scope of this section does not include explaining the usage of these specific parameters.
-Please, refer to `Fast DDS documentation <https://fast-dds.docs.eprosima.com/en/latest/fastdds/xml_configuration/domainparticipant.html#builtin-parameters>`_ for that information.
+Please, refer to `builtin Fast DDS documentation <https://fast-dds.docs.eprosima.com/en/latest/fastdds/xml_configuration/domainparticipant.html#builtin-parameters>`_ for that information.
 
 The currently supported builtin configurable ``<subelements>`` are explained in the table below.
 
@@ -119,7 +119,7 @@ Discovery configuration
 
 The DomainParticipant builtin discovery configuration is accessed through the ``discovery_config`` element which is a complex parameter according to the :ref:`fastdds_qos_profiles_manager_element_classification`.
 The scope of this section does not include explaining the usage of these specific parameters.
-Please, refer to `Fast DDS documentation <https://fast-dds.docs.eprosima.com/en/latest/fastdds/xml_configuration/domainparticipant.html#dconf>`_ for that information.
+Please, refer to `discovery configuration Fast DDS documentation <https://fast-dds.docs.eprosima.com/en/latest/fastdds/xml_configuration/domainparticipant.html#dconf>`_ for that information.
 
 The currently supported discovery configurable ``<subelements>`` are explained in the table below.
 
