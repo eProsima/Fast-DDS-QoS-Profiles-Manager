@@ -26,6 +26,9 @@ file(GLOB_RECURSE LIBRARY_HEADERS
 file(GLOB_RECURSE LIBRARY_SOURCES
     ${PROJECT_SOURCE_DIR}/src/cpp/exception/Exception.cpp
     ${PROJECT_SOURCE_DIR}/src/cpp/transport_descriptor/TransportDescriptor.cpp
+    ${PROJECT_SOURCE_DIR}/src/cpp/utils/ErrorHandlerXMLManager.cpp
+    ${PROJECT_SOURCE_DIR}/src/cpp/utils/StringXMLManager.cpp
+    ${PROJECT_SOURCE_DIR}/src/cpp/utils/XMLManager.cpp
 )
 
 file(GLOB_RECURSE TEST_SOURCES
@@ -41,11 +44,12 @@ add_executable( ${MODULE_NAME}
     ${TEST_SOURCES}
 )
 
-target_link_libraries(${MODULE_NAME} ${GTEST_LIBRARIES} ${GMOCK_LIBRARIES})
+target_link_libraries(${MODULE_NAME} ${GTEST_LIBRARIES} ${GMOCK_LIBRARIES} ${XercesC_LIBRARIES})
 
 target_include_directories(${MODULE_NAME} PRIVATE
         $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include/>
         $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/include/>
+        ${PROJECT_SOURCE_DIR}/src/cpp
         ${GTEST_INCLUDE_DIRS}>
         ${GMOCK_INCLUDE_DIRS}>
 )
