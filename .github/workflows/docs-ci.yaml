@@ -22,7 +22,7 @@ jobs:
         uses: eProsima/eProsima-CI/ubuntu/install_colcon@main
 
       - name: Install documentation requirements
-        uses: eProsima/eProsima-CI/ubuntu/install_python_packages
+        uses: eProsima/eProsima-CI/ubuntu/install_python_packages@main
         with:
           requirements_file_name: src/Fast-DDS-QoS-Profiles-Manager/docs/requirements.txt
 
