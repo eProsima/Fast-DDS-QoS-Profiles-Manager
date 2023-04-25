@@ -1,7 +1,7 @@
 .. _fastdds_qos_profiles_manager_cli_set_verb:
 
-Fast DDS QoS Profiles Manager CLI ``set`` verb
-----------------------------------------------
+``set`` verb
+------------
 
 Passing to the CLI the verb ``set`` would include the given ``value`` in the selected XML ``element``.
 The verb is the third argument passed to the CLI (see :ref:`fastdds_qos_profiles_manager_cli_usage` section).

@@ -1,7 +1,7 @@
 .. _fastdds_qos_profiles_manager_cli_help_verb:
 
-Fast DDS QoS Profiles Manager CLI ``help`` verb
------------------------------------------------
+``help`` verb
+-------------
 
 Passing to the CLI the verb ``help`` as the last argument would display the corresponding subelement CLI usage.
 Besides ``help``, the flag ``--help`` and the shorthand ``-h`` are also supported.

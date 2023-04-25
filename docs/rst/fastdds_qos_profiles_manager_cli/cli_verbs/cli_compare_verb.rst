@@ -1,7 +1,7 @@
 .. _fastdds_qos_profiles_manager_compare_clear_verb:
 
-Fast DDS QoS Profiles Manager CLI ``compare`` verb
---------------------------------------------------
+``compare`` verb
+----------------
 
 .. warning::
 
