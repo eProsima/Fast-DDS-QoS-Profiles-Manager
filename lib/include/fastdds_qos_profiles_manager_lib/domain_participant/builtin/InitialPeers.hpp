@@ -178,12 +178,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_wan_address(
 /************************************************************************/
 
 /**
- * @brief Number of builtin initial peerss in the Domain Participant.
+ * @brief Number of builtin initial peers in the Domain Participant.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @return uint32_t Number of builtin initial peerss in the list.
+ * @return uint32_t Number of builtin initial peers in the list.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the list

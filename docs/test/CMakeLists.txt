@@ -47,7 +47,7 @@ add_test(NAME documentation.code_block_check.xml
 add_test(NAME documentation.spell_check
     COMMAND
     ${SPHINX_EXECUTABLE} -W --keep-going
-    -D breathe_projects.fastdds_qos_prfiles_manager_docs=${DOXYGEN_OUTPUT_DIR}/xml
+    -D breathe_projects.fastdds_qos_profiles_manager_lib=${fastdds_qos_profiles_manager_lib_XML_DIR}
     -b spelling
     -d "${PROJECT_BINARY_DOCS_DIR}/doctrees"
     ${PROJECT_SOURCE_DOCS_DIR}

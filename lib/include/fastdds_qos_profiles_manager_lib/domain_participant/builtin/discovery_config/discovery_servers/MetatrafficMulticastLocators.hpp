@@ -362,8 +362,8 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_kind(
         const std::string& index);
 
 /**
- * @brief Append a remote server metatraffic multicast locator with specified portUpdate the remote server metatraffic
- *        multicast locator port.
+ * @brief Append a remote server metatraffic multicast locator with specified port or update the remote server
+ *        metatraffic multicast locator port.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.

@@ -176,16 +176,16 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_user_transports(
         const std::string& index);
 
 /**
- * @brief Parse XML file and print the Domain Participant use builtin trasports flag.
+ * @brief Parse XML file and print the Domain Participant use builtin transports flag.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @return std::string Domain Participant use builtin trasports flag.
+ * @return std::string Domain Participant use builtin transports flag.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
- *        use builtin trasports flag has not been set in the profile.
+ *        use builtin transports flag has not been set in the profile.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_use_builtin_transports(
         const std::string& xml_file,
@@ -456,8 +456,8 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_prefix(
 
 /**
  * @brief Set the given Domain Participant profile as the default profile.
- *        As only one default profile is allowed, if another default profile exists, it is overriden and the
- *        is_default_profile attribute is removed.
+ *        As only one default profile is allowed, if another default profile exists, it is overridden and its
+ *        is_default_profile attribute is set to false.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
