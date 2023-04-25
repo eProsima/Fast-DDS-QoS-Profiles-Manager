@@ -69,7 +69,6 @@ target_include_directories(${MODULE_NAME} PRIVATE
         ${PROJECT_SOURCE_DIR}/src/cpp
         ${GTEST_INCLUDE_DIRS}>
         ${GMOCK_INCLUDE_DIRS}>
-        ${XercesC_INCLUDE_DIR}
 )
 
 add_test(NAME ${MODULE_NAME} COMMAND ${MODULE_NAME})
