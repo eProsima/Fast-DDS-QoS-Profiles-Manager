@@ -1,7 +1,7 @@
 .. raw:: html
 
   <h1>
-    eProsima Fast DDS Profiles QoS Manager
+    eProsima Fast DDS QoS Profiles Manager
   </h1>
 
 .. image:: /rst/figures/logo.png
@@ -52,5 +52,5 @@ The graph below shows the relationship between the different packages provided i
 .. warning::
 
   The tool suite is still in its development stage.
-  For this reason, the API should not be considered stable, as API breaks may accur before the first official release.
+  For this reason, the API should not be considered stable, as API breaks may occur before the first official release.
   Furthermore, several features may not be implemented yet.
