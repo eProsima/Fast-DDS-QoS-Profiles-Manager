@@ -39,24 +39,18 @@ The currently supported DomainParticipant configurable ``<subelements>`` are exp
         Please, refer to :ref:`fastdds_qos_profiles_manager_cli_participant_builtin_element` |br|
         section for more information.
       - N/A
+    * - Default external unicast |br| locators configuration
+      - ``participant[profile_name].external_locators.default_unicast[(index)]``
+      - List parameter. |br|
+        Please, refer to :ref:`fastdds_qos_profiles_manager_cli_common_external_locators_element` |br|
+        section for more information.
+      - N/A
     * - Default profile attribute
       - ``participant[(profile_name)].default_profile``
       - Simple parameter
       - ``true`` |br|
         ``false`` |br|
         (``profile_name`` is only required with verb ``set``).
-    * - External locators configuration
-      - ``participant[profile_name].external_locators``
-      - Complex parameter. |br|
-        Please, refer to :ref:`fastdds_qos_profiles_manager_cli_common_external_locators_element` |br|
-        section for more information.
-      - N/A
-    * - Locators configuration
-      - ``participant[profile_name].locators``
-      - Complex parameter. |br|
-        Please, refer to :ref:`fastdds_qos_profiles_manager_cli_common_locators_element` |br|
-        section for more information.
-      - N/A
     * - Name element
       - ``participant[profile_name].name``
       - Simple parameter
@@ -98,16 +92,16 @@ The currently supported builtin configurable ``<subelements>`` are explained in 
         Please, refer to :ref:`fastdds_qos_profiles_manager_cli_participant_builtin_discovery_config_element` |br|
         section for more information.
       - N/A
-    * - External locators configuration
-      - ``participant[profile_name].builtin.external_locators``
-      - Complex parameter. |br|
-        Please, refer to :ref:`fastdds_qos_profiles_manager_cli_common_external_locators_element` |br|
+    * - Initial peers configuration
+      - ``participant[profile_name].builtin.locators.initial_peers[(index)]``
+      - List parameter. |br|
+        Please, refer to :ref:`fastdds_qos_profiles_manager_cli_common_locators_element` |br|
         section for more information.
       - N/A
-    * - Locators configuration
-      - ``participant[profile_name].builtin.locators``
-      - Complex parameter. |br|
-        Please, refer to :ref:`fastdds_qos_profiles_manager_cli_common_locators_element` |br|
+    * - Metatraffic external unicast |br| locators configuration
+      - ``participant[profile_name].builtin.external_locators.metatraffic_unicast[(index)]``
+      - List parameter. |br|
+        Please, refer to :ref:`fastdds_qos_profiles_manager_cli_common_external_locators_element` |br|
         section for more information.
       - N/A
 
