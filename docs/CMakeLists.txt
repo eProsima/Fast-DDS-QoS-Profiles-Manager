@@ -87,6 +87,10 @@ set(CPACK_COMPONENTS_ALL ${CPACK_COMPONENTS_ALL} ${DOCS_BUILDER})
 ####################################################################################################
 # Build documentation tests
 ####################################################################################################
-if (BUILD_DOCUMENTATION_TESTS)
-# TODO
+option(EPROSIMA_BUILD_TESTS "Activate the tests building and execution" OFF)
+
+if (EPROSIMA_BUILD_TESTS)
+    enable_testing()
+    include(CTest)
+    add_subdirectory(test)
 endif()
