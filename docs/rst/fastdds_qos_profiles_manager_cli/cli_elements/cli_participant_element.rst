@@ -41,7 +41,7 @@ The currently supported DomainParticipant configurable ``<subelements>`` are exp
       - N/A
     * - Default external unicast |br| locators configuration
       - ``participant[profile_name].external_locators.default_unicast[(index)]``
-      - List parameter. |br|
+      - Complex parameter list. |br|
         Please, refer to :ref:`fastdds_qos_profiles_manager_cli_common_external_locators_element` |br|
         section for more information.
       - N/A
@@ -62,7 +62,7 @@ The currently supported DomainParticipant configurable ``<subelements>`` are exp
         ``false``
     * - User transports list
       - ``participant[profile_name].user_transports[(index)]``
-      - List parameter
+      - Simple parameter list
       - ``string``
 
 .. warning::
@@ -76,6 +76,9 @@ Builtin configuration
 ^^^^^^^^^^^^^^^^^^^^^
 
 The DomainParticipant builtin configuration is accessed through the ``builtin`` element which is a complex parameter according to the :ref:`fastdds_qos_profiles_manager_element_classification`.
+The scope of this section does not include explaining the usage of these specific parameters.
+Please, refer to `Fast DDS documentation <https://fast-dds.docs.eprosima.com/en/latest/fastdds/xml_configuration/domainparticipant.html#builtin-parameters>`_ for that information.
+
 The currently supported builtin configurable ``<subelements>`` are explained in the table below.
 
 .. list-table::
@@ -94,13 +97,13 @@ The currently supported builtin configurable ``<subelements>`` are explained in 
       - N/A
     * - Initial peers configuration
       - ``participant[profile_name].builtin.locators.initial_peers[(index)]``
-      - List parameter. |br|
+      - Complex parameter list. |br|
         Please, refer to :ref:`fastdds_qos_profiles_manager_cli_common_locators_element` |br|
         section for more information.
       - N/A
     * - Metatraffic external unicast |br| locators configuration
       - ``participant[profile_name].builtin.external_locators.metatraffic_unicast[(index)]``
-      - List parameter. |br|
+      - Complex parameter list. |br|
         Please, refer to :ref:`fastdds_qos_profiles_manager_cli_common_external_locators_element` |br|
         section for more information.
       - N/A
@@ -112,10 +115,13 @@ The currently supported builtin configurable ``<subelements>`` are explained in 
 .. _fastdds_qos_profiles_manager_cli_participant_builtin_discovery_config_element:
 
 Discovery configuration
-^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""
 
 The DomainParticipant builtin discovery configuration is accessed through the ``discovery_config`` element which is a complex parameter according to the :ref:`fastdds_qos_profiles_manager_element_classification`.
-The currently supported discovery configuration configurable ``<subelements>`` are explained in the table below.
+The scope of this section does not include explaining the usage of these specific parameters.
+Please, refer to `Fast DDS documentation <https://fast-dds.docs.eprosima.com/en/latest/fastdds/xml_configuration/domainparticipant.html#dconf>`_ for that information.
+
+The currently supported discovery configurable ``<subelements>`` are explained in the table below.
 
 .. list-table::
     :header-rows: 1

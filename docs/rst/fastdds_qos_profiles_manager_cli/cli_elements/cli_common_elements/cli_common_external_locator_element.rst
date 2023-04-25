@@ -7,7 +7,7 @@ This section explains how to access the different configurable parameters in an 
 The scope of this section does not include explaining the usage of these specific parameters.
 Please, refer to `Fast DDS documentation <https://fast-dds.docs.eprosima.com/en/latest/fastdds/xml_configuration/common.html#externallocatorlisttype>`_ for that information.
 
-The external locator list configuration is accessed through the ``external_locators`` element which is a complex parameter according to the :ref:`fastdds_qos_profiles_manager_element_classification`.
+The external locator list configuration is accessed through the ``external_locators`` element which is a complex parameter list according to the :ref:`fastdds_qos_profiles_manager_element_classification`.
 The external locator list configurable ``<subelements>`` are explained in the table below.
 
 .. list-table::
