@@ -38,7 +38,9 @@ The duration type configurable ``<subelements>`` are explained in the table belo
 The ``<duration_type>`` element is defined for each specific element.
 The list below includes the currently supported ``<duration_type>`` elements:
 
-* :ref:`Reliability maximum blocking time <fastdds_qos_profiles_manager_cli_common_qos_reliability_element>`.
+* :ref:`Reliability QoS maximum blocking time <fastdds_qos_profiles_manager_cli_common_qos_reliability_element>`.
+* :ref:`Participant builtin discovery configuration lease duration <fastdds_qos_profiles_manager_cli_participant_builtin_discovery_config_element>`.
+* :ref:`Participant builtin discovery configuration lease announcements <fastdds_qos_profiles_manager_cli_participant_builtin_discovery_config_element>`.
 
 .. warning::
 
