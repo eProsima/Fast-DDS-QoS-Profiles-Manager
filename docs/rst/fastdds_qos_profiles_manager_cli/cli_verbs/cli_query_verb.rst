@@ -1,7 +1,7 @@
 .. _fastdds_qos_profiles_manager_cli_query_verb:
 
-Fast DDS QoS Profiles Manager CLI ``query`` verb
-------------------------------------------------
+``query`` verb
+--------------
 
 .. warning::
 

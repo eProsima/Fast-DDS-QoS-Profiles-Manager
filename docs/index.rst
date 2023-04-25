@@ -40,6 +40,9 @@
     :hidden:
 
     /rst/fastdds_qos_profiles_manager_cli/cli
+    /rst/fastdds_qos_profiles_manager_cli/cli_usage
+    /rst/fastdds_qos_profiles_manager_cli/cli_verbs/cli_verbs_intro
+    /rst/fastdds_qos_profiles_manager_cli/cli_elements/cli_elements_intro
 
 .. _index_fastdds_qos_profiles_manager_lib:
 
@@ -50,6 +53,11 @@
     :hidden:
 
     /rst/fastdds_qos_profiles_manager_lib/api_reference
+    /rst/fastdds_qos_profiles_manager_lib/participant
+    /rst/fastdds_qos_profiles_manager_lib/datareader
+    /rst/fastdds_qos_profiles_manager_lib/datawriter
+    /rst/fastdds_qos_profiles_manager_lib/transport_descriptor
+    /rst/fastdds_qos_profiles_manager_lib/exception
 
 .. _index_notes:
 

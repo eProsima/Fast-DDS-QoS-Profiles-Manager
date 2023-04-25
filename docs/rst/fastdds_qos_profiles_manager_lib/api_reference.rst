@@ -1,12 +1,6 @@
 .. _fastdds_qos_profiles_manager_lib_api_reference:
 
-Fast DDS QoS Profiles Manager Library API Reference
-===================================================
+Introduction
+============
 
-.. toctree::
-
-    /rst/fastdds_qos_profiles_manager_lib/participant
-    /rst/fastdds_qos_profiles_manager_lib/datareader
-    /rst/fastdds_qos_profiles_manager_lib/datawriter
-    /rst/fastdds_qos_profiles_manager_lib/transport_descriptor
-    /rst/fastdds_qos_profiles_manager_lib/exception
+This section presents the public API provided by *eProsima Fast DDS QoS Profiles Manager Library*.

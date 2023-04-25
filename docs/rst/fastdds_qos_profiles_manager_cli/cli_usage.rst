@@ -3,8 +3,8 @@
 
 .. _fastdds_qos_profiles_manager_cli_usage:
 
-CLI Usage
-=========
+Usage
+=====
 
 *eProsima Fast DDS QoS Profiles Manager CLI* general usage is:
 
