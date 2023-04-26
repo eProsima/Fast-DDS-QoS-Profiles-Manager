@@ -22,11 +22,9 @@ while [ $NAME != "null" ]; do
     ### This transport is defined but not used (!)
     fastddsqosprof $XML_FILE_NAME set transport_descriptor[LocalShmTransport].kind shm
     ## Participant lease duration
-    fastddsqosprof $XML_FILE_NAME set participant[participant_profile_fog_sw].builtin.discovery_config.duration.lease.sec 50
-    fastddsqosprof $XML_FILE_NAME set participant[participant_profile_fog_sw].builtin.discovery_config.duration.lease.nanosec 0
+    fastddsqosprof $XML_FILE_NAME set participant[participant_profile_fog_sw].builtin.discovery_config.duration.lease 50 0
     ## Participant announcement period
-    fastddsqosprof $XML_FILE_NAME set participant[participant_profile_fog_sw].builtin.discovery_config.duration.announcements.sec 6
-    fastddsqosprof $XML_FILE_NAME set participant[participant_profile_fog_sw].builtin.discovery_config.duration.announcements.nanosec 0
+    fastddsqosprof $XML_FILE_NAME set participant[participant_profile_fog_sw].builtin.discovery_config.duration.announcements 6 0
     ## User transports
     fastddsqosprof $XML_FILE_NAME set participant[participant_profile_fog_sw].user_transports[] ContainerTransport
     ## Disable builtin transports
