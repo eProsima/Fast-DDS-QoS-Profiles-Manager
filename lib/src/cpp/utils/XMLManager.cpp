@@ -104,7 +104,7 @@ void XMLManager::initialize (
     }
 
     // Obtain first document node
-    last_node = static_cast<xercesc::DOMNode*>(doc->getDocumentElement());
+    reference_node = static_cast<xercesc::DOMNode*>(doc->getDocumentElement());
 
     // Check if XML document has rooted structure
     transform_standalone_to_rooted_structure();
@@ -130,7 +130,7 @@ void XMLManager::initialize (
 
 void XMLManager::transform_standalone_to_rooted_structure()
 {
-    std::string root_name = xercesc::XMLString::transcode(last_node->getNodeName());
+    std::string root_name = xercesc::XMLString::transcode(reference_node->getNodeName());
 
     // If NOT rooted structure (standalone structure)
     if (root_name != utils::tag::ROOT)
@@ -143,15 +143,15 @@ void XMLManager::transform_standalone_to_rooted_structure()
             xercesc::XMLString::transcode(utils::tag::EPROSIMA_URL));
 
         // Create copy of node
-        xercesc::DOMNode* copy_node = static_cast<xercesc::DOMNode*>(doc->createElement(last_node->getNodeName()));
+        xercesc::DOMNode* copy_node = static_cast<xercesc::DOMNode*>(doc->createElement(reference_node->getNodeName()));
 
         // Recursive adoption to all child nodes:
-        xercesc::DOMNodeList* root_child_nodes = last_node->getChildNodes();
+        xercesc::DOMNodeList* root_child_nodes = reference_node->getChildNodes();
         std::unique_ptr<std::vector<uint>> index_list = get_real_index(root_child_nodes);
         for (int i = 0, size = index_list->size(); i < size; i++)
         {
             xercesc::DOMNode* adopted_node = root_child_nodes->item(index_list->at(i));
-            last_node->removeChild(adopted_node);
+            reference_node->removeChild(adopted_node);
             copy_node->appendChild(adopted_node);
         }
 
@@ -159,13 +159,13 @@ void XMLManager::transform_standalone_to_rooted_structure()
         new_root_node->appendChild(copy_node);
 
         // Remove node from document
-        doc->removeChild(last_node);
+        doc->removeChild(reference_node);
 
         // Add new root to the document
         doc->appendChild(new_root_node);
 
         // set new root
-        last_node = new_root_node;
+        reference_node = new_root_node;
     }
 }
 
@@ -225,26 +225,26 @@ void XMLManager::create_node(
         const std::string& tag_name)
 {
     // Save parent node
-    xercesc::DOMNode* parent_node = last_node;
+    xercesc::DOMNode* parent_node = reference_node;
 
     // Create new node and save it as last node
-    last_node = static_cast<xercesc::DOMNode*>(doc->createElement(xercesc::XMLString::transcode(tag_name.c_str())));
+    reference_node = static_cast<xercesc::DOMNode*>(doc->createElement(xercesc::XMLString::transcode(tag_name.c_str())));
 
     // Append new node to parent node
-    parent_node->appendChild(last_node);
+    parent_node->appendChild(reference_node);
 }
 
 void XMLManager::clear_node()
 {
     // Remove node from parent
-    xercesc::DOMNode* parent_node = last_node->getParentNode();
+    xercesc::DOMNode* parent_node = reference_node->getParentNode();
 
     // Check the dependency
     if (parent_node == nullptr)
     {
         // Throw Error
         std::string exception_message = "Could not delete node ";
-        exception_message += xercesc::XMLString::transcode(last_node->getNodeName());
+        exception_message += xercesc::XMLString::transcode(reference_node->getNodeName());
         throw Error(exception_message);
     }
 
@@ -267,22 +267,22 @@ void XMLManager::clear_node()
     }
 
     // Remove node from child
-    parent_node->removeChild(last_node);
+    parent_node->removeChild(reference_node);
 
     // Free node resources
-    last_node->release();
+    reference_node->release();
 }
 
 void XMLManager::reset_node()
 {
     // Loop for childs
-    while (last_node->hasChildNodes())
+    while (reference_node->hasChildNodes())
     {
         // Obtain each node
-        xercesc::DOMNode* node_to_be_deleted = last_node->getFirstChild();
+        xercesc::DOMNode* node_to_be_deleted = reference_node->getFirstChild();
 
         // Remove each child from parent node
-        last_node->removeChild(node_to_be_deleted);
+        reference_node->removeChild(node_to_be_deleted);
 
         // Free node resources
         node_to_be_deleted->release();
@@ -297,7 +297,7 @@ void XMLManager::set_value_to_node(
 
     // Set name value
     xercesc::DOMText* name_value = doc->createTextNode(xercesc::XMLString::transcode(value.c_str()));
-    last_node->appendChild(name_value);
+    reference_node->appendChild(name_value);
 }
 
 void XMLManager::set_attribute_to_node(
@@ -305,7 +305,7 @@ void XMLManager::set_attribute_to_node(
         const std::string& value)
 {
     // Set the attribute value
-    static_cast<xercesc::DOMElement*>(last_node)->setAttribute(
+    static_cast<xercesc::DOMElement*>(reference_node)->setAttribute(
         xercesc::XMLString::transcode(name.c_str()),
         xercesc::XMLString::transcode(value.c_str()));
 }
@@ -315,7 +315,7 @@ void XMLManager::set_siblings_attribute(
         const std::string& value)
 {
     // Obtain all siblings
-    xercesc::DOMNodeList* siblings_node_list = last_node->getParentNode()->getChildNodes();
+    xercesc::DOMNodeList* siblings_node_list = reference_node->getParentNode()->getChildNodes();
 
     // Obtain REAL node list
     std::unique_ptr<std::vector<uint>> index_list = get_real_index(siblings_node_list);
@@ -325,7 +325,7 @@ void XMLManager::set_siblings_attribute(
     {
         xercesc::DOMNode* sibling_node = siblings_node_list->item(index_list->at(i));
         // siblings must have same tag name
-        if (sibling_node->getNodeName() == last_node->getNodeName() && sibling_node != last_node)
+        if (sibling_node->getNodeName() == reference_node->getNodeName() && sibling_node != reference_node)
         {
             // Set the attribute value
             static_cast<xercesc::DOMElement*>(sibling_node)->setAttribute(
@@ -337,20 +337,20 @@ void XMLManager::set_siblings_attribute(
 
 std::string XMLManager::get_node_value()
 {
-    if (xercesc::XMLString::transcode(last_node->getNodeValue()) != nullptr)
+    if (xercesc::XMLString::transcode(reference_node->getNodeValue()) != nullptr)
     {
-        return xercesc::XMLString::transcode(last_node->getNodeValue());
+        return xercesc::XMLString::transcode(reference_node->getNodeValue());
     }
     // Throw ElementNotFound exception
     std::string exception_message = "Could not find value of element ";
-    exception_message += xercesc::XMLString::transcode(last_node->getNodeName());
+    exception_message += xercesc::XMLString::transcode(reference_node->getNodeName());
     throw ElementNotFound(exception_message + "\n");
 }
 
 std::string XMLManager::get_node_attribute_value(
         const std::string& name)
 {
-    xercesc::DOMNode* attribute_node = last_node->getAttributes()->getNamedItem(
+    xercesc::DOMNode* attribute_node = reference_node->getAttributes()->getNamedItem(
         xercesc::XMLString::transcode(name.c_str()));
     if (attribute_node != nullptr)
     {
@@ -363,7 +363,7 @@ std::string XMLManager::get_node_attribute_value(
     // Throw ElementNotFound exception
     std::string exception_message = "Could not find attribute ";
     exception_message += name + " in element ";
-    exception_message += xercesc::XMLString::transcode(last_node->getNodeName());
+    exception_message += xercesc::XMLString::transcode(reference_node->getNodeName());
     throw ElementNotFound(exception_message + "\n");
 }
 
@@ -372,7 +372,7 @@ void XMLManager::move_to_node(
         const bool create_if_not_existent)
 {
     // Obtain list of nodes based on the target tag
-    xercesc::DOMNodeList* node_list = static_cast<xercesc::DOMElement*>(last_node)->getElementsByTagName(
+    xercesc::DOMNodeList* node_list = static_cast<xercesc::DOMElement*>(reference_node)->getElementsByTagName(
         xercesc::XMLString::transcode(tag_name.c_str()));
 
     // Check if node should be created if not found
@@ -392,7 +392,7 @@ void XMLManager::move_to_node(
     else if (node_list->getLength() == 1)
     {
         // Return Node
-        last_node = node_list->item(0);
+        reference_node = node_list->item(0);
     }
     // Unexpected issue (misuse of the method)
     else
@@ -410,7 +410,7 @@ void XMLManager::move_to_node(
     if (!index.empty())
     {
         // Obtain main list of nodes
-        xercesc::DOMNodeList* node_list = last_node->getChildNodes();
+        xercesc::DOMNodeList* node_list = reference_node->getChildNodes();
 
         // Obtain REAL node list
         std::unique_ptr<std::vector<uint>> index_list = get_real_index(node_list);
@@ -437,13 +437,13 @@ void XMLManager::move_to_node(
         if (real_index >= 0 && real_index < index_list->size())
         {
             // Return Node
-            last_node = node_list->item(index_list->at(real_index));
+            reference_node = node_list->item(index_list->at(real_index));
             return;
         }
         else
         {
             // Set up exception message to be thrown if node should not be created
-            std::string exception_message = xercesc::XMLString::transcode(last_node->getNodeName());
+            std::string exception_message = xercesc::XMLString::transcode(reference_node->getNodeName());
             exception_message += " does not have an element in position " + std::to_string(real_index) + "\n";
             throw ElementNotFound(exception_message);
         }
@@ -467,7 +467,7 @@ void XMLManager::move_to_node(
         const bool create_if_not_existent)
 {
     // Obtain list of nodes based on the target tag
-    xercesc::DOMNodeList* node_list = static_cast<xercesc::DOMElement*>(last_node)->getElementsByTagName(
+    xercesc::DOMNodeList* node_list = static_cast<xercesc::DOMElement*>(reference_node)->getElementsByTagName(
         xercesc::XMLString::transcode(tag_name.c_str()));
 
     // Iterate through the nodes
@@ -487,7 +487,7 @@ void XMLManager::move_to_node(
                 std::string item_value = xercesc::XMLString::transcode(attribute_item->getNodeValue());
                 if (item_value == value)
                 {
-                    last_node = node_list->item(i);
+                    reference_node = node_list->item(i);
                     return;
                 }
             }
@@ -514,7 +514,7 @@ void XMLManager::move_to_node(
 void XMLManager::move_to_root_node()
 {
     // Set the last node as the root node
-    last_node = doc->getElementsByTagName(xercesc::XMLString::transcode(tag::ROOT))->item(0);
+    reference_node = doc->getElementsByTagName(xercesc::XMLString::transcode(tag::ROOT))->item(0);
 }
 
 void XMLManager::move_to_locator_node(
@@ -535,11 +535,11 @@ void XMLManager::move_to_locator_node(
     move_to_node(index, default_tag_name, create_if_not_existent);
 
     // Check if external or common locator
-    std::string tag = xercesc::XMLString::transcode(last_node->getNodeName());
+    std::string tag = xercesc::XMLString::transcode(reference_node->getNodeName());
     if (tag == utils::tag::LOCATOR)
     {
         // Obtain main list of nodes
-        xercesc::DOMNodeList* node_list = last_node->getChildNodes();
+        xercesc::DOMNodeList* node_list = reference_node->getChildNodes();
 
         // Obtain REAL node list
         std::unique_ptr<std::vector<uint>> index_list = get_real_index(node_list);
@@ -548,7 +548,7 @@ void XMLManager::move_to_locator_node(
         if (index_list->size() > 0)
         {
             // Save locator kind as current node
-            last_node = node_list->item(index_list->at(0));
+            reference_node = node_list->item(index_list->at(0));
         }
         // Create default kind children if required
         else if (create_if_not_existent)
@@ -558,7 +558,7 @@ void XMLManager::move_to_locator_node(
         // Throw ElementNotFound exception
         else
         {
-            std::string exception_message = xercesc::XMLString::transcode(last_node->getNodeName());
+            std::string exception_message = xercesc::XMLString::transcode(reference_node->getNodeName());
             exception_message += " collection is empty\n";
             throw ElementNotFound(exception_message);
         }
@@ -573,7 +573,7 @@ void XMLManager::move_to_transport_node(
     move_to_node(utils::tag::TRANSPORT_DESCRIPTOR_LIST, create_if_not_existent);
 
     // Obtain list of transports
-    xercesc::DOMNodeList* node_list = last_node->getChildNodes();
+    xercesc::DOMNodeList* node_list = reference_node->getChildNodes();
 
     // Obtain REAL node list
     std::unique_ptr<std::vector<uint>> index_list = get_real_index(node_list);
@@ -612,7 +612,7 @@ void XMLManager::move_to_transport_node(
             if (identifier == transport_id)
             {
                 // Save the transport node
-                last_node = child;
+                reference_node = child;
                 return;
             }
         }
@@ -624,7 +624,7 @@ void XMLManager::move_to_transport_node(
         create_node(utils::tag::TRANSPORT_DESCRIPTOR);
 
         // Save the transport node pointer to be returned
-        xercesc::DOMNode* transport_node = last_node;
+        xercesc::DOMNode* transport_node = reference_node;
 
         // Create transport_id identifier node
         create_node(utils::tag::TRANSPORT_ID);
@@ -633,7 +633,7 @@ void XMLManager::move_to_transport_node(
         set_value_to_node(transport_id);
 
         // Set the return node as the MAIN transport descriptor node
-        last_node = transport_node;
+        reference_node = transport_node;
     }
     // Throw ElementNotFound exception
     else

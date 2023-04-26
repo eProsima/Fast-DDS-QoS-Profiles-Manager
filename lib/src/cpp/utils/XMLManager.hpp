@@ -299,7 +299,7 @@ private:
     utils::ErrorHandlerXMLManager* error_handler = nullptr;
 
     // Latest node navigated to
-    xercesc::DOMNode* last_node = nullptr;
+    xercesc::DOMNode* reference_node = nullptr;
 
     // Flag to write before exit
     bool write_required = false;
