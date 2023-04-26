@@ -17,6 +17,8 @@ Fast DDS QoS Profiles Manager Library
     - DomainParticipant use of custom transports disabling builtin transports.
     - Reliability and Durability QoS for DataReader and DataWriter profiles.
     - Default profile attribute for DomainParticipant, DataReader and DataWriter.
+    - Transport descriptor kind.
+    - Transport descriptor whitelist interfaces.
 
 Fast DDS QoS Profiles Manager CLI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
