@@ -41,6 +41,8 @@ namespace data_reader {
 
 /**
  * @brief Set the selected DataReader profile as default profile.
+ *        As only one default profile is allowed, if another default profile exists, it is overridden and its
+ *        is_default_profile attribute is set to false.
  *
  * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id DataReader profile identifier.

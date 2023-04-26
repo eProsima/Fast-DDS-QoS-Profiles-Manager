@@ -77,7 +77,7 @@ Builtin configuration
 
 The DomainParticipant builtin configuration is accessed through the ``builtin`` element which is a complex parameter according to the :ref:`fastdds_qos_profiles_manager_element_classification`.
 The scope of this section does not include explaining the usage of these specific parameters.
-Please, refer to `Fast DDS documentation <https://fast-dds.docs.eprosima.com/en/latest/fastdds/xml_configuration/domainparticipant.html#builtin-parameters>`_ for that information.
+Please, refer to `Fast DDS <https://fast-dds.docs.eprosima.com/en/latest/fastdds/xml_configuration/domainparticipant.html#builtin-parameters>`_ documentation for that information.
 
 The currently supported builtin configurable ``<subelements>`` are explained in the table below.
 
@@ -119,7 +119,7 @@ Discovery configuration
 
 The DomainParticipant builtin discovery configuration is accessed through the ``discovery_config`` element which is a complex parameter according to the :ref:`fastdds_qos_profiles_manager_element_classification`.
 The scope of this section does not include explaining the usage of these specific parameters.
-Please, refer to `Fast DDS documentation <https://fast-dds.docs.eprosima.com/en/latest/fastdds/xml_configuration/domainparticipant.html#dconf>`_ for that information.
+Please, refer to Fast DDS `documentation <https://fast-dds.docs.eprosima.com/en/latest/fastdds/xml_configuration/domainparticipant.html#dconf>`_ for that information.
 
 The currently supported discovery configurable ``<subelements>`` are explained in the table below.
 

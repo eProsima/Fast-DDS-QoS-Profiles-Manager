@@ -1,0 +1,57 @@
+name: docs_ci
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+jobs:
+  ubuntu-docs-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          path: src/Fast-DDS-QoS-Profiles-Manager
+
+      - name: Install apt packages
+        uses: eProsima/eProsima-CI/ubuntu/install_apt_packages@main
+        with:
+          packages: cmake doxygen libxerces-c-dev
+
+      - name: Install colcon
+        uses: eProsima/eProsima-CI/ubuntu/install_colcon@main
+
+      - name: Install GTest
+        run: |
+          sudo apt install libgtest-dev libgmock-dev
+          (cd /usr/src/gtest && sudo `which cmake` .)
+          sudo make -j $(nproc) -C /usr/src/gtest
+          sudo ln -s /usr/src/gtest/libgtest.a /usr/lib/libgtest.a
+          sudo ln -s /usr/src/gtest/libgtest_main.a /usr/lib/libgtest_main.a
+          (cd /usr/src/googletest/googlemock && sudo `which cmake` .)
+          sudo make -j $(nproc) -C /usr/src/googletest/googlemock
+          sudo ln -s /usr/src/googletest/googlemock/libgmock.a /usr/lib/libgmock.a
+
+      - name: Install documentation requirements
+        uses: eProsima/eProsima-CI/ubuntu/install_python_packages@main
+        with:
+          requirements_file_name: src/Fast-DDS-QoS-Profiles-Manager/docs/requirements.txt
+
+      - name: Build workspace
+        run: |
+          colcon build \
+            --packages-up-to fastdds_qos_profiles_manager_docs \
+            --event-handlers console_direct+ \
+            --cmake-args -DEPROSIMA_BUILD_TESTS=ON
+
+      - name: Run tests
+        run: |
+          colcon test \
+            --packages-select fastdds_qos_profiles_manager_docs \
+            --event-handlers console_direct+
+
+      - name: Upload documentation
+        uses: actions/upload-artifact@v3
+        with:
+          name: HTML documentation
+          path: install/fastdds_qos_profiles_manager_docs/docs/fastdds_qos_profiles_manager_docs/sphinx/html

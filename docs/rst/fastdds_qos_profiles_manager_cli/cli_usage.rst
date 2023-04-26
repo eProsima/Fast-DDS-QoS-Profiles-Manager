@@ -52,9 +52,9 @@ If the parameter is being ``set``, the corresponding configuration ``value`` has
   For instance, the following command
 
   .. code-block:: bash
-    
+
     fastddsqosprof file.xml set participant -h
-    
+
   will show the usage corresponding to the DomainParticipant profiles configuration.
   More information can be found in :ref:`fastdds_qos_profiles_manager_cli_help_verb`.
 
