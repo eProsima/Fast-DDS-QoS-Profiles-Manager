@@ -228,7 +228,8 @@ void XMLManager::create_node(
     xercesc::DOMNode* parent_node = reference_node;
 
     // Create new node and save it as last node
-    reference_node = static_cast<xercesc::DOMNode*>(doc->createElement(xercesc::XMLString::transcode(tag_name.c_str())));
+    reference_node =
+            static_cast<xercesc::DOMNode*>(doc->createElement(xercesc::XMLString::transcode(tag_name.c_str())));
 
     // Append new node to parent node
     parent_node->appendChild(reference_node);
