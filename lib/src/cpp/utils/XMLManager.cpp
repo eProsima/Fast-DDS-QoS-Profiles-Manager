@@ -33,9 +33,6 @@ void XMLManager::initialize (
         const std::string& file_name,
         bool create_file)
 {
-    // Write required flag
-    write_required = false;
-
     // File exists flag
     bool file_exists = false;
 

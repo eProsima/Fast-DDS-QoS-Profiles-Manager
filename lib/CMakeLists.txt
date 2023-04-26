@@ -103,7 +103,7 @@ set(${PROJECT_NAME}_source_files
     src/cpp/domain_participant/Port.cpp
     src/cpp/domain_participant/PropertiesPolicy.cpp
     src/cpp/exception/Exception.cpp
-    src/cpp/QosProfileManager.cpp
+    src/cpp/QosProfilesManager.cpp
     src/cpp/transport_descriptor/TransportDescriptor.cpp
     src/cpp/utils/ErrorHandlerXMLManager.cpp
     src/cpp/utils/StringXMLManager.cpp

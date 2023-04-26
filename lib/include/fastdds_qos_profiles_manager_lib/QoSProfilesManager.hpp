@@ -30,7 +30,7 @@ namespace qosprof {
  * @brief Initialize XML workspace
  *
  * @param xml_file Absolute/relative path to the XML file.
- * @param create_file bool create file if the flag is set
+ * @param create_file bool create file if the flag is set and the file is not found
  *
  * @throw Error Exception if the workspace could not be initialized
  */
@@ -39,7 +39,9 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void initialize(
         const bool create_file);
 
 /**
- * @brief Terminate XML workspace
+ * @brief Terminate XML workspace. If required to save or update the XML configuration in the filesystem,this method
+ *        must be called to save them.
+ *        If error occurred or resultant XML configuration is not valid, it will not save the XML configuration.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void terminate();
 

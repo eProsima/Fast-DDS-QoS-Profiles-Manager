@@ -17,7 +17,7 @@
 #include <string>
 
 #include <docopt/docopt.h>
-#include <fastdds_qos_profiles_manager_lib/QoSProfileManager.hpp>
+#include <fastdds_qos_profiles_manager_lib/QoSProfilesManager.hpp>
 #include <fastdds_qos_profiles_manager_lib/exception/Exception.hpp>
 
 #include <config.h>

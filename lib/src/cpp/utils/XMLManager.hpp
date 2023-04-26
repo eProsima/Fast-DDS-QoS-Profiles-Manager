@@ -235,9 +235,7 @@ public:
 
 private:
 
-    XMLManager()
-    {
-    }
+    XMLManager() = default;
 
     /**
      * @brief Transforms standalone XML document structure to rooted.

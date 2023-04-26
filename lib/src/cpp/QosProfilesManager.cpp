@@ -16,7 +16,7 @@
  * @file
  */
 
-#include <fastdds_qos_profiles_manager_lib/QoSProfileManager.hpp>
+#include <fastdds_qos_profiles_manager_lib/QoSProfilesManager.hpp>
 
 #include <string>
 
@@ -42,7 +42,7 @@ void initialize(
         throw Error(xercesc::XMLString::transcode(toCatch.getMessage()));
     }
 
-    // Create singleton instance of manager
+    // Get singleton instance of manager
     eprosima::qosprof::utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
     // Set up with the basic information

@@ -53,6 +53,7 @@
     :hidden:
 
     /rst/fastdds_qos_profiles_manager_lib/api_reference
+    /rst/fastdds_qos_profiles_manager_lib/qos_profiles_manager
     /rst/fastdds_qos_profiles_manager_lib/participant
     /rst/fastdds_qos_profiles_manager_lib/datareader
     /rst/fastdds_qos_profiles_manager_lib/datawriter
