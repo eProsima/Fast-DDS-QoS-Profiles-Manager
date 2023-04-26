@@ -3,7 +3,7 @@
 Linux installation from sources
 ===============================
 
-The *eProsima Fast DDS QoS Profiles Manager* tool suite is composed by many packages as described in the :ref:`home <qos_prof_description_>` section.
+The *eProsima Fast DDS QoS Profiles Manager* tool suite is composed by several packages as described in the :ref:`Introduction <qos_prof_description_>`.
 It is organized as follows:
 
 .. contents::
@@ -12,7 +12,7 @@ It is organized as follows:
     :depth: 2
 
 The tool suite can either be built using `colcon <https://colcon.readthedocs.io/en/released/>`_ or `CMake <https://cmake.org/>`_.
-With CMake, the tool suite build and the environment source process must be done manually and following the tool package dependencies, whereas colcon automatizes this process with a single command.
+With CMake, the tool suite build and environment source processes must be done manually and following the tool package dependencies, whereas colcon automatizes these two actions with a single command.
 For that reason, the use of colcon is highly recommended.
 
 .. _installation_prerequisites_source_linux:
@@ -41,13 +41,13 @@ For example, on Ubuntu use the command:
 Recommended build tools (optional)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Despite that the *eProsima Fast DDS QoS Profiles Manager* tool suite packages can be build using CMake, colcon simplifies the task substantially.
+Despite the fact that the *eProsima Fast DDS QoS Profiles Manager* tool suite packages can be built using CMake, colcon simplifies the task substantially.
 colcon is a command line tool based on CMake aimed at building sets of software packages.
 Install colcon by executing the following command:
 
-   .. code-block:: bash
+.. code-block:: bash
 
-       pip3 install -U colcon-common-extensions
+    pip3 install -U colcon-common-extensions
 
 .. note::
 
@@ -57,8 +57,17 @@ Install colcon by executing the following command:
 Dependencies
 ------------
 
+This section deals with the required dependencies for each package included in the tool suite.
+
+.. important::
+
+    The *Library* package is required for building the remain tool packages.
+
 Library tool
 ^^^^^^^^^^^^
+
+The *eProsima Fast DDS QoS Profiles Manager Library* requires Xerces.
+The package test suite depends on GTest.
 
 Xerces
 """"""
@@ -75,9 +84,7 @@ GTest (optional)
 
 GTest is a unit testing library for C++.
 By default, *eProsima Fast DDS QoS Profiles Manager* does not compile tests.
-It is possible to activate them with the opportune `CMake configuration <https://cmake.org/cmake/help/v3.6/manual/cmake.1.html#options>`_ options when calling colcon or CMake.
-If following the colcon deployment, the GTest dependency needs to be included in the *Library* ``colcon.pkg`` file.
-Please check the :ref:`colcon build procedure <installation_build_source_linux>` for further information.
+It is possible to activate them with the opportune CMake configuration options when calling colcon or CMake.
 
 GTest installation can be performed either following the `GTest installation instructions <https://google.github.io/googletest/>`_, or including the `Gtest repository <https://github.com/google/googletest>`_ in the workspace directory, running:
 
@@ -85,8 +92,15 @@ GTest installation can be performed either following the `GTest installation ins
 
     git clone https://github.com/google/googletest ~/fastdds_qosprofman_ws/src/googletest-distribution
 
+.. note::
+
+    If the colcon deployment is followed, and GTest has been installed in the workspace directory, the GTest dependency needs to be included in the *Library* ``colcon.pkg`` file.
+    Please check the :ref:`colcon build procedure <installation_build_source_linux>` for further information.
+
 CLI tool
 ^^^^^^^^
+
+The *eProsima Fast DDS QoS Profiles Manager CLI* depends on the tool suite *Library* and also on the following package.
 
 Docopt
 """"""
@@ -108,11 +122,13 @@ GUI tool
 Documentation tool
 ^^^^^^^^^^^^^^^^^^
 
+The *eProsima Fast DDS QoS Profiles Manager Documentation* depends on the tool suite *Library* and also on the following package.
+
 Doxygen
 """""""
 
 `Doxygen <https://www.doxygen.nl/>`_ is a C++ documentation generator.
-It is required to build the :ref:`fastdds_qos_profiles_manager_lib_api_reference` from the header files.
+It is required to build the :ref:`Library API reference <fastdds_qos_profiles_manager_lib_api_reference>`.
 In Ubuntu, the dependency can be installed running:
 
 .. code-block:: bash
@@ -124,11 +140,28 @@ Python3 virtual environment (recomended)
 
 It is recommended to install the *Documentation* tool dependencies in a `python3 <https://www.python.org/downloads/>`_ virtual environment.
 That would avoid polluting the user's installation setup.
-In Ubuntu, python3 can be installed running:
+Also, the *Documentation* tool has several dependencies described in the ``requirements.txt`` project file.
+
+.. literalinclude:: /requirements.txt
+    :language: text
+
+Once :ref:`the repository is downloaded <installation_download_project_source_linux>`, deploy the project in a python3 virtual environment and install the ``requirements.txt`` dependencies by running:
 
 .. code-block:: bash
 
-    sudo apt install python3
+    # Python3 installation
+    sudo apt install python3.10-venv
+
+    # Virtual environment deployment
+    cd ~/fastdds_qosprofman_ws
+    python3 -m venv fastdds_qosprofman_venv
+    source fastdds_qosprofman_venv/bin/activate
+
+    # Required dependencies installation
+    pip3 install -r ~/fastdds_qosprofman_ws/src/Fast-DDS-QoS-Profiles-Manager/docs/requirements.txt
+
+
+.. _installation_download_project_source_linux:
 
 Tool suite build process
 ------------------------
@@ -140,27 +173,6 @@ Create a workspace directory and download the project:
     mkdir -p ~/fastdds_qosprofman_ws/src
     cd ~/fastdds_qosprofman_ws/src
     git clone https://github.com/eProsima/Fast-DDS-QoS-Profiles-Manager.git
-
-.. note::
-
-    It is recommended to deploy the project in a python3 virtual environment, by running the following commands:
-
-    .. code-block:: bash
-
-        cd ~/fastdds_qosprofman_ws
-        python3 -m venv fastdds_qosprofman_venv
-        source fastdds_qosprofman_venv/bin/activate
-
-The *Documentation* tool has several dependencies described in the ``requirements.txt`` project file.
-
-.. literalinclude:: /requirements.txt
-    :language: text
-
-Install them using `pip3 <https://docs.python.org/3/installing/index.html>`_:
-
-.. code-block:: bash
-
-    pip3 install -r ~/fastdds_qosprofman_ws/src/Fast-DDS-QoS-Profiles-Manager/docs/requirements.txt
 
 .. _installation_build_source_linux:
 
@@ -180,17 +192,15 @@ Install them using `pip3 <https://docs.python.org/3/installing/index.html>`_:
             Being based on `CMake <https://cmake.org/>`_ it is possible to pass `CMake configuration options <https://colcon.readthedocs.io/en/released/reference/verb/build.html#cmake-specific-arguments>`_ to the :code:`colcon build` command.
             These options can be also passed through a `colcon.meta <https://colcon.readthedocs.io/en/released/user/configuration.html?highlight=colcon.meta#using-meta-files>`_ file.
 
-            For instance, the *Library* test suite building is enabled by building with the CMake option `EPROSIMA_BUILD_TESTS`, among adding the GTest dependency (``"googletest-distribution"``) in the *Library* `colcon.pkg <https://colcon.readthedocs.io/en/released/user/configuration.html?highlight=colcon.meta#colcon-pkg-files>`_ file. Also, colcon provides `certain arguments <https://colcon.readthedocs.io/en/released/reference/package-selection-arguments.html>`_ to perform package selection, excluding undesired packages or including specific packages in the build process.
+            For instance, the *Library* and *Documentation* test suites building is enabled by building with the CMake option `EPROSIMA_BUILD_TESTS`.
+            If GTest repository has been included in the workspace directory, add the GTest dependency (``"googletest-distribution"``) in both *Library* and *Documentation* `colcon.pkg <https://colcon.readthedocs.io/en/released/user/configuration.html?highlight=colcon.meta#colcon-pkg-files>`_ files.
+            Also, colcon provides `certain arguments <https://colcon.readthedocs.io/en/released/reference/package-selection-arguments.html>`_ to perform package selection, excluding undesired packages or including specific packages in the build process.
 
-            The following command would build the *Library* tool with its test suite.
+            Thus, the following command would build the *Library* and *Documentation* tools with its test suite.
 
             .. code-block:: bash
 
-                colcon build --packages-select fastdds_qos_profiles_manager_lib --cmake-args -DEPROSIMA_BUILD_TESTS=ON
-
-        .. important::
-
-            The *Library* package is required for building the remain tool packages.
+                colcon build --packages-up-to fastdds_qos_profiles_manager_docs --cmake-args -DEPROSIMA_BUILD_TESTS=ON
 
     .. tab:: Building with CMake
 
@@ -207,7 +217,7 @@ Install them using `pip3 <https://docs.python.org/3/installing/index.html>`_:
 
         .. note::
 
-            If *Library* test suite compilation is needed, the enable test build flag `EPROSIMA_BUILD_TESTS` should be included while building the *Library* package:
+            If the *Library* test suite compilation is needed, the enable test build flag `EPROSIMA_BUILD_TESTS` should be included while configuring the building of the *Library* package:
 
             .. code-block:: bash
 
@@ -236,7 +246,6 @@ Install them using `pip3 <https://docs.python.org/3/installing/index.html>`_:
         .. important::
 
             If the *Library* path has been sourced in the previous step, there is no need to include it again in the environment variable ``CMAKE_PREFIX_PATH``.
-
             If, on the other hand, it has not been sourced previously, as long as it is required also to build the *Documentation* package, it needs to be sourced.
 
         .. code-block:: bash
@@ -273,6 +282,20 @@ In order to run the CLI, please, ensure to source the environment:
 
     fastddsqosprof -v
 
+.. note::
+
+    A complete example of the *CLI* is included in the *eProsima Fast DDS QoS Profiles Manager* repository.
+    It depends on `jq <https://stedolan.github.io/jq/>`_ in order to parse the deployment information contained in a JSON file.
+    The instructions below would run the example and generate several XML configuration files.
+
+    .. code-block:: bash
+
+        sudo apt install jq
+        cd ~/fastdds_qosprofman_ws/src/Fast-DDS-QoS-Profiles-Manager/cli/examples/ExternalLocatorFeatureConfigurationExample
+        bash cli_example_script.sh
+
+
+
 Local documentation
 -------------------
 
@@ -284,10 +307,10 @@ The *Documentation* generated can be opened in a web browser locally by running:
 
         .. code-block:: bash
 
-            xdg-open ~/fastdds_qosprofman_ws/build/fastdds_qos_profiles_manager_docs/docs/html/index.html
+            xdg-open ~/fastdds_qosprofman_ws/install/fastdds_qos_profiles_manager_docs/docs/fastdds_qos_profiles_manager_docs/sphinx/html/index.html
 
     .. tab:: Built with CMake
 
         .. code-block:: bash
 
-            xdg-open ~/fastdds_qosprofman_ws/build/docs/docs/html/index.html
+            xdg-open ~/fastdds_qosprofman_ws/install/docs/docs/fastdds_qos_profiles_manager_docs/sphinx/html/index.html
