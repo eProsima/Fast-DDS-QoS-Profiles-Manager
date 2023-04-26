@@ -1,3 +1,5 @@
+.. include:: ../../../01-exports/roles.include
+
 .. _fastdds_qos_profiles_manager_cli_common_duration_type_element:
 
 Duration type configuration
@@ -30,6 +32,10 @@ The duration type configurable ``<subelements>`` are explained in the table belo
       - ``duration.<duration_type>``
       - Complex parameter
       - ``infinite``
+    * - All ``subelements``
+      - ``duration.<duration_type> <sec_value> <nanosec_value>``
+      - Complex parameter
+      - ``<sec_value>`` as ``int32_t`` |br| ``<nanosec_value>`` as ``uint32_t``
 
 .. note::
 

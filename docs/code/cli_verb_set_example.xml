@@ -13,6 +13,7 @@
                 <reliability>
                     <max_blocking_time>
                         <sec>1</sec>
+                        <nanosec>100</nanosec>
                     </max_blocking_time>
                 </reliability>
             </qos>
