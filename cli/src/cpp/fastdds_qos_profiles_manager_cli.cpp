@@ -55,7 +55,7 @@ int main(
         // Set command requires at least one more follow-up arguments: element being set
         if (0 < args[PARSER_ARGS].asStringList().size())
         {
-            main_element_parser(CommonCommands::SET, args[PARSER_FILE].asString(), argc - 2, argv + 2);
+            main_element_parser(CommonCommands::SET, argc - 2, argv + 2);
         }
         else
         {
@@ -86,7 +86,7 @@ int main(
         }
         else if (1 == args[PARSER_ARGS].asStringList().size())
         {
-            main_element_parser(CommonCommands::PRINT, args[PARSER_FILE].asString(), argc - 2, argv + 2);
+            main_element_parser(CommonCommands::PRINT, argc - 2, argv + 2);
         }
         else
         {
@@ -113,7 +113,7 @@ int main(
         // Clear command requires only one follow-up argument: element to be cleared
         if (1 == args[PARSER_ARGS].asStringList().size())
         {
-            main_element_parser(CommonCommands::CLEAR, args[PARSER_FILE].asString(), argc - 2, argv + 2);
+            main_element_parser(CommonCommands::CLEAR, argc - 2, argv + 2);
         }
         else
         {

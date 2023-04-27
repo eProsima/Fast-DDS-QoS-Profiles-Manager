@@ -38,6 +38,7 @@ namespace transport_descriptor {
  * @param[in] create_if_not_existent flag that enables the creation of the  element if it does not exist
  * @param[in] additional_tag additional tag to obtain node
  *
+ * @throw Error exception if XML workspace was not initialized
  * @throw ElementNotFound exception if expected node was not found and node creation was not required
  */
 void initialize_namespace(
@@ -46,6 +47,9 @@ void initialize_namespace(
         const bool create_if_not_existent,
         const std::string& additional_tag)
 {
+    // Check if workspace was initialized
+    manager.is_initialized();
+
     // Iterate through required elements, and create them if not existent
     manager.move_to_root_node();
     manager.move_to_node(utils::tag::PROFILES, create_if_not_existent);
@@ -57,49 +61,42 @@ void initialize_namespace(
 }
 
 std::string print(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_kind(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_send_buffer_size(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_receive_buffer_size(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_max_message_size(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_max_initial_peers_range(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_interface_whitelist(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& index)
 {
@@ -107,70 +104,60 @@ std::string print_interface_whitelist(
 }
 
 std::string print_ttl(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_non_blocking_send(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_output_port(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_wan_addr(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_keep_alive_frequency_ms(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_keep_alive_timeout_ms(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_max_logical_port(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_logical_port_range(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_logical_port_increment(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_listening_ports(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& index)
 {
@@ -178,56 +165,48 @@ std::string print_listening_ports(
 }
 
 std::string print_tls(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_tls_password(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_tls_private_key_file(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_tls_rsa_private_key_file(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_tls_cert_chain_file(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_tls_tmp_dh_file(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_tls_verify_file(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_tls_verify_mode(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& index)
 {
@@ -235,7 +214,6 @@ std::string print_tls_verify_mode(
 }
 
 std::string print_tls_options(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& index)
 {
@@ -243,7 +221,6 @@ std::string print_tls_options(
 }
 
 std::string print_tls_verify_paths(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& index)
 {
@@ -251,173 +228,148 @@ std::string print_tls_verify_paths(
 }
 
 std::string print_tls_verify_depth(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_tls_default_verify_path(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_tls_handshake_role(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_tls_server_name(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_calculate_crc(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_check_crc(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_enable_tcp_nodelay(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_segment_size(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_port_queue_capacity(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_healthy_check_timeout_ms(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_rtps_dump_file(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
-uint32_t size(
-        const std::string& xml_file)
+uint32_t size()
 {
     throw Unsupported("Unsupported");
 }
 
-std::vector<std::string> keys(
-        const std::string& xml_file)
+std::vector<std::string> keys()
 {
     throw Unsupported("Unsupported");
 }
 
 uint32_t interface_whitelist_size(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 uint32_t listening_ports_size(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 uint32_t tls_verify_mode_size(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 uint32_t tls_options_size(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 uint32_t tls_verify_paths_size(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_kind(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_send_buffer_size(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_receive_buffer_size(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_max_message_size(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_max_initial_peers_range(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_interface_whitelist(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& index)
 {
@@ -425,70 +377,60 @@ void clear_interface_whitelist(
 }
 
 void clear_ttl(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_non_blocking_send(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_output_port(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_wan_addr(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_keep_alive_frequency_ms(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_keep_alive_timeout_ms(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_max_logical_port(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_logical_port_range(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_logical_port_increment(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_listening_ports(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& index)
 {
@@ -496,56 +438,48 @@ void clear_listening_ports(
 }
 
 void clear_tls(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_tls_password(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_tls_private_key_file(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_tls_rsa_private_key_file(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_tls_cert_chain_file(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_tls_tmp_dh_file(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_tls_verify_file(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_tls_verify_mode(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& index)
 {
@@ -553,7 +487,6 @@ void clear_tls_verify_mode(
 }
 
 void clear_tls_options(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& index)
 {
@@ -561,7 +494,6 @@ void clear_tls_options(
 }
 
 void clear_tls_verify_paths(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& index)
 {
@@ -569,84 +501,72 @@ void clear_tls_verify_paths(
 }
 
 void clear_tls_verify_depth(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_tls_default_verify_path(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_tls_handshake_role(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_tls_server_name(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_calculate_crc(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_check_crc(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_enable_tcp_nodelay(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_segment_size(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_port_queue_capacity(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_healthy_check_timeout_ms(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_rtps_dump_file(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void set_kind(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& kind)
 {
@@ -664,7 +584,6 @@ void set_kind(
 }
 
 void set_send_buffer_size(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& send_buffer_size)
 {
@@ -672,7 +591,6 @@ void set_send_buffer_size(
 }
 
 void set_receive_buffer_size(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& receive_buffer_size)
 {
@@ -680,7 +598,6 @@ void set_receive_buffer_size(
 }
 
 void set_max_message_size(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& max_message_size)
 {
@@ -688,7 +605,6 @@ void set_max_message_size(
 }
 
 void set_max_initial_peers_range(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& max_initial_peers_range)
 {
@@ -696,7 +612,6 @@ void set_max_initial_peers_range(
 }
 
 void set_ttl(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& ttl)
 {
@@ -704,7 +619,6 @@ void set_ttl(
 }
 
 void set_non_blocking_send(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& non_blocking_send)
 {
@@ -712,7 +626,6 @@ void set_non_blocking_send(
 }
 
 void set_output_port(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& output_port)
 {
@@ -720,7 +633,6 @@ void set_output_port(
 }
 
 void set_wan_addr(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& wan_addr)
 {
@@ -728,7 +640,6 @@ void set_wan_addr(
 }
 
 void set_keep_alive_frequency_ms(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& keep_alive_frequency_ms)
 {
@@ -736,7 +647,6 @@ void set_keep_alive_frequency_ms(
 }
 
 void set_keep_alive_timeout_ms(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& keep_alive_timeout_ms)
 {
@@ -744,7 +654,6 @@ void set_keep_alive_timeout_ms(
 }
 
 void set_max_logical_port(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& max_logical_port)
 {
@@ -752,7 +661,6 @@ void set_max_logical_port(
 }
 
 void set_logical_port_range(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& logical_port_range)
 {
@@ -760,7 +668,6 @@ void set_logical_port_range(
 }
 
 void set_logical_port_increment(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& logical_port_increment)
 {
@@ -768,7 +675,6 @@ void set_logical_port_increment(
 }
 
 void set_tls_password(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_password)
 {
@@ -776,7 +682,6 @@ void set_tls_password(
 }
 
 void set_tls_private_key_file(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_private_key_file)
 {
@@ -784,7 +689,6 @@ void set_tls_private_key_file(
 }
 
 void set_tls_rsa_private_key_file(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_rsa_private_key_file)
 {
@@ -792,7 +696,6 @@ void set_tls_rsa_private_key_file(
 }
 
 void set_tls_cert_chain_file(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_cert_chain_file)
 {
@@ -800,7 +703,6 @@ void set_tls_cert_chain_file(
 }
 
 void set_tls_tmp_dh_file(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_tmp_dh_file)
 {
@@ -808,7 +710,6 @@ void set_tls_tmp_dh_file(
 }
 
 void set_tls_verify_file(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_verify_file)
 {
@@ -816,7 +717,6 @@ void set_tls_verify_file(
 }
 
 void set_tls_verify_depth(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_verify_depth)
 {
@@ -824,7 +724,6 @@ void set_tls_verify_depth(
 }
 
 void set_tls_default_verify_path(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_default_verify_path)
 {
@@ -832,7 +731,6 @@ void set_tls_default_verify_path(
 }
 
 void set_tls_handshake_role(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_handshake_role)
 {
@@ -840,7 +738,6 @@ void set_tls_handshake_role(
 }
 
 void set_tls_server_name(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_server_name)
 {
@@ -848,7 +745,6 @@ void set_tls_server_name(
 }
 
 void set_calculate_crc(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& calculate_crc)
 {
@@ -856,7 +752,6 @@ void set_calculate_crc(
 }
 
 void set_check_crc(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& check_crc)
 {
@@ -864,7 +759,6 @@ void set_check_crc(
 }
 
 void set_enable_tcp_nodelay(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& enable_tcp_nodelay)
 {
@@ -872,7 +766,6 @@ void set_enable_tcp_nodelay(
 }
 
 void set_segment_size(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& segment_size)
 {
@@ -880,7 +773,6 @@ void set_segment_size(
 }
 
 void set_port_queue_capacity(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& port_queue_capacity)
 {
@@ -888,7 +780,6 @@ void set_port_queue_capacity(
 }
 
 void set_healthy_check_timeout_ms(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& healthy_check_timeout_ms)
 {
@@ -896,7 +787,6 @@ void set_healthy_check_timeout_ms(
 }
 
 void set_rtps_dump_file(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& rtps_dump_file)
 {
@@ -904,7 +794,6 @@ void set_rtps_dump_file(
 }
 
 void set_interface_whitelist(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& ip_address,
         const std::string& index)
@@ -926,7 +815,6 @@ void set_interface_whitelist(
 }
 
 void set_listening_ports(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& port,
         const std::string& index)
@@ -935,7 +823,6 @@ void set_listening_ports(
 }
 
 void set_tls_verify_mode(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_verify_mode,
         const std::string& index)
@@ -944,7 +831,6 @@ void set_tls_verify_mode(
 }
 
 void set_tls_options(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_options,
         const std::string& index)
@@ -953,7 +839,6 @@ void set_tls_options(
 }
 
 void set_tls_verify_path(
-        const std::string& xml_file,
         const std::string& transport_descriptor_id,
         const std::string& tls_verify_path,
         const std::string& index)

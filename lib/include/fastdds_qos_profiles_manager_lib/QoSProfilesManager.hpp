@@ -27,21 +27,22 @@ namespace eprosima {
 namespace qosprof {
 
 /**
- * @brief Initialize XML workspace
+ * @brief Initialize eProsima QoS Profiles Manager Library XML workspace. This workspace gets related to the given
+ *  XML file, and all the Library API calls would be related to that XML file.
  *
  * @param xml_file Absolute/relative path to the XML file.
- * @param create_file bool create file if the flag is set and the file is not found
+ * @param create_file bool create file if the flag is set and the file is not found.
  *
- * @throw Error Exception if the workspace could not be initialized, or it was already initialized
+ * @throw Error Exception if the workspace could not be initialized, or it was already initialized.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void initialize(
         const std::string& xml_file,
         const bool create_file);
 
 /**
- * @brief Terminate XML workspace. If required to save or update the XML configuration in the filesystem,this method
- *        must be called to save them.
- *        If error occurred or resultant XML configuration is not valid, it will not save the XML configuration.
+ * @brief Terminate the eProsima QoS Profiles Manager Library XML workspace related to the specified XML file.
+ *  If changes required to be applied in the XML configuration file, this method would also apply them in filesystem.
+ *  If error occurred or resultant XML configuration is not valid, the XML configuration will not be modified.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void terminate();
 

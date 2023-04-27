@@ -35,7 +35,6 @@ namespace default_external_unicast_locators {
 /**
  * @brief Parse XML file and print the specific Domain Participant specific default external unicast locator.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be printed. If empty, the complete list is printed.
  *
@@ -47,14 +46,12 @@ namespace default_external_unicast_locators {
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific Domain Participant specific default external unicast locator kind.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be printed.
  *
@@ -66,14 +63,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_kind(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific Domain Participant specific default external unicast locator port.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be printed.
  *
@@ -85,14 +80,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_kind(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_port(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific Domain Participant specific default external unicast locator IP address.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be printed.
  *
@@ -104,7 +97,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_port(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_address(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index);
 
@@ -112,7 +104,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_address(
  * @brief Parse XML file and print the specific Domain Participant specific default external unicast locator
  *        externality.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be printed.
  *
@@ -124,14 +115,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_address(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_externality(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific Domain Participant specific default external unicast locator cost.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be printed.
  *
@@ -143,14 +132,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_externality(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_cost(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific Domain Participant specific default external unicast locator mask.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be printed.
  *
@@ -162,7 +149,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_cost(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_mask(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index);
 
@@ -173,7 +159,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_mask(
 /**
  * @brief Number of default external unicast locators in the Domain Participant.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  *
  * @return uint32_t Number of default external unicast locators in the list.
@@ -183,7 +168,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_mask(
  *        has not been set.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t size(
-        const std::string& xml_file,
         const std::string& profile_id);
 
 /************************************************************************/
@@ -193,7 +177,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t size(
 /**
  * @brief Remove specific Domain Participant default external unicast locator.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be removed. If empty, the complete list is removed.
  *
@@ -203,14 +186,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t size(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index);
 
 /**
  * @brief Remove specific Domain Participant default external unicast locator port.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be modified.
  *
@@ -220,14 +201,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_port(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index);
 
 /**
  * @brief Remove specific Domain Participant default external unicast locator IP address.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be modified.
  *
@@ -237,14 +216,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_port(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_address(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index);
 
 /**
  * @brief Remove specific Domain Participant default external unicast locator externality.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be modified.
  *
@@ -254,14 +231,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_address(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_externality(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index);
 
 /**
  * @brief Remove specific Domain Participant default external unicast locator cost.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be modified.
  *
@@ -271,14 +246,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_externality(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_cost(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index);
 
 /**
  * @brief Remove specific Domain Participant default external unicast locator mask.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be modified.
  *
@@ -288,7 +261,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_cost(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_mask(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index);
 
@@ -299,7 +271,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_mask(
 /**
  * @brief Append a new default external unicast locator with specified kind or update the existing locator kind.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] kind Default unicast locator kind.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
@@ -311,7 +282,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_mask(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_kind(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& kind,
         const std::string& index);
@@ -319,7 +289,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_kind(
 /**
  * @brief Append a default external unicast locator with specified port or update the existing locator port.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] port Default unicast locator port.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
@@ -331,7 +300,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_kind(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_port(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& port,
         const std::string& index);
@@ -339,7 +307,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_port(
 /**
  * @brief Append a default external unicast locator with specified IP address or update the existing locator IP address.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] address Default unicast locator IP address.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
@@ -351,7 +318,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_port(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_address(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& address,
         const std::string& index);
@@ -360,7 +326,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_address(
  * @brief Append a default external unicast locator with specified externality or update the existing locator
  *        externality.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] externality Default unicast locator externality.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
@@ -372,7 +337,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_address(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_externality(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& externality,
         const std::string& index);
@@ -380,7 +344,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_externality(
 /**
  * @brief Append a default external unicast locator with specified cost or update the existing locator cost.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] cost Default unicast locator cost.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
@@ -392,7 +355,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_externality(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_cost(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& cost,
         const std::string& index);
@@ -400,7 +362,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_cost(
 /**
  * @brief Append a default external unicast locator with specified mask or update the existing locator mask.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] mask Default unicast locator mask.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
@@ -412,7 +373,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_cost(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_mask(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& mask,
         const std::string& index);

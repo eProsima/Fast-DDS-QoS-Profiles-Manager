@@ -30,7 +30,6 @@ namespace qosprof_cli {
 void endpoint_subelement_parser(
         DDSEntity endpoint,
         CommonCommands command,
-        const std::string& filename,
         const std::string& profile_name,
         std::string& element,
         const std::vector<std::string>& values)
@@ -86,10 +85,10 @@ void endpoint_subelement_parser(
                         switch (endpoint)
                         {
                             case DDSEntity::DATAREADER:
-                                qosprof::data_reader::set_default_profile(filename, profile_name);
+                                qosprof::data_reader::set_default_profile(profile_name);
                                 break;
                             case DDSEntity::DATAWRITER:
-                                qosprof::data_writer::set_default_profile(filename, profile_name);
+                                qosprof::data_writer::set_default_profile(profile_name);
                                 break;
                             default:
                                 print_error = true;
@@ -163,7 +162,7 @@ void endpoint_subelement_parser(
 
         if (!print_usage)
         {
-            qos_parser(endpoint, command, filename, profile_name, subelement, values);
+            qos_parser(endpoint, command, profile_name, subelement, values);
         }
         else
         {

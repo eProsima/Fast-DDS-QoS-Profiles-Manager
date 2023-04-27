@@ -29,7 +29,6 @@ namespace qosprof_cli {
 
 void transport_subelement_parser(
         CommonCommands command,
-        const std::string& filename,
         const std::string& transport_identifier,
         std::string& element,
         const std::vector<std::string>& values)
@@ -80,7 +79,7 @@ void transport_subelement_parser(
                         print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
                         if (!print_usage)
                         {
-                            qosprof::transport_descriptor::clear_interface_whitelist(filename, transport_identifier,
+                            qosprof::transport_descriptor::clear_interface_whitelist(transport_identifier,
                                     key);
                         }
                         break;
@@ -88,19 +87,19 @@ void transport_subelement_parser(
                         print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
                         if (!print_usage)
                         {
-                            qosprof::transport_descriptor::print_interface_whitelist(filename, transport_identifier,
+                            qosprof::transport_descriptor::print_interface_whitelist(transport_identifier,
                                     key);
                         }
                         break;
                     case CommonCommands::QUERY:
                         // TODO: query kind should be passed in order to check the arguments and the amount of them
-                        //qosprof::transport_descriptor::interface_whitelist_size(filename, transport_identifier);
+                        //qosprof::transport_descriptor::interface_whitelist_size(transport_identifier);
                         break;
                     case CommonCommands::SET:
                         print_usage = !check_command_arguments(command, 1, values.size(), message.str(), true);
                         if (!print_usage)
                         {
-                            qosprof::transport_descriptor::set_interface_whitelist(filename, transport_identifier,
+                            qosprof::transport_descriptor::set_interface_whitelist(transport_identifier,
                                     values[DEFAULT_POSITION], key);
                         }
                         break;
@@ -152,14 +151,14 @@ void transport_subelement_parser(
                         print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
                         if (!print_usage)
                         {
-                            qosprof::transport_descriptor::clear_kind(filename, transport_identifier);
+                            qosprof::transport_descriptor::clear_kind(transport_identifier);
                         }
                         break;
                     case CommonCommands::PRINT:
                         print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
                         if (!print_usage)
                         {
-                            qosprof::transport_descriptor::print_kind(filename, transport_identifier);
+                            qosprof::transport_descriptor::print_kind(transport_identifier);
                         }
                         break;
                     case CommonCommands::QUERY:
@@ -194,7 +193,7 @@ void transport_subelement_parser(
                             {
                                 kind = values[DEFAULT_POSITION];
                             }
-                            qosprof::transport_descriptor::set_kind(filename, transport_identifier, kind);
+                            qosprof::transport_descriptor::set_kind(transport_identifier, kind);
                         }
                         break;
                 }

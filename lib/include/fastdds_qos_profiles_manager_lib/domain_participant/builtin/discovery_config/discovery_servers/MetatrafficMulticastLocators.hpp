@@ -40,7 +40,6 @@ namespace metatraffic_multicast_locators {
 /**
  * @brief Parse XML file and print the specific Domain Participant specific remote server metatraffic multicast locator.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] prefix Remote server GUID prefix.
  * @param[in] index Collection element to be printed. If empty, the complete list is printed.
@@ -54,7 +53,6 @@ namespace metatraffic_multicast_locators {
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
         const std::string& index);
@@ -63,7 +61,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
  * @brief Parse XML file and print the specific Domain Participant specific remote server metatraffic multicast locator
  *        kind.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] prefix Remote server GUID prefix.
  * @param[in] index Collection element to be printed.
@@ -76,7 +73,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_kind(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
         const std::string& index);
@@ -85,7 +81,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_kind(
  * @brief Parse XML file and print the specific Domain Participant specific remote server metatraffic multicast locator
  *        port.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] prefix Remote server GUID prefix.
  * @param[in] index Collection element to be printed.
@@ -98,7 +93,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_kind(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_port(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
         const std::string& index);
@@ -108,7 +102,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_port(
  *        physical port.
  *        TCP only.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] prefix Remote server GUID prefix.
  * @param[in] index Collection element to be printed.
@@ -121,7 +114,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_port(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_physical_port(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
         const std::string& index);
@@ -130,7 +122,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_physical_port(
  * @brief Parse XML file and print the specific Domain Participant specific remote server metatraffic multicast locator
  *        IP address.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] prefix Remote server GUID prefix.
  * @param[in] index Collection element to be printed.
@@ -143,7 +134,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_physical_port(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_address(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
         const std::string& index);
@@ -153,7 +143,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_address(
  *        unique LAN ID.
  *        TCPv4 only.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] prefix Remote server GUID prefix.
  * @param[in] index Collection element to be printed.
@@ -166,7 +155,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_address(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_unique_lan_id(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
         const std::string& index);
@@ -176,7 +164,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_unique_lan_id(
  *        WAN IPv4 address.
  *        TCPv4 only.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] prefix Remote server GUID prefix.
  * @param[in] index Collection element to be printed.
@@ -189,7 +176,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_unique_lan_id(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_wan_address(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
         const std::string& index);
@@ -201,7 +187,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_wan_address(
 /**
  * @brief Number of metatraffic multicast locators in the specific remote server of the specified Domain Participant.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] prefix Remote server GUID prefix.
  *
@@ -212,7 +197,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_wan_address(
  *        or the list has not been set.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t size(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix);
 
@@ -223,7 +207,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t size(
 /**
  * @brief Remove specific Domain Participant remote server metatraffic multicast locator.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] prefix Remote server GUID prefix.
  * @param[in] index Collection element to be removed. If empty, the complete list is removed.
@@ -234,7 +217,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t size(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
         const std::string& index);
@@ -242,7 +224,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
 /**
  * @brief Remove specific Domain Participant remote server metatraffic multicast locator port.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] prefix Remote server GUID prefix.
  * @param[in] index Collection element to be modified.
@@ -253,7 +234,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_port(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
         const std::string& index);
@@ -261,7 +241,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_port(
 /**
  * @brief Remove specific Domain Participant remote server metatraffic multicast locator physical port.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] prefix Remote server GUID prefix.
  * @param[in] index Collection element to be modified.
@@ -272,7 +251,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_port(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_physical_port(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
         const std::string& index);
@@ -280,7 +258,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_physical_port(
 /**
  * @brief Remove specific Domain Participant remote server metatraffic multicast locator IP address.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] prefix Remote server GUID prefix.
  * @param[in] index Collection element to be modified.
@@ -291,7 +268,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_physical_port(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_address(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
         const std::string& index);
@@ -299,7 +275,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_address(
 /**
  * @brief Remove specific Domain Participant remote server metatraffic multicast locator unique LAN ID.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] prefix Remote server GUID prefix.
  * @param[in] index Collection element to be modified.
@@ -310,7 +285,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_address(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_unique_lan_id(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
         const std::string& index);
@@ -318,7 +292,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_unique_lan_id(
 /**
  * @brief Remove specific Domain Participant remote server metatraffic multicast locator WAN IP address.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] prefix Remote server GUID prefix.
  * @param[in] index Collection element to be modified.
@@ -329,7 +302,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_unique_lan_id(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_wan_address(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
         const std::string& index);
@@ -342,7 +314,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_wan_address(
  * @brief Append a remote server metatraffic multicast locator with specified kind or update the remote server
  *        metatraffic multicast locator kind.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] prefix Remote server GUID prefix.
  * @param[in] kind Metatraffic multicast locator kind.
@@ -355,7 +326,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_wan_address(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_kind(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
         const std::string& kind,
@@ -365,7 +335,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_kind(
  * @brief Append a remote server metatraffic multicast locator with specified portUpdate the remote server metatraffic
  *        multicast locator port.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] prefix Remote server GUID prefix.
  * @param[in] port Metatraffic multicast locator port.
@@ -378,7 +347,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_kind(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_port(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
         const std::string& port,
@@ -388,7 +356,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_port(
  * @brief Append a remote server metatraffic multicast locator with specified physical port or update the remote server
  *        metatraffic multicast locator physical port (TCP only).
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] prefix Remote server GUID prefix.
  * @param[in] physical_port Metatraffic multicast locator TCP physical port.
@@ -401,7 +368,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_port(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_physical_port(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
         const std::string& physical_port,
@@ -411,7 +377,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_physical_port(
  * @brief Append a remote server metatraffic multicast locator with specified IP address or update the remote server
  *        metatraffic multicast locator IP address.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] prefix Remote server GUID prefix.
  * @param[in] address Metatraffic multicast locator IP address.
@@ -424,7 +389,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_physical_port(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_address(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
         const std::string& address,
@@ -434,7 +398,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_address(
  * @brief Append a remote server metatraffic multicast TCPv4 locator with specified unique LAN ID or update the remote
  *        server metatraffic multicast TCPv4 locator unique LAN ID.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] prefix Remote server GUID prefix.
  * @param[in] unique_lan_id Metatraffic multicast TCPv4 locator unique LAN ID.
@@ -447,7 +410,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_address(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_unique_lan_id(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
         const std::string& unique_lan_id,
@@ -457,7 +419,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_unique_lan_id(
  * @brief Append a remote server metatraffic multicast TCPv4 locator with specified WAN address or update the remote
  *        server metatraffic multicast TCPv4 locator WAN address.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] prefix Remote server GUID prefix.
  * @param[in] wan_address Metatraffic multicast TCPv4 locator WAN address.
@@ -470,7 +431,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_unique_lan_id(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_wan_address(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix,
         const std::string& wan_address,

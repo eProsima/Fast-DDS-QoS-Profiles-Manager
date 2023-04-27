@@ -39,7 +39,6 @@ namespace discovery_servers {
  * @brief Parse XML file and print specific Domain Participant builtin remote discovery server (Discovery Server
  *        specific).
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] prefix GUID prefix of the remote server to be printed. If empty, the complete list is printed.
  *
@@ -51,7 +50,6 @@ namespace discovery_servers {
  *        provided GUID prefix.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix);
 
@@ -62,7 +60,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
 /**
  * @brief Number of builtin remote discovery servers in the Domain Participant list.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  *
  * @return uint32_t Number of builtin remote discovery servers.
@@ -72,13 +69,11 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
  *        are no remote discovery servers configured.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t size(
-        const std::string& xml_file,
         const std::string& profile_id);
 
 /**
  * @brief List of the identifiers for every remote server included in the Domain Participant profile.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  *
  * @return std::vector<std::string> Identifier list.
@@ -87,7 +82,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t size(
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::vector<std::string> keys(
-        const std::string& xml_file,
         const std::string& profile_id);
 
 /************************************************************************/
@@ -97,7 +91,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::vector<std::string> keys(
 /**
  * @brief Remove specific Domain Participant discovery remote server from the list.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] prefix GUID prefix of the remote server to be removed. If empty, the complete list is removed.
  *
@@ -106,7 +99,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::vector<std::string> keys(
  *        specified GUID prefix does not exist either.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix);
 

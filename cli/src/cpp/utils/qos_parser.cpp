@@ -30,7 +30,6 @@ namespace qosprof_cli {
 void qos_parser(
         DDSEntity entity,
         CommonCommands command,
-        const std::string& filename,
         const std::string& profile_name,
         std::string& element,
         const std::vector<std::string>& values)
@@ -151,11 +150,11 @@ void qos_parser(
                             switch (entity)
                             {
                                 case DDSEntity::DATAREADER:
-                                    qosprof::data_reader::qos::set_durability_kind(filename, profile_name,
+                                    qosprof::data_reader::qos::set_durability_kind(profile_name,
                                             durability_kind);
                                     break;
                                 case DDSEntity::DATAWRITER:
-                                    qosprof::data_writer::qos::set_durability_kind(filename, profile_name,
+                                    qosprof::data_writer::qos::set_durability_kind(profile_name,
                                             durability_kind);
                                     break;
                                 default:
@@ -222,7 +221,7 @@ void qos_parser(
 
         if (!print_usage)
         {
-            reliability_qos_parser(entity, command, filename, profile_name, subelement, values, message);
+            reliability_qos_parser(entity, command, profile_name, subelement, values, message);
         }
         else
         {
@@ -264,7 +263,6 @@ void qos_parser(
 void reliability_qos_parser(
         DDSEntity entity,
         CommonCommands command,
-        const std::string& filename,
         const std::string& profile_name,
         std::string& element,
         const std::vector<std::string>& values,
@@ -350,11 +348,11 @@ void reliability_qos_parser(
                             switch (entity)
                             {
                                 case DDSEntity::DATAREADER:
-                                    qosprof::data_reader::qos::set_reliability_kind(filename, profile_name,
+                                    qosprof::data_reader::qos::set_reliability_kind(profile_name,
                                             reliability_kind);
                                     break;
                                 case DDSEntity::DATAWRITER:
-                                    qosprof::data_writer::qos::set_reliability_kind(filename, profile_name,
+                                    qosprof::data_writer::qos::set_reliability_kind(profile_name,
                                             reliability_kind);
                                     break;
                                 default:
@@ -392,7 +390,7 @@ void reliability_qos_parser(
                         subsubelement, values, message);
         if (!print_usage)
         {
-            duration_type_parser(duration_type, command, filename, profile_name, subsubelement, values, message);
+            duration_type_parser(duration_type, command, profile_name, subsubelement, values, message);
         }
         else
         {

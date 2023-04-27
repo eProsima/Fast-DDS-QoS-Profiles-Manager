@@ -32,7 +32,6 @@ namespace discovery_config {
 namespace discovery_servers {
 
 std::string print(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -40,21 +39,18 @@ std::string print(
 }
 
 uint32_t size(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::vector<std::string> keys(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix)
 {

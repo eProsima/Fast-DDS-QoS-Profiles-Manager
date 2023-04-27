@@ -42,14 +42,12 @@ namespace data_reader {
 /**
  * @brief Set the selected DataReader profile as default profile.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id DataReader profile identifier.
  *
  * @throw FileNotFound Exception if the provided XML file is not found/readable.
  * @throw ElementNotFound Exception if the specified profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_default_profile(
-        const std::string& xml_file,
         const std::string& profile_id);
 
 } // data_reader

@@ -36,7 +36,6 @@ namespace metatraffic_unicast_locators {
 /**
  * @brief Parse XML file and print the specific Domain Participant specific builtin metatraffic unicast locator.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be printed. If empty, the complete list is printed.
  *
@@ -48,14 +47,12 @@ namespace metatraffic_unicast_locators {
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific Domain Participant specific builtin metatraffic unicast locator kind.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be printed.
  *
@@ -67,14 +64,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_kind(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index);
 
 /**
  * @brief Parse XML file and print the specific Domain Participant specific builtin metatraffic unicast locator port.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be printed.
  *
@@ -86,7 +81,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_kind(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_port(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index);
 
@@ -95,7 +89,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_port(
  *        port.
  *        TCP only.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be printed.
  *
@@ -107,7 +100,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_port(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_physical_port(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index);
 
@@ -115,7 +107,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_physical_port(
  * @brief Parse XML file and print the specific Domain Participant specific builtin metatraffic unicast locator IP
  *        address.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be printed.
  *
@@ -127,7 +118,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_physical_port(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_address(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index);
 
@@ -136,7 +126,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_address(
  *        LAN ID.
  *        TCPv4 only.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be printed.
  *
@@ -148,7 +137,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_address(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_unique_lan_id(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index);
 
@@ -157,7 +145,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_unique_lan_id(
  *        address.
  *        TCPv4 only.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be printed.
  *
@@ -169,7 +156,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_unique_lan_id(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_wan_address(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index);
 
@@ -180,7 +166,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_wan_address(
 /**
  * @brief Number of builtin metatraffic unicast locators in the Domain Participant.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  *
  * @return uint32_t Number of builtin metatraffic unicast locators in the list.
@@ -190,7 +175,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_wan_address(
  *        has not been set.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t size(
-        const std::string& xml_file,
         const std::string& profile_id);
 
 /************************************************************************/
@@ -200,7 +184,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t size(
 /**
  * @brief Remove specific Domain Participant builtin metatraffic unicast locator.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be removed. If empty, the complete list is removed.
  *
@@ -210,14 +193,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t size(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index);
 
 /**
  * @brief Remove specific Domain Participant builtin metatraffic unicast locator port.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be modified.
  *
@@ -227,14 +208,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_port(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index);
 
 /**
  * @brief Remove specific Domain Participant builtin metatraffic unicast locator physical port.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be modified.
  *
@@ -244,14 +223,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_port(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_physical_port(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index);
 
 /**
  * @brief Remove specific Domain Participant builtin metatraffic unicast locator IP address.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be modified.
  *
@@ -261,14 +238,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_physical_port(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_address(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index);
 
 /**
  * @brief Remove specific Domain Participant builtin metatraffic unicast locator unique LAN ID.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be modified.
  *
@@ -278,14 +253,12 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_address(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_unique_lan_id(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index);
 
 /**
  * @brief Remove specific Domain Participant builtin metatraffic unicast locator WAN IP address.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be modified.
  *
@@ -295,7 +268,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_unique_lan_id(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_wan_address(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index);
 
@@ -307,7 +279,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_wan_address(
  * @brief Append a builtin metatraffic unicast locator with specified kind or update the builtin metatraffic unicast
  *        locator kind.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] kind Metatraffic unicast locator kind.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
@@ -319,7 +290,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_wan_address(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_kind(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& kind,
         const std::string& index);
@@ -328,7 +298,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_kind(
  * @brief Append a builtin metatraffic unicast locator with specified port or update the builtin metatraffic unicast
  *        locator port.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] port Metatraffic unicast locator port.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
@@ -340,7 +309,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_kind(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_port(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& port,
         const std::string& index);
@@ -349,7 +317,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_port(
  * @brief Append a builtin metatraffic unicast locator with specified physical port or update the builtin metatraffic
  *        unicast locator physical port (TCP only).
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] physical_port Metatraffic unicast locator TCP physical port.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
@@ -361,7 +328,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_port(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_physical_port(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& physical_port,
         const std::string& index);
@@ -370,7 +336,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_physical_port(
  * @brief Append a builtin metatraffic unicast locator with specified IP address or update the builtin metatraffic
  *        unicast locator IP address.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] address Metatraffic unicast locator IP address.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
@@ -382,7 +347,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_physical_port(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_address(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& address,
         const std::string& index);
@@ -391,7 +355,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_address(
  * @brief Append a builtin metatraffic unicast TCPv4 locator with specified unique LAN ID or update the builtin
  *        metatraffic unicast TCPv4 locator unique LAN ID.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] unique_lan_id Metatraffic unicast TCPv4 locator unique LAN ID.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
@@ -403,7 +366,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_address(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_unique_lan_id(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& unique_lan_id,
         const std::string& index);
@@ -412,7 +374,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_unique_lan_id(
  * @brief Append a builtin metatraffic unicast TCPv4 locator with specified WAN address or update the builtin
  *        metatraffic unicast TCPv4 locator WAN address.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] wan_address Metatraffic unicast TCPv4 locator WAN address.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
@@ -424,7 +385,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_unique_lan_id(
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_wan_address(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& wan_address,
         const std::string& index);

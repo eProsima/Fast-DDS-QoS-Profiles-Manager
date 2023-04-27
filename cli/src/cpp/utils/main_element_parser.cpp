@@ -28,7 +28,6 @@ namespace qosprof_cli {
 
 void main_element_parser(
         CommonCommands command,
-        const std::string& filename,
         int argc,
         char** argv)
 {
@@ -79,7 +78,7 @@ void main_element_parser(
         if (!print_usage)
         {
             endpoint_subelement_parser(((element == DATAREADER_ELEMENT) ?
-                    DDSEntity::DATAREADER : DDSEntity::DATAWRITER), command, filename, profile_name, subelement,
+                    DDSEntity::DATAREADER : DDSEntity::DATAWRITER), command, profile_name, subelement,
                     values);
         }
         else
@@ -121,7 +120,7 @@ void main_element_parser(
 
         if (!print_usage)
         {
-            participant_subelement_parser(command, filename, profile_name, subelement, values);
+            participant_subelement_parser(command, profile_name, subelement, values);
         }
         else
         {
@@ -151,7 +150,7 @@ void main_element_parser(
 
         if (!print_usage)
         {
-            transport_subelement_parser(command, filename, profile_name, subelement, values);
+            transport_subelement_parser(command, profile_name, subelement, values);
         }
         else
         {

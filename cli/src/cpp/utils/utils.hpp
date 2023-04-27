@@ -145,14 +145,12 @@ const std::regex bracket_pattern("\\[([^\\]]*)\\]");
  * @brief Participant builtin discovery config parser.
  *
  * @param[in] command Command kind.
- * @param[in] filename File to be modified.
  * @param[in] profile_name Domain Participant profile name.
  * @param[in] element String with the dot-separated subelements.
  * @param[in] values Vector of strings with the values passed to CLI.
  */
 void builtin_discovery_config_parser(
         CommonCommands command,
-        const std::string& filename,
         const std::string& profile_name,
         std::string& element,
         const std::vector<std::string>& values);
@@ -181,14 +179,12 @@ bool builtin_locator_parser(
  * @brief Participant builtin parser.
  *
  * @param[in] command Command kind.
- * @param[in] filename File to be modified.
  * @param[in] profile_name Domain Participant profile name.
  * @param[in] element String with the dot-separated subelements.
  * @param[in] values Vector of strings with the values passed to CLI.
  */
 void builtin_parser(
         CommonCommands command,
-        const std::string& filename,
         const std::string& profile_name,
         std::string& element,
         const std::vector<std::string>& values);
@@ -198,7 +194,6 @@ void builtin_parser(
  *
  * @param[in] endpoint Endpoint kind: DataReader | DataWriter.
  * @param[in] command Command kind.
- * @param[in] filename File to be modified.
  * @param[in] profile_name DataReader profile name.
  * @param[in] element String with the dot-separated subelements.
  * @param[in] values Vector of strings with the values passed to CLI.
@@ -206,7 +201,6 @@ void builtin_parser(
 void endpoint_subelement_parser(
         DDSEntity endpoint,
         CommonCommands command,
-        const std::string& filename,
         const std::string& profile_name,
         std::string& element,
         const std::vector<std::string>& values);
@@ -225,7 +219,6 @@ void endpoint_subelement_parser(
 void duration_type_parser(
         DurationTypeList duration_type,
         CommonCommands command,
-        const std::string& filename,
         const std::string& profile_name,
         std::string& element,
         const std::vector<std::string>& values,
@@ -244,7 +237,6 @@ void duration_type_parser(
 void external_locators_parser(
         ExternalLocatorsList list,
         CommonCommands command,
-        const std::string& filename,
         const std::string& profile_name,
         std::string& element,
         const std::vector<std::string>& values);
@@ -264,7 +256,6 @@ void external_locators_parser(
 void locators_parser(
         LocatorsList list,
         CommonCommands command,
-        const std::string& filename,
         const std::string& profile_name,
         std::string& element,
         const std::string& key,
@@ -275,13 +266,11 @@ void locators_parser(
  * @brief Parser for the main element to be configured.
  *
  * @param[in] command Command kind.
- * @param[in] filename File to be modified.
  * @param[in] argc Number of arguments passed to the parser.
  * @param[in] argv Arguments to be parsed.
  */
 void main_element_parser(
         CommonCommands command,
-        const std::string& filename,
         int argc,
         char** argv);
 
@@ -289,14 +278,12 @@ void main_element_parser(
  * @brief Parser for the participant main subelements.
  *
  * @param[in] command Command kind.
- * @param[in] filename File to be modified.
  * @param[in] profile_name Participant profile name.
  * @param[in] element String with the dot-separated subelements.
  * @param[in] values Vector of strings with the values passed to CLI.
  */
 void participant_subelement_parser(
         CommonCommands command,
-        const std::string& filename,
         const std::string& profile_name,
         std::string& element,
         const std::vector<std::string>& values);
@@ -313,7 +300,6 @@ void participant_subelement_parser(
 void qos_parser(
         DDSEntity entity,
         CommonCommands command,
-        const std::string& filename,
         const std::string& profile_name,
         std::string& element,
         const std::vector<std::string>& values);
@@ -331,7 +317,6 @@ void qos_parser(
 void reliability_qos_parser(
         DDSEntity entity,
         CommonCommands command,
-        const std::string& filename,
         const std::string& profile_name,
         std::string& element,
         const std::vector<std::string>& values,
@@ -347,7 +332,6 @@ void reliability_qos_parser(
  */
 void transport_subelement_parser(
         CommonCommands command,
-        const std::string& filename,
         const std::string& transport_identifier,
         std::string& element,
         const std::vector<std::string>& values);

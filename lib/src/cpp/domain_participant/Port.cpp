@@ -28,119 +28,102 @@ namespace domain_participant {
 namespace port {
 
 std::string print(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_base(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_domain_id_gain(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_participant_id_gain(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_offset_d0(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_offset_d1(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_offset_d2(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_offset_d3(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_base(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_domain_id_gain(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_participant_id_gain(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_offset_d0(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_offset_d1(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_offset_d2(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_offset_d3(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void set_base(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& port_base)
 {
@@ -148,7 +131,6 @@ void set_base(
 }
 
 void set_domain_id_gain(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& domain_id_gain)
 {
@@ -156,7 +138,6 @@ void set_domain_id_gain(
 }
 
 void set_participant_id_gain(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& domain_id_gain)
 {
@@ -164,7 +145,6 @@ void set_participant_id_gain(
 }
 
 void set_offset_d0(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& offset_d0)
 {
@@ -172,7 +152,6 @@ void set_offset_d0(
 }
 
 void set_offset_d1(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& offset_d1)
 {
@@ -180,7 +159,6 @@ void set_offset_d1(
 }
 
 void set_offset_d2(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& offset_d2)
 {
@@ -188,7 +166,6 @@ void set_offset_d2(
 }
 
 void set_offset_d3(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& offset_d3)
 {

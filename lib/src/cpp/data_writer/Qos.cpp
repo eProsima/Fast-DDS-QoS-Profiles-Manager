@@ -40,6 +40,7 @@ namespace qos {
  * @param[in] create_if_not_existent flag that enables the creation of the  element if it does not exist
  * @param[in] required_qos Required QoS TAG
  *
+ * @throw Error exception if XML workspace was not initialized
  * @throw ElementNotFound exception if expected node was not found and node creation was not required
  */
 void initialize_namespace(
@@ -48,6 +49,9 @@ void initialize_namespace(
         const bool create_if_not_existent,
         const std::string& required_qos)
 {
+    // Check if workspace was initialized
+    manager.is_initialized();
+
     // Iterate through required elements, and create them if not existent
     manager.move_to_root_node();
     manager.move_to_node(utils::tag::PROFILES, create_if_not_existent);
@@ -57,7 +61,6 @@ void initialize_namespace(
 }
 
 void set_durability_kind(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& kind)
 {
@@ -75,7 +78,6 @@ void set_durability_kind(
 }
 
 void set_reliability_kind(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& kind)
 {
@@ -93,7 +95,6 @@ void set_reliability_kind(
 }
 
 void set_reliability_max_blocking_time_sec(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& sec)
 {
@@ -111,7 +112,6 @@ void set_reliability_max_blocking_time_sec(
 }
 
 void set_reliability_max_blocking_time_nanosec(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& nanosec)
 {

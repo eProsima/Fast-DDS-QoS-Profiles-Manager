@@ -84,7 +84,7 @@ public:
     /**
      * @brief Method that checks if the XML workspace has been initialized.
      *
-     * @throw Error exception if Xerces XML workspace was not initialized
+     * @throw Error exception if XML workspace was not initialized
      *
      * @return true if XML workspace already initialized
      * @return false if XML workspace has not been initialized

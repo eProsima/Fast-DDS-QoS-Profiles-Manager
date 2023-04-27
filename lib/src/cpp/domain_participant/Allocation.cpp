@@ -28,315 +28,270 @@ namespace domain_participant {
 namespace allocations {
 
 std::string print(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_remote_locators(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_remote_locators_max_unicast(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_remote_locators_max_multicast(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_total_participants(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_total_participants_initial(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_total_participants_maximum(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_total_participants_increment(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_total_readers(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_total_readers_initial(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_total_readers_maximum(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_total_readers_increment(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_total_writers(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_total_writers_initial(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_total_writers_maximum(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_total_writers_increment(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_max_partitions(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_max_user_data(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_max_properties(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_send_buffers(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_send_buffers_preallocated_number(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_send_buffers_dynamic(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_remote_locators(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_remote_locators_max_unicast(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_remote_locators_max_multicast(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_total_participants(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_total_participants_initial(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_total_participants_maximum(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_total_participants_increment(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_total_readers(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_total_readers_initial(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_total_readers_maximum(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_total_readers_increment(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_total_writers(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_total_writers_initial(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_total_writers_maximum(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_total_writers_increment(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_max_partitions(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_max_user_data(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_max_properties(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_send_buffers(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_send_buffers_preallocated_number(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_send_buffers_preallocated_dynamic(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void set_remote_locators_max_unicast(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& max_unicast)
 {
@@ -344,7 +299,6 @@ void set_remote_locators_max_unicast(
 }
 
 void set_remote_locators_max_multicast(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& max_multicast)
 {
@@ -352,7 +306,6 @@ void set_remote_locators_max_multicast(
 }
 
 void set_total_participants_initial(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& initial)
 {
@@ -360,7 +313,6 @@ void set_total_participants_initial(
 }
 
 void set_total_participants_maximum(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& maximum)
 {
@@ -368,7 +320,6 @@ void set_total_participants_maximum(
 }
 
 void set_total_participants_increment(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& increment)
 {
@@ -376,7 +327,6 @@ void set_total_participants_increment(
 }
 
 void set_total_readers_initial(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& initial)
 {
@@ -384,7 +334,6 @@ void set_total_readers_initial(
 }
 
 void set_total_readers_maximum(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& maximum)
 {
@@ -392,7 +341,6 @@ void set_total_readers_maximum(
 }
 
 void set_total_readers_increment(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& increment)
 {
@@ -400,7 +348,6 @@ void set_total_readers_increment(
 }
 
 void set_total_writers_initial(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& initial)
 {
@@ -408,7 +355,6 @@ void set_total_writers_initial(
 }
 
 void set_total_writers_maximum(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& maximum)
 {
@@ -416,7 +362,6 @@ void set_total_writers_maximum(
 }
 
 void set_total_writers_increment(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& increment)
 {
@@ -424,7 +369,6 @@ void set_total_writers_increment(
 }
 
 void set_max_partitions(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& max_partitions)
 {
@@ -432,7 +376,6 @@ void set_max_partitions(
 }
 
 void set_max_user_data(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& max_user_data)
 {
@@ -440,7 +383,6 @@ void set_max_user_data(
 }
 
 void set_max_properties(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& max_properties)
 {
@@ -448,7 +390,6 @@ void set_max_properties(
 }
 
 void set_send_buffers_preallocated_number(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& send_buffers_preallocated_number)
 {
@@ -456,7 +397,6 @@ void set_send_buffers_preallocated_number(
 }
 
 void set_send_buffers_dynamic(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& send_buffers_dynamic)
 {

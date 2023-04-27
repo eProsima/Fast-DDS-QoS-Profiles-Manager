@@ -26,7 +26,6 @@ namespace qosprof_cli {
 
 void builtin_discovery_config_parser(
         CommonCommands command,
-        const std::string& filename,
         const std::string& profile_name,
         std::string& element,
         const std::vector<std::string>& values)
@@ -61,7 +60,7 @@ void builtin_discovery_config_parser(
                         DISCOVERY_CONFIG_SUBELEMENT, subelement, subsubelement, values, message);
         if (!print_usage)
         {
-            duration_type_parser(duration_type, command, filename, profile_name, subsubelement, values, message);
+            duration_type_parser(duration_type, command, profile_name, subsubelement, values, message);
         }
         else
         {
@@ -159,7 +158,6 @@ bool builtin_locator_parser(
 
 void builtin_parser(
         CommonCommands command,
-        const std::string& filename,
         const std::string& profile_name,
         std::string& element,
         const std::vector<std::string>& values)
@@ -186,7 +184,7 @@ void builtin_parser(
 
         if (!print_usage)
         {
-            builtin_discovery_config_parser(command, filename, profile_name, subelement, values);
+            builtin_discovery_config_parser(command, profile_name, subelement, values);
         }
         else
         {
@@ -215,8 +213,8 @@ void builtin_parser(
 
         if (!print_usage)
         {
-            external_locators_parser(ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST, command, filename,
-                    profile_name, subelement, values);
+            external_locators_parser(ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST, command, profile_name,
+                    subelement, values);
         }
         else
         {
@@ -252,7 +250,7 @@ void builtin_parser(
 
         if (!print_usage)
         {
-            locators_parser(locator_list, command, filename, profile_name, subsubelement, key, values, message);
+            locators_parser(locator_list, command, profile_name, subsubelement, key, values, message);
         }
         else
         {
