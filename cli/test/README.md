@@ -733,3 +733,7 @@ This document includes CLI commands and the expected CLI output in order to help
 
 This current test plan is focused only on the CLI usage and errors.
 Currently, this test plan is not concerned about the validity of the arguments passed to Fast DDS QoS Profiles Manager Library, nor about the handling of the returned information.
+
+## Known issues
+
+Currently, no known issues have been detected.
