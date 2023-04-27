@@ -157,7 +157,7 @@ bool XMLManager::is_initialized()
 void XMLManager::terminate()
 {
     std::string throw_error;
-    
+
     // Check if workspace was initialized
     if (alive)
     {
