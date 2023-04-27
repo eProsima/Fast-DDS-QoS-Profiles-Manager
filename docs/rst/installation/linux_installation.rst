@@ -145,21 +145,43 @@ Also, the *Documentation* tool has several dependencies described in the ``requi
 .. literalinclude:: /requirements.txt
     :language: text
 
-Once :ref:`the repository is downloaded <installation_download_project_source_linux>`, deploy the project in a python3 virtual environment and install the ``requirements.txt`` dependencies by running:
+.. important::
 
-.. code-block:: bash
+    Once :ref:`the repository is downloaded <installation_download_project_source_linux>`, deploy the project in a python3 virtual environment and install the ``requirements.txt`` dependencies by running:
 
-    # Python3 installation
-    sudo apt install python3.10-venv
+    .. code-block:: bash
 
-    # Virtual environment deployment
-    cd ~/fastdds_qosprofman_ws
-    python3 -m venv fastdds_qosprofman_venv
-    source fastdds_qosprofman_venv/bin/activate
+        # Python3 installation
+        sudo apt install python3.10-venv
 
-    # Required dependencies installation
-    pip3 install -r ~/fastdds_qosprofman_ws/src/Fast-DDS-QoS-Profiles-Manager/docs/requirements.txt
+        # Virtual environment deployment
+        cd <path_to_virtual_environment_directory>
+        python3 -m venv fastdds_qosprofman_venv
+        source fastdds_qosprofman_venv/bin/activate
 
+        # Required dependencies installation
+        pip3 install -r ~/fastdds_qosprofman_ws/src/Fast-DDS-QoS-Profiles-Manager/docs/requirements.txt
+
+    .. note::
+
+        The ``<path_to_virtual_environment_directory>`` could be inside the workspace directory if project is built using CMake.
+        As long as colcon performs a recursive search to build packages inside the workspace directory, it is recommended to deploy the virtual environment outside of the workspace directory in order to avoid conflicts.
+
+            .. tabs::
+
+                .. tab:: Building with colcon
+
+                        .. code-block:: bash
+
+                            # Virtual environment deployment
+                            cd ~
+
+                .. tab:: Building with CMake
+
+                        .. code-block:: bash
+
+                            # Virtual environment deployment
+                            cd ~/fastdds_qosprofman_ws
 
 .. _installation_download_project_source_linux:
 
