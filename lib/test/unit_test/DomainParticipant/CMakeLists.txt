@@ -43,6 +43,7 @@ file(GLOB_RECURSE LIBRARY_SOURCES
     ${PROJECT_SOURCE_DIR}/src/cpp/domain_participant/Port.cpp
     ${PROJECT_SOURCE_DIR}/src/cpp/domain_participant/PropertiesPolicy.cpp
     ${PROJECT_SOURCE_DIR}/src/cpp/exception/Exception.cpp
+    ${PROJECT_SOURCE_DIR}/src/cpp/QosProfilesManager.cpp
     ${PROJECT_SOURCE_DIR}/src/cpp/utils/ErrorHandlerXMLManager.cpp
     ${PROJECT_SOURCE_DIR}/src/cpp/utils/StringXMLManager.cpp
     ${PROJECT_SOURCE_DIR}/src/cpp/utils/XMLManager.cpp
