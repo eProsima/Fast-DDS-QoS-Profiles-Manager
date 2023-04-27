@@ -91,7 +91,7 @@ protected:
         }
 
         // Initialize the XML workspace
-        EXPECT_NO_THROW(initialize(xml_filename_, true));
+        EXPECT_NO_THROW(initialize(xml_filename_));
 
         // Passing an invalid index string must return BadParameter
         EXPECT_THROW(print_functor_(participant_profile_, std::string("invalid")), BadParameter);
@@ -307,7 +307,7 @@ TEST_F(DomainParticipantTests, default_profile_test)
     std::string another_participant_name_ = "second_participant_test";
 
     // Initialize the XML workspace
-    EXPECT_NO_THROW(initialize(xml_filename_, true));
+    EXPECT_NO_THROW(initialize(xml_filename_));
 
     // Try printing default profile for non-existing file
     EXPECT_THROW(print_default_profile(), FileNotFound);

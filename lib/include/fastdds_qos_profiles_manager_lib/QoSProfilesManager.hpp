@@ -31,14 +31,11 @@ namespace qosprof {
  *  XML file, and all the Library API calls would be related to that XML file.
  *
  * @param xml_file Absolute/relative path to the XML file.
- * @param create_file bool create file if the flag is set and the file is not found.
  *
  * @throw Error Exception if the workspace could not be initialized, or it was already initialized.
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void initialize(
-        const std::string& xml_file,
-        const bool create_file);
+        const std::string& xml_file);
 
 /**
  * @brief Terminate the eProsima QoS Profiles Manager Library XML workspace related to the specified XML file.

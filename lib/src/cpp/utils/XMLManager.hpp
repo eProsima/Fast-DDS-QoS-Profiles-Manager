@@ -66,13 +66,11 @@ public:
      *  and reads given xml_file document.
      *
      * @param[in] xml_file string with the file path
-     * @param[in] create_file bool create file if the flag is set
      *
      * @throw Error exception if Xerces XML workspace could not be initialized, or it was already initialized
      */
     void initialize(
-            const std::string& xml_file,
-            bool create_file);
+            const std::string& xml_file);
 
     /**
      * @brief Terminate XML workspace. If required to save or update the XML configuration in the filesystem,
@@ -177,7 +175,7 @@ public:
             const std::string& name);
 
     /**
-     * @brief Get the (unique) child node object that matches the given tag name.
+     * @brief Move the reference node to the (unique) child node object that matches the given tag name.
      *
      * @param[in] tag_name string with the node (<tag>) name
      * @param[in] create_if_not_existent flag to create node if it is not found
@@ -189,7 +187,8 @@ public:
             const bool create_if_not_existent);
 
     /**
-     * @brief Get the node object located in the index position. If empty index, current node is kept.
+     * @brief Move the reference node to  the node object located in the index position. If empty index, current
+     *        node is kept.
      *
      * @param[in] index string index of the node element
      * @param[in] default_tag_name string with the default node (<tag>) name required to create the node if required.
@@ -204,8 +203,8 @@ public:
             const bool create_if_not_existent);
 
     /**
-     * @brief Get the node object that matches the given tag name, and has the same attribute key-value pair
-     *        set as the given name-value pair.
+     * @brief Move the reference node to the node object that matches the given tag name, and has the same attribute
+     *        key-value pair set as the given name-value pair.
      *
      * @param[in] tag_name string with the node (<tag>) name
      * @param[in] name string key (attribute) name of the node element
@@ -221,12 +220,18 @@ public:
             const bool create_if_not_existent);
 
     /**
-     * @brief Gets the root node of the document
+     * @brief Move the reference node to the document root node.
+     *
+     * @param[in] create_if_not_existent flag to create node if it is not found
+     *
+     * @throw ElementNotFound exception if expected node was not found and node creation was not required
      */
-    void move_to_root_node();
+    void move_to_root_node(
+            const bool create_if_not_existent);
 
     /**
-     * @brief Get the locator node object found at index position. If empty index, current node is kept.
+     * @brief Move the reference node to  the locator node object found at index position. If empty index,
+     *        current node is kept.
      *
      * @param[in] index string index of the node element
      * @param[in] is_external flag to determine if the locator node is external or common
@@ -241,7 +246,8 @@ public:
             const bool create_if_not_existent);
 
     /**
-     * @brief Get the transport node object associated to the given identifier. New node is created if required.
+     * @brief Move the reference node to  the transport node object associated to the given identifier.
+     *        New node is created if required.
      *
      * @param[in] transport_id string with the node identifier
      * @param[in] create_if_not_existent flag to create node if it is not found

@@ -28,14 +28,13 @@ namespace eprosima {
 namespace qosprof {
 
 void initialize(
-        const std::string& xml_file,
-        const bool create_file)
+        const std::string& xml_file)
 {
     // Get singleton instance of manager
     eprosima::qosprof::utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
     // Initialize workspace and set up the manager with required information
-    manager.initialize(xml_file, create_file);
+    manager.initialize(xml_file);
 }
 
 void terminate()

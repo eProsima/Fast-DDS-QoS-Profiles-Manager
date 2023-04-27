@@ -51,7 +51,7 @@ void initialize_namespace(
     manager.is_initialized();
 
     // Iterate through required elements, and create them if not existent
-    manager.move_to_root_node();
+    manager.move_to_root_node(create_if_not_existent);
     manager.move_to_node(utils::tag::PROFILES, create_if_not_existent);
     manager.move_to_node(utils::tag::PARTICIPANT, utils::tag::PROFILE_NAME, profile_id, create_if_not_existent);
     manager.move_to_node(utils::tag::RTPS, create_if_not_existent);

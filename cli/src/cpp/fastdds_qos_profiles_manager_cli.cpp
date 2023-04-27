@@ -43,7 +43,7 @@ int main(
     // Open XML workspace
     try
     {
-        eprosima::qosprof::initialize(args[PARSER_FILE].asString(), command == SET_COMMAND);
+        eprosima::qosprof::initialize(args[PARSER_FILE].asString());
     }
     catch (const eprosima::qosprof::Exception& e)
     {
