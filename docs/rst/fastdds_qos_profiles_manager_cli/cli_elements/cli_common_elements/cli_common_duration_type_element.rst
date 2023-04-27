@@ -37,9 +37,16 @@ The duration type configurable ``<subelements>`` are explained in the table belo
       - Complex parameter
       - ``<sec_value>`` as ``int32_t`` |br| ``<nanosec_value>`` as ``uint32_t``
 
+Duration type can also be set in the following supported usages:
+
+* Setting an infinite duration: ``duration.<duration_type> infinite``
+
+* Setting the duration directly: ``duration.<duration_type> <sec_value> <nanosec_value>``
+
 .. note::
 
-    Duration type seconds can also be set with ``duration.<duration_type>``, similar to the infinite duration.
+    The duration can be directly set also by passing only the ``<sec_value>`` argument: ``duration.<duration_type> <sec_value>``
+
 
 The ``<duration_type>`` element is defined for each specific element.
 The list below includes the currently supported ``<duration_type>`` elements:
