@@ -197,7 +197,8 @@ void XMLManager::transform_standalone_to_rooted_structure()
                 xercesc::XMLString::transcode(utils::tag::EPROSIMA_URL));
 
             // Create copy of node
-            xercesc::DOMNode* copy_node = static_cast<xercesc::DOMNode*>(doc->createElement(reference_node->getNodeName()));
+            xercesc::DOMNode* copy_node =
+                    static_cast<xercesc::DOMNode*>(doc->createElement(reference_node->getNodeName()));
 
             // Recursive adoption to all child nodes:
             xercesc::DOMNodeList* root_child_nodes = reference_node->getChildNodes();
