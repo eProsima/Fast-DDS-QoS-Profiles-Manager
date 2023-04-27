@@ -61,7 +61,7 @@ This section deals with the required dependencies for each package included in t
 
 .. important::
 
-    The *Library* package is required for building the remain tool packages.
+    The *Library* package is required for building the remaining tool packages.
 
 Library tool
 ^^^^^^^^^^^^
@@ -100,7 +100,7 @@ GTest installation can be performed either following the `GTest installation ins
 CLI tool
 ^^^^^^^^
 
-The *eProsima Fast DDS QoS Profiles Manager CLI* depends on the tool suite *Library* and also on the following package.
+The *eProsima Fast DDS QoS Profiles Manager CLI* depends on the *Library tool* and also on the following package.
 
 Docopt
 """"""
@@ -122,7 +122,7 @@ GUI tool
 Documentation tool
 ^^^^^^^^^^^^^^^^^^
 
-The *eProsima Fast DDS QoS Profiles Manager Documentation* depends on the tool suite *Library* and also on the following package.
+The *eProsima Fast DDS QoS Profiles Manager Documentation* depends on the *Library tool* and also on the following packages.
 
 Doxygen
 """""""
@@ -135,23 +135,17 @@ In Ubuntu, the dependency can be installed running:
 
     sudo apt install doxygen
 
-Python3 virtual environment (recomended)
-""""""""""""""""""""""""""""""""""""""""
+Python3 virtual environment (recommended)
+"""""""""""""""""""""""""""""""""""""""""
 
 It is recommended to install the *Documentation* tool dependencies in a `python3 <https://www.python.org/downloads/>`_ virtual environment.
 That would avoid polluting the user's installation setup.
-Also, the *Documentation* tool has several dependencies described in the ``requirements.txt`` project file.
 
-.. literalinclude:: /requirements.txt
-    :language: text
-
-.. important::
-
-    Once :ref:`the repository is downloaded <installation_download_project_source_linux>`, deploy the project in a python3 virtual environment and install the ``requirements.txt`` dependencies by running:
+Deploy the project in a python3 virtual environment by running:
 
     .. code-block:: bash
 
-        # Python3 installation
+        # Python3 virtual environment installation
         sudo apt install python3.10-venv
 
         # Virtual environment deployment
@@ -159,29 +153,26 @@ Also, the *Documentation* tool has several dependencies described in the ``requi
         python3 -m venv fastdds_qosprofman_venv
         source fastdds_qosprofman_venv/bin/activate
 
-        # Required dependencies installation
-        pip3 install -r ~/fastdds_qosprofman_ws/src/Fast-DDS-QoS-Profiles-Manager/docs/requirements.txt
-
     .. note::
 
-        The ``<path_to_virtual_environment_directory>`` could be inside the workspace directory if project is built using CMake.
         As long as colcon performs a recursive search to build packages inside the workspace directory, it is recommended to deploy the virtual environment outside of the workspace directory in order to avoid conflicts.
 
-            .. tabs::
+Python3 package dependencies
+""""""""""""""""""""""""""""
 
-                .. tab:: Building with colcon
+The *Documentation* tool has several python3 dependencies described in the ``requirements.txt`` project file.
 
-                        .. code-block:: bash
+.. literalinclude:: /requirements.txt
+    :language: text
 
-                            # Virtual environment deployment
-                            cd ~
+.. important::
 
-                .. tab:: Building with CMake
+    Once :ref:`the repository is downloaded <installation_download_project_source_linux>`, the ``requirements.txt`` dependencies file can be installed by running:
 
-                        .. code-block:: bash
+    .. code-block:: bash
 
-                            # Virtual environment deployment
-                            cd ~/fastdds_qosprofman_ws
+        pip3 install -r ~/fastdds_qosprofman_ws/src/Fast-DDS-QoS-Profiles-Manager/docs/requirements.txt
+
 
 .. _installation_download_project_source_linux:
 
@@ -215,7 +206,7 @@ Create a workspace directory and download the project:
             These options can be also passed through a `colcon.meta <https://colcon.readthedocs.io/en/released/user/configuration.html?highlight=colcon.meta#using-meta-files>`_ file.
 
             For instance, the *Library* and *Documentation* test suites building is enabled by building with the CMake option `EPROSIMA_BUILD_TESTS`.
-            If GTest repository has been included in the workspace directory, add the GTest dependency (``"googletest-distribution"``) in both *Library* and *Documentation* `colcon.pkg <https://colcon.readthedocs.io/en/released/user/configuration.html?highlight=colcon.meta#colcon-pkg-files>`_ files.
+            If GTest repository has been included in the workspace directory, add the GTest dependency (``"googletest-distribution"``) in the *Library* `colcon.pkg <https://colcon.readthedocs.io/en/released/user/configuration.html?highlight=colcon.meta#colcon-pkg-files>`_ file.
             Also, colcon provides `certain arguments <https://colcon.readthedocs.io/en/released/reference/package-selection-arguments.html>`_ to perform package selection, excluding undesired packages or including specific packages in the build process.
 
             Thus, the following command would build the *Library* and *Documentation* tools with its test suite.
@@ -304,19 +295,7 @@ In order to run the CLI, please, ensure to source the environment:
 
     fastddsqosprof -v
 
-.. note::
-
-    A complete example of the *CLI* is included in the *eProsima Fast DDS QoS Profiles Manager* repository.
-    It depends on `jq <https://stedolan.github.io/jq/>`_ in order to parse the deployment information contained in a JSON file.
-    The instructions below would run the example and generate several XML configuration files.
-
-    .. code-block:: bash
-
-        sudo apt install jq
-        cd ~/fastdds_qosprofman_ws/src/Fast-DDS-QoS-Profiles-Manager/cli/examples/ExternalLocatorFeatureConfigurationExample
-        bash cli_example_script.sh
-
-
+Next steps: please look at the `examples <https://github.com/eProsima/Fast-DDS-QoS-Profiles-Manager/tree/main/cli/examples>`_. Each example should have its ``README`` explaining the use case and how to launch it.
 
 Local documentation
 -------------------
