@@ -39,7 +39,7 @@ namespace builtin {
  *
  * @return std::string XML section containing the specific Domain Participant builtin configuration.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        builtin element does not exist.
  */
@@ -53,7 +53,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
  *
  * @return std::string Domain Participant specific avoid_builtin_multicast flag.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        corresponding builtin flag does not exist.
  */
@@ -67,7 +67,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_avoid_builtin_multicast(
  *
  * @return std::string Domain Participant specific use writer liveliness protocol flag.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        corresponding builtin flag does not exist.
  */
@@ -81,7 +81,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_use_writer_liveliness_prot
  *
  * @return std::string Domain Participant builtin DataReaders History Memory Policy.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        corresponding builtin History Memory Policy does not exist.
  */
@@ -95,7 +95,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_reader_history_memory_poli
  *
  * @return std::string Domain Participant builtin DataWriters History Memory Policy.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        corresponding builtin History Memory Policy does not exist.
  */
@@ -109,7 +109,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_writer_history_memory_poli
  *
  * @return std::string Domain Participant builtin DataReaders payload size.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        corresponding builtin payload size element does not exist.
  */
@@ -123,7 +123,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_reader_payload_size(
  *
  * @return std::string Domain Participant builtin DataWriters payload size.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        corresponding builtin payload size element does not exist.
  */
@@ -138,7 +138,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_writer_payload_size(
  *
  * @return std::string Domain Participant builtin mutation tries.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        builtin mutation tries element does not exist.
  */
@@ -154,7 +154,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_mutation_tries(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
@@ -165,7 +165,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_avoid_builtin_multicast(
@@ -176,7 +176,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_avoid_builtin_multicast(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_use_writer_liveliness_protocol(
@@ -187,7 +187,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_use_writer_liveliness_protocol(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_reader_history_memory_policy(
@@ -198,7 +198,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_reader_history_memory_policy(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_writer_history_memory_policy(
@@ -209,7 +209,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_writer_history_memory_policy(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_reader_payload_size(
@@ -220,7 +220,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_reader_payload_size(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_witer_payload_size(
@@ -231,7 +231,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_witer_payload_size(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_mutation_tries(

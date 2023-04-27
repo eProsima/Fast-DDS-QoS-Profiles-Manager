@@ -40,7 +40,7 @@ namespace discovery_config {
  *
  * @return std::string XML section containing the specific Domain Participant builtin discovery configuration.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        builtin discovery configuration section does not exist.
  */
@@ -54,7 +54,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
  *
  * @return std::string Domain Participant specific builtin discovery protocol.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        builtin discovery protocol element does not exist.
  */
@@ -68,7 +68,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_discovery_protocol(
  *
  * @return std::string Domain Participant specific builtin discovery ignore participant flags.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        builtin discovery flag does not exist.
  */
@@ -82,7 +82,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_ignore_participant_flags(
  *
  * @return std::string Domain Participant specific builtin discovery EDP flag.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        builtin discovery flag does not exist.
  */
@@ -96,7 +96,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_edp(
  *
  * @return std::string Domain Participant specific builtin discovery simple EDP configuration.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        builtin discovery simple EDP configuration does not exist.
  */
@@ -110,7 +110,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_simple_edp(
  *
  * @return std::string Domain Participant specific builtin discovery simple EDP pubwriter_subreader flag configuration.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        builtin discovery simple EDP configuration flag does not exist.
  */
@@ -124,7 +124,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_simple_edp_pubwriter_subre
  *
  * @return std::string Domain Participant specific builtin discovery simple EDP pubreader_subwriter flag configuration.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        builtin discovery simple EDP configuration flag does not exist.
  */
@@ -138,7 +138,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_simple_edp_pubreader_subwr
  *
  * @return std::string Domain Participant specific builtin discovery lease duration.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        builtin discovery lease duration element does not exist.
  */
@@ -152,7 +152,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_lease_duration(
  *
  * @return std::string Domain Participant specific builtin discovery lease duration (seconds member).
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        builtin discovery lease duration seconds element does not exist.
  */
@@ -166,7 +166,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_lease_duration_sec(
  *
  * @return std::string Domain Participant specific builtin discovery lease duration (nanoseconds member).
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        builtin discovery lease duration nanoseconds element does not exist.
  */
@@ -180,7 +180,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_lease_duration_nanosec(
  *
  * @return std::string Domain Participant specific builtin discovery lease announcement.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        builtin discovery lease announcement element does not exist.
  */
@@ -194,7 +194,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_lease_announcement(
  *
  * @return std::string Domain Participant specific builtin discovery lease announcement (seconds member).
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        builtin discovery lease announcement seconds element does not exist.
  */
@@ -208,7 +208,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_lease_announcement_sec(
  *
  * @return std::string Domain Participant specific builtin discovery lease announcement (nanoseconds member).
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        builtin discovery lease announcement nanoseconds element does not exist.
  */
@@ -222,7 +222,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_lease_announcement_nanosec
  *
  * @return std::string Domain Participant specific builtin discovery initial announcements configuration.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        builtin discovery initial announcements element does not exist.
  */
@@ -236,7 +236,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_initial_announcements(
  *
  * @return std::string Domain Participant specific builtin discovery number of initial announcements.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        builtin discovery initial announcements count element does not exist.
  */
@@ -250,7 +250,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_initial_announcements_coun
  *
  * @return std::string Domain Participant specific builtin discovery initial announcements duration.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        builtin discovery initial announcements duration element does not exist.
  */
@@ -265,7 +265,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_initial_announcements_peri
  *
  * @return std::string Domain Participant specific builtin discovery initial announcement duration (seconds member).
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        builtin discovery initial announcement duration seconds element does not exist.
  */
@@ -280,7 +280,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_initial_announcements_peri
  *
  * @return std::string Domain Participant specific builtin discovery lease announcement duration (nanoseconds member).
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        builtin discovery lease announcement duration nanoseconds element does not exist.
  */
@@ -295,7 +295,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_initial_announcements_peri
  *
  * @return std::string Domain Participant specific builtin discovery client announcement period.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        builtin discovery client announcement period element does not exist.
  */
@@ -309,7 +309,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_client_announcement_period
  *
  * @return std::string Domain Participant specific builtin discovery client announcement period (seconds member).
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        builtin discovery client announcement period seconds element does not exist.
  */
@@ -324,7 +324,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_client_announcement_period
  *
  * @return std::string Domain Participant specific builtin discovery client announcement period (nanoseconds member).
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        builtin discovery client announcement period nanoseconds element does not exist.
  */
@@ -340,7 +340,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_client_announcement_period
  *
  * @return std::string Domain Participant specific builtin discovery specific Static EDP XML configuration file.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        Static EDP XML configuration files element is not defined, or the list does not contain any element in index
  *        position.
@@ -361,7 +361,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_static_edp_xml_config(
  *
  * @return uint32_t Number of builtin discovery Static EDP XML configuration files.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or there
  *        are no Static EDP XML files configured.
  */
@@ -377,7 +377,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t static_edp_xml_config_size(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
@@ -388,7 +388,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_discovery_protocol(
@@ -399,7 +399,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_discovery_protocol(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_ignore_participant_flags(
@@ -410,7 +410,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_ignore_participant_flags(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_edp(
@@ -421,7 +421,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_edp(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_simple_edp(
@@ -432,7 +432,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_simple_edp(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_simple_edp_pubwriter_subreader(
@@ -443,7 +443,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_simple_edp_pubwriter_subreader(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_simple_edp_edp_pubreader_subwriter(
@@ -454,7 +454,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_simple_edp_edp_pubreader_subwrite
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_lease_duration(
@@ -465,7 +465,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_lease_duration(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_lease_duration_sec(
@@ -476,7 +476,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_lease_duration_sec(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_lease_duration_nanosec(
@@ -487,7 +487,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_lease_duration_nanosec(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_lease_announcement(
@@ -498,7 +498,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_lease_announcement(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_lease_announcement_sec(
@@ -509,7 +509,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_lease_announcement_sec(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_lease_announcement_nanosec(
@@ -520,7 +520,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_lease_announcement_nanosec(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_initial_announcements(
@@ -531,7 +531,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_initial_announcements(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_initial_announcements_count(
@@ -542,7 +542,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_initial_announcements_count(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_initial_announcements_period(
@@ -553,7 +553,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_initial_announcements_period(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_initial_announcements_period_sec(
@@ -564,7 +564,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_initial_announcements_period_sec(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_initial_announcements_period_nanosec(
@@ -575,7 +575,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_initial_announcements_period_nano
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_client_announcement_period(
@@ -586,7 +586,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_client_announcement_period(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_client_announcement_period_sec(
@@ -597,7 +597,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_client_announcement_period_sec(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_client_announcement_period_nanosec(
@@ -609,7 +609,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_client_announcement_period_nanose
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be removed. If empty, the complete collection is erased.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if
  *        the element does not exist in the collection if an index is provided..
  * @throw BadParameter Exception if the index is not an integer.
@@ -805,7 +805,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_client_announcement_period_nanosec(
  * @throw ElementInvalid Exception if the provided path is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_static_edp_xml_config(

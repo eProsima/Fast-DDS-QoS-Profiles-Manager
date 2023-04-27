@@ -41,7 +41,7 @@ namespace properties_policy {
  *
  * @return std::string XML section containing the specific property.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/Property name is not found in the XML
  *        file or the properties policy element does not exist.
  */
@@ -57,7 +57,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
  *
  * @return std::string Property value.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/Property name is not found in the XML
  *        file or the properties policy element does not exist.
  */
@@ -73,7 +73,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_value(
  *
  * @return std::string Property propagate attribute.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/Property name is not found in the XML
  *        file or the properties policy element does not exist.
  */
@@ -92,7 +92,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_propagate(
  *
  * @return uint32_t Number of properties.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t size(
@@ -106,7 +106,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t size(
  * @return std::vector<std::string> Identifier list.
  *         Empty list if there are no properties.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::vector<std::string> keys(
@@ -122,7 +122,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::vector<std::string> keys(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] property_id Property name to be removed. If empty, every property is removed from the profile.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/Property is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
@@ -135,7 +135,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] property_id Property name which value is to be removed.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/Property is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_value(
@@ -148,7 +148,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_value(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] property_id Property name which propagate attribute is to be removed.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/Property is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_propagate(

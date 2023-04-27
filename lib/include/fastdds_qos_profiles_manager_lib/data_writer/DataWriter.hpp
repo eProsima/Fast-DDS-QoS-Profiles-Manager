@@ -44,7 +44,7 @@ namespace data_writer {
  *
  * @param[in] profile_id DataWriter profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_default_profile(

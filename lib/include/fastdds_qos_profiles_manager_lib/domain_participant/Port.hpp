@@ -39,7 +39,7 @@ namespace port {
  *
  * @return std::string XML section containing the port parameters configuration.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        port parameters configuration element does not exist.
  */
@@ -53,7 +53,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
  *
  * @return std::string Base port parameter.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        base port parameter has not been set.
  */
@@ -67,7 +67,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_base(
  *
  * @return std::string Domain ID gain port parameter.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        domain ID gain port parameter has not been set.
  */
@@ -81,7 +81,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_domain_id_gain(
  *
  * @return std::string Participant ID gain port parameter.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        participant ID gain port parameter has not been set.
  */
@@ -95,7 +95,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_participant_id_gain(
  *
  * @return std::string Multicast metadata offset port parameter.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        multicast metadata offset port parameter has not been set.
  */
@@ -109,7 +109,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_offset_d0(
  *
  * @return std::string Unicast metadata offset port parameter.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        unicast metadata offset port parameter has not been set.
  */
@@ -123,7 +123,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_offset_d1(
  *
  * @return std::string Multicast user data offset port parameter.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        multicast user data offset port parameter has not been set.
  */
@@ -137,7 +137,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_offset_d2(
  *
  * @return std::string Unicast user data offset port parameter.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        user data metadata offset port parameter has not been set.
  */
@@ -153,7 +153,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_offset_d3(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
@@ -164,7 +164,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_base(
@@ -175,7 +175,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_base(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_domain_id_gain(
@@ -186,7 +186,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_domain_id_gain(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_participant_id_gain(
@@ -197,7 +197,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_participant_id_gain(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_offset_d0(
@@ -208,7 +208,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_offset_d0(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_offset_d1(
@@ -219,7 +219,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_offset_d1(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_offset_d2(
@@ -230,7 +230,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_offset_d2(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_offset_d3(

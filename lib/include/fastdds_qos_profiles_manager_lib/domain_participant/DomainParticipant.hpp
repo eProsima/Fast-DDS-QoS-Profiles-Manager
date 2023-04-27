@@ -39,7 +39,7 @@ namespace domain_participant {
  *
  * @return std::string XML section containing the specific Domain Participant profile.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
@@ -50,7 +50,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
  *
  * @return std::string Domain Participant default profile.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if there is no default Domain Participant profile in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_default_profile();
@@ -62,7 +62,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_default_profile();
  *
  * @return std::string Domain Participant Domain ID.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        Domain ID has not been set in the profile.
  */
@@ -76,7 +76,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_domain_id(
  *
  * @return std::string Domain Participant name.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        name has not been set in the profile.
  */
@@ -90,7 +90,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_name(
  *
  * @return std::string Domain Participant ignore non matching locators flag.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        ignore non matching locators flag has not been set in the profile.
  */
@@ -104,7 +104,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_ignore_non_matching_locato
  *
  * @return std::string Domain Participant send socket buffer size.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        send socket buffer size has not been set in the profile.
  */
@@ -118,7 +118,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_send_socket_buffer_size(
  *
  * @return std::string Domain Participant listen socket buffer size.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        listen socket buffer size has not been set in the profile.
  */
@@ -132,7 +132,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_listen_socket_buffer_size(
  *
  * @return std::string Domain Participant ID.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        Domain Participant ID has not been set in the profile.
  */
@@ -147,7 +147,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_participant_id(
  *
  * @return std::string Domain Participant specific user transport.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        list does not contain any element in index position.
  * @throw BadParameter Exception if the index is not an integer.
@@ -163,7 +163,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_user_transports(
  *
  * @return std::string Domain Participant use builtin trasports flag.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        use builtin trasports flag has not been set in the profile.
  */
@@ -178,7 +178,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_use_builtin_transports(
  *
  * @return std::string Domain Participant specific user data.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        list does not contain any element in index position.
  * @throw BadParameter Exception if the index is not an integer.
@@ -194,7 +194,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_user_data(
  *
  * @return std::string Domain Participant GUID prefix.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        GUID prefix has not been set in the profile.
  */
@@ -210,7 +210,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_prefix(
  *
  * @return uint32_t Number of Domain Participant profiles in the XML file.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t size();
 
@@ -220,7 +220,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t size();
  * @return std::vector<std::string> Identifier list.
  *         Empty list if there are no Domain Participant profiles.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::vector<std::string> keys();
 
@@ -231,7 +231,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::vector<std::string> keys();
  *
  * @return uint32_t Number of user transports in the list.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t user_transports_size(
@@ -244,7 +244,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t user_transports_size(
  *
  * @return uint32_t Number of user data elements in the list.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t user_data_size(
@@ -259,7 +259,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t user_data_size(
  *
  * @param[in] profile_id Domain participant profile identifier. If empty, every Domain Participant profile is deleted.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
@@ -268,7 +268,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
 /**
  * @brief Remove the is_default_profile attribute from the default Domain Participant profile.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_default_profile();
 
@@ -277,7 +277,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_default_profile();
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_domain_id(
@@ -288,7 +288,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_domain_id(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_name(
@@ -299,7 +299,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_name(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_ignore_non_matching_locators(
@@ -310,7 +310,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_ignore_non_matching_locators(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_send_socket_buffer_size(
@@ -321,7 +321,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_send_socket_buffer_size(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_listen_socket_buffer_size(
@@ -332,7 +332,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_listen_socket_buffer_size(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_participant_id(
@@ -344,7 +344,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_participant_id(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be removed. If empty, the complete collection is erased.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if
  *        the element does not exist in the collection if an index is provided.
  * @throw BadParameter Exception if the index is not an integer.
@@ -358,7 +358,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_user_transports(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_use_builtin_transports(
@@ -370,7 +370,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_use_builtin_transports(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] index Collection element to be removed. If empty, the complete collection is erased.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if
  *        the element does not exist in the collection if an index is provided.
  * @throw BadParameter Exception if the index is not an integer.
@@ -384,7 +384,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_user_data(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_prefix(
@@ -401,7 +401,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_prefix(
  *
  * @param[in] profile_id Domain participant profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_default_profile(
@@ -517,7 +517,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_prefix(
  * @throw ElementInvalid Exception if the provided Transport descriptor profile identifier is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_user_transports(
@@ -535,7 +535,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_user_transports(
  * @throw ElementInvalid Exception if the provided user data is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_user_data(

@@ -46,7 +46,7 @@ namespace metatraffic_unicast_locators {
  *
  * @return std::string XML section containing the Domain Participant specific remote server metatraffic unicast locator.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML
  *        file, the list element does not exist, or the list does not contain any element in index position.
  * @throw BadParameter Exception if the index is not an integer.
@@ -66,7 +66,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
  *
  * @return std::string Domain Participant specific remote server metatraffic unicast locator kind.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML
  *        file, the list element does not exist, or the list does not contain any element in index position.
  * @throw BadParameter Exception if the index is not an integer.
@@ -86,7 +86,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_kind(
  *
  * @return std::string Domain Participant specific remote server metatraffic unicast locator port.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML
  *        file, the list element does not exist, or the list does not contain any element in index position.
  * @throw BadParameter Exception if the index is not an integer.
@@ -107,7 +107,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_port(
  *
  * @return std::string Domain Participant specific remote server metatraffic unicast locator TCP physical port.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML
  *        file, the list element does not exist, or the list does not contain any element in index position.
  * @throw BadParameter Exception if the index is not an integer.
@@ -127,7 +127,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_physical_port(
  *
  * @return std::string Domain Participant specific remote server metatraffic unicast locator IP address.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML
  *        file, the list element does not exist, or the list does not contain any element in index position.
  * @throw BadParameter Exception if the index is not an integer.
@@ -148,7 +148,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_address(
  *
  * @return std::string Domain Participant specific remote server metatraffic unicast locator TCPv4 unique LAN ID.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML
  *        file, the list element does not exist, or the list does not contain any element in index position.
  * @throw BadParameter Exception if the index is not an integer.
@@ -169,7 +169,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_unique_lan_id(
  *
  * @return std::string Domain Participant specific remote server metatraffic unicast locator TCPv4 WAN IP address.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML
  *        file, the list element does not exist, or the list does not contain any element in index position.
  * @throw BadParameter Exception if the index is not an integer.
@@ -191,7 +191,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_wan_address(
  *
  * @return uint32_t Number of metatraffic unicast locators in the remote server list.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML file
  *        or the list has not been set.
  */
@@ -210,7 +210,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t size(
  * @param[in] prefix Remote server GUID prefix.
  * @param[in] index Collection element to be removed. If empty, the complete list is removed.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML file
  *        or if the element does not exist in the collection.
  * @throw BadParameter Exception if the index is not an integer.
@@ -227,7 +227,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
  * @param[in] prefix Remote server GUID prefix.
  * @param[in] index Collection element to be modified.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML file
  *        or if the element does not exist in the collection.
  * @throw BadParameter Exception if the index is not an integer.
@@ -244,7 +244,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_port(
  * @param[in] prefix Remote server GUID prefix.
  * @param[in] index Collection element to be modified.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML file
  *        or if the element does not exist in the collection.
  * @throw BadParameter Exception if the index is not an integer.
@@ -261,7 +261,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_physical_port(
  * @param[in] prefix Remote server GUID prefix.
  * @param[in] index Collection element to be modified.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML file
  *        or if the element does not exist in the collection.
  * @throw BadParameter Exception if the index is not an integer.
@@ -278,7 +278,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_address(
  * @param[in] prefix Remote server GUID prefix.
  * @param[in] index Collection element to be modified.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML file
  *        or if the element does not exist in the collection.
  * @throw BadParameter Exception if the index is not an integer.
@@ -295,7 +295,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_unique_lan_id(
  * @param[in] prefix Remote server GUID prefix.
  * @param[in] index Collection element to be modified.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML file
  *        or if the element does not exist in the collection.
  * @throw BadParameter Exception if the index is not an integer.
@@ -321,7 +321,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_wan_address(
  * @throw ElementInvalid Exception if the provided locator kind is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML
  *        file, the list element does not exist, or the list does not contain any element in index position.
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_kind(
@@ -342,7 +342,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_kind(
  * @throw ElementInvalid Exception if the provided locator port is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML
  *        file, the list element does not exist, or the list does not contain any element in index position.
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_port(
@@ -363,7 +363,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_port(
  * @throw ElementInvalid Exception if the provided locator physical port is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML
  *        file, the list element does not exist, or the list does not contain any element in index position.
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_physical_port(
@@ -384,7 +384,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_physical_port(
  * @throw ElementInvalid Exception if the provided locator IP address is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML
  *        file, the list element does not exist, or the list does not contain any element in index position.
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_address(
@@ -405,7 +405,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_address(
  * @throw ElementInvalid Exception if the provided locator identifier is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML
  *        file, the list element does not exist, or the list does not contain any element in index position.
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_unique_lan_id(
@@ -426,7 +426,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_unique_lan_id(
  * @throw ElementInvalid Exception if the provided locator IP address is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/GUID prefix is not found in the XML
  *        file, the list element does not exist, or the list does not contain any element in index position.
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_wan_address(

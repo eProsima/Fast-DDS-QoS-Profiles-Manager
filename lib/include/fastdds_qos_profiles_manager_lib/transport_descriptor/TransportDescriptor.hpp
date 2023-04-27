@@ -40,7 +40,7 @@ namespace transport_descriptor {
  *
  * @return std::string XML section containing the specific transport descriptor profile.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
@@ -53,7 +53,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
  *
  * @return std::string Transport Descriptor kind
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_kind(
@@ -66,7 +66,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_kind(
  *
  * @return std::string Transport descriptor send buffer size.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        send buffer size element has not been set in the profile.
  */
@@ -80,7 +80,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_send_buffer_size(
  *
  * @return std::string Transport descriptor receive buffer size.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        receive buffer size element has not been set in the profile.
  */
@@ -94,7 +94,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_receive_buffer_size(
  *
  * @return std::string Transport descriptor maximum message size.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        maximum message size element has not been set in the profile.
  */
@@ -108,7 +108,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_max_message_size(
  *
  * @return std::string Transport descriptor maximum initial peers range.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        maximum initial peers range element has not been set in the profile.
  */
@@ -123,7 +123,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_max_initial_peers_range(
  *
  * @return std::string Transport descriptor specific network interface whitelisted.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        list does not contain any element in index position.
  * @throw BadParameter Exception if the index is not an integer.
@@ -139,7 +139,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_interface_whitelist(
  *
  * @return std::string Transport descriptor TTL in number of hops.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TTL element has not been set in the profile.
  */
@@ -153,7 +153,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_ttl(
  *
  * @return std::string Transport descriptor non blocking send flag.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        non blocking send flag has not been set in the profile.
  */
@@ -167,7 +167,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_non_blocking_send(
  *
  * @return std::string UDP Transport descriptor output port.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        ouput port has not been set in the profile.
  */
@@ -181,7 +181,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_output_port(
  *
  * @return std::String TCPv4 Transport descriptor WAN address.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        WAN address has not been set in the profile.
  */
@@ -195,7 +195,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_wan_addr(
  *
  * @return std::string Frequency of TCP keep alive requests (in milliseconds).
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        keep alive frequency has not been set in the profile.
  */
@@ -210,7 +210,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_keep_alive_frequency_ms(
  *
  * @return std::string TCP keep alive timeout (in milliseconds).
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        keep alive timeout has not been set in the profile.
  */
@@ -224,7 +224,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_keep_alive_timeout_ms(
  *
  * @return std::string Maximum number of logical ports to try during TCP negotiation.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        maximum number of logical ports has not been set in the profile.
  */
@@ -239,7 +239,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_max_logical_port(
  *
  * @return std::string Maximum number of logical ports per request to try during TCP negotiation.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        maximum number of logical ports per request has not been set in the profile.
  */
@@ -253,7 +253,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_logical_port_range(
  *
  * @return std::string Increment between logical ports to try during TCP negotiation.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        logical port increment has not been set in the profile.
  */
@@ -268,7 +268,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_logical_port_increment(
  *
  * @return std::string TCP Transport descriptor specific listening port.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        list does not contain any element in index position.
  * @throw BadParameter Exception if the index is not an integer.
@@ -284,7 +284,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_listening_ports(
  *
  * @return std::string XML section containing the specific TCP Transport Descriptor TLS configuration.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TLS configuration element has not been set in the profile.
  */
@@ -298,7 +298,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls(
  *
  * @return std::string Specific TCP Transport Descriptor TLS password.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TLS password element has not been set in the profile.
  */
@@ -312,7 +312,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_password(
  *
  * @return std::string Specific TCP Transport Descriptor path to the TLS private key certificate file.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TLS private key certificate path element has not been set in the profile.
  */
@@ -326,7 +326,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_private_key_file(
  *
  * @return std::string Specific TCP Transport Descriptor path to the TLS private key RSA certificate file.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TLS private key RSA certificate path element has not been set in the profile.
  */
@@ -340,7 +340,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_rsa_private_key_file(
  *
  * @return std::string Specific TCP Transport Descriptor path to the TLS public certificate chain file.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TLS public certificate chain file path element has not been set in the profile.
  */
@@ -354,7 +354,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_cert_chain_file(
  *
  * @return std::string Specific TCP Transport Descriptor path to the TLS Diffie-Hellman parameters file.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TLS Diffie-Hellman parameters file path element has not been set in the profile.
  */
@@ -368,7 +368,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_tmp_dh_file(
  *
  * @return std::string Specific TCP Transport Descriptor path to the CA file.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TLS CA file path element has not been set in the profile.
  */
@@ -383,7 +383,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_verify_file(
  *
  * @return std::string TCP Transport descriptor specific TLS verification mode.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        list does not contain any element in index position.
  * @throw BadParameter Exception if the index is not an integer.
@@ -400,7 +400,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_verify_mode(
  *
  * @return std::string TCP Transport descriptor specific TLS supported feature.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        list does not contain any element in index position.
  * @throw BadParameter Exception if the index is not an integer.
@@ -417,7 +417,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_options(
  *
  * @return std::string TCP Transport descriptor specific TLS verification path.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        list does not contain any element in index position.
  * @throw BadParameter Exception if the index is not an integer.
@@ -433,7 +433,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_verify_paths(
  *
  * @return std::string Specific TCP Transport Descriptor maximum allowed depth for verifying intermediate certificates.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TLS verify depth element has not been set in the profile.
  */
@@ -447,7 +447,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_verify_depth(
  *
  * @return std::string Specific TCP Transport Descriptor verify default paths flag.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TLS verify default paths flag has not been set in the profile.
  */
@@ -461,7 +461,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_default_verify_path(
  *
  * @return std::string Specific TCP Transport Descriptor handshake role.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TLS handshake role has not been set in the profile.
  */
@@ -475,7 +475,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_handshake_role(
  *
  * @return std::string Specific TCP Transport Descriptor SNI server name.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TLS SNI server name has not been set in the profile.
  */
@@ -489,7 +489,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_tls_server_name(
  *
  * @return std::string Specific TCP Transport Descriptor calculate CRC flag.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        calculate CRC flag has not been set in the profile.
  */
@@ -503,7 +503,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_calculate_crc(
  *
  * @return std::string Specific TCP Transport Descriptor check CRC flag.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        check CRC flag has not been set in the profile.
  */
@@ -517,7 +517,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_check_crc(
  *
  * @return std::string Specific TCP Transport Descriptor TCP_NODELAY socket option flag.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        TCP_NODELAY socket option flag has not been set in the profile.
  */
@@ -531,7 +531,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_enable_tcp_nodelay(
  *
  * @return std::string Specific SHM Transport Descriptor shared memory segment size.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        shared memory segment size has not been set in the profile.
  */
@@ -545,7 +545,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_segment_size(
  *
  * @return std::string Specific SHM Transport Descriptor listening port capacity in number of messages.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        listening port capacity has not been set in the profile.
  */
@@ -559,7 +559,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_port_queue_capacity(
  *
  * @return std::string Specific SHM Transport Descriptor listening port liveliness timeout (in milliseconds).
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        listening port liveliness timeout has not been set in the profile.
  */
@@ -573,7 +573,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_healthy_check_timeout_ms(
  *
  * @return std::string Specific SHM Transport Descriptor debugging file path.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or the
  *        debugging file path has not been set in the profile.
  */
@@ -589,7 +589,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_rtps_dump_file(
  *
  * @return uint32_t Number of transport descriptor profiles in the XML file.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t size();
 
@@ -599,7 +599,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t size();
  * @return std::vector<std::string> Identifier list.
  *         Empty list if there are no transport descriptor profiles.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::vector<std::string> keys();
 
@@ -610,7 +610,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::vector<std::string> keys();
  *
  * @return uint32_t Number of network interfaces whitelisted in the list.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t interface_whitelist_size(
@@ -623,7 +623,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t interface_whitelist_size(
  *
  * @return uint32_t Number of listening ports in the list.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t listening_ports_size(
@@ -636,7 +636,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t listening_ports_size(
  *
  * @return uint32_t Number of TLS verification modes enabled in the mask.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t tls_verify_mode_size(
@@ -649,7 +649,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t tls_verify_mode_size(
  *
  * @return uint32_t Number of TLS supported features enabled in the mask.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t tls_options_size(
@@ -662,7 +662,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t tls_options_size(
  *
  * @return uint32_t Number of TLS paths to look for verification files.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t tls_verify_paths_size(
@@ -678,7 +678,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t tls_verify_paths_size(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier. If empty, every transport descriptor
  *                                    profile is deleted.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
@@ -689,7 +689,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
  *
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_kind(
@@ -700,7 +700,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_kind(
  *
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_send_buffer_size(
@@ -711,7 +711,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_send_buffer_size(
  *
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_receive_buffer_size(
@@ -722,7 +722,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_receive_buffer_size(
  *
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_max_message_size(
@@ -733,7 +733,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_max_message_size(
  *
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_max_initial_peers_range(
@@ -745,7 +745,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_max_initial_peers_range(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] index Collection element to be removed. If empty, the complete collection is erased.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or if
  *        the element does not exist in the collection if an index is provided.
  * @throw BadParameter Exception if the index is not an integer.
@@ -759,7 +759,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_interface_whitelist(
  *
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_ttl(
@@ -770,7 +770,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_ttl(
  *
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_non_blocking_send(
@@ -781,7 +781,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_non_blocking_send(
  *
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_output_port(
@@ -792,7 +792,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_output_port(
  *
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_wan_addr(
@@ -803,7 +803,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_wan_addr(
  *
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_keep_alive_frequency_ms(
@@ -814,7 +814,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_keep_alive_frequency_ms(
  *
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_keep_alive_timeout_ms(
@@ -825,7 +825,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_keep_alive_timeout_ms(
  *
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_max_logical_port(
@@ -836,7 +836,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_max_logical_port(
  *
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_logical_port_range(
@@ -847,7 +847,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_logical_port_range(
  *
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_logical_port_increment(
@@ -859,7 +859,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_logical_port_increment(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] index Collection element to be removed. If empty, the complete collection is erased.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or if
  *        the element does not exist in the collection if an index is provided.
  * @throw BadParameter Exception if the index is not an integer.
@@ -873,7 +873,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_listening_ports(
  *
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls(
@@ -884,7 +884,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls(
  *
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_password(
@@ -895,7 +895,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_password(
  *
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_private_key_file(
@@ -906,7 +906,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_private_key_file(
  *
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_rsa_private_key_file(
@@ -917,7 +917,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_rsa_private_key_file(
  *
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_cert_chain_file(
@@ -928,7 +928,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_cert_chain_file(
  *
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_tmp_dh_file(
@@ -939,7 +939,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_tmp_dh_file(
  *
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_verify_file(
@@ -951,7 +951,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_verify_file(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] index Collection element to be removed. If empty, the complete collection is erased.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or if
  *        the element does not exist in the collection if an index is provided.
  * @throw BadParameter Exception if the index is not an integer.
@@ -966,7 +966,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_verify_mode(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] index Collection element to be removed. If empty, the complete collection is erased.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or if
  *        the element does not exist in the collection if an index is provided.
  * @throw BadParameter Exception if the index is not an integer.
@@ -981,7 +981,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_options(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] index Collection element to be removed. If empty, the complete collection is erased.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file or if
  *        the element does not exist in the collection if an index is provided.
  * @throw BadParameter Exception if the index is not an integer.
@@ -995,7 +995,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_verify_paths(
  *
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_verify_depth(
@@ -1006,7 +1006,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_verify_depth(
  *
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_default_verify_path(
@@ -1017,7 +1017,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_default_verify_path(
  *
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_handshake_role(
@@ -1028,7 +1028,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_handshake_role(
  *
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_server_name(
@@ -1039,7 +1039,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_tls_server_name(
  *
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_calculate_crc(
@@ -1050,7 +1050,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_calculate_crc(
  *
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_check_crc(
@@ -1061,7 +1061,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_check_crc(
  *
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_enable_tcp_nodelay(
@@ -1072,7 +1072,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_enable_tcp_nodelay(
  *
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_segment_size(
@@ -1083,7 +1083,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_segment_size(
  *
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_port_queue_capacity(
@@ -1094,7 +1094,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_port_queue_capacity(
  *
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_healthy_check_timeout_ms(
@@ -1105,7 +1105,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_healthy_check_timeout_ms(
  *
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified transport descriptor profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_rtps_dump_file(
@@ -1507,7 +1507,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_rtps_dump_file(
  * @throw ElementInvalid Exception if the provided IP address is not valid.
  * @throw ElementNotFound Exception if the specified Transport descriptor profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_interface_whitelist(
@@ -1526,7 +1526,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_interface_whitelist(
  * @throw ElementInvalid Exception if the provided port is not valid.
  * @throw ElementNotFound Exception if the specified Transport descriptor profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_listening_ports(
@@ -1545,7 +1545,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_listening_ports(
  * @throw ElementInvalid Exception if the provided TLS verification mode is not valid.
  * @throw ElementNotFound Exception if the specified Transport descriptor profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_verify_mode(
@@ -1564,7 +1564,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_verify_mode(
  * @throw ElementInvalid Exception if the provided TLS supported feature is not valid.
  * @throw ElementNotFound Exception if the specified Transport descriptor profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_options(
@@ -1583,7 +1583,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_options(
  * @throw ElementInvalid Exception if the provided path is not valid.
  * @throw ElementNotFound Exception if the specified Transport descriptor profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw BadParameter Exception if the index is not an integer.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_verify_path(

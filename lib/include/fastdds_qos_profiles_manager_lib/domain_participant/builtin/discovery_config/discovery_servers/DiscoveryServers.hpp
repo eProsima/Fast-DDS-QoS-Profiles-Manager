@@ -44,7 +44,7 @@ namespace discovery_servers {
  *
  * @return std::string Specific Domain Participant builtin remote discovery server.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or the
  *        builtin remote discovery servers list does not exist, or the list does not contain any element with the
  *        provided GUID prefix.
@@ -64,7 +64,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
  *
  * @return uint32_t Number of builtin remote discovery servers.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or there
  *        are no remote discovery servers configured.
  */
@@ -79,7 +79,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t size(
  * @return std::vector<std::string> Identifier list.
  *         Empty list if there are no remote servers.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::vector<std::string> keys(
         const std::string& profile_id);
@@ -94,7 +94,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::vector<std::string> keys(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] prefix GUID prefix of the remote server to be removed. If empty, the complete list is removed.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file or if the
  *        specified GUID prefix does not exist either.
  */
