@@ -166,6 +166,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_propagate(
  * @param[in] property_id Property name which value is being set/updated.
  * @param[in] value New property value.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_value(
@@ -180,6 +181,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_value(
  * @param[in] property_id Property name which value is being set/updated.
  * @param[in] propagate New propagate value.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_propagate(
@@ -197,6 +199,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_propagate(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] property_id Property name.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided property name is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push(

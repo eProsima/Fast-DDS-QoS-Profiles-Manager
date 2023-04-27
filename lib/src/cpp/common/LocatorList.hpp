@@ -288,6 +288,7 @@ void clear_wan_address(
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  * @param[in] is_external bool to determine if locator managed is external locator or common locator.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided locator kind is not valid.
  * @throw ElementNotFound Exception if the element does not exist in the collection if an index is provided.
  * @throw BadParameter Exception if the index is not an integer.
@@ -306,6 +307,7 @@ void set_kind(
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  * @param[in] is_external bool to determine if locator managed is external locator or common locator.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided locator port is not valid.
  * @throw ElementNotFound Exception if the element does not exist in the collection if an index is provided.
  * @throw BadParameter Exception if the index is not an integer.
@@ -325,6 +327,7 @@ void set_port(
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  * @param[in] is_external bool to determine if locator managed is external locator or common locator.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided locator physical port is not valid.
  * @throw ElementNotFound Exception if the element does not exist in the collection if an index is provided.
  * @throw BadParameter Exception if the index is not an integer.
@@ -343,6 +346,7 @@ void set_physical_port(
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  * @param[in] is_external bool to determine if locator managed is external locator or common locator.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided locator IP address is not valid.
  * @throw ElementNotFound Exception if the element does not exist in the collection if an index is provided.
  * @throw BadParameter Exception if the index is not an integer.
@@ -362,6 +366,7 @@ void set_address(
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  * @param[in] is_external bool to determine if locator managed is external locator or common locator.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided locator identifier is not valid.
  * @throw ElementNotFound Exception if the element does not exist in the collection if an index is provided.
  * @throw BadParameter Exception if the index is not an integer.
@@ -380,6 +385,7 @@ void set_unique_lan_id(
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  * @param[in] is_external bool to determine if locator managed is external locator or common locator.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided locator IP address is not valid.
  * @throw ElementNotFound Exception if the element does not exist in the collection if an index is provided.
  * @throw BadParameter Exception if the index is not an integer.

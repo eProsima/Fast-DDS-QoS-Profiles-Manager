@@ -1121,6 +1121,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_rtps_dump_file(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] kind Transport descriptor kind.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided kind is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_kind(
@@ -1133,6 +1134,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_kind(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] send_buffer_size Transport descriptor send buffer size.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided send buffer size is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_send_buffer_size(
@@ -1145,6 +1147,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_send_buffer_size(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] receive_buffer_size Transport descriptor receive buffer size.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided receive buffer size is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_receive_buffer_size(
@@ -1157,6 +1160,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_receive_buffer_size(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] max_message_size Transport descriptor maximum message size.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided maximum message size is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_max_message_size(
@@ -1169,6 +1173,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_max_message_size(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] max_initial_peers_range Transport descriptor maximum initial peers range.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided maximum initial peers range is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_max_initial_peers_range(
@@ -1181,6 +1186,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_max_initial_peers_range(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] ttl Transport descriptor TTL (Time to live) in number of hops.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided TTL is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_ttl(
@@ -1229,6 +1235,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_wan_addr(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] keep_alive_frequency_ms Frequency of TCP keep alive requests (in ms).
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided keep alive frequency is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_keep_alive_frequency_ms(
@@ -1242,6 +1249,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_keep_alive_frequency_ms(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] keep_alive_timeout_ms Time since the last keep alive request to consider the connection broken (in ms).
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided keep alive timeout is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_keep_alive_timeout_ms(
@@ -1255,6 +1263,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_keep_alive_timeout_ms(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] max_logical_port Maximum number of logical ports to try during TCP negotiation.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided maximum number of logical ports is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_max_logical_port(
@@ -1268,6 +1277,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_max_logical_port(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] logical_port_range Maximum number of logical ports per request to try during TCP negotiation.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided maximum number of logical ports per request is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_logical_port_range(
@@ -1281,6 +1291,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_logical_port_range(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] logical_port_increment Increment between logical ports to try during TCP negotiation.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided maximum number of logical ports per request is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_logical_port_increment(
@@ -1293,6 +1304,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_logical_port_increment(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] tls_password TCP Transport Descriptor TLS password.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided TLS password is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_password(
@@ -1305,6 +1317,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_password(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] tls_private_key_file Path to the private key certificate file.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided path is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_private_key_file(
@@ -1317,6 +1330,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_private_key_file(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] tls_rsa_private_key_file Path to the private key RSA certificate file.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided path is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_rsa_private_key_file(
@@ -1329,6 +1343,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_rsa_private_key_file(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] tls_cert_chain_file Path to the public certificate chain file.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided path is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_cert_chain_file(
@@ -1341,6 +1356,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_cert_chain_file(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] tls_tmp_dh_file Path to the Diffie-Hellman parameters file.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided path is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_tmp_dh_file(
@@ -1353,6 +1369,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_tmp_dh_file(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] tls_verify_file Path to the CA file.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided path is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_verify_file(
@@ -1366,6 +1383,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_verify_file(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] tls_verify_depth Maximum allowed depth for verifying intermediate certificates.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided depth is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_verify_depth(
@@ -1378,6 +1396,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_verify_depth(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] tls_default_verify_path Flag that enables looking for verification files on the default paths.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided flag value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_default_verify_path(
@@ -1390,6 +1409,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_default_verify_path(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] tls_handshake_role Role that the Transport will take on handshaking.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided handshake role is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_handshake_role(
@@ -1402,6 +1422,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_handshake_role(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] tls_server_name SNI (Server Name Indication) server name.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided SNI server name is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_server_name(
@@ -1414,6 +1435,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_server_name(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] calculate_crc Flag to enable CRC calculation and sending.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided CRC calculation flag is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_calculate_crc(
@@ -1426,6 +1448,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_calculate_crc(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] check_crc Flag to enable CRC checking of incoming messages.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided check CRC flag is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_check_crc(
@@ -1450,6 +1473,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_enable_tcp_nodelay(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] segment_size Shared memory segment size.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided segment size is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_segment_size(
@@ -1462,6 +1486,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_segment_size(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] port_queue_capacity Listening port capacity in number of messages.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided listening port capacity is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_port_queue_capacity(
@@ -1474,6 +1499,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_port_queue_capacity(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] healthy_check_timeout_ms Listening port liveliness timeout in milliseconds.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided listening port liveliness timeout is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_healthy_check_timeout_ms(
@@ -1486,6 +1512,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_healthy_check_timeout_ms(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] rtps_dump_file Path to the file where RTPS messsages will be stored for debugging purposes.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided path is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_rtps_dump_file(
@@ -1504,6 +1531,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_rtps_dump_file(
  * @param[in] ip_address IP address to be updated in the whitelist collection.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided IP address is not valid.
  * @throw ElementNotFound Exception if the specified Transport descriptor profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
@@ -1523,6 +1551,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_interface_whitelist(
  * @param[in] port Updated port to listen as server.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided port is not valid.
  * @throw ElementNotFound Exception if the specified Transport descriptor profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
@@ -1542,6 +1571,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_listening_ports(
  * @param[in] tls_verify_mode TLS verification mode to update in the mask.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided TLS verification mode is not valid.
  * @throw ElementNotFound Exception if the specified Transport descriptor profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
@@ -1561,6 +1591,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_verify_mode(
  * @param[in] tls_options TLS supported feature to update in the mask.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided TLS supported feature is not valid.
  * @throw ElementNotFound Exception if the specified Transport descriptor profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
@@ -1580,6 +1611,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_options(
  * @param[in] tls_verify_path TLS verification path to be updated in the list.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided path is not valid.
  * @throw ElementNotFound Exception if the specified Transport descriptor profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.

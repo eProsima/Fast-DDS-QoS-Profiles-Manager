@@ -283,6 +283,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_wan_address(
  * @param[in] kind Metatraffic unicast locator kind.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided locator kind is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
@@ -302,6 +303,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_kind(
  * @param[in] port Metatraffic unicast locator port.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided locator port is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
@@ -321,6 +323,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_port(
  * @param[in] physical_port Metatraffic unicast locator TCP physical port.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided locator physical port is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
@@ -340,6 +343,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_physical_port(
  * @param[in] address Metatraffic unicast locator IP address.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided locator IP address is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
@@ -359,6 +363,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_address(
  * @param[in] unique_lan_id Metatraffic unicast TCPv4 locator unique LAN ID.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided locator identifier is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
@@ -378,6 +383,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_unique_lan_id(
  * @param[in] wan_address Metatraffic unicast TCPv4 locator WAN address.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided locator IP address is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.

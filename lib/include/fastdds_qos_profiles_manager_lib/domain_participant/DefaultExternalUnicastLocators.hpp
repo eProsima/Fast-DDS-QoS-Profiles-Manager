@@ -275,6 +275,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_mask(
  * @param[in] kind Default unicast locator kind.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided locator kind is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
@@ -293,6 +294,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_kind(
  * @param[in] port Default unicast locator port.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided locator port is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
@@ -311,6 +313,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_port(
  * @param[in] address Default unicast locator IP address.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided locator IP address is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
@@ -330,6 +333,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_address(
  * @param[in] externality Default unicast locator externality.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided locator externality is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
@@ -348,6 +352,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_externality(
  * @param[in] cost Default unicast locator cost.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided locator cost is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
@@ -366,6 +371,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_cost(
  * @param[in] mask Default unicast locator mask.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided locator mask is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.

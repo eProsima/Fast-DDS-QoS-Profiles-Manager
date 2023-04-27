@@ -610,6 +610,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_send_buffers_preallocated_dynamic
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] max_unicast Maximum number of allowed remote unicast locators.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_remote_locators_max_unicast(
@@ -622,6 +623,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_remote_locators_max_unicast(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] max_multicast Maximum number of allowed remote multicast locators.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_remote_locators_max_multicast(
@@ -634,6 +636,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_remote_locators_max_multicast(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] initial Initial number of preallocated participants.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_total_participants_initial(
@@ -646,6 +649,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_total_participants_initial(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] maximum Maximum number of participants.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_total_participants_maximum(
@@ -659,6 +663,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_total_participants_maximum(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] increment Increment of participants.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_total_participants_increment(
@@ -671,6 +676,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_total_participants_increment(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] initial Initial number of preallocated readers.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_total_readers_initial(
@@ -683,6 +689,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_total_readers_initial(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] maximum Maximum number of readers.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_total_readers_maximum(
@@ -696,6 +703,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_total_readers_maximum(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] increment Increment of readers.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_total_readers_increment(
@@ -708,6 +716,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_total_readers_increment(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] initial Initial number of preallocated writers.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_total_writers_initial(
@@ -720,6 +729,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_total_writers_initial(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] maximum Maximum number of writers.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_total_writers_maximum(
@@ -733,6 +743,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_total_writers_maximum(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] increment Increment of writers.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_total_writers_increment(
@@ -745,6 +756,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_total_writers_increment(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] max_partitions Maximum number of partitions allowed in the Domain Participant.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_max_partitions(
@@ -757,6 +769,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_max_partitions(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] max_user_data Maximum allowed size for user data message in the Domain Participant.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_max_user_data(
@@ -769,6 +782,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_max_user_data(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] max_properties Maximum allowed number of properties in the Domain Participant.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_max_properties(
@@ -781,6 +795,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_max_properties(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] send_buffers_preallocated_number Number of send buffers preallocated.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_send_buffers_preallocated_number(
@@ -793,6 +808,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_send_buffers_preallocated_number(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] send_buffers_dynamic Send buffers dynamic flag.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_send_buffers_dynamic(

@@ -628,6 +628,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_static_edp_xml_config(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] discovery_protocol Builtin discovery protocol.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided discovery protocol is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_discovery_protocol(
@@ -640,6 +641,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_discovery_protocol(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] ignore_participant_flags Builtin discovery ignore participant flags.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided flag is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_ignore_participant_flags(
@@ -652,6 +654,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_ignore_participant_flags(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] edp Builtin discovery EDP flag.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided flag is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_edp(
@@ -664,6 +667,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_edp(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] simple_edp_pubwriter_subreader Builtin discovery simple EDP configuration flag.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided flag is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_simple_edp_pubwriter_subreader(
@@ -676,6 +680,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_simple_edp_pubwriter_subreader(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] simple_edp_pubreader_subwriter Builtin discovery simple EDP configuration flag.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided flag is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_simple_edp_pubreader_subwriter(
@@ -688,6 +693,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_simple_edp_pubreader_subwriter(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] duration_sec Builtin discovery lease duration seconds.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided seconds are not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_lease_duration_sec(
@@ -700,6 +706,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_lease_duration_sec(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] duration_nanosec Builtin discovery lease duration nanoseconds.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided nanoseconds are not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_lease_duration_nanosec(
@@ -712,6 +719,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_lease_duration_nanosec(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] announcement_sec Builtin discovery lease announcement seconds.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided seconds are not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_lease_announcement_sec(
@@ -724,6 +732,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_lease_announcement_sec(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] announcement_nanosec Builtin discovery lease announcement nanoseconds.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided nanoseconds are not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_lease_announcement_nanosec(
@@ -736,6 +745,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_lease_announcement_nanosec(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] count Builtin discovery number of initial announcements.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided number of initial announcements is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_initial_announcements_count(
@@ -748,6 +758,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_initial_announcements_count(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] period_sec Builtin discovery initial announcements duration seconds.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided seconds are not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_initial_announcements_period_sec(
@@ -760,6 +771,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_initial_announcements_period_sec(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] period_nanosec Builtin discovery initial announcements duration nanoseconds.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided nanoseconds are not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_initial_announcements_period_nanosec(
@@ -772,6 +784,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_initial_announcements_period_nanose
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] period_sec Builtin discovery client announcement period seconds.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided seconds are not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_client_announcement_period_sec(
@@ -784,6 +797,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_client_announcement_period_sec(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] period_nanosec Builtin discovery client announcement period nanoseconds.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided nanoseconds are not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_client_announcement_period_nanosec(
@@ -802,6 +816,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_client_announcement_period_nanosec(
  * @param[in] static_edp_xml_config Builtin discovery Static EDP XML configuration file.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided path is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.

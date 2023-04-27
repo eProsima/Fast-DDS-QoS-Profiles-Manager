@@ -413,6 +413,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_default_profile(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] domain_id Domain Participant domain ID.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided domain ID is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_domain_id(
@@ -425,6 +426,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_domain_id(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] name Domain Participant name.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided name is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_name(
@@ -437,6 +439,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_name(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] ignore_non_matching_locators Ignore non matching locators flag.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided flag value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_ignore_non_matching_locators(
@@ -449,6 +452,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_ignore_non_matching_locators(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] send_socket_buffer_size Size of the buffer in the socket used for sending data.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided size is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_send_socket_buffer_size(
@@ -461,6 +465,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_send_socket_buffer_size(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] listen_socket_buffer_size Size of the buffer in the socket used for listening data.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided size is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_listen_socket_buffer_size(
@@ -473,6 +478,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_listen_socket_buffer_size(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] participant_id Domain Participant ID.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided ID is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_participant_id(
@@ -485,6 +491,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_participant_id(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] use_builtin_transports Use builtin transports flag.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided flag value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_use_builtin_transports(
@@ -497,6 +504,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_use_builtin_transports(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] prefix Domain Participant GUID prefix.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided GUID prefix is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_prefix(
@@ -514,6 +522,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_prefix(
  * @param[in] transport_id Transport descriptor profile identifier.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided Transport descriptor profile identifier is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
@@ -532,6 +541,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_user_transports(
  * @param[in] user_data User data to be updated.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided user data is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.

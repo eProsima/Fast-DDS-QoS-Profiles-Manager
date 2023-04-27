@@ -247,6 +247,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_mutation_tries(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] avoid_builtin_multicast Builtin avoid_builtin_multicast flag.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided flag value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_avoid_builtin_multicast(
@@ -259,6 +260,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_avoid_builtin_multicast(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] use_writer_liveliness_protocol Builtin use writer liveliness protocol flag.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided flag value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_use_writer_liveliness_protocol(
@@ -271,6 +273,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_use_writer_liveliness_protocol(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] reader_history_memory_policy Builtin DataReaders History Memory Policy.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided Memory Policy value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_reader_history_memory_policy(
@@ -283,6 +286,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_reader_history_memory_policy(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] writer_history_memory_policy Builtin DataWriters History Memory Policy.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided Memory Policy value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_writer_history_memory_policy(
@@ -295,6 +299,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_writer_history_memory_policy(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] reader_payload_size Builtin DataReaders payload size.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided payload size value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_reader_payload_size(
@@ -307,6 +312,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_reader_payload_size(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] writer_payload_size Builtin DataWriters payload size.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided payload size value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_writer_payload_size(
@@ -319,6 +325,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_writer_payload_size(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] mutation_tries Builtin mutation tries.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided mutation tries value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_mutation_tries(

@@ -46,6 +46,7 @@ namespace qos {
  * @param[in] profile_id DataReader profile identifier.
  * @param[in] kind Durability QoS kind value.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided durability QoS kind value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_durability_kind(
@@ -58,6 +59,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_durability_kind(
  * @param[in] profile_id DataReader profile identifier.
  * @param[in] kind Reliability QoS kind value.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided reliability QoS kind value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_reliability_kind(
@@ -70,6 +72,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_reliability_kind(
  * @param[in] profile_id DataReader profile identifier.
  * @param[in] sec Reliability QoS max blocking time seconds to be set
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided reliability QoS max blocking time seconds are not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_reliability_max_blocking_time_sec(
@@ -82,6 +85,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_reliability_max_blocking_time_sec(
  * @param[in] profile_id DataReader profile identifier.
  * @param[in] nanosec Reliability QoS max blocking time nanoseconds to be set
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided reliability QoS max blocking time nanoseconds are not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_reliability_max_blocking_time_nanosec(

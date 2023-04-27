@@ -246,6 +246,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_offset_d3(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] port_base Base port parameter.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided parameter value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_base(
@@ -258,6 +259,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_base(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] domain_id_gain Domain ID gain port parameter.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided parameter value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_domain_id_gain(
@@ -270,6 +272,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_domain_id_gain(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] participant_id_gain Participant ID gain port parameter.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided parameter value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_participant_id_gain(
@@ -282,6 +285,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_participant_id_gain(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] offset_d0 Multicast metadata offset port parameter.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided parameter value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_offset_d0(
@@ -294,6 +298,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_offset_d0(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] offset_d1 Unicast metadata offset port parameter.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided parameter value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_offset_d1(
@@ -306,6 +311,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_offset_d1(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] offset_d2 Multicast user data offset port parameter.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided parameter value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_offset_d2(
@@ -318,6 +324,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_offset_d2(
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] offset_d3 Unicast user data offset port parameter.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided parameter value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_offset_d3(
