@@ -299,22 +299,22 @@ void XMLManager::create_node(
             static_cast<xercesc::DOMNode*>(doc->createElement(xercesc::XMLString::transcode(tag_name.c_str())));
 
     // Add text node to correctly set closing tag indentation
-    std::string dummy("\n");
+    std::string node_formatting(LINE_BREAK);
     for (int i = 0; i < depth_level - 1; i++)
     {
-        dummy += "  ";
+        node_formatting += "  ";
     }
     // Append new node to parent node
     if (parent_node != nullptr)
     {
         parent_node->appendChild(reference_node);
-        parent_node->appendChild(doc->createTextNode(xercesc::XMLString::transcode(dummy.c_str())));
+        parent_node->appendChild(doc->createTextNode(xercesc::XMLString::transcode(node_formatting.c_str())));
     }
     // Append new node directly to document
     else
     {
         doc->appendChild(reference_node);
-        doc->appendChild(doc->createTextNode(xercesc::XMLString::transcode(dummy.c_str())));
+        doc->appendChild(doc->createTextNode(xercesc::XMLString::transcode(node_formatting.c_str())));
     }
 }
 
@@ -609,7 +609,7 @@ void XMLManager::move_to_node(
     }
 
     // TODO add a check if 'name' parameter is empty, return (do not update) actual reference_node
-    
+
     // Increase depth level
     depth_level++;
 
