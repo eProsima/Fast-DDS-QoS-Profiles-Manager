@@ -20,8 +20,5 @@ Exceptions
 .. doxygenclass:: eprosima::qosprof::Error
     :project: fastdds_qos_profiles_manager_lib
 
-.. doxygenclass:: eprosima::qosprof::FileNotFound
-    :project: fastdds_qos_profiles_manager_lib
-
 .. doxygenclass:: eprosima::qosprof::Unsupported
     :project: fastdds_qos_profiles_manager_lib
