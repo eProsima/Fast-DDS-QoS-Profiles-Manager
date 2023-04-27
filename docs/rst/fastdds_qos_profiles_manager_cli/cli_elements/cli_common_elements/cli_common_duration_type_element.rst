@@ -28,14 +28,6 @@ The duration type configurable ``<subelements>`` are explained in the table belo
       - ``duration.<duration_type>.nanosec``
       - Simple parameter
       - ``uint32_t``
-    * - Infinite duration type
-      - ``duration.<duration_type>``
-      - Complex parameter
-      - ``infinite``
-    * - All ``subelements``
-      - ``duration.<duration_type> <sec_value> <nanosec_value>``
-      - Complex parameter
-      - ``<sec_value>`` as ``int32_t`` |br| ``<nanosec_value>`` as ``uint32_t``
 
 Duration type can also be set in the following supported usages:
 
