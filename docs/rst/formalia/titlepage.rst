@@ -1,3 +1,5 @@
+.. _qos_prof_description_:
+
 .. raw:: html
 
   <h1>
