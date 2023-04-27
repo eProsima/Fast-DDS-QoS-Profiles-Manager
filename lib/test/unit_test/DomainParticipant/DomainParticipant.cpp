@@ -103,16 +103,16 @@ protected:
         }
 
         // Try printing from non-existing file
-        EXPECT_THROW(print_functor_(participant_profile_, std::string("0")), FileNotFound);
+        EXPECT_THROW(print_functor_(participant_profile_, std::string("0")), ElementNotFound);
 
         // Try updating in a non-existent file
         EXPECT_THROW(set_functor_(participant_profile_, valid_values_[0], std::string("0")),
-                FileNotFound);
+                ElementNotFound);
 
         // Try clearing in a non-existent file
         if (nullptr != clear_functor_)
         {
-            EXPECT_THROW(clear_functor_(participant_profile_, std::string("0")), FileNotFound);
+            EXPECT_THROW(clear_functor_(participant_profile_, std::string("0")), ElementNotFound);
         }
 
         // Push invalid value
@@ -310,13 +310,13 @@ TEST_F(DomainParticipantTests, default_profile_test)
     EXPECT_NO_THROW(initialize(xml_filename_));
 
     // Try printing default profile for non-existing file
-    EXPECT_THROW(print_default_profile(), FileNotFound);
+    EXPECT_THROW(print_default_profile(), ElementNotFound);
 
     // Set default profile to non-existent XML file
-    EXPECT_THROW(set_default_profile(participant_profile_), FileNotFound);
+    EXPECT_THROW(set_default_profile(participant_profile_), ElementNotFound);
 
     // Clear default profile from a non-existent XML file
-    EXPECT_THROW(clear_default_profile(), FileNotFound);
+    EXPECT_THROW(clear_default_profile(), ElementNotFound);
 
     // Set participant name in order to create file
     EXPECT_NO_THROW(set_name(participant_profile_, participant_name_));
