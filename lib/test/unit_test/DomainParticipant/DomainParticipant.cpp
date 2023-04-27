@@ -90,6 +90,9 @@ protected:
             ASSERT_EQ(invalid_values_.size(), invalid_messages_.size());
         }
 
+        // Initialize the XML workspace
+        EXPECT_NO_THROW(initialize(xml_filename_, true));
+
         // Passing an invalid index string must return BadParameter
         EXPECT_THROW(print_functor_(participant_profile_, std::string("invalid")), BadParameter);
         EXPECT_THROW(set_functor_(participant_profile_, valid_values_[0], std::string("invalid")),
@@ -287,6 +290,9 @@ protected:
             // Clear already cleared element does not throw
             EXPECT_NO_THROW(clear_functor_(participant_profile_, std::string("0")));
         }
+
+        // Terminate XML workspace
+        EXPECT_NO_THROW(terminate());
     }
 
 };

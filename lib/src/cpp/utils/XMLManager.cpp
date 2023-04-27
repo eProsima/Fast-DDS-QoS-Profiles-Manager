@@ -156,17 +156,33 @@ bool XMLManager::is_initialized()
 
 void XMLManager::terminate()
 {
+    std::string throw_error;
+    
     // Check if workspace was initialized
     if (alive)
     {
         // write the final XML in the given path if needed
-        save_xml();
+        try
+        {
+            save_xml();
+        }
+        // Save error message if could not save the file
+        catch (const Error& ex)
+        {
+            throw_error = ex.what();
+        }
 
         // IMPORTANT: set class as not longer initialized (terminated)
         alive = false;
 
         // Close XML workspace
         xercesc::XMLPlatformUtils::Terminate();
+
+        // Report the error if needed
+        if (!throw_error.empty())
+        {
+            throw Error(throw_error);
+        }
     }
 }
 
@@ -258,8 +274,12 @@ bool XMLManager::save_xml()
         // Save XML document in target file path
         target = new xercesc::LocalFileFormatTarget(xercesc::XMLString::transcode(xml_file.c_str()));
 
+        // Try so save the XML configuration in the given filesystem path
         output->setByteStream(target);
-        return serializer->write(doc, output);
+        if (!serializer->write(doc, output))
+        {
+            throw Error("Could not save " + xml_file + " file.\n");
+        }
     }
     return false;
 }

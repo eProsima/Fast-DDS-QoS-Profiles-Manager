@@ -43,6 +43,8 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void initialize(
  * @brief Terminate the eProsima QoS Profiles Manager Library XML workspace related to the specified XML file.
  *  If changes required to be applied in the XML configuration file, this method would also apply them in filesystem.
  *  If error occurred or resultant XML configuration is not valid, the XML configuration will not be modified.
+ *
+ * @throw Error Exception if the XML file could not be written in filesystem
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void terminate();
 

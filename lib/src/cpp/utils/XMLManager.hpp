@@ -78,6 +78,8 @@ public:
      * @brief Terminate XML workspace. If required to save or update the XML configuration in the filesystem,
      *  this method must be called to save them.
      *  If error occurred or resultant XML configuration is not valid, it will not save the XML configuration.
+     *
+     * @throw Error Exception if the XML file could not be written in filesystem
      */
     void terminate();
 
@@ -94,7 +96,6 @@ public:
     /**
      * @brief Validate the document, and set flag to save to disk later if valid.
      *
-     * @throw Error exception if Xerces XML workspace was not initialized
      * @throw ElementInvalid exception if document does not pass parser validation
      */
     void validate_and_save_document();
@@ -102,7 +103,6 @@ public:
     /**
      * @brief Save the document as string and validate.
      *
-     * @throw Error exception if Xerces XML workspace was not initialized
      * @throw ElementInvalid exception if document does not pass parser validation
      *
      * @return true document passes parser validation
@@ -113,7 +113,7 @@ public:
     /**
      * @brief  Save the document in the target file path.
      *
-     * @throw Error exception if Xerces XML workspace was not initialized
+     * @throw Error Exception if the XML file could not be written in filesystem
      *
      * @return true document saved
      * @return false failure saving document
@@ -123,7 +123,6 @@ public:
     /**
      * @brief Remove the selected node.
      *
-     * @throw Error exception if Xerces XML workspace was not initialized
      * @throw ElementInvalid exception if node is the last node element (could not be deleted)
      */
     void clear_node();
@@ -132,8 +131,6 @@ public:
      * @brief Set the value to node object.
      *
      * @param[in] value to be set in the node
-     *
-     * @throw Error exception if Xerces XML workspace was not initialized
      */
     void set_value_to_node(
             const std::string& value);
@@ -143,8 +140,6 @@ public:
      *
      * @param[in] name of the attribute to be set
      * @param[in] value to be set in the node attribute
-     *
-     * @throw Error exception if Xerces XML workspace was not initialized
      */
     void set_attribute_to_node(
             const std::string& name,
@@ -155,18 +150,14 @@ public:
      *
      * @param[in] name of the node attribute to be set
      * @param[in] value to be set in the node attribute
-     *
-     * @throw Error exception if Xerces XML workspace was not initialized
      */
     void set_siblings_attribute(
             const std::string& name,
             const std::string& value);
 
-
     /**
      * @brief Get the node value (only for simple cases)
      *
-     * @throw Error exception if Xerces XML workspace was not initialized
      * @throw ElementNotFound exception if the node value could not be obtained
      *
      * @return std::string node value
@@ -178,7 +169,6 @@ public:
      *
      * @param[in] name attribute name
      *
-     * @throw Error exception if Xerces XML workspace was not initialized
      * @throw ElementNotFound exception if the attribute value could not be obtained from the node
      *
      * @return std::string node attribute value (Empty string if error)
@@ -192,7 +182,6 @@ public:
      * @param[in] tag_name string with the node (<tag>) name
      * @param[in] create_if_not_existent flag to create node if it is not found
      *
-     * @throw Error exception if Xerces XML workspace was not initialized
      * @throw ElementNotFound exception if expected node was not found and node creation was not required
      */
     void move_to_node(
@@ -206,7 +195,6 @@ public:
      * @param[in] default_tag_name string with the default node (<tag>) name required to create the node if required.
      * @param[in] create_if_not_existent flag to create node if it is not found
      *
-     * @throw Error exception if Xerces XML workspace was not initialized
      * @throw ElementNotFound exception if expected node was not found and node creation was not required
      * @throw BadParameter exception if expected node could not be found by using the given index.
      */
@@ -224,7 +212,6 @@ public:
      * @param[in] value string value (attribute) value of the node element
      * @param[in] create_if_not_existent flag to create node if it is not found
      *
-     * @throw Error exception if Xerces XML workspace was not initialized
      * @throw ElementNotFound exception if expected node was not found and node creation was not required
      */
     void move_to_node(
@@ -245,7 +232,6 @@ public:
      * @param[in] is_external flag to determine if the locator node is external or common
      * @param[in] create_if_not_existent flag to create node if it is not found
      *
-     * @throw Error exception if Xerces XML workspace was not initialized
      * @throw ElementNotFound exception if expected node was not found and node creation was not required
      * @throw BadParameter exception if expected node could not be found by using the given index.
      */
@@ -260,7 +246,6 @@ public:
      * @param[in] transport_id string with the node identifier
      * @param[in] create_if_not_existent flag to create node if it is not found
      *
-     * @throw Error exception if Xerces XML workspace was not initialized
      * @throw ElementNotFound exception if expected node was not found and node creation was not required
      */
     void move_to_transport_node(
@@ -273,8 +258,6 @@ private:
 
     /**
      * @brief Transforms standalone XML document structure to rooted.
-     *
-     * @throw Error exception if Xerces XML workspace was not initialized
      */
     void transform_standalone_to_rooted_structure();
 
@@ -282,8 +265,6 @@ private:
      * @brief Auxiliar method that creates a new node with the given tag and appends it to the last node.
      *
      * @param tag_name string with the new node (<tag>) name
-     *
-     * @throw Error exception if Xerces XML workspace was not initialized
      */
     void create_node(
             const std::string& tag_name);
@@ -293,8 +274,6 @@ private:
      *
      * @param[in]  xml_file string with the given file name
      * @param[out] file_exists bool reference to save file existence status
-     *
-     * @throw Error exception if Xerces XML workspace was not initialized
      *
      * @return std::string with the absolute path
      */
@@ -307,8 +286,6 @@ private:
      *
      * @param[in]  node_list with the nodes to be filtered
      *
-     * @throw Error exception if Xerces XML workspace was not initialized
-     *
      * @return std::unique_ptr<std::vector<uint>> with the indexes of the non-empty nodes
      */
     std::unique_ptr<std::vector<uint>>  get_real_index(
@@ -316,8 +293,6 @@ private:
 
     /**
      * @brief Clear node. Usage: remove all DOMText children from node.
-     *
-     * @throw Error exception if Xerces XML workspace was not initialized
      */
     void reset_node();
 
