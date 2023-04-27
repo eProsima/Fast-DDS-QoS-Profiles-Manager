@@ -143,19 +143,19 @@ That would avoid polluting the user's installation setup.
 
 Deploy the project in a python3 virtual environment by running:
 
-    .. code-block:: bash
+.. code-block:: bash
 
-        # Python3 virtual environment installation
-        sudo apt install python3.10-venv
+    # Python3 virtual environment installation
+    sudo apt install python3.10-venv
 
-        # Virtual environment deployment
-        cd <path_to_virtual_environment_directory>
-        python3 -m venv fastdds_qosprofman_venv
-        source fastdds_qosprofman_venv/bin/activate
+    # Virtual environment deployment
+    cd <path_to_virtual_environment_directory>
+    python3 -m venv fastdds_qosprofman_venv
+    source fastdds_qosprofman_venv/bin/activate
 
-    .. note::
+.. note::
 
-        As long as colcon performs a recursive search to build packages inside the workspace directory, it is recommended to deploy the virtual environment outside of the workspace directory in order to avoid conflicts.
+    As colcon performs a recursive search to build packages inside the workspace directory, it is recommended to deploy the virtual environment outside of the workspace directory in order to avoid conflicts.
 
 Python3 package dependencies
 """"""""""""""""""""""""""""
@@ -295,7 +295,7 @@ In order to run the CLI, please, ensure to source the environment:
 
     fastddsqosprof -v
 
-Next steps: please look at the `examples <https://github.com/eProsima/Fast-DDS-QoS-Profiles-Manager/tree/main/cli/examples>`_. Each example should have its ``README`` explaining the use case and how to launch it.
+Next steps: please look at the `CLI examples <https://github.com/eProsima/Fast-DDS-QoS-Profiles-Manager/tree/main/cli/examples>`_.
 
 Local documentation
 -------------------
