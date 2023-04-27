@@ -191,7 +191,8 @@ void duration_type_parser(
                             // TODO
                             break;
                         case DurationTypeList::PARTICIPANT_ANNOUNCEMENT_PERIOD:
-                            qosprof::domain_participant::builtin::discovery_config::clear_lease_announcement(                                    profile_name);
+                            qosprof::domain_participant::builtin::discovery_config::clear_lease_announcement(
+                                profile_name);
                             break;
                         case DurationTypeList::PARTICIPANT_CLIENT_ANNOUNCEMENT_PERIOD:
                             qosprof::domain_participant::builtin::discovery_config::clear_client_announcement_period(
@@ -202,7 +203,8 @@ void duration_type_parser(
                                 profile_name);
                             break;
                         case DurationTypeList::PARTICIPANT_LEASE_DURATION:
-                            qosprof::domain_participant::builtin::discovery_config::clear_lease_duration(                                    profile_name);
+                            qosprof::domain_participant::builtin::discovery_config::clear_lease_duration(
+                                profile_name);
                             break;
                     }
                     break;
@@ -270,7 +272,8 @@ void duration_type_parser(
                             // TODO
                             break;
                         case DurationTypeList::PARTICIPANT_ANNOUNCEMENT_PERIOD:
-                            qosprof::domain_participant::builtin::discovery_config::print_lease_announcement(                                    profile_name);
+                            qosprof::domain_participant::builtin::discovery_config::print_lease_announcement(
+                                profile_name);
                             break;
                         case DurationTypeList::PARTICIPANT_CLIENT_ANNOUNCEMENT_PERIOD:
                             qosprof::domain_participant::builtin::discovery_config::print_client_announcement_period(
@@ -281,7 +284,8 @@ void duration_type_parser(
                                 profile_name);
                             break;
                         case DurationTypeList::PARTICIPANT_LEASE_DURATION:
-                            qosprof::domain_participant::builtin::discovery_config::print_lease_duration(                                    profile_name);
+                            qosprof::domain_participant::builtin::discovery_config::print_lease_duration(
+                                profile_name);
                             break;
                     }
                     break;
@@ -529,7 +533,8 @@ void duration_type_parser(
                                     // TODO
                                     break;
                                 case DurationTypeList::DATAREADER_QOS_RELIABILITY_MAX_BLOCKING_TIME:
-                                    qosprof::data_reader::qos::set_reliability_max_blocking_time_sec(                                            profile_name, seconds);
+                                    qosprof::data_reader::qos::set_reliability_max_blocking_time_sec(
+                                        profile_name, seconds);
                                     break;
                                 case DurationTypeList::DATAWRITER_HEARTBEAT_PERIOD:
                                     // TODO
@@ -562,7 +567,8 @@ void duration_type_parser(
                                     // TODO
                                     break;
                                 case DurationTypeList::DATAWRITER_QOS_RELIABILITY_MAX_BLOCKING_TIME:
-                                    qosprof::data_writer::qos::set_reliability_max_blocking_time_sec(                                            profile_name, seconds);
+                                    qosprof::data_writer::qos::set_reliability_max_blocking_time_sec(
+                                        profile_name, seconds);
                                     break;
                                 case DurationTypeList::PARTICIPANT_ANNOUNCEMENT_PERIOD:
                                     qosprof::domain_participant::builtin::discovery_config::
@@ -783,7 +789,8 @@ void duration_type_parser(
                                     // TODO
                                     break;
                                 case DurationTypeList::DATAREADER_QOS_RELIABILITY_MAX_BLOCKING_TIME:
-                                    qosprof::data_reader::qos::set_reliability_max_blocking_time_nanosec(                                            profile_name, nanoseconds);
+                                    qosprof::data_reader::qos::set_reliability_max_blocking_time_nanosec(
+                                        profile_name, nanoseconds);
                                     break;
                                 case DurationTypeList::DATAWRITER_HEARTBEAT_PERIOD:
                                     // TODO
@@ -816,7 +823,8 @@ void duration_type_parser(
                                     // TODO
                                     break;
                                 case DurationTypeList::DATAWRITER_QOS_RELIABILITY_MAX_BLOCKING_TIME:
-                                    qosprof::data_writer::qos::set_reliability_max_blocking_time_nanosec(                                            profile_name, nanoseconds);
+                                    qosprof::data_writer::qos::set_reliability_max_blocking_time_nanosec(
+                                        profile_name, nanoseconds);
                                     break;
                                 case DurationTypeList::PARTICIPANT_ANNOUNCEMENT_PERIOD:
                                     qosprof::domain_participant::builtin::discovery_config::

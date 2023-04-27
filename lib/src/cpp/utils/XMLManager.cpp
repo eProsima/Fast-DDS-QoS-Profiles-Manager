@@ -37,7 +37,9 @@ void XMLManager::initialize (
     if (alive)
     {
         // XML workspace already initialized
-        throw Error("XML workspace already initialized with file: " + xml_file + "\nTo terminate it, please call eprosima::qosprof::terminate() method\n");
+        throw Error(
+                  "XML workspace already initialized with file: " + xml_file +
+                  "\nTo terminate it, please call eprosima::qosprof::terminate() method\n");
     }
 
     // File exists flag
@@ -144,7 +146,8 @@ bool XMLManager::is_initialized()
     if (!alive)
     {
         // XML workspace has not been initialized
-        throw Error("XML workspace has not been initialized!\nPlease call eprosima::qosprof::initialize(std::string xml_file, bool create_file) method\n");
+        throw Error(
+                  "XML workspace has not been initialized!\nPlease call eprosima::qosprof::initialize(std::string xml_file, bool create_file) method\n");
     }
 
     // Return state. If false, this return would never be executed

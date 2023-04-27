@@ -80,7 +80,8 @@ void external_locators_parser(
                             // TODO
                             break;
                         case ExternalLocatorsList::PARTICIPANT_DEFAULT_UNICAST:
-                            qosprof::domain_participant::default_external_unicast_locators::clear(                                    profile_name, key);
+                            qosprof::domain_participant::default_external_unicast_locators::clear(
+                                profile_name, key);
                             break;
                         case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
                             qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::clear(
@@ -98,7 +99,8 @@ void external_locators_parser(
                             // TODO
                             break;
                         case ExternalLocatorsList::PARTICIPANT_DEFAULT_UNICAST:
-                            qosprof::domain_participant::default_external_unicast_locators::print(                                    profile_name, key);
+                            qosprof::domain_participant::default_external_unicast_locators::print(
+                                profile_name, key);
                             break;
                         case ExternalLocatorsList::PARTICIPANT_METATRAFFIC_UNICAST:
                             qosprof::domain_participant::builtin::metatraffic_external_unicast_locators::print(
