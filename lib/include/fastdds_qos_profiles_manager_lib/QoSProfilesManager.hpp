@@ -32,7 +32,7 @@ namespace qosprof {
  * @param xml_file Absolute/relative path to the XML file.
  * @param create_file bool create file if the flag is set and the file is not found
  *
- * @throw Error Exception if the workspace could not be initialized
+ * @throw Error Exception if the workspace could not be initialized, or it was already initialized
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void initialize(
         const std::string& xml_file,

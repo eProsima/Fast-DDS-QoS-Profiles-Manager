@@ -31,21 +31,10 @@ void initialize(
         const std::string& xml_file,
         const bool create_file)
 {
-    // Try to initialize XML workspace
-    try
-    {
-        xercesc::XMLPlatformUtils::Initialize();
-    }
-    catch (const xercesc::XMLException& toCatch)
-    {
-        // Unable to initialize XML workspace
-        throw Error(xercesc::XMLString::transcode(toCatch.getMessage()));
-    }
-
     // Get singleton instance of manager
     eprosima::qosprof::utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
-    // Set up with the basic information
+    // Initialize workspace and set up the manager with required information
     manager.initialize(xml_file, create_file);
 }
 
@@ -54,11 +43,8 @@ void terminate()
     // Create singleton instance of manager
     eprosima::qosprof::utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
-    // write if needed the final XML in the given path
-    manager.save_xml();
-
-    // Close XML workspace
-    xercesc::XMLPlatformUtils::Terminate();
+    // terminate the workspace and write the final XML in the given path if needed
+    manager.terminate();
 }
 
 } // qosprof

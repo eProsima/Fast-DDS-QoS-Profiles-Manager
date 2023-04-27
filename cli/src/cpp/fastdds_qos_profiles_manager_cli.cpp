@@ -41,7 +41,14 @@ int main(
     std::string command = args[PARSER_COMMAND].asString();
 
     // Open XML workspace
-    eprosima::qosprof::initialize(args[PARSER_FILE].asString(), command == SET_COMMAND);
+    try
+    {
+        eprosima::qosprof::initialize(args[PARSER_FILE].asString(), command == SET_COMMAND);
+    }
+    catch (const eprosima::qosprof::Exception& e)
+    {
+        std::cout << "Fast DDS QoS Profiles Manager exception caught: " << e.what() << std::endl;
+    }
 
     if (command == SET_COMMAND)
     {

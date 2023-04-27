@@ -33,6 +33,13 @@ void XMLManager::initialize (
         const std::string& file_name,
         bool create_file)
 {
+    // Check if workspace already initialized to avoid initializing it twice
+    if (alive)
+    {
+        // XML workspace already initialized
+        throw Error("XML workspace already initialized with file: " + xml_file + "\nTo terminate it, please call eprosima::qosprof::terminate() method\n");
+    }
+
     // File exists flag
     bool file_exists = false;
 
@@ -106,6 +113,9 @@ void XMLManager::initialize (
     // Obtain first document node
     reference_node = static_cast<xercesc::DOMNode*>(doc->getDocumentElement());
 
+    // IMPORTANT: set class as initialized
+    alive = true;
+
     // Check if XML document has rooted structure
     transform_standalone_to_rooted_structure();
 
@@ -128,8 +138,47 @@ void XMLManager::initialize (
     parser->setValidationConstraintFatal(true);
 }
 
+bool XMLManager::is_initialized()
+{
+    // If not initialized, throw Error exception with uninitialized message
+    if (!alive)
+    {
+        // XML workspace has not been initialized
+        throw Error("XML workspace has not been initialized!\nPlease call eprosima::qosprof::initialize(std::string xml_file, bool create_file) method\n");
+    }
+
+    // Return state. If false, this return would never be executed
+    return alive;
+}
+
+void XMLManager::terminate()
+{
+    // Check if workspace was initialized
+    try
+    {
+        is_initialized();
+    }
+    // Silent error management
+    catch (const Error& ex)
+    {
+        return;
+    }
+
+    // write the final XML in the given path if needed
+    save_xml();
+
+    // IMPORTANT: set class as not longer initialized (terminated)
+    alive = false;
+
+    // Close XML workspace
+    xercesc::XMLPlatformUtils::Terminate();
+}
+
 void XMLManager::transform_standalone_to_rooted_structure()
 {
+    // Check if workspace was initialized
+    is_initialized();
+
     std::string root_name = xercesc::XMLString::transcode(reference_node->getNodeName());
 
     // If NOT rooted structure (standalone structure)
@@ -171,6 +220,9 @@ void XMLManager::transform_standalone_to_rooted_structure()
 
 void XMLManager::validate_and_save_document()
 {
+    // Check if workspace was initialized
+    is_initialized();
+
     // Set the write required as false by default
     write_required = false;
 
@@ -183,6 +235,9 @@ void XMLManager::validate_and_save_document()
 
 bool XMLManager::validate_xml()
 {
+    // Check if workspace was initialized
+    is_initialized();
+
     // Set ElementInvalid error handler
     error_handler = new utils::ErrorHandlerXMLManager(
         utils::ErrorHandlerXMLManager::Kind::ElementInvalid);
@@ -205,6 +260,10 @@ bool XMLManager::validate_xml()
 
 bool XMLManager::save_xml()
 {
+    // Check if workspace was initialized
+    is_initialized();
+
+    // write the final XML in the given path if needed
     if (write_required)
     {
         // Config would configure serialized XML data
@@ -224,6 +283,9 @@ bool XMLManager::save_xml()
 void XMLManager::create_node(
         const std::string& tag_name)
 {
+    // Check if workspace was initialized
+    is_initialized();
+
     // Save parent node
     xercesc::DOMNode* parent_node = reference_node;
 
@@ -237,6 +299,9 @@ void XMLManager::create_node(
 
 void XMLManager::clear_node()
 {
+    // Check if workspace was initialized
+    is_initialized();
+
     // Remove node from parent
     xercesc::DOMNode* parent_node = reference_node->getParentNode();
 
@@ -276,6 +341,9 @@ void XMLManager::clear_node()
 
 void XMLManager::reset_node()
 {
+    // Check if workspace was initialized
+    is_initialized();
+
     // Loop for childs
     while (reference_node->hasChildNodes())
     {
@@ -293,6 +361,9 @@ void XMLManager::reset_node()
 void XMLManager::set_value_to_node(
         const std::string& value)
 {
+    // Check if workspace was initialized
+    is_initialized();
+
     // Remove all childs
     reset_node();
 
@@ -305,6 +376,9 @@ void XMLManager::set_attribute_to_node(
         const std::string& name,
         const std::string& value)
 {
+    // Check if workspace was initialized
+    is_initialized();
+
     // Set the attribute value
     static_cast<xercesc::DOMElement*>(reference_node)->setAttribute(
         xercesc::XMLString::transcode(name.c_str()),
@@ -315,6 +389,9 @@ void XMLManager::set_siblings_attribute(
         const std::string& name,
         const std::string& value)
 {
+    // Check if workspace was initialized
+    is_initialized();
+
     // Obtain all siblings
     xercesc::DOMNodeList* siblings_node_list = reference_node->getParentNode()->getChildNodes();
 
@@ -338,6 +415,9 @@ void XMLManager::set_siblings_attribute(
 
 std::string XMLManager::get_node_value()
 {
+    // Check if workspace was initialized
+    is_initialized();
+
     if (xercesc::XMLString::transcode(reference_node->getNodeValue()) != nullptr)
     {
         return xercesc::XMLString::transcode(reference_node->getNodeValue());
@@ -351,6 +431,9 @@ std::string XMLManager::get_node_value()
 std::string XMLManager::get_node_attribute_value(
         const std::string& name)
 {
+    // Check if workspace was initialized
+    is_initialized();
+
     xercesc::DOMNode* attribute_node = reference_node->getAttributes()->getNamedItem(
         xercesc::XMLString::transcode(name.c_str()));
     if (attribute_node != nullptr)
@@ -372,6 +455,9 @@ void XMLManager::move_to_node(
         const std::string& tag_name,
         const bool create_if_not_existent)
 {
+    // Check if workspace was initialized
+    is_initialized();
+
     // Obtain list of nodes based on the target tag
     xercesc::DOMNodeList* node_list = static_cast<xercesc::DOMElement*>(reference_node)->getElementsByTagName(
         xercesc::XMLString::transcode(tag_name.c_str()));
@@ -407,6 +493,9 @@ void XMLManager::move_to_node(
         const std::string& default_tag_name,
         const bool create_if_not_existent)
 {
+    // Check if workspace was initialized
+    is_initialized();
+
     // Index not empty
     if (!index.empty())
     {
@@ -467,6 +556,9 @@ void XMLManager::move_to_node(
         const std::string& value,
         const bool create_if_not_existent)
 {
+    // Check if workspace was initialized
+    is_initialized();
+
     // Obtain list of nodes based on the target tag
     xercesc::DOMNodeList* node_list = static_cast<xercesc::DOMElement*>(reference_node)->getElementsByTagName(
         xercesc::XMLString::transcode(tag_name.c_str()));
@@ -514,6 +606,9 @@ void XMLManager::move_to_node(
 
 void XMLManager::move_to_root_node()
 {
+    // Check if workspace was initialized
+    is_initialized();
+
     // Set the last node as the root node
     reference_node = doc->getElementsByTagName(xercesc::XMLString::transcode(tag::ROOT))->item(0);
 }
@@ -523,6 +618,9 @@ void XMLManager::move_to_locator_node(
         const bool is_external,
         const bool create_if_not_existent)
 {
+    // Check if workspace was initialized
+    is_initialized();
+
     // Set default tag name for locator
     std::string default_tag_name = utils::tag::LOCATOR;
 
@@ -570,6 +668,9 @@ void XMLManager::move_to_transport_node(
         const std::string& transport_id,
         const bool create_if_not_existent)
 {
+    // Check if workspace was initialized
+    is_initialized();
+
     // Obtain list node
     move_to_node(utils::tag::TRANSPORT_DESCRIPTOR_LIST, create_if_not_existent);
 
@@ -685,6 +786,9 @@ std::string XMLManager::get_absolute_path(
 std::unique_ptr<std::vector<uint>> XMLManager::get_real_index(
         xercesc::DOMNodeList*& node_list)
 {
+    // Check if workspace was initialized
+    is_initialized();
+
     // Create new list
     std::unique_ptr<std::vector<uint>> index_list (new std::vector<uint>());
 
