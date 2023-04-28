@@ -29,7 +29,6 @@ namespace domain_participant {
 namespace properties_policy {
 
 std::string print(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& property_id)
 {
@@ -37,7 +36,6 @@ std::string print(
 }
 
 std::string print_value(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& property_id)
 {
@@ -45,7 +43,6 @@ std::string print_value(
 }
 
 std::string print_propagate(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& property_id)
 {
@@ -53,21 +50,18 @@ std::string print_propagate(
 }
 
 uint32_t size(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::vector<std::string> keys(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& property_id)
 {
@@ -75,7 +69,6 @@ void clear(
 }
 
 void clear_value(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& property_id)
 {
@@ -83,7 +76,6 @@ void clear_value(
 }
 
 void clear_propagate(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& property_id)
 {
@@ -91,7 +83,6 @@ void clear_propagate(
 }
 
 void set_value(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& property_id,
         const std::string& value)
@@ -100,7 +91,6 @@ void set_value(
 }
 
 void set_propagate(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& property_id,
         const std::string& propagate)
@@ -109,7 +99,6 @@ void set_propagate(
 }
 
 void push(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& property_id)
 {

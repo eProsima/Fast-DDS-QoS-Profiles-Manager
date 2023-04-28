@@ -43,7 +43,6 @@ public:
      */
     enum class Kind
     {
-        FileNotFound,
         ElementInvalid,
         ElementNotFound,
     };
@@ -54,7 +53,7 @@ public:
      * @param Kind kind of exception to be thrown
      */
     ErrorHandlerXMLManager(
-            Kind kind = Kind::FileNotFound);
+            Kind kind = Kind::ElementNotFound);
 
     /**
      * @brief Destroy the Parse XML Error Handler object

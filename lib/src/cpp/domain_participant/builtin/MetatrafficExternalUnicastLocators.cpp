@@ -39,6 +39,7 @@ namespace metatraffic_external_unicast_locators {
  * @param[in] profile_id Domain participant profile identifier
  * @param[in] create_if_not_existent flag that enables the creation of the  element if it does not exist
  *
+ * @throw Error exception if XML workspace was not initialized
  * @throw ElementNotFound exception if expected node was not found and node creation was not required
  */
 void initialize_namespace(
@@ -46,16 +47,19 @@ void initialize_namespace(
         const std::string& profile_id,
         const bool create_if_not_existent)
 {
+    // Check if workspace was initialized
+    manager.is_initialized();
+
     // Iterate through required elements, and create them if not existent
-    manager.get_node(utils::tag::PROFILES, create_if_not_existent);
-    manager.get_node(utils::tag::PARTICIPANT, utils::tag::PROFILE_NAME, profile_id, create_if_not_existent);
-    manager.get_node(utils::tag::RTPS, create_if_not_existent);
-    manager.get_node(utils::tag::BUILTIN, create_if_not_existent);
-    manager.get_node(utils::tag::METATRAFFIC_EXTERNAL_UNICAST_LOCATOR_LIST, create_if_not_existent);
+    manager.move_to_root_node(create_if_not_existent);
+    manager.move_to_node(utils::tag::PROFILES, create_if_not_existent);
+    manager.move_to_node(utils::tag::PARTICIPANT, utils::tag::PROFILE_NAME, profile_id, create_if_not_existent);
+    manager.move_to_node(utils::tag::RTPS, create_if_not_existent);
+    manager.move_to_node(utils::tag::BUILTIN, create_if_not_existent);
+    manager.move_to_node(utils::tag::METATRAFFIC_EXTERNAL_UNICAST_LOCATOR_LIST, create_if_not_existent);
 }
 
 std::string print(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -63,7 +67,6 @@ std::string print(
 }
 
 std::string print_kind(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -71,7 +74,6 @@ std::string print_kind(
 }
 
 std::string print_port(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -79,7 +81,6 @@ std::string print_port(
 }
 
 std::string print_address(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -87,7 +88,6 @@ std::string print_address(
 }
 
 std::string print_externality(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -95,7 +95,6 @@ std::string print_externality(
 }
 
 std::string print_cost(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -103,7 +102,6 @@ std::string print_cost(
 }
 
 std::string print_mask(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -111,14 +109,12 @@ std::string print_mask(
 }
 
 uint32_t size(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -126,7 +122,6 @@ void clear(
 }
 
 void clear_port(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -134,7 +129,6 @@ void clear_port(
 }
 
 void clear_address(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -142,7 +136,6 @@ void clear_address(
 }
 
 void clear_externality(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -150,7 +143,6 @@ void clear_externality(
 }
 
 void clear_cost(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -158,7 +150,6 @@ void clear_cost(
 }
 
 void clear_mask(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -166,7 +157,6 @@ void clear_mask(
 }
 
 void set_kind(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& kind,
         const std::string& index)
@@ -175,13 +165,12 @@ void set_kind(
 }
 
 void set_port(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& port,
         const std::string& index)
 {
     // Create XML manager and initialize the document
-    utils::XMLManager manager(xml_file, true);
+    utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
     // Obtain base node position
     initialize_namespace(manager, profile_id, true);
@@ -194,13 +183,12 @@ void set_port(
 }
 
 void set_address(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& address,
         const std::string& index)
 {
     // Create XML manager and initialize the document
-    utils::XMLManager manager(xml_file, true);
+    utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
     // Obtain base node position
     initialize_namespace(manager, profile_id, true);
@@ -213,19 +201,18 @@ void set_address(
 }
 
 void set_externality(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& externality,
         const std::string& index)
 {
     // Create XML manager and initialize the document
-    utils::XMLManager manager(xml_file, true);
+    utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
     // Obtain base node position
     initialize_namespace(manager, profile_id, true);
 
     // Iterate through required elements, and create them if not existent
-    manager.get_locator_node(index, true, true);
+    manager.move_to_locator_node(index, true, true);
 
     // Set the externality value
     manager.set_attribute_to_node(utils::tag::EXTERNALITY, externality);
@@ -235,7 +222,6 @@ void set_externality(
 }
 
 void set_cost(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& cost,
         const std::string& index)
@@ -244,7 +230,6 @@ void set_cost(
 }
 
 void set_mask(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& mask,
         const std::string& index)

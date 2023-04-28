@@ -36,54 +36,48 @@ namespace properties_policy {
 /**
  * @brief Parse XML file and print specific Domain Participant property in the policy list.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] property_id Property name to be printed. If empty, print the complete property policy list.
  *
  * @return std::string XML section containing the specific property.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/Property name is not found in the XML
  *        file or the properties policy element does not exist.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& property_id);
 
 /**
  * @brief Parse XML file and print specific Domain Participant property value in the policy list.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] property_id Property name which value is printed.
  *
  * @return std::string Property value.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/Property name is not found in the XML
  *        file or the properties policy element does not exist.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_value(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& property_id);
 
 /**
  * @brief Parse XML file and print specific Domain Participant property propagate attribute in the policy list.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] property_id Property name which propagate attribute is printed.
  *
  * @return std::string Property propagate attribute.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/Property name is not found in the XML
  *        file or the properties policy element does not exist.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_propagate(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& property_id);
 
@@ -94,32 +88,28 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::string print_propagate(
 /**
  * @brief Number of properties defined in the Domain Participant profile.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  *
  * @return uint32_t Number of properties.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI uint32_t size(
-        const std::string& xml_file,
         const std::string& profile_id);
 
 /**
  * @brief List of the property names defined in the Domain Participant profile.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  *
  * @return std::vector<std::string> Identifier list.
  *         Empty list if there are no properties.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::vector<std::string> keys(
-        const std::string& xml_file,
         const std::string& profile_id);
 
 /************************************************************************/
@@ -129,45 +119,39 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI std::vector<std::string> keys(
 /**
  * @brief Remove specific property in the Domain Participant profile.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] property_id Property name to be removed. If empty, every property is removed from the profile.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/Property is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& property_id);
 
 /**
  * @brief Remove specific property value in the Domain Participant profile.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] property_id Property name which value is to be removed.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/Property is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_value(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& property_id);
 
 /**
  * @brief Remove specific property propagate attribute in the Domain Participant profile.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] property_id Property name which propagate attribute is to be removed.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified Domain Participant profile/Property is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_propagate(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& property_id);
 
@@ -178,15 +162,14 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void clear_propagate(
 /**
  * @brief Set the property value in the Domain Participant profile.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] property_id Property name which value is being set/updated.
  * @param[in] value New property value.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_value(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& property_id,
         const std::string& value);
@@ -194,15 +177,14 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_value(
 /**
  * @brief Set the property propagate attribute in the Domain Participant profile.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] property_id Property name which value is being set/updated.
  * @param[in] propagate New propagate value.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_propagate(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& property_id,
         const std::string& propagate);
@@ -214,14 +196,13 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_propagate(
 /**
  * @brief Append a new property with empty value to the Domain Participant profile.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id Domain participant profile identifier.
  * @param[in] property_id Property name.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided property name is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void push(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& property_id);
 

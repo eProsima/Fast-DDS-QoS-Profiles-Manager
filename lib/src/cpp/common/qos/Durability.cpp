@@ -34,7 +34,7 @@ void set_kind(
         const std::string& kind)
 {
     // Obtain kind node
-    manager.get_node(utils::tag::KIND, true);
+    manager.move_to_node(utils::tag::KIND, true);
 
     // Set value to node
     manager.set_value_to_node(kind);

@@ -20,7 +20,7 @@ The snippet below shows different examples:
 
     $ fastddsqosprof file set datareader[dr_profile].default_profile
 
-    $ fastddsqosprof file set datawriter[dw_profile].qos.reliability.duration.max_blocking_time 1
+    $ fastddsqosprof file set datawriter[dw_profile].qos.reliability.duration.max_blocking_time 1 100
 
     $ fastddsqosprof file set participant[p_profile].name "My participant"
 

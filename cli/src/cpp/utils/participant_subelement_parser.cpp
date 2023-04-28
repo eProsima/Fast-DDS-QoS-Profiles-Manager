@@ -29,7 +29,6 @@ namespace qosprof_cli {
 
 void participant_subelement_parser(
         CommonCommands command,
-        const std::string& filename,
         const std::string& profile_name,
         std::string& element,
         const std::vector<std::string>& values)
@@ -62,7 +61,7 @@ void participant_subelement_parser(
 
         if (!print_usage)
         {
-            builtin_parser(command, filename, profile_name, subelement, values);
+            builtin_parser(command, profile_name, subelement, values);
         }
         else
         {
@@ -96,14 +95,14 @@ void participant_subelement_parser(
                 {
                     case CommonCommands::CLEAR:
                         // TODO: think if the CLI command should change with the new behavior -> participant.default_profile
-                        qosprof::domain_participant::clear_default_profile(filename);
+                        qosprof::domain_participant::clear_default_profile();
                         break;
                     case CommonCommands::PRINT:
                         // TODO: think if the CLI command should change with the new behavior.
-                        qosprof::domain_participant::print_default_profile(filename);
+                        qosprof::domain_participant::print_default_profile();
                         break;
                     case CommonCommands::SET:
-                        qosprof::domain_participant::set_default_profile(filename, profile_name);
+                        qosprof::domain_participant::set_default_profile(profile_name);
                         break;
                 }
             }
@@ -135,7 +134,7 @@ void participant_subelement_parser(
 
         if (!print_usage)
         {
-            external_locators_parser(ExternalLocatorsList::PARTICIPANT_DEFAULT_UNICAST, command, filename, profile_name,
+            external_locators_parser(ExternalLocatorsList::PARTICIPANT_DEFAULT_UNICAST, command, profile_name,
                     subelement, values);
         }
         else
@@ -190,14 +189,14 @@ void participant_subelement_parser(
                         print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
                         if (!print_usage)
                         {
-                            qosprof::domain_participant::clear_name(filename, profile_name);
+                            qosprof::domain_participant::clear_name(profile_name);
                         }
                         break;
                     case CommonCommands::PRINT:
                         print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
                         if (!print_usage)
                         {
-                            qosprof::domain_participant::print_name(filename, profile_name);
+                            qosprof::domain_participant::print_name(profile_name);
                         }
                         break;
                     case CommonCommands::QUERY:
@@ -207,7 +206,7 @@ void participant_subelement_parser(
                         print_usage = !check_command_arguments(command, 1, values.size(), message.str(), true);
                         if (!print_usage)
                         {
-                            qosprof::domain_participant::set_name(filename, profile_name, values[DEFAULT_POSITION]);
+                            qosprof::domain_participant::set_name(profile_name, values[DEFAULT_POSITION]);
                         }
                         break;
                 }
@@ -254,14 +253,14 @@ void participant_subelement_parser(
                         print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
                         if (!print_usage)
                         {
-                            qosprof::domain_participant::clear_use_builtin_transports(filename, profile_name);
+                            qosprof::domain_participant::clear_use_builtin_transports(profile_name);
                         }
                         break;
                     case CommonCommands::PRINT:
                         print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
                         if (!print_usage)
                         {
-                            qosprof::domain_participant::print_use_builtin_transports(filename, profile_name);
+                            qosprof::domain_participant::print_use_builtin_transports(profile_name);
                         }
                         break;
                     case CommonCommands::QUERY:
@@ -271,7 +270,7 @@ void participant_subelement_parser(
                         print_usage = !check_command_arguments(command, 1, values.size(), message.str(), true);
                         if (!print_usage)
                         {
-                            qosprof::domain_participant::set_use_builtin_transports(filename, profile_name,
+                            qosprof::domain_participant::set_use_builtin_transports(profile_name,
                                     values[DEFAULT_POSITION]);
                         }
                         break;
@@ -308,14 +307,14 @@ void participant_subelement_parser(
                         print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
                         if (!print_usage)
                         {
-                            qosprof::domain_participant::clear_user_transports(filename, profile_name, key);
+                            qosprof::domain_participant::clear_user_transports(profile_name, key);
                         }
                         break;
                     case CommonCommands::PRINT:
                         print_usage = !check_command_arguments(command, 0, values.size(), message.str(), true);
                         if (!print_usage)
                         {
-                            qosprof::domain_participant::print_user_transports(filename, profile_name, key);
+                            qosprof::domain_participant::print_user_transports(profile_name, key);
                         }
                         break;
                     case CommonCommands::QUERY:
@@ -325,14 +324,14 @@ void participant_subelement_parser(
                         print_usage = print_usage || !check_index(key, true);
                         if (!print_usage)
                         {
-                            qosprof::domain_participant::user_transports_size(filename, profile_name);
+                            qosprof::domain_participant::user_transports_size(profile_name);
                         }
                         break;
                     case CommonCommands::SET:
                         print_usage = !check_command_arguments(command, 1, values.size(), message.str(), true);
                         if (!print_usage)
                         {
-                            qosprof::domain_participant::set_user_transports(filename, profile_name,
+                            qosprof::domain_participant::set_user_transports(profile_name,
                                     values[DEFAULT_POSITION], key);
                         }
                         break;

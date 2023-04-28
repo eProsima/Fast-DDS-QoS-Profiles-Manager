@@ -38,6 +38,7 @@ namespace domain_participant {
  * @param[in] create_if_not_existent flag that enables the creation of the  element if it does not exist
  * @param[in] additional_RTPS_tag additional RTPS tag to initialize directly
  *
+ * @throw Error exception if XML workspace was not initialized
  * @throw ElementNotFound exception if expected node was not found and node creation was not required
  */
 void initialize_namespace(
@@ -46,75 +47,70 @@ void initialize_namespace(
         const bool create_if_not_existent,
         const std::string& additional_RTPS_tag)
 {
+    // Check if workspace was initialized
+    manager.is_initialized();
+
     // Iterate through required elements, and create them if not existent
-    manager.get_node(utils::tag::PROFILES, create_if_not_existent);
-    manager.get_node(utils::tag::PARTICIPANT, utils::tag::PROFILE_NAME, profile_id, create_if_not_existent);
+    manager.move_to_root_node(create_if_not_existent);
+    manager.move_to_node(utils::tag::PROFILES, create_if_not_existent);
+    manager.move_to_node(utils::tag::PARTICIPANT, utils::tag::PROFILE_NAME, profile_id, create_if_not_existent);
 
     // there are additional tags to obtain
     if (!additional_RTPS_tag.empty())
     {
-        manager.get_node(utils::tag::RTPS, create_if_not_existent);
-        manager.get_node(additional_RTPS_tag, create_if_not_existent);
+        manager.move_to_node(utils::tag::RTPS, create_if_not_existent);
+        manager.move_to_node(additional_RTPS_tag, create_if_not_existent);
     }
 }
 
 std::string print(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
-std::string print_default_profile(
-        const std::string& xml_file)
+std::string print_default_profile()
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_domain_id(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_name(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_ignore_non_matching_locators(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_send_socket_buffer_size(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_listen_socket_buffer_size(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_participant_id(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_user_transports(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -122,14 +118,12 @@ std::string print_user_transports(
 }
 
 std::string print_use_builtin_transports(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_user_data(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -137,83 +131,71 @@ std::string print_user_data(
 }
 
 std::string print_prefix(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 uint32_t user_transports_size(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 uint32_t user_data_size(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
-void clear_default_profile(
-        const std::string& xml_file)
+void clear_default_profile()
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_domain_id(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_name(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_ignore_non_matching_locators(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_send_socket_buffer_size(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_listen_socket_buffer_size(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_participant_id(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_user_transports(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -221,14 +203,12 @@ void clear_user_transports(
 }
 
 void clear_use_builtin_transports(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_user_data(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -236,18 +216,16 @@ void clear_user_data(
 }
 
 void clear_prefix(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void set_default_profile(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     // Create XML manager and initialize the document
-    utils::XMLManager manager(xml_file, false);
+    utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
     // Obtain base node position
     initialize_namespace(manager, profile_id, false, "");
@@ -277,7 +255,6 @@ void set_default_profile(
 }
 
 void set_domain_id(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& domain_id)
 {
@@ -285,12 +262,11 @@ void set_domain_id(
 }
 
 void set_name(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& name)
 {
     // Create XML manager and initialize the document
-    utils::XMLManager manager(xml_file, true);
+    utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
     // Obtain base node position
     initialize_namespace(manager, profile_id, true, utils::tag::NAME);
@@ -303,7 +279,6 @@ void set_name(
 }
 
 void set_ignore_non_matching_locators(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& ignore_non_matching_locators)
 {
@@ -311,7 +286,6 @@ void set_ignore_non_matching_locators(
 }
 
 void set_send_socket_buffer_size(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& send_socket_buffer_size)
 {
@@ -319,7 +293,6 @@ void set_send_socket_buffer_size(
 }
 
 void set_listen_socket_buffer_size(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& listen_socket_buffer_size)
 {
@@ -327,7 +300,6 @@ void set_listen_socket_buffer_size(
 }
 
 void set_participant_id(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& participant_id)
 {
@@ -335,12 +307,11 @@ void set_participant_id(
 }
 
 void set_use_builtin_transports(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& use_builtin_transports)
 {
     // Create XML manager and initialize the document
-    utils::XMLManager manager(xml_file, true);
+    utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
     // Obtain base node position
     initialize_namespace(manager, profile_id, true, utils::tag::USE_BUILTIN_TRANSPORTS);
@@ -353,7 +324,6 @@ void set_use_builtin_transports(
 }
 
 void set_prefix(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& prefix)
 {
@@ -361,19 +331,18 @@ void set_prefix(
 }
 
 void set_user_transports(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& transport_id,
         const std::string& index)
 {
     // Create XML manager and initialize the document
-    utils::XMLManager manager(xml_file, true);
+    utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
     // Obtain base node position
     initialize_namespace(manager, profile_id, true, utils::tag::USER_TRANSPORTS);
 
     // Obtain / create the transport located at the index position in the collection
-    manager.get_node(index, utils::tag::TRANSPORT_ID, true);
+    manager.move_to_node(index, utils::tag::TRANSPORT_ID, true);
 
     // set node value
     manager.set_value_to_node(transport_id);
@@ -383,7 +352,6 @@ void set_user_transports(
 }
 
 void set_user_data(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& user_data,
         const std::string& index)

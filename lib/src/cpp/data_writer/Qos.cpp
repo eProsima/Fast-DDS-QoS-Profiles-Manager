@@ -40,6 +40,7 @@ namespace qos {
  * @param[in] create_if_not_existent flag that enables the creation of the  element if it does not exist
  * @param[in] required_qos Required QoS TAG
  *
+ * @throw Error exception if XML workspace was not initialized
  * @throw ElementNotFound exception if expected node was not found and node creation was not required
  */
 void initialize_namespace(
@@ -48,20 +49,23 @@ void initialize_namespace(
         const bool create_if_not_existent,
         const std::string& required_qos)
 {
+    // Check if workspace was initialized
+    manager.is_initialized();
+
     // Iterate through required elements, and create them if not existent
-    manager.get_node(utils::tag::PROFILES, create_if_not_existent);
-    manager.get_node(utils::tag::DATA_WRITER, utils::tag::PROFILE_NAME, profile_id, create_if_not_existent);
-    manager.get_node(utils::tag::QOS, create_if_not_existent);
-    manager.get_node(required_qos, create_if_not_existent);
+    manager.move_to_root_node(create_if_not_existent);
+    manager.move_to_node(utils::tag::PROFILES, create_if_not_existent);
+    manager.move_to_node(utils::tag::DATA_WRITER, utils::tag::PROFILE_NAME, profile_id, create_if_not_existent);
+    manager.move_to_node(utils::tag::QOS, create_if_not_existent);
+    manager.move_to_node(required_qos, create_if_not_existent);
 }
 
 void set_durability_kind(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& kind)
 {
     // Create XML manager and initialize the document
-    utils::XMLManager manager(xml_file, true);
+    utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
     // Obtain base node position
     initialize_namespace(manager, profile_id, true, utils::tag::DURABILITY);
@@ -74,12 +78,11 @@ void set_durability_kind(
 }
 
 void set_reliability_kind(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& kind)
 {
     // Create XML manager and initialize the document
-    utils::XMLManager manager(xml_file, true);
+    utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
     // Obtain base node position
     initialize_namespace(manager, profile_id, true, utils::tag::RELIABILITY);
@@ -92,12 +95,11 @@ void set_reliability_kind(
 }
 
 void set_reliability_max_blocking_time_sec(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& sec)
 {
     // Create XML manager and initialize the document
-    utils::XMLManager manager(xml_file, true);
+    utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
     // Obtain base node position
     initialize_namespace(manager, profile_id, true, utils::tag::RELIABILITY);
@@ -110,12 +112,11 @@ void set_reliability_max_blocking_time_sec(
 }
 
 void set_reliability_max_blocking_time_nanosec(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& nanosec)
 {
     // Create XML manager and initialize the document
-    utils::XMLManager manager(xml_file, true);
+    utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
     // Obtain base node position
     initialize_namespace(manager, profile_id, true, utils::tag::RELIABILITY);

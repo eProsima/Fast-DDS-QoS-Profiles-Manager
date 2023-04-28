@@ -28,119 +28,102 @@ namespace domain_participant {
 namespace builtin {
 
 std::string print(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_avoid_builtin_multicast(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_use_writer_liveliness_protocol(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_reader_history_memory_policy(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_writer_history_memory_policy(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_reader_payload_size(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_writer_payload_size(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_mutation_tries(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_avoid_builtin_multicast(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_use_writer_liveliness_protocol(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_reader_history_memory_policy(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_writer_history_memory_policy(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_reader_payload_size(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_witer_payload_size(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_mutation_tries(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void set_avoid_builtin_multicast(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& avoid_builtin_multicast)
 {
@@ -148,7 +131,6 @@ void set_avoid_builtin_multicast(
 }
 
 void set_use_writer_liveliness_protocol(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& use_writer_liveliness_protocol)
 {
@@ -156,7 +138,6 @@ void set_use_writer_liveliness_protocol(
 }
 
 void set_reader_history_memory_policy(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& reader_history_memory_policy)
 {
@@ -164,7 +145,6 @@ void set_reader_history_memory_policy(
 }
 
 void set_writer_history_memory_policy(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& writer_history_memory_policy)
 {
@@ -172,7 +152,6 @@ void set_writer_history_memory_policy(
 }
 
 void set_reader_payload_size(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& reader_payload_size)
 {
@@ -180,7 +159,6 @@ void set_reader_payload_size(
 }
 
 void set_writer_payload_size(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& writer_payload_size)
 {
@@ -188,7 +166,6 @@ void set_writer_payload_size(
 }
 
 void set_mutation_tries(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& mutation_tries)
 {

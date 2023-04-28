@@ -40,6 +40,7 @@ namespace discovery_config {
  * @param[in] create_if_not_existent flag that enables the creation of the  element if it does not exist
  * @param[in] additional_tag additional tag to obtain base node
  *
+ * @throw Error exception if XML workspace was not initialized
  * @throw ElementNotFound exception if expected node was not found and node creation was not required
  */
 void initialize_namespace(
@@ -48,167 +49,149 @@ void initialize_namespace(
         const bool create_if_not_existent,
         const std::string& additional_tag)
 {
+    // Check if workspace was initialized
+    manager.is_initialized();
+
     // Iterate through required elements, and create them if not existent
-    manager.get_node(utils::tag::PROFILES, create_if_not_existent);
-    manager.get_node(utils::tag::PARTICIPANT, utils::tag::PROFILE_NAME, profile_id, create_if_not_existent);
-    manager.get_node(utils::tag::RTPS, create_if_not_existent);
-    manager.get_node(utils::tag::BUILTIN, create_if_not_existent);
-    manager.get_node(utils::tag::DISCOVERY_CONFIG, create_if_not_existent);
+    manager.move_to_root_node(create_if_not_existent);
+    manager.move_to_node(utils::tag::PROFILES, create_if_not_existent);
+    manager.move_to_node(utils::tag::PARTICIPANT, utils::tag::PROFILE_NAME, profile_id, create_if_not_existent);
+    manager.move_to_node(utils::tag::RTPS, create_if_not_existent);
+    manager.move_to_node(utils::tag::BUILTIN, create_if_not_existent);
+    manager.move_to_node(utils::tag::DISCOVERY_CONFIG, create_if_not_existent);
     if (!additional_tag.empty())
     {
-        manager.get_node(additional_tag, create_if_not_existent);
+        manager.move_to_node(additional_tag, create_if_not_existent);
     }
 }
 
 std::string print(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_discovery_protocol(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_ignore_participant_flags(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_edp(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_simple_edp(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_simple_edp_pubwriter_subreader(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_simple_edp_pubreader_subwriter(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_lease_duration(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_lease_duration_sec(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_lease_duration_nanosec(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_lease_announcement(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_lease_announcement_sec(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_lease_announcement_nanosec(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_initial_announcements(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_initial_announcements_count(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_initial_announcements_period(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_initial_announcements_period_sec(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_initial_announcements_period_nanosec(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_client_announcement_period(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_client_announcement_period_sec(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_client_announcement_period_nanosec(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 std::string print_static_edp_xml_config(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -216,161 +199,138 @@ std::string print_static_edp_xml_config(
 }
 
 uint32_t static_edp_xml_config_size(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_discovery_protocol(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_ignore_participant_flags(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_edp(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_simple_edp(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_simple_edp_pubwriter_subreader(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_simple_edp_edp_pubreader_subwriter(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_lease_duration(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_lease_duration_sec(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_lease_duration_nanosec(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_lease_announcement(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_lease_announcement_sec(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_lease_announcement_nanosec(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_initial_announcements(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_initial_announcements_count(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_initial_announcements_period(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_initial_announcements_period_sec(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_initial_announcements_period_nanosec(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_client_announcement_period(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_client_announcement_period_sec(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_client_announcement_period_nanosec(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear_static_edp_xml_config(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -378,7 +338,6 @@ void clear_static_edp_xml_config(
 }
 
 void set_discovery_protocol(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& discovery_protocol)
 {
@@ -386,7 +345,6 @@ void set_discovery_protocol(
 }
 
 void set_ignore_participant_flags(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& ignore_participant_flags)
 {
@@ -394,7 +352,6 @@ void set_ignore_participant_flags(
 }
 
 void set_edp(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& edp)
 {
@@ -402,7 +359,6 @@ void set_edp(
 }
 
 void set_simple_edp_pubwriter_subreader(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& simple_edp_pubwriter_subreader)
 {
@@ -410,7 +366,6 @@ void set_simple_edp_pubwriter_subreader(
 }
 
 void set_simple_edp_pubreader_subwriter(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& simple_edp_pubreader_subwriter)
 {
@@ -418,12 +373,11 @@ void set_simple_edp_pubreader_subwriter(
 }
 
 void set_lease_duration_sec(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& duration_sec)
 {
     // Create XML manager and initialize the document
-    utils::XMLManager manager(xml_file, true);
+    utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
     // Obtain base node position
     initialize_namespace(manager, profile_id, true, utils::tag::LEASE_DURATION);
@@ -436,12 +390,11 @@ void set_lease_duration_sec(
 }
 
 void set_lease_duration_nanosec(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& duration_nanosec)
 {
     // Create XML manager and initialize the document
-    utils::XMLManager manager(xml_file, true);
+    utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
     // Obtain base node position
     initialize_namespace(manager, profile_id, true, utils::tag::LEASE_DURATION);
@@ -454,12 +407,11 @@ void set_lease_duration_nanosec(
 }
 
 void set_lease_announcement_sec(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& announcement_sec)
 {
     // Create XML manager and initialize the document
-    utils::XMLManager manager(xml_file, true);
+    utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
     // Obtain base node position
     initialize_namespace(manager, profile_id, true, utils::tag::LEASE_ANNOUNCEMENT);
@@ -472,12 +424,11 @@ void set_lease_announcement_sec(
 }
 
 void set_lease_announcement_nanosec(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& announcement_nanosec)
 {
     // Create XML manager and initialize the document
-    utils::XMLManager manager(xml_file, true);
+    utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
     // Obtain base node position
     initialize_namespace(manager, profile_id, true, utils::tag::LEASE_ANNOUNCEMENT);
@@ -490,7 +441,6 @@ void set_lease_announcement_nanosec(
 }
 
 void set_initial_announcements_count(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& count)
 {
@@ -498,7 +448,6 @@ void set_initial_announcements_count(
 }
 
 void set_initial_announcements_period_sec(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& period_sec)
 {
@@ -506,7 +455,6 @@ void set_initial_announcements_period_sec(
 }
 
 void set_initial_announcements_period_nanosec(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& period_nanosec)
 {
@@ -514,7 +462,6 @@ void set_initial_announcements_period_nanosec(
 }
 
 void set_client_announcement_period_sec(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& period_sec)
 {
@@ -522,7 +469,6 @@ void set_client_announcement_period_sec(
 }
 
 void set_client_announcement_period_nanosec(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& period_nanosec)
 {
@@ -530,7 +476,6 @@ void set_client_announcement_period_nanosec(
 }
 
 void set_static_edp_xml_config(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& static_edp_xml_config,
         const std::string& index)

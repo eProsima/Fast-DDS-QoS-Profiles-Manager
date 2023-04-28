@@ -199,35 +199,6 @@ public:
 };
 
 /**
- * @brief Exception to signal that the provided XML file does not exist
- */
-class FileNotFound : public Exception
-{
-
-public:
-
-    // Use parent constructors.
-    using Exception::Exception;
-
-    /**
-     * @brief Copies the qosprof::FileNotFound exception into a new one
-     *
-     * @param other The original exception object to copy
-     */
-    FASTDDS_QOS_PROFILES_MANAGER_DllAPI FileNotFound(
-            const FileNotFound& other) = default;
-
-    /**
-     * @brief Copies the qosprof::FileNotFound exception into the current one
-     *
-     * @param other The original qosprof::FileNotFound exception to copy
-     * @return the current qosprof::FileNotFound exception after the copy
-     */
-    FASTDDS_QOS_PROFILES_MANAGER_DllAPI FileNotFound& operator =(
-            const FileNotFound& other) = default;
-};
-
-/**
  * @brief Exception to signal that an operation is not supported
  *
  * Query the `what` in order to have more information about the validation failure

@@ -16,51 +16,35 @@
  * @file
  */
 
-#include \
-    <fastdds_qos_profiles_manager_lib/domain_participant/builtin/discovery_config/discovery_servers/DiscoveryServers.hpp>
+#include <fastdds_qos_profiles_manager_lib/QoSProfilesManager.hpp>
 
 #include <string>
-#include <vector>
 
 #include <fastdds_qos_profiles_manager_lib/exception/Exception.hpp>
 
+#include <utils/XMLManager.hpp>
+
 namespace eprosima {
 namespace qosprof {
-namespace domain_participant {
-namespace builtin {
-namespace discovery_config {
-namespace discovery_servers {
 
-std::string print(
-        const std::string& profile_id,
-        const std::string& index)
+void initialize(
+        const std::string& xml_file)
 {
-    throw Unsupported("Unsupported");
+    // Get singleton instance of manager
+    eprosima::qosprof::utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
+
+    // Initialize workspace and set up the manager with required information
+    manager.initialize(xml_file);
 }
 
-uint32_t size(
-        const std::string& profile_id)
+void terminate()
 {
-    throw Unsupported("Unsupported");
+    // Get singleton instance of manager
+    eprosima::qosprof::utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
+
+    // terminate the workspace and write the final XML in the given path if needed
+    manager.terminate();
 }
 
-std::vector<std::string> keys(
-        const std::string& profile_id)
-{
-    throw Unsupported("Unsupported");
-}
-
-void clear(
-        const std::string& profile_id,
-        const std::string& prefix)
-{
-    throw Unsupported("Unsupported");
-}
-
-} // discovery_servers
-} // discovery_config
-} // builtin
-} // domain_participant
 } // qosprof
 } // eprosima
-

@@ -44,14 +44,12 @@ namespace data_reader {
  *        As only one default profile is allowed, if another default profile exists, it is overridden and its
  *        is_default_profile attribute is set to false.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id DataReader profile identifier.
  *
- * @throw FileNotFound Exception if the provided XML file is not found/readable.
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementNotFound Exception if the specified profile is not found in the XML file.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_default_profile(
-        const std::string& xml_file,
         const std::string& profile_id);
 
 } // data_reader

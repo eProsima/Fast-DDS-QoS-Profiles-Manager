@@ -44,33 +44,77 @@ namespace utils {
  */
 class XMLManager
 {
+    //======================//
+    // Singleton management //
+    //======================//
+
 public:
+
+    /**
+     * @brief Get the instance object of the singleton class
+     *
+     * @return XMLManager&
+     */
+    static XMLManager& get_instance()
+    {
+        static XMLManager instance;
+        return instance;
+    }
 
     /**
      * @brief Construct a new Parse XML object, which initializes Xerces required tools,
      *  and reads given xml_file document.
      *
      * @param[in] xml_file string with the file path
-     * @param[in] create_file bool (optional) create file if the flag is set
      *
-     * @throw Error exception if Xerces XML workspace could not be initialized
+     * @throw Error exception if Xerces XML workspace could not be initialized, or it was already initialized
      */
-    XMLManager(
-            const std::string& xml_file,
-            bool create_file = false);
+    void initialize(
+            const std::string& xml_file);
 
     /**
-     * @brief Pase XML Destructor
+     * @brief Terminate XML workspace. If required to save or update the XML configuration in the filesystem,
+     *  this method must be called to save them.
+     *  If error occurred or resultant XML configuration is not valid, it will not save the XML configuration.
      *
+     * @throw Error Exception if the XML file could not be written in filesystem
      */
-    ~XMLManager();
+    void terminate();
 
     /**
-     * @brief Validate the document, and save to disk if valid.
+     * @brief Method that checks if the XML workspace has been initialized.
+     *
+     * @throw Error exception if XML workspace was not initialized
+     *
+     * @return true if XML workspace already initialized
+     */
+    bool is_initialized();
+
+    /**
+     * @brief Validate the document, and set flag to save to disk later if valid.
      *
      * @throw ElementInvalid exception if document does not pass parser validation
      */
     void validate_and_save_document();
+
+    /**
+     * @brief Save the document as string and validate.
+     *
+     * @throw ElementInvalid exception if document does not pass parser validation
+     *
+     * @return true document passes parser validation
+     */
+    bool validate_xml();
+
+    /**
+     * @brief  Save the document in the target file path.
+     *
+     * @throw Error Exception if the XML file could not be written in filesystem
+     *
+     * @return true document saved
+     * @return false failure saving document
+     */
+    bool save_xml();
 
     /**
      * @brief Remove the selected node.
@@ -107,7 +151,6 @@ public:
             const std::string& name,
             const std::string& value);
 
-
     /**
      * @brief Get the node value (only for simple cases)
      *
@@ -130,19 +173,20 @@ public:
             const std::string& name);
 
     /**
-     * @brief Get the (unique) child node object that matches the given tag name.
+     * @brief Move the reference node to the (unique) child node object that matches the given tag name.
      *
      * @param[in] tag_name string with the node (<tag>) name
      * @param[in] create_if_not_existent flag to create node if it is not found
      *
      * @throw ElementNotFound exception if expected node was not found and node creation was not required
      */
-    void get_node(
+    void move_to_node(
             const std::string& tag_name,
             const bool create_if_not_existent);
 
     /**
-     * @brief Get the node object located in the index position. If empty index, current node is kept.
+     * @brief Move the reference node to  the node object located in the index position. If empty index, current
+     *        node is kept.
      *
      * @param[in] index string index of the node element
      * @param[in] default_tag_name string with the default node (<tag>) name required to create the node if required.
@@ -151,14 +195,14 @@ public:
      * @throw ElementNotFound exception if expected node was not found and node creation was not required
      * @throw BadParameter exception if expected node could not be found by using the given index.
      */
-    void get_node(
+    void move_to_node(
             const std::string& index,
             const std::string& default_tag_name,
             const bool create_if_not_existent);
 
     /**
-     * @brief Get the node object that matches the given tag name, and has the same attribute key-value pair
-     *        set as the given name-value pair.
+     * @brief Move the reference node to the node object that matches the given tag name, and has the same attribute
+     *        key-value pair set as the given name-value pair.
      *
      * @param[in] tag_name string with the node (<tag>) name
      * @param[in] name string key (attribute) name of the node element
@@ -167,14 +211,25 @@ public:
      *
      * @throw ElementNotFound exception if expected node was not found and node creation was not required
      */
-    void get_node(
+    void move_to_node(
             const std::string& tag_name,
             const std::string& name,
             const std::string& value,
             const bool create_if_not_existent);
 
     /**
-     * @brief Get the locator node object found at index position. If empty index, current node is kept.
+     * @brief Move the reference node to the document root node.
+     *
+     * @param[in] create_if_not_existent flag to create node if it is not found
+     *
+     * @throw ElementNotFound exception if expected node was not found and node creation was not required
+     */
+    void move_to_root_node(
+            const bool create_if_not_existent);
+
+    /**
+     * @brief Move the reference node to  the locator node object found at index position. If empty index,
+     *        current node is kept.
      *
      * @param[in] index string index of the node element
      * @param[in] is_external flag to determine if the locator node is external or common
@@ -183,47 +238,32 @@ public:
      * @throw ElementNotFound exception if expected node was not found and node creation was not required
      * @throw BadParameter exception if expected node could not be found by using the given index.
      */
-    void get_locator_node(
+    void move_to_locator_node(
             const std::string& index,
             const bool is_external,
             const bool create_if_not_existent);
 
     /**
-     * @brief Get the transport node object associated to the given identifier. New node is created if required.
+     * @brief Move the reference node to  the transport node object associated to the given identifier.
+     *        New node is created if required.
      *
      * @param[in] transport_id string with the node identifier
      * @param[in] create_if_not_existent flag to create node if it is not found
      *
      * @throw ElementNotFound exception if expected node was not found and node creation was not required
      */
-    void get_transport_node(
+    void move_to_transport_node(
             const std::string& transport_id,
             const bool create_if_not_existent);
 
 private:
 
+    XMLManager() = default;
+
     /**
      * @brief Transforms standalone XML document structure to rooted.
      */
     void transform_standalone_to_rooted_structure();
-
-    /**
-     * @brief Save the document as string and validate.
-     *
-     * @throw ElementInvalid exception if document does not pass parser validation
-     *
-     * @return true document passes parser validation
-     * @return false document does not pass parser validation
-     */
-    bool validate_xml();
-
-    /**
-     * @brief  Save the document in the target file path.
-     *
-     * @return true document saved
-     * @return false failure saving document
-     */
-    bool save_xml();
 
     /**
      * @brief Auxiliar method that creates a new node with the given tag and appends it to the last node.
@@ -257,7 +297,6 @@ private:
 
     /**
      * @brief Clear node. Usage: remove all DOMText children from node.
-     *
      */
     void reset_node();
 
@@ -282,7 +321,13 @@ private:
     utils::ErrorHandlerXMLManager* error_handler = nullptr;
 
     // Latest node navigated to
-    xercesc::DOMNode* last_node = nullptr;
+    xercesc::DOMNode* reference_node = nullptr;
+
+    // Flag to write before exit
+    bool write_required = false;
+
+    // Flag variable to determine if library has been initialized
+    bool alive = false;
 };
 
 } /* parse */

@@ -112,9 +112,9 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time 1`|N/A|N/A|
 |`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time other`|`Fast DDS QoS Profiles Manager exception caught: value 'other' does not match any member types of the union`|N/A|
 |`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time arg1 arg2 -h`|N/A|`RELIABILITY_DURATION_QOS_USAGE`|
-|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time 2 500`|**BUG** (currently `Fast DDS QoS Profiles Manager exception caught: invalid document structure`) [^3]|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time 2 500`|N/A|N/A|
 |`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time infinite 500`|`Fast DDS QoS Profiles Manager exception caught: value 'infinite' does not match any member types of the union`|N/A|
-|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time 1 other`|**BUG** (currently `Fast DDS QoS Profiles Manager exception caught: invalid document structure`) [^3]|N/A|
+|`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time 1 other`|`Fast DDS QoS Profiles Manager exception caught: value 'other' does not match any member types of the union`|N/A|
 |`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time.sec`|`ERROR: set command for DataReader <reliability> QoS: 'duration' attribute: 'max_blocking_time' duration type <sec> attribute expects 1 arguments and received 0`|`RELIABILITY_DURATION_QOS_USAGE`|
 |`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time.sec[]`|`ERROR: DataReader <reliability> QoS: 'duration' attribute: 'max_blocking_time' duration type <sec> attribute must not be keyed []`|`RELIABILITY_DURATION_QOS_USAGE`|
 |`fastddsqosprof file.xml set datareader[profile].qos.reliability.duration.max_blocking_time.sec.other`|`ERROR: DataReader <reliability> QoS: 'duration' attribute: 'max_blocking_time' duration type <sec> attribute must be FINAL element`|`RELIABILITY_DURATION_QOS_USAGE`|
@@ -218,9 +218,9 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time 1`|N/A|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time other`|`Fast DDS QoS Profiles Manager exception caught: value 'other' does not match any member types of the union`|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time arg1 arg2 -h`|N/A|`RELIABILITY_DURATION_QOS_USAGE`|
-|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time 2 500`|**BUG** (currently `Fast DDS QoS Profiles Manager exception caught: invalid document structure`) [^3]|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time 2 500`|N/A|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time infinite 500`|`Fast DDS QoS Profiles Manager exception caught: value 'infinite' does not match any member types of the union`|N/A|
-|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time 1 other`|**BUG** (currently `Fast DDS QoS Profiles Manager exception caught: invalid document structure`) [^3]|N/A|
+|`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time 1 other`|`Fast DDS QoS Profiles Manager exception caught: value 'other' does not match any member types of the union`|N/A|
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time.sec`|`ERROR: set command for DataWriter <reliability> QoS: 'duration' attribute: 'max_blocking_time' duration type <sec> attribute expects 1 arguments and received 0`|`RELIABILITY_DURATION_QOS_USAGE`|
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time.sec[]`|`ERROR: DataWriter <reliability> QoS: 'duration' attribute: 'max_blocking_time' duration type <sec> attribute must not be keyed []`|`RELIABILITY_DURATION_QOS_USAGE`|
 |`fastddsqosprof file.xml set datawriter[profile].qos.reliability.duration.max_blocking_time.sec.other`|`ERROR: DataWriter <reliability> QoS: 'duration' attribute: 'max_blocking_time' duration type <sec> attribute must be FINAL element`|`RELIABILITY_DURATION_QOS_USAGE`|
@@ -303,9 +303,9 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease 1`|N/A|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease other`|`Fast DDS QoS Profiles Manager exception caught: value 'other' does not match any member types of the union`|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease arg1 arg2 help`|N/A|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease 1 500`|**BUG** (currently `Fast DDS QoS Profiles Manager exception caught: invalid document structure`) [^3]|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease 1 500`|N/A|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease infinite 500`|`Fast DDS QoS Profiles Manager exception caught: value 'infinite' does not match any member types of the union`|N/A|
-|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease 1 other`|**BUG** (currently `Fast DDS QoS Profiles Manager exception caught: invalid document structure`) [^3]|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease 1 other`|`Fast DDS QoS Profiles Manager exception caught: value 'other' does not match any member types of the union`|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease.sec`|`ERROR: set command for Participant builtin discovery config <duration>: 'lease' duration type <sec> attribute expects 1 arguments and received 0`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease.sec[]`|`ERROR: Participant builtin discovery config <duration>: 'lease' duration type <sec> attribute must not be keyed []`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease.sec.other`|`ERROR: Participant builtin discovery config <duration>: 'lease' duration type <sec> attribute must be FINAL element`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
@@ -327,9 +327,9 @@ This document includes CLI commands and the expected CLI output in order to help
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements 1`|N/A|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements other`|`Fast DDS QoS Profiles Manager exception caught: value 'other' does not match any member types of the union`|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements arg1 arg2 help`|N/A|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
-|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements 1 500`|**BUG** (currently `Fast DDS QoS Profiles Manager exception caught: invalid document structure`) [^3]|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements 1 500`|N/A|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements infinite 500`|`Fast DDS QoS Profiles Manager exception caught: value 'infinite' does not match any member types of the union`|N/A|
-|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements 1 other`|**BUG** (currently `Fast DDS QoS Profiles Manager exception caught: invalid document structure`) [^3]|N/A|
+|`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements 1 other`|`Fast DDS QoS Profiles Manager exception caught: value 'other' does not match any member types of the union`|N/A|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements.sec`|`ERROR: set command for Participant builtin discovery config <duration>: 'announcements' duration type <sec> attribute expects 1 arguments and received 0`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements.sec[]`|`ERROR: Participant builtin discovery config <duration>: 'announcements' duration type <sec> attribute must not be keyed []`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
 |`fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements.sec.other`|`ERROR: Participant builtin discovery config <duration>: 'announcements' duration type <sec> attribute must be FINAL element`|`PARTICIPANT_BUILTIN_DISCOVERY_CONFIG_DURATION_USAGE`|
@@ -728,16 +728,12 @@ This document includes CLI commands and the expected CLI output in order to help
 
 [^1]: **PENDING**: Print and clear default profile command will not require a profile name.
 [^2]: **PENDING**: Print, clear and query commands should not allow an empty index with a subelement.
-[^3]: **BUG**: Access to file before previous changes have been written although Xerces has correctly returned from `write` operation.
 
 ## Caveats
 
 This current test plan is focused only on the CLI usage and errors.
 Currently, this test plan is not concerned about the validity of the arguments passed to Fast DDS QoS Profiles Manager Library, nor about the handling of the returned information.
 
-
 ## Known issues
 
-* Simultaneous `set` operations would lead to an unexpected exception reporting the following message: `Fast DDS QoS Profiles Manager exception caught: invalid document structure`.
-  This happens due to accessing the file before previous changes have been written although Xerces has correctly returned from `write` operation.
-  These are some of the `set` calls that trigger this issue: `fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.lease 1 500`, `fastddsqosprof file.xml set participant[profile].builtin.discovery_config.duration.announcements 1 500`, and some other non-supported yet calls that have already been designed, as `fastddsqosprof file.xml set participant[profile].locators.default_unicast[] udpv4 127.0.0.1 1234`.
+Currently, no known issues have been detected.

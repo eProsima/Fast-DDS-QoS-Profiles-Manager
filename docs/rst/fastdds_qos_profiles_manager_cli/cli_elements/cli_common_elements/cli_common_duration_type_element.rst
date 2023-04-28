@@ -1,3 +1,5 @@
+.. include:: ../../../01-exports/roles.include
+
 .. _fastdds_qos_profiles_manager_cli_common_duration_type_element:
 
 Duration type configuration
@@ -26,14 +28,17 @@ The duration type configurable ``<subelements>`` are explained in the table belo
       - ``duration.<duration_type>.nanosec``
       - Simple parameter
       - ``uint32_t``
-    * - Infinite duration type
-      - ``duration.<duration_type>``
-      - Complex parameter
-      - ``infinite``
+
+Duration type can also be set in the following supported usages:
+
+* Setting an infinite duration: ``duration.<duration_type> infinite``
+
+* Setting the duration directly: ``duration.<duration_type> <sec_value> <nanosec_value>``
 
 .. note::
 
-    Duration type seconds can also be set with ``duration.<duration_type>``, similar to the infinite duration.
+    The duration can be directly set also by passing only the ``<sec_value>`` argument: ``duration.<duration_type> <sec_value>``
+
 
 The ``<duration_type>`` element is defined for each specific element.
 The list below includes the currently supported ``<duration_type>`` elements:

@@ -64,11 +64,8 @@ void ErrorHandlerXMLManager::report_parse_exception(
             throw ElementInvalid(xercesc::XMLString::transcode(ex.getMessage()));
             break;
         case Kind::ElementNotFound:
-            throw ElementNotFound(xercesc::XMLString::transcode(ex.getMessage()));
-            break;
-        case Kind::FileNotFound:
         default:
-            throw FileNotFound(xercesc::XMLString::transcode(ex.getMessage()));
+            throw ElementNotFound(xercesc::XMLString::transcode(ex.getMessage()));
             break;
     }
 }

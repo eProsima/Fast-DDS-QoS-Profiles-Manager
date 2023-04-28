@@ -17,6 +17,8 @@
 #include <string>
 
 #include <docopt/docopt.h>
+#include <fastdds_qos_profiles_manager_lib/QoSProfilesManager.hpp>
+#include <fastdds_qos_profiles_manager_lib/exception/Exception.hpp>
 
 #include <config.h>
 #include <parser_constants.hpp>
@@ -37,12 +39,23 @@ int main(
         true);                                                      // options first
 
     std::string command = args[PARSER_COMMAND].asString();
+
+    // Open XML workspace
+    try
+    {
+        eprosima::qosprof::initialize(args[PARSER_FILE].asString());
+    }
+    catch (const eprosima::qosprof::Exception& e)
+    {
+        std::cout << "Fast DDS QoS Profiles Manager exception caught: " << e.what() << std::endl;
+    }
+
     if (command == SET_COMMAND)
     {
         // Set command requires at least one more follow-up arguments: element being set
         if (0 < args[PARSER_ARGS].asStringList().size())
         {
-            main_element_parser(CommonCommands::SET, args[PARSER_FILE].asString(), argc - 2, argv + 2);
+            main_element_parser(CommonCommands::SET, argc - 2, argv + 2);
         }
         else
         {
@@ -73,7 +86,7 @@ int main(
         }
         else if (1 == args[PARSER_ARGS].asStringList().size())
         {
-            main_element_parser(CommonCommands::PRINT, args[PARSER_FILE].asString(), argc - 2, argv + 2);
+            main_element_parser(CommonCommands::PRINT, argc - 2, argv + 2);
         }
         else
         {
@@ -100,7 +113,7 @@ int main(
         // Clear command requires only one follow-up argument: element to be cleared
         if (1 == args[PARSER_ARGS].asStringList().size())
         {
-            main_element_parser(CommonCommands::CLEAR, args[PARSER_FILE].asString(), argc - 2, argv + 2);
+            main_element_parser(CommonCommands::CLEAR, argc - 2, argv + 2);
         }
         else
         {
@@ -139,6 +152,9 @@ int main(
         std::cout << "ERROR: " << command << " command not recognized" << std::endl;
         std::cout << USAGE << std::endl;
     }
+
+    // Close XML workspace
+    eprosima::qosprof::terminate();
 
     return 0;
 }

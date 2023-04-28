@@ -29,7 +29,6 @@ namespace builtin {
 namespace metatraffic_multicast_locators {
 
 std::string print(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -37,7 +36,6 @@ std::string print(
 }
 
 std::string print_kind(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -45,7 +43,6 @@ std::string print_kind(
 }
 
 std::string print_port(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -53,7 +50,6 @@ std::string print_port(
 }
 
 std::string print_physical_port(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -61,7 +57,6 @@ std::string print_physical_port(
 }
 
 std::string print_address(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -69,7 +64,6 @@ std::string print_address(
 }
 
 std::string print_unique_lan_id(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -77,7 +71,6 @@ std::string print_unique_lan_id(
 }
 
 std::string print_wan_address(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -85,14 +78,12 @@ std::string print_wan_address(
 }
 
 uint32_t size(
-        const std::string& xml_file,
         const std::string& profile_id)
 {
     throw Unsupported("Unsupported");
 }
 
 void clear(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -100,7 +91,6 @@ void clear(
 }
 
 void clear_port(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -108,7 +98,6 @@ void clear_port(
 }
 
 void clear_physical_port(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -116,7 +105,6 @@ void clear_physical_port(
 }
 
 void clear_address(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -124,7 +112,6 @@ void clear_address(
 }
 
 void clear_unique_lan_id(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -132,7 +119,6 @@ void clear_unique_lan_id(
 }
 
 void clear_wan_address(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& index)
 {
@@ -140,7 +126,6 @@ void clear_wan_address(
 }
 
 void set_kind(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& kind,
         const std::string& index)
@@ -149,7 +134,6 @@ void set_kind(
 }
 
 void set_port(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& port,
         const std::string& index)
@@ -158,7 +142,6 @@ void set_port(
 }
 
 void set_physical_port(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& physical_port,
         const std::string& index)
@@ -167,7 +150,6 @@ void set_physical_port(
 }
 
 void set_address(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& address,
         const std::string& index)
@@ -176,7 +158,6 @@ void set_address(
 }
 
 void set_unique_lan_id(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& unique_lan_id,
         const std::string& index)
@@ -185,7 +166,6 @@ void set_unique_lan_id(
 }
 
 void set_wan_address(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& wan_address,
         const std::string& index)

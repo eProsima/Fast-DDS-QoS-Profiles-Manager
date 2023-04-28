@@ -43,56 +43,52 @@ namespace qos {
 /**
  * @brief Set the DataWriter durability QoS kind.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id DataWriter profile identifier.
  * @param[in] kind Durability QoS kind value.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided durability QoS kind value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_durability_kind(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& kind);
 
 /**
  * @brief Set the DataWriter reliability QoS kind.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id DataWriter profile identifier.
  * @param[in] kind Reliability QoS kind value.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided reliability QoS kind value is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_reliability_kind(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& kind);
 
 /**
  * @brief Set the DataWriter reliability QoS max blocking time seconds.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id DataWriter profile identifier.
  * @param[in] sec Reliability QoS max blocking time seconds to be set
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided reliability QoS max blocking time seconds are not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_reliability_max_blocking_time_sec(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& sec);
 
 /**
  * @brief Set the DataWriter reliability QoS max blocking time nanoseconds.
  *
- * @param[in] xml_file Absolute/relative path to the XML file.
  * @param[in] profile_id DataWriter profile identifier.
  * @param[in] nanosec Reliability QoS max blocking time nanoseconds to be set
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided reliability QoS max blocking time nanoseconds are not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_reliability_max_blocking_time_nanosec(
-        const std::string& xml_file,
         const std::string& profile_id,
         const std::string& nanosec);
 
