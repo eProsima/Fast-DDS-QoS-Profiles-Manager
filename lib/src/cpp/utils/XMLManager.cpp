@@ -594,8 +594,7 @@ void XMLManager::move_to_node(
         throw ElementNotFound(exception_message);
     }
 
-    // TODO add a error check if any of the 'tag_name', 'name' and 'value' parameters are empty.
-    //      If happens, throw a BadParameter exception
+    // TODO add a check if 'name' parameter is empty, return (do not update) actual reference_node
 
     // Obtain list of nodes based on the target tag
     xercesc::DOMNodeList* node_list = static_cast<xercesc::DOMElement*>(reference_node)->getElementsByTagName(

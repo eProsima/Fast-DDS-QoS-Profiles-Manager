@@ -228,7 +228,6 @@ void duration_type_parser(
  *
  * @param[in] list Identify the specific list which is being accessed.
  * @param[in] command Command kind.
- * @param[in] filename File to be accessed.
  * @param[in] profile_name DDS entity profile name.
  * @param[in] element String with the dot-separated subelements.
  * @param[in] values Vector of strings with the values passed to CLI.
@@ -245,7 +244,6 @@ void external_locators_parser(
  *
  * @param[in] list Identify the specific list which is being accessed.
  * @param[in] command Command kind.
- * @param[in] filename File to be accessed.
  * @param[in] profile_name DDS entity profile name.
  * @param[in] element String with the dot-separated subelements.
  * @param[in] key Index of the locator to be accessed in the list.
