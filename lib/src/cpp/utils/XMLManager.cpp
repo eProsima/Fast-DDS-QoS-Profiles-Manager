@@ -32,7 +32,7 @@ namespace utils {
 void XMLManager::initialize (
         const std::string& file_name)
 {
-    // Check if workspace already initialized to avoid initializing it twice
+    // Check if workspace has been already initialized to avoid initializing it twice
     if (alive)
     {
         // XML workspace already initialized
@@ -94,10 +94,10 @@ void XMLManager::initialize (
         // Obtain first document node
         reference_node = static_cast<xercesc::DOMNode*>(doc->getDocumentElement());
     }
-    // Given file does not exist
+    // Error parsing the document: root element not found
     catch (const ElementNotFound& ex)
     {
-        // Create new document if required
+        // There is no file in filesystem
         if (!file_exists)
         {
             // Implementation would create an empty document
@@ -105,6 +105,12 @@ void XMLManager::initialize (
 
             // There is no reference
             reference_node = nullptr;
+        }
+        // file exists in filesystem but it cannot be parsed
+        else
+        {
+            // Throw exception
+            throw ElementNotFound(ex);
         }
     }
 
@@ -165,7 +171,7 @@ void XMLManager::terminate()
             throw_error = ex.what();
         }
 
-        // IMPORTANT: set class as not longer initialized (terminated)
+        // IMPORTANT: set class as no longer initialized (terminated)
         alive = false;
 
         // Close XML workspace
@@ -587,6 +593,9 @@ void XMLManager::move_to_node(
         exception_message += " XML element.\n";
         throw ElementNotFound(exception_message);
     }
+
+    // TODO add a error check if any of the 'tag_name', 'name' and 'value' parameters are empty.
+    //      If happens, throw a BadParameter exception
 
     // Obtain list of nodes based on the target tag
     xercesc::DOMNodeList* node_list = static_cast<xercesc::DOMElement*>(reference_node)->getElementsByTagName(

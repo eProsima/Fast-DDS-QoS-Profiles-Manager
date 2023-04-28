@@ -816,7 +816,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_client_announcement_period_nanosec(
  * @param[in] static_edp_xml_config Builtin discovery Static EDP XML configuration file.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
- * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided path is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.

@@ -522,7 +522,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_prefix(
  * @param[in] transport_id Transport descriptor profile identifier.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
- * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided Transport descriptor profile identifier is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
@@ -541,7 +540,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_user_transports(
  * @param[in] user_data User data to be updated.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
- * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided user data is not valid.
  * @throw ElementNotFound Exception if the specified Domain Participant profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.

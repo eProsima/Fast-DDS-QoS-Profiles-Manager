@@ -38,9 +38,10 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void initialize(
         const std::string& xml_file);
 
 /**
- * @brief Terminate the eProsima QoS Profiles Manager Library XML workspace related to the specified XML file.
- *  If changes required to be applied in the XML configuration file, this method would also apply them in filesystem.
- *  If error occurred or resultant XML configuration is not valid, the XML configuration will not be modified.
+ * @brief Terminate the initialized eProsima QoS Profiles Manager Library XML workspace. This function must be called
+ *  before initializing a new workspace. If changes required to be applied in the XML configuration file, this method
+ *  would also apply them in filesystem. If error occurred or resultant XML configuration is not valid, the XML
+ *  configuration will not be modified.
  *
  * @throw Error Exception if the XML file could not be written in filesystem
  */

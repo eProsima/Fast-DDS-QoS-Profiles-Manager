@@ -1199,6 +1199,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_ttl(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] non_blocking_send Enable/disable this flag in the Transport Descriptor.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the flag does not apply to the Transport Descriptor.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_non_blocking_send(
@@ -1211,6 +1212,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_non_blocking_send(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] output_port UDP Transport output port.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the output port provided is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_output_port(
@@ -1223,6 +1225,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_output_port(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] wan_addr TCPv4 Transport WAN address.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the output port provided is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_wan_addr(
@@ -1461,6 +1464,7 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_check_crc(
  * @param[in] transport_descriptor_id Transport descriptor profile identifier.
  * @param[in] enable_tcp_nodelay Flag to enable TCP_NODELAY socket option.
  *
+ * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the TCP_NODELAY flag is not valid.
  */
 FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_enable_tcp_nodelay(
@@ -1531,7 +1535,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_rtps_dump_file(
  * @param[in] ip_address IP address to be updated in the whitelist collection.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
- * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided IP address is not valid.
  * @throw ElementNotFound Exception if the specified Transport descriptor profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
@@ -1551,7 +1554,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_interface_whitelist(
  * @param[in] port Updated port to listen as server.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
- * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided port is not valid.
  * @throw ElementNotFound Exception if the specified Transport descriptor profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
@@ -1571,7 +1573,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_listening_ports(
  * @param[in] tls_verify_mode TLS verification mode to update in the mask.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
- * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided TLS verification mode is not valid.
  * @throw ElementNotFound Exception if the specified Transport descriptor profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
@@ -1591,7 +1592,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_verify_mode(
  * @param[in] tls_options TLS supported feature to update in the mask.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
- * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided TLS supported feature is not valid.
  * @throw ElementNotFound Exception if the specified Transport descriptor profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.
@@ -1611,7 +1611,6 @@ FASTDDS_QOS_PROFILES_MANAGER_DllAPI void set_tls_options(
  * @param[in] tls_verify_path TLS verification path to be updated in the list.
  * @param[in] index Collection element to be changed. If empty, a new element is added to the list.
  *
- * @throw Error Exception if the workspace was not initialized.
  * @throw ElementInvalid Exception if the provided path is not valid.
  * @throw ElementNotFound Exception if the specified Transport descriptor profile is not found in the XML file, the list
  *        element does not exist, or the list does not contain any element in index position.

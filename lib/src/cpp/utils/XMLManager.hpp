@@ -87,7 +87,6 @@ public:
      * @throw Error exception if XML workspace was not initialized
      *
      * @return true if XML workspace already initialized
-     * @return false if XML workspace has not been initialized
      */
     bool is_initialized();
 
@@ -104,7 +103,6 @@ public:
      * @throw ElementInvalid exception if document does not pass parser validation
      *
      * @return true document passes parser validation
-     * @return false document does not pass parser validation
      */
     bool validate_xml();
 

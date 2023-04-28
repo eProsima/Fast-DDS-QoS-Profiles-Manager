@@ -26,7 +26,6 @@
 #include <fastdds_qos_profiles_manager_lib/exception/Exception.hpp>
 #include <fastdds_qos_profiles_manager_lib/QoSProfilesManager.hpp>
 
-
 using namespace eprosima::qosprof;
 using namespace eprosima::qosprof::domain_participant;
 

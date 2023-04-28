@@ -210,7 +210,6 @@ void endpoint_subelement_parser(
  *
  * @param duration_type Duration type being parsed.
  * @param command Command kind.
- * @param filename File to be accessed.
  * @param profile_name DDS entity profile name.
  * @param element String with the dot-separated subelements.
  * @param values Vector of strings with the values passed to CLI.
@@ -292,7 +291,6 @@ void participant_subelement_parser(
  *
  * @param entity Endpoint kind.
  * @param command Command kind.
- * @param filename File to be modified.
  * @param profile_name Endpoint profile name.
  * @param element String with the dot-separated subelements.
  * @param values Vector of strings with the values passed to CLI.
@@ -308,7 +306,6 @@ void qos_parser(
  *
  * @param entity Endpoint kind.
  * @param command Command kind.
- * @param filename File to be modified.
  * @param profile_name Endpoint profile name.
  * @param element String with the dot-separated subelements.
  * @param values Vector of strings with the values passed to CLI.
@@ -325,7 +322,6 @@ void reliability_qos_parser(
  * @brief Transport descriptor parser
  *
  * @param command Command kind.
- * @param filename File to be modified.
  * @param transport_identifier transport identifier.
  * @param element String with the dot-separated subelements.
  * @param values Vector of strings with the values passed to CLI.

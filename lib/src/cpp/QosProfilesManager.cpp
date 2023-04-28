@@ -39,7 +39,7 @@ void initialize(
 
 void terminate()
 {
-    // Create singleton instance of manager
+    // Get singleton instance of manager
     eprosima::qosprof::utils::XMLManager& manager = eprosima::qosprof::utils::XMLManager::get_instance();
 
     // terminate the workspace and write the final XML in the given path if needed
