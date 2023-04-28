@@ -488,7 +488,7 @@ void XMLManager::move_to_node(
         exception_message += " XML element.\n";
         throw ElementNotFound(exception_message);
     }
-    
+
     // Increase depth level
     depth_level++;
 
@@ -535,7 +535,7 @@ void XMLManager::move_to_node(
         exception_message += " XML element.\n";
         throw ElementNotFound(exception_message);
     }
-    
+
     // Increase depth level
     depth_level++;
 

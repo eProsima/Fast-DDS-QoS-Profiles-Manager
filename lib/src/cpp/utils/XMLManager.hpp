@@ -328,7 +328,7 @@ private:
 
     // Flag variable to determine if library has been initialized
     bool alive = false;
-    
+
     // XML depth level: auxiliary member to correctly set closing tags indentation
     int32_t depth_level;
 };
