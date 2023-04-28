@@ -273,6 +273,7 @@ bool XMLManager::save_xml()
         // Config would configure serialized XML data
         config = serializer->getDomConfig();
         config->setParameter(xercesc::XMLUni::fgDOMWRTFormatPrettyPrint, true);
+        config->setParameter(xercesc::XMLUni::fgDOMWRTXercesPrettyPrint, false);
         config->setParameter(xercesc::XMLUni::fgDOMXMLDeclaration, true);
 
         // Save XML document in target file path
@@ -298,15 +299,23 @@ void XMLManager::create_node(
     reference_node =
             static_cast<xercesc::DOMNode*>(doc->createElement(xercesc::XMLString::transcode(tag_name.c_str())));
 
+    // Add text node to correctly set closing tag indentation
+    std::string node_formatting(LINE_BREAK);
+    for (int i = 0; i < depth_level - 1; i++)
+    {
+        node_formatting += NODE_INDENTATION;
+    }
     // Append new node to parent node
     if (parent_node != nullptr)
     {
         parent_node->appendChild(reference_node);
+        parent_node->appendChild(doc->createTextNode(xercesc::XMLString::transcode(node_formatting.c_str())));
     }
     // Append new node directly to document
     else
     {
         doc->appendChild(reference_node);
+        doc->appendChild(doc->createTextNode(xercesc::XMLString::transcode(node_formatting.c_str())));
     }
 }
 
@@ -481,6 +490,9 @@ void XMLManager::move_to_node(
         throw ElementNotFound(exception_message);
     }
 
+    // Increase depth level
+    depth_level++;
+
     // Obtain list of nodes based on the target tag
     xercesc::DOMNodeList* node_list = static_cast<xercesc::DOMElement*>(reference_node)->getElementsByTagName(
         xercesc::XMLString::transcode(tag_name.c_str()));
@@ -524,6 +536,9 @@ void XMLManager::move_to_node(
         exception_message += " XML element.\n";
         throw ElementNotFound(exception_message);
     }
+
+    // Increase depth level
+    depth_level++;
 
     // Index not empty
     if (!index.empty())
@@ -596,6 +611,9 @@ void XMLManager::move_to_node(
 
     // TODO add a check if 'name' parameter is empty, return (do not update) actual reference_node
 
+    // Increase depth level
+    depth_level++;
+
     // Obtain list of nodes based on the target tag
     xercesc::DOMNodeList* node_list = static_cast<xercesc::DOMElement*>(reference_node)->getElementsByTagName(
         xercesc::XMLString::transcode(tag_name.c_str()));
@@ -644,6 +662,9 @@ void XMLManager::move_to_node(
 void XMLManager::move_to_root_node(
         const bool create_if_not_existent)
 {
+    // Reinitialize depth level count.
+    depth_level = 0;
+
     // Set the last node as the root node
     xercesc::DOMNodeList* doc_node_list = doc->getElementsByTagName(xercesc::XMLString::transcode(tag::ROOT));
 
@@ -704,6 +725,9 @@ void XMLManager::move_to_locator_node(
     std::string tag = xercesc::XMLString::transcode(reference_node->getNodeName());
     if (tag == utils::tag::LOCATOR)
     {
+        // Increase depth level
+        depth_level++;
+
         // Obtain main list of nodes
         xercesc::DOMNodeList* node_list = reference_node->getChildNodes();
 
@@ -735,6 +759,9 @@ void XMLManager::move_to_transport_node(
         const std::string& transport_id,
         const bool create_if_not_existent)
 {
+    // Increase depth level
+    depth_level++;
+
     // Obtain list node
     move_to_node(utils::tag::TRANSPORT_DESCRIPTOR_LIST, create_if_not_existent);
 

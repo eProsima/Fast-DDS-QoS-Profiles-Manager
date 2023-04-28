@@ -304,6 +304,7 @@ private:
     constexpr static const char* CORE = "Core";
     constexpr static const char* UTF8 = "UTF-8";
     constexpr static const char* LINE_BREAK = "\n";
+    constexpr static const char* NODE_INDENTATION = "  ";
 
     // Xerces tools required for node management
     xercesc::DOMConfiguration* config = nullptr;
@@ -328,6 +329,9 @@ private:
 
     // Flag variable to determine if library has been initialized
     bool alive = false;
+
+    // XML depth level: auxiliary member to correctly set closing tags indentation
+    int32_t depth_level;
 };
 
 } /* parse */
