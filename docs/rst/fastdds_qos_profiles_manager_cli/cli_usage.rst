@@ -1,4 +1,3 @@
-.. include:: ../01-exports/api-lib-aliases.include
 .. include:: ../01-exports/roles.include
 
 .. _fastdds_qos_profiles_manager_cli_usage:
