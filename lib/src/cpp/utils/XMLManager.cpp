@@ -303,7 +303,7 @@ void XMLManager::create_node(
     std::string node_formatting(LINE_BREAK);
     for (int i = 0; i < depth_level - 1; i++)
     {
-        node_formatting += "  ";
+        node_formatting += NODE_INDENTATION;
     }
     // Append new node to parent node
     if (parent_node != nullptr)

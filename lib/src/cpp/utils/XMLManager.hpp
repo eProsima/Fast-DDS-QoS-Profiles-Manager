@@ -304,6 +304,7 @@ private:
     constexpr static const char* CORE = "Core";
     constexpr static const char* UTF8 = "UTF-8";
     constexpr static const char* LINE_BREAK = "\n";
+    constexpr static const char* NODE_INDENTATION = "  ";
 
     // Xerces tools required for node management
     xercesc::DOMConfiguration* config = nullptr;
