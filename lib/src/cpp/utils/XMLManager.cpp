@@ -273,6 +273,7 @@ bool XMLManager::save_xml()
         // Config would configure serialized XML data
         config = serializer->getDomConfig();
         config->setParameter(xercesc::XMLUni::fgDOMWRTFormatPrettyPrint, true);
+        config->setParameter(xercesc::XMLUni::fgDOMWRTXercesPrettyPrint, false);
         config->setParameter(xercesc::XMLUni::fgDOMXMLDeclaration, true);
 
         // Save XML document in target file path
