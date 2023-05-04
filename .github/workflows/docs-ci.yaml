@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: eProsima/eProsima-CI/external/checkout@v0.2
         with:
           path: src/Fast-DDS-QoS-Profiles-Manager
 
@@ -19,18 +19,10 @@ jobs:
           packages: cmake doxygen libxerces-c-dev
 
       - name: Install colcon
-        uses: eProsima/eProsima-CI/ubuntu/install_colcon@v0.2
+        uses: eProsima/eProsima-CI/multiplatform/install_colcon@v0.2
 
       - name: Install GTest
-        run: |
-          sudo apt install libgtest-dev libgmock-dev
-          (cd /usr/src/gtest && sudo `which cmake` .)
-          sudo make -j $(nproc) -C /usr/src/gtest
-          sudo ln -s /usr/src/gtest/libgtest.a /usr/lib/libgtest.a
-          sudo ln -s /usr/src/gtest/libgtest_main.a /usr/lib/libgtest_main.a
-          (cd /usr/src/googletest/googlemock && sudo `which cmake` .)
-          sudo make -j $(nproc) -C /usr/src/googletest/googlemock
-          sudo ln -s /usr/src/googletest/googlemock/libgmock.a /usr/lib/libgmock.a
+        uses: eProsima/eProsima-CI/multiplatform/install_gtest@v0.2
 
       - name: Install documentation requirements
         uses: eProsima/eProsima-CI/ubuntu/install_python_packages@v0.2
@@ -38,17 +30,10 @@ jobs:
           requirements_file_name: src/Fast-DDS-QoS-Profiles-Manager/docs/requirements.txt
 
       - name: Build workspace
-        run: |
-          colcon build \
-            --packages-up-to fastdds_qos_profiles_manager_docs \
-            --event-handlers console_direct+ \
-            --cmake-args -DEPROSIMA_BUILD_TESTS=ON
-
-      - name: Run tests
-        run: |
-          colcon test \
-            --packages-select fastdds_qos_profiles_manager_docs \
-            --event-handlers console_direct+
+        uses: eProsima/eProsima-CI/multiplatform/colcon_build_test@v0.2
+        with:
+          packages_names: fastdds_qos_profiles_manager_docs
+          cmake_args: -DEPROSIMA_BUILD_TESTS=ON
 
       - name: Upload documentation
         uses: actions/upload-artifact@v3
