@@ -14,12 +14,12 @@ jobs:
           path: src/Fast-DDS-QoS-Profiles-Manager
 
       - name: Install apt packages
-        uses: eProsima/eProsima-CI/ubuntu/install_apt_packages@main
+        uses: eProsima/eProsima-CI/ubuntu/install_apt_packages@v0.2
         with:
           packages: cmake doxygen libxerces-c-dev
 
       - name: Install colcon
-        uses: eProsima/eProsima-CI/ubuntu/install_colcon@main
+        uses: eProsima/eProsima-CI/ubuntu/install_colcon@v0.2
 
       - name: Install GTest
         run: |
@@ -33,7 +33,7 @@ jobs:
           sudo ln -s /usr/src/googletest/googlemock/libgmock.a /usr/lib/libgmock.a
 
       - name: Install documentation requirements
-        uses: eProsima/eProsima-CI/ubuntu/install_python_packages@main
+        uses: eProsima/eProsima-CI/ubuntu/install_python_packages@v0.2
         with:
           requirements_file_name: src/Fast-DDS-QoS-Profiles-Manager/docs/requirements.txt
 

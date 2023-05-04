@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: eProsima uncrustify
-        uses: eProsima/eProsima-CI/ubuntu/uncrustify@main
+        uses: eProsima/eProsima-CI/ubuntu/uncrustify@v0.2
 
       - name: Upload uncrustify results
         uses: actions/upload-artifact@v3
