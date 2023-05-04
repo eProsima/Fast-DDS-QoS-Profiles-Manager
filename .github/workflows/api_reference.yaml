@@ -11,22 +11,22 @@ jobs:
   doxygen:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: eProsima/eProsima-CI/external/checkout@v0.2
         with:
           path: src/Fast-DDS-QoS-Profiles-Manager
 
       - name: Install apt packages
-        uses: eProsima/eProsima-CI/ubuntu/install_apt_packages@main
+        uses: eProsima/eProsima-CI/ubuntu/install_apt_packages@v0.2
         with:
           packages: doxygen cmake libxerces-c-dev
 
       - name: Install colcon
-        uses: eProsima/eProsima-CI/ubuntu/install_colcon@main
+        uses: eProsima/eProsima-CI/multiplatform/install_colcon@v0.2
 
       - name: Build library
-        run: |
-          cd src/Fast-DDS-QoS-Profiles-Manager/lib
-          colcon build
+        uses: eProsima/eProsima-CI/multiplatform/colcon_build@v0.2
+        with:
+          workspace: src/Fast-DDS-QoS-Profiles-Manager/lib
 
       - name: Generate documentation
         run: |

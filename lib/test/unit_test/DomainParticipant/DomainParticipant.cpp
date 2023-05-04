@@ -122,7 +122,7 @@ protected:
         }
         else
         {
-            for (int i = 0; i < invalid_values_.size(); i++)
+            for (uint32_t i = 0; i < invalid_values_.size(); i++)
             {
                 EXPECT_THAT(
                     [&]()
@@ -255,7 +255,7 @@ protected:
         }
         else
         {
-            for (int i = 0; i < invalid_values_.size(); i++)
+            for (uint32_t i = 0; i < invalid_values_.size(); i++)
             {
                 EXPECT_THAT(
                     [&]()
