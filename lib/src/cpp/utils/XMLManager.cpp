@@ -556,7 +556,7 @@ void XMLManager::move_to_node(
             // Parse index from string to int
             real_index = std::stoi(index);
         }
-        catch (std::exception)
+        catch (std::exception&)
         {
             throw BadParameter(index + " could not be used as integer index");
         }
@@ -568,7 +568,7 @@ void XMLManager::move_to_node(
         }
 
         // Check bounds
-        if (real_index >= 0 && real_index < index_list->size())
+        if (real_index >= 0 && static_cast<uint32_t>(real_index) < index_list->size())
         {
             // Return Node
             reference_node = node_list->item(index_list->at(real_index));
