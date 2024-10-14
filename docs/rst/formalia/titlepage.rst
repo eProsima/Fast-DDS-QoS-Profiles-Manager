@@ -16,6 +16,19 @@
 *eProsima Fast DDS QoS Profiles Manager* is a tool suite for the generation of `Fast DDS <https://fast-dds.docs.eprosima.com/en/latest/>`_ `XML configuration files <https://fast-dds.docs.eprosima.com/en/latest/fastdds/xml_configuration/xml_configuration.html>`_.
 The suite provides both a Graphical User Interface (GUI) and a Command Line Interface (CLI).
 
+.. raw:: html
+
+  <br/>
+  <br/>
+  <br/>
+
+Commercial support
+^^^^^^^^^^^^^^^^^^
+
+Looking for commercial support? Write us to info@eprosima.com
+
+Find more about us at `eProsima's webpage <https://eprosima.com/>`__.
+
 Graphical User Interface
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
