@@ -14,8 +14,14 @@ erDiagram
     GUI |o--|| library : uses
     CLI |o--|| library : uses
     library |o--|{ XML : generates
-    XML { 
+    XML {
         contains profiles
     }
 
 ```
+
+## Commercial support
+
+Looking for commercial support? Write us to info@eprosima.com
+
+Find more about us at [eProsima’s webpage](https://eprosima.com/).
