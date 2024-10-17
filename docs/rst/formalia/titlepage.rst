@@ -1,10 +1,7 @@
 .. _qos_prof_description_:
 
-.. raw:: html
-
-  <h1>
-    eProsima Fast DDS QoS Profiles Manager
-  </h1>
+eProsima Fast DDS QoS Profiles Manager
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: /rst/figures/logo.png
     :height: 100px
